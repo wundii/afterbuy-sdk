@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Dto;
 
-use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\ErrorLanguageEnum;
 use SimpleXMLElement;
 
@@ -17,7 +16,6 @@ final class AfterbuyGlobal
     private int $detailLevel;
 
     public function __construct(
-        private readonly EndpointEnum $endpointEnum,
         private readonly string $accountToken,
         private readonly string $partnerToken,
         private readonly ErrorLanguageEnum $errorLanguageEnum = ErrorLanguageEnum::GERMAN,
@@ -42,35 +40,5 @@ final class AfterbuyGlobal
     public function setDetailLevel(int $detailLevel): void
     {
         $this->detailLevel = $detailLevel;
-    }
-
-    public function getCallName(): string
-    {
-        return $this->callName;
-    }
-
-    public function getDetailLevel(): int
-    {
-        return $this->detailLevel;
-    }
-
-    public function getAccountToken(): string
-    {
-        return $this->accountToken;
-    }
-
-    public function getEndpoint(): EndpointEnum
-    {
-        return $this->endpointEnum;
-    }
-
-    public function getErrorLanguage(): ErrorLanguageEnum
-    {
-        return $this->errorLanguageEnum;
-    }
-
-    public function getPartnerToken(): string
-    {
-        return $this->partnerToken;
     }
 }

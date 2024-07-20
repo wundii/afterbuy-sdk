@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AfterbuySdk;
 
+use AfterbuySdk\Dto\AfterbuyGlobal;
+use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
 use Psr\Log\LoggerInterface;
@@ -20,6 +22,8 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 final readonly class Afterbuy
 {
     public function __construct(
+        private AfterbuyGlobal $afterbuyGlobal,
+        private EndpointEnum $endpointEnum,
         private ?LoggerInterface $logger = null,
     ) {
     }
@@ -34,10 +38,10 @@ final readonly class Afterbuy
     public function runRequest(AfterbuyRequestInterface $afterbuyRequest, ?ResponseInterface $response = null): AfterbuyResponseInterface
     {
         $method = $afterbuyRequest->method()->value;
-        $payload = $afterbuyRequest->payload();
+        $payload = $afterbuyRequest->payload($this->afterbuyGlobal);
         $query = $afterbuyRequest->query();
         $responseClass = $afterbuyRequest->responseClass();
-        $uri = $afterbuyRequest->uri();
+        $uri = $afterbuyRequest->uri($this->endpointEnum);
 
         if (! class_exists($responseClass)) {
             throw new RuntimeException('Response class does not exist');

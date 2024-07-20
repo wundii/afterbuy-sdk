@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AfterbuySdk\Request;
 
 use AfterbuySdk\Dto\AfterbuyGlobal;
+use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
@@ -14,7 +15,6 @@ use RuntimeException;
 final readonly class GetAfterbuyTimeRequest implements AfterbuyRequestInterface
 {
     public function __construct(
-        private AfterbuyGlobal $afterbuyGlobal,
         private int $detailLevel = 0,
     ) {
     }
@@ -24,16 +24,15 @@ final readonly class GetAfterbuyTimeRequest implements AfterbuyRequestInterface
         return RequestMethodEnum::GET;
     }
 
-    public function payload(): string
+    public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
-        $this->afterbuyGlobal->setCallName('GetAfterbuyTime');
-        $this->afterbuyGlobal->setDetailLevel($this->detailLevel);
+        $afterbuyGlobal->setCallName('GetAfterbuyTime');
+        $afterbuyGlobal->setDetailLevel($this->detailLevel);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
-        $xml->addAfterbuyGlobal($this->afterbuyGlobal);
+        $xml->addAfterbuyGlobal($afterbuyGlobal);
 
         $string = $xml->asXML();
-
         if ($string === false) {
             throw new RuntimeException('XML could not be generated');
         }
@@ -46,9 +45,9 @@ final readonly class GetAfterbuyTimeRequest implements AfterbuyRequestInterface
         return GetAfterbuyTimeResponse::class;
     }
 
-    public function uri(): string
+    public function uri(EndpointEnum $endpointEnum): string
     {
-        return $this->afterbuyGlobal->getEndpoint()->value;
+        return $endpointEnum->value;
     }
 
     public function query(): array
