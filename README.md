@@ -5,7 +5,6 @@
 
 Afterbuy Programming Interface Software Development Kit
 
-
 ## Installation
 Require the bundle and its dependencies with composer:
 
@@ -13,7 +12,6 @@ Require the bundle and its dependencies with composer:
 
 ## Usage
 ```php
-
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Enum\EndpointEnum;
