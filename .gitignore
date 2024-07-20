@@ -1,0 +1,5 @@
+/.idea/
+/.phplint/
+/cache/*
+/vendor/
+composer.lock
