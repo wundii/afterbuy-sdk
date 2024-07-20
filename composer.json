@@ -27,12 +27,12 @@
   },
   "autoload": {
     "psr-4": {
-      "PHPLint\\": "src/"
+      "AfterbuySdk\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "PHPLint\\Tests\\": "tests/"
+      "AfterbuySdk\\Tests\\": "tests/"
     }
   },
   "scripts": {

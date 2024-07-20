@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace AfterbuySdk;
 
-use App\Extension\Tyre24\Enum\RequestCountryEnum;
-use App\Extension\Tyre24\Interface\Tyre24RequestInterface;
-use App\Extension\Tyre24\Interface\Tyre24ResponseInterface;
-use JsonException;
+use AfterbuySdk\Interface\AfterbuyRequestInterface;
+use AfterbuySdk\Interface\AfterbuyResponseInterface;
 use Psr\Log\LoggerInterface;
 use ReflectionClass;
 use ReflectionException;
@@ -21,9 +19,8 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 final readonly class Afterbuy
 {
-
     public function __construct(
-        private LoggerInterface $logger,
+        private ?LoggerInterface $logger = null,
     ) {
     }
 
@@ -33,9 +30,8 @@ final readonly class Afterbuy
      * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
      * @throws ReflectionException
-     * @throws JsonException
      */
-    public function runRequest(RequestInterface $afterbuyRequest, ?ResponseInterface $response = null): Tyre24ResponseInterface
+    public function runRequest(AfterbuyRequestInterface $afterbuyRequest, ?ResponseInterface $response = null): AfterbuyResponseInterface
     {
         $method = $afterbuyRequest->method()->value;
         $payload = $afterbuyRequest->payload();
@@ -43,7 +39,7 @@ final readonly class Afterbuy
         $responseClass = $afterbuyRequest->responseClass();
         $uri = $afterbuyRequest->uri();
 
-        if (!class_exists($responseClass)) {
+        if (! class_exists($responseClass)) {
             throw new RuntimeException('Response class does not exist');
         }
 
@@ -52,17 +48,15 @@ final readonly class Afterbuy
         }
 
         /** $response ist immer null, lediglich bei bei den Unittest wird diese Variable befüllt */
-        if (!$response instanceof ResponseInterface) {
+        if (! $response instanceof ResponseInterface) {
             $response = HttpClient::create()->request(
                 $method,
                 $uri,
                 [
                     'headers' => [
-                        'Content-Type: application/json; charset=utf-8',
-                        'Accept: application/vnd.saitowag.api+json;version=' . self::API_VERSION,
-                        'X-AUTH-TOKEN: ' . $this->token,
+                        'Content-Type: application/xml; charset=utf-8',
                     ],
-                    'body' => json_encode($payload, JSON_THROW_ON_ERROR),
+                    'body' => $payload,
                     'http_version' => 2.0,
                     'query' => $query,
                     'verify_host' => 0,
@@ -72,13 +66,13 @@ final readonly class Afterbuy
         }
 
         $response = (new ReflectionClass($responseClass))->newInstance($response);
-        if (!$response instanceof Tyre24ResponseInterface) {
-            throw new RuntimeException('Response class does not implement Tyre24ResponseInterface');
+        if (! $response instanceof AfterbuyResponseInterface) {
+            throw new RuntimeException('Response class does not implement AfterbuyResponseInterface');
         }
 
         $errorMessages = $response->getErrorMessages();
-        if ($errorMessages !== []) {
-            $this->logger->warning(sprintf('Tyre24 API %s', $afterbuyRequest::class), [
+        if ($errorMessages !== [] && $this->logger instanceof LoggerInterface) {
+            $this->logger->error(sprintf('Afterbuy SDK %s', $afterbuyRequest::class), [
                 'uri' => $uri,
                 'method' => $method,
                 'payload' => $payload,

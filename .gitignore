@@ -1,5 +1,6 @@
 /.idea/
 /.phplint/
+/spielwiese/
 /cache/*
 /vendor/
 composer.lock
