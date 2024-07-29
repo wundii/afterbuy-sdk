@@ -13,6 +13,7 @@ use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
+use Wundii\DataMapper\DataMapper;
 
 final readonly class GetAfterbuyTimeResponse implements AfterbuyResponseInterface, AfterbuyResponseDtoInterface
 {
@@ -25,6 +26,7 @@ final readonly class GetAfterbuyTimeResponse implements AfterbuyResponseInterfac
      * @throws ClientExceptionInterface
      */
     public function __construct(
+        private DataMapper $dataMapper,
         private ResponseInterface $response
     ) {
         $this->content = $this->response->getContent(false);
@@ -45,8 +47,7 @@ final readonly class GetAfterbuyTimeResponse implements AfterbuyResponseInterfac
 
     public function getResponse(): AfterbuyDtoInterface
     {
-        echo $this->content;
-        return new AfterbuyTime();
+        return $this->dataMapper->xml($this->content, AfterbuyTime::class, ['Result']);
     }
 
     public function getErrorMessages(): array

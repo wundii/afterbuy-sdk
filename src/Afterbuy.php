@@ -6,8 +6,10 @@ namespace AfterbuySdk;
 
 use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Enum\EndpointEnum;
+use AfterbuySdk\Extends\DateTime;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
+use DateTimeInterface;
 use Psr\Log\LoggerInterface;
 use ReflectionClass;
 use ReflectionException;
@@ -18,6 +20,9 @@ use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
+use Wundii\DataMapper\DataConfig;
+use Wundii\DataMapper\DataMapper;
+use Wundii\DataMapper\Enum\ApproachEnum;
 
 final readonly class Afterbuy
 {
@@ -42,6 +47,13 @@ final readonly class Afterbuy
         $query = $afterbuyRequest->query();
         $responseClass = $afterbuyRequest->responseClass();
         $uri = $afterbuyRequest->uri($this->endpointEnum);
+        $dataConfig = new DataConfig(
+            ApproachEnum::SETTER,
+            classMap: [
+                DateTimeInterface::class => DateTime::class,
+            ]
+        );
+        $dataMapper = new DataMapper($dataConfig);
 
         if (! class_exists($responseClass)) {
             throw new RuntimeException('Response class does not exist');
@@ -69,7 +81,7 @@ final readonly class Afterbuy
             );
         }
 
-        $response = (new ReflectionClass($responseClass))->newInstance($response);
+        $response = (new ReflectionClass($responseClass))->newInstance($dataMapper, $response);
         if (! $response instanceof AfterbuyResponseInterface) {
             throw new RuntimeException('Response class does not implement AfterbuyResponseInterface');
         }

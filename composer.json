@@ -11,10 +11,13 @@
   ],
   "require": {
     "php": ">=8.2",
+    "ext-dom": "*",
     "ext-json": "*",
+    "ext-simplexml": "*",
     "symfony/http-client": "^6.4",
     "symfony/monolog-bundle": "^3.10",
-    "webmozart/assert": "^1.11"
+    "webmozart/assert": "^1.11",
+    "wundii/data-mapper": "^1.0"
   },
   "require-dev": {
     "phpstan/phpstan": "^1.10",
