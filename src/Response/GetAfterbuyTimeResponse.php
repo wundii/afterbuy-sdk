@@ -15,6 +15,10 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Wundii\DataMapper\DataMapper;
 
+/**
+ * @template-implements AfterbuyResponseDtoInterface<AfterbuyTime>
+ * @template-implements AfterbuyResponseInterface<AfterbuyTime>
+ */
 final readonly class GetAfterbuyTimeResponse implements AfterbuyResponseInterface, AfterbuyResponseDtoInterface
 {
     private string $content;
@@ -45,6 +49,9 @@ final readonly class GetAfterbuyTimeResponse implements AfterbuyResponseInterfac
         return $this->response->getInfo();
     }
 
+    /**
+     * @return AfterbuyTime
+     */
     public function getResponse(): AfterbuyDtoInterface
     {
         return $this->dataMapper->xml($this->content, AfterbuyTime::class, ['Result']);

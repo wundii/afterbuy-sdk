@@ -24,6 +24,9 @@ use Wundii\DataMapper\DataConfig;
 use Wundii\DataMapper\DataMapper;
 use Wundii\DataMapper\Enum\ApproachEnum;
 
+/**
+ * @template T of object
+ */
 final readonly class Afterbuy
 {
     public function __construct(
@@ -34,6 +37,7 @@ final readonly class Afterbuy
     }
 
     /**
+     * @return AfterbuyResponseInterface<T>
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      * @throws TransportExceptionInterface
