@@ -10,11 +10,20 @@ use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
+use AfterbuySdk\Interface\Filter\GetPaymentServicesFilterInterface;
 use AfterbuySdk\Response\GetPaymentServicesResponse;
 use RuntimeException;
 
 final readonly class GetPaymentServicesRequest implements AfterbuyRequestInterface
 {
+    /**
+     * @param GetPaymentServicesFilterInterface[] $filter
+     */
+    public function __construct(
+        private array $filter = [],
+    ) {
+    }
+
     public function method(): RequestMethodEnum
     {
         return RequestMethodEnum::GET;
@@ -27,6 +36,7 @@ final readonly class GetPaymentServicesRequest implements AfterbuyRequestInterfa
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
+        $xml->addFilter($this->filter);
 
         $string = $xml->asXML();
         if ($string === false) {

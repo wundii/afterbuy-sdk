@@ -9,6 +9,9 @@ use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Dto\PaymentService;
 use AfterbuySdk\Dto\PaymentServices;
 use AfterbuySdk\Enum\EndpointEnum;
+use AfterbuySdk\Filter\GetPaymentServices\Land;
+use AfterbuySdk\Filter\GetPaymentServices\Plattform;
+use AfterbuySdk\Filter\GetPaymentServices\ValueOfGoods;
 use AfterbuySdk\Request\GetPaymentServicesRequest;
 use AfterbuySdk\Response\GetPaymentServicesResponse;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
@@ -24,6 +27,27 @@ class GetPaymentServicesTest extends TestCase
     public function afterbuyGlobal(): AfterbuyGlobal
     {
         return new AfterbuyGlobal('account', 'partner');
+    }
+
+    public function testFilter(): void
+    {
+        $afterbuyGlobal = clone $this->afterbuyGlobal();
+
+        $request = new GetPaymentServicesRequest();
+        $payload = $request->payload($afterbuyGlobal);
+        $this->assertStringNotContainsString('<DataFilter>', $payload);
+
+        $request = new GetPaymentServicesRequest(filter: [
+            new Land('DE'),
+            new Plattform('ebay'),
+            new ValueOfGoods('1'),
+        ]);
+        $payload = $request->payload($afterbuyGlobal);
+        $this->assertStringContainsString('<DataFilter>', $payload);
+        $this->assertStringContainsString('</DataFilter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>Land</FilterName><FilterValues><FilterValue>DE</FilterValue></FilterValues></Filter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>Plattform</FilterName><FilterValues><FilterValue>ebay</FilterValue></FilterValues></Filter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>ValueOfGoods</FilterName><FilterValues><FilterValue>1</FilterValue></FilterValues></Filter>', $payload);
     }
 
     /**

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AfterbuySdk\Extends;
 
 use AfterbuySdk\Dto\AfterbuyGlobal;
+use AfterbuySdk\Interface\FilterInterface;
 use DOMCdataSection;
 use DOMDocument;
 use SimpleXMLElement;
@@ -31,5 +32,28 @@ final class SimpleXMLExtend extends SimpleXMLElement
         }
 
         $domElement->appendChild($domCdataSection);
+    }
+
+    public function addLimit(string $string, int $maxCatalogs): void
+    {
+        $this->addChild($string, (string) $maxCatalogs);
+    }
+
+    /**
+     * @param FilterInterface[] $filter
+     */
+    public function addFilter(array $filter): void
+    {
+        $dataFilter = $this->addChild('DataFilter');
+
+        foreach ($filter as $filterItem) {
+            $dataFilterItem = $dataFilter->addChild('Filter');
+            $dataFilterItem->addChild('FilterName', $filterItem->getFilterName());
+
+            $dataFilterValues = $dataFilterItem->addChild('FilterValues');
+            foreach ($filterItem->getFilterValues() as $filterValue) {
+                $dataFilterValues->addChild($filterValue->getKey(), $filterValue->getValue());
+            }
+        }
     }
 }

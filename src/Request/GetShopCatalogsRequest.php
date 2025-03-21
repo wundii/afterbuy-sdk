@@ -10,13 +10,19 @@ use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
+use AfterbuySdk\Interface\Filter\GetShopCatalogsFilterInterface;
 use AfterbuySdk\Response\GetShopCatalogsResponse;
 use RuntimeException;
 
 final readonly class GetShopCatalogsRequest implements AfterbuyRequestInterface
 {
+    /**
+     * @param GetShopCatalogsFilterInterface[] $filter
+     */
     public function __construct(
         private DetailLevelEnum $detailLevelEnum = DetailLevelEnum::FIRST,
+        private int $maxCatalogs = 100,
+        private array $filter = [],
     ) {
     }
 
@@ -37,6 +43,8 @@ final readonly class GetShopCatalogsRequest implements AfterbuyRequestInterface
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
+        $xml->addLimit('MaxCatalogs', $this->maxCatalogs);
+        $xml->addFilter($this->filter);
 
         $string = $xml->asXML();
         if ($string === false) {
