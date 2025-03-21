@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Afterbuy>
+    <CallStatus>Error</CallStatus>
+    <CallName>NotFound</CallName>
+    <VersionID>8</VersionID>
+    <Result>
+        <ErrorList>
+            <Error>
+                <ErrorCode>2</ErrorCode>
+                <ErrorDescription><![CDATA[Request XML Parsefehler]]></ErrorDescription>
+                <ErrorLongDescription><![CDATA[Beim Parsen Ihrer Anfrage ist ein Fehler aufgetreten.]]></ErrorLongDescription>
+            </Error>
+        </ErrorList>
+    </Result>
+</Afterbuy>

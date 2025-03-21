@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Dto;
 
+use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\ErrorLanguageEnum;
 use SimpleXMLElement;
 
@@ -13,7 +14,7 @@ final class AfterbuyGlobal
 
     private string $callName;
 
-    private int $detailLevel;
+    private DetailLevelEnum $detailLevelEnum;
 
     public function __construct(
         private readonly string $accountToken,
@@ -29,7 +30,7 @@ final class AfterbuyGlobal
         $afterbuyGlobal->addChild('PartnerToken', $this->partnerToken);
         $afterbuyGlobal->addChild('ErrorLanguage', $this->errorLanguageEnum->value);
         $afterbuyGlobal->addChild('CallName', $this->callName);
-        $afterbuyGlobal->addChild('DetailLevel', (string) $this->detailLevel);
+        $afterbuyGlobal->addChild('DetailLevel', (string) $this->detailLevelEnum->value);
     }
 
     public function setCallName(string $callName): void
@@ -37,8 +38,8 @@ final class AfterbuyGlobal
         $this->callName = $callName;
     }
 
-    public function setDetailLevel(int $detailLevel): void
+    public function setDetailLevelEnum(DetailLevelEnum $detailLevelEnum): void
     {
-        $this->detailLevel = $detailLevel;
+        $this->detailLevelEnum = $detailLevelEnum;
     }
 }

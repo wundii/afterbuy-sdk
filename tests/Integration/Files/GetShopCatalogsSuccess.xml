@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>GetShopCatalogs</CallName>
+    <Result>
+        <HasMoreCatalogs>0</HasMoreCatalogs>
+        <Catalogs>
+            <Catalog>
+                <CatalogID>1010101</CatalogID>
+                <Name><![CDATA[ TestName ]]></Name>
+                <Description><![CDATA[ Testbeschreibung ]]></Description>
+                <ParnetID>0</ParnetID>
+                <Level>0</Level>
+                <Position>0</Position>
+                <AdditionalText><![CDATA[ Zusatztext ]]></AdditionalText>
+                <Show>1</Show>
+                <Picture1><![CDATA[ picture1.jpg ]]></Picture1>
+                <Picture2><![CDATA[ picture2.jpg ]]></Picture2>
+                <TitlePicture><![CDATA[ picture3.jpg ]]></TitlePicture>
+                <CatalogProducts>
+                    <ProductID>1737852</ProductID>
+                    <ProductID>1915685</ProductID>
+                </CatalogProducts>
+            </Catalog>
+            <Catalog>
+                <CatalogID>1110101</CatalogID>
+                <Name><![CDATA[ TestName1 ]]></Name>
+                <Description><![CDATA[ Testbeschreibung1 ]]></Description>
+                <ParnetID>0</ParnetID>
+                <Level>0</Level>
+                <Position>0</Position>
+                <AdditionalText><![CDATA[ Zusatztext1 ]]></AdditionalText>
+                <Show>1</Show>
+            </Catalog>
+        </Catalogs>
+    </Result>
+</Afterbuy>

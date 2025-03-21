@@ -10,10 +10,10 @@ use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
-use AfterbuySdk\Response\GetAfterbuyTimeResponse;
+use AfterbuySdk\Response\GetPaymentServicesResponse;
 use RuntimeException;
 
-final readonly class GetAfterbuyTimeRequest implements AfterbuyRequestInterface
+final readonly class GetPaymentServicesRequest implements AfterbuyRequestInterface
 {
     public function method(): RequestMethodEnum
     {
@@ -22,7 +22,7 @@ final readonly class GetAfterbuyTimeRequest implements AfterbuyRequestInterface
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setCallName('GetAfterbuyTime');
+        $afterbuyGlobal->setCallName('GetPaymentServices');
         $afterbuyGlobal->setDetailLevelEnum(DetailLevelEnum::FIRST); // only first level is allowed
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
@@ -38,7 +38,7 @@ final readonly class GetAfterbuyTimeRequest implements AfterbuyRequestInterface
 
     public function responseClass(): string
     {
-        return GetAfterbuyTimeResponse::class;
+        return GetPaymentServicesResponse::class;
     }
 
     public function uri(EndpointEnum $endpointEnum): string

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>GetPaymentServices</CallName>
+    <VersionID>1</VersionID>
+    <Result>
+        <PaymentService>
+            <PaymentID>126376</PaymentID>
+            <PaymentFunctionID>1</PaymentFunctionID>
+            <StandardText><![CDATA[rger]]></StandardText>
+            <Name><![CDATA[Zahlart [Thomas]]]></Name>
+            <Position>6</Position>
+            <Surcharge>0</Surcharge>
+            <SurchargePercent>0</SurchargePercent>
+            <MinAmount>9,5</MinAmount>
+            <MaxAmount>95</MaxAmount>
+            <PlattformName>ebay</PlattformName>
+            <StandardForAll>1</StandardForAll>
+            <Default>0</Default>
+            <CountryGroup>0</CountryGroup>
+        </PaymentService>
+        <PaymentService>
+            <PaymentID>107506</PaymentID>
+            <PaymentFunctionID>1</PaymentFunctionID>
+            <StandardText><![CDATA[Vorkasse/Überweisung (SHOP)]]></StandardText>
+            <Name><![CDATA[Vorkasse/Überweisung [Thomas]]]></Name>
+            <InfoText><![CDATA[<img src=http://bilder.afterbuy.de/images/29956/zahlung.gif border=0>]]></InfoText>
+            <Position>1</Position>
+            <Surcharge>0</Surcharge>
+            <SurchargePercent>5</SurchargePercent>
+            <MinAmount>0</MinAmount>
+            <MaxAmount>0</MaxAmount>
+            <PlattformName>shop</PlattformName>
+            <StandardForAll>1</StandardForAll>
+            <Default>0</Default>
+            <CountryGroup>0</CountryGroup>
+        </PaymentService>
+    </Result>
+</Afterbuy>
