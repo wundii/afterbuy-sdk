@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>GetUserDefinedFlags</CallName>
+    <VersionID>1</VersionID>
+    <Result>
+        <UserDefinedFlags>
+            <UserDefinedFlag>
+                <Name><![CDATA[Markierung 2]]></Name>
+                <Color><![CDATA[#999966]]></Color>
+                <FlagID>1337</FlagID>
+            </UserDefinedFlag>
+        </UserDefinedFlags>
+        <UserDefinedFlags>
+            <UserDefinedFlag>
+                <Name><![CDATA[BLAU]]></Name>
+                <Color><![CDATA[126999]]></Color>
+                <FlagID>1</FlagID>
+            </UserDefinedFlag>
+        </UserDefinedFlags>
+        <UserDefinedFlags>
+            <UserDefinedFlag>
+                <Name><![CDATA[Produktset]]></Name>
+                <Color><![CDATA[#A6E3FF]]></Color>
+                <FlagID>5</FlagID>
+            </UserDefinedFlag>
+        </UserDefinedFlags>
+        <UserDefinedFlags>
+            <UserDefinedFlag>
+                <Name><![CDATA[In Bearbeitung]]></Name>
+                <Color><![CDATA[#CCCCCC]]></Color>
+                <FlagID>7</FlagID>
+            </UserDefinedFlag>
+        </UserDefinedFlags>
+        <UserDefinedFlags>
+            <UserDefinedFlag>
+                <Name><![CDATA[VA_Test]]></Name>
+                <Color><![CDATA[#BAFF00]]></Color>
+                <FlagID>9</FlagID>
+            </UserDefinedFlag>
+        </UserDefinedFlags>
+        <UserDefinedFlags>
+            <UserDefinedFlag>
+                <Name><![CDATA[Testmarkierung]]></Name>
+                <Color><![CDATA[#7396FF]]></Color>
+                <FlagID>967</FlagID>
+            </UserDefinedFlag>
+        </UserDefinedFlags>
+    </Result>
+</Afterbuy>

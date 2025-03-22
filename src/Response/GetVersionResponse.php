@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Response;
 
-use AfterbuySdk\Dto\Catalogs;
+use AfterbuySdk\Dto\Versions;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
@@ -15,9 +15,9 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 use Wundii\DataMapper\DataMapper;
 
 /**
- * @template-implements AfterbuyResponseInterface<Catalogs>
+ * @template-implements AfterbuyResponseInterface<Versions>
  */
-final readonly class GetShopCatalogsResponse implements AfterbuyResponseInterface
+final readonly class GetVersionResponse implements AfterbuyResponseInterface
 {
     private string $content;
 
@@ -48,11 +48,11 @@ final readonly class GetShopCatalogsResponse implements AfterbuyResponseInterfac
     }
 
     /**
-     * @return Catalogs
+     * @return Versions
      */
     public function getResponse(): AfterbuyDtoInterface
     {
-        return $this->dataMapper->xml($this->content, Catalogs::class, ['Result']);
+        return $this->dataMapper->xml($this->content, Versions::class, ['Result']);
     }
 
     public function getErrorMessages(): array

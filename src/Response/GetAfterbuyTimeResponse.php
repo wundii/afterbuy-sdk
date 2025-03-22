@@ -6,7 +6,6 @@ namespace AfterbuySdk\Response;
 
 use AfterbuySdk\Dto\AfterbuyTime;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
-use AfterbuySdk\Interface\AfterbuyResponseDtoInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -16,10 +15,9 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 use Wundii\DataMapper\DataMapper;
 
 /**
- * @template-implements AfterbuyResponseDtoInterface<AfterbuyTime>
  * @template-implements AfterbuyResponseInterface<AfterbuyTime>
  */
-final readonly class GetAfterbuyTimeResponse implements AfterbuyResponseInterface, AfterbuyResponseDtoInterface
+final readonly class GetAfterbuyTimeResponse implements AfterbuyResponseInterface
 {
     private string $content;
 

@@ -11,8 +11,8 @@ final class PaymentService implements AfterbuyDtoInterface
     public function __construct(
         private int $paymentId,
         private int $paymentFunctionId,
-        private string $standardText,
         private string $name,
+        private ?string $standardText = null,
         private int $position = 0,
         private int $level = 0,
         private float $surcharge = 0,
@@ -136,12 +136,12 @@ final class PaymentService implements AfterbuyDtoInterface
         $this->standardForAll = $standardForAll;
     }
 
-    public function getStandardText(): string
+    public function getStandardText(): ?string
     {
         return $this->standardText;
     }
 
-    public function setStandardText(string $standardText): void
+    public function setStandardText(?string $standardText): void
     {
         $this->standardText = $standardText;
     }

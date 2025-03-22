@@ -25,4 +25,6 @@ interface AfterbuyResponseInterface
      * @return string[]
      */
     public function getErrorMessages(): array;
+
+    public function getResponse(): AfterbuyDtoInterface;
 }

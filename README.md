@@ -10,6 +10,9 @@ Require the bundle and its dependencies with composer:
 
 > composer require wundii/afterbuy-sdk
 
+## Afterbuy API Documentation
+[Afterbuy XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
+
 ## Usage
 ```php
 use AfterbuySdk\Afterbuy;

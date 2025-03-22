@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>Getversion</CallName>
+    <Result>
+        <Versions>
+            <Version>
+                <ID>1</ID>
+                <Name><![CDATA[2.0]]></Name>
+                <Description><![CDATA[Start Version]]></Description>
+            </Version>
+        </Versions>
+    </Result>
+</Afterbuy>
