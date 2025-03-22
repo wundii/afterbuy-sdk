@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>GetMailTemplates</CallName>
+    <Result>
+        <MailTemplates>
+            <MailTemplate>
+                <TemplateID>202877</TemplateID>
+                <TemplateName><![CDATA[Mahnung1]]></TemplateName>
+                <TemplateSubject><![CDATA[Erinnerung an eBay Auktion(en): ... (abgeschnitten)]]></TemplateSubject>
+                <TemplateText><![CDATA[ErinnerungsTest]]></TemplateText>
+                <TemplateHtml>0</TemplateHtml>
+            </MailTemplate>
+            <MailTemplate>
+                <TemplateID>202878</TemplateID>
+                <TemplateName><![CDATA[Mahnung2]]></TemplateName>
+                <TemplateSubject><![CDATA[Mahnung  eBay Auktion(en): ... (abgeschnitten)]]></TemplateSubject>
+                <TemplateText><![CDATA[MahnungsTest]]></TemplateText>
+                <TemplateHtml>0</TemplateHtml>
+            </MailTemplate>
+            <MailTemplate>
+                <TemplateID>268297</TemplateID>
+                <TemplateName><![CDATA[BewertungsErinnerung]]></TemplateName>
+                <TemplateText><![CDATA[BewertungsErinnerungTest]]></TemplateText>
+                <TemplateSubject><![CDATA[Sind Sie zufrieden mit Ihrem Auktionsgewinn ? ... (abgeschnitten)]]></TemplateSubject>
+                <TemplateHtml>0</TemplateHtml>
+            </MailTemplate>
+            <MailTemplate>
+                <TemplateID>280085</TemplateID>
+                <TemplateName><![CDATA[rechnugstest]]></TemplateName>
+                <TemplateSubject><![CDATA[rechnungstest]]></TemplateSubject>
+                <TemplateText><![CDATA[rechnungstest]]></TemplateText>
+                <TemplateHtml>-1</TemplateHtml>
+            </MailTemplate>
+        </MailTemplates>
+    </Result>
+</Afterbuy>

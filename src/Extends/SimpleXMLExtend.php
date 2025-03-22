@@ -34,9 +34,13 @@ final class SimpleXMLExtend extends SimpleXMLElement
         $domElement->appendChild($domCdataSection);
     }
 
-    public function addLimit(string $string, int $maxCatalogs): void
+    public function addLimit(string $string, ?int $value): void
     {
-        $this->addChild($string, (string) $maxCatalogs);
+        if ($value === null) {
+            return;
+        }
+
+        $this->addChild($string, (string) $value);
     }
 
     /**
