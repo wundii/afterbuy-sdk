@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>GetListerHistory</CallName>
+    <VersionID>1</VersionID>
+    <Result>
+        <ResultCount>3</ResultCount>
+        <HasMoreProducts>0</HasMoreProducts>
+        <ListedItems>
+            <ListedItem>
+                <HistoryID>38897689</HistoryID>
+                <ListingID>3041718</ListingID>
+                <ProductID>1737852</ProductID>
+                <ListingDetails>
+                    <Anr>9526337680</Anr>
+                    <SoldItems>1</SoldItems>
+                    <ListedQuantity>1</ListedQuantity>
+                    <ListingPlattform>eBay</ListingPlattform>
+                    <ListingTitle><![CDATA[Afterbuy Testauktion CheckOut Redirect C-O-R 4]]></ListingTitle>
+                    <eBayCategoryID>31448</eBayCategoryID>
+                    <eBayStartprice>1</eBayStartprice>
+                    <eBayBuyItNowPrice>0</eBayBuyItNowPrice>
+                    <eBayPictureURL><![CDATA[http://bilder.afterbuy.de/images/29956/ab-logo.gif]]></eBayPictureURL>
+                    <eBayGaleryURL><![CDATA[http://bilder.afterbuy.de/images/29956/ab-logo-icon.gif]]></eBayGaleryURL>
+                    <eBayRelist>0</eBayRelist>
+                    <SellStatus>erfolgreich</SellStatus>
+                    <ListingFee>1</ListingFee>
+                    <StartTime>01.06.2006 15:08:48</StartTime>
+                    <EndTime>11.06.2006 15:08:48</EndTime>
+                    <ListingDuration>10</ListingDuration>
+                    <ListingType>9</ListingType>
+                </ListingDetails>
+            </ListedItem>
+            <ListedItem>
+                <HistoryID>38898441</HistoryID>
+                <ListingID>3041716</ListingID>
+                <ProductID>1915544</ProductID>
+                <ListingDetails>
+                    <Anr>9526339276</Anr>
+                    <SoldItems>1</SoldItems>
+                    <ListedQuantity>3</ListedQuantity>
+                    <ListingPlattform>eBay</ListingPlattform>
+                    <ListingTitle><![CDATA[Afterbuy Testauktion CheckOutRedirect C-O-R 3]]></ListingTitle>
+                    <eBayCategoryID>31448</eBayCategoryID>
+                    <eBayStartprice>1</eBayStartprice>
+                    <eBayBuyItNowPrice>0</eBayBuyItNowPrice>
+                    <eBayPictureURL><![CDATA[http://bilder.afterbuy.de/images/29956/ab-logo.gif]]></eBayPictureURL>
+                    <eBayGaleryURL><![CDATA[http://bilder.afterbuy.de/images/29956/ab-logo-icon.gif]]></eBayGaleryURL>
+                    <eBayRelist>0</eBayRelist>
+                    <SellStatus>erfolgreich</SellStatus>
+                    <ListingFee>1,2</ListingFee>
+                    <StartTime>01.06.2006 15:13:51</StartTime>
+                    <EndTime>11.06.2006 15:13:51</EndTime>
+                    <ListingDuration>10</ListingDuration>
+                    <ListingType>9</ListingType>
+                </ListingDetails>
+            </ListedItem>
+            <ListedItem>
+                <HistoryID>38899469</HistoryID>
+                <ListingID>3777146</ListingID>
+                <ProductID>1913970</ProductID>
+                <ListingDetails>
+                    <Anr>7625481145</Anr>
+                    <SoldItems>1</SoldItems>
+                    <ListedQuantity>1</ListedQuantity>
+                    <ListingPlattform>eBay</ListingPlattform>
+                    <ListingTitle><![CDATA[Afterbuy Testauktion CheckOutRedirect EditTest 2]]></ListingTitle>
+                    <eBayCategoryID>83616</eBayCategoryID>
+                    <eBayStartprice>10</eBayStartprice>
+                    <eBayBuyItNowPrice>0</eBayBuyItNowPrice>
+                    <eBayPictureURL><![CDATA[http://bilder.afterbuy.de/images/29956/ab-logo.gif]]></eBayPictureURL>
+                    <eBayGaleryURL><![CDATA[http://bilder.afterbuy.de/images/29956/ab-logo-icon.gif]]></eBayGaleryURL>
+                    <eBayRelist>0</eBayRelist>
+                    <SellStatus>erfolgreich</SellStatus>
+                    <ListingFee>1,55</ListingFee>
+                    <StartTime>01.06.2006 15:23:52</StartTime>
+                    <EndTime>04.06.2006 15:23:52</EndTime>
+                    <ListingDuration>3</ListingDuration>
+                    <ListingType>9</ListingType>
+                </ListingDetails>
+            </ListedItem>
+            <LastHistoryID>38897689</LastHistoryID>
+        </ListedItems>
+    </Result>
+</Afterbuy>
