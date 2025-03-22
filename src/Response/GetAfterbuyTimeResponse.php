@@ -7,14 +7,14 @@ namespace AfterbuySdk\Response;
 use AfterbuySdk\Dto\AfterbuyTime;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
-use AfterbuySdk\Trait\ErrorMessagesResponseTrait;
+use AfterbuySdk\Trait\AfterbuyResponseTrait;
 
 /**
  * @template-implements AfterbuyResponseInterface<AfterbuyTime>
  */
 final class GetAfterbuyTimeResponse implements AfterbuyResponseInterface
 {
-    use ErrorMessagesResponseTrait;
+    use AfterbuyResponseTrait;
 
     /**
      * @return AfterbuyTime

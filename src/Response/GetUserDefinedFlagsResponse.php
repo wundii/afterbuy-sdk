@@ -7,14 +7,14 @@ namespace AfterbuySdk\Response;
 use AfterbuySdk\Dto\UserDefinedFlags;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
-use AfterbuySdk\Trait\ErrorMessagesResponseTrait;
+use AfterbuySdk\Trait\AfterbuyResponseTrait;
 
 /**
  * @template-implements AfterbuyResponseInterface<UserDefinedFlags>
  */
 final class GetUserDefinedFlagsResponse implements AfterbuyResponseInterface
 {
-    use ErrorMessagesResponseTrait;
+    use AfterbuyResponseTrait;
 
     /**
      * @return UserDefinedFlags

@@ -7,14 +7,14 @@ namespace AfterbuySdk\Response;
 use AfterbuySdk\Dto\PaymentServices;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
-use AfterbuySdk\Trait\ErrorMessagesResponseTrait;
+use AfterbuySdk\Trait\AfterbuyResponseTrait;
 
 /**
  * @template-implements AfterbuyResponseInterface<PaymentServices>
  */
 final class GetPaymentServicesResponse implements AfterbuyResponseInterface
 {
-    use ErrorMessagesResponseTrait;
+    use AfterbuyResponseTrait;
 
     /**
      * @return PaymentServices

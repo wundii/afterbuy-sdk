@@ -11,7 +11,7 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Wundii\DataMapper\DataMapper;
 
-trait ErrorMessagesResponseTrait
+trait AfterbuyResponseTrait
 {
     protected string $content;
 
