@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Afterbuy>
+    <CallStatus>Error</CallStatus>
+    <CallName>GetListerHistory</CallName>
+    <VersionID>8</VersionID>
+    <Result>
+        <ErrorList>
+            <Error>
+                <ErrorCode>30</ErrorCode>
+                <ErrorDescription><![CDATA[Kein gültiger Filter angegeben.]]></ErrorDescription>
+                <ErrorLongDescription><![CDATA[Keine Filter oder kein gültiger Filter angegeben.]]></ErrorLongDescription>
+            </Error>
+        </ErrorList>
+    </Result>
+</Afterbuy>

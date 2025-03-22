@@ -5,12 +5,28 @@ declare(strict_types=1);
 namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
+use AfterbuySdk\Dto\AfterbuyError;
+use AfterbuySdk\Dto\AfterbuyErrorList;
 use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\Catalog;
-use AfterbuySdk\Dto\Catalogs;
+use AfterbuySdk\Dto\ListedItem;
+use AfterbuySdk\Dto\ListedItems;
 use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
+use AfterbuySdk\Enum\PlattformEnum;
+use AfterbuySdk\Enum\SiteIdEnum;
+use AfterbuySdk\Extends\DateTime;
+use AfterbuySdk\Filter\GetListerHistory\AccountId;
+use AfterbuySdk\Filter\GetListerHistory\An;
+use AfterbuySdk\Filter\GetListerHistory\EndDate;
+use AfterbuySdk\Filter\GetListerHistory\HistoryId;
+use AfterbuySdk\Filter\GetListerHistory\ListingType;
+use AfterbuySdk\Filter\GetListerHistory\Plattform;
+use AfterbuySdk\Filter\GetListerHistory\RangeAn;
+use AfterbuySdk\Filter\GetListerHistory\RangeHistoryId;
+use AfterbuySdk\Filter\GetListerHistory\SiteId;
+use AfterbuySdk\Filter\GetListerHistory\StartDate;
 use AfterbuySdk\Request\GetListerHistoryRequest;
+use AfterbuySdk\Response\AfterbuyErrorResponse;
 use AfterbuySdk\Response\GetListerHistoryResponse;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
@@ -57,28 +73,39 @@ class GetListerHistoryTest extends TestCase
         $this->assertStringContainsString('<MaxHistoryItems>50</MaxHistoryItems>', $payload);
     }
 
-    // public function testFilter(): void
-    // {
-    //     $afterbuyGlobal = clone $this->afterbuyGlobal();
-    //
-    //     $request = new GetListerHistoryRequest();
-    //     $payload = $request->payload($afterbuyGlobal);
-    //     $this->assertStringNotContainsString('<DataFilter>', $payload);
-    //
-    //     $request = new GetListerHistoryRequest(filter: [
-    //         new CatalogID(1),
-    //         new Level(0),
-    //         new RangeCatalogId(1, 10),
-    //         new RangeLevel(0, 2),
-    //     ]);
-    //     $payload = $request->payload($afterbuyGlobal);
-    //     $this->assertStringContainsString('<DataFilter>', $payload);
-    //     $this->assertStringContainsString('</DataFilter>', $payload);
-    //     $this->assertStringContainsString('<Filter><FilterName>CatalogID</FilterName><FilterValues><FilterValue>1</FilterValue></FilterValues></Filter>', $payload);
-    //     $this->assertStringContainsString('<Filter><FilterName>Level</FilterName><FilterValues><FilterValue>0</FilterValue></FilterValues></Filter>', $payload);
-    //     $this->assertStringContainsString('<Filter><FilterName>RangeID</FilterName><FilterValues><ValueFrom>1</ValueFrom><ValueTo>10</ValueTo></FilterValues></Filter>', $payload);
-    //     $this->assertStringContainsString('<Filter><FilterName>RangeLevel</FilterName><FilterValues><ValueFrom>0</ValueFrom><ValueTo>2</ValueTo></FilterValues></Filter>', $payload);
-    // }
+    public function testFilter(): void
+    {
+        $afterbuyGlobal = clone $this->afterbuyGlobal();
+
+        $request = new GetListerHistoryRequest();
+        $payload = $request->payload($afterbuyGlobal);
+        $this->assertStringNotContainsString('<DataFilter>', $payload);
+
+        $request = new GetListerHistoryRequest(filter: [
+            new An(321),
+            new HistoryId(123),
+            new AccountId(1),
+            new ListingType(0),
+            new Plattform(PlattformEnum::HOOD),
+            new SiteId(SiteIdEnum::EBAY_GERMANY),
+            new RangeAn(333, 444),
+            new RangeHistoryId(111, 222),
+            new StartDate(new DateTime('2025-03-01'), new DateTime('2025-03-31')),
+            new EndDate(new DateTime('2025-03-01'), new DateTime('2025-03-31')),
+        ]);
+        $payload = $request->payload($afterbuyGlobal);
+        $this->assertStringContainsString('<DataFilter>', $payload);
+        $this->assertStringContainsString('</DataFilter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>An</FilterName><FilterValues><FilterValue>321</FilterValue></FilterValues></Filter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>HistoryID</FilterName><FilterValues><FilterValue>123</FilterValue></FilterValues></Filter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>AccountID</FilterName><FilterValues><FilterValue>1</FilterValue></FilterValues></Filter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>ListingType</FilterName><FilterValues><FilterValue>0</FilterValue></FilterValues></Filter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>Plattform</FilterName><FilterValues><FilterValue>Hood</FilterValue></FilterValues></Filter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>RangeAnr</FilterName><FilterValues><ValueFrom>333</ValueFrom><ValueTo>444</ValueTo></FilterValues></Filter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>RangeID</FilterName><FilterValues><ValueFrom>111</ValueFrom><ValueTo>222</ValueTo></FilterValues></Filter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>StartDate</FilterName><FilterValues><DateFrom>01.03.2025 00:00:00</DateFrom><DateTo>31.03.2025 00:00:00</DateTo></FilterValues></Filter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>EndDate</FilterName><FilterValues><DateFrom>01.03.2025 00:00:00</DateFrom><DateTo>31.03.2025 00:00:00</DateTo></FilterValues></Filter>', $payload);
+    }
 
     /**
      * @throws TransportExceptionInterface
@@ -87,7 +114,7 @@ class GetListerHistoryTest extends TestCase
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function testShopCatalogsBasic(): void
+    public function testShopCatalogsSuccess(): void
     {
         $file = __DIR__ . '/Files/GetListerHistorySuccess.xml';
 
@@ -97,11 +124,37 @@ class GetListerHistoryTest extends TestCase
 
         $response = $afterbuy->runRequest($request, $mockResponse);
 
-        /** @var Catalogs $catalogs */
-        $catalogs = $response->getResponse();
+        /** @var ListedItems $listedItems */
+        $listedItems = $response->getResponse();
 
         $this->assertInstanceOf(GetListerHistoryResponse::class, $response);
-        $this->assertCount(2, $catalogs->getCatalogs());
-        $this->assertInstanceOf(Catalog::class, $catalogs->getCatalogs()[0]);
+        $this->assertCount(3, $listedItems->getListedItems());
+        $this->assertInstanceOf(ListedItem::class, $listedItems->getListedItems()[0]);
+        $this->assertSame(38897689, $listedItems->getLastHistoryId());
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws ReflectionException
+     * @throws RedirectionExceptionInterface
+     * @throws ClientExceptionInterface
+     */
+    public function testShopCatalogsErrorCode30(): void
+    {
+        $file = __DIR__ . '/Files/GetListerHistoryErrorCode30.xml';
+
+        $request = new GetListerHistoryRequest();
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
+
+        $response = $afterbuy->runRequest($request, $mockResponse);
+
+        /** @var AfterbuyErrorList $afterbuyErrorList */
+        $afterbuyErrorList = $response->getResponse();
+
+        $this->assertInstanceOf(AfterbuyErrorResponse::class, $response);
+        $this->assertCount(1, $afterbuyErrorList->getErrorList());
+        $this->assertInstanceOf(AfterbuyError::class, $afterbuyErrorList->getErrorList()[0]);
     }
 }

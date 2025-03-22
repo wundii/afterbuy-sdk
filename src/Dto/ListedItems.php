@@ -15,6 +15,7 @@ final class ListedItems implements AfterbuyDtoInterface
         private int $resultCount,
         private int $hasMoreProducts,
         private array $listedItems,
+        private ?int $lastHistoryId = null,
     ) {
     }
 
@@ -26,6 +27,16 @@ final class ListedItems implements AfterbuyDtoInterface
     public function setHasMoreProducts(int $hasMoreProducts): void
     {
         $this->hasMoreProducts = $hasMoreProducts;
+    }
+
+    public function getLastHistoryId(): ?int
+    {
+        return $this->lastHistoryId;
+    }
+
+    public function setLastHistoryId(?int $lastHistoryId): void
+    {
+        $this->lastHistoryId = $lastHistoryId;
     }
 
     /**

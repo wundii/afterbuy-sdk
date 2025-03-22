@@ -7,12 +7,13 @@ namespace AfterbuySdk\Filter\GetListerHistory;
 use AfterbuySdk\Filter\DateFrom;
 use AfterbuySdk\Filter\DateTo;
 use AfterbuySdk\Interface\Filter\GetListerHistoryFilterInterface;
+use DateTimeInterface;
 
-final readonly class EndDate implements GetShopCatalogsFilterInterface
+final readonly class EndDate implements GetListerHistoryFilterInterface
 {
     public function __construct(
-        private string $dateFrom,
-        private string $dateTo ,
+        private DateTimeInterface $dateFrom,
+        private DateTimeInterface $dateTo,
     ) {
     }
 
@@ -24,8 +25,8 @@ final readonly class EndDate implements GetShopCatalogsFilterInterface
     public function getFilterValues(): array
     {
         return [
-            new DateFrom($this->dateFrom),
-            new DateTo($this->dateTo),
+            new DateFrom($this->dateFrom->format('d.m.Y H:i:s')),
+            new DateTo($this->dateTo->format('d.m.Y H:i:s')),
         ];
     }
 }

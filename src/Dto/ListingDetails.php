@@ -16,7 +16,7 @@ final class ListingDetails implements AfterbuyDtoInterface
         private int $listedQuantity,
         private string $listingPlattform,
         private string $listingTitle,
-        private SellStatusEnum $sellStatus,
+        private SellStatusEnum $sellStatusEnum,
         private float $listingFee,
         private DateTimeInterface $startTime,
         private DateTimeInterface $endTime,
@@ -218,14 +218,14 @@ final class ListingDetails implements AfterbuyDtoInterface
         $this->listingType = $listingType;
     }
 
-    public function getSellStatus(): SellStatusEnum
+    public function getSellStatusEnum(): SellStatusEnum
     {
-        return $this->sellStatus;
+        return $this->sellStatusEnum;
     }
 
-    public function setSellStatus(SellStatusEnum $sellStatus): void
+    public function setSellStatusEnum(SellStatusEnum $sellStatusEnum): void
     {
-        $this->sellStatus = $sellStatus;
+        $this->sellStatusEnum = $sellStatusEnum;
     }
 
     public function getSoldItems(): int

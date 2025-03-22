@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Interface;
 
+use AfterbuySdk\Dto\AfterbuyError;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Wundii\DataMapper\DataMapper;
 
@@ -22,7 +23,7 @@ interface AfterbuyResponseInterface
     public function getInfo(): mixed;
 
     /**
-     * @return string[]
+     * @return AfterbuyError[]
      */
     public function getErrorMessages(): array;
 

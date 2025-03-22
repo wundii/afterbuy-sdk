@@ -7,52 +7,33 @@ namespace AfterbuySdk\Response;
 use AfterbuySdk\Dto\ListedItems;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
-use Symfony\Contracts\HttpClient\ResponseInterface;
-use Wundii\DataMapper\DataMapper;
+use AfterbuySdk\Trait\ErrorMessagesResponseTrait;
 
 /**
  * @template-implements AfterbuyResponseInterface<ListedItems>
  */
-final readonly class GetListerHistoryResponse implements AfterbuyResponseInterface
+final class GetListerHistoryResponse implements AfterbuyResponseInterface
 {
-    private string $content;
-
-    /**
-     * @throws TransportExceptionInterface
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
-    public function __construct(
-        private DataMapper $dataMapper,
-        private ResponseInterface $response
-    ) {
-        $this->content = $this->response->getContent(false);
-    }
-
-    /**
-     * @throws TransportExceptionInterface
-     */
-    public function getStatusCode(): int
-    {
-        return $this->response->getStatusCode();
-    }
-
-    public function getInfo(): mixed
-    {
-        return $this->response->getInfo();
-    }
+    use ErrorMessagesResponseTrait;
 
     /**
      * @return ListedItems
      */
     public function getResponse(): AfterbuyDtoInterface
     {
-        return $this->dataMapper->xml($this->content, ListedItems::class, ['Result']);
+        $content = $this->content;
+        $matches = [];
+
+        preg_match('/<LastHistoryID>(.*)<\/LastHistoryID>/s', $content, $matches);
+        $lastHistoryId = $matches[1] ?? null;
+        $lastHistoryId = is_numeric($lastHistoryId) ? (int) $lastHistoryId : null;
+
+        $content = (string) preg_replace('/<LastHistoryID>(.*)<\/LastHistoryID>/i', '', $content);
+
+        $listedItems = $this->dataMapper->xml($content, ListedItems::class, ['Result']);
+        $listedItems->setLastHistoryId($lastHistoryId);
+
+        return $listedItems;
     }
 
     public function getErrorMessages(): array
