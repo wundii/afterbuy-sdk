@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>GetShippingCost</CallName>
+    <Result>
+        <ShippingService>
+            <ShippingServiceName>DPD</ShippingServiceName>
+            <ShippingServicePriority>1</ShippingServicePriority>
+            <ShippingMethods>
+                <ShippingCost>1</ShippingCost>
+                <ShippingMethod><![CDATA[NormalPaket 2]]></ShippingMethod>
+                <ShippingMethodID>475032</ShippingMethodID>
+            </ShippingMethods>
+            <ShippingMethods>
+                <ShippingCost>10</ShippingCost>
+                <ShippingMethod><![CDATA[NormalPaket]]></ShippingMethod>
+                <ShippingMethodID>430384</ShippingMethodID>
+            </ShippingMethods>
+        </ShippingService>
+    </Result>
+</Afterbuy>

@@ -156,5 +156,6 @@ class GetListerHistoryTest extends TestCase
         $this->assertInstanceOf(AfterbuyErrorResponse::class, $response);
         $this->assertCount(1, $afterbuyErrorList->getErrorList());
         $this->assertInstanceOf(AfterbuyError::class, $afterbuyErrorList->getErrorList()[0]);
+        $this->assertSame(30, $afterbuyErrorList->getErrorList()[0]->getErrorCode());
     }
 }

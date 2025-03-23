@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Afterbuy>
+    <CallStatus>Error</CallStatus>
+    <CallName>GetShippingCost</CallName>
+    <Result>
+        <ErrorList>
+            <Error>
+                <ErrorCode>27</ErrorCode>
+                <ErrorDescription><![CDATA[Versandkosten konnten nicht ermittelt werden]]></ErrorDescription>
+                <ErrorLongDescription><![CDATA[Versandkosten konnten nicht ermittelt werden]]></ErrorLongDescription>
+                <GetShippingCost><![CDATA[Mit den Werten für Versandart, Versandgruppe, ... (abgeschnitten) ]]></GetShippingCost>
+            </Error>
+        </ErrorList>
+    </Result>
+</Afterbuy>

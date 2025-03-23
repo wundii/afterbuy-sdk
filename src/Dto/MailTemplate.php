@@ -37,7 +37,7 @@ final class MailTemplate implements AfterbuyDtoInterface
         $this->templateId = $templateId;
     }
 
-    public function getTemplateName(): string
+    public function getTemplateName(): ?string
     {
         return $this->templateName;
     }
@@ -47,7 +47,7 @@ final class MailTemplate implements AfterbuyDtoInterface
         $this->templateName = $templateName;
     }
 
-    public function getTemplateSubject(): string
+    public function getTemplateSubject(): ?string
     {
         return $this->templateSubject;
     }
@@ -57,7 +57,7 @@ final class MailTemplate implements AfterbuyDtoInterface
         $this->templateSubject = $templateSubject;
     }
 
-    public function getTemplateText(): string
+    public function getTemplateText(): ?string
     {
         return $this->templateText;
     }

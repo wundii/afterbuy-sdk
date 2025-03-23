@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace AfterbuySdk\Extends;
 
 use AfterbuySdk\Dto\AfterbuyGlobal;
+use AfterbuySdk\Enum\ShippingCountryEnum;
+use AfterbuySdk\Filter\GetShippingCost\ShippingInfo;
 use AfterbuySdk\Interface\FilterInterface;
 use DOMCdataSection;
 use DOMDocument;
@@ -58,6 +60,38 @@ final class SimpleXMLExtend extends SimpleXMLElement
             foreach ($filterItem->getFilterValues() as $filterValue) {
                 $dataFilterValues->addChild($filterValue->getKey(), $filterValue->getValue());
             }
+        }
+    }
+
+    public function addShippingInfo(ShippingInfo $shippingInfo): void
+    {
+        $shippingInfoElement = $this->addChild('ShippingInfo');
+
+        $productIds = $shippingInfo->getProductIds();
+
+        if (count($productIds) > 1) {
+            $productIdsElement = $shippingInfoElement->addChild('Products');
+            foreach ($productIds as $productId) {
+                $productIdsElement->addChild('ProductID', (string) $productId);
+            }
+        } else {
+            $shippingInfoElement->addChild('ProductID', (string) $productIds[0]);
+        }
+
+        $shippingInfoElement->addChild('ItemsCount', (string) $shippingInfo->getItemsCount());
+        $shippingInfoElement->addChild('ItemsWeight', (string) $shippingInfo->getItemsWeight());
+        $shippingInfoElement->addChild('ItemsPrice', (string) $shippingInfo->getItemsPrice());
+
+        if ($shippingInfo->getShippingCountry() instanceof ShippingCountryEnum) {
+            $shippingInfoElement->addChild('ShippingCountry', $shippingInfo->getShippingCountry()->name);
+        }
+
+        if ($shippingInfo->getShippingGroup() !== null) {
+            $shippingInfoElement->addChild('ShippingGroup', $shippingInfo->getShippingGroup());
+        }
+
+        if ($shippingInfo->getPostalCode() !== null) {
+            $shippingInfoElement->addChild('PostalCode', $shippingInfo->getPostalCode());
         }
     }
 }
