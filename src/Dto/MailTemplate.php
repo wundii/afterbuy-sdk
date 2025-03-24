@@ -42,7 +42,7 @@ final class MailTemplate implements AfterbuyDtoInterface
         return $this->templateName;
     }
 
-    public function setTemplateName(string $templateName): void
+    public function setTemplateName(?string $templateName): void
     {
         $this->templateName = $templateName;
     }
@@ -52,7 +52,7 @@ final class MailTemplate implements AfterbuyDtoInterface
         return $this->templateSubject;
     }
 
-    public function setTemplateSubject(string $templateSubject): void
+    public function setTemplateSubject(?string $templateSubject): void
     {
         $this->templateSubject = $templateSubject;
     }
@@ -62,7 +62,7 @@ final class MailTemplate implements AfterbuyDtoInterface
         return $this->templateText;
     }
 
-    public function setTemplateText(string $templateText): void
+    public function setTemplateText(?string $templateText): void
     {
         $this->templateText = $templateText;
     }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AfterbuySdk\Dto;
 
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use ReflectionProperty;
 
 final class ShippingService implements AfterbuyDtoInterface
 {
@@ -32,6 +33,12 @@ final class ShippingService implements AfterbuyDtoInterface
     public function setShippingMethods(null|array|ShippingMethods $shippingMethods): void
     {
         if ($shippingMethods === null) {
+            return;
+        }
+
+        $reflection = new ReflectionProperty(ShippingService::class, 'shippingMethods');
+        if (! $reflection->isInitialized($this)) {
+            $this->shippingMethods = $shippingMethods;
             return;
         }
 
