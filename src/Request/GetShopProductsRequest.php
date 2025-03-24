@@ -10,18 +10,22 @@ use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
-use AfterbuySdk\Interface\Filter\GetListerHistoryFilterInterface;
-use AfterbuySdk\Response\GetListerHistoryResponse;
+use AfterbuySdk\Interface\Filter\GetShopProductsFilterInterface;
+use AfterbuySdk\Response\GetShopProductsResponse;
 use RuntimeException;
 
-final readonly class GetListerHistoryRequest implements AfterbuyRequestInterface
+final readonly class GetShopProductsRequest implements AfterbuyRequestInterface
 {
     /**
-     * @param GetListerHistoryFilterInterface[] $filter
+     * @param GetShopProductsFilterInterface[] $filter
      */
     public function __construct(
         private DetailLevelEnum $detailLevelEnum = DetailLevelEnum::FIRST,
-        private int $maxHistoryItems = 100,
+        private int $maxShopItems = 100,
+        private bool $suppressBaseProductRelatedData = false,
+        private bool $paginationEnabled = false,
+        private ?int $pageNumber = null,
+        private bool $returnShop20Container = false,
         private array $filter = [],
     ) {
     }
@@ -38,16 +42,27 @@ final readonly class GetListerHistoryRequest implements AfterbuyRequestInterface
             DetailLevelEnum::SECOND,
             DetailLevelEnum::THIRD,
             DetailLevelEnum::FOURTH,
-            DetailLevelEnum::FIFTH => $this->detailLevelEnum,
+            DetailLevelEnum::FIFTH,
+            DetailLevelEnum::SEVENTH,
+            DetailLevelEnum::EIGHTH => $this->detailLevelEnum,
             default => DetailLevelEnum::FIRST,
         };
 
-        $afterbuyGlobal->setCallName('GetListerHistory');
+        $maxShopItems = $this->maxShopItems;
+        if ($maxShopItems > 250) {
+            $maxShopItems = 250;
+        }
+
+        $afterbuyGlobal->setCallName('GetShopProducts');
         $afterbuyGlobal->setDetailLevelEnum($detailLevelEnum);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        $xml->addLimit('MaxHistoryItems', $this->maxHistoryItems);
+        $xml->addLimit('MaxShopItems', $maxShopItems);
+        $xml->addLimit('SuppressBaseProductRelatedData', (int) $this->suppressBaseProductRelatedData);
+        $xml->addLimit('PaginationEnabled', $this->paginationEnabled ? 1 : null);
+        $xml->addLimit('PageNumber', $this->pageNumber);
+        $xml->addLimit('ReturnShop20Container', $this->returnShop20Container ? 1 : null);
         $xml->addFilter($this->filter);
 
         $string = $xml->asXML();
@@ -60,7 +75,7 @@ final readonly class GetListerHistoryRequest implements AfterbuyRequestInterface
 
     public function responseClass(): string
     {
-        return GetListerHistoryResponse::class;
+        return GetShopProductsResponse::class;
     }
 
     public function uri(EndpointEnum $endpointEnum): string

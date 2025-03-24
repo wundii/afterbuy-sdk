@@ -28,8 +28,9 @@ final readonly class GetMailTemplatesRequest implements AfterbuyRequestInterface
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
-        $detailLevelEnum = match ($this->detailLevelEnum->value) {
-            0, 2, => $this->detailLevelEnum,
+        $detailLevelEnum = match ($this->detailLevelEnum) {
+            DetailLevelEnum::FIRST,
+            DetailLevelEnum::SECOND => $this->detailLevelEnum,
             default => DetailLevelEnum::FIRST,
         };
 

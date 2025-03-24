@@ -16,7 +16,7 @@ use AfterbuySdk\Enum\PlattformEnum;
 use AfterbuySdk\Enum\SiteIdEnum;
 use AfterbuySdk\Extends\DateTime;
 use AfterbuySdk\Filter\GetListerHistory\AccountId;
-use AfterbuySdk\Filter\GetListerHistory\An;
+use AfterbuySdk\Filter\GetListerHistory\Anr;
 use AfterbuySdk\Filter\GetListerHistory\EndDate;
 use AfterbuySdk\Filter\GetListerHistory\HistoryId;
 use AfterbuySdk\Filter\GetListerHistory\ListingType;
@@ -82,7 +82,7 @@ class GetListerHistoryTest extends TestCase
         $this->assertStringNotContainsString('<DataFilter>', $payload);
 
         $request = new GetListerHistoryRequest(filter: [
-            new An(321),
+            new Anr(321),
             new HistoryId(123),
             new AccountId(1),
             new ListingType(0),
@@ -96,7 +96,7 @@ class GetListerHistoryTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DataFilter>', $payload);
         $this->assertStringContainsString('</DataFilter>', $payload);
-        $this->assertStringContainsString('<Filter><FilterName>An</FilterName><FilterValues><FilterValue>321</FilterValue></FilterValues></Filter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>Anr</FilterName><FilterValues><FilterValue>321</FilterValue></FilterValues></Filter>', $payload);
         $this->assertStringContainsString('<Filter><FilterName>HistoryID</FilterName><FilterValues><FilterValue>123</FilterValue></FilterValues></Filter>', $payload);
         $this->assertStringContainsString('<Filter><FilterName>AccountID</FilterName><FilterValues><FilterValue>1</FilterValue></FilterValues></Filter>', $payload);
         $this->assertStringContainsString('<Filter><FilterName>ListingType</FilterName><FilterValues><FilterValue>0</FilterValue></FilterValues></Filter>', $payload);

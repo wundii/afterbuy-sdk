@@ -7,7 +7,7 @@ namespace AfterbuySdk\Filter\GetShopCatalogs;
 use AfterbuySdk\Filter\FilterValue;
 use AfterbuySdk\Interface\Filter\GetShopCatalogsFilterInterface;
 
-final readonly class CatalogID implements GetShopCatalogsFilterInterface
+final readonly class CatalogId implements GetShopCatalogsFilterInterface
 {
     public function __construct(
         private int $catalogId

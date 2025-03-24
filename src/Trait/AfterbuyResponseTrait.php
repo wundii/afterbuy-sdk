@@ -40,4 +40,9 @@ trait AfterbuyResponseTrait
     {
         return $this->response->getInfo();
     }
+
+    public function getXmlResponse(): string
+    {
+        return $this->content;
+    }
 }

@@ -7,7 +7,7 @@ namespace AfterbuySdk\Filter\GetListerHistory;
 use AfterbuySdk\Filter\FilterValue;
 use AfterbuySdk\Interface\Filter\GetListerHistoryFilterInterface;
 
-final readonly class An implements GetListerHistoryFilterInterface
+final readonly class Anr implements GetListerHistoryFilterInterface
 {
     public function __construct(
         private int $itemNumber
@@ -16,7 +16,7 @@ final readonly class An implements GetListerHistoryFilterInterface
 
     public function getFilterName(): string
     {
-        return 'An';
+        return 'Anr';
     }
 
     public function getFilterValues(): array

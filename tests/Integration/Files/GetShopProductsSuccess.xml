@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>GetShopProducts</CallName>
+    <Result>
+        <HasMoreProducts>1</HasMoreProducts>
+        <Products>
+            <Product>
+                <ProductID>1010101</ProductID>
+                <Anr>101010110</Anr>
+                <EAN>1E2A3N</EAN>
+                <Name><![CDATA[Afterbuy Testartikel]]></Name>
+                <ShortDescription><![CDATA[ Kurzbeschreibung ]]></ShortDescription>
+                <Memo><![CDATA[ Mein Memo ]]></Memo>
+                <Description><![CDATA[ Beschreibung ]]></Description>
+                <Keywords><![CDATA[ Meine Keywords ]]></Keywords>
+                <Quantity>1</Quantity>
+                <AuctionQuantity>0</AuctionQuantity>
+                <Stock>1</Stock>
+                <Discontinued>1</Discontinued>
+                <MergeStock>-1</MergeStock>
+                <UnitOfQuantity>0</UnitOfQuantity>
+                <BasepriceFactor>0</BasepriceFactor>
+                <MinimumStock>1</MinimumStock>
+                <FullFilmentQuantity>0</FullFilmentQuantity>
+                <FullFilmentImport>12.05.2006 12:00:00</FullFilmentImport>
+                <SellingPrice>0</SellingPrice>
+                <BuyingPrice>0</BuyingPrice>
+                <DealerPrice>0</DealerPrice>
+                <Level>1000</Level>
+                <Position>10000</Position>
+                <TtitleReplace>0</TtitleReplace>
+                <ScaledDiscounts>
+                    <ScaledDiscount>
+                        <ScaledQuantity>2</ScaledQuantity>
+                        <ScaledPrice>1,2</ScaledPrice>
+                        <ScaledDPrice>1,1</ScaledDPrice>
+                    </ScaledDiscount>
+                    <ScaledDiscount>
+                        <ScaledQuantity>4</ScaledQuantity>
+                        <ScaledPrice>0</ScaledPrice>
+                        <ScaledDPrice>0</ScaledDPrice>
+                    </ScaledDiscount>
+                    <ScaledDiscount>
+                        <ScaledQuantity>5</ScaledQuantity>
+                        <ScaledPrice>0</ScaledPrice>
+                        <ScaledDPrice>0</ScaledDPrice>
+                    </ScaledDiscount>
+                </ScaledDiscounts>
+                <TaxRate>16</TaxRate>
+                <Weight>0</Weight>
+                <SearchAlias><![CDATA[ Suchalias ]]></SearchAlias>
+                <Froogle>0</Froogle>
+                <Kelkoo>-1</Kelkoo>
+                <ShippingGroup>Packstationtest</ShippingGroup>
+                <ShopShippingGroup></ShopShippingGroup>
+                <CrossCatalogID>141556</CrossCatalogID>
+                <FreeValue1><![CDATA[]]></FreeValue1>
+                <FreeValue2><![CDATA[]]></FreeValue2>
+                <FreeValue3><![CDATA[]]></FreeValue3>
+                <FreeValue4><![CDATA[]]></FreeValue4>
+                <FreeValue5><![CDATA[]]></FreeValue5>
+                <DeliveryTime><![CDATA[]]></DeliveryTime>
+                <Stocklocation_1><![CDATA[]]></Stocklocation_1>
+                <Stocklocation_2><![CDATA[]]></Stocklocation_2>
+                <Stocklocation_3><![CDATA[]]></Stocklocation_3>
+                <Stocklocation_4><![CDATA[]]></Stocklocation_4>
+                <ImageSmallURL></ImageSmallURL>
+                <ImageLargeURL></ImageLargeURL>
+                <Skus>
+                    <Sku>NewSKU1</Sku>
+                    <Sku>NewSKU2</Sku>
+                    <Sku>NewSKU3</Sku>
+                    <Sku>NewSKU4</Sku>
+                    <Sku>NewSKU5</Sku>
+                    <Sku>NewSKU6</Sku>
+                    <Sku>NewSKU7</Sku>
+                    <Sku>NewSKU8</Sku>
+                    <Sku>NewSKU9</Sku>
+                    <Sku>NewSKU10</Sku>
+                </Skus>
+                <ProductPictures>
+                    <ProductPicture>
+                        <Nr>1</Nr>
+                        <Typ>0</Typ>
+                        <Url><![CDATA[http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1.jpg]]></Url>
+                        <AltText><![CDATA[]]></AltText>
+                        <Childs>
+                            <ProductPicture>
+                                <Nr>1</Nr>
+                                <Typ>1</Typ>
+                                <Url><![CDATA[http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_thumb.jpg]]></Url>
+                                <AltText><![CDATA[]]></AltText>
+                            </ProductPicture>
+                            <ProductPicture>
+                                <Nr>1</Nr>
+                                <Typ>2</Typ>
+                                <Url><![CDATA[http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_zoom.jpg]]></Url>
+                                <AltText><![CDATA[]]></AltText>
+                            </ProductPicture>
+                            <ProductPicture>
+                                <Nr>1</Nr>
+                                <Typ>3</Typ>
+                                <Url><![CDATA[http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_list.jpg]]></Url>
+                                <AltText><![CDATA[]]></AltText>
+                            </ProductPicture>
+                        </Childs>
+                    </ProductPicture>
+                </ProductPictures>
+                <Catalogs>
+                    <CatalogID>141556</CatalogID>
+                </Catalogs>
+                <Attributes>
+                    <Attribut>
+                        <AttributName><![CDATA[Attribut 1]]></AttributName>
+                        <AttributWert><![CDATA[Dies ist ein Testattribut mit reinem Text]]></AttributWert>
+                        <AttributTyp>0</AttributTyp>
+                        <AttributRequired>0</AttributRequired>
+                    </Attribut>
+                    <Attribut>
+                        <AttributName><![CDATA[Attribut 4]]></AttributName>
+                        <AttributWert><![CDATA[;1. Wahl;2. Wahl;3. Wahl;4. Wahl]]></AttributWert>
+                        <AttributTyp>2</AttributTyp>
+                        <AttributRequired>-1</AttributRequired>
+                    </Attribut>
+                    <Attribut>
+                        <AttributName><![CDATA[Attribut 5]]></AttributName>
+                        <AttributWert><![CDATA[http://www.afterbuy.de]]></AttributWert>
+                        <AttributTyp>3</AttributTyp>
+                        <AttributRequired>0</AttributRequired>
+                    </Attribut>
+                </Attributes>
+                <PartsFitment>
+                    <PartsProperties>
+                        <PartsProperty>
+                            <PropertyName><![CDATA[KType]]></PropertyName>
+                            <PropertyValue><![CDATA[3313]]></PropertyValue>
+                        </PartsProperty>
+                        <PartsProperty>
+                            <PropertyName><![CDATA[KType2]]></PropertyName>
+                            <PropertyValue><![CDATA[3313]]></PropertyValue>
+                        </PartsProperty>
+                        <PartsProperty>
+                            <PropertyName><![CDATA[HSN]]></PropertyName>
+                            <PropertyValue><![CDATA[7107]]></PropertyValue>
+                        </PartsProperty>
+                        <PartsProperty>
+                            <PropertyName><![CDATA[TSN]]></PropertyName>
+                            <PropertyValue><![CDATA[449]]></PropertyValue>
+                        </PartsProperty>
+                        <PartsProperty>
+                            <PropertyName><![CDATA[TSN]]></PropertyName>
+                            <PropertyValue><![CDATA[449]]></PropertyValue>
+                        </PartsProperty>
+                    </PartsProperties>
+                    <PartsProperties>
+                        <PartsProperty>
+                            <PropertyName><![CDATA[KType]]></PropertyName>
+                            <PropertyValue><![CDATA[3314]]></PropertyValue>
+                        </PartsProperty>
+                        <PartsProperty>
+                            <PropertyName><![CDATA[HSN]]></PropertyName>
+                            <PropertyValue><![CDATA[7107]]></PropertyValue>
+                        </PartsProperty>
+                        <PartsProperty>
+                            <PropertyName><![CDATA[TSN]]></PropertyName>
+                            <PropertyValue><![CDATA[203]]></PropertyValue>
+                        </PartsProperty>
+                    </PartsProperties>
+                    <PartsProperties>
+                        <PartsProperty>
+                            <PropertyName><![CDATA[KType]]></PropertyName>
+                            <PropertyValue><![CDATA[3315]]></PropertyValue>
+                        </PartsProperty>
+                    </PartsProperties>
+                    <PartsProperties>
+                        <PartsProperty>
+                            <PropertyName><![CDATA[KType]]></PropertyName>
+                            <PropertyValue><![CDATA[3316]]></PropertyValue>
+                        </PartsProperty>
+                        <PartsProperty>
+                            <PropertyName><![CDATA[HSN]]></PropertyName>
+                            <PropertyValue><![CDATA[]]></PropertyValue>
+                        </PartsProperty>
+                    </PartsProperties>
+                </PartsFitment>
+            </Product>
+        </Products>
+        <LastProductID>1010101</LastProductID>
+        <PaginationResult>
+            <TotalNumberOfEntries> 1 </TotalNumberOfEntries>
+            <TotalNumberOfPages> 1 </TotalNumberOfPages>
+            <ItemsPerPage> 1 </ItemsPerPage>
+            <PageNumber> 1 </PageNumber>
+        </PaginationResult>
+    </Result>
+</Afterbuy>

@@ -28,4 +28,6 @@ interface AfterbuyResponseInterface
     public function getErrorMessages(): array;
 
     public function getResponse(): AfterbuyDtoInterface;
+
+    public function getXmlResponse(): string;
 }

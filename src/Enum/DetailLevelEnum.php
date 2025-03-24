@@ -12,4 +12,6 @@ enum DetailLevelEnum: int
     case FOURTH = 8;
     case FIFTH = 16;
     case SIXTH = 32;
+    case SEVENTH = 64;
+    case EIGHTH = 128;
 }

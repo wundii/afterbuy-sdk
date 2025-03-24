@@ -27,8 +27,10 @@ final readonly class GetShippingServicesRequest implements AfterbuyRequestInterf
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
-        $detailLevelEnum = match ($this->detailLevelEnum->value) {
-            0, 2, 4 => $this->detailLevelEnum,
+        $detailLevelEnum = match ($this->detailLevelEnum) {
+            DetailLevelEnum::FIRST,
+            DetailLevelEnum::SECOND,
+            DetailLevelEnum::THIRD => $this->detailLevelEnum,
             default => DetailLevelEnum::FIRST,
         };
 

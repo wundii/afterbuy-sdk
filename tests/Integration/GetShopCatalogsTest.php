@@ -10,7 +10,7 @@ use AfterbuySdk\Dto\Catalog;
 use AfterbuySdk\Dto\Catalogs;
 use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Filter\GetShopCatalogs\CatalogID;
+use AfterbuySdk\Filter\GetShopCatalogs\CatalogId;
 use AfterbuySdk\Filter\GetShopCatalogs\Level;
 use AfterbuySdk\Filter\GetShopCatalogs\RangeCatalogId;
 use AfterbuySdk\Filter\GetShopCatalogs\RangeLevel;
@@ -70,7 +70,7 @@ class GetShopCatalogsTest extends TestCase
         $this->assertStringNotContainsString('<DataFilter>', $payload);
 
         $request = new GetShopCatalogsRequest(filter: [
-            new CatalogID(1),
+            new CatalogId(1),
             new Level(0),
             new RangeCatalogId(1, 10),
             new RangeLevel(0, 2),
