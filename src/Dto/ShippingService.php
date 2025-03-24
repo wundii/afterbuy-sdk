@@ -36,10 +36,9 @@ final class ShippingService implements AfterbuyDtoInterface
             return;
         }
 
-        $reflection = new ReflectionProperty(ShippingService::class, 'shippingMethods');
-        if (! $reflection->isInitialized($this)) {
-            $this->shippingMethods = $shippingMethods;
-            return;
+        $reflectionProperty = new ReflectionProperty(self::class, 'shippingMethods');
+        if (! $reflectionProperty->isInitialized($this)) {
+            $this->shippingMethods = [];
         }
 
         if (is_array($shippingMethods)) {
