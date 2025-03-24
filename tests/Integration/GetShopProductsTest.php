@@ -6,7 +6,6 @@ namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\GetShopProducts\PartsProperties;
 use AfterbuySdk\Dto\GetShopProducts\Product;
 use AfterbuySdk\Dto\GetShopProducts\Products;
 use AfterbuySdk\Enum\DateFilterEnum;

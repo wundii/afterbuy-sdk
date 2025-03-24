@@ -12,7 +12,7 @@ final class AdditionalPrice implements AfterbuyDtoInterface
         private int $definitionId,
         private string $name,
         private float $value,
-        private false $pretax,
+        private bool $pretax,
     ) {
     }
 
@@ -36,12 +36,12 @@ final class AdditionalPrice implements AfterbuyDtoInterface
         $this->name = $name;
     }
 
-    public function getPretax(): false
+    public function getPretax(): bool
     {
         return $this->pretax;
     }
 
-    public function setPretax(false $pretax): void
+    public function setPretax(bool $pretax): void
     {
         $this->pretax = $pretax;
     }
