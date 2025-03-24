@@ -8,7 +8,7 @@ use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyError;
 use AfterbuySdk\Dto\AfterbuyErrorList;
 use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\ShippingService;
+use AfterbuySdk\Dto\GetShippingCost\ShippingService;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\ShippingCountryEnum;
 use AfterbuySdk\Filter\GetShippingCost\ShippingInfo;

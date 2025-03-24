@@ -6,8 +6,8 @@ namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\PaymentService;
-use AfterbuySdk\Dto\PaymentServices;
+use AfterbuySdk\Dto\GetPaymentServices\PaymentService;
+use AfterbuySdk\Dto\GetPaymentServices\PaymentServices;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Filter\GetPaymentServices\Land;
 use AfterbuySdk\Filter\GetPaymentServices\Plattform;

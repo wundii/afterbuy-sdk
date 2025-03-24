@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto;
+namespace AfterbuySdk\Dto\GetShopCatalogs;
 
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 

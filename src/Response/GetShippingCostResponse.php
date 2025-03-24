@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Response;
 
-use AfterbuySdk\Dto\ShippingService;
+use AfterbuySdk\Dto\GetShippingCost\ShippingService;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
 use AfterbuySdk\Trait\AfterbuyResponseTrait;

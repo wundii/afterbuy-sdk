@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Response;
 
-use AfterbuySdk\Dto\MailTemplates;
+use AfterbuySdk\Dto\GetMailTemplates\MailTemplates;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
 use AfterbuySdk\Trait\AfterbuyResponseTrait;

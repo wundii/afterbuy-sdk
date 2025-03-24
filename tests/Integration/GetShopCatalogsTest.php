@@ -6,8 +6,8 @@ namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\Catalog;
-use AfterbuySdk\Dto\Catalogs;
+use AfterbuySdk\Dto\GetShopCatalogs\Catalog;
+use AfterbuySdk\Dto\GetShopCatalogs\Catalogs;
 use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Filter\GetShopCatalogs\CatalogId;

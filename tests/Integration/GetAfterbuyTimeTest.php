@@ -6,7 +6,7 @@ namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\AfterbuyTime;
+use AfterbuySdk\Dto\GetAfterbuyTime\AfterbuyTime;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Request\GetAfterbuyTimeRequest;
 use AfterbuySdk\Response\GetAfterbuyTimeResponse;

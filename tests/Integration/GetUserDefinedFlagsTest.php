@@ -6,8 +6,8 @@ namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\UserDefinedFlag;
-use AfterbuySdk\Dto\UserDefinedFlags;
+use AfterbuySdk\Dto\GetUserDefinedFlags\UserDefinedFlag;
+use AfterbuySdk\Dto\GetUserDefinedFlags\UserDefinedFlags;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Request\GetUserDefinedFlagsRequest;
 use AfterbuySdk\Response\GetUserDefinedFlagsResponse;

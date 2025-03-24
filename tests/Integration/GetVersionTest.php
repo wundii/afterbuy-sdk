@@ -6,8 +6,8 @@ namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\Version;
-use AfterbuySdk\Dto\Versions;
+use AfterbuySdk\Dto\GetVersion\Version;
+use AfterbuySdk\Dto\GetVersion\Versions;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Request\GetVersionRequest;
 use AfterbuySdk\Response\GetVersionResponse;

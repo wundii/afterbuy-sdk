@@ -6,8 +6,8 @@ namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\MailTemplate;
-use AfterbuySdk\Dto\MailTemplates;
+use AfterbuySdk\Dto\GetMailTemplates\MailTemplate;
+use AfterbuySdk\Dto\GetMailTemplates\MailTemplates;
 use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Request\GetMailTemplatesRequest;
