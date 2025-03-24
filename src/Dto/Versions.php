@@ -32,4 +32,9 @@ final class Versions implements AfterbuyDtoInterface
 
         $this->versions = array_merge($this->versions, $versions);
     }
+
+    public function getLastVersion(): Version|null
+    {
+        return end($this->versions) ?: null;
+    }
 }
