@@ -1,0 +1,21 @@
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>GetProductDiscounts</CallName>
+    <VersionID>8</VersionID>
+    <Result>
+        <ProductDiscounts>
+            <ProductDiscount>
+                <ProductID>1234567</ProductID>
+                <ControlID>3</ControlID>
+                <AmountDiscount>0</AmountDiscount>
+                <PercentDiscount>25</PercentDiscount>
+                <StartDate>11.12.2015 00:00:00</StartDate>
+                <EndDate>30.10.2025 23:59:59</EndDate>
+                <ItemLastUserModificationDate>01.02.2022 14:28:03</ItemLastUserModificationDate>
+                <PriceType><![CDATA[UVP]]></PriceType>
+                <NewPriceType><![CDATA[Jetzt]]></NewPriceType>
+                <TimeLeftInMinutes>1967589</TimeLeftInMinutes>
+            </ProductDiscount>
+        </ProductDiscounts>
+    </Result>
+</Afterbuy>

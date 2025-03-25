@@ -8,6 +8,8 @@ use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Enum\ShippingCountryEnum;
 use AfterbuySdk\Filter\GetShippingCost\ShippingInfo;
 use AfterbuySdk\Interface\FilterInterface;
+use AfterbuySdk\Interface\ProductFilterInterface;
+use DateTimeInterface;
 use DOMCdataSection;
 use DOMDocument;
 use SimpleXMLElement;
@@ -63,6 +65,19 @@ final class SimpleXMLExtend extends SimpleXMLElement
         }
     }
 
+    /**
+     * @param ProductFilterInterface[] $filter
+     */
+    public function addProductFilter(array $filter): void
+    {
+        $dataFilter = $this->addChild('Products');
+
+        foreach ($filter as $filterItem) {
+            $dataFilterItem = $dataFilter->addChild('Product');
+            $dataFilterItem->addChild($filterItem->getName(), $filterItem->getValue());
+        }
+    }
+
     public function addShippingInfo(ShippingInfo $shippingInfo): void
     {
         $shippingInfoElement = $this->addChild('ShippingInfo');
@@ -93,5 +108,14 @@ final class SimpleXMLExtend extends SimpleXMLElement
         if ($shippingInfo->getPostalCode() !== null) {
             $shippingInfoElement->addChild('PostalCode', $shippingInfo->getPostalCode());
         }
+    }
+
+    public function addDateTime(string $string, ?DateTimeInterface $dateTime): void
+    {
+        if (! $dateTime instanceof DateTimeInterface) {
+            return;
+        }
+
+        $this->addChild($string, $dateTime->format('d.m.Y H:i:s'));
     }
 }

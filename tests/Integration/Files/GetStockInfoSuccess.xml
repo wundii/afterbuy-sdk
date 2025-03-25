@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>GetStockInfo</CallName>
+    <VersionID>1</VersionID>
+    <Result>
+        <Products>
+            <Product>
+                <ProductID>1737852</ProductID>
+                <Name><![CDATA[Afterbuy Testauktion CheckOut-Redirect]]></Name>
+                <Anr>1243123123</Anr>
+                <EAN><![CDATA[E3456A277N]]></EAN>
+                <AuctionQuantity>0</AuctionQuantity>
+                <Quantity>9997</Quantity>
+                <FullFilmentQuantity>0</FullFilmentQuantity>
+                <MinimumStock>0</MinimumStock>
+                <Discontinued>1</Discontinued>
+                <Stock>1</Stock>
+                <AvailableShop>9920</AvailableShop>
+            </Product>
+            <Product>
+                <ProductID>1908058</ProductID>
+                <Name><![CDATA[ProduktManager Testartikel]]></Name>
+                <Anr>123456789</Anr>
+                <EAN><![CDATA[E3456A277N]]></EAN>
+                <AuctionQuantity>0</AuctionQuantity>
+                <Quantity>99980</Quantity>
+                <FullFilmentQuantity>0</FullFilmentQuantity>
+                <MinimumStock>0</MinimumStock>
+                <Discontinued>1</Discontinued>
+                <Stock>1</Stock>
+                <AvailableShop>99980</AvailableShop>
+            </Product>
+        </Products>
+    </Result>
+</Afterbuy>
