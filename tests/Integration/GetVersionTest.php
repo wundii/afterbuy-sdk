@@ -33,7 +33,7 @@ class GetVersionTest extends TestCase
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function testUserDefinedFlagsBasic(): void
+    public function testVersionBasic(): void
     {
         $file = __DIR__ . '/Files/GetVersionSuccess.xml';
 

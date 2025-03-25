@@ -114,7 +114,7 @@ class GetShippingCostTest extends TestCase
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function testShopCatalogsErrorCode30(): void
+    public function testShippingCostErrorCode27(): void
     {
         $file = __DIR__ . '/Files/GetShippingCostErrorCode27.xml';
 

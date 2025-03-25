@@ -60,7 +60,7 @@ class GetListerHistoryTest extends TestCase
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }
 
-    public function testMaxCatalogs(): void
+    public function testMaxHistoryItems(): void
     {
         $afterbuyGlobal = clone $this->afterbuyGlobal();
 
@@ -114,7 +114,7 @@ class GetListerHistoryTest extends TestCase
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function testShopCatalogsSuccess(): void
+    public function testListerHistorySuccess(): void
     {
         $file = __DIR__ . '/Files/GetListerHistorySuccess.xml';
 
@@ -140,7 +140,7 @@ class GetListerHistoryTest extends TestCase
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function testShopCatalogsErrorCode30(): void
+    public function testListerHistoryErrorCode30(): void
     {
         $file = __DIR__ . '/Files/GetListerHistoryErrorCode30.xml';
 

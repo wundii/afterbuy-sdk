@@ -165,7 +165,7 @@ class GetShopProductsTest extends TestCase
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function testShopCatalogsBasic(): void
+    public function testShopProductsBasic(): void
     {
         $file = __DIR__ . '/Files/GetShopProductsSuccess.xml';
 
