@@ -47,7 +47,7 @@ final readonly class GetListerHistoryRequest implements AfterbuyRequestInterface
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        $xml->addLimit('MaxHistoryItems', $this->maxHistoryItems);
+        $xml->addNumber('MaxHistoryItems', $this->maxHistoryItems);
         $xml->addFilter($this->filter);
 
         $string = $xml->asXML();

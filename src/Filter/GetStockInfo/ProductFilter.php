@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace AfterbuySdk\Filter\GetStockInfo;
 
 use AfterbuySdk\Enum\ProductFilterEnum;
-use AfterbuySdk\Interface\Filter\GetStockInfoFilterFilterInterface;
+use AfterbuySdk\Interface\Filter\GetStockInfoFilterInterface;
 
-final readonly class ProductFilter implements GetStockInfoFilterFilterInterface
+final readonly class ProductFilter implements GetStockInfoFilterInterface
 {
     public function __construct(
         private ProductFilterEnum $productFilterEnum,

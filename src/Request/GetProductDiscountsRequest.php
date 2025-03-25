@@ -35,7 +35,7 @@ final readonly class GetProductDiscountsRequest implements AfterbuyRequestInterf
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        $xml->addLimit('ShopID', $this->shopId);
+        $xml->addNumber('ShopID', $this->shopId);
         $xml->addDateTime('FromModificationDate', $this->fromModificationDate);
 
         $string = $xml->asXML();

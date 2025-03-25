@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>GetTranslatedMailTemplate</CallName>
+    <Result>
+        <TranslatedMailText><![CDATA[ Hallo Herr Meier, ... ]]></TranslatedMailText>
+    </Result>
+</Afterbuy>

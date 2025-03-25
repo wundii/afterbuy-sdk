@@ -58,11 +58,11 @@ final readonly class GetShopProductsRequest implements AfterbuyRequestInterface
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        $xml->addLimit('MaxShopItems', $maxShopItems);
-        $xml->addLimit('SuppressBaseProductRelatedData', (int) $this->suppressBaseProductRelatedData);
-        $xml->addLimit('PaginationEnabled', $this->paginationEnabled ? 1 : null);
-        $xml->addLimit('PageNumber', $this->pageNumber);
-        $xml->addLimit('ReturnShop20Container', $this->returnShop20Container ? 1 : null);
+        $xml->addNumber('MaxShopItems', $maxShopItems);
+        $xml->addNumber('SuppressBaseProductRelatedData', (int) $this->suppressBaseProductRelatedData);
+        $xml->addNumber('PaginationEnabled', $this->paginationEnabled ? 1 : null);
+        $xml->addNumber('PageNumber', $this->pageNumber);
+        $xml->addNumber('ReturnShop20Container', $this->returnShop20Container ? 1 : null);
         $xml->addFilter($this->filter);
 
         $string = $xml->asXML();

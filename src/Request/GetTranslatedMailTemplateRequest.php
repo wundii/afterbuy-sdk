@@ -10,18 +10,20 @@ use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
-use AfterbuySdk\Interface\Filter\GetStockInfoFilterInterface;
-use AfterbuySdk\Response\GetStockInfoResponse;
+use AfterbuySdk\Interface\Filter\GetTranslatedMailTemplateFilterInterface;
+use AfterbuySdk\Response\GetTranslatedMailTemplateResponse;
 use RuntimeException;
 
-final readonly class GetStockInfoRequest implements AfterbuyRequestInterface
+final readonly class GetTranslatedMailTemplateRequest implements AfterbuyRequestInterface
 {
     /**
-     * @param GetStockInfoFilterInterface[] $productFilter
+     * @param GetTranslatedMailTemplateFilterInterface[] $filter
      */
     public function __construct(
-        private DetailLevelEnum $detailLevelEnum = DetailLevelEnum::FIRST,
-        private array $productFilter = [],
+        private int $offerId,
+        private ?bool $useTemplate = null,
+        private ?string $templateText = null,
+        private array $filter = [],
     ) {
     }
 
@@ -32,24 +34,15 @@ final readonly class GetStockInfoRequest implements AfterbuyRequestInterface
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
-        if ($this->productFilter === []) {
-            throw new RuntimeException('ProductFilter is required');
-        }
-
-        $detailLevelEnum = match ($this->detailLevelEnum) {
-            DetailLevelEnum::FIRST,
-            DetailLevelEnum::SECOND,
-            DetailLevelEnum::THIRD,
-            DetailLevelEnum::FOURTH => $this->detailLevelEnum,
-            default => DetailLevelEnum::FIRST,
-        };
-
-        $afterbuyGlobal->setCallName('GetStockInfo');
-        $afterbuyGlobal->setDetailLevelEnum($detailLevelEnum);
+        $afterbuyGlobal->setCallName('GetTranslatedMailTemplate');
+        $afterbuyGlobal->setDetailLevelEnum(DetailLevelEnum::FIRST);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        $xml->addProductFilter($this->productFilter);
+        $xml->addNumber('OfferID', $this->offerId);
+        $xml->addBool('UseTemplate', $this->useTemplate);
+        $xml->addString('TemplateText', $this->templateText);
+        $xml->addFilter($this->filter);
 
         $string = $xml->asXML();
         if ($string === false) {
@@ -61,7 +54,7 @@ final readonly class GetStockInfoRequest implements AfterbuyRequestInterface
 
     public function responseClass(): string
     {
-        return GetStockInfoResponse::class;
+        return GetTranslatedMailTemplateResponse::class;
     }
 
     public function uri(EndpointEnum $endpointEnum): string

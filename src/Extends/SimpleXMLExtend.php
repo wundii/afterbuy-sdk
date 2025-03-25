@@ -38,13 +38,31 @@ final class SimpleXMLExtend extends SimpleXMLElement
         $domElement->appendChild($domCdataSection);
     }
 
-    public function addLimit(string $string, ?int $value): void
+    public function addNumber(string $string, ?int $value): void
     {
         if ($value === null) {
             return;
         }
 
         $this->addChild($string, (string) $value);
+    }
+
+    public function addString(string $string, ?string $value): void
+    {
+        if ($value === null) {
+            return;
+        }
+
+        $this->addChild($string, $value);
+    }
+
+    public function addBool(string $string, ?bool $value): void
+    {
+        if ($value === null) {
+            return;
+        }
+
+        $this->addChild($string, $value ? '1' : '0');
     }
 
     /**

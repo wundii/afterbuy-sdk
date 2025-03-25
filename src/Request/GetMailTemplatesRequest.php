@@ -39,7 +39,7 @@ final readonly class GetMailTemplatesRequest implements AfterbuyRequestInterface
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        $xml->addLimit('TemplateID', $this->templateId);
+        $xml->addNumber('TemplateID', $this->templateId);
 
         $string = $xml->asXML();
         if ($string === false) {

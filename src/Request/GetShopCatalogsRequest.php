@@ -44,7 +44,7 @@ final readonly class GetShopCatalogsRequest implements AfterbuyRequestInterface
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        $xml->addLimit('MaxCatalogs', $this->maxCatalogs);
+        $xml->addNumber('MaxCatalogs', $this->maxCatalogs);
         $xml->addFilter($this->filter);
 
         $string = $xml->asXML();
