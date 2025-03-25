@@ -116,7 +116,7 @@ class GetListerHistoryTest extends TestCase
      */
     public function testListerHistorySuccess(): void
     {
-        $file = __DIR__ . '/Files/GetListerHistorySuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetListerHistorySuccess.xml';
 
         $request = new GetListerHistoryRequest();
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
@@ -142,7 +142,7 @@ class GetListerHistoryTest extends TestCase
      */
     public function testListerHistoryErrorCode30(): void
     {
-        $file = __DIR__ . '/Files/GetListerHistoryErrorCode30.xml';
+        $file = __DIR__ . '/ResponseFiles/GetListerHistoryErrorCode30.xml';
 
         $request = new GetListerHistoryRequest();
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

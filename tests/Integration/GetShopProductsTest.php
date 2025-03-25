@@ -167,7 +167,7 @@ class GetShopProductsTest extends TestCase
      */
     public function testShopProductsBasic(): void
     {
-        $file = __DIR__ . '/Files/GetShopProductsSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetShopProductsSuccess.xml';
 
         $request = new GetShopProductsRequest();
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

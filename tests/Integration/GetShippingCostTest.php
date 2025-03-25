@@ -87,7 +87,7 @@ class GetShippingCostTest extends TestCase
      */
     public function testShippingCostBasic(): void
     {
-        $file = __DIR__ . '/Files/GetShippingCostSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetShippingCostSuccess.xml';
         $shippingInfo = new ShippingInfo(
             123456,
             2,
@@ -116,7 +116,7 @@ class GetShippingCostTest extends TestCase
      */
     public function testShippingCostErrorCode27(): void
     {
-        $file = __DIR__ . '/Files/GetShippingCostErrorCode27.xml';
+        $file = __DIR__ . '/ResponseFiles/GetShippingCostErrorCode27.xml';
 
         $shippingInfo = new ShippingInfo(
             123456,

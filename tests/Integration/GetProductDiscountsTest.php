@@ -51,7 +51,7 @@ class GetProductDiscountsTest extends TestCase
      */
     public function testProductDiscountsBasic(): void
     {
-        $file = __DIR__ . '/Files/GetProductDiscountsSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetProductDiscountsSuccess.xml';
 
         $request = new GetProductDiscountsRequest(20);
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

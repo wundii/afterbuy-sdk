@@ -81,7 +81,7 @@ class GetStockInfoTest extends TestCase
      */
     public function testStockInfoBasic(): void
     {
-        $file = __DIR__ . '/Files/GetStockInfoSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetStockInfoSuccess.xml';
 
         $request = new GetStockInfoRequest(productFilter: [new ProductFilter(ProductFilterEnum::ANR, 1)]);
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

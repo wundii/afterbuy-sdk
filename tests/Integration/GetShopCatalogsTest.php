@@ -93,7 +93,7 @@ class GetShopCatalogsTest extends TestCase
      */
     public function testShopCatalogsBasic(): void
     {
-        $file = __DIR__ . '/Files/GetShopCatalogsSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetShopCatalogsSuccess.xml';
 
         $request = new GetShopCatalogsRequest();
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

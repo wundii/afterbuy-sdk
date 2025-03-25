@@ -35,7 +35,7 @@ class GetVersionTest extends TestCase
      */
     public function testVersionBasic(): void
     {
-        $file = __DIR__ . '/Files/GetVersionSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetVersionSuccess.xml';
 
         $request = new GetVersionRequest();
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

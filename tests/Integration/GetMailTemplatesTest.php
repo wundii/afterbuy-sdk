@@ -66,7 +66,7 @@ class GetMailTemplatesTest extends TestCase
      */
     public function testMailTemplatesBasic(): void
     {
-        $file = __DIR__ . '/Files/GetMailTemplatesSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetMailTemplatesSuccess.xml';
 
         $request = new GetMailTemplatesRequest();
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

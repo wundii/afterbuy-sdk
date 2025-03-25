@@ -54,7 +54,7 @@ class GetShippingServicesTest extends TestCase
      */
     public function testShippingServicesBasic(): void
     {
-        $file = __DIR__ . '/Files/GetShippingServicesSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetShippingServicesSuccess.xml';
 
         $request = new GetShippingServicesRequest();
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

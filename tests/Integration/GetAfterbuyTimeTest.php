@@ -34,7 +34,7 @@ class GetAfterbuyTimeTest extends TestCase
      */
     public function testDateTimeBasic(): void
     {
-        $file = __DIR__ . '/Files/GetAfterbuyTimeSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetAfterbuyTimeSuccess.xml';
 
         $request = new GetAfterbuyTimeRequest();
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

@@ -35,7 +35,7 @@ class GetUserDefinedFlagsTest extends TestCase
      */
     public function testUserDefinedFlagsBasic(): void
     {
-        $file = __DIR__ . '/Files/GetUserDefinedFlagsSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetUserDefinedFlagsSuccess.xml';
 
         $request = new GetUserDefinedFlagsRequest();
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

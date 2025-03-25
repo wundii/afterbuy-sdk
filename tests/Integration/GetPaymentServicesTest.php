@@ -59,7 +59,7 @@ class GetPaymentServicesTest extends TestCase
      */
     public function testPaymentServicesBasic(): void
     {
-        $file = __DIR__ . '/Files/GetPaymentServicesSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetPaymentServicesSuccess.xml';
 
         $request = new GetPaymentServicesRequest();
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

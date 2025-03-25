@@ -94,7 +94,7 @@ class GetTranslatedMailTemplateTest extends TestCase
      */
     public function testShopCatalogsBasic(): void
     {
-        $file = __DIR__ . '/Files/GetTranslatedMailTemplateSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/GetTranslatedMailTemplateSuccess.xml';
 
         $request = new GetTranslatedMailTemplateRequest(1);
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
