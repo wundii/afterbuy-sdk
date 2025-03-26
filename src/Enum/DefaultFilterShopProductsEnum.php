@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Enum;
 
-enum DefaultFilterEnum: string
+enum DefaultFilterShopProductsEnum: string
 {
     case ALLSETS = 'AllSets';
     case VARIATIONSSETS = 'VariationsSets';

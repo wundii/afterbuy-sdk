@@ -207,12 +207,12 @@ final class Product implements AfterbuyDtoInterface
         $this->basepriceFactor = $basepriceFactor;
     }
 
-    public function getBaseProductFlagEnum(): ?BaseProductFlagEnum
+    public function getBaseProductFlag(): ?BaseProductFlagEnum
     {
         return $this->baseProductFlagEnum;
     }
 
-    public function setBaseProductFlagEnum(?BaseProductFlagEnum $baseProductFlagEnum): void
+    public function setBaseProductFlag(?BaseProductFlagEnum $baseProductFlagEnum): void
     {
         $this->baseProductFlagEnum = $baseProductFlagEnum;
     }

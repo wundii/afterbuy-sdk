@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Filter\GetShopProducts;
 
-use AfterbuySdk\Enum\DefaultFilterEnum;
+use AfterbuySdk\Enum\DefaultFilterShopProductsEnum;
 use AfterbuySdk\Filter\FilterValue;
 use AfterbuySdk\Interface\Filter\GetShopProductsFilterInterface;
 
 final readonly class DefaultFilter implements GetShopProductsFilterInterface
 {
     public function __construct(
-        private DefaultFilterEnum $defaultFilterEnum
+        private DefaultFilterShopProductsEnum $defaultFilterShopProductsEnum
     ) {
     }
 
@@ -23,7 +23,7 @@ final readonly class DefaultFilter implements GetShopProductsFilterInterface
     public function getFilterValues(): array
     {
         return [
-            new FilterValue($this->defaultFilterEnum->value),
+            new FilterValue($this->defaultFilterShopProductsEnum->value),
         ];
     }
 }

@@ -218,12 +218,12 @@ final class ListingDetails implements AfterbuyDtoInterface
         $this->listingType = $listingType;
     }
 
-    public function getSellStatusEnum(): SellStatusEnum
+    public function getSellStatus(): SellStatusEnum
     {
         return $this->sellStatusEnum;
     }
 
-    public function setSellStatusEnum(SellStatusEnum $sellStatusEnum): void
+    public function setSellStatus(SellStatusEnum $sellStatusEnum): void
     {
         $this->sellStatusEnum = $sellStatusEnum;
     }

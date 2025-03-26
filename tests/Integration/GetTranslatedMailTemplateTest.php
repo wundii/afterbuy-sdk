@@ -92,7 +92,7 @@ class GetTranslatedMailTemplateTest extends TestCase
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function testShopCatalogsBasic(): void
+    public function testTranslatedMailTemplateBasic(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetTranslatedMailTemplateSuccess.xml';
 

@@ -9,7 +9,7 @@ use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Dto\GetShopProducts\Product;
 use AfterbuySdk\Dto\GetShopProducts\Products;
 use AfterbuySdk\Enum\DateFilterEnum;
-use AfterbuySdk\Enum\DefaultFilterEnum;
+use AfterbuySdk\Enum\DefaultFilterShopProductsEnum;
 use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Extends\DateTime;
@@ -138,7 +138,7 @@ class GetShopProductsTest extends TestCase
             new Anr(2),
             new Ean('3'),
             new Tag('item'),
-            new DefaultFilter(DefaultFilterEnum::NOT_ALLSETS),
+            new DefaultFilter(DefaultFilterShopProductsEnum::NOT_ALLSETS),
             new Level(0, 2),
             new RangeProductId(12, 34),
             new RangeAnr(56, 78),
