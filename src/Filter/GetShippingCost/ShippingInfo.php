@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Filter\GetShippingCost;
 
-use AfterbuySdk\Enum\ShippingCountryEnum;
+use AfterbuySdk\Enum\CountryIsoEnum;
 
 final readonly class ShippingInfo
 {
@@ -16,7 +16,7 @@ final readonly class ShippingInfo
         private int $itemsCount,
         private int $itemsWeight,
         private int $itemsPrice,
-        private ?ShippingCountryEnum $shippingCountryEnum = null,
+        private ?CountryIsoEnum $countryIsoEnum = null,
         private ?string $shippingGroup = null,
         private ?string $PostalCode = null,
     ) {
@@ -54,9 +54,9 @@ final readonly class ShippingInfo
         return [$this->productIds];
     }
 
-    public function getShippingCountry(): ?ShippingCountryEnum
+    public function getShippingCountry(): ?CountryIsoEnum
     {
-        return $this->shippingCountryEnum;
+        return $this->countryIsoEnum;
     }
 
     public function getShippingGroup(): ?string

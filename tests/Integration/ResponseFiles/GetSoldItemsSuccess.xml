@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>GetSoldItems</CallName>
+    <Result>
+        <HasMoreItems>0</HasMoreItems>
+        <Orders>
+            <Order>
+                <InvoiceNumber>10075</InvoiceNumber>
+                <OrderID>43151135</OrderID>
+                <Anr>9525249060</Anr>
+                <FeedbackDate>01.06.2006 11:43:38</FeedbackDate>
+                <UserComment><![CDATA[]]></UserComment>
+                <AdditionalInfo><![CDATA[]]></AdditionalInfo>
+                <FeedbackLink>https://www.afterbuy.de/fb.aspx?ui=452FAF74-C14F-4A02-A541-8FA281B92173</FeedbackLink>
+                <OrderDate>29.05.2006 09:32:50</OrderDate>
+                <OrderIDAlt></OrderIDAlt>
+                <PaymentInfo>
+                    <PaymentID>INVOICE</PaymentID>
+                    <PaymentMethod><![CDATA[]]></PaymentMethod>
+                    <PaymentDate></PaymentDate>
+                    <AlreadyPaid>0,00</AlreadyPaid>
+                    <FullAmount>110,05</FullAmount>
+                    <InvoiceDate>01.06.2006</InvoiceDate>
+                </PaymentInfo>
+                <BuyerInfo>
+                    <BillingAddress>
+                        <AfterbuyUserID>29893553</AfterbuyUserID>
+                        <UserIDPlattform>afterbuy1_testaccount</UserIDPlattform>
+                        <FirstName>Max</FirstName>
+                        <LastName>Mustermann</LastName>
+                        <Title></Title>
+                        <Company>api1@via.de</Company>
+                        <Street>Kimplerstr. 296</Street>
+                        <PostalCode>47807</PostalCode>
+                        <City>Krefeld</City>
+                        <Country>D</Country>
+                        <countryISO>DE</countryISO>
+                        <Phone></Phone>
+                        <Fax></Fax>
+                        <Mail>musterman@muster.de</Mail>
+                    </BillingAddress>
+                    <ShippingAddress>
+                        <FirstName>Tom</FirstName>
+                        <LastName>Test</LastName>
+                        <Company>Testcompany</Company>
+                        <Street>Testsreet 1</Street>
+                        <PostalCode>15478</PostalCode>
+                        <City>Mustercity</City>
+                        <Country>F</Country>
+                        <countryISO>FR</countryISO>
+                    </ShippingAddress>
+                </BuyerInfo>
+                <SoldItems>
+                    <SoldItem>
+                        <ItemID>43151135</ItemID>
+                        <ItemTitle>Testartikel</ItemTitle>
+                        <ItemQuantity>1</ItemQuantity>
+                        <ItemPrice>2,00</ItemPrice>
+                        <ItemEndDate>29.05.2006 09:32:50</ItemEndDate>
+                        <TaxRate>19,00</TaxRate>
+                        <ItemWeight>4,13</ItemWeight>
+                        <ItemXmlDate></ItemXmlDate>
+                        <ItemModDate>02.06.2006 14:01:46</ItemModDate>
+                    </SoldItem>
+                    <SoldItem>
+                        <ItemID>43159620</ItemID>
+                        <ItemTitle>Testartikel</ItemTitle>
+                        <ItemQuantity>12</ItemQuantity>
+                        <ItemPrice>2,00</ItemPrice>
+                        <ItemEndDate>29.05.2006 09:33:24</ItemEndDate>
+                        <TaxRate>16,00</TaxRate>
+                        <ItemWeight>0,34</ItemWeight>
+                        <ItemXmlDate></ItemXmlDate>
+                        <ItemModDate>02.06.2006 14:01:46</ItemModDate>
+                    </SoldItem>
+                    <SoldItem>
+                        <ItemID>43161870</ItemID>
+                        <ItemTitle>Attributtest MB</ItemTitle>
+                        <ItemQuantity>1</ItemQuantity>
+                        <ItemPrice>1,00</ItemPrice>
+                        <ItemEndDate>29.05.2006 12:50:03</ItemEndDate>
+                        <TaxRate>16,00</TaxRate>
+                        <ItemWeight>4,13</ItemWeight>
+                        <ItemXmlDate></ItemXmlDate>
+                        <ItemModDate>02.06.2006 14:01:46</ItemModDate>
+                        <ShopProductDetails></ShopProductDetails>
+                    </SoldItem>
+                </SoldItems>
+                <ShippingInfo>
+                    <ShippingMethod></ShippingMethod>
+                    <ShippingCost>5,55</ShippingCost>
+                    <ShippingAdditionalCost>0,00</ShippingAdditionalCost>
+                    <ShippingTotalCost>5,55</ShippingTotalCost>
+                    <ShippingTaxRate>19,00</ShippingTaxRate>
+                    <DeliveryDate></DeliveryDate>
+                    <ParcelLabels>
+                        <ParcelLabel>
+                            <ItemID>43151135</ItemID>
+                            <PackageNumber>1</PackageNumber>
+                            <ParcelLabelNumber><![CDATA[00340434464181524067]]></ParcelLabelNumber>
+                            <ReturnLabelNumber><![CDATA[99353347120585]]></ReturnLabelNumber>
+                        </ParcelLabel>
+                        <ParcelLabel>
+                            <ItemID>43159620</ItemID>
+                            <PackageNumber>2</PackageNumber>
+                            <ParcelLabelNumber><![CDATA[00340434464181524070]]></ParcelLabelNumber>
+                            <ReturnLabelNumber><![CDATA[99353347120518]]></ReturnLabelNumber>
+                        </ParcelLabel>
+                        <ParcelLabel>
+                            <ItemID>43161870</ItemID>
+                            <PackageNumber>3</PackageNumber>
+                            <ParcelLabelNumber><![CDATA[00340434464181524023]]></ParcelLabelNumber>
+                            <ReturnLabelNumber><![CDATA[99353347120545]]></ReturnLabelNumber>
+                        </ParcelLabel>
+                    </ParcelLabels>
+                </ShippingInfo>
+            </Order>
+        </Orders>
+        <OrdersCount>1</OrdersCount>
+        <LastOrderID>43151135</LastOrderID>
+        <ItemsCount>4</ItemsCount>
+    </Result>
+</Afterbuy>

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace AfterbuySdk\Extends;
 
 use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Enum\ShippingCountryEnum;
+use AfterbuySdk\Enum\CountryIsoEnum;
 use AfterbuySdk\Filter\GetShippingCost\ShippingInfo;
 use AfterbuySdk\Interface\FilterInterface;
 use AfterbuySdk\Interface\ProductFilterInterface;
@@ -115,8 +115,8 @@ final class SimpleXMLExtend extends SimpleXMLElement
         $shippingInfoElement->addChild('ItemsWeight', (string) $shippingInfo->getItemsWeight());
         $shippingInfoElement->addChild('ItemsPrice', (string) $shippingInfo->getItemsPrice());
 
-        if ($shippingInfo->getShippingCountry() instanceof ShippingCountryEnum) {
-            $shippingInfoElement->addChild('ShippingCountry', $shippingInfo->getShippingCountry()->name);
+        if ($shippingInfo->getShippingCountry() instanceof CountryIsoEnum) {
+            $shippingInfoElement->addChild('ShippingCountry', $shippingInfo->getShippingCountry()->value);
         }
 
         if ($shippingInfo->getShippingGroup() !== null) {

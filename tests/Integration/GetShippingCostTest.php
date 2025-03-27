@@ -9,8 +9,8 @@ use AfterbuySdk\Dto\AfterbuyError;
 use AfterbuySdk\Dto\AfterbuyErrorList;
 use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Dto\GetShippingCost\ShippingService;
+use AfterbuySdk\Enum\CountryIsoEnum;
 use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\ShippingCountryEnum;
 use AfterbuySdk\Filter\GetShippingCost\ShippingInfo;
 use AfterbuySdk\Request\GetShippingCostRequest;
 use AfterbuySdk\Response\AfterbuyErrorResponse;
@@ -60,7 +60,7 @@ class GetShippingCostTest extends TestCase
             2,
             3,
             45,
-            ShippingCountryEnum::DE,
+            CountryIsoEnum::GERMANY,
             'standard',
             '34567',
         );
