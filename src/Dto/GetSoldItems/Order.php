@@ -16,6 +16,7 @@ final class Order implements AfterbuyDtoInterface
         private DateTimeInterface $orderDate,
         private PaymentInfo $paymentInfo,
         private BuyerInfo $buyerInfo,
+        private SoldItems $soldItems,
         private ShippingInfo $shippingInfo,
         private ?DateTimeInterface $feedbackDate = null,
         private ?int $alternativeItemNumber1 = null,
@@ -189,6 +190,16 @@ final class Order implements AfterbuyDtoInterface
     public function setShippingInfo(ShippingInfo $shippingInfo): void
     {
         $this->shippingInfo = $shippingInfo;
+    }
+
+    public function getSoldItems(): SoldItems
+    {
+        return $this->soldItems;
+    }
+
+    public function setSoldItems(SoldItems $soldItems): void
+    {
+        $this->soldItems = $soldItems;
     }
 
     public function getTrackingLink(): ?string

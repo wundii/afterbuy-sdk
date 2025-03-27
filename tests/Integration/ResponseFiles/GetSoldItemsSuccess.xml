@@ -73,6 +73,18 @@
                         <ItemWeight>0,34</ItemWeight>
                         <ItemXmlDate></ItemXmlDate>
                         <ItemModDate>02.06.2006 14:01:46</ItemModDate>
+                        <ShopProductDetails>
+                            <StockLocation1><![CDATA[C]]></StockLocation1>
+                            <StockLocation2><![CDATA[30]]></StockLocation2>
+                            <StockLocation3><![CDATA[14]]></StockLocation3>
+                            <StockLocation4><![CDATA[Post]]></StockLocation4>
+                            <ProductID>1002</ProductID>
+                            <Name><![CDATA[Spiegel]]></Name>
+                            <EAN><![CDATA[]]></EAN>
+                            <Anr></Anr>
+                            <UnitOfQuantity>Stk</UnitOfQuantity>
+                            <BasepriceFactor>1</BasepriceFactor>
+                        </ShopProductDetails>
                     </SoldItem>
                     <SoldItem>
                         <ItemID>43161870</ItemID>
@@ -84,8 +96,38 @@
                         <ItemWeight>4,13</ItemWeight>
                         <ItemXmlDate></ItemXmlDate>
                         <ItemModDate>02.06.2006 14:01:46</ItemModDate>
-                        <ShopProductDetails></ShopProductDetails>
+                        <ShopProductDetails>
+                            <BasepriceFactor>1</BasepriceFactor>
+                            <BaseProductData>
+                                <BaseProductType>2</BaseProductType>
+                                <ChildProduct>
+                                    <ProductID>1000</ProductID>
+                                    <ProductName>
+                                        <![CDATA[Scheinwerfer Links]]></ProductName>
+                                    <ProductQuantity>1</ProductQuantity>
+                                    <ProductVAT>19</ProductVAT>
+                                    <ProductWeight>2,00</ProductWeight>
+                                    <ProductUnitPrice>20,00</ProductUnitPrice>
+                                    <StockLocation1><![CDATA[A]]></StockLocation1>
+                                    <StockLocation2><![CDATA[10]]></StockLocation2>
+                                    <StockLocation3><![CDATA[16]]></StockLocation3>
+                                </ChildProduct>
+                                <ChildProduct>
+                                    <ProductID>1001</ProductID>
+                                    <ProductName>
+                                        <![CDATA[Scheinwerfer Rechts]]></ProductName>
+                                    <ProductQuantity>1</ProductQuantity>
+                                    <ProductVAT>19</ProductVAT>
+                                    <ProductWeight>2,00</ProductWeight>
+                                    <ProductUnitPrice>20,00</ProductUnitPrice>
+                                    <StockLocation1><![CDATA[B]]></StockLocation1>
+                                    <StockLocation2><![CDATA[20]]></StockLocation2>
+                                    <StockLocation3><![CDATA[16]]></StockLocation3>
+                                </ChildProduct>
+                            </BaseProductData>
+                        </ShopProductDetails>
                     </SoldItem>
+                    <ItemsInOrder>3</ItemsInOrder>
                 </SoldItems>
                 <ShippingInfo>
                     <ShippingMethod></ShippingMethod>
