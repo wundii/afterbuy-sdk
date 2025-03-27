@@ -7,7 +7,6 @@ namespace AfterbuySdk\Dto\GetSoldItems;
 use AfterbuySdk\Enum\FulfillmentServiceLevelEnum;
 use AfterbuySdk\Enum\InternalItemTypeEnum;
 use AfterbuySdk\Enum\ItemPlatFormNameEnum;
-use AfterbuySdk\Enum\PlattformEnum;
 use AfterbuySdk\Enum\TaxCollectedByEnum;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
@@ -21,7 +20,7 @@ final class SoldItem implements AfterbuyDtoInterface
         private bool $isAmazonBusiness = false,
         private bool $isAmazonPrime = false,
         private FulfillmentServiceLevelEnum $fulfillmentServiceLevelEnum = FulfillmentServiceLevelEnum::NONE,
-        private ?PlattformEnum $plattformEnum = null,
+        private ?string $platformSpecificOrderId = null,
         private ?int $eBayTransactionId = null,
         private ?string $alternativeItemNumber1 = null,
         private ?string $alternativeItemNumbe1 = null,
@@ -137,14 +136,14 @@ final class SoldItem implements AfterbuyDtoInterface
         $this->itemId = $itemId;
     }
 
-    public function getPlatformSpecificOrderId(): ?PlattformEnum
+    public function getPlatformSpecificOrderId(): ?string
     {
-        return $this->plattformEnum;
+        return $this->platformSpecificOrderId;
     }
 
-    public function setPlatformSpecificOrderId(?PlattformEnum $plattformEnum): void
+    public function setPlatformSpecificOrderId(?string $platformSpecificOrderId): void
     {
-        $this->plattformEnum = $plattformEnum;
+        $this->platformSpecificOrderId = $platformSpecificOrderId;
     }
 
     public function getInternalItemType(): ?InternalItemTypeEnum
@@ -235,16 +234,6 @@ final class SoldItem implements AfterbuyDtoInterface
     public function setPlatformTaxReference(?string $platformTaxReference): void
     {
         $this->platformTaxReference = $platformTaxReference;
-    }
-
-    public function getPlattformEnum(): ?PlattformEnum
-    {
-        return $this->plattformEnum;
-    }
-
-    public function setPlattformEnum(?PlattformEnum $plattformEnum): void
-    {
-        $this->plattformEnum = $plattformEnum;
     }
 
     public function getTaxCollectedBy(): ?TaxCollectedByEnum

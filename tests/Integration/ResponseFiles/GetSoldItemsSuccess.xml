@@ -54,6 +54,7 @@
                 <SoldItems>
                     <SoldItem>
                         <ItemID>43151135</ItemID>
+                        <PlatformSpecificOrderId>123-ABC</PlatformSpecificOrderId>
                         <ItemTitle>Testartikel</ItemTitle>
                         <ItemQuantity>1</ItemQuantity>
                         <ItemPrice>2,00</ItemPrice>
