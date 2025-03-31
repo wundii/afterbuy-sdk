@@ -6,6 +6,8 @@ namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
+use AfterbuySdk\Dto\AfterbuyWarning;
+use AfterbuySdk\Dto\AfterbuyWarningList;
 use AfterbuySdk\Dto\GetStockInfo\Product;
 use AfterbuySdk\Dto\GetStockInfo\Products;
 use AfterbuySdk\Enum\DetailLevelEnum;
@@ -13,6 +15,7 @@ use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\ProductFilterEnum;
 use AfterbuySdk\Filter\GetStockInfo\ProductFilter;
 use AfterbuySdk\Request\GetStockInfoRequest;
+use AfterbuySdk\Response\AfterbuyWarningResponse;
 use AfterbuySdk\Response\GetStockInfoResponse;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
@@ -95,5 +98,31 @@ class GetStockInfoTest extends TestCase
         $this->assertInstanceOf(GetStockInfoResponse::class, $response);
         $this->assertCount(2, $products->getProducts());
         $this->assertInstanceOf(Product::class, $products->getProducts()[0]);
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws ReflectionException
+     * @throws RedirectionExceptionInterface
+     * @throws ClientExceptionInterface
+     */
+    public function testShippingCostErrorCode27(): void
+    {
+        $file = __DIR__ . '/ResponseFiles/GetStockInfoWarning.xml';
+
+        $request = new GetStockInfoRequest(productFilter: [new ProductFilter(ProductFilterEnum::ANR, 1)]);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
+
+        $response = $afterbuy->runRequest($request, $mockResponse);
+
+        /** @var AfterbuyWarningList $afterbuyWarningList */
+        $afterbuyWarningList = $response->getResponse();
+
+        $this->assertInstanceOf(AfterbuyWarningResponse::class, $response);
+        $this->assertCount(1, $afterbuyWarningList->getWarningList());
+        $this->assertInstanceOf(AfterbuyWarning::class, $afterbuyWarningList->getWarningList()[0]);
+        $this->assertSame(2, $afterbuyWarningList->getWarningList()[0]->getWarningCode());
     }
 }
