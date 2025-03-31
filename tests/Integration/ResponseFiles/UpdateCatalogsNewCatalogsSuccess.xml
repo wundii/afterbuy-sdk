@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Afterbuy>
+    <CallStatus>Success</CallStatus>
+    <CallName>UpdateCatalogs</CallName>
+    <Result>
+        <NewCatalogs>
+            <NewCatalog>
+                <CatalogID>10001</CatalogID>
+                <CatalogName><![CDATA[ 1. Hauptkatalog ]]></CatalogName>
+                <CatalogIDRequested>1</CatalogIDRequested>
+                <NewCatalog>
+                    <CatalogID>10003</CatalogID>
+                    <CatalogName><![CDATA[ 1. Unterkatalog zum 1. Hauptkatalog ]]></CatalogName>
+                    <CatalogIDRequested>3</CatalogIDRequested>
+                    <NewCatalog>
+                        <CatalogID>10004</CatalogID>
+                        <CatalogName><![CDATA[ 1. Unterkatalog zum 1. Unterkatalog ]]></CatalogName>
+                        <CatalogIDRequested>4</CatalogIDRequested>
+                    </NewCatalog>
+                </NewCatalog>
+                <NewCatalog>
+                    <CatalogID>10005</CatalogID>
+                    <CatalogName><![CDATA[ 2. Unterkatalog zum 1. Hauptkatalog ]]></CatalogName>
+                    <CatalogIDRequested>5</CatalogIDRequested>
+                </NewCatalog>
+            </NewCatalog>
+            <NewCatalog>
+                <CatalogID>10002</CatalogID>
+                <CatalogName><![CDATA[ 2. Hauptkatalog ]]></CatalogName>
+                <CatalogIDRequested>2</CatalogIDRequested>
+            </NewCatalog>
+        </NewCatalogs>
+    </Result>
+</Afterbuy>

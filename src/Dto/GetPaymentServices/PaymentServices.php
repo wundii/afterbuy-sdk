@@ -9,26 +9,27 @@ use AfterbuySdk\Interface\AfterbuyDtoInterface;
 final class PaymentServices implements AfterbuyDtoInterface
 {
     /**
-     * @param PaymentService[] $result
+     * @param PaymentService[] $paymentService
      */
     public function __construct(
-        private array $result,
+        private array $paymentService,
     ) {
     }
 
     /**
      * @return PaymentService[]
      */
-    public function getResult(): array
+    public function getPaymentService(): array
     {
-        return $this->result;
+        return $this->paymentService;
     }
 
-    /**
-     * @param PaymentService[] $result
-     */
-    public function setResult(array $result): void
+    public function setPaymentService(?PaymentService $paymentService): void
     {
-        $this->result = $result;
+        if (! $paymentService instanceof PaymentService) {
+            return;
+        }
+
+        $this->paymentService[] = $paymentService;
     }
 }

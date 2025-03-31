@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Request>
+    <AfterbuyGlobal>
+    <AccountToken>account</AccountToken>
+    <PartnerToken>partner</PartnerToken>
+    <ErrorLanguage>DE</ErrorLanguage>
+    <CallName>UpdateCatalogs</CallName>
+    <DetailLevel>0</DetailLevel>
+    </AfterbuyGlobal>
+    <Catalogs>
+        <UpdateAction>1</UpdateAction>
+        <Catalog>
+            <CatalogID>1</CatalogID>
+            <CatalogName>1. Hauptkatalog</CatalogName>
+            <CatalogDescription><![CDATA[Das ist der erste Hauptkatalog & weitere]]></CatalogDescription>
+            <AdditionalURL>http://www.test.de/katalog</AdditionalURL>
+            <Level>0</Level>
+            <Position>1</Position>
+            <AdditionalText>HK1</AdditionalText>
+            <ShowCatalog>1</ShowCatalog>
+            <Catalog>
+                <CatalogID>3</CatalogID>
+                <CatalogName>1. Unterkatalog zum 1. Hauptkataolog</CatalogName>
+                <CatalogDescription>Das ist der erste Unterkatalog</CatalogDescription>
+                <Position>1</Position>
+                <ShowCatalog>1</ShowCatalog>
+                <Catalog>
+                    <CatalogID>4</CatalogID>
+                    <CatalogName>1. Unterkatalog zum 1. Unterkataolog</CatalogName>
+                    <CatalogDescription>Das ist der erste Unterkatalog des Unterkatalogs</CatalogDescription>
+                    <Position>1</Position>
+                    <ShowCatalog>1</ShowCatalog>
+                </Catalog>
+            </Catalog>
+            <Catalog>
+                <CatalogID>5</CatalogID>
+                <CatalogName>2. Unterkatalog zum 1. Hauptkataolog</CatalogName>
+                <CatalogDescription>Das ist der zweite Unterkatalog</CatalogDescription>
+                <Position>2</Position>
+                <ShowCatalog>1</ShowCatalog>
+            </Catalog>
+        </Catalog>
+        <Catalog>
+            <CatalogID>2</CatalogID>
+            <CatalogName>2. Hauptkatalog</CatalogName>
+        </Catalog>
+    </Catalogs>
+</Request>

@@ -1,0 +1,75 @@
+<?php
+
+declare(strict_types=1);
+
+namespace AfterbuySdk\Request;
+
+use AfterbuySdk\Dto\AfterbuyGlobal;
+use AfterbuySdk\Dto\UpdateCatalogs\Catalog;
+use AfterbuySdk\Dto\UpdateCatalogs\Catalogs;
+use AfterbuySdk\Enum\DetailLevelEnum;
+use AfterbuySdk\Enum\EndpointEnum;
+use AfterbuySdk\Enum\RequestMethodEnum;
+use AfterbuySdk\Enum\UpdateActionEnum;
+use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyRequestInterface;
+use AfterbuySdk\Response\UpdateCatalogsResponse;
+use RuntimeException;
+
+final readonly class UpdateCatalogsRequest implements AfterbuyRequestInterface
+{
+    /**
+     * @param Catalog[] $catalogs
+     */
+    public function __construct(
+        private UpdateActionEnum $updateActionEnum,
+        private array $catalogs = [],
+    ) {
+    }
+
+    public function method(): RequestMethodEnum
+    {
+        return RequestMethodEnum::GET;
+    }
+
+    public function payload(AfterbuyGlobal $afterbuyGlobal): string
+    {
+        $catalogs = new Catalogs(
+            $this->updateActionEnum,
+            $this->catalogs
+        );
+
+        if ($catalogs->isValid() === false) {
+            throw new RuntimeException($catalogs->getInvalidMessage());
+        }
+
+        $afterbuyGlobal->setCallName('UpdateCatalogs');
+        $afterbuyGlobal->setDetailLevelEnum(DetailLevelEnum::FIRST);
+
+        $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
+        $xml->addAfterbuyGlobal($afterbuyGlobal);
+        $xml->addUpdateCatalogs($catalogs);
+
+        $string = $xml->asXML();
+        if ($string === false) {
+            throw new RuntimeException('XML could not be generated');
+        }
+
+        return $string;
+    }
+
+    public function responseClass(): string
+    {
+        return UpdateCatalogsResponse::class;
+    }
+
+    public function uri(EndpointEnum $endpointEnum): string
+    {
+        return $endpointEnum->value;
+    }
+
+    public function query(): array
+    {
+        return [];
+    }
+}

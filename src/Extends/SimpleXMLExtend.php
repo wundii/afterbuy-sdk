@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace AfterbuySdk\Extends;
 
 use AfterbuySdk\Dto\AfterbuyGlobal;
+use AfterbuySdk\Dto\UpdateCatalogs\Catalog;
+use AfterbuySdk\Dto\UpdateCatalogs\Catalogs;
 use AfterbuySdk\Enum\CountryIsoEnum;
 use AfterbuySdk\Filter\GetShippingCost\ShippingInfo;
 use AfterbuySdk\Interface\FilterInterface;
@@ -53,7 +55,19 @@ final class SimpleXMLExtend extends SimpleXMLElement
             return;
         }
 
-        $this->addChild($string, $value);
+        if (preg_match('/[<>&]/', $value)) {
+            $child = $this->addChild($string);
+            $node = dom_import_simplexml($child);
+            $domDocument = $node->ownerDocument;
+            if (! $domDocument instanceof DOMDocument) {
+                return;
+            }
+
+            $cdata = $domDocument->createCDATASection($value);
+            $node->appendChild($cdata);
+        } else {
+            $this->addChild($string, $value);
+        }
     }
 
     public function addBool(string $string, ?bool $value): void
@@ -135,5 +149,35 @@ final class SimpleXMLExtend extends SimpleXMLElement
         }
 
         $this->addChild($string, $dateTime->format('d.m.Y H:i:s'));
+    }
+
+    public function addUpdateCatalogs(Catalogs $catalogs): void
+    {
+        $addCatalogs = function (array $catalogs, SimpleXMLElement $catalogsElement) use (&$addCatalogs): void {
+            foreach ($catalogs as $catalog) {
+                /** @var self $catalogElement */
+                /** @var Catalog $catalog */
+                $catalogElement = $catalogsElement->addChild('Catalog');
+                $catalogElement->addNumber('CatalogID', $catalog->getCatalogId());
+                $catalogElement->addString('CatalogName', $catalog->getCatalogName());
+                $catalogElement->addString('CatalogDescription', $catalog->getCatalogDescription());
+                $catalogElement->addString('AdditionalURL', $catalog->getAdditionalUrl());
+                $catalogElement->addNumber('Level', $catalog->getLevel());
+                $catalogElement->addNumber('Position', $catalog->getPosition());
+                $catalogElement->addString('AdditionalText', $catalog->getAdditionalText());
+                $catalogElement->addBool('ShowCatalog', $catalog->getShowCatalog());
+                $catalogElement->addString('Picture', $catalog->getPicture());
+                $catalogElement->addString('MouseOverPicture', $catalog->getMouseOverPicture());
+
+                if ($catalog->getCatalog() !== []) {
+                    $addCatalogs($catalog->getCatalog(), $catalogElement);
+                }
+            }
+        };
+
+        $catalogsElement = $this->addChild('Catalogs');
+        $catalogsElement->addChild('UpdateAction', (string) $catalogs->getUpdateActionEnum()->value);
+
+        $addCatalogs($catalogs->getCatalogs(), $catalogsElement);
     }
 }

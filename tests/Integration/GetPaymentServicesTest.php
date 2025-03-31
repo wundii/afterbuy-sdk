@@ -71,7 +71,7 @@ class GetPaymentServicesTest extends TestCase
         $paymentServices = $response->getResponse();
 
         $this->assertInstanceOf(GetPaymentServicesResponse::class, $response);
-        $this->assertCount(2, $paymentServices->getResult());
-        $this->assertInstanceOf(PaymentService::class, $paymentServices->getResult()[0]);
+        $this->assertCount(2, $paymentServices->getPaymentService());
+        $this->assertInstanceOf(PaymentService::class, $paymentServices->getPaymentService()[0]);
     }
 }
