@@ -17,6 +17,11 @@ final class Catalogs implements AfterbuyDtoInterface
     ) {
     }
 
+    public function serializeToUpdateCatalogs(): array
+    {
+        return array_map(fn (Catalog $catalog) => $catalog->serializeToUpdateCatalog(), $this->catalogs);
+    }
+
     public function getHasMoreCatalogs(): int
     {
         return $this->hasMoreCatalogs;

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AfterbuySdk\Dto\GetShopCatalogs;
 
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use AfterbuySdk\Dto\UpdateCatalogs\Catalog as UpdateCatalog;
 
 final class Catalog implements AfterbuyDtoInterface
 {
@@ -25,6 +26,21 @@ final class Catalog implements AfterbuyDtoInterface
         private ?string $titlePicture = null,
         private array $catalogProducts = [],
     ) {
+    }
+
+    public function serializeToUpdateCatalog(): UpdateCatalog
+    {
+        return new UpdateCatalog(
+            catalogId: $this->catalogId,
+            catalogName: $this->name,
+            catalogDescription: $this->description,
+            level: $this->level,
+            position: $this->position,
+            additionalText: $this->additionalText,
+            showCatalog: $this->show,
+            picture: $this->picture1,
+            mouseOverPicture: $this->picture2,
+        );
     }
 
     public function getAdditionalText(): ?string

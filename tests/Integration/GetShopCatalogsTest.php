@@ -8,6 +8,7 @@ use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Dto\GetShopCatalogs\Catalog;
 use AfterbuySdk\Dto\GetShopCatalogs\Catalogs;
+use AfterbuySdk\Dto\UpdateCatalogs\Catalog as UpdateCatalog;
 use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Filter\GetShopCatalogs\CatalogId;
@@ -107,5 +108,33 @@ class GetShopCatalogsTest extends TestCase
         $this->assertInstanceOf(GetShopCatalogsResponse::class, $response);
         $this->assertCount(2, $catalogs->getCatalogs());
         $this->assertInstanceOf(Catalog::class, $catalogs->getCatalogs()[0]);
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws ReflectionException
+     * @throws RedirectionExceptionInterface
+     * @throws ClientExceptionInterface
+     */
+    public function testShopCatalogsSerializeToUpdateCatalogs(): void
+    {
+        $file = __DIR__ . '/ResponseFiles/GetShopCatalogsSuccess.xml';
+
+        $request = new GetShopCatalogsRequest();
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
+
+        $response = $afterbuy->runRequest($request, $mockResponse);
+
+        /** @var Catalogs $catalogs */
+        $catalogs = $response->getResponse();
+
+        $this->assertInstanceOf(Catalogs::class, $catalogs);
+
+        $updatedCatalogs = $catalogs->serializeToUpdateCatalogs();
+
+        $this->assertCount(2, $updatedCatalogs);
+        $this->assertInstanceOf(UpdateCatalog::class, $updatedCatalogs[0]);
     }
 }
