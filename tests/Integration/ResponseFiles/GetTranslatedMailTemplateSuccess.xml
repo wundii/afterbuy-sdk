@@ -3,6 +3,7 @@
     <CallStatus>Success</CallStatus>
     <CallName>GetTranslatedMailTemplate</CallName>
     <Result>
+        <TranslatedMailSubject><![CDATA[Hallo Test]]></TranslatedMailSubject>
         <TranslatedMailText><![CDATA[ Hallo Herr Meier, ... ]]></TranslatedMailText>
     </Result>
 </Afterbuy>

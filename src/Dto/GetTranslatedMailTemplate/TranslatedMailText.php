@@ -9,8 +9,19 @@ use AfterbuySdk\Interface\AfterbuyDtoInterface;
 final class TranslatedMailText implements AfterbuyDtoInterface
 {
     public function __construct(
+        private string $translatedMailSubject,
         private string $translatedMailText,
     ) {
+    }
+
+    public function getTranslatedMailSubject(): string
+    {
+        return $this->translatedMailSubject;
+    }
+
+    public function setTranslatedMailSubject(string $translatedMailSubject): void
+    {
+        $this->translatedMailSubject = $translatedMailSubject;
     }
 
     public function getTranslatedMailText(): string

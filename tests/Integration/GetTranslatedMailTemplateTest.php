@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
+use AfterbuySdk\Dto\AfterbuyError;
+use AfterbuySdk\Dto\AfterbuyErrorList;
 use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Dto\GetTranslatedMailTemplate\TranslatedMailText;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Filter\GetTranslatedMailTemplate\TemplateId;
 use AfterbuySdk\Filter\GetTranslatedMailTemplate\TemplateName;
 use AfterbuySdk\Request\GetTranslatedMailTemplateRequest;
+use AfterbuySdk\Response\AfterbuyErrorResponse;
 use AfterbuySdk\Response\GetTranslatedMailTemplateResponse;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
@@ -107,5 +110,31 @@ class GetTranslatedMailTemplateTest extends TestCase
 
         $this->assertInstanceOf(GetTranslatedMailTemplateResponse::class, $response);
         $this->assertSame('Hallo Herr Meier, ...', $translatedMailText->getTranslatedMailText());
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws ReflectionException
+     * @throws RedirectionExceptionInterface
+     * @throws ClientExceptionInterface
+     */
+    public function testShippingCostErrorCode27(): void
+    {
+        $file = __DIR__ . '/ResponseFiles/GetTranslatedMailTemplateError37.xml';
+
+        $request = new GetTranslatedMailTemplateRequest(123456);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
+
+        $response = $afterbuy->runRequest($request, $mockResponse);
+
+        /** @var AfterbuyErrorList $afterbuyErrorList */
+        $afterbuyErrorList = $response->getResponse();
+
+        $this->assertInstanceOf(AfterbuyErrorResponse::class, $response);
+        $this->assertCount(1, $afterbuyErrorList->getErrorList());
+        $this->assertInstanceOf(AfterbuyError::class, $afterbuyErrorList->getErrorList()[0]);
+        $this->assertSame(37, $afterbuyErrorList->getErrorList()[0]->getErrorCode());
     }
 }

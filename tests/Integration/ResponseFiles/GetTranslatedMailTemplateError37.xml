@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Afterbuy>
+    <CallStatus>Error</CallStatus>
+    <CallName>GetTranslatedMailTemplate</CallName>
+    <VersionID>8</VersionID>
+    <Result>
+        <ErrorList>
+            <Error>
+                <ErrorCode>37</ErrorCode>
+                <ErrorDescription><![CDATA[Kein Text übergeben.]]></ErrorDescription>
+                <ErrorLongDescription><![CDATA[Es wurde keine Text übergeben.]]></ErrorLongDescription>
+            </Error>
+        </ErrorList>
+    </Result>
+</Afterbuy>
