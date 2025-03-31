@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Dto\GetShopCatalogs;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use AfterbuySdk\Dto\UpdateCatalogs\Catalog as UpdateCatalog;
+use AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class Catalog implements AfterbuyDtoInterface
 {

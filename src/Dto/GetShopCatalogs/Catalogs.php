@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Dto\GetShopCatalogs;
 
+use AfterbuySdk\Dto\UpdateCatalogs\Catalog as UpdateCatalog;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class Catalogs implements AfterbuyDtoInterface
@@ -17,9 +18,12 @@ final class Catalogs implements AfterbuyDtoInterface
     ) {
     }
 
+    /**
+     * @return UpdateCatalog[]
+     */
     public function serializeToUpdateCatalogs(): array
     {
-        return array_map(fn (Catalog $catalog) => $catalog->serializeToUpdateCatalog(), $this->catalogs);
+        return array_map(fn (Catalog $catalog): UpdateCatalog => $catalog->serializeToUpdateCatalog(), $this->catalogs);
     }
 
     public function getHasMoreCatalogs(): int

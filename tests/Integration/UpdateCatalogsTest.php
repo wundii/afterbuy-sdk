@@ -42,7 +42,7 @@ class UpdateCatalogsTest extends TestCase
     {
         $afterbuyGlobal = clone $this->afterbuyGlobal();
 
-        $catalogs = array_map(fn ($i) => new Catalog($i + 1, "Objekt " . ($i + 1)), range(0, 50));
+        $catalogs = array_map(fn ($i) => new Catalog($i + 1, 'Objekt ' . ($i + 1)), range(0, 50));
         $this->assertCount(51, $catalogs);
 
         $request = new UpdateCatalogsRequest(
