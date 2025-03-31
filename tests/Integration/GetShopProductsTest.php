@@ -180,7 +180,7 @@ class GetShopProductsTest extends TestCase
 
         $this->assertInstanceOf(GetShopProductsResponse::class, $response);
         $this->assertCount(1, $products->getProducts());
-        $this->assertSame(true, $products->isHasMoreProducts());
+        $this->assertSame(true, $products->hasMoreProducts());
         $this->assertSame(1010101, $products->getLastProductId());
         $this->assertInstanceOf(Product::class, $products->getProducts()[0]);
     }

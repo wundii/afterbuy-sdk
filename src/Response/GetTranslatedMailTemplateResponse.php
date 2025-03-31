@@ -8,6 +8,7 @@ use AfterbuySdk\Dto\GetTranslatedMailTemplate\TranslatedMailText;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
 use AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Exception;
 
 /**
  * @template-implements AfterbuyResponseInterface<TranslatedMailText>
@@ -17,15 +18,14 @@ final class GetTranslatedMailTemplateResponse implements AfterbuyResponseInterfa
     use AfterbuyResponseTrait;
 
     /**
-     * @return TranslatedMailText
+     * @return ?TranslatedMailText
      */
-    public function getResponse(): AfterbuyDtoInterface
+    public function getResponse(): ?AfterbuyDtoInterface
     {
-        return $this->dataMapper->xml($this->content, TranslatedMailText::class, ['Result']);
-    }
-
-    public function getErrorMessages(): array
-    {
-        return [];
+        try {
+            return $this->dataMapper->xml($this->content, TranslatedMailText::class, ['Result']);
+        } catch (Exception) {
+            return null;
+        }
     }
 }

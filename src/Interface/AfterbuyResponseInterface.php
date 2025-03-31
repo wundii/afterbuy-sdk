@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AfterbuySdk\Interface;
 
 use AfterbuySdk\Dto\AfterbuyError;
+use AfterbuySdk\Dto\AfterbuyWarning;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Wundii\DataMapper\DataMapper;
 
@@ -27,7 +28,12 @@ interface AfterbuyResponseInterface
      */
     public function getErrorMessages(): array;
 
-    public function getResponse(): AfterbuyDtoInterface;
+    /**
+     * @return AfterbuyWarning[]
+     */
+    public function getWarningMessages(): array;
+
+    public function getResponse(): ?AfterbuyDtoInterface;
 
     public function getXmlResponse(): string;
 }

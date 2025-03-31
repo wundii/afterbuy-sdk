@@ -8,6 +8,7 @@ use AfterbuySdk\Dto\GetShippingCost\ShippingService;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
 use AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Exception;
 
 /**
  * @template-implements AfterbuyResponseInterface<ShippingService>
@@ -17,15 +18,14 @@ final class GetShippingCostResponse implements AfterbuyResponseInterface
     use AfterbuyResponseTrait;
 
     /**
-     * @return ShippingService
+     * @return ?ShippingService
      */
-    public function getResponse(): AfterbuyDtoInterface
+    public function getResponse(): ?AfterbuyDtoInterface
     {
-        return $this->dataMapper->xml($this->content, ShippingService::class, ['Result', 'ShippingService']);
-    }
-
-    public function getErrorMessages(): array
-    {
-        return [];
+        try {
+            return $this->dataMapper->xml($this->content, ShippingService::class, ['Result', 'ShippingService']);
+        } catch (Exception) {
+            return null;
+        }
     }
 }

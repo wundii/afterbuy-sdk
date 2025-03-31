@@ -6,14 +6,13 @@ namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyError;
-use AfterbuySdk\Dto\AfterbuyErrorList;
 use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Dto\GetTranslatedMailTemplate\TranslatedMailText;
+use AfterbuySdk\Enum\CallStatusEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Filter\GetTranslatedMailTemplate\TemplateId;
 use AfterbuySdk\Filter\GetTranslatedMailTemplate\TemplateName;
 use AfterbuySdk\Request\GetTranslatedMailTemplateRequest;
-use AfterbuySdk\Response\AfterbuyErrorResponse;
 use AfterbuySdk\Response\GetTranslatedMailTemplateResponse;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
@@ -129,12 +128,15 @@ class GetTranslatedMailTemplateTest extends TestCase
 
         $response = $afterbuy->runRequest($request, $mockResponse);
 
-        /** @var AfterbuyErrorList $afterbuyErrorList */
-        $afterbuyErrorList = $response->getResponse();
+        $this->assertEquals(CallStatusEnum::ERROR, $response->getCallStatus());
+        $this->assertInstanceOf(GetTranslatedMailTemplateResponse::class, $response);
+        $this->assertCount(1, $response->getErrorMessages());
+        $this->assertInstanceOf(AfterbuyError::class, $response->getErrorMessages()[0]);
+        $this->assertSame(37, $response->getErrorMessages()[0]->getErrorCode());
 
-        $this->assertInstanceOf(AfterbuyErrorResponse::class, $response);
-        $this->assertCount(1, $afterbuyErrorList->getErrorList());
-        $this->assertInstanceOf(AfterbuyError::class, $afterbuyErrorList->getErrorList()[0]);
-        $this->assertSame(37, $afterbuyErrorList->getErrorList()[0]->getErrorCode());
+        /** @var TranslatedMailText $translatedMailText */
+        $translatedMailText = $response->getResponse();
+
+        $this->assertNull($translatedMailText);
     }
 }

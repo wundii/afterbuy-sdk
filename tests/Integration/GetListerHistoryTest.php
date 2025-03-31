@@ -6,10 +6,10 @@ namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyError;
-use AfterbuySdk\Dto\AfterbuyErrorList;
 use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Dto\GetListerHistory\ListedItem;
 use AfterbuySdk\Dto\GetListerHistory\ListedItems;
+use AfterbuySdk\Enum\CallStatusEnum;
 use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\PlattformEnum;
@@ -26,7 +26,6 @@ use AfterbuySdk\Filter\GetListerHistory\RangeHistoryId;
 use AfterbuySdk\Filter\GetListerHistory\SiteId;
 use AfterbuySdk\Filter\GetListerHistory\StartDate;
 use AfterbuySdk\Request\GetListerHistoryRequest;
-use AfterbuySdk\Response\AfterbuyErrorResponse;
 use AfterbuySdk\Response\GetListerHistoryResponse;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
@@ -150,12 +149,16 @@ class GetListerHistoryTest extends TestCase
 
         $response = $afterbuy->runRequest($request, $mockResponse);
 
-        /** @var AfterbuyErrorList $afterbuyErrorList */
-        $afterbuyErrorList = $response->getResponse();
+        $this->assertEquals(CallStatusEnum::ERROR, $response->getCallStatus());
+        $this->assertInstanceOf(GetListerHistoryResponse::class, $response);
+        $this->assertCount(1, $response->getErrorMessages());
+        $this->assertInstanceOf(AfterbuyError::class, $response->getErrorMessages()[0]);
+        $this->assertSame(30, $response->getErrorMessages()[0]->getErrorCode());
 
-        $this->assertInstanceOf(AfterbuyErrorResponse::class, $response);
-        $this->assertCount(1, $afterbuyErrorList->getErrorList());
-        $this->assertInstanceOf(AfterbuyError::class, $afterbuyErrorList->getErrorList()[0]);
-        $this->assertSame(30, $afterbuyErrorList->getErrorList()[0]->getErrorCode());
+        /** @var ListedItems $listedItems */
+        $listedItems = $response->getResponse();
+
+        $this->assertInstanceOf(ListedItems::class, $listedItems);
+        $this->assertCount(0, $listedItems->getListedItems());
     }
 }

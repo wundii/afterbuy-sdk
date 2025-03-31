@@ -21,11 +21,6 @@ final class GetMailTemplatesResponse implements AfterbuyResponseInterface
      */
     public function getResponse(): AfterbuyDtoInterface
     {
-        return $this->dataMapper->xml($this->content, MailTemplates::class, ['Result']);
-    }
-
-    public function getErrorMessages(): array
-    {
-        return [];
+        return $this->dataMapper->xml($this->content, MailTemplates::class, ['Result'], true);
     }
 }

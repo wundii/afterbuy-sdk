@@ -21,11 +21,6 @@ final class GetProductDiscountsResponse implements AfterbuyResponseInterface
      */
     public function getResponse(): AfterbuyDtoInterface
     {
-        return $this->dataMapper->xml($this->content, ProductDiscounts::class, ['Result']);
-    }
-
-    public function getErrorMessages(): array
-    {
-        return [];
+        return $this->dataMapper->xml($this->content, ProductDiscounts::class, ['Result'], true);
     }
 }

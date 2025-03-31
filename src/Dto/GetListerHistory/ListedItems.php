@@ -12,19 +12,19 @@ final class ListedItems implements AfterbuyDtoInterface
      * @param ListedItem[] $listedItems
      */
     public function __construct(
-        private int $resultCount,
-        private int $hasMoreProducts,
+        private int $resultCount = 0,
+        private bool $hasMoreProducts = false,
         private array $listedItems = [],
         private ?int $lastHistoryId = null,
     ) {
     }
 
-    public function getHasMoreProducts(): int
+    public function hasMoreProducts(): bool
     {
         return $this->hasMoreProducts;
     }
 
-    public function setHasMoreProducts(int $hasMoreProducts): void
+    public function setHasMoreProducts(bool $hasMoreProducts): void
     {
         $this->hasMoreProducts = $hasMoreProducts;
     }

@@ -7,15 +7,14 @@ namespace AfterbuySdk\Tests\Integration;
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Dto\AfterbuyWarning;
-use AfterbuySdk\Dto\AfterbuyWarningList;
 use AfterbuySdk\Dto\GetStockInfo\Product;
 use AfterbuySdk\Dto\GetStockInfo\Products;
+use AfterbuySdk\Enum\CallStatusEnum;
 use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\ProductFilterEnum;
 use AfterbuySdk\Filter\GetStockInfo\ProductFilter;
 use AfterbuySdk\Request\GetStockInfoRequest;
-use AfterbuySdk\Response\AfterbuyWarningResponse;
 use AfterbuySdk\Response\GetStockInfoResponse;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
@@ -117,12 +116,17 @@ class GetStockInfoTest extends TestCase
 
         $response = $afterbuy->runRequest($request, $mockResponse);
 
-        /** @var AfterbuyWarningList $afterbuyWarningList */
-        $afterbuyWarningList = $response->getResponse();
+        $this->assertEquals(CallStatusEnum::WARNING, $response->getCallStatus());
+        $this->assertInstanceOf(GetStockInfoResponse::class, $response);
+        $this->assertCount(1, $response->getWarningMessages());
+        $this->assertInstanceOf(AfterbuyWarning::class, $response->getWarningMessages()[0]);
+        $this->assertSame(2, $response->getWarningMessages()[0]->getWarningCode());
 
-        $this->assertInstanceOf(AfterbuyWarningResponse::class, $response);
-        $this->assertCount(1, $afterbuyWarningList->getWarningList());
-        $this->assertInstanceOf(AfterbuyWarning::class, $afterbuyWarningList->getWarningList()[0]);
-        $this->assertSame(2, $afterbuyWarningList->getWarningList()[0]->getWarningCode());
+        /** @var Products $products */
+        $products = $response->getResponse();
+
+        $this->assertInstanceOf(GetStockInfoResponse::class, $response);
+        $this->assertCount(1, $products->getProducts());
+        $this->assertInstanceOf(Product::class, $products->getProducts()[0]);
     }
 }

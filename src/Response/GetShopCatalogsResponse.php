@@ -21,11 +21,6 @@ final class GetShopCatalogsResponse implements AfterbuyResponseInterface
      */
     public function getResponse(): AfterbuyDtoInterface
     {
-        return $this->dataMapper->xml($this->content, Catalogs::class, ['Result']);
-    }
-
-    public function getErrorMessages(): array
-    {
-        return [];
+        return $this->dataMapper->xml($this->content, Catalogs::class, ['Result'], true);
     }
 }

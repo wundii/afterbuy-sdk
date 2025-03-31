@@ -9,8 +9,6 @@ use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Extends\DateTime;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
-use AfterbuySdk\Response\AfterbuyErrorResponse;
-use AfterbuySdk\Response\AfterbuyWarningResponse;
 use DateTimeInterface;
 use Psr\Log\LoggerInterface;
 use ReflectionClass;
@@ -86,16 +84,6 @@ final readonly class Afterbuy
                 ]
             );
         }
-
-        $matches = [];
-        preg_match('/<CallStatus>(.*)<\/CallStatus>/s', $response->getContent(false), $matches);
-        $callStatus = $matches[1] ?? null;
-
-        $responseClass = match(strtolower($callStatus)) {
-            'error' => AfterbuyErrorResponse::class,
-            'warning' => AfterbuyWarningResponse::class,
-            default => $responseClass,
-        };
 
         $response = (new ReflectionClass($responseClass))->newInstance($dataMapper, $response);
         if (! $response instanceof AfterbuyResponseInterface) {

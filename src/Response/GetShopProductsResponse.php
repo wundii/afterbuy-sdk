@@ -42,15 +42,10 @@ final class GetShopProductsResponse implements AfterbuyResponseInterface
         $content = (string) preg_replace('/<LastProductID>(.*)<\/LastProductID>/i', '', $content);
 
         /** @var Products $shopProducts */
-        $shopProducts = $this->dataMapper->xml($content, Products::class, ['Result']);
+        $shopProducts = $this->dataMapper->xml($content, Products::class, ['Result'], true);
         $shopProducts->setLastProductId($lastProductId);
         $shopProducts->setPaginationResult($paginationResult);
 
         return $shopProducts;
-    }
-
-    public function getErrorMessages(): array
-    {
-        return [];
     }
 }

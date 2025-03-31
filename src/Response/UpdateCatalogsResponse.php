@@ -28,9 +28,4 @@ final class UpdateCatalogsResponse implements AfterbuyResponseInterface
 
         return $this->dataMapper->xml($this->content, NewCatalogs::class, ['Result']);
     }
-
-    public function getErrorMessages(): array
-    {
-        return [];
-    }
 }

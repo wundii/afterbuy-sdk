@@ -21,11 +21,6 @@ final class GetPaymentServicesResponse implements AfterbuyResponseInterface
      */
     public function getResponse(): AfterbuyDtoInterface
     {
-        return $this->dataMapper->xml($this->content, PaymentServices::class, ['Result']);
-    }
-
-    public function getErrorMessages(): array
-    {
-        return [];
+        return $this->dataMapper->xml($this->content, PaymentServices::class, ['Result'], true);
     }
 }

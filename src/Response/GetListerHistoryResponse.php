@@ -30,14 +30,9 @@ final class GetListerHistoryResponse implements AfterbuyResponseInterface
 
         $content = (string) preg_replace('/<LastHistoryID>(.*)<\/LastHistoryID>/i', '', $content);
 
-        $listedItems = $this->dataMapper->xml($content, ListedItems::class, ['Result']);
+        $listedItems = $this->dataMapper->xml($content, ListedItems::class, ['Result'], true);
         $listedItems->setLastHistoryId($lastHistoryId);
 
         return $listedItems;
-    }
-
-    public function getErrorMessages(): array
-    {
-        return [];
     }
 }

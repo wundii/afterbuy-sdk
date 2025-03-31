@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Trait;
 
+use AfterbuySdk\Dto\AfterbuyError;
+use AfterbuySdk\Dto\AfterbuyErrorList;
+use AfterbuySdk\Dto\AfterbuyWarning;
+use AfterbuySdk\Dto\AfterbuyWarningList;
+use AfterbuySdk\Enum\CallStatusEnum;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -15,6 +20,12 @@ trait AfterbuyResponseTrait
 {
     protected string $content;
 
+    protected ?AfterbuyErrorList $afterbuyErrorList = null;
+
+    protected ?AfterbuyWarningList $afterbuyWarningList = null;
+
+    protected CallStatusEnum $callStatus;
+
     /**
      * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
@@ -25,7 +36,29 @@ trait AfterbuyResponseTrait
         protected DataMapper $dataMapper,
         protected ResponseInterface $response
     ) {
-        $this->content = $this->response->getContent(false);
+        $content = $this->response->getContent(false);
+        $this->content = $content;
+
+        $matches = [];
+        preg_match('/<CallStatus>(.*)<\/CallStatus>/s', $content, $matches);
+        $callStatus = $matches[1] ?? null;
+
+        $this->callStatus = match ($callStatus) {
+            'Success' => CallStatusEnum::SUCCESS,
+            'Warning' => CallStatusEnum::WARNING,
+            'Error' => CallStatusEnum::ERROR,
+            default => CallStatusEnum::UNKNOWN,
+        };
+
+        if ($this->callStatus === CallStatusEnum::ERROR) {
+            /** @phpstan-ignore-next-line */
+            $this->afterbuyErrorList = $this->dataMapper->xml($content, AfterbuyErrorList::class, ['Result'], true);
+        }
+
+        if ($this->callStatus === CallStatusEnum::WARNING) {
+            /** @phpstan-ignore-next-line */
+            $this->afterbuyWarningList = $this->dataMapper->xml($content, AfterbuyWarningList::class, ['Result'], true);
+        }
     }
 
     /**
@@ -36,6 +69,11 @@ trait AfterbuyResponseTrait
         return $this->response->getStatusCode();
     }
 
+    public function getCallStatus(): CallStatusEnum
+    {
+        return $this->callStatus;
+    }
+
     public function getInfo(): mixed
     {
         return $this->response->getInfo();
@@ -44,5 +82,29 @@ trait AfterbuyResponseTrait
     public function getXmlResponse(): string
     {
         return $this->content;
+    }
+
+    /**
+     * @return AfterbuyError[]
+     */
+    public function getErrorMessages(): array
+    {
+        if (! $this->afterbuyErrorList instanceof AfterbuyErrorList) {
+            return [];
+        }
+
+        return $this->afterbuyErrorList->getErrorList();
+    }
+
+    /**
+     * @return AfterbuyWarning[]
+     */
+    public function getWarningMessages(): array
+    {
+        if (! $this->afterbuyWarningList instanceof AfterbuyWarningList) {
+            return [];
+        }
+
+        return $this->afterbuyWarningList->getWarningList();
     }
 }

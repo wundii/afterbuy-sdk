@@ -13,8 +13,8 @@ final class Catalogs implements AfterbuyDtoInterface
      * @param Catalog[] $catalogs
      */
     public function __construct(
-        private int $hasMoreCatalogs,
-        private array $catalogs,
+        private bool $hasMoreCatalogs = false,
+        private array $catalogs = [],
     ) {
     }
 
@@ -26,12 +26,12 @@ final class Catalogs implements AfterbuyDtoInterface
         return array_map(fn (Catalog $catalog): UpdateCatalog => $catalog->serializeToUpdateCatalog(), $this->catalogs);
     }
 
-    public function getHasMoreCatalogs(): int
+    public function hasMoreCatalogs(): bool
     {
         return $this->hasMoreCatalogs;
     }
 
-    public function setHasMoreCatalogs(int $hasMoreCatalogs): void
+    public function setHasMoreCatalogs(bool $hasMoreCatalogs): void
     {
         $this->hasMoreCatalogs = $hasMoreCatalogs;
     }

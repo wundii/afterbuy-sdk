@@ -12,14 +12,14 @@ final class Products implements AfterbuyDtoInterface
      * @param Product[] $products
      */
     public function __construct(
-        private bool $hasMoreProducts,
-        private ?int $lastProductId,
-        private array $products,
+        private bool $hasMoreProducts = false,
+        private ?int $lastProductId = null,
+        private array $products = [],
         private ?PaginationResult $paginationResult = null,
     ) {
     }
 
-    public function isHasMoreProducts(): bool
+    public function hasMoreProducts(): bool
     {
         return $this->hasMoreProducts;
     }
