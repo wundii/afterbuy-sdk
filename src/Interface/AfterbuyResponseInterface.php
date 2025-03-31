@@ -6,6 +6,7 @@ namespace AfterbuySdk\Interface;
 
 use AfterbuySdk\Dto\AfterbuyError;
 use AfterbuySdk\Dto\AfterbuyWarning;
+use AfterbuySdk\Enum\CallStatusEnum;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Wundii\DataMapper\DataMapper;
 
@@ -20,6 +21,8 @@ interface AfterbuyResponseInterface
     public function __construct(DataMapper $dataMapper, ResponseInterface $response);
 
     public function getStatusCode(): int;
+
+    public function getCallStatus(): CallStatusEnum;
 
     public function getInfo(): mixed;
 

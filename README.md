@@ -34,7 +34,10 @@ $afterbuy = new Afterbuy(
 $response = $afterbuy->runRequest($request);
 
 $response->getStatusCode();
+$response->getCallStatus();
 $response->getInfo();
 $response->getResponse();
+$response->getXmlResponse()
 $response->getErrorMessages();
+$response->getWarningMessages();
 ```
