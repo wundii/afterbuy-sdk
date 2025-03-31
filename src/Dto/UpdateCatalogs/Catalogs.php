@@ -49,26 +49,43 @@ final class Catalogs implements AfterbuyDtoInterface
 
     public function isValid(): bool
     {
-        $deepCatalog = function (?Catalog $catalog, int $deepCount) use (&$deepCatalog): void {
-            ++$deepCount;
-
-            if ($deepCount >= 50) {
-                throw new Exception('Catalogs can not be nested more than 50 levels deep');
-            }
-
+        $deepCatalog = function (?Catalog $catalog) use (&$deepCatalog, &$catalogCount): void {
             if (! $catalog instanceof Catalog) {
                 return;
             }
 
+            ++$catalogCount;
+            if ($catalogCount > 50) {
+                throw new Exception('Catalogs can not contain more than 50 catalogs');
+            }
+
+            if (
+                $this->updateActionEnum === UpdateActionEnum::CREATE
+                && $catalog->getCatalogName() === null
+            ) {
+                throw new Exception('Catalog name cannot be null, when creating a catalog');
+            }
+
+            if (
+                $this->updateActionEnum !== UpdateActionEnum::CREATE
+                && $catalog->getCatalogId() === null
+            ) {
+                throw new Exception('Catalog id cannot be null, when updating or delete a catalog');
+            }
+
+            if ($catalog->getCatalogDescription() !== null && strlen($catalog->getCatalogDescription()) > 255) {
+                throw new Exception('Catalog description cannot be longer than 255 characters');
+            }
+
             foreach ($catalog->getCatalog() as $subCatalog) {
-                $deepCatalog($subCatalog, $deepCount);
+                $deepCatalog($subCatalog);
             }
         };
 
         try {
-            $deepCount = 0;
+            $catalogCount = 0;
             foreach ($this->catalogs as $catalog) {
-                $deepCatalog($catalog, $deepCount);
+                $deepCatalog($catalog);
             }
         } catch (Exception $exception) {
             $this->invalidMessage = $exception->getMessage();

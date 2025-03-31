@@ -14,7 +14,7 @@ final class ListedItems implements AfterbuyDtoInterface
     public function __construct(
         private int $resultCount,
         private int $hasMoreProducts,
-        private array $listedItems,
+        private array $listedItems = [],
         private ?int $lastHistoryId = null,
     ) {
     }

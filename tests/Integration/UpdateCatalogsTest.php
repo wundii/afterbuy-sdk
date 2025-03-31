@@ -31,6 +31,102 @@ class UpdateCatalogsTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
+    public function testValidateEmptyCatalogRequirements(): void
+    {
+        $this->expectExceptionMessage('CatalogId or CatalogName must be set');
+
+        new Catalog();
+    }
+
+    public function testValidateMaxCatalogs(): void
+    {
+        $afterbuyGlobal = clone $this->afterbuyGlobal();
+
+        $catalogs = array_map(fn($i) => new Catalog($i + 1, "Objekt " . ($i + 1)), range(0, 50));
+        $this->assertCount(51, $catalogs);
+
+        $request = new UpdateCatalogsRequest(
+            UpdateActionEnum::CREATE,
+            $catalogs,
+        );
+
+        $this->expectExceptionMessage('Catalogs can not contain more than 50 catalogs');
+        $request->payload($afterbuyGlobal);
+    }
+
+    public function testValidateUpdateActionEnumCreateRequirements(): void
+    {
+        $afterbuyGlobal = clone $this->afterbuyGlobal();
+
+        $request = new UpdateCatalogsRequest(
+            UpdateActionEnum::CREATE,
+            [
+                new Catalog(catalogId: 1),
+            ]
+        );
+
+        $this->expectExceptionMessage('Catalog name cannot be null, when creating a catalog');
+        $request->payload($afterbuyGlobal);
+    }
+
+    public function testValidateUpdateActionEnumRefreshRequirements(): void
+    {
+        $afterbuyGlobal = clone $this->afterbuyGlobal();
+
+        $request = new UpdateCatalogsRequest(
+            UpdateActionEnum::REFRESH,
+            [
+                new Catalog(catalogName: 'Test'),
+            ]
+        );
+
+        $this->expectExceptionMessage('Catalog id cannot be null, when updating or delete a catalog');
+        $request->payload($afterbuyGlobal);
+    }
+
+    public function testValidateUpdateActionEnumDeleteRequirements(): void
+    {
+        $afterbuyGlobal = clone $this->afterbuyGlobal();
+
+        $request = new UpdateCatalogsRequest(
+            UpdateActionEnum::DELETE,
+            [
+                new Catalog(catalogName: 'Test'),
+            ]
+        );
+
+        $this->expectExceptionMessage('Catalog id cannot be null, when updating or delete a catalog');
+        $request->payload($afterbuyGlobal);
+    }
+
+    public function testValidateCatalogDescription(): void
+    {
+        $afterbuyGlobal = clone $this->afterbuyGlobal();
+        $loremIpsum255 = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata';
+        $loremIpsum260 = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanc';
+
+        $request = new UpdateCatalogsRequest(
+            UpdateActionEnum::REFRESH,
+            [
+                new Catalog(catalogId: 1, catalogDescription: $loremIpsum255),
+            ]
+        );
+
+        $this->assertTrue(true, 'No exception should be thrown');
+
+        $request->payload($afterbuyGlobal);
+
+        $request = new UpdateCatalogsRequest(
+            UpdateActionEnum::REFRESH,
+            [
+                new Catalog(catalogId: 1, catalogDescription: $loremIpsum260),
+            ]
+        );
+
+        $this->expectExceptionMessage('Catalog description cannot be longer than 255 characters');
+        $request->payload($afterbuyGlobal);
+    }
+
     public function testUpdateCatalogsRequestCreate(): void
     {
         $file = __DIR__ . '/RequestFiles/UpdateCatalogsCreate.xml';

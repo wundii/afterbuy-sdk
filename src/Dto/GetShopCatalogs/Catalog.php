@@ -14,10 +14,10 @@ final class Catalog implements AfterbuyDtoInterface
     public function __construct(
         private int $catalogId,
         private string $name,
-        private string $description,
-        private int $parnetId,
         private int $level,
         private int $position,
+        private ?string $description = null,
+        private ?int $parnetId = null,
         private ?string $additionalText = null,
         private bool $show = false,
         private ?string $picture1 = null,
@@ -47,12 +47,12 @@ final class Catalog implements AfterbuyDtoInterface
         $this->catalogId = $catalogId;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -77,12 +77,12 @@ final class Catalog implements AfterbuyDtoInterface
         $this->name = $name;
     }
 
-    public function getParnetId(): int
+    public function getParnetId(): ?int
     {
         return $this->parnetId;
     }
 
-    public function setParnetId(int $parnetId): void
+    public function setParnetId(?int $parnetId): void
     {
         $this->parnetId = $parnetId;
     }
