@@ -3,7 +3,15 @@
 [![PHP-Tests](https://github.com/wundii/afterbuy-sdk/actions/workflows/code_quality.yml/badge.svg)](https://github.com/wundii/afterbuy-sdk/actions/workflows/code_quality.yml)
 [![PHPStan](https://img.shields.io/badge/PHPStan-level%209-brightgreen.svg?style=flat)](https://phpstan.org/)
 
-Afterbuy Programming Interface Software Development Kit
+This is a modern Afterbuy Programming Interface Software Development Kit.
+
+## Requirements
+- PHP 8.2 or higher
+- ext-dom
+- ext-json
+- ext-reflection
+- ext-simplexml
+- ext-xml
 
 ## Installation
 Require the bundle and its dependencies with composer:
