@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AfterbuySdk;
 
 use AfterbuySdk\Dto\AfterbuyGlobal;
+use AfterbuySdk\Enum\CallStatusEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Extends\DateTime;
 use AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
@@ -86,28 +87,28 @@ final readonly class Afterbuy
         }
 
         if ($this->logger instanceof LoggerInterface) {
-            $errorMessages = $response->getErrorMessages();
-            $warningMessages = $response->getWarningMessages();
+            $callStatusEnum = $response->getCallStatus();
             $loggerMessage = sprintf('Afterbuy SDK %s', $afterbuyRequest::class);
-            $loggerContext = [
-                'uri' => $uri,
-                'method' => $method,
-                'payload' => $payload,
-                'query' => $query,
-            ];
+            $loggerMessages = match ($callStatusEnum) {
+                CallStatusEnum::ERROR => $response->getErrorMessages(),
+                CallStatusEnum::WARNING => $response->getWarningMessages(),
+                default => [],
+            };
 
-            if ($errorMessages !== []) {
-                $this->logger->error($loggerMessage, [
-                    ...$loggerContext,
-                    'response' => $this->getAfterbuyDtoLoggerArray($errorMessages),
-                ]);
-            }
+            if ($loggerMessages !== []) {
+                $loggerContext = [
+                    'uri' => $uri,
+                    'method' => $method,
+                    'payload' => $payload,
+                    'query' => $query,
+                    'response' => $this->getAfterbuyDtoLoggerArray($loggerMessages),
+                ];
 
-            if ($warningMessages !== []) {
-                $this->logger->warning($loggerMessage, [
-                    ...$loggerContext,
-                    'response' => $this->getAfterbuyDtoLoggerArray($warningMessages),
-                ]);
+                $this->logger->log(
+                    $callStatusEnum->getPsr3Level(),
+                    $loggerMessage,
+                    $loggerContext,
+                );
             }
         }
 

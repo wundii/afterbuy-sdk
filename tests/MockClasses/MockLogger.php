@@ -19,7 +19,12 @@ final class MockLogger extends AbstractLogger
         ];
     }
 
-    public function getLogger(string $level): array
+    public function getLogger(): array
+    {
+        return $this->logger;
+    }
+
+    public function getLoggerByLevel(string $level): array
     {
         return $this->logger[$level] ?? [];
     }
