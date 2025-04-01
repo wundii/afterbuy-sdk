@@ -39,6 +39,7 @@ $request = new GetAfterbuyTimeRequest();
 $afterbuy = new Afterbuy(
     $afterbuyGlobal,
     EndpointEnum::SANDBOX,
+    Optional_PsrLoggerInterface::class,
 );
 $response = $afterbuy->runRequest($request);
 
