@@ -20,7 +20,7 @@ final class PaymentInfo implements AfterbuyDtoInterface
         private ?PaymentFunctionEnum $paymentFunctionEnum = null,
         private ?string $paymentTransactionId = null,
         private ?string $paymentStatus = null,
-        private ?string $paymentDate = null,
+        private ?DateTimeInterface $paymentDate = null,
         private ?float $alreadyPaid = null,
         private ?float $fullAmount = null,
         private ?DateTimeInterface $invoiceDate = null,
@@ -81,12 +81,12 @@ final class PaymentInfo implements AfterbuyDtoInterface
         $this->paymentData = $paymentData;
     }
 
-    public function getPaymentDate(): ?string
+    public function getPaymentDate(): ?DateTimeInterface
     {
         return $this->paymentDate;
     }
 
-    public function setPaymentDate(?string $paymentDate): void
+    public function setPaymentDate(?DateTimeInterface $paymentDate): void
     {
         $this->paymentDate = $paymentDate;
     }

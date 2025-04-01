@@ -14,10 +14,10 @@ final class Order implements AfterbuyDtoInterface
         private int $orderId,
         private int $anr,
         private DateTimeInterface $orderDate,
-        private PaymentInfo $paymentInfo,
-        private BuyerInfo $buyerInfo,
-        private SoldItems $soldItems,
-        private ShippingInfo $shippingInfo,
+        private ?PaymentInfo $paymentInfo = null,
+        private ?BuyerInfo $buyerInfo = null,
+        private ?SoldItems $soldItems = null,
+        private ?ShippingInfo $shippingInfo = null,
         private ?DateTimeInterface $feedbackDate = null,
         private ?int $alternativeItemNumber1 = null,
         private ?string $ebayAccount = null,
@@ -72,7 +72,7 @@ final class Order implements AfterbuyDtoInterface
         $this->anr = $anr;
     }
 
-    public function getBuyerInfo(): BuyerInfo
+    public function getBuyerInfo(): ?BuyerInfo
     {
         return $this->buyerInfo;
     }
@@ -172,7 +172,7 @@ final class Order implements AfterbuyDtoInterface
         $this->orderIDAlt = $orderIDAlt;
     }
 
-    public function getPaymentInfo(): PaymentInfo
+    public function getPaymentInfo(): ?PaymentInfo
     {
         return $this->paymentInfo;
     }
@@ -182,7 +182,7 @@ final class Order implements AfterbuyDtoInterface
         $this->paymentInfo = $paymentInfo;
     }
 
-    public function getShippingInfo(): ShippingInfo
+    public function getShippingInfo(): ?ShippingInfo
     {
         return $this->shippingInfo;
     }
@@ -192,7 +192,7 @@ final class Order implements AfterbuyDtoInterface
         $this->shippingInfo = $shippingInfo;
     }
 
-    public function getSoldItems(): SoldItems
+    public function getSoldItems(): ?SoldItems
     {
         return $this->soldItems;
     }
