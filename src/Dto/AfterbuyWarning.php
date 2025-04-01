@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace AfterbuySdk\Dto;
 
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
 
-final class AfterbuyWarning implements AfterbuyDtoInterface
+final class AfterbuyWarning implements AfterbuyDtoInterface, AfterbuyDtoLoggerInterface
 {
     public function __construct(
         private int $warningCode,
@@ -14,6 +15,11 @@ final class AfterbuyWarning implements AfterbuyDtoInterface
         private string $warningLongDescription,
         private ?int $productId = null,
     ) {
+    }
+
+    public function getMessage(): string
+    {
+        return sprintf('Code %s: %s', $this->warningCode, $this->warningDescription);
     }
 
     public function getProductId(): ?int

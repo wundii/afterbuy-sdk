@@ -5,14 +5,20 @@ declare(strict_types=1);
 namespace AfterbuySdk\Dto;
 
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
 
-final class AfterbuyError implements AfterbuyDtoInterface
+final class AfterbuyError implements AfterbuyDtoInterface, AfterbuyDtoLoggerInterface
 {
     public function __construct(
         private int $errorCode,
         private string $errorDescription,
         private string $errorLongDescription,
     ) {
+    }
+
+    public function getMessage(): string
+    {
+        return sprintf('Code %s: %s', $this->errorCode, $this->errorDescription);
     }
 
     public function getErrorCode(): int

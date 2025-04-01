@@ -27,7 +27,7 @@ final readonly class UpdateSoldItemsRequest implements AfterbuyRequestInterface
 
     public function method(): RequestMethodEnum
     {
-        return RequestMethodEnum::GET;
+        return RequestMethodEnum::POST;
     }
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string

@@ -7,6 +7,7 @@ namespace AfterbuySdk;
 use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Extends\DateTime;
+use AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
 use DateTimeInterface;
@@ -15,9 +16,6 @@ use ReflectionClass;
 use ReflectionException;
 use RuntimeException;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Wundii\DataMapper\DataConfig;
@@ -38,10 +36,7 @@ final readonly class Afterbuy
 
     /**
      * @return AfterbuyResponseInterface<T>
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
      * @throws TransportExceptionInterface
-     * @throws ServerExceptionInterface
      * @throws ReflectionException
      */
     public function runRequest(AfterbuyRequestInterface $afterbuyRequest, ?ResponseInterface $response = null): AfterbuyResponseInterface
@@ -67,7 +62,7 @@ final readonly class Afterbuy
             $uri = substr($uri, 0, -1);
         }
 
-        /** $response ist immer null, lediglich bei bei den Unittest wird diese Variable befüllt */
+        /** $response is always null, this variable is only filled in for the unit test */
         if (! $response instanceof ResponseInterface) {
             $response = HttpClient::create()->request(
                 $method,
@@ -90,17 +85,41 @@ final readonly class Afterbuy
             throw new RuntimeException('Response class does not implement AfterbuyResponseInterface');
         }
 
-        $errorMessages = $response->getErrorMessages();
-        if ($errorMessages !== [] && $this->logger instanceof LoggerInterface) {
-            $this->logger->error(sprintf('Afterbuy SDK %s', $afterbuyRequest::class), [
+        if ($this->logger instanceof LoggerInterface) {
+            $errorMessages = $response->getErrorMessages();
+            $warningMessages = $response->getWarningMessages();
+            $loggerMessage = sprintf('Afterbuy SDK %s', $afterbuyRequest::class);
+            $loggerContext = [
                 'uri' => $uri,
                 'method' => $method,
                 'payload' => $payload,
                 'query' => $query,
-                'response' => $errorMessages,
-            ]);
+            ];
+
+            if ($errorMessages !== []) {
+                $this->logger->error($loggerMessage, [
+                    ...$loggerContext,
+                    'response' => $this->getAfterbuyDtoLoggerArray($errorMessages),
+                ]);
+            }
+
+            if ($warningMessages !== []) {
+                $this->logger->warning($loggerMessage, [
+                    ...$loggerContext,
+                    'response' => $this->getAfterbuyDtoLoggerArray($warningMessages),
+                ]);
+            }
         }
 
         return $response;
+    }
+
+    /**
+     * @param AfterbuyDtoLoggerInterface[] $afterbuyDtoLogger
+     * @return string[]
+     */
+    public function getAfterbuyDtoLoggerArray(array $afterbuyDtoLogger): array
+    {
+        return array_map(fn (AfterbuyDtoLoggerInterface $afterbuyDtoLogger): string => $afterbuyDtoLogger->getMessage(), $afterbuyDtoLogger);
     }
 }
