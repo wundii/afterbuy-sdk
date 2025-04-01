@@ -20,7 +20,7 @@ final class GetAfterbuyTimeResponse implements AfterbuyResponseInterface
     /**
      * @return ?AfterbuyTime
      */
-    public function getResponse(): ?AfterbuyDtoInterface
+    public function getResult(): ?AfterbuyDtoInterface
     {
         try {
             return $this->dataMapper->xml($this->content, AfterbuyTime::class, ['Result']);

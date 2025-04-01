@@ -60,7 +60,7 @@ class GetProductDiscountsTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var ProductDiscounts $productDiscounts */
-        $productDiscounts = $response->getResponse();
+        $productDiscounts = $response->getResult();
 
         $this->assertInstanceOf(GetProductDiscountsResponse::class, $response);
         $this->assertCount(1, $productDiscounts->getProductDiscounts());

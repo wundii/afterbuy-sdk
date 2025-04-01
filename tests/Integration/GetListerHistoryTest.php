@@ -124,7 +124,7 @@ class GetListerHistoryTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var ListedItems $listedItems */
-        $listedItems = $response->getResponse();
+        $listedItems = $response->getResult();
 
         $this->assertInstanceOf(GetListerHistoryResponse::class, $response);
         $this->assertCount(3, $listedItems->getListedItems());
@@ -156,7 +156,7 @@ class GetListerHistoryTest extends TestCase
         $this->assertSame(30, $response->getErrorMessages()[0]->getErrorCode());
 
         /** @var ListedItems $listedItems */
-        $listedItems = $response->getResponse();
+        $listedItems = $response->getResult();
 
         $this->assertInstanceOf(ListedItems::class, $listedItems);
         $this->assertCount(0, $listedItems->getListedItems());

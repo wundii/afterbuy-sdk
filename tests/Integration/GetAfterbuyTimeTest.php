@@ -43,7 +43,7 @@ class GetAfterbuyTimeTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var AfterbuyTime $afterbuyTime */
-        $afterbuyTime = $response->getResponse();
+        $afterbuyTime = $response->getResult();
 
         $this->assertInstanceOf(GetAfterbuyTimeResponse::class, $response);
         $this->assertEquals('2024-07-20 11:50:06', $afterbuyTime->getAfterbuyTimeStamp()->format('Y-m-d H:i:s'));

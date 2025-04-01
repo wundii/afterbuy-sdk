@@ -19,7 +19,7 @@ final class GetListerHistoryResponse implements AfterbuyResponseInterface
     /**
      * @return ListedItems
      */
-    public function getResponse(): AfterbuyDtoInterface
+    public function getResult(): AfterbuyDtoInterface
     {
         $content = $this->content;
         $matches = [];

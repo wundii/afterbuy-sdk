@@ -63,7 +63,7 @@ class GetShippingServicesTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var ShippingServices $shippingServices */
-        $shippingServices = $response->getResponse();
+        $shippingServices = $response->getResult();
 
         $this->assertInstanceOf(GetShippingServicesResponse::class, $response);
         $this->assertCount(1, $shippingServices->getShippingServices());

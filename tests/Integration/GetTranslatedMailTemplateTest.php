@@ -105,7 +105,7 @@ class GetTranslatedMailTemplateTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var TranslatedMailText $translatedMailText */
-        $translatedMailText = $response->getResponse();
+        $translatedMailText = $response->getResult();
 
         $this->assertInstanceOf(GetTranslatedMailTemplateResponse::class, $response);
         $this->assertSame('Hallo Herr Meier, ...', $translatedMailText->getTranslatedMailText());
@@ -135,7 +135,7 @@ class GetTranslatedMailTemplateTest extends TestCase
         $this->assertSame(37, $response->getErrorMessages()[0]->getErrorCode());
 
         /** @var TranslatedMailText $translatedMailText */
-        $translatedMailText = $response->getResponse();
+        $translatedMailText = $response->getResult();
 
         $this->assertNull($translatedMailText);
     }

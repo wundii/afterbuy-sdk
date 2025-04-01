@@ -14,6 +14,7 @@ Require the bundle and its dependencies with composer:
 [Afterbuy XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
 
 ## Usage
+
 ```php
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
@@ -36,7 +37,7 @@ $response = $afterbuy->runRequest($request);
 $response->getStatusCode();
 $response->getCallStatus();
 $response->getInfo();
-$response->getResponse();
+$response->getResult();
 $response->getXmlResponse()
 $response->getErrorMessages();
 $response->getWarningMessages();

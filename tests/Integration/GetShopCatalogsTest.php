@@ -103,7 +103,7 @@ class GetShopCatalogsTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var Catalogs $catalogs */
-        $catalogs = $response->getResponse();
+        $catalogs = $response->getResult();
 
         $this->assertInstanceOf(GetShopCatalogsResponse::class, $response);
         $this->assertCount(2, $catalogs->getCatalogs());
@@ -128,7 +128,7 @@ class GetShopCatalogsTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var Catalogs $catalogs */
-        $catalogs = $response->getResponse();
+        $catalogs = $response->getResult();
 
         $this->assertInstanceOf(Catalogs::class, $catalogs);
 

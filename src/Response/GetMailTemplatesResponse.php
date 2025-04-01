@@ -19,7 +19,7 @@ final class GetMailTemplatesResponse implements AfterbuyResponseInterface
     /**
      * @return MailTemplates
      */
-    public function getResponse(): AfterbuyDtoInterface
+    public function getResult(): AfterbuyDtoInterface
     {
         return $this->dataMapper->xml($this->content, MailTemplates::class, ['Result'], true);
     }

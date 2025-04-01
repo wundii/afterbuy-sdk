@@ -19,7 +19,7 @@ final class GetShippingServicesResponse implements AfterbuyResponseInterface
     /**
      * @return ShippingServices
      */
-    public function getResponse(): AfterbuyDtoInterface
+    public function getResult(): AfterbuyDtoInterface
     {
         return $this->dataMapper->xml($this->content, ShippingServices::class, ['Result'], true);
     }

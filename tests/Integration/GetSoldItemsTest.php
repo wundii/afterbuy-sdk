@@ -184,7 +184,7 @@ class GetSoldItemsTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var Orders $orders */
-        $orders = $response->getResponse();
+        $orders = $response->getResult();
 
         $this->assertInstanceOf(GetSoldItemsResponse::class, $response);
         $this->assertCount(1, $orders->getOrders());

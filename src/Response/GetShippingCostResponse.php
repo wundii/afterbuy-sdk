@@ -20,7 +20,7 @@ final class GetShippingCostResponse implements AfterbuyResponseInterface
     /**
      * @return ?ShippingService
      */
-    public function getResponse(): ?AfterbuyDtoInterface
+    public function getResult(): ?AfterbuyDtoInterface
     {
         try {
             return $this->dataMapper->xml($this->content, ShippingService::class, ['Result', 'ShippingService']);

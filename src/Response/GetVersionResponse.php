@@ -20,7 +20,7 @@ final class GetVersionResponse implements AfterbuyResponseInterface
     /**
      * @return ?Versions
      */
-    public function getResponse(): ?AfterbuyDtoInterface
+    public function getResult(): ?AfterbuyDtoInterface
     {
         try {
             return $this->dataMapper->xml($this->content, Versions::class, ['Result']);

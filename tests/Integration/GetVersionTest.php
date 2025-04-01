@@ -44,7 +44,7 @@ class GetVersionTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var Versions $versions */
-        $versions = $response->getResponse();
+        $versions = $response->getResult();
 
         $this->assertInstanceOf(GetVersionResponse::class, $response);
         $this->assertCount(1, $versions->getVersions());

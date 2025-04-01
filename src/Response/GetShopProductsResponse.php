@@ -20,7 +20,7 @@ final class GetShopProductsResponse implements AfterbuyResponseInterface
     /**
      * @return Products
      */
-    public function getResponse(): AfterbuyDtoInterface
+    public function getResult(): AfterbuyDtoInterface
     {
         $content = $this->content;
 

@@ -19,7 +19,7 @@ final class GetUserDefinedFlagsResponse implements AfterbuyResponseInterface
     /**
      * @return UserDefinedFlags
      */
-    public function getResponse(): AfterbuyDtoInterface
+    public function getResult(): AfterbuyDtoInterface
     {
         return $this->dataMapper->xml($this->content, UserDefinedFlags::class, ['Result'], true);
     }

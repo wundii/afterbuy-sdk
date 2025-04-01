@@ -68,7 +68,7 @@ class GetPaymentServicesTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var PaymentServices $paymentServices */
-        $paymentServices = $response->getResponse();
+        $paymentServices = $response->getResult();
 
         $this->assertInstanceOf(GetPaymentServicesResponse::class, $response);
         $this->assertCount(2, $paymentServices->getPaymentService());

@@ -92,7 +92,7 @@ class GetStockInfoTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var Products $products */
-        $products = $response->getResponse();
+        $products = $response->getResult();
 
         $this->assertInstanceOf(GetStockInfoResponse::class, $response);
         $this->assertCount(2, $products->getProducts());
@@ -123,7 +123,7 @@ class GetStockInfoTest extends TestCase
         $this->assertSame(2, $response->getWarningMessages()[0]->getWarningCode());
 
         /** @var Products $products */
-        $products = $response->getResponse();
+        $products = $response->getResult();
 
         $this->assertInstanceOf(GetStockInfoResponse::class, $response);
         $this->assertCount(1, $products->getProducts());

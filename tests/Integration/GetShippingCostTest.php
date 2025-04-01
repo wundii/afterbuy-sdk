@@ -100,7 +100,7 @@ class GetShippingCostTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var ShippingService $shippingService */
-        $shippingService = $response->getResponse();
+        $shippingService = $response->getResult();
 
         $this->assertInstanceOf(GetShippingCostResponse::class, $response);
         $this->assertInstanceOf(ShippingService::class, $shippingService);
@@ -136,7 +136,7 @@ class GetShippingCostTest extends TestCase
         $this->assertSame(27, $response->getErrorMessages()[0]->getErrorCode());
 
         /** @var ShippingService $shippingService */
-        $shippingService = $response->getResponse();
+        $shippingService = $response->getResult();
 
         $this->assertNull($shippingService);
     }

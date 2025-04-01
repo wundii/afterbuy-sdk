@@ -44,7 +44,7 @@ class GetUserDefinedFlagsTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var UserDefinedFlags $userDefinedFlags */
-        $userDefinedFlags = $response->getResponse();
+        $userDefinedFlags = $response->getResult();
 
         $this->assertInstanceOf(GetUserDefinedFlagsResponse::class, $response);
         $this->assertCount(6, $userDefinedFlags->getUserDefinedFlags());

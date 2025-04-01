@@ -19,7 +19,7 @@ final class GetShopCatalogsResponse implements AfterbuyResponseInterface
     /**
      * @return Catalogs
      */
-    public function getResponse(): AfterbuyDtoInterface
+    public function getResult(): AfterbuyDtoInterface
     {
         return $this->dataMapper->xml($this->content, Catalogs::class, ['Result'], true);
     }

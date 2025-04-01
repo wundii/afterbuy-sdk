@@ -20,7 +20,7 @@ final class GetTranslatedMailTemplateResponse implements AfterbuyResponseInterfa
     /**
      * @return ?TranslatedMailText
      */
-    public function getResponse(): ?AfterbuyDtoInterface
+    public function getResult(): ?AfterbuyDtoInterface
     {
         try {
             return $this->dataMapper->xml($this->content, TranslatedMailText::class, ['Result']);

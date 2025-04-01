@@ -176,7 +176,7 @@ class GetShopProductsTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var Products $products */
-        $products = $response->getResponse();
+        $products = $response->getResult();
 
         $this->assertInstanceOf(GetShopProductsResponse::class, $response);
         $this->assertCount(1, $products->getProducts());

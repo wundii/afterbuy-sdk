@@ -15,7 +15,7 @@ final class UpdateSoldItemsResponse implements AfterbuyResponseInterface
 {
     use AfterbuyResponseTrait;
 
-    public function getResponse(): null
+    public function getResult(): null
     {
         return null;
     }

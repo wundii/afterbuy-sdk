@@ -75,7 +75,7 @@ class GetMailTemplatesTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var MailTemplates $mailTemplates */
-        $mailTemplates = $response->getResponse();
+        $mailTemplates = $response->getResult();
 
         $this->assertInstanceOf(GetMailTemplatesResponse::class, $response);
         $this->assertCount(4, $mailTemplates->getMailTemplates());

@@ -19,7 +19,7 @@ final class GetSoldItemsResponse implements AfterbuyResponseInterface
     /**
      * @return Orders
      */
-    public function getResponse(): AfterbuyDtoInterface
+    public function getResult(): AfterbuyDtoInterface
     {
         return $this->dataMapper->xml($this->content, Orders::class, ['Result'], true);
     }

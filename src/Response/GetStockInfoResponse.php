@@ -19,7 +19,7 @@ final class GetStockInfoResponse implements AfterbuyResponseInterface
     /**
      * @return Products
      */
-    public function getResponse(): AfterbuyDtoInterface
+    public function getResult(): AfterbuyDtoInterface
     {
         return $this->dataMapper->xml($this->content, Products::class, ['Result'], true);
     }

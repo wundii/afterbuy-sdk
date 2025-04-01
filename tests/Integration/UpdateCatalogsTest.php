@@ -202,7 +202,7 @@ class UpdateCatalogsTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var NewCatalogs $newCatalogs */
-        $newCatalogs = $response->getResponse();
+        $newCatalogs = $response->getResult();
 
         $this->assertInstanceOf(UpdateCatalogsResponse::class, $response);
         $this->assertCount(2, $newCatalogs->getNewCatalogs());
@@ -229,7 +229,7 @@ class UpdateCatalogsTest extends TestCase
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         /** @var CatalogNotDeleteds $catalogNotDeleteds */
-        $catalogNotDeleteds = $response->getResponse();
+        $catalogNotDeleteds = $response->getResult();
 
         $this->assertInstanceOf(UpdateCatalogsResponse::class, $response);
         $this->assertCount(2, $catalogNotDeleteds->getCatalogNotDeleteds());

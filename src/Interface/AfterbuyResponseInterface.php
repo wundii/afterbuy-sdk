@@ -36,7 +36,7 @@ interface AfterbuyResponseInterface
      */
     public function getWarningMessages(): array;
 
-    public function getResponse(): ?AfterbuyDtoInterface;
+    public function getResult(): ?AfterbuyDtoInterface;
 
     public function getXmlResponse(): string;
 }
