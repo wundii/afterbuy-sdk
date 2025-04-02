@@ -187,6 +187,7 @@ class GetSoldItemsTest extends TestCase
         $orders = $response->getResult();
 
         $this->assertInstanceOf(GetSoldItemsResponse::class, $response);
+        $this->assertSame(true, $orders->hasMoreItems());
         $this->assertCount(1, $orders->getOrders());
         $this->assertInstanceOf(Order::class, $orders->getOrders()[0]);
     }

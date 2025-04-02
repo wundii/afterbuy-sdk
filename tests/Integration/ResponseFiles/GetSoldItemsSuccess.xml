@@ -3,7 +3,7 @@
     <CallStatus>Success</CallStatus>
     <CallName>GetSoldItems</CallName>
     <Result>
-        <HasMoreItems>0</HasMoreItems>
+        <HasMoreItems>1</HasMoreItems>
         <Orders>
             <Order>
                 <InvoiceNumber>10075</InvoiceNumber>

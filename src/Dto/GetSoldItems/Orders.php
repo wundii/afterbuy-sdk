@@ -12,8 +12,19 @@ final class Orders implements AfterbuyDtoInterface
      * @param Order[] $orders
      */
     public function __construct(
+        private bool $hasMoreItems = false,
         private array $orders = [],
     ) {
+    }
+
+    public function hasMoreItems(): bool
+    {
+        return $this->hasMoreItems;
+    }
+
+    public function setHasMoreItems(bool $hasMoreItems): void
+    {
+        $this->hasMoreItems = $hasMoreItems;
     }
 
     /**
