@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Dto\UpdateSoldItems;
 
+use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
 use InvalidArgumentException;
 
-final readonly class Order implements AfterbuyDtoInterface
+final readonly class Order implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
 {
     /**
      * @param string[] $tags
@@ -23,7 +25,7 @@ final readonly class Order implements AfterbuyDtoInterface
         private ?DateTimeInterface $mailDate = null,
         private ?DateTimeInterface $reminderMailDate = null,
         private ?string $userComment = null,
-        private ?string $orderMmemo = null,
+        private ?string $orderMemo = null,
         private ?string $invoiceMemo = null,
         private ?bool $orderExported = null,
         private ?DateTimeInterface $invoiceDate = null,
@@ -42,6 +44,47 @@ final readonly class Order implements AfterbuyDtoInterface
     ) {
         if ($this->orderId === null && $this->itemId === null && $this->userDefindedFlag === null) {
             throw new InvalidArgumentException('At least one of orderId, itemId or userDefindedFlag must be set');
+        }
+    }
+
+    public function appendXmlContent(SimpleXMLExtend $xml): void
+    {
+        $order = $xml->addChild('Order');
+        $order->addNumber('OrderID', $this->orderId);
+        $order->addNumber('ItemID', $this->itemId);
+        $order->addNumber('UserDefindedFlag', $this->userDefindedFlag);
+        $order->addNumber('ProductID', $this->productId);
+        $order->addString('AdditionalInfo', $this->additionalInfo);
+        $order->addDateTime('MailDate', $this->mailDate);
+        $order->addDateTime('ReminderMailDate', $this->reminderMailDate);
+        $order->addString('UserComment', $this->userComment);
+        $order->addString('OrderMemo', $this->orderMemo);
+        $order->addString('InvoiceMemo', $this->invoiceMemo);
+        $order->addBool('OrderExported', $this->orderExported);
+        $order->addDateTime('InvoiceDate', $this->invoiceDate);
+        $order->addNumber('InvoiceNumber', $this->invoiceNumber);
+        $order->addBool('HideOrder', $this->hideOrder);
+        $order->addDateTime('Reminder1Date', $this->reminder1Date);
+        $order->addDateTime('Reminder2Date', $this->reminder2Date);
+        $order->addDateTime('FeedbackDate', $this->feedbackDate);
+        $order->addDateTime('XmlDate', $this->xmlDate);
+        $this->buyerInfo?->appendXmlContent($order);
+        $this->paymentInfo?->appendXmlContent($order);
+        $this->shippingInfo?->appendXmlContent($order);
+        $this->vorgangsInfo?->appendXmlContent($order);
+
+        if ($this->tags !== []) {
+            $tags = $order->addChild('Tags');
+            foreach ($this->tags as $tag) {
+                $tags->addString('Tag', $tag);
+            }
+        }
+
+        if ($this->attributes !== []) {
+            $attributes = $order->addChild('Attributes');
+            foreach ($this->attributes as $attribute) {
+                $attribute->appendXmlContent($attributes);
+            }
         }
     }
 
@@ -108,9 +151,9 @@ final readonly class Order implements AfterbuyDtoInterface
         return $this->orderId;
     }
 
-    public function getOrderMmemo(): ?string
+    public function getOrderMemo(): ?string
     {
-        return $this->orderMmemo;
+        return $this->orderMemo;
     }
 
     public function getPaymentInfo(): ?PaymentInfo

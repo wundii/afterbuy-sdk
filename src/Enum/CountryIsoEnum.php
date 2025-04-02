@@ -24,6 +24,7 @@ enum CountryIsoEnum: string
     case FAROE_ISLANDS = 'FO';
     case FRANCE = 'FR';
     case UNITED_KINGDOM = 'GB';
+    case UNITED_KINGDOM_ALTERNATIVE = 'UK';
     case GUERNSEY = 'GG';
     case GIBRALTAR = 'GI';
     case GREECE = 'GR';

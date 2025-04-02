@@ -45,7 +45,7 @@ final readonly class UpdateSoldItemsRequest implements AfterbuyRequestInterface
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        // $xml->addUpdateCatalogs($orders);
+        $xml->appendContent($orders);
 
         $string = $xml->asXML();
         if ($string === false) {

@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace AfterbuySdk\Dto\UpdateSoldItems;
 
 use AfterbuySdk\Enum\CountryIsoEnum;
+use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 
-final readonly class ShippingAddress implements AfterbuyDtoInterface
+final readonly class ShippingAddress implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
 {
     public function __construct(
         private ?bool $useShippingAddress = null,
@@ -23,6 +25,23 @@ final readonly class ShippingAddress implements AfterbuyDtoInterface
         private ?string $country = null,
         private ?CountryIsoEnum $countryIsoEnum = null,
     ) {
+    }
+
+    public function appendXmlContent(SimpleXMLExtend $xml): void
+    {
+        $shippingAddress = $xml->addChild('ShippingAddress');
+        $shippingAddress->addBool('UseShippingAddress', $this->useShippingAddress);
+        $shippingAddress->addString('FirstName', $this->firstName);
+        $shippingAddress->addString('LastName', $this->lastName);
+        $shippingAddress->addString('Company', $this->company);
+        $shippingAddress->addString('Street', $this->street);
+        $shippingAddress->addString('Street2', $this->street2);
+        $shippingAddress->addString('StateOrProvince', $this->stateOrProvince);
+        $shippingAddress->addString('Phone', $this->phone);
+        $shippingAddress->addString('PostalCode', $this->postalCode);
+        $shippingAddress->addString('City', $this->city);
+        $shippingAddress->addString('Country', $this->country);
+        $shippingAddress->addString('CountryISO', $this->countryIsoEnum?->value);
     }
 
     public function getCity(): ?string

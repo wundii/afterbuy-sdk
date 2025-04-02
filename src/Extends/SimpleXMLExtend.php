@@ -7,8 +7,10 @@ namespace AfterbuySdk\Extends;
 use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Dto\UpdateCatalogs\Catalog;
 use AfterbuySdk\Dto\UpdateCatalogs\Catalogs;
+use AfterbuySdk\Dto\UpdateSoldItems\Orders;
 use AfterbuySdk\Enum\CountryIsoEnum;
 use AfterbuySdk\Filter\GetShippingCost\ShippingInfo;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\FilterInterface;
 use AfterbuySdk\Interface\ProductFilterInterface;
 use DateTimeInterface;
@@ -23,27 +25,14 @@ final class SimpleXMLExtend extends SimpleXMLElement
         $afterbuyGlobal->simpleXmlElement($this);
     }
 
-    public function addCdata(string $cdata): void
-    {
-        $domElement = dom_import_simplexml($this);
-
-        $domOwnerDocument = $domElement->ownerDocument;
-        if (! $domOwnerDocument instanceof DOMDocument) {
-            return;
-        }
-
-        $domCdataSection = $domOwnerDocument->createCDATASection($cdata);
-        if (! $domCdataSection instanceof DOMCdataSection) {
-            return;
-        }
-
-        $domElement->appendChild($domCdataSection);
-    }
-
-    public function addNumber(string $string, ?int $value): void
+    public function addNumber(string $string, null|int|float $value): void
     {
         if ($value === null) {
             return;
+        }
+
+        if (is_float($value)) {
+            $value = number_format($value, 2, ',', '');
         }
 
         $this->addChild($string, (string) $value);
@@ -79,6 +68,15 @@ final class SimpleXMLExtend extends SimpleXMLElement
         $this->addChild($string, $value ? '1' : '0');
     }
 
+    public function addDateTime(string $string, ?DateTimeInterface $dateTime): void
+    {
+        if (! $dateTime instanceof DateTimeInterface) {
+            return;
+        }
+
+        $this->addChild($string, $dateTime->format('d.m.Y H:i:s'));
+    }
+
     /**
      * @param FilterInterface[] $filter
      */
@@ -110,6 +108,14 @@ final class SimpleXMLExtend extends SimpleXMLElement
         }
     }
 
+    public function appendContent(AfterbuyAppendXmlContentInterface $afterbuyAppendXmlContent): void
+    {
+        $afterbuyAppendXmlContent->appendXmlContent($this);
+    }
+
+    /**
+     * Alle nachfolgenden Methoden müssen noch Refactored werden mit AfterbuyAppendXmlContentInterface
+     */
     public function addShippingInfo(ShippingInfo $shippingInfo): void
     {
         $shippingInfoElement = $this->addChild('ShippingInfo');
@@ -140,15 +146,6 @@ final class SimpleXMLExtend extends SimpleXMLElement
         if ($shippingInfo->getPostalCode() !== null) {
             $shippingInfoElement->addChild('PostalCode', $shippingInfo->getPostalCode());
         }
-    }
-
-    public function addDateTime(string $string, ?DateTimeInterface $dateTime): void
-    {
-        if (! $dateTime instanceof DateTimeInterface) {
-            return;
-        }
-
-        $this->addChild($string, $dateTime->format('d.m.Y H:i:s'));
     }
 
     public function addUpdateCatalogs(Catalogs $catalogs): void

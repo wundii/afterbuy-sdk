@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Dto\UpdateSoldItems;
 
+use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
 
-final readonly class PaymentInfo implements AfterbuyDtoInterface
+final readonly class PaymentInfo implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
 {
     public function __construct(
         private ?string $paymentMethod = null,
@@ -17,6 +19,17 @@ final readonly class PaymentInfo implements AfterbuyDtoInterface
         private ?float $paymentAdditionalCost = null,
         private ?float $sendPaymentMail = null,
     ) {
+    }
+
+    public function appendXmlContent(SimpleXMLExtend $xml): void
+    {
+        $paymentInfo = $xml->addChild('PaymentInfo');
+        $paymentInfo->addString('PaymentMethod', $this->paymentMethod);
+        $paymentInfo->addDateTime('PaymentDate', $this->paymentDate);
+        $paymentInfo->addString('PaymentTransactionID', $this->paymentTransactionId);
+        $paymentInfo->addNumber('AlreadyPaid', $this->alreadyPaid);
+        $paymentInfo->addNumber('PaymentAdditionalCost', $this->paymentAdditionalCost);
+        $paymentInfo->addNumber('SendPaymentMail', $this->sendPaymentMail);
     }
 
     public function getAlreadyPaid(): ?float

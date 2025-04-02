@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Request>
+    <AfterbuyGlobal>
+        <AccountToken>account</AccountToken>
+        <PartnerToken>partner</PartnerToken>
+        <ErrorLanguage>DE</ErrorLanguage>
+        <CallName>UpdateSoldItems</CallName>
+        <DetailLevel>0</DetailLevel>
+    </AfterbuyGlobal>
+    <Orders>
+        <Order>
+            <OrderID>42771483</OrderID>
+            <ItemID>42771537</ItemID>
+            <AdditionalInfo>ZusatzInfo</AdditionalInfo>
+            <MailDate>25.05.2006 03:01:03</MailDate>
+            <ReminderMailDate>25.05.2006 07:01:07</ReminderMailDate>
+            <UserComment>Userkommentar</UserComment>
+            <OrderMemo>Userkommentar</OrderMemo>
+            <InvoiceMemo>Rechnungsvermerk</InvoiceMemo>
+            <OrderExported>1</OrderExported>
+            <InvoiceDate>25.05.2006 10:11:12</InvoiceDate>
+            <InvoiceNumber>99</InvoiceNumber>
+            <HideOrder>0</HideOrder>
+            <Reminder1Date>24.05.2006 08:09:10</Reminder1Date>
+            <Reminder2Date>23.05.2006 08:09:10</Reminder2Date>
+            <XmlDate>25.05.2006 08:09:10</XmlDate>
+            <BuyerInfo>
+                <ShippingAddress>
+                    <FirstName>Interface</FirstName>
+                    <LastName>Afterbuy</LastName>
+                    <Company>Via Online</Company>
+                    <Street>Str 23</Street>
+                    <PostalCode>47829</PostalCode>
+                    <City>London</City>
+                    <Country>UK</Country>
+                </ShippingAddress>
+            </BuyerInfo>
+            <PaymentInfo>
+                <PaymentMethod>Überweisung</PaymentMethod>
+                <PaymentDate>25.05.2006 01:03:05</PaymentDate>
+                <AlreadyPaid>22,30</AlreadyPaid>
+                <PaymentAdditionalCost>2,55</PaymentAdditionalCost>
+            </PaymentInfo>
+            <ShippingInfo>
+                <ShippingMethod>DHL</ShippingMethod>
+                <ShippingGroup>standard</ShippingGroup>
+                <ShippingCost>2,55</ShippingCost>
+                <DeliveryDate>25.05.2006 05:06:07</DeliveryDate>
+                <eBayShippingCost>0,99</eBayShippingCost>
+            </ShippingInfo>
+            <VorgangsInfo>
+                <VorgangsInfo1>VorgangsInfo1</VorgangsInfo1>
+                <VorgangsInfo2>VorgangsInfo2</VorgangsInfo2>
+                <VorgangsInfo3>VorgangsInfo3</VorgangsInfo3>
+            </VorgangsInfo>
+            <Tags>
+                <Tag>tag1</Tag>
+                <Tag>tag2</Tag>
+            </Tags>
+            <Attributes>
+                <Attribute>
+                    <Name>attr1</Name>
+                    <Value>val1</Value>
+                </Attribute>
+                <Attribute>
+                    <Name>attr2</Name>
+                    <Value>val2</Value>
+                </Attribute>
+                <Attribute>
+                    <Name>attr3</Name>
+                    <Value>val3</Value>
+                </Attribute>
+            </Attributes>
+        </Order>
+    </Orders>
+</Request>

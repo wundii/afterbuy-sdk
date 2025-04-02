@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Dto\UpdateSoldItems;
 
+use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
 
-final readonly class ShippingInfo implements AfterbuyDtoInterface
+final readonly class ShippingInfo implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
 {
     /**
      * @param ParcelLabel[] $parcelLabels
@@ -23,6 +25,26 @@ final readonly class ShippingInfo implements AfterbuyDtoInterface
         private ?bool $sendShippingMail = null,
         private array $parcelLabels = [],
     ) {
+    }
+
+    public function appendXmlContent(SimpleXMLExtend $xml): void
+    {
+        $shipplingInfo = $xml->addChild('ShippingInfo');
+        $shipplingInfo->addString('ShippingMethod', $this->shippingMethod);
+        $shipplingInfo->addString('ShippingReturnMethod', $this->shippingReturnMethod);
+        $shipplingInfo->addString('ShippingGroup', $this->shippingGroup);
+        $shipplingInfo->addNumber('ShippingCost', $this->shippingCost);
+        $shipplingInfo->addDateTime('DeliveryDate', $this->deliveryDate);
+        $shipplingInfo->addString('DeliveryService', $this->deliveryService);
+        $shipplingInfo->addNumber('eBayShippingCost', $this->ebayShippingCost);
+        $shipplingInfo->addBool('SendShippingMail', $this->sendShippingMail);
+
+        if ($this->parcelLabels !== []) {
+            $parcelLabels = $shipplingInfo->addChild('ParcelLabels');
+            foreach ($this->parcelLabels as $parcelLabel) {
+                $parcelLabel->appendXmlContent($parcelLabels);
+            }
+        }
     }
 
     public function getDeliveryDate(): ?DateTimeInterface
