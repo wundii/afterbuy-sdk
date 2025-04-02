@@ -79,14 +79,14 @@ final readonly class Afterbuy
                     ]
                 );
             } catch (TransportExceptionInterface $exception) {
-                throw new RuntimeException($exception->getMessage());
+                throw new RuntimeException($exception->getMessage(), $exception->getCode(), $exception);
             }
         }
 
         try {
             $response = (new ReflectionClass($responseClass))->newInstance($dataMapper, $response);
         } catch (Exception $exception) {
-            throw new RuntimeException($exception->getMessage());
+            throw new RuntimeException($exception->getMessage(), $exception->getCode(), $exception);
         }
 
         if (! $response instanceof AfterbuyResponseInterface) {
