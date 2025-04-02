@@ -1,5 +1,6 @@
 # afterbuy-sdk
 
+[![AfterbuyXmlApi](https://img.shields.io/badge/Afterbuy%20XML--API-Version%202.0.459-yellow.svg?style=flat)](https://xmldoku.afterbuy.de/dokued)
 [![PHP-Tests](https://github.com/wundii/afterbuy-sdk/actions/workflows/code_quality.yml/badge.svg)](https://github.com/wundii/afterbuy-sdk/actions/workflows/code_quality.yml)
 [![PHPStan](https://img.shields.io/badge/PHPStan-level%2010-brightgreen.svg?style=flat)](https://phpstan.org)
 [![Rector](https://img.shields.io/badge/Rector-8.2-blue.svg?style=flat)](https://getrector.com)
@@ -25,8 +26,24 @@ Require the bundle and its dependencies with composer:
 ## Afterbuy API Documentation
 [Afterbuy XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
 
-## Usage
+### Supported Requests with Examples
+- [x] [GetAfterbuyTime](examples/GetAfterbuyTime.md)
+- [x] [GetListerHistory](examples/GetListerHistory.md)
+- [x] [GetMailTemplates](examples/GetMailTemplates.md)
+- [x] [GetPaymentServices](examples/GetPaymentServices.md)
+- [x] [GetProductDiscounts](examples/GetProductDiscounts.md)
+- [x] [GetShippingCost](examples/GetShippingCost.md)
+- [x] [GetShippingServices](examples/GetShippingServices.md)
+- [x] [GetShopCatalogs](examples/GetShopCatalogs.md)
+- [x] [GetShopProducts](examples/GetShopProducts.md)
+- [x] [GetSoldItems](examples/GetSoldItems.md)
+- [x] [GetStockInfo](examples/GetStockInfo.md)
+- [x] [GetTranslatedMailTemplate](examples/GetTranslatedMailTemplate.md)
+- [x] [UpdateCatalogs](examples/UpdateCatalogs.md)
+- [ ] UpdateShopProducts
+- [x] [UpdateSoldItems](examples/UpdateSoldItems.md)
 
+## Usage
 ```php
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
