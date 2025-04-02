@@ -6,11 +6,10 @@ namespace AfterbuySdk\Dto\UpdateSoldItems;
 
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use Exception;
 use InvalidArgumentException;
 
-final class Orders implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
+final class Orders implements AfterbuyAppendXmlContentInterface
 {
     private string $invalidMessage = 'Is valid was not called';
 

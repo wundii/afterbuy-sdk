@@ -6,9 +6,8 @@ namespace AfterbuySdk\Dto\UpdateSoldItems;
 
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 
-final readonly class VorgangsInfo implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
+final readonly class VorgangsInfo implements AfterbuyAppendXmlContentInterface
 {
     public function __construct(
         private ?string $VorgangsInfo1 = null,

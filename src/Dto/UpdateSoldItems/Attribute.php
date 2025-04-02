@@ -6,9 +6,8 @@ namespace AfterbuySdk\Dto\UpdateSoldItems;
 
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 
-final readonly class Attribute implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
+final readonly class Attribute implements AfterbuyAppendXmlContentInterface
 {
     public function __construct(
         private string $name,

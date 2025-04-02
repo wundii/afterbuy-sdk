@@ -6,9 +6,8 @@ namespace AfterbuySdk\Dto\UpdateSoldItems;
 
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 
-final readonly class ParcelLabel implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
+final readonly class ParcelLabel implements AfterbuyAppendXmlContentInterface
 {
     public function __construct(
         private int $itemId,

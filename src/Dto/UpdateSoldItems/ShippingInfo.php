@@ -6,10 +6,9 @@ namespace AfterbuySdk\Dto\UpdateSoldItems;
 
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
 
-final readonly class ShippingInfo implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
+final readonly class ShippingInfo implements AfterbuyAppendXmlContentInterface
 {
     /**
      * @param ParcelLabel[] $parcelLabels

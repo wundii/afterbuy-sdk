@@ -6,10 +6,9 @@ namespace AfterbuySdk\Dto\UpdateSoldItems;
 
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
 
-final readonly class PaymentInfo implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
+final readonly class PaymentInfo implements AfterbuyAppendXmlContentInterface
 {
     public function __construct(
         private ?string $paymentMethod = null,

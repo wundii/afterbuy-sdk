@@ -6,10 +6,9 @@ namespace AfterbuySdk\Dto\UpdateCatalogs;
 
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use InvalidArgumentException;
 
-final class Catalog implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
+final class Catalog implements AfterbuyAppendXmlContentInterface
 {
     /**
      * @param Catalog[] $catalog

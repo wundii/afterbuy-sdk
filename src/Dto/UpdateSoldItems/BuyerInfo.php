@@ -6,9 +6,8 @@ namespace AfterbuySdk\Dto\UpdateSoldItems;
 
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 
-final readonly class BuyerInfo implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
+final readonly class BuyerInfo implements AfterbuyAppendXmlContentInterface
 {
     public function __construct(
         private ShippingAddress $shippingAddress,

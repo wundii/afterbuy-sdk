@@ -7,10 +7,9 @@ namespace AfterbuySdk\Dto\UpdateCatalogs;
 use AfterbuySdk\Enum\UpdateActionEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use Exception;
 
-final class Catalogs implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
+final class Catalogs implements AfterbuyAppendXmlContentInterface
 {
     private string $invalidMessage = 'Is valid was not called';
 

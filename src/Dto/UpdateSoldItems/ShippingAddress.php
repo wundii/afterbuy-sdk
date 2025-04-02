@@ -7,9 +7,8 @@ namespace AfterbuySdk\Dto\UpdateSoldItems;
 use AfterbuySdk\Enum\CountryIsoEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 
-final readonly class ShippingAddress implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
+final readonly class ShippingAddress implements AfterbuyAppendXmlContentInterface
 {
     public function __construct(
         private ?bool $useShippingAddress = null,

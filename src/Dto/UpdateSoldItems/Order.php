@@ -6,11 +6,10 @@ namespace AfterbuySdk\Dto\UpdateSoldItems;
 
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
 use InvalidArgumentException;
 
-final readonly class Order implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
+final readonly class Order implements AfterbuyAppendXmlContentInterface
 {
     /**
      * @param string[] $tags
