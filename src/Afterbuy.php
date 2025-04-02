@@ -12,9 +12,9 @@ use AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
 use DateTimeInterface;
+use Exception;
 use Psr\Log\LoggerInterface;
 use ReflectionClass;
-use ReflectionException;
 use RuntimeException;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
@@ -37,8 +37,6 @@ final readonly class Afterbuy
 
     /**
      * @return AfterbuyResponseInterface<T>
-     * @throws TransportExceptionInterface
-     * @throws ReflectionException
      */
     public function runRequest(AfterbuyRequestInterface $afterbuyRequest, ?ResponseInterface $response = null): AfterbuyResponseInterface
     {
@@ -65,23 +63,32 @@ final readonly class Afterbuy
 
         /** $response is always null, this variable is only filled in for the unit test */
         if (! $response instanceof ResponseInterface) {
-            $response = HttpClient::create()->request(
-                $method,
-                $uri,
-                [
-                    'headers' => [
-                        'Content-Type: application/xml; charset=utf-8',
-                    ],
-                    'body' => $payload,
-                    'http_version' => 2.0,
-                    'query' => $query,
-                    'verify_host' => 0,
-                    'verify_peer' => 0,
-                ]
-            );
+            try {
+                $response = HttpClient::create()->request(
+                    $method,
+                    $uri,
+                    [
+                        'headers' => [
+                            'Content-Type: application/xml; charset=utf-8',
+                        ],
+                        'body' => $payload,
+                        'http_version' => 2.0,
+                        'query' => $query,
+                        'verify_host' => 0,
+                        'verify_peer' => 0,
+                    ]
+                );
+            } catch (TransportExceptionInterface $exception) {
+                throw new RuntimeException($exception->getMessage());
+            }
         }
 
-        $response = (new ReflectionClass($responseClass))->newInstance($dataMapper, $response);
+        try {
+            $response = (new ReflectionClass($responseClass))->newInstance($dataMapper, $response);
+        } catch (Exception $exception) {
+            throw new RuntimeException($exception->getMessage());
+        }
+
         if (! $response instanceof AfterbuyResponseInterface) {
             throw new RuntimeException('Response class does not implement AfterbuyResponseInterface');
         }
