@@ -27,8 +27,8 @@ final class Product implements AfterbuyDtoInterface
      * @param EconomicOperator[] $economicOperators
      */
     public function __construct(
-        private int $shop20ID,
-        private int $productID,
+        private int $shop20Id,
+        private int $productId,
         private int $anr,
         private string $ean,
         private string $name,
@@ -817,14 +817,14 @@ final class Product implements AfterbuyDtoInterface
         $this->productBrand = $productBrand;
     }
 
-    public function getProductID(): int
+    public function getProductId(): int
     {
-        return $this->productID;
+        return $this->productId;
     }
 
-    public function setProductID(int $productID): void
+    public function setProductId(int $productId): void
     {
-        $this->productID = $productID;
+        $this->productId = $productId;
     }
 
     /**
@@ -909,14 +909,14 @@ final class Product implements AfterbuyDtoInterface
         $this->shippingGroup = $shippingGroup;
     }
 
-    public function getShop20ID(): int
+    public function getShop20Id(): int
     {
-        return $this->shop20ID;
+        return $this->shop20Id;
     }
 
-    public function setShop20ID(int $shop20ID): void
+    public function setShop20Id(int $shop20Id): void
     {
-        $this->shop20ID = $shop20ID;
+        $this->shop20Id = $shop20Id;
     }
 
     public function getShopShippingGroup(): ?string

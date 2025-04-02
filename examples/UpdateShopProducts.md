@@ -1,4 +1,4 @@
-# UpdateSoldItemsRequest
+# UpdateShopProductsRequest
 [back to index](./../README.md)
 
 ## Example
@@ -7,9 +7,9 @@
 
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\UpdateSoldItems\Order;
+use AfterbuySdk\Dto\UpdateShopProducts\Product;
 use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Request\UpdateSoldItemsRequest;
+use AfterbuySdk\Request\UpdateShopProductsRequest;
 
 $global = new AfterbuyGlobal(
     '123...',
@@ -21,11 +21,10 @@ $afterbuy = new Afterbuy(
     EndpointEnum::SANDBOX,
 );
 
-$request = new UpdateSoldItemsRequest(
+$request = new UpdateShopProductsRequest(
     [
-        new Order(
-            12345600,
-            1000,
+        new Product(
+            'new Product Name',
             // ...
         )
     ]
@@ -42,7 +41,7 @@ $response->getCallStatus();
 $response->getWarningMessages();
 $response->getErrorMessages();
 
-/** @var null $result */
+/** @var AfterbuySdk\Dto\UpdateShopProducts\NewProducts $result */
 $result = $response->getResult();
-dump($result); // null
+dump($result->getNewProducts());
 ```

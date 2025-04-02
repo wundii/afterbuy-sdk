@@ -40,7 +40,7 @@ Require the bundle and its dependencies with composer:
 - [x] [GetStockInfo](examples/GetStockInfo.md)
 - [x] [GetTranslatedMailTemplate](examples/GetTranslatedMailTemplate.md)
 - [x] [UpdateCatalogs](examples/UpdateCatalogs.md)
-- [ ] UpdateShopProducts
+- [x] [UpdateShopProducts](examples/UpdateShopProducts.md)
 - [x] [UpdateSoldItems](examples/UpdateSoldItems.md)
 
 ## Usage
