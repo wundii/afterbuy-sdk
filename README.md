@@ -8,7 +8,7 @@
 [![PHPUnit](https://img.shields.io/badge/PHP--Unit-check-blue.svg?style=flat)](https://phpunit.org)
 [![PSR3](https://img.shields.io/badge/PSR--3%20Logger-optional-blue.svg?style=flat)](https://php-fig.org/psr/psr-3)
 
-This is a modern Afterbuy Programming Interface Software Development Kitt, for the selling solution [afterbuy.de](https://www.afterbuy.de/).
+This is a modern Afterbuy Programming Interface Software Development Kit, for the selling solution [afterbuy.de](https://www.afterbuy.de/).
 
 ## Requirements
 - PHP 8.2 or higher
