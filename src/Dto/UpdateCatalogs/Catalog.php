@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Dto\UpdateCatalogs;
 
+use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use InvalidArgumentException;
 
-final class Catalog implements AfterbuyDtoInterface
+final class Catalog implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
 {
     /**
      * @param Catalog[] $catalog
@@ -27,6 +29,25 @@ final class Catalog implements AfterbuyDtoInterface
     ) {
         if ($catalogId === null && $catalogName === null) {
             throw new InvalidArgumentException('CatalogId or CatalogName must be set');
+        }
+    }
+
+    public function appendXmlContent(SimpleXMLExtend $xml): void
+    {
+        $catalog = $xml->addChild('Catalog');
+        $catalog->addNumber('CatalogID', $this->catalogId);
+        $catalog->addString('CatalogName', $this->catalogName);
+        $catalog->addString('CatalogDescription', $this->catalogDescription);
+        $catalog->addString('AdditionalURL', $this->additionalUrl);
+        $catalog->addNumber('Level', $this->level);
+        $catalog->addNumber('Position', $this->position);
+        $catalog->addString('AdditionalText', $this->additionalText);
+        $catalog->addBool('ShowCatalog', $this->showCatalog);
+        $catalog->addString('Picture', $this->picture);
+        $catalog->addString('MouseOverPicture', $this->mouseOverPicture);
+
+        foreach ($this->catalog as $deepCatalog) {
+            $deepCatalog->appendXmlContent($catalog);
         }
     }
 

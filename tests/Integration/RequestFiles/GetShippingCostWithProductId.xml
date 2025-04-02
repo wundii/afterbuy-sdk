@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Request>
+    <AfterbuyGlobal>
+        <AccountToken>account</AccountToken>
+        <PartnerToken>partner</PartnerToken>
+        <ErrorLanguage>DE</ErrorLanguage>
+        <CallName>GetShippingCost</CallName>
+        <DetailLevel>0</DetailLevel>
+    </AfterbuyGlobal>
+    <ShippingInfo>
+        <ProductID>123456</ProductID>
+        <ItemsCount>2</ItemsCount>
+        <ItemsWeight>3</ItemsWeight>
+        <ItemsPrice>45</ItemsPrice>
+    </ShippingInfo>
+</Request>

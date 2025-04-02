@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace AfterbuySdk\Request;
 
 use AfterbuySdk\Dto\AfterbuyGlobal;
+use AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
 use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
-use AfterbuySdk\Filter\GetShippingCost\ShippingInfo;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Response\GetShippingCostResponse;
 use RuntimeException;
@@ -33,7 +33,7 @@ final readonly class GetShippingCostRequest implements AfterbuyRequestInterface
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        $xml->addShippingInfo($this->shippingInfo);
+        $xml->appendContent($this->shippingInfo);
 
         $string = $xml->asXML();
         if ($string === false) {

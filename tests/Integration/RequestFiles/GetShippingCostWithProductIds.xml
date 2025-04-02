@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Request>
+    <AfterbuyGlobal>
+        <AccountToken>account</AccountToken>
+        <PartnerToken>partner</PartnerToken>
+        <ErrorLanguage>DE</ErrorLanguage>
+        <CallName>GetShippingCost</CallName>
+        <DetailLevel>0</DetailLevel>
+    </AfterbuyGlobal>
+    <ShippingInfo>
+        <Products>
+            <ProductID>123456</ProductID>
+            <ProductID>234567</ProductID>
+        </Products>
+        <ItemsCount>2</ItemsCount>
+        <ItemsWeight>3</ItemsWeight>
+        <ItemsPrice>45</ItemsPrice>
+        <ShippingCountry>DE</ShippingCountry>
+        <PostalCode>34567</PostalCode>
+        <ShippingGroup>standard</ShippingGroup>
+    </ShippingInfo>
+</Request>

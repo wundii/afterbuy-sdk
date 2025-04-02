@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace AfterbuySdk\Dto\UpdateCatalogs;
 
 use AfterbuySdk\Enum\UpdateActionEnum;
+use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use Exception;
 
-final class Catalogs implements AfterbuyDtoInterface
+final class Catalogs implements AfterbuyDtoInterface, AfterbuyAppendXmlContentInterface
 {
     private string $invalidMessage = 'Is valid was not called';
 
@@ -19,6 +21,16 @@ final class Catalogs implements AfterbuyDtoInterface
         private UpdateActionEnum $updateActionEnum,
         private array $catalogs = [],
     ) {
+    }
+
+    public function appendXmlContent(SimpleXMLExtend $xml): void
+    {
+        $catalogs = $xml->addChild('Catalogs');
+        $catalogs->addNumber('UpdateAction', $this->updateActionEnum->value);
+
+        foreach ($this->catalogs as $catalog) {
+            $catalog->appendXmlContent($catalogs);
+        }
     }
 
     public function getUpdateActionEnum(): UpdateActionEnum

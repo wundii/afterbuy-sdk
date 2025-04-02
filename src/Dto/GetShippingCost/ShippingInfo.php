@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetShippingCost;
+namespace AfterbuySdk\Dto\GetShippingCost;
 
 use AfterbuySdk\Enum\CountryIsoEnum;
+use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 
-final readonly class ShippingInfo
+final readonly class ShippingInfo implements AfterbuyAppendXmlContentInterface
 {
     /**
      * @param int|int[] $productIds
@@ -20,6 +22,28 @@ final readonly class ShippingInfo
         private ?string $shippingGroup = null,
         private ?string $PostalCode = null,
     ) {
+    }
+
+    public function appendXmlContent(SimpleXMLExtend $xml): void
+    {
+        $shippingInfo = $xml->addChild('ShippingInfo');
+
+        if (is_array($this->productIds) && count($this->productIds) > 1) {
+            $productIdsElement = $shippingInfo->addChild('Products');
+            foreach ($this->productIds as $productId) {
+                $productIdsElement->addNumber('ProductID', $productId);
+            }
+        } else {
+            $productId = $this->productIds[0] ?? (int) $this->productIds;
+            $shippingInfo->addNumber('ProductID', $productId);
+        }
+
+        $shippingInfo->addNumber('ItemsCount', $this->itemsCount);
+        $shippingInfo->addNumber('ItemsWeight', $this->itemsWeight);
+        $shippingInfo->addNumber('ItemsPrice', $this->itemsPrice);
+        $shippingInfo->addString('ShippingCountry', $this->countryIsoEnum?->value);
+        $shippingInfo->addString('PostalCode', $this->PostalCode);
+        $shippingInfo->addString('ShippingGroup', $this->shippingGroup);
     }
 
     public function getItemsCount(): int

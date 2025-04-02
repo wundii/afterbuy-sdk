@@ -7,13 +7,14 @@ namespace AfterbuySdk\Tests\Integration;
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyError;
 use AfterbuySdk\Dto\AfterbuyGlobal;
+use AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
 use AfterbuySdk\Dto\GetShippingCost\ShippingService;
 use AfterbuySdk\Enum\CallStatusEnum;
 use AfterbuySdk\Enum\CountryIsoEnum;
 use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Filter\GetShippingCost\ShippingInfo;
 use AfterbuySdk\Request\GetShippingCostRequest;
 use AfterbuySdk\Response\GetShippingCostResponse;
+use AfterbuySdk\Tests\DomFormatter;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
@@ -32,6 +33,7 @@ class GetShippingCostTest extends TestCase
     public function testShippingInfo(): void
     {
         $afterbuyGlobal = clone $this->afterbuyGlobal();
+        $file = __DIR__ . '/RequestFiles/GetShippingCostWithProductId.xml';
         $shippingInfo = new ShippingInfo(
             123456,
             2,
@@ -41,16 +43,24 @@ class GetShippingCostTest extends TestCase
 
         $request = new GetShippingCostRequest($shippingInfo);
         $payload = $request->payload($afterbuyGlobal);
-        $this->assertStringContainsString('<ShippingInfo>', $payload);
-        $this->assertStringContainsString('</ShippingInfo>', $payload);
-        $this->assertStringContainsString('<ProductID>123456</ProductID>', $payload);
-        $this->assertStringContainsString('<ItemsCount>2</ItemsCount>', $payload);
-        $this->assertStringContainsString('<ItemsWeight>3</ItemsWeight>', $payload);
-        $this->assertStringContainsString('<ItemsPrice>45</ItemsPrice>', $payload);
-        $this->assertStringNotContainsString('ShippingCountry', $payload);
-        $this->assertStringNotContainsString('ShippingGroup', $payload);
-        $this->assertStringNotContainsString('PostalCode', $payload);
+        $expected = file_get_contents($file);
+        $this->assertEquals(DomFormatter::xml($expected), DomFormatter::xml($payload));
 
+        $shippingInfo = new ShippingInfo(
+            [
+                123456,
+            ],
+            2,
+            3,
+            45,
+        );
+
+        $request = new GetShippingCostRequest($shippingInfo);
+        $payload = $request->payload($afterbuyGlobal);
+        $expected = file_get_contents($file);
+        $this->assertEquals(DomFormatter::xml($expected), DomFormatter::xml($payload));
+
+        $file = __DIR__ . '/RequestFiles/GetShippingCostWithProductIds.xml';
         $shippingInfo = new ShippingInfo(
             [
                 123456,
@@ -66,15 +76,8 @@ class GetShippingCostTest extends TestCase
 
         $request = new GetShippingCostRequest($shippingInfo);
         $payload = $request->payload($afterbuyGlobal);
-        $this->assertStringContainsString('<ShippingInfo>', $payload);
-        $this->assertStringContainsString('</ShippingInfo>', $payload);
-        $this->assertStringContainsString('<Products><ProductID>123456</ProductID><ProductID>234567</ProductID></Products>', $payload);
-        $this->assertStringContainsString('<ItemsCount>2</ItemsCount>', $payload);
-        $this->assertStringContainsString('<ItemsWeight>3</ItemsWeight>', $payload);
-        $this->assertStringContainsString('<ItemsPrice>45</ItemsPrice>', $payload);
-        $this->assertStringContainsString('<ShippingCountry>DE</ShippingCountry>', $payload);
-        $this->assertStringContainsString('<ShippingGroup>standard</ShippingGroup>', $payload);
-        $this->assertStringContainsString('<PostalCode>34567</PostalCode>', $payload);
+        $expected = file_get_contents($file);
+        $this->assertEquals(DomFormatter::xml($expected), DomFormatter::xml($payload));
     }
 
     /**
