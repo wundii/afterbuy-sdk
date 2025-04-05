@@ -14,6 +14,15 @@ use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 
 final readonly class Product implements AfterbuyAppendXmlContentInterface
 {
+    /**
+     * @param string[] $tags
+     * @param Variation[] $useEbayVariations
+     * @param PartsProperty[][] $partsFitment
+     * @param AdditionalPriceUpdate[] $additionalPriceUpdates
+     * @param ProductPicture[] $productPictures
+     * @param AdditionalDescriptionField[] $additionalDescriptionFields
+     * @param Feature[] $features
+     */
     public function __construct(
         private string $name,
         private ?ProductIdent $productIdent = null,
@@ -87,6 +96,14 @@ final readonly class Product implements AfterbuyAppendXmlContentInterface
         private ?string $dataSheetUrl = null,
         private ?GenderEnum $genderEnum = null,
         private ?AgeGroupEnum $ageGroupEnum = null,
+        private ?Economicoperators $economicoperators = null,
+        private array $tags = [],
+        private array $useEbayVariations = [],
+        private array $partsFitment = [],
+        private array $additionalPriceUpdates = [],
+        private array $productPictures = [],
+        private array $additionalDescriptionFields = [],
+        private array $features = [],
     ) {
     }
 
@@ -165,5 +182,61 @@ final readonly class Product implements AfterbuyAppendXmlContentInterface
         $product->addString('DataSheetURL', $this->dataSheetUrl);
         $product->addNumber('Gender', $this->genderEnum?->value);
         $product->addNumber('AgeGroup', $this->ageGroupEnum?->value);
+        $this->economicoperators?->appendXmlContent($product);
+
+        if ($this->tags !== []) {
+            $tags = $product->addChild('Tags');
+            foreach ($this->tags as $tag) {
+                $tags->addString('Tag', $tag);
+            }
+        }
+
+        if ($this->useEbayVariations !== []) {
+            $useEbayVariations = $product->addChild('UseEbayVariations');
+            foreach ($this->useEbayVariations as $useEbayVariation) {
+                $useEbayVariation->appendXmlContent($useEbayVariations);
+            }
+        }
+
+        if ($this->partsFitment !== []) {
+            $partsFitment = $product->addChild('PartsFitment');
+            foreach ($this->partsFitment as $partFitment) {
+                if ($partFitment !== []) {
+                    $partsProperties = $partsFitment->addChild('PartsProperties');
+                    foreach ($partFitment as $partsProperty) {
+                        $partsProperty->appendXmlContent($partsProperties);
+                    }
+                }
+
+            }
+        }
+
+        if ($this->additionalPriceUpdates !== []) {
+            $additionalPrice = $product->addChild('AdditionalPrice');
+            foreach ($this->additionalPriceUpdates as $additionalPriceUpdate) {
+                $additionalPriceUpdate->appendXmlContent($additionalPrice);
+            }
+        }
+
+        if ($this->productPictures !== []) {
+            $productPictures = $product->addChild('ProductPictures');
+            foreach ($this->productPictures as $productPicture) {
+                $productPicture->appendXmlContent($productPictures);
+            }
+        }
+
+        if ($this->additionalDescriptionFields !== []) {
+            $additionalDescriptionFields = $product->addChild('AdditionalDescriptionFields');
+            foreach ($this->additionalDescriptionFields as $additionalDescriptionField) {
+                $additionalDescriptionField->appendXmlContent($additionalDescriptionFields);
+            }
+        }
+
+        if ($this->features !== []) {
+            $features = $product->addChild('Features');
+            foreach ($this->features as $feature) {
+                $feature->appendXmlContent($features);
+            }
+        }
     }
 }

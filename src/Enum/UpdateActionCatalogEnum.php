@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Enum;
 
-enum UpdateActionEnum: int
+enum UpdateActionCatalogEnum: int
 {
     /** All transferred catalogs are created without checking whether a catalog already exists. */
     case CREATE = 1;

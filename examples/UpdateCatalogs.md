@@ -2,6 +2,7 @@
 [back to index](./../README.md)
 
 ## Example
+
 ```php
 <?php
 
@@ -9,7 +10,7 @@ use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Dto\UpdateCatalogs\Catalog;
 use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\UpdateActionEnum;
+use AfterbuySdk\Enum\UpdateActionCatalogEnum;
 use AfterbuySdk\Request\UpdateCatalogsRequest;
 
 $global = new AfterbuyGlobal(
@@ -23,7 +24,7 @@ $afterbuy = new Afterbuy(
 );
 
 $request = new UpdateCatalogsRequest(
-    UpdateActionEnum::CREATE,
+    UpdateActionCatalogEnum::CREATE,
     [
         new Catalog(
             1,

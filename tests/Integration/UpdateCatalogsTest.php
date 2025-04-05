@@ -12,7 +12,7 @@ use AfterbuySdk\Dto\UpdateCatalogs\CatalogNotDeleteds;
 use AfterbuySdk\Dto\UpdateCatalogs\NewCatalog;
 use AfterbuySdk\Dto\UpdateCatalogs\NewCatalogs;
 use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\UpdateActionEnum;
+use AfterbuySdk\Enum\UpdateActionCatalogEnum;
 use AfterbuySdk\Request\UpdateCatalogsRequest;
 use AfterbuySdk\Response\UpdateCatalogsResponse;
 use AfterbuySdk\Tests\DomFormatter;
@@ -46,7 +46,7 @@ class UpdateCatalogsTest extends TestCase
         $this->assertCount(51, $catalogs);
 
         $request = new UpdateCatalogsRequest(
-            UpdateActionEnum::CREATE,
+            UpdateActionCatalogEnum::CREATE,
             $catalogs,
         );
 
@@ -59,7 +59,7 @@ class UpdateCatalogsTest extends TestCase
         $afterbuyGlobal = clone $this->afterbuyGlobal();
 
         $request = new UpdateCatalogsRequest(
-            UpdateActionEnum::CREATE,
+            UpdateActionCatalogEnum::CREATE,
             [
                 new Catalog(catalogId: 1),
             ]
@@ -74,7 +74,7 @@ class UpdateCatalogsTest extends TestCase
         $afterbuyGlobal = clone $this->afterbuyGlobal();
 
         $request = new UpdateCatalogsRequest(
-            UpdateActionEnum::REFRESH,
+            UpdateActionCatalogEnum::REFRESH,
             [
                 new Catalog(catalogName: 'Test'),
             ]
@@ -89,7 +89,7 @@ class UpdateCatalogsTest extends TestCase
         $afterbuyGlobal = clone $this->afterbuyGlobal();
 
         $request = new UpdateCatalogsRequest(
-            UpdateActionEnum::DELETE,
+            UpdateActionCatalogEnum::DELETE,
             [
                 new Catalog(catalogName: 'Test'),
             ]
@@ -106,7 +106,7 @@ class UpdateCatalogsTest extends TestCase
         $loremIpsum260 = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanc';
 
         $request = new UpdateCatalogsRequest(
-            UpdateActionEnum::REFRESH,
+            UpdateActionCatalogEnum::REFRESH,
             [
                 new Catalog(catalogId: 1, catalogDescription: $loremIpsum255),
             ]
@@ -117,7 +117,7 @@ class UpdateCatalogsTest extends TestCase
         $request->payload($afterbuyGlobal);
 
         $request = new UpdateCatalogsRequest(
-            UpdateActionEnum::REFRESH,
+            UpdateActionCatalogEnum::REFRESH,
             [
                 new Catalog(catalogId: 1, catalogDescription: $loremIpsum260),
             ]
@@ -133,7 +133,7 @@ class UpdateCatalogsTest extends TestCase
         $afterbuyGlobal = clone $this->afterbuyGlobal();
 
         $request = new UpdateCatalogsRequest(
-            UpdateActionEnum::CREATE,
+            UpdateActionCatalogEnum::CREATE,
             [
                 new Catalog(
                     1,
@@ -193,7 +193,7 @@ class UpdateCatalogsTest extends TestCase
     {
         $file = __DIR__ . '/ResponseFiles/UpdateCatalogsNewCatalogsSuccess.xml';
 
-        $request = new UpdateCatalogsRequest(UpdateActionEnum::CREATE, [
+        $request = new UpdateCatalogsRequest(UpdateActionCatalogEnum::CREATE, [
             new Catalog(1, 'First'),
         ]);
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
@@ -220,7 +220,7 @@ class UpdateCatalogsTest extends TestCase
     {
         $file = __DIR__ . '/ResponseFiles/UpdateCatalogsCatalogNotDeletedsSuccess.xml';
 
-        $request = new UpdateCatalogsRequest(UpdateActionEnum::CREATE, [
+        $request = new UpdateCatalogsRequest(UpdateActionCatalogEnum::CREATE, [
             new Catalog(1, 'First'),
         ]);
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
