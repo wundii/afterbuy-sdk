@@ -9,7 +9,7 @@ use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use DateTimeInterface;
 use InvalidArgumentException;
 
-final readonly class Order implements AfterbuyAppendXmlContentInterface
+final class Order implements AfterbuyAppendXmlContentInterface
 {
     /**
      * @param string[] $tags
@@ -92,12 +92,19 @@ final readonly class Order implements AfterbuyAppendXmlContentInterface
         return $this->additionalInfo;
     }
 
-    /**
-     * @return Attribute[]
-     */
+    public function setAdditionalInfo(?string $additionalInfo): void
+    {
+        $this->additionalInfo = $additionalInfo;
+    }
+
     public function getAttributes(): array
     {
         return $this->attributes;
+    }
+
+    public function setAttributes(array $attributes): void
+    {
+        $this->attributes = $attributes;
     }
 
     public function getBuyerInfo(): ?BuyerInfo
@@ -105,9 +112,19 @@ final readonly class Order implements AfterbuyAppendXmlContentInterface
         return $this->buyerInfo;
     }
 
+    public function setBuyerInfo(?BuyerInfo $buyerInfo): void
+    {
+        $this->buyerInfo = $buyerInfo;
+    }
+
     public function getFeedbackDate(): ?DateTimeInterface
     {
         return $this->feedbackDate;
+    }
+
+    public function setFeedbackDate(?DateTimeInterface $feedbackDate): void
+    {
+        $this->feedbackDate = $feedbackDate;
     }
 
     public function getHideOrder(): ?bool
@@ -115,9 +132,19 @@ final readonly class Order implements AfterbuyAppendXmlContentInterface
         return $this->hideOrder;
     }
 
+    public function setHideOrder(?bool $hideOrder): void
+    {
+        $this->hideOrder = $hideOrder;
+    }
+
     public function getInvoiceDate(): ?DateTimeInterface
     {
         return $this->invoiceDate;
+    }
+
+    public function setInvoiceDate(?DateTimeInterface $invoiceDate): void
+    {
+        $this->invoiceDate = $invoiceDate;
     }
 
     public function getInvoiceMemo(): ?string
@@ -125,9 +152,19 @@ final readonly class Order implements AfterbuyAppendXmlContentInterface
         return $this->invoiceMemo;
     }
 
+    public function setInvoiceMemo(?string $invoiceMemo): void
+    {
+        $this->invoiceMemo = $invoiceMemo;
+    }
+
     public function getInvoiceNumber(): ?int
     {
         return $this->invoiceNumber;
+    }
+
+    public function setInvoiceNumber(?int $invoiceNumber): void
+    {
+        $this->invoiceNumber = $invoiceNumber;
     }
 
     public function getItemId(): ?int
@@ -135,9 +172,19 @@ final readonly class Order implements AfterbuyAppendXmlContentInterface
         return $this->itemId;
     }
 
+    public function setItemId(?int $itemId): void
+    {
+        $this->itemId = $itemId;
+    }
+
     public function getMailDate(): ?DateTimeInterface
     {
         return $this->mailDate;
+    }
+
+    public function setMailDate(?DateTimeInterface $mailDate): void
+    {
+        $this->mailDate = $mailDate;
     }
 
     public function getOrderExported(): ?bool
@@ -145,9 +192,19 @@ final readonly class Order implements AfterbuyAppendXmlContentInterface
         return $this->orderExported;
     }
 
+    public function setOrderExported(?bool $orderExported): void
+    {
+        $this->orderExported = $orderExported;
+    }
+
     public function getOrderId(): ?int
     {
         return $this->orderId;
+    }
+
+    public function setOrderId(?int $orderId): void
+    {
+        $this->orderId = $orderId;
     }
 
     public function getOrderMemo(): ?string
@@ -155,9 +212,19 @@ final readonly class Order implements AfterbuyAppendXmlContentInterface
         return $this->orderMemo;
     }
 
+    public function setOrderMemo(?string $orderMemo): void
+    {
+        $this->orderMemo = $orderMemo;
+    }
+
     public function getPaymentInfo(): ?PaymentInfo
     {
         return $this->paymentInfo;
+    }
+
+    public function setPaymentInfo(?PaymentInfo $paymentInfo): void
+    {
+        $this->paymentInfo = $paymentInfo;
     }
 
     public function getProductId(): ?int
@@ -165,9 +232,19 @@ final readonly class Order implements AfterbuyAppendXmlContentInterface
         return $this->productId;
     }
 
+    public function setProductId(?int $productId): void
+    {
+        $this->productId = $productId;
+    }
+
     public function getReminder1Date(): ?DateTimeInterface
     {
         return $this->reminder1Date;
+    }
+
+    public function setReminder1Date(?DateTimeInterface $reminder1Date): void
+    {
+        $this->reminder1Date = $reminder1Date;
     }
 
     public function getReminder2Date(): ?DateTimeInterface
@@ -175,9 +252,19 @@ final readonly class Order implements AfterbuyAppendXmlContentInterface
         return $this->reminder2Date;
     }
 
+    public function setReminder2Date(?DateTimeInterface $reminder2Date): void
+    {
+        $this->reminder2Date = $reminder2Date;
+    }
+
     public function getReminderMailDate(): ?DateTimeInterface
     {
         return $this->reminderMailDate;
+    }
+
+    public function setReminderMailDate(?DateTimeInterface $reminderMailDate): void
+    {
+        $this->reminderMailDate = $reminderMailDate;
     }
 
     public function getShippingInfo(): ?ShippingInfo
@@ -185,12 +272,19 @@ final readonly class Order implements AfterbuyAppendXmlContentInterface
         return $this->shippingInfo;
     }
 
-    /**
-     * @return string[]
-     */
+    public function setShippingInfo(?ShippingInfo $shippingInfo): void
+    {
+        $this->shippingInfo = $shippingInfo;
+    }
+
     public function getTags(): array
     {
         return $this->tags;
+    }
+
+    public function setTags(array $tags): void
+    {
+        $this->tags = $tags;
     }
 
     public function getUserComment(): ?string
@@ -198,9 +292,19 @@ final readonly class Order implements AfterbuyAppendXmlContentInterface
         return $this->userComment;
     }
 
+    public function setUserComment(?string $userComment): void
+    {
+        $this->userComment = $userComment;
+    }
+
     public function getUserDefindedFlag(): ?int
     {
         return $this->userDefindedFlag;
+    }
+
+    public function setUserDefindedFlag(?int $userDefindedFlag): void
+    {
+        $this->userDefindedFlag = $userDefindedFlag;
     }
 
     public function getVorgangsInfo(): ?VorgangsInfo
@@ -208,8 +312,18 @@ final readonly class Order implements AfterbuyAppendXmlContentInterface
         return $this->vorgangsInfo;
     }
 
+    public function setVorgangsInfo(?VorgangsInfo $vorgangsInfo): void
+    {
+        $this->vorgangsInfo = $vorgangsInfo;
+    }
+
     public function getXmlDate(): ?DateTimeInterface
     {
         return $this->xmlDate;
+    }
+
+    public function setXmlDate(?DateTimeInterface $xmlDate): void
+    {
+        $this->xmlDate = $xmlDate;
     }
 }
