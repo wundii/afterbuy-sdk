@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Dto\UpdateCatalogs;
 
-use AfterbuySdk\Enum\UpdateActionCatalogEnum;
+use AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Exception;
@@ -17,7 +17,7 @@ final class Catalogs implements AfterbuyAppendXmlContentInterface
      * @param Catalog[] $catalogs
      */
     public function __construct(
-        private UpdateActionCatalogEnum $updateActionCatalogEnum,
+        private UpdateActionCatalogsEnum $updateActionCatalogsEnum,
         private array $catalogs = [],
     ) {
     }
@@ -25,21 +25,21 @@ final class Catalogs implements AfterbuyAppendXmlContentInterface
     public function appendXmlContent(SimpleXMLExtend $xml): void
     {
         $catalogs = $xml->addChild('Catalogs');
-        $catalogs->addNumber('UpdateAction', $this->updateActionCatalogEnum->value);
+        $catalogs->addNumber('UpdateAction', $this->updateActionCatalogsEnum->value);
 
         foreach ($this->catalogs as $catalog) {
             $catalog->appendXmlContent($catalogs);
         }
     }
 
-    public function getUpdateActionEnum(): UpdateActionCatalogEnum
+    public function getUpdateActionEnum(): UpdateActionCatalogsEnum
     {
-        return $this->updateActionCatalogEnum;
+        return $this->updateActionCatalogsEnum;
     }
 
-    public function setUpdateActionEnum(UpdateActionCatalogEnum $updateActionCatalogEnum): void
+    public function setUpdateActionEnum(UpdateActionCatalogsEnum $updateActionCatalogsEnum): void
     {
-        $this->updateActionCatalogEnum = $updateActionCatalogEnum;
+        $this->updateActionCatalogsEnum = $updateActionCatalogsEnum;
     }
 
     /**
@@ -71,14 +71,14 @@ final class Catalogs implements AfterbuyAppendXmlContentInterface
             }
 
             if (
-                $this->updateActionCatalogEnum === UpdateActionCatalogEnum::CREATE
+                $this->updateActionCatalogsEnum === UpdateActionCatalogsEnum::CREATE
                 && $catalog->getCatalogName() === null
             ) {
                 throw new Exception('Catalog name cannot be null, when creating a catalog');
             }
 
             if (
-                $this->updateActionCatalogEnum !== UpdateActionCatalogEnum::CREATE
+                $this->updateActionCatalogsEnum !== UpdateActionCatalogsEnum::CREATE
                 && $catalog->getCatalogId() === null
             ) {
                 throw new Exception('Catalog id cannot be null, when updating or delete a catalog');

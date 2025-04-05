@@ -10,7 +10,7 @@ use AfterbuySdk\Dto\UpdateCatalogs\Catalogs;
 use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
-use AfterbuySdk\Enum\UpdateActionCatalogEnum;
+use AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Response\UpdateCatalogsResponse;
@@ -22,7 +22,7 @@ final readonly class UpdateCatalogsRequest implements AfterbuyRequestInterface
      * @param Catalog[] $catalogs
      */
     public function __construct(
-        private UpdateActionCatalogEnum $updateActionCatalogEnum,
+        private UpdateActionCatalogsEnum $updateActionCatalogsEnum,
         private array $catalogs = [],
     ) {
     }
@@ -35,7 +35,7 @@ final readonly class UpdateCatalogsRequest implements AfterbuyRequestInterface
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
         $catalogs = new Catalogs(
-            $this->updateActionCatalogEnum,
+            $this->updateActionCatalogsEnum,
             $this->catalogs
         );
 
