@@ -10,7 +10,7 @@ use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Dto\UpdateCatalogs\Catalog;
 use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\UpdateActionCatalogEnum;
+use AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use AfterbuySdk\Request\UpdateCatalogsRequest;
 
 $global = new AfterbuyGlobal(
@@ -24,7 +24,7 @@ $afterbuy = new Afterbuy(
 );
 
 $request = new UpdateCatalogsRequest(
-    UpdateActionCatalogEnum::CREATE,
+    UpdateActionCatalogsEnum::CREATE,
     [
         new Catalog(
             1,

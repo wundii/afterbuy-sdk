@@ -98,6 +98,10 @@ final readonly class Product implements AfterbuyAppendXmlContentInterface
         private ?AgeGroupEnum $ageGroupEnum = null,
         private ?Economicoperators $economicoperators = null,
         private array $tags = [],
+        private ?Skus $skus = null,
+        private ?AddCatalogs $addCatalogs = null,
+        private ?AddAttributes $addAttributes = null,
+        private ?AddBaseProducts $addBaseProducts = null,
         private array $useEbayVariations = [],
         private array $partsFitment = [],
         private array $additionalPriceUpdates = [],
@@ -190,6 +194,11 @@ final readonly class Product implements AfterbuyAppendXmlContentInterface
                 $tags->addString('Tag', $tag);
             }
         }
+
+        $this->skus?->appendXmlContent($product);
+        $this->addCatalogs?->appendXmlContent($product);
+        $this->addAttributes?->appendXmlContent($product);
+        $this->addBaseProducts?->appendXmlContent($product);
 
         if ($this->useEbayVariations !== []) {
             $useEbayVariations = $product->addChild('UseEbayVariations');
