@@ -13,7 +13,7 @@ final readonly class ProductIdent implements AfterbuyAppendXmlContentInterface
     public function __construct(
         private ?BaseProductTypeEnum $baseProductTypeEnum = null,
         private ?bool $productInsert = null,
-        private ?int $userProductId = null,
+        private ?string $userProductId = null,
         private ?int $productId = null,
         private ?int $anr = null,
         private ?string $ean = null,
@@ -25,7 +25,7 @@ final readonly class ProductIdent implements AfterbuyAppendXmlContentInterface
         $productIdent = $xml->addChild('ProductIdent');
         $productIdent->addNumber('BaseProductType', $this->baseProductTypeEnum?->value);
         $productIdent->addBool('ProductInsert', $this->productInsert);
-        $productIdent->addNumber('UserProductID', $this->userProductId);
+        $productIdent->addString('UserProductID', $this->userProductId);
         $productIdent->addNumber('ProductID', $this->productId);
         $productIdent->addNumber('Anr', $this->anr);
         $productIdent->addString('EAN', $this->ean);
@@ -56,7 +56,7 @@ final readonly class ProductIdent implements AfterbuyAppendXmlContentInterface
         return $this->productInsert;
     }
 
-    public function getUserProductId(): ?int
+    public function getUserProductId(): ?string
     {
         return $this->userProductId;
     }

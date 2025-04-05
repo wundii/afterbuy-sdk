@@ -12,7 +12,7 @@ final class NewProducts implements AfterbuyDtoInterface
      * @param NewProduct[] $newProducts
      */
     public function __construct(
-        private readonly array $newProducts = [],
+        private array $newProducts = [],
     ) {
     }
 
@@ -22,5 +22,13 @@ final class NewProducts implements AfterbuyDtoInterface
     public function getNewProducts(): array
     {
         return $this->newProducts;
+    }
+
+    /**
+     * @param NewProduct[] $newProducts
+     */
+    public function setNewProducts(array $newProducts): void
+    {
+        $this->newProducts = $newProducts;
     }
 }

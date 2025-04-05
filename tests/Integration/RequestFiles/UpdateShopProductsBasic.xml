@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Request>
+    <AfterbuyGlobal>
+        <AccountToken>account</AccountToken>
+        <PartnerToken>partner</PartnerToken>
+        <ErrorLanguage>DE</ErrorLanguage>
+        <CallName>UpdateShopProducts</CallName>
+        <DetailLevel>0</DetailLevel>
+    </AfterbuyGlobal>
+    <Products>
+        <Product>
+            <ProductIdent>
+                <ProductInsert>1</ProductInsert>
+                <UserProductID>12345ABCD</UserProductID>
+                <ProductID>0</ProductID>
+                <Anr>0</Anr>
+            </ProductIdent>
+            <Name>ABInterfaceNew TestItem Warning</Name>
+            <EAN>EAN</EAN>
+        </Product>
+        <Product>
+            <ProductIdent>
+                <ProductInsert>1</ProductInsert>
+                <UserProductID>12346ABCD</UserProductID>
+                <ProductID>0</ProductID>
+                <Anr>0</Anr>
+                <EAN>EAN</EAN>
+            </ProductIdent>
+            <Name>ABInterfaceNew TestItem</Name>
+            <ShortDescription>TestKurzbeschreibung</ShortDescription>
+            <Memo>TestMemo</Memo>
+            <Description>TestBeschreibung</Description>
+            <Keywords>TestKeywords</Keywords>
+            <Quantity>10</Quantity>
+            <AuctionQuantity>100</AuctionQuantity>
+            <Stock>1</Stock>
+            <Discontinued>1</Discontinued>
+            <MergeStock>1</MergeStock>
+            <UnitOfQuantity>2,55</UnitOfQuantity>
+            <BasepriceFactor>L</BasepriceFactor>
+            <MinimumStock>5</MinimumStock>
+            <SellingPrice>1,23</SellingPrice>
+            <BuyingPrice>2,34</BuyingPrice>
+            <DealerPrice>3,45</DealerPrice>
+            <Level>1000</Level>
+            <Position>10000</Position>
+            <TitleReplace>1</TitleReplace>
+        </Product>
+    </Products>
+</Request>

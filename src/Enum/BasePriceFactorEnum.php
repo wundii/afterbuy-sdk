@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Enum;
 
-enum UnitOfQuantityEnum: string
+enum BasePriceFactorEnum: string
 {
     case LITER = 'L';
     case KG = 'Kg';

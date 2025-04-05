@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace AfterbuySdk\Dto\UpdateShopProducts;
 
 use AfterbuySdk\Enum\AgeGroupEnum;
+use AfterbuySdk\Enum\BasePriceFactorEnum;
 use AfterbuySdk\Enum\ConditionEnum;
 use AfterbuySdk\Enum\EnergyClassEnum;
 use AfterbuySdk\Enum\GenderEnum;
-use AfterbuySdk\Enum\UnitOfQuantityEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 
@@ -24,8 +24,8 @@ final class Product implements AfterbuyAppendXmlContentInterface
      * @param Feature[] $features
      */
     public function __construct(
+        private ProductIdent $productIdent,
         private string $name,
-        private ?ProductIdent $productIdent = null,
         private ?int $anr = null,
         private ?string $ean = null,
         private ?int $headerId = null,
@@ -42,8 +42,8 @@ final class Product implements AfterbuyAppendXmlContentInterface
         private ?bool $stock = null,
         private ?bool $discontinued = null,
         private ?bool $mergeStock = null,
-        private ?UnitOfQuantityEnum $unitOfQuantityEnum = null,
-        private ?string $basepriceFactor = null,
+        private ?float $unitOfQuantity = null,
+        private ?BasePriceFactorEnum $basePriceFactorEnum = null,
         private ?int $minimumStock = null,
         private ?float $sellingPrice = null,
         private ?float $buyingPrice = null,
@@ -114,8 +114,8 @@ final class Product implements AfterbuyAppendXmlContentInterface
     public function appendXmlContent(SimpleXMLExtend $xml): void
     {
         $product = $xml->addChild('Product');
+        $this->productIdent->appendXmlContent($product);
         $product->addString('Name', $this->name);
-        $this->productIdent?->appendXmlContent($product);
         $product->addNumber('Anr', $this->anr);
         $product->addString('EAN', $this->ean);
         $product->addNumber('HeaderID', $this->headerId);
@@ -132,8 +132,8 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $product->addBool('Stock', $this->stock);
         $product->addBool('Discontinued', $this->discontinued);
         $product->addBool('MergeStock', $this->mergeStock);
-        $product->addString('UnitOfQuantity', $this->unitOfQuantityEnum?->value);
-        $product->addString('BasePriceFactor', $this->basepriceFactor);
+        $product->addNumber('UnitOfQuantity', $this->unitOfQuantity);
+        $product->addString('BasepriceFactor', $this->basePriceFactorEnum?->value);
         $product->addNumber('MinimumStock', $this->minimumStock);
         $product->addNumber('SellingPrice', $this->sellingPrice);
         $product->addNumber('BuyingPrice', $this->buyingPrice);
@@ -355,14 +355,14 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->auctionQuantity = $auctionQuantity;
     }
 
-    public function getBasepriceFactor(): ?string
+    public function getBasepriceFactor(): ?BasePriceFactorEnum
     {
-        return $this->basepriceFactor;
+        return $this->basePriceFactorEnum;
     }
 
-    public function setBasepriceFactor(?string $basepriceFactor): void
+    public function setBasepriceFactor(?BasePriceFactorEnum $basePriceFactorEnum): void
     {
-        $this->basepriceFactor = $basepriceFactor;
+        $this->basePriceFactorEnum = $basePriceFactorEnum;
     }
 
     public function getBuyingPrice(): ?float
@@ -897,12 +897,12 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->productBrand = $productBrand;
     }
 
-    public function getProductIdent(): ?ProductIdent
+    public function getProductIdent(): ProductIdent
     {
         return $this->productIdent;
     }
 
-    public function setProductIdent(?ProductIdent $productIdent): void
+    public function setProductIdent(ProductIdent $productIdent): void
     {
         $this->productIdent = $productIdent;
     }
@@ -1089,14 +1089,14 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->titleReplace = $titleReplace;
     }
 
-    public function getUnitOfQuantity(): ?UnitOfQuantityEnum
+    public function getUnitOfQuantity(): ?float
     {
-        return $this->unitOfQuantityEnum;
+        return $this->unitOfQuantity;
     }
 
-    public function setUnitOfQuantity(?UnitOfQuantityEnum $unitOfQuantityEnum): void
+    public function setUnitOfQuantity(?float $unitOfQuantity): void
     {
-        $this->unitOfQuantityEnum = $unitOfQuantityEnum;
+        $this->unitOfQuantity = $unitOfQuantity;
     }
 
     /**
