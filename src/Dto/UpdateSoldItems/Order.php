@@ -97,11 +97,17 @@ final class Order implements AfterbuyAppendXmlContentInterface
         $this->additionalInfo = $additionalInfo;
     }
 
+    /**
+     * @return Attribute[]
+     */
     public function getAttributes(): array
     {
         return $this->attributes;
     }
 
+    /**
+     * @param Attribute[] $attributes
+     */
     public function setAttributes(array $attributes): void
     {
         $this->attributes = $attributes;
@@ -277,11 +283,17 @@ final class Order implements AfterbuyAppendXmlContentInterface
         $this->shippingInfo = $shippingInfo;
     }
 
+    /**
+     * @return string[]
+     */
     public function getTags(): array
     {
         return $this->tags;
     }
 
+    /**
+     * @param string[] $tags
+     */
     public function setTags(array $tags): void
     {
         $this->tags = $tags;

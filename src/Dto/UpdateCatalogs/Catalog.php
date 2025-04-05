@@ -55,9 +55,19 @@ final class Catalog implements AfterbuyAppendXmlContentInterface
         return $this->additionalText;
     }
 
+    public function setAdditionalText(?string $additionalText): void
+    {
+        $this->additionalText = $additionalText;
+    }
+
     public function getAdditionalUrl(): ?string
     {
         return $this->additionalUrl;
+    }
+
+    public function setAdditionalUrl(?string $additionalUrl): void
+    {
+        $this->additionalUrl = $additionalUrl;
     }
 
     /**
@@ -68,9 +78,22 @@ final class Catalog implements AfterbuyAppendXmlContentInterface
         return $this->catalog;
     }
 
+    /**
+     * @param Catalog[] $catalog
+     */
+    public function setCatalog(array $catalog): void
+    {
+        $this->catalog = $catalog;
+    }
+
     public function getCatalogDescription(): ?string
     {
         return $this->catalogDescription;
+    }
+
+    public function setCatalogDescription(?string $catalogDescription): void
+    {
+        $this->catalogDescription = $catalogDescription;
     }
 
     public function getCatalogId(): ?int
@@ -78,9 +101,19 @@ final class Catalog implements AfterbuyAppendXmlContentInterface
         return $this->catalogId;
     }
 
+    public function setCatalogId(?int $catalogId): void
+    {
+        $this->catalogId = $catalogId;
+    }
+
     public function getCatalogName(): ?string
     {
         return $this->catalogName;
+    }
+
+    public function setCatalogName(?string $catalogName): void
+    {
+        $this->catalogName = $catalogName;
     }
 
     public function getLevel(): ?int
@@ -88,9 +121,19 @@ final class Catalog implements AfterbuyAppendXmlContentInterface
         return $this->level;
     }
 
+    public function setLevel(?int $level): void
+    {
+        $this->level = $level;
+    }
+
     public function getMouseOverPicture(): ?string
     {
         return $this->mouseOverPicture;
+    }
+
+    public function setMouseOverPicture(?string $mouseOverPicture): void
+    {
+        $this->mouseOverPicture = $mouseOverPicture;
     }
 
     public function getPicture(): ?string
@@ -98,13 +141,28 @@ final class Catalog implements AfterbuyAppendXmlContentInterface
         return $this->picture;
     }
 
+    public function setPicture(?string $picture): void
+    {
+        $this->picture = $picture;
+    }
+
     public function getPosition(): ?int
     {
         return $this->position;
     }
 
+    public function setPosition(?int $position): void
+    {
+        $this->position = $position;
+    }
+
     public function getShowCatalog(): ?bool
     {
         return $this->showCatalog;
+    }
+
+    public function setShowCatalog(?bool $showCatalog): void
+    {
+        $this->showCatalog = $showCatalog;
     }
 }
