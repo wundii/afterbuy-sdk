@@ -12,6 +12,10 @@ use AfterbuySdk\Dto\UpdateShopProducts\AddBaseProduct;
 use AfterbuySdk\Dto\UpdateShopProducts\AddBaseProducts;
 use AfterbuySdk\Dto\UpdateShopProducts\AddCatalog;
 use AfterbuySdk\Dto\UpdateShopProducts\AddCatalogs;
+use AfterbuySdk\Dto\UpdateShopProducts\AdditionalDescriptionField;
+use AfterbuySdk\Dto\UpdateShopProducts\AdditionalPriceUpdate;
+use AfterbuySdk\Dto\UpdateShopProducts\Economicoperators;
+use AfterbuySdk\Dto\UpdateShopProducts\Feature;
 use AfterbuySdk\Dto\UpdateShopProducts\PartsProperties;
 use AfterbuySdk\Dto\UpdateShopProducts\PartsProperty;
 use AfterbuySdk\Dto\UpdateShopProducts\Product;
@@ -20,14 +24,19 @@ use AfterbuySdk\Dto\UpdateShopProducts\ScaledDiscount;
 use AfterbuySdk\Dto\UpdateShopProducts\Skus;
 use AfterbuySdk\Dto\UpdateShopProducts\Variation;
 use AfterbuySdk\Dto\UpdateShopProducts\VariationValue;
+use AfterbuySdk\Enum\AgeGroupEnum;
 use AfterbuySdk\Enum\AttributTypEnum;
 use AfterbuySdk\Enum\BasePriceFactorEnum;
+use AfterbuySdk\Enum\ConditionEnum;
 use AfterbuySdk\Enum\CountryOfOriginEnum;
 use AfterbuySdk\Enum\EndpointEnum;
+use AfterbuySdk\Enum\EnergyClassEnum;
+use AfterbuySdk\Enum\GenderEnum;
 use AfterbuySdk\Enum\PropertyNameEnum;
 use AfterbuySdk\Enum\UpdateActionAddBaseProductEnum;
 use AfterbuySdk\Enum\UpdateActionAddCatalogsEnum;
 use AfterbuySdk\Enum\UpdateActionAttributesEnum;
+use AfterbuySdk\Enum\UpdateActionEconomicoperatorsEnum;
 use AfterbuySdk\Enum\UpdateActionSkusEnum;
 use AfterbuySdk\Request\UpdateShopProductsRequest;
 use AfterbuySdk\Response\UpdateShopProductsResponse;
@@ -88,52 +97,92 @@ class UpdateShopProductsTest extends TestCase
                         'EAN',
                     ),
                     'ABInterfaceNew TestItem',
-                    shortDescription: 'TestKurzbeschreibung',
-                    memo: 'TestMemo',
-                    description: 'TestBeschreibung',
-                    keywords: 'TestKeywords',
-                    quantity: 10,
-                    auctionQuantity: 100,
-                    stock: true,
-                    discontinued: true,
-                    mergeStock: true,
-                    unitOfQuantity: 2.55,
-                    basePriceFactorEnum: BasePriceFactorEnum::LITER,
-                    minimumStock: 5,
-                    sellingPrice: 1.23,
-                    buyingPrice: 2.34,
-                    dealerPrice: 3.45,
-                    level: 1000,
-                    position: 10000,
-                    titleReplace: true,
-                    scaledDiscounts: [
+                    123456,
+                    '123ABC',
+                    111,
+                    333,
+                    'C-B-A-Test',
+                    'TestKurzbeschreibung',
+                    'TestMemo',
+                    'TestBeschreibung',
+                    'TestKeywords',
+                    10,
+                    100,
+                    20,
+                    30,
+                    true,
+                    true,
+                    true,
+                    2.55,
+                    BasePriceFactorEnum::LITER,
+                    5,
+                    1.23,
+                    2.34,
+                    3.45,
+                    1000,
+                    10000,
+                    true,
+                    [
                         new ScaledDiscount(1, 1.23, 2.34),
                         new ScaledDiscount(2, 2.34, 3.45),
                         new ScaledDiscount(3, 3.45, 4.56),
                     ],
-                    taxRate: 16.5,
-                    weight: 2.33,
-                    stocklocation_1: 'Lagerort 1',
-                    stocklocation_2: 'Lagerort 2',
-                    stocklocation_3: 'Lagerort 3',
-                    stocklocation_4: 'Lagerort 4',
-                    countryOfOriginEnum: CountryOfOriginEnum::GERMANY,
-                    searchAlias: 'TestSuchalias',
-                    froogle: true,
-                    kelkoo: true,
-                    shippingGroup: 'Packstationtest',
-                    shopShippingGroup: 'ShopGruppe',
-                    crossCatalogId: 141556,
-                    freeValue1: 'TestFreeValue1',
-                    freeValue2: 'TestFreeValue2',
-                    freeValue3: 'TestFreeValue3',
-                    freeValue4: 'TestFreeValue4',
-                    freeValue5: 'TestFreeValue5',
-                    imageSmallUrl: 'MyURLSmall',
-                    imageLargeUrl: 'MyURLBig',
-                    customsTariffNumber: '12345',
-                    tags: ['string'],
-                    skus: new Skus(
+                    16.5,
+                    2.33,
+                    'Lagerort 1',
+                    'Lagerort 2',
+                    'Lagerort 3',
+                    'Lagerort 4',
+                    CountryOfOriginEnum::GERMANY,
+                    'TestSuchalias',
+                    true,
+                    true,
+                    'Packstationtest',
+                    'ShopGruppe',
+                    141556,
+                    'TestFreeValue1',
+                    'TestFreeValue2',
+                    'TestFreeValue3',
+                    'TestFreeValue4',
+                    'TestFreeValue5',
+                    'TestFreeValue6',
+                    'TestFreeValue7',
+                    'TestFreeValue8',
+                    'TestFreeValue9',
+                    'TestFreeValue10',
+                    '3 Tage',
+                    'MyURLSmall',
+                    'MyURLBig',
+                    'alien.jpg',
+                    '/9j/4AAQSkZJRgABAQAASABIAAD/Z',
+                    'type',
+                    'value',
+                    'brand',
+                    '12345',
+                    'test',
+                    ConditionEnum::NEW,
+                    'productPattern',
+                    'wood',
+                    'brown',
+                    'xxl',
+                    'https://www.example.com',
+                    EnergyClassEnum::A_PLUS_PLUS_PLUS,
+                    'https://www.example.com/energy-label',
+                    'https://www.example.com/data-sheet',
+                    GenderEnum::UNISEX,
+                    AgeGroupEnum::KIDS,
+                    new Economicoperators(
+                        UpdateActionEconomicoperatorsEnum::ADD,
+                        [
+                            10000,
+                            10001,
+                            10002,
+                        ],
+                    ),
+                    [
+                        'string',
+                    ],
+                    new Skus(
                         UpdateActionSkusEnum::ADD,
                         [
                             'NewSKU1',
@@ -148,13 +197,13 @@ class UpdateShopProductsTest extends TestCase
                             'NewSKU10',
                         ],
                     ),
-                    addCatalogs: new AddCatalogs(
+                    new AddCatalogs(
                         UpdateActionAddCatalogsEnum::UPDATE,
                         [
                             new AddCatalog(141556, 'MyNEW Katalog'),
                         ],
                     ),
-                    addAttributes: new AddAttributes(
+                    new AddAttributes(
                         UpdateActionAttributesEnum::ADD_OR_UPDATE,
                         [
                             new AddAttribut(
@@ -166,7 +215,7 @@ class UpdateShopProductsTest extends TestCase
                             ),
                         ],
                     ),
-                    addBaseProducts: new AddBaseProducts(
+                    new AddBaseProducts(
                         UpdateActionAddBaseProductEnum::UPDATE,
                         [
                             new AddBaseProduct(
@@ -178,7 +227,7 @@ class UpdateShopProductsTest extends TestCase
                             ),
                         ],
                     ),
-                    useEbayVariations: [
+                    [
                         new Variation(
                             'Grösse',
                             [
@@ -202,7 +251,7 @@ class UpdateShopProductsTest extends TestCase
                             ],
                         ),
                     ],
-                    partsFitment: [
+                    [
                         new PartsProperties(
                             [
                                 new PartsProperty(
@@ -264,6 +313,52 @@ class UpdateShopProductsTest extends TestCase
                             ],
                         ),
                     ],
+                    [
+                        new AdditionalPriceUpdate(
+                            1,
+                            123456,
+                            1.23,
+                        ),
+                        new AdditionalPriceUpdate(
+                            2,
+                            234567,
+                            2.34,
+                        ),
+                    ],
+                    [
+                        new AdditionalDescriptionField(
+                            10,
+                            'FieldNameIdent - 10',
+                            'Name - 10',
+                            'Label - 10',
+                            'Content - 10',
+                        ),
+                        new AdditionalDescriptionField(
+                            11,
+                            'FieldNameIdent - 11',
+                            'Name - 11',
+                            'Label - 11',
+                            'Content - 11',
+                        ),
+                        new AdditionalDescriptionField(
+                            12,
+                            'FieldNameIdent - 12',
+                            'Name - 12',
+                            'Label - 12',
+                            'Content - 12',
+                        ),
+                    ],
+                    [],
+                    [
+                        new Feature(
+                            2000,
+                            'TestFeature 1',
+                        ),
+                        new Feature(
+                            2001,
+                            'TestFeature 2',
+                        ),
+                    ],
                 ),
             ]
         );
@@ -272,7 +367,7 @@ class UpdateShopProductsTest extends TestCase
 
         $this->assertEquals(DomFormatter::xml($expected), DomFormatter::xml($payload));
     }
-    //
+
     // public function testUpdateShopProductsRequestParcelLabel(): void
     // {
     //     $file = __DIR__ . '/RequestFiles/UpdateShopProductsParcelLabel.xml';

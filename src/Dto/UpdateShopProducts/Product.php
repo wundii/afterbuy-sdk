@@ -80,8 +80,8 @@ final class Product implements AfterbuyAppendXmlContentInterface
         private ?string $deliveryTime = null,
         private ?string $imageSmallUrl = null,
         private ?string $imageLargeUrl = null,
-        private ?string $imageName = null,
-        private ?string $imageSource = null,
+        private ?string $imageNameBase64 = null,
+        private ?string $imageSourceBase64 = null,
         private ?string $manufacturerStandardProductIdType = null,
         private ?string $manufacturerStandardProductIdValue = null,
         private ?string $productBrand = null,
@@ -107,8 +107,8 @@ final class Product implements AfterbuyAppendXmlContentInterface
         private array $useEbayVariations = [],
         private array $partsFitment = [],
         private array $additionalPriceUpdates = [],
-        private array $productPictures = [],
         private array $additionalDescriptionFields = [],
+        private array $productPictures = [],
         private array $features = [],
     ) {
     }
@@ -177,8 +177,8 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $product->addString('DeliveryTime', $this->deliveryTime);
         $product->addString('ImageSmallURL', $this->imageSmallUrl);
         $product->addString('ImageLargeURL', $this->imageLargeUrl);
-        $product->addString('ImageName', $this->imageName);
-        $product->addString('ImageSource', $this->imageSource);
+        $product->addString('ImageName', $this->imageNameBase64);
+        $product->addString('ImageSource', $this->imageSourceBase64);
         $product->addString('ManufacturerStandardProductIDType', $this->manufacturerStandardProductIdType);
         $product->addString('ManufacturerStandardProductIDValue', $this->manufacturerStandardProductIdValue);
         $product->addString('ProductBrand', $this->productBrand);
@@ -700,14 +700,14 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->imageLargeUrl = $imageLargeUrl;
     }
 
-    public function getImageName(): ?string
+    public function getImageNameBase64(): ?string
     {
-        return $this->imageName;
+        return $this->imageNameBase64;
     }
 
-    public function setImageName(?string $imageName): void
+    public function setImageNameBase64(?string $imageNameBase64): void
     {
-        $this->imageName = $imageName;
+        $this->imageNameBase64 = $imageNameBase64;
     }
 
     public function getImageSmallUrl(): ?string
@@ -720,14 +720,14 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->imageSmallUrl = $imageSmallUrl;
     }
 
-    public function getImageSource(): ?string
+    public function getImageSourceBase64(): ?string
     {
-        return $this->imageSource;
+        return $this->imageSourceBase64;
     }
 
-    public function setImageSource(?string $imageSource): void
+    public function setImageSourceBase64(?string $imageSourceBase64): void
     {
-        $this->imageSource = $imageSource;
+        $this->imageSourceBase64 = $imageSourceBase64;
     }
 
     public function getItemColor(): ?string

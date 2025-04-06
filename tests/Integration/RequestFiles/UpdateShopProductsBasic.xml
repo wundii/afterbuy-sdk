@@ -27,12 +27,19 @@
                 <EAN>EAN</EAN>
             </ProductIdent>
             <Name>ABInterfaceNew TestItem</Name>
+            <Anr>123456</Anr>
+            <EAN>123ABC</EAN>
+            <HeaderID>111</HeaderID>
+            <FooterID>333</FooterID>
+            <ManufacturerPartNumber>C-B-A-Test</ManufacturerPartNumber>
             <ShortDescription>TestKurzbeschreibung</ShortDescription>
             <Memo>TestMemo</Memo>
             <Description>TestBeschreibung</Description>
             <Keywords>TestKeywords</Keywords>
             <Quantity>10</Quantity>
             <AuctionQuantity>100</AuctionQuantity>
+            <AddQuantity>20</AddQuantity>
+            <AddAuctionQuantity>30</AddAuctionQuantity>
             <Stock>1</Stock>
             <Discontinued>1</Discontinued>
             <MergeStock>1</MergeStock>
@@ -80,9 +87,38 @@
             <FreeValue3>TestFreeValue3</FreeValue3>
             <FreeValue4>TestFreeValue4</FreeValue4>
             <FreeValue5>TestFreeValue5</FreeValue5>
+            <FreeValue6>TestFreeValue6</FreeValue6>
+            <FreeValue7>TestFreeValue7</FreeValue7>
+            <FreeValue8>TestFreeValue8</FreeValue8>
+            <FreeValue9>TestFreeValue9</FreeValue9>
+            <FreeValue10>TestFreeValue10</FreeValue10>
+            <DeliveryTime>3 Tage</DeliveryTime>
             <ImageSmallURL>MyURLSmall</ImageSmallURL>
             <ImageLargeURL>MyURLBig</ImageLargeURL>
+            <ImageName>alien.jpg</ImageName>
+            <ImageSource>/9j/4AAQSkZJRgABAQAASABIAAD/Z</ImageSource>
+            <ManufacturerStandardProductIDType>type</ManufacturerStandardProductIDType>
+            <ManufacturerStandardProductIDValue>value</ManufacturerStandardProductIDValue>
+            <ProductBrand>brand</ProductBrand>
             <CustomsTariffNumber>12345</CustomsTariffNumber>
+            <GoogleProductCategory>test</GoogleProductCategory>
+            <Condition>1</Condition>
+            <Pattern>productPattern</Pattern>
+            <Material>wood</Material>
+            <ItemColor>brown</ItemColor>
+            <ItemSize>xxl</ItemSize>
+            <CanonicalURL>https://www.example.com</CanonicalURL>
+            <EnergyClass>10</EnergyClass>
+            <EnergyClassPictureURL>https://www.example.com/energy-label</EnergyClassPictureURL>
+            <DataSheetURL>https://www.example.com/data-sheet</DataSheetURL>
+            <Gender>1</Gender>
+            <AgeGroup>2</AgeGroup>
+            <Economicoperators>
+                <UpdateAction>1</UpdateAction>
+                <EconomicoperatorId>10000</EconomicoperatorId>
+                <EconomicoperatorId>10001</EconomicoperatorId>
+                <EconomicoperatorId>10002</EconomicoperatorId>
+            </Economicoperators>
             <Tags>
                 <Tag>string</Tag>
             </Tags>
@@ -200,6 +236,51 @@
                     </PartsProperty>
                 </PartsProperties>
             </PartsFitment>
+            <AdditionalPrice>
+                <AdditionalPriceUpdate>
+                    <DefinitionID>1</DefinitionID>
+                    <ProductID>123456</ProductID>
+                    <Price>1,23</Price>
+                </AdditionalPriceUpdate>
+                <AdditionalPriceUpdate>
+                    <DefinitionID>2</DefinitionID>
+                    <ProductID>234567</ProductID>
+                    <Price>2,34</Price>
+                </AdditionalPriceUpdate>
+            </AdditionalPrice>
+            <AdditionalDescriptionFields>
+                <AdditionalDescriptionField>
+                    <FieldIDIdent>10</FieldIDIdent>
+                    <FieldNameIdent>FieldNameIdent - 10</FieldNameIdent>
+                    <FieldName>Name - 10</FieldName>
+                    <FieldLabel>Label - 10</FieldLabel>
+                    <FieldContent>Content - 10</FieldContent>
+                </AdditionalDescriptionField>
+                <AdditionalDescriptionField>
+                    <FieldIDIdent>11</FieldIDIdent>
+                    <FieldNameIdent>FieldNameIdent - 11</FieldNameIdent>
+                    <FieldName>Name - 11</FieldName>
+                    <FieldLabel>Label - 11</FieldLabel>
+                    <FieldContent>Content - 11</FieldContent>
+                </AdditionalDescriptionField>
+                <AdditionalDescriptionField>
+                    <FieldIDIdent>12</FieldIDIdent>
+                    <FieldNameIdent>FieldNameIdent - 12</FieldNameIdent>
+                    <FieldName>Name - 12</FieldName>
+                    <FieldLabel>Label - 12</FieldLabel>
+                    <FieldContent>Content - 12</FieldContent>
+                </AdditionalDescriptionField>
+            </AdditionalDescriptionFields>
+            <Features>
+                <Feature>
+                    <ID>2000</ID>
+                    <Value>TestFeature 1</Value>
+                </Feature>
+                <Feature>
+                    <ID>2001</ID>
+                    <Value>TestFeature 2</Value>
+                </Feature>
+            </Features>
         </Product>
     </Products>
 </Request>
