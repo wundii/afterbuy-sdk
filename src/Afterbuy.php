@@ -71,12 +71,13 @@ final readonly class Afterbuy
         if ($requestClass instanceof AfterbuyAppendXmlContentInterface) {
             $constraintViolationList = $this->getValidator()->validate($requestClass);
             if ($constraintViolationList->count() > 0) {
+                $loggerMessages = [];
+                foreach ($constraintViolationList as $error) {
+                    $loggerMessages[] = sprintf('%s: %s', $error->getPropertyPath(), $error->getMessage());
+                }
+
                 if ($this->logger instanceof LoggerInterface) {
                     $loggerMessage = sprintf('Afterbuy SDK %s', $requestClass::class);
-                    $loggerMessages = [];
-                    foreach ($constraintViolationList as $error) {
-                        $loggerMessages[] = sprintf('%s: %s', $error->getPropertyPath(), $error->getMessage());
-                    }
 
                     $loggerContext = [
                         'uri' => $uri,
@@ -93,7 +94,7 @@ final readonly class Afterbuy
                     );
                 }
 
-                throw new InvalidArgumentException('Request class is not valid');
+                throw new InvalidArgumentException('Request class is not valid: ' . implode(', ', $loggerMessages));
             }
         }
 
