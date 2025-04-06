@@ -10,6 +10,7 @@ use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Response\GetShippingCostResponse;
 use RuntimeException;
@@ -24,6 +25,11 @@ final readonly class GetShippingCostRequest implements AfterbuyRequestInterface
     public function method(): RequestMethodEnum
     {
         return RequestMethodEnum::GET;
+    }
+
+    public function requestClass(): ?AfterbuyAppendXmlContentInterface
+    {
+        return null;
     }
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string

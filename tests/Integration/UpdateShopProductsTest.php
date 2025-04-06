@@ -38,11 +38,13 @@ use AfterbuySdk\Enum\UpdateActionAddCatalogsEnum;
 use AfterbuySdk\Enum\UpdateActionAttributesEnum;
 use AfterbuySdk\Enum\UpdateActionEconomicoperatorsEnum;
 use AfterbuySdk\Enum\UpdateActionSkusEnum;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Request\UpdateShopProductsRequest;
 use AfterbuySdk\Response\UpdateShopProductsResponse;
 use AfterbuySdk\Tests\DomFormatter;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Validator\Validation;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -54,10 +56,24 @@ class UpdateShopProductsTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
+    public function validate(AfterbuyAppendXmlContentInterface $afterbuyAppendXmlContent): array
+    {
+        $errors = [];
+        $validator = Validation::createValidatorBuilder()
+            ->enableAttributeMapping()
+            ->getValidator();
+
+        $constraintViolationList = $validator->validate($afterbuyAppendXmlContent);
+
+        foreach ($constraintViolationList as $error) {
+            $errors[] = sprintf('%s: %s', $error->getPropertyPath(), $error->getMessage());
+        }
+
+        return $errors;
+    }
+
     public function testValidateMaxProducts(): void
     {
-        $afterbuyGlobal = clone $this->afterbuyGlobal();
-
         $products = array_map(fn ($i) => new Product(new ProductIdent(), (string) ($i + 1)), range(0, 250));
         $this->assertCount(251, $products);
 
@@ -65,14 +81,16 @@ class UpdateShopProductsTest extends TestCase
             $products,
         );
 
-        $this->expectExceptionMessage('Products can not contain more than 250 products');
-        $request->payload($afterbuyGlobal);
+        $errors = $this->validate($request->requestClass());
+        $expected = [
+            'products: This collection should contain 250 elements or less.',
+        ];
+
+        $this->assertEquals($expected, $errors);
     }
 
     public function testValidateMaxSkus(): void
     {
-        $afterbuyGlobal = clone $this->afterbuyGlobal();
-
         $request = new UpdateShopProductsRequest(
             [
                 new Product(
@@ -98,13 +116,16 @@ class UpdateShopProductsTest extends TestCase
             ],
         );
 
-        $this->expectExceptionMessage('Products can not contain more than 10 skus');
-        $request->payload($afterbuyGlobal);
+        $errors = $this->validate($request->requestClass());
+        $expected = [
+            'products[0].skus.skus: This collection should contain 10 elements or less.',
+        ];
+
+        $this->assertEquals($expected, $errors);
     }
 
     public function testValidateMaxAdditionalDescriptionFields(): void
     {
-        $afterbuyGlobal = clone $this->afterbuyGlobal();
 
         $additionalDescriptionFields = array_map(fn ($i) => new AdditionalDescriptionField(($i + 1)), range(0, 10));
         $this->assertCount(11, $additionalDescriptionFields);
@@ -115,8 +136,12 @@ class UpdateShopProductsTest extends TestCase
             ],
         );
 
-        $this->expectExceptionMessage('Products can not contain more than 10 additional description fields');
-        $request->payload($afterbuyGlobal);
+        $errors = $this->validate($request->requestClass());
+        $expected = [
+            'products[0].additionalDescriptionFields: This collection should contain 10 elements or less.',
+        ];
+
+        $this->assertEquals($expected, $errors);
     }
 
     public function testUpdateShopProductsRequestBasic(): void

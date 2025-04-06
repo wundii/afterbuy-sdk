@@ -6,6 +6,7 @@ namespace AfterbuySdk\Dto\UpdateSoldItems;
 
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final readonly class BuyerInfo implements AfterbuyAppendXmlContentInterface
 {
@@ -20,6 +21,7 @@ final readonly class BuyerInfo implements AfterbuyAppendXmlContentInterface
         $this->shippingAddress->appendXmlContent($buyerInfo);
     }
 
+    #[Assert\Valid]
     public function getShippingAddress(): ShippingAddress
     {
         return $this->shippingAddress;

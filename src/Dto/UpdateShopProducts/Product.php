@@ -12,6 +12,7 @@ use AfterbuySdk\Enum\EnergyClassEnum;
 use AfterbuySdk\Enum\GenderEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final class Product implements AfterbuyAppendXmlContentInterface
 {
@@ -252,6 +253,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         }
     }
 
+    #[Assert\Valid]
     public function getAddAttributes(): ?AddAttributes
     {
         return $this->addAttributes;
@@ -272,6 +274,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->addAuctionQuantity = $addAuctionQuantity;
     }
 
+    #[Assert\Valid]
     public function getAddBaseProducts(): ?AddBaseProducts
     {
         return $this->addBaseProducts;
@@ -282,6 +285,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->addBaseProducts = $addBaseProducts;
     }
 
+    #[Assert\Valid]
     public function getAddCatalogs(): ?AddCatalogs
     {
         return $this->addCatalogs;
@@ -295,6 +299,8 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return AdditionalDescriptionField[]
      */
+    #[Assert\Count(min: 0, max: 10)]
+    #[Assert\Valid]
     public function getAdditionalDescriptionFields(): array
     {
         return $this->additionalDescriptionFields;
@@ -311,6 +317,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return AdditionalPriceUpdate[]
      */
+    #[Assert\Valid]
     public function getAdditionalPriceUpdates(): array
     {
         return $this->additionalPriceUpdates;
@@ -494,6 +501,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->ean = $ean;
     }
 
+    #[Assert\Valid]
     public function getEconomicoperators(): ?Economicoperators
     {
         return $this->economicoperators;
@@ -527,6 +535,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return Feature[]
      */
+    #[Assert\Valid]
     public function getFeatures(): array
     {
         return $this->features;
@@ -863,6 +872,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return PartsProperties[]
      */
+    #[Assert\Valid]
     public function getPartsFitment(): array
     {
         return $this->partsFitment;
@@ -906,6 +916,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->productBrand = $productBrand;
     }
 
+    #[Assert\Valid]
     public function getProductIdent(): ProductIdent
     {
         return $this->productIdent;
@@ -919,6 +930,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return ProductPicture[]
      */
+    #[Assert\Valid]
     public function getProductPictures(): array
     {
         return $this->productPictures;
@@ -945,6 +957,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return ScaledDiscount[]
      */
+    #[Assert\Valid]
     public function getScaledDiscounts(): array
     {
         return $this->scaledDiscounts;
@@ -1008,6 +1021,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->shortDescription = $shortDescription;
     }
 
+    #[Assert\Valid]
     public function getSkus(): ?Skus
     {
         return $this->skus;
@@ -1071,6 +1085,11 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return string[]
      */
+    #[Assert\Count(min: 0)]
+    #[Assert\All([
+        new Assert\Type('string'),
+        new Assert\Length(max: 50),
+    ])]
     public function getTags(): array
     {
         return $this->tags;
@@ -1117,6 +1136,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return Variation[]
      */
+    #[Assert\Valid]
     public function getUseEbayVariations(): array
     {
         return $this->useEbayVariations;

@@ -7,6 +7,7 @@ namespace AfterbuySdk\Dto\UpdateShopProducts;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use InvalidArgumentException;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final readonly class PartsProperties implements AfterbuyAppendXmlContentInterface
 {
@@ -32,6 +33,7 @@ final readonly class PartsProperties implements AfterbuyAppendXmlContentInterfac
     /**
      * @return PartsProperty[]
      */
+    #[Assert\Valid]
     public function getPartsProperties(): array
     {
         return $this->partsProperties;

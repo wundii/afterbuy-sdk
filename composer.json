@@ -18,7 +18,7 @@
     "ext-xml": "*",
     "psr/log": "^3.0",
     "symfony/http-client": "^6.0 || ^7.0",
-    "webmozart/assert": "^1.11",
+    "symfony/validator": "^6.0 || ^7.0",
     "wundii/data-mapper": "^1.1"
   },
   "require-dev": {

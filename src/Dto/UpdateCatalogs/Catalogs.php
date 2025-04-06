@@ -8,6 +8,7 @@ use AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Exception;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final class Catalogs implements AfterbuyAppendXmlContentInterface
 {
@@ -45,6 +46,8 @@ final class Catalogs implements AfterbuyAppendXmlContentInterface
     /**
      * @return Catalog[]
      */
+    #[Assert\Count(min: 1, max: 50)]
+    #[Assert\Valid]
     public function getCatalogs(): array
     {
         return $this->catalogs;
@@ -60,14 +63,9 @@ final class Catalogs implements AfterbuyAppendXmlContentInterface
 
     public function isValid(): bool
     {
-        $deepCatalog = function (?Catalog $catalog) use (&$deepCatalog, &$catalogCount): void {
+        $deepCatalog = function (?Catalog $catalog) use (&$deepCatalog): void {
             if (! $catalog instanceof Catalog) {
                 return;
-            }
-
-            ++$catalogCount;
-            if ($catalogCount > 50) {
-                throw new Exception('Catalogs can not contain more than 50 catalogs');
             }
 
             if (
@@ -84,17 +82,12 @@ final class Catalogs implements AfterbuyAppendXmlContentInterface
                 throw new Exception('Catalog id cannot be null, when updating or delete a catalog');
             }
 
-            if ($catalog->getCatalogDescription() !== null && strlen($catalog->getCatalogDescription()) > 255) {
-                throw new Exception('Catalog description cannot be longer than 255 characters');
-            }
-
             foreach ($catalog->getCatalog() as $subCatalog) {
                 $deepCatalog($subCatalog);
             }
         };
 
         try {
-            $catalogCount = 0;
             foreach ($this->catalogs as $catalog) {
                 $deepCatalog($catalog);
             }

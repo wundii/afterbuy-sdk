@@ -8,6 +8,7 @@ use AfterbuySdk\Enum\UpdateActionEconomicoperatorsEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use InvalidArgumentException;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final readonly class Economicoperators implements AfterbuyAppendXmlContentInterface
 {
@@ -35,6 +36,9 @@ final readonly class Economicoperators implements AfterbuyAppendXmlContentInterf
     /**
      * @return int[]
      */
+    #[Assert\All(
+        new Assert\Type('int'),
+    )]
     public function getEconomicoperatorId(): array
     {
         return $this->economicoperatorId;

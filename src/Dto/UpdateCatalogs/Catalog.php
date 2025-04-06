@@ -7,6 +7,7 @@ namespace AfterbuySdk\Dto\UpdateCatalogs;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use InvalidArgumentException;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final class Catalog implements AfterbuyAppendXmlContentInterface
 {
@@ -73,6 +74,7 @@ final class Catalog implements AfterbuyAppendXmlContentInterface
     /**
      * @return Catalog[]
      */
+    #[Assert\Valid]
     public function getCatalog(): array
     {
         return $this->catalog;
@@ -86,6 +88,7 @@ final class Catalog implements AfterbuyAppendXmlContentInterface
         $this->catalog = $catalog;
     }
 
+    #[Assert\Length(max: 255)]
     public function getCatalogDescription(): ?string
     {
         return $this->catalogDescription;

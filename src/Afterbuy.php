@@ -8,15 +8,20 @@ use AfterbuySdk\Dto\AfterbuyGlobal;
 use AfterbuySdk\Enum\CallStatusEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Extends\DateTime;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Interface\AfterbuyResponseInterface;
 use DateTimeInterface;
 use Exception;
+use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 use ReflectionClass;
 use RuntimeException;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Wundii\DataMapper\DataConfig;
@@ -32,6 +37,7 @@ final readonly class Afterbuy
         private AfterbuyGlobal $afterbuyGlobal,
         private EndpointEnum $endpointEnum,
         private ?LoggerInterface $logger = null,
+        private ?ValidatorInterface $validator = null,
     ) {
     }
 
@@ -41,6 +47,7 @@ final readonly class Afterbuy
     public function runRequest(AfterbuyRequestInterface $afterbuyRequest, ?ResponseInterface $response = null): AfterbuyResponseInterface
     {
         $method = $afterbuyRequest->method()->value;
+        $requestClass = $afterbuyRequest->requestClass();
         $payload = $afterbuyRequest->payload($this->afterbuyGlobal);
         $query = $afterbuyRequest->query();
         $responseClass = $afterbuyRequest->responseClass();
@@ -59,6 +66,35 @@ final readonly class Afterbuy
 
         if (str_ends_with($uri, '/')) {
             $uri = substr($uri, 0, -1);
+        }
+
+        if ($requestClass instanceof AfterbuyAppendXmlContentInterface) {
+            $constraintViolationList = $this->getValidator()->validate($requestClass);
+            if ($constraintViolationList->count() > 0) {
+                if ($this->logger instanceof LoggerInterface) {
+                    $loggerMessage = sprintf('Afterbuy SDK %s', $requestClass::class);
+                    $loggerMessages = [];
+                    foreach ($constraintViolationList as $error) {
+                        $loggerMessages[] = sprintf('%s: %s', $error->getPropertyPath(), $error->getMessage());
+                    }
+
+                    $loggerContext = [
+                        'uri' => $uri,
+                        'method' => $method,
+                        'payload' => $payload,
+                        'query' => $query,
+                        'response' => $loggerMessages,
+                    ];
+
+                    $this->logger->log(
+                        LogLevel::WARNING,
+                        $loggerMessage,
+                        $loggerContext,
+                    );
+                }
+
+                throw new InvalidArgumentException('Request class is not valid');
+            }
         }
 
         /** $response is always null, this variable is only filled in for the unit test */
@@ -129,5 +165,12 @@ final readonly class Afterbuy
     public function getAfterbuyDtoLoggerArray(array $afterbuyDtoLogger): array
     {
         return array_map(fn (AfterbuyDtoLoggerInterface $afterbuyDtoLogger): string => $afterbuyDtoLogger->getMessage(), $afterbuyDtoLogger);
+    }
+
+    private function getValidator(): ValidatorInterface
+    {
+        return $this->validator ?? Validation::createValidatorBuilder()
+            ->enableAttributeMapping()
+            ->getValidator();
     }
 }

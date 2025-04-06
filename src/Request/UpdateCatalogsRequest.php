@@ -12,6 +12,7 @@ use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Response\UpdateCatalogsResponse;
 use RuntimeException;
@@ -32,7 +33,7 @@ final readonly class UpdateCatalogsRequest implements AfterbuyRequestInterface
         return RequestMethodEnum::POST;
     }
 
-    public function payload(AfterbuyGlobal $afterbuyGlobal): string
+    public function requestClass(): AfterbuyAppendXmlContentInterface
     {
         $catalogs = new Catalogs(
             $this->updateActionCatalogsEnum,
@@ -43,12 +44,17 @@ final readonly class UpdateCatalogsRequest implements AfterbuyRequestInterface
             throw new RuntimeException($catalogs->getInvalidMessage());
         }
 
+        return $catalogs;
+    }
+
+    public function payload(AfterbuyGlobal $afterbuyGlobal): string
+    {
         $afterbuyGlobal->setCallName('UpdateCatalogs');
         $afterbuyGlobal->setDetailLevelEnum(DetailLevelEnum::FIRST);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        $xml->appendContent($catalogs);
+        $xml->appendContent($this->requestClass());
 
         $string = $xml->asXML();
         if ($string === false) {

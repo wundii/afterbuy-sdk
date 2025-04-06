@@ -7,6 +7,7 @@ namespace AfterbuySdk\Dto\UpdateSoldItems;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use DateTimeInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final readonly class ShippingInfo implements AfterbuyAppendXmlContentInterface
 {
@@ -64,6 +65,7 @@ final readonly class ShippingInfo implements AfterbuyAppendXmlContentInterface
     /**
      * @return ParcelLabel[]
      */
+    #[Assert\Valid]
     public function getParcelLabels(): array
     {
         return $this->parcelLabels;

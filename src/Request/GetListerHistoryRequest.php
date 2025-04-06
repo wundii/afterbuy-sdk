@@ -9,6 +9,7 @@ use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Interface\Filter\GetListerHistoryFilterInterface;
 use AfterbuySdk\Response\GetListerHistoryResponse;
@@ -29,6 +30,11 @@ final readonly class GetListerHistoryRequest implements AfterbuyRequestInterface
     public function method(): RequestMethodEnum
     {
         return RequestMethodEnum::GET;
+    }
+
+    public function requestClass(): ?AfterbuyAppendXmlContentInterface
+    {
+        return null;
     }
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string

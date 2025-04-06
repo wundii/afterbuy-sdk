@@ -13,12 +13,14 @@ use AfterbuySdk\Dto\UpdateCatalogs\NewCatalog;
 use AfterbuySdk\Dto\UpdateCatalogs\NewCatalogs;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\UpdateActionCatalogsEnum;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Request\UpdateCatalogsRequest;
 use AfterbuySdk\Response\UpdateCatalogsResponse;
 use AfterbuySdk\Tests\DomFormatter;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
+use Symfony\Component\Validator\Validation;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -31,6 +33,22 @@ class UpdateCatalogsTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
+    public function validate(AfterbuyAppendXmlContentInterface $afterbuyAppendXmlContent): array
+    {
+        $errors = [];
+        $validator = Validation::createValidatorBuilder()
+            ->enableAttributeMapping()
+            ->getValidator();
+
+        $constraintViolationList = $validator->validate($afterbuyAppendXmlContent);
+
+        foreach ($constraintViolationList as $error) {
+            $errors[] = sprintf('%s: %s', $error->getPropertyPath(), $error->getMessage());
+        }
+
+        return $errors;
+    }
+
     public function testValidateEmptyCatalogRequirements(): void
     {
         $this->expectExceptionMessage('CatalogId or CatalogName must be set');
@@ -40,8 +58,6 @@ class UpdateCatalogsTest extends TestCase
 
     public function testValidateMaxCatalogs(): void
     {
-        $afterbuyGlobal = clone $this->afterbuyGlobal();
-
         $catalogs = array_map(fn ($i) => new Catalog($i + 1, 'Objekt ' . ($i + 1)), range(0, 50));
         $this->assertCount(51, $catalogs);
 
@@ -50,8 +66,12 @@ class UpdateCatalogsTest extends TestCase
             $catalogs,
         );
 
-        $this->expectExceptionMessage('Catalogs can not contain more than 50 catalogs');
-        $request->payload($afterbuyGlobal);
+        $errors = $this->validate($request->requestClass());
+        $expected = [
+            'catalogs: This collection should contain 50 elements or less.',
+        ];
+
+        $this->assertEquals($expected, $errors);
     }
 
     public function testValidateUpdateActionEnumCreateRequirements(): void
@@ -101,7 +121,6 @@ class UpdateCatalogsTest extends TestCase
 
     public function testValidateCatalogDescription(): void
     {
-        $afterbuyGlobal = clone $this->afterbuyGlobal();
         $loremIpsum255 = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata';
         $loremIpsum260 = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanc';
 
@@ -112,9 +131,8 @@ class UpdateCatalogsTest extends TestCase
             ]
         );
 
-        $this->assertTrue(true, 'No exception should be thrown');
-
-        $request->payload($afterbuyGlobal);
+        $errors = $this->validate($request->requestClass());
+        $this->assertEquals([], $errors);
 
         $request = new UpdateCatalogsRequest(
             UpdateActionCatalogsEnum::REFRESH,
@@ -123,8 +141,11 @@ class UpdateCatalogsTest extends TestCase
             ]
         );
 
-        $this->expectExceptionMessage('Catalog description cannot be longer than 255 characters');
-        $request->payload($afterbuyGlobal);
+        $errors = $this->validate($request->requestClass());
+        $expected = [
+            'catalogs[0].catalogDescription: This value is too long. It should have 255 characters or less.',
+        ];
+        $this->assertEquals($expected, $errors);
     }
 
     public function testUpdateCatalogsRequestCreate(): void

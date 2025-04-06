@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AfterbuySdk\Dto\UpdateShopProducts;
 
 use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final class NewProducts implements AfterbuyDtoInterface
 {
@@ -19,6 +20,7 @@ final class NewProducts implements AfterbuyDtoInterface
     /**
      * @return NewProduct[]
      */
+    #[Assert\Valid]
     public function getNewProducts(): array
     {
         return $this->newProducts;

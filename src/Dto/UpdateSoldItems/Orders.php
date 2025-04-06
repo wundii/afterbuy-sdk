@@ -8,6 +8,7 @@ use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Exception;
 use InvalidArgumentException;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final class Orders implements AfterbuyAppendXmlContentInterface
 {
@@ -24,6 +25,8 @@ final class Orders implements AfterbuyAppendXmlContentInterface
     /**
      * @return Order[]
      */
+    #[Assert\Count(min: 1, max: 150)]
+    #[Assert\Valid]
     public function getOrders(): array
     {
         return $this->orders;
@@ -31,12 +34,7 @@ final class Orders implements AfterbuyAppendXmlContentInterface
 
     public function isValid(): bool
     {
-        $deepOrder = function (Order $order) use (&$orderCount): void {
-            ++$orderCount;
-            if ($orderCount > 150) {
-                throw new Exception('Orders can not contain more than 150 catalogs');
-            }
-
+        $deepOrder = function (Order $order): void {
             $parcelLabelNumber = [];
             foreach ($order->getShippingInfo()?->getParcelLabels() ?? [] as $parcelLabel) {
                 if (
@@ -56,7 +54,6 @@ final class Orders implements AfterbuyAppendXmlContentInterface
         };
 
         try {
-            $orderCount = 0;
             foreach ($this->orders as $order) {
                 $deepOrder($order);
             }

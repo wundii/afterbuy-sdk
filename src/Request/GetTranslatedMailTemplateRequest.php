@@ -9,6 +9,7 @@ use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Interface\Filter\GetTranslatedMailTemplateFilterInterface;
 use AfterbuySdk\Response\GetTranslatedMailTemplateResponse;
@@ -30,6 +31,11 @@ final readonly class GetTranslatedMailTemplateRequest implements AfterbuyRequest
     public function method(): RequestMethodEnum
     {
         return RequestMethodEnum::GET;
+    }
+
+    public function requestClass(): ?AfterbuyAppendXmlContentInterface
+    {
+        return null;
     }
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string

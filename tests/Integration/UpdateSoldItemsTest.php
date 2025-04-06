@@ -17,12 +17,14 @@ use AfterbuySdk\Dto\UpdateSoldItems\VorgangsInfo;
 use AfterbuySdk\Enum\CountryIsoEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Extends\DateTime;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Request\UpdateSoldItemsRequest;
 use AfterbuySdk\Response\UpdateSoldItemsResponse;
 use AfterbuySdk\Tests\DomFormatter;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
+use Symfony\Component\Validator\Validation;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -35,6 +37,22 @@ class UpdateSoldItemsTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
+    public function validate(AfterbuyAppendXmlContentInterface $afterbuyAppendXmlContent): array
+    {
+        $errors = [];
+        $validator = Validation::createValidatorBuilder()
+            ->enableAttributeMapping()
+            ->getValidator();
+
+        $constraintViolationList = $validator->validate($afterbuyAppendXmlContent);
+
+        foreach ($constraintViolationList as $error) {
+            $errors[] = sprintf('%s: %s', $error->getPropertyPath(), $error->getMessage());
+        }
+
+        return $errors;
+    }
+
     public function testValidateEmptyOrderRequirements(): void
     {
         $this->expectExceptionMessage('At least one of orderId, itemId or userDefindedFlag must be set');
@@ -44,8 +62,6 @@ class UpdateSoldItemsTest extends TestCase
 
     public function testValidateMaxOrders(): void
     {
-        $afterbuyGlobal = clone $this->afterbuyGlobal();
-
         $orders = array_map(fn ($i) => new Order($i + 1), range(0, 150));
         $this->assertCount(151, $orders);
 
@@ -53,8 +69,12 @@ class UpdateSoldItemsTest extends TestCase
             $orders,
         );
 
-        $this->expectExceptionMessage('Orders can not contain more than 150 catalogs');
-        $request->payload($afterbuyGlobal);
+        $errors = $this->validate($request->requestClass());
+        $expected = [
+            'orders: This collection should contain 150 elements or less.',
+        ];
+
+        $this->assertEquals($expected, $errors);
     }
 
     public function testUpdateSoldItemsRequestBasic(): void

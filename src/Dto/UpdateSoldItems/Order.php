@@ -8,6 +8,7 @@ use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use DateTimeInterface;
 use InvalidArgumentException;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final class Order implements AfterbuyAppendXmlContentInterface
 {
@@ -100,6 +101,8 @@ final class Order implements AfterbuyAppendXmlContentInterface
     /**
      * @return Attribute[]
      */
+    #[Assert\Count(min: 0)]
+    #[Assert\Valid]
     public function getAttributes(): array
     {
         return $this->attributes;
@@ -113,6 +116,7 @@ final class Order implements AfterbuyAppendXmlContentInterface
         $this->attributes = $attributes;
     }
 
+    #[Assert\Valid]
     public function getBuyerInfo(): ?BuyerInfo
     {
         return $this->buyerInfo;
@@ -223,6 +227,7 @@ final class Order implements AfterbuyAppendXmlContentInterface
         $this->orderMemo = $orderMemo;
     }
 
+    #[Assert\Valid]
     public function getPaymentInfo(): ?PaymentInfo
     {
         return $this->paymentInfo;
@@ -273,6 +278,7 @@ final class Order implements AfterbuyAppendXmlContentInterface
         $this->reminderMailDate = $reminderMailDate;
     }
 
+    #[Assert\Valid]
     public function getShippingInfo(): ?ShippingInfo
     {
         return $this->shippingInfo;
@@ -286,6 +292,11 @@ final class Order implements AfterbuyAppendXmlContentInterface
     /**
      * @return string[]
      */
+    #[Assert\Count(min: 0)]
+    #[Assert\All([
+        new Assert\Type('string'),
+        new Assert\Length(max: 50),
+    ])]
     public function getTags(): array
     {
         return $this->tags;
@@ -319,6 +330,7 @@ final class Order implements AfterbuyAppendXmlContentInterface
         $this->userDefindedFlag = $userDefindedFlag;
     }
 
+    #[Assert\Valid]
     public function getVorgangsInfo(): ?VorgangsInfo
     {
         return $this->vorgangsInfo;

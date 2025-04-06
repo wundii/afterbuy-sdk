@@ -8,6 +8,7 @@ use AfterbuySdk\Enum\UpdateActionAddCatalogsEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use InvalidArgumentException;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final readonly class AddCatalogs implements AfterbuyAppendXmlContentInterface
 {
@@ -35,6 +36,7 @@ final readonly class AddCatalogs implements AfterbuyAppendXmlContentInterface
     /**
      * @return AddCatalog[]
      */
+    #[Assert\Valid]
     public function getAddCatalog(): array
     {
         return $this->addCatalog;

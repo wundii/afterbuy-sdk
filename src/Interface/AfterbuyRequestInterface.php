@@ -22,4 +22,6 @@ interface AfterbuyRequestInterface
      * @return string[]
      */
     public function query(): array;
+
+    public function requestClass(): ?AfterbuyAppendXmlContentInterface;
 }

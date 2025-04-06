@@ -6,6 +6,7 @@ namespace AfterbuySdk\Dto\UpdateShopProducts;
 
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final readonly class Variation implements AfterbuyAppendXmlContentInterface
 {
@@ -35,6 +36,7 @@ final readonly class Variation implements AfterbuyAppendXmlContentInterface
     /**
      * @return VariationValue[]
      */
+    #[Assert\Valid]
     public function getVariationValues(): array
     {
         return $this->variationValues;

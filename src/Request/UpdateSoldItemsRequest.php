@@ -11,6 +11,7 @@ use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Response\UpdateSoldItemsResponse;
 use RuntimeException;
@@ -30,7 +31,7 @@ final readonly class UpdateSoldItemsRequest implements AfterbuyRequestInterface
         return RequestMethodEnum::POST;
     }
 
-    public function payload(AfterbuyGlobal $afterbuyGlobal): string
+    public function requestClass(): AfterbuyAppendXmlContentInterface
     {
         $orders = new Orders(
             $this->orders
@@ -40,12 +41,17 @@ final readonly class UpdateSoldItemsRequest implements AfterbuyRequestInterface
             throw new RuntimeException($orders->getInvalidMessage());
         }
 
+        return $orders;
+    }
+
+    public function payload(AfterbuyGlobal $afterbuyGlobal): string
+    {
         $afterbuyGlobal->setCallName('UpdateSoldItems');
         $afterbuyGlobal->setDetailLevelEnum(DetailLevelEnum::FIRST);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        $xml->appendContent($orders);
+        $xml->appendContent($this->requestClass());
 
         $string = $xml->asXML();
         if ($string === false) {

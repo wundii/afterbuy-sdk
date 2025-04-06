@@ -8,6 +8,7 @@ use AfterbuySdk\Enum\UpdateActionSkusEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use InvalidArgumentException;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final readonly class Skus implements AfterbuyAppendXmlContentInterface
 {
@@ -35,6 +36,10 @@ final readonly class Skus implements AfterbuyAppendXmlContentInterface
     /**
      * @return string[]
      */
+    #[Assert\Count(min: 1, max: 10)]
+    #[Assert\All(
+        new Assert\Type('string'),
+    )]
     public function getSkus(): array
     {
         return $this->skus;

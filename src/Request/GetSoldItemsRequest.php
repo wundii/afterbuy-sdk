@@ -10,6 +10,7 @@ use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\OrderDirectionEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Interface\Filter\GetSoldItemsFilterInterface;
 use AfterbuySdk\Response\GetSoldItemsResponse;
@@ -33,6 +34,11 @@ final readonly class GetSoldItemsRequest implements AfterbuyRequestInterface
     public function method(): RequestMethodEnum
     {
         return RequestMethodEnum::GET;
+    }
+
+    public function requestClass(): ?AfterbuyAppendXmlContentInterface
+    {
+        return null;
     }
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string

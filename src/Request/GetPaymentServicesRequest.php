@@ -9,6 +9,7 @@ use AfterbuySdk\Enum\DetailLevelEnum;
 use AfterbuySdk\Enum\EndpointEnum;
 use AfterbuySdk\Enum\RequestMethodEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
+use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use AfterbuySdk\Interface\AfterbuyRequestInterface;
 use AfterbuySdk\Interface\Filter\GetPaymentServicesFilterInterface;
 use AfterbuySdk\Response\GetPaymentServicesResponse;
@@ -27,6 +28,11 @@ final readonly class GetPaymentServicesRequest implements AfterbuyRequestInterfa
     public function method(): RequestMethodEnum
     {
         return RequestMethodEnum::GET;
+    }
+
+    public function requestClass(): ?AfterbuyAppendXmlContentInterface
+    {
+        return null;
     }
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string

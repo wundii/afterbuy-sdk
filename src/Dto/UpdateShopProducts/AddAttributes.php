@@ -8,6 +8,7 @@ use AfterbuySdk\Enum\UpdateActionAttributesEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use InvalidArgumentException;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final readonly class AddAttributes implements AfterbuyAppendXmlContentInterface
 {
@@ -35,6 +36,7 @@ final readonly class AddAttributes implements AfterbuyAppendXmlContentInterface
     /**
      * @return AddAttribut[]
      */
+    #[Assert\Valid]
     public function getAddAttributes(): array
     {
         return $this->addAttributes;

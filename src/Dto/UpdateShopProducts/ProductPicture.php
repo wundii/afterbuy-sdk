@@ -7,6 +7,7 @@ namespace AfterbuySdk\Dto\UpdateShopProducts;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use InvalidArgumentException;
+use Symfony\Component\Validator\Constraints as Assert;
 
 final readonly class ProductPicture implements AfterbuyAppendXmlContentInterface
 {
@@ -36,5 +37,29 @@ final readonly class ProductPicture implements AfterbuyAppendXmlContentInterface
                 $child->appendXmlContent($childs);
             }
         }
+    }
+
+    public function getAltText(): string
+    {
+        return $this->altText;
+    }
+
+    /**
+     * @return ProductPictureChild[]
+     */
+    #[Assert\Valid]
+    public function getChilds(): array
+    {
+        return $this->childs;
+    }
+
+    public function getNr(): int
+    {
+        return $this->nr;
+    }
+
+    public function getUrl(): string
+    {
+        return $this->url;
     }
 }
