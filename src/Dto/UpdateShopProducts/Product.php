@@ -7,6 +7,7 @@ namespace AfterbuySdk\Dto\UpdateShopProducts;
 use AfterbuySdk\Enum\AgeGroupEnum;
 use AfterbuySdk\Enum\BasePriceFactorEnum;
 use AfterbuySdk\Enum\ConditionEnum;
+use AfterbuySdk\Enum\CountryOfOriginEnum;
 use AfterbuySdk\Enum\EnergyClassEnum;
 use AfterbuySdk\Enum\GenderEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
@@ -15,6 +16,7 @@ use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 final class Product implements AfterbuyAppendXmlContentInterface
 {
     /**
+     * @param ScaledDiscount[] $scaledDiscounts
      * @param string[] $tags
      * @param Variation[] $useEbayVariations
      * @param PartsProperties[] $partsFitment
@@ -51,14 +53,14 @@ final class Product implements AfterbuyAppendXmlContentInterface
         private ?int $level = null,
         private ?int $position = null,
         private ?bool $titleReplace = null,
-        private ?ScaledDiscount $scaledDiscount = null,
+        private array $scaledDiscounts = [],
         private ?float $taxRate = null,
         private ?float $weight = null,
         private ?string $stocklocation_1 = null,
         private ?string $stocklocation_2 = null,
         private ?string $stocklocation_3 = null,
         private ?string $stocklocation_4 = null,
-        private ?string $countryOfOrigin = null,
+        private ?CountryOfOriginEnum $countryOfOriginEnum = null,
         private ?string $searchAlias = null,
         private ?bool $froogle = null,
         private ?bool $kelkoo = null,
@@ -141,14 +143,21 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $product->addNumber('Level', $this->level);
         $product->addNumber('Position', $this->position);
         $product->addBool('TitleReplace', $this->titleReplace);
-        $this->scaledDiscount?->appendXmlContent($product);
+
+        if ($this->scaledDiscounts !== []) {
+            $scaledDiscounts = $product->addChild('ScaledDiscounts');
+            foreach ($this->scaledDiscounts as $scaledDiscount) {
+                $scaledDiscount->appendXmlContent($scaledDiscounts);
+            }
+        }
+
         $product->addNumber('TaxRate', $this->taxRate);
         $product->addNumber('Weight', $this->weight);
         $product->addString('Stocklocation_1', $this->stocklocation_1);
         $product->addString('Stocklocation_2', $this->stocklocation_2);
         $product->addString('Stocklocation_3', $this->stocklocation_3);
         $product->addString('Stocklocation_4', $this->stocklocation_4);
-        $product->addString('CountryOfOrigin', $this->countryOfOrigin);
+        $product->addString('CountryOfOrigin', $this->countryOfOriginEnum?->value);
         $product->addString('SearchAlias', $this->searchAlias);
         $product->addBool('Froogle', $this->froogle);
         $product->addBool('Kelkoo', $this->kelkoo);
@@ -201,7 +210,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->addBaseProducts?->appendXmlContent($product);
 
         if ($this->useEbayVariations !== []) {
-            $useEbayVariations = $product->addChild('UseEbayVariations');
+            $useEbayVariations = $product->addChild('UseeBayVariations');
             foreach ($this->useEbayVariations as $useEbayVariation) {
                 $useEbayVariation->appendXmlContent($useEbayVariations);
             }
@@ -395,14 +404,14 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->conditionEnum = $conditionEnum;
     }
 
-    public function getCountryOfOrigin(): ?string
+    public function getCountryOfOrigin(): ?CountryOfOriginEnum
     {
-        return $this->countryOfOrigin;
+        return $this->countryOfOriginEnum;
     }
 
-    public function setCountryOfOrigin(?string $countryOfOrigin): void
+    public function setCountryOfOrigin(?CountryOfOriginEnum $countryOfOriginEnum): void
     {
-        $this->countryOfOrigin = $countryOfOrigin;
+        $this->countryOfOriginEnum = $countryOfOriginEnum;
     }
 
     public function getCrossCatalogId(): ?int
@@ -933,14 +942,20 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->quantity = $quantity;
     }
 
-    public function getScaledDiscount(): ?ScaledDiscount
+    /**
+     * @return ScaledDiscount[]
+     */
+    public function getScaledDiscounts(): array
     {
-        return $this->scaledDiscount;
+        return $this->scaledDiscounts;
     }
 
-    public function setScaledDiscount(?ScaledDiscount $scaledDiscount): void
+    /**
+     * @param ScaledDiscount[] $scaledDiscounts
+     */
+    public function setScaledDiscounts(array $scaledDiscounts): void
     {
-        $this->scaledDiscount = $scaledDiscount;
+        $this->scaledDiscounts = $scaledDiscounts;
     }
 
     public function getSearchAlias(): ?string

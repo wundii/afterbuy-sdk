@@ -6,10 +6,29 @@ namespace AfterbuySdk\Tests\Integration;
 
 use AfterbuySdk\Afterbuy;
 use AfterbuySdk\Dto\AfterbuyGlobal;
+use AfterbuySdk\Dto\UpdateShopProducts\AddAttribut;
+use AfterbuySdk\Dto\UpdateShopProducts\AddAttributes;
+use AfterbuySdk\Dto\UpdateShopProducts\AddBaseProduct;
+use AfterbuySdk\Dto\UpdateShopProducts\AddBaseProducts;
+use AfterbuySdk\Dto\UpdateShopProducts\AddCatalog;
+use AfterbuySdk\Dto\UpdateShopProducts\AddCatalogs;
+use AfterbuySdk\Dto\UpdateShopProducts\PartsProperties;
+use AfterbuySdk\Dto\UpdateShopProducts\PartsProperty;
 use AfterbuySdk\Dto\UpdateShopProducts\Product;
 use AfterbuySdk\Dto\UpdateShopProducts\ProductIdent;
+use AfterbuySdk\Dto\UpdateShopProducts\ScaledDiscount;
+use AfterbuySdk\Dto\UpdateShopProducts\Skus;
+use AfterbuySdk\Dto\UpdateShopProducts\Variation;
+use AfterbuySdk\Dto\UpdateShopProducts\VariationValue;
+use AfterbuySdk\Enum\AttributTypEnum;
 use AfterbuySdk\Enum\BasePriceFactorEnum;
+use AfterbuySdk\Enum\CountryOfOriginEnum;
 use AfterbuySdk\Enum\EndpointEnum;
+use AfterbuySdk\Enum\PropertyNameEnum;
+use AfterbuySdk\Enum\UpdateActionAddBaseProductEnum;
+use AfterbuySdk\Enum\UpdateActionAddCatalogsEnum;
+use AfterbuySdk\Enum\UpdateActionAttributesEnum;
+use AfterbuySdk\Enum\UpdateActionSkusEnum;
 use AfterbuySdk\Request\UpdateShopProductsRequest;
 use AfterbuySdk\Response\UpdateShopProductsResponse;
 use AfterbuySdk\Tests\DomFormatter;
@@ -87,6 +106,164 @@ class UpdateShopProductsTest extends TestCase
                     level: 1000,
                     position: 10000,
                     titleReplace: true,
+                    scaledDiscounts: [
+                        new ScaledDiscount(1, 1.23, 2.34),
+                        new ScaledDiscount(2, 2.34, 3.45),
+                        new ScaledDiscount(3, 3.45, 4.56),
+                    ],
+                    taxRate: 16.5,
+                    weight: 2.33,
+                    stocklocation_1: 'Lagerort 1',
+                    stocklocation_2: 'Lagerort 2',
+                    stocklocation_3: 'Lagerort 3',
+                    stocklocation_4: 'Lagerort 4',
+                    countryOfOriginEnum: CountryOfOriginEnum::GERMANY,
+                    searchAlias: 'TestSuchalias',
+                    froogle: true,
+                    kelkoo: true,
+                    shippingGroup: 'Packstationtest',
+                    shopShippingGroup: 'ShopGruppe',
+                    crossCatalogId: 141556,
+                    freeValue1: 'TestFreeValue1',
+                    freeValue2: 'TestFreeValue2',
+                    freeValue3: 'TestFreeValue3',
+                    freeValue4: 'TestFreeValue4',
+                    freeValue5: 'TestFreeValue5',
+                    imageSmallUrl: 'MyURLSmall',
+                    imageLargeUrl: 'MyURLBig',
+                    customsTariffNumber: '12345',
+                    tags: ['string'],
+                    skus: new Skus(
+                        UpdateActionSkusEnum::ADD,
+                        [
+                            'NewSKU1',
+                            'NewSKU2',
+                            'NewSKU3',
+                            'NewSKU4',
+                            'NewSKU5',
+                            'NewSKU6',
+                            'NewSKU7',
+                            'NewSKU8',
+                            'NewSKU9',
+                            'NewSKU10',
+                        ],
+                    ),
+                    addCatalogs: new AddCatalogs(
+                        UpdateActionAddCatalogsEnum::UPDATE,
+                        [
+                            new AddCatalog(141556, 'MyNEW Katalog'),
+                        ],
+                    ),
+                    addAttributes: new AddAttributes(
+                        UpdateActionAttributesEnum::ADD_OR_UPDATE,
+                        [
+                            new AddAttribut(
+                                'Attribut 5',
+                                '1;2;3;4',
+                                AttributTypEnum::DROPDOWN,
+                                1000,
+                                true,
+                            ),
+                        ],
+                    ),
+                    addBaseProducts: new AddBaseProducts(
+                        UpdateActionAddBaseProductEnum::UPDATE,
+                        [
+                            new AddBaseProduct(
+                                1234,
+                                'TestLabel',
+                                1000,
+                                true,
+                                3,
+                            ),
+                        ],
+                    ),
+                    useEbayVariations: [
+                        new Variation(
+                            'Grösse',
+                            [
+                                new VariationValue(
+                                    123456789,
+                                    'XXL',
+                                    1,
+                                    'https://www.afterbuy.de/homesites/images/home/logo.gif',
+                                ),
+                            ],
+                        ),
+                        new Variation(
+                            'Farbe',
+                            [
+                                new VariationValue(
+                                    123456789,
+                                    'Blau',
+                                    1,
+                                    'https://www.afterbuy.de/homesites/images/home/logo.gif',
+                                ),
+                            ],
+                        ),
+                    ],
+                    partsFitment: [
+                        new PartsProperties(
+                            [
+                                new PartsProperty(
+                                    PropertyNameEnum::KType,
+                                    '3313',
+                                ),
+                                new PartsProperty(
+                                    PropertyNameEnum::KType,
+                                    '3314',
+                                ),
+                                new PartsProperty(
+                                    PropertyNameEnum::HSN,
+                                    '7107',
+                                ),
+                                new PartsProperty(
+                                    PropertyNameEnum::TSN,
+                                    '449',
+                                ),
+                                new PartsProperty(
+                                    PropertyNameEnum::TSN,
+                                    '450',
+                                ),
+                            ],
+                        ),
+                        new PartsProperties(
+                            [
+                                new PartsProperty(
+                                    PropertyNameEnum::KType,
+                                    '3314',
+                                ),
+                                new PartsProperty(
+                                    PropertyNameEnum::HSN,
+                                    '7107',
+                                ),
+                                new PartsProperty(
+                                    PropertyNameEnum::TSN,
+                                    '203',
+                                ),
+                            ],
+                        ),
+                        new PartsProperties(
+                            [
+                                new PartsProperty(
+                                    PropertyNameEnum::KType,
+                                    '3315',
+                                ),
+                            ],
+                        ),
+                        new PartsProperties(
+                            [
+                                new PartsProperty(
+                                    PropertyNameEnum::KType,
+                                    '3316',
+                                ),
+                                new PartsProperty(
+                                    PropertyNameEnum::HSN,
+                                    '',
+                                ),
+                            ],
+                        ),
+                    ],
                 ),
             ]
         );

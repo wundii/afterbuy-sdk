@@ -14,6 +14,7 @@ final readonly class AddAttribut implements AfterbuyAppendXmlContentInterface
         private ?string $AttributName = null,
         private ?string $AttributValue = null,
         private ?AttributTypEnum $attributTypEnum = null,
+        private ?int $attributePosition = null,
         private ?bool $AttributRequired = null,
     ) {
     }
@@ -24,12 +25,18 @@ final readonly class AddAttribut implements AfterbuyAppendXmlContentInterface
         $addAttribut->addString('AttributName', $this->AttributName);
         $addAttribut->addString('AttributValue', $this->AttributValue);
         $addAttribut->addNumber('AttributTyp', $this->attributTypEnum?->value);
+        $addAttribut->addNumber('AttributPosition', $this->attributePosition);
         $addAttribut->addBool('AttributRequired', $this->AttributRequired);
     }
 
     public function getAttributName(): ?string
     {
         return $this->AttributName;
+    }
+
+    public function getAttributePosition(): ?int
+    {
+        return $this->attributePosition;
     }
 
     public function getAttributRequired(): ?bool

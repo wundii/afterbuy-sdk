@@ -10,7 +10,7 @@ use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 final readonly class AddCatalog implements AfterbuyAppendXmlContentInterface
 {
     public function __construct(
-        private ?string $catalogId = null,
+        private ?int $catalogId = null,
         private ?string $catalogName = null,
         private ?int $catalogLevel = null,
     ) {
@@ -19,12 +19,12 @@ final readonly class AddCatalog implements AfterbuyAppendXmlContentInterface
     public function appendXmlContent(SimpleXMLExtend $xml): void
     {
         $addCatalog = $xml->addChild('AddCatalog');
-        $addCatalog->addString('CatalogID', $this->catalogId);
+        $addCatalog->addNumber('CatalogID', $this->catalogId);
         $addCatalog->addString('CatalogName', $this->catalogName);
         $addCatalog->addNumber('CatalogLevel', $this->catalogLevel);
     }
 
-    public function getCatalogId(): ?string
+    public function getCatalogId(): ?int
     {
         return $this->catalogId;
     }
