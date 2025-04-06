@@ -35,6 +35,14 @@ final class Products implements AfterbuyAppendXmlContentInterface
             if ($productCount > 250) {
                 throw new Exception('Products can not contain more than 250 products');
             }
+
+            if ($product->getSkus() instanceof Skus && count($product->getSkus()->getSkus()) > 10) {
+                throw new Exception('Products can not contain more than 10 skus');
+            }
+
+            if (count($product->getAdditionalDescriptionFields()) > 10) {
+                throw new Exception('Products can not contain more than 10 additional description fields');
+            }
         };
 
         try {

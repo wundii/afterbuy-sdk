@@ -20,9 +20,14 @@ final readonly class AddBaseProduct implements AfterbuyAppendXmlContentInterface
 
     public function appendXmlContent(SimpleXMLExtend $xml): void
     {
+        $productLabel = $this->productLabel;
+        if (is_string($productLabel)) {
+            $productLabel = substr($productLabel, 0, 50);
+        }
+
         $addBaseProduct = $xml->addChild('AddBaseProduct');
         $addBaseProduct->addNumber('ProductID', $this->productId);
-        $addBaseProduct->addString('ProductLabel', $this->productLabel);
+        $addBaseProduct->addString('ProductLabel', $productLabel);
         $addBaseProduct->addNumber('ProductPos', $this->productPos);
         $addBaseProduct->addBool('DefaultProduct', $this->defaultProduct);
         $addBaseProduct->addNumber('ProductQuantity', $this->productQuantity);

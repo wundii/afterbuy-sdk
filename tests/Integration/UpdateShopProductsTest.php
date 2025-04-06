@@ -69,6 +69,56 @@ class UpdateShopProductsTest extends TestCase
         $request->payload($afterbuyGlobal);
     }
 
+    public function testValidateMaxSkus(): void
+    {
+        $afterbuyGlobal = clone $this->afterbuyGlobal();
+
+        $request = new UpdateShopProductsRequest(
+            [
+                new Product(
+                    new ProductIdent(),
+                    name: 'test',
+                    skus: new Skus(
+                        UpdateActionSkusEnum::ADD,
+                        [
+                            'NewSKU1',
+                            'NewSKU2',
+                            'NewSKU3',
+                            'NewSKU4',
+                            'NewSKU5',
+                            'NewSKU6',
+                            'NewSKU7',
+                            'NewSKU8',
+                            'NewSKU9',
+                            'NewSKU10',
+                            'NewSKU11',
+                        ],
+                    ),
+                ),
+            ],
+        );
+
+        $this->expectExceptionMessage('Products can not contain more than 10 skus');
+        $request->payload($afterbuyGlobal);
+    }
+
+    public function testValidateMaxAdditionalDescriptionFields(): void
+    {
+        $afterbuyGlobal = clone $this->afterbuyGlobal();
+
+        $additionalDescriptionFields = array_map(fn ($i) => new AdditionalDescriptionField(($i + 1)), range(0, 10));
+        $this->assertCount(11, $additionalDescriptionFields);
+
+        $request = new UpdateShopProductsRequest(
+            [
+                new Product(new ProductIdent(), name: 'test', additionalDescriptionFields: $additionalDescriptionFields),
+            ],
+        );
+
+        $this->expectExceptionMessage('Products can not contain more than 10 additional description fields');
+        $request->payload($afterbuyGlobal);
+    }
+
     public function testUpdateShopProductsRequestBasic(): void
     {
         $file = __DIR__ . '/RequestFiles/UpdateShopProductsBasic.xml';
