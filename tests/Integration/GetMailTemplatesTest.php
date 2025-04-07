@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\Integration;
+namespace Wundii\AfterbuySdk\Tests\Integration;
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\GetMailTemplates\MailTemplate;
-use AfterbuySdk\Dto\GetMailTemplates\MailTemplates;
-use AfterbuySdk\Enum\DetailLevelEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Request\GetMailTemplatesRequest;
-use AfterbuySdk\Response\GetMailTemplatesResponse;
-use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplate;
+use Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplates;
+use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Request\GetMailTemplatesRequest;
+use Wundii\AfterbuySdk\Response\GetMailTemplatesResponse;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
 
 class GetMailTemplatesTest extends TestCase
 {

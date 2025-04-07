@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetVersion;
+namespace Wundii\AfterbuySdk\Dto\GetVersion;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class Versions implements AfterbuyDtoInterface
 {

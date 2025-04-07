@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetSoldItems;
+namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
-use AfterbuySdk\Enum\CountryIsoEnum;
-use AfterbuySdk\Enum\UserIdPlattformEnum;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
+use Wundii\AfterbuySdk\Enum\UserIdPlattformEnum;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class BillingAddress implements AfterbuyDtoInterface
 {

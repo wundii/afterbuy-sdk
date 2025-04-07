@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Extends;
+namespace Wundii\AfterbuySdk\Extends;
 
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\FilterInterface;
-use AfterbuySdk\Interface\ProductFilterInterface;
 use DateTimeInterface;
 use DOMDocument;
 use SimpleXMLElement;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\FilterInterface;
+use Wundii\AfterbuySdk\Interface\ProductFilterInterface;
 
 final class SimpleXMLExtend extends SimpleXMLElement
 {

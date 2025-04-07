@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetSoldItems;
+namespace Wundii\AfterbuySdk\Filter\GetSoldItems;
 
-use AfterbuySdk\Filter\ValueFrom;
-use AfterbuySdk\Filter\ValueTo;
-use AfterbuySdk\Interface\Filter\GetSoldItemsFilterInterface;
+use Wundii\AfterbuySdk\Filter\ValueFrom;
+use Wundii\AfterbuySdk\Filter\ValueTo;
+use Wundii\AfterbuySdk\Interface\Filter\GetSoldItemsFilterInterface;
 
 final readonly class RangeOrderId implements GetSoldItemsFilterInterface
 {

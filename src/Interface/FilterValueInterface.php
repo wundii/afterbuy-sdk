@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Interface;
+namespace Wundii\AfterbuySdk\Interface;
 
 interface FilterValueInterface
 {

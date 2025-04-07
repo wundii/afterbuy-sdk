@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetShopProducts;
+namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class Attribute implements AfterbuyDtoInterface
 {

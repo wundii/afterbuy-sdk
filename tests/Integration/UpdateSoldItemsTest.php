@@ -2,32 +2,32 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\Integration;
+namespace Wundii\AfterbuySdk\Tests\Integration;
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\UpdateSoldItems\Attribute;
-use AfterbuySdk\Dto\UpdateSoldItems\BuyerInfo;
-use AfterbuySdk\Dto\UpdateSoldItems\Order;
-use AfterbuySdk\Dto\UpdateSoldItems\ParcelLabel;
-use AfterbuySdk\Dto\UpdateSoldItems\PaymentInfo;
-use AfterbuySdk\Dto\UpdateSoldItems\ShippingAddress;
-use AfterbuySdk\Dto\UpdateSoldItems\ShippingInfo;
-use AfterbuySdk\Dto\UpdateSoldItems\VorgangsInfo;
-use AfterbuySdk\Enum\CountryIsoEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Extends\DateTime;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Request\UpdateSoldItemsRequest;
-use AfterbuySdk\Response\UpdateSoldItemsResponse;
-use AfterbuySdk\Tests\DomFormatter;
-use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\UpdateSoldItems\Attribute;
+use Wundii\AfterbuySdk\Dto\UpdateSoldItems\BuyerInfo;
+use Wundii\AfterbuySdk\Dto\UpdateSoldItems\Order;
+use Wundii\AfterbuySdk\Dto\UpdateSoldItems\ParcelLabel;
+use Wundii\AfterbuySdk\Dto\UpdateSoldItems\PaymentInfo;
+use Wundii\AfterbuySdk\Dto\UpdateSoldItems\ShippingAddress;
+use Wundii\AfterbuySdk\Dto\UpdateSoldItems\ShippingInfo;
+use Wundii\AfterbuySdk\Dto\UpdateSoldItems\VorgangsInfo;
+use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Request\UpdateSoldItemsRequest;
+use Wundii\AfterbuySdk\Response\UpdateSoldItemsResponse;
+use Wundii\AfterbuySdk\Tests\DomFormatter;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
 
 class UpdateSoldItemsTest extends TestCase
 {

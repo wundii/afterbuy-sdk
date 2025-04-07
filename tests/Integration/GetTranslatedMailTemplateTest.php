@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\Integration;
+namespace Wundii\AfterbuySdk\Tests\Integration;
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyError;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\GetTranslatedMailTemplate\TranslatedMailText;
-use AfterbuySdk\Enum\CallStatusEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Filter\GetTranslatedMailTemplate\TemplateId;
-use AfterbuySdk\Filter\GetTranslatedMailTemplate\TemplateName;
-use AfterbuySdk\Request\GetTranslatedMailTemplateRequest;
-use AfterbuySdk\Response\GetTranslatedMailTemplateResponse;
-use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyError;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetTranslatedMailTemplate\TranslatedMailText;
+use Wundii\AfterbuySdk\Enum\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Filter\GetTranslatedMailTemplate\TemplateId;
+use Wundii\AfterbuySdk\Filter\GetTranslatedMailTemplate\TemplateName;
+use Wundii\AfterbuySdk\Request\GetTranslatedMailTemplateRequest;
+use Wundii\AfterbuySdk\Response\GetTranslatedMailTemplateResponse;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
 
 class GetTranslatedMailTemplateTest extends TestCase
 {

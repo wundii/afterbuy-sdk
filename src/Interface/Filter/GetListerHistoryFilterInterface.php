@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Interface\Filter;
+namespace Wundii\AfterbuySdk\Interface\Filter;
 
-use AfterbuySdk\Interface\FilterInterface;
+use Wundii\AfterbuySdk\Interface\FilterInterface;
 
 interface GetListerHistoryFilterInterface extends FilterInterface
 {

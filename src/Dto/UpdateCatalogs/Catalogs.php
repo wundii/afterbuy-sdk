@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\UpdateCatalogs;
+namespace Wundii\AfterbuySdk\Dto\UpdateCatalogs;
 
-use AfterbuySdk\Enum\UpdateActionCatalogsEnum;
-use AfterbuySdk\Extends\SimpleXMLExtend;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
+use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 
 final class Catalogs implements AfterbuyAppendXmlContentInterface
 {

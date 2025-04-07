@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetShopProducts;
+namespace Wundii\AfterbuySdk\Filter\GetShopProducts;
 
-use AfterbuySdk\Filter\ValueFrom;
-use AfterbuySdk\Filter\ValueTo;
-use AfterbuySdk\Interface\Filter\GetShopProductsFilterInterface;
+use Wundii\AfterbuySdk\Filter\ValueFrom;
+use Wundii\AfterbuySdk\Filter\ValueTo;
+use Wundii\AfterbuySdk\Interface\Filter\GetShopProductsFilterInterface;
 
 final readonly class RangeAnr implements GetShopProductsFilterInterface
 {

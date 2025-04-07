@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetSoldItems;
+namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
-use AfterbuySdk\Enum\PaymentFunctionEnum;
-use AfterbuySdk\Enum\PaymentIdEnum;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
+use Wundii\AfterbuySdk\Enum\PaymentFunctionEnum;
+use Wundii\AfterbuySdk\Enum\PaymentIdEnum;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class PaymentInfo implements AfterbuyDtoInterface
 {

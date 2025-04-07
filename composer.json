@@ -34,12 +34,12 @@
   },
   "autoload": {
     "psr-4": {
-      "AfterbuySdk\\": "src/"
+      "Wundii\\AfterbuySdk\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "AfterbuySdk\\Tests\\": "tests/"
+      "Wundii\\AfterbuySdk\\Tests\\": "tests/"
     }
   },
   "scripts": {

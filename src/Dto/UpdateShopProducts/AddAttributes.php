@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\UpdateShopProducts;
+namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
-use AfterbuySdk\Enum\UpdateActionAttributesEnum;
-use AfterbuySdk\Extends\SimpleXMLExtend;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
+use Wundii\AfterbuySdk\Enum\UpdateActionAttributesEnum;
+use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 
 final readonly class AddAttributes implements AfterbuyAppendXmlContentInterface
 {

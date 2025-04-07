@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Validator;
+namespace Wundii\AfterbuySdk\Validator;
 
 use Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException;
 use Symfony\Component\PropertyAccess\Exception\UninitializedPropertyException;

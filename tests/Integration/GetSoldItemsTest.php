@@ -2,38 +2,38 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\Integration;
+namespace Wundii\AfterbuySdk\Tests\Integration;
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\GetSoldItems\Order;
-use AfterbuySdk\Dto\GetSoldItems\Orders;
-use AfterbuySdk\Enum\DefaultFilterSoldItemsEnum;
-use AfterbuySdk\Enum\DetailLevelEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\OrderDirectionEnum;
-use AfterbuySdk\Enum\PlattformEnum;
-use AfterbuySdk\Filter\GetSoldItems\AfterbuyUserEmail;
-use AfterbuySdk\Filter\GetSoldItems\AfterbuyUserId;
-use AfterbuySdk\Filter\GetSoldItems\AlternativeItemNumber1;
-use AfterbuySdk\Filter\GetSoldItems\AlternativeItemNumber2;
-use AfterbuySdk\Filter\GetSoldItems\DefaultFilter;
-use AfterbuySdk\Filter\GetSoldItems\InvoiceNumber;
-use AfterbuySdk\Filter\GetSoldItems\OrderId;
-use AfterbuySdk\Filter\GetSoldItems\Plattform;
-use AfterbuySdk\Filter\GetSoldItems\RangeOrderId;
-use AfterbuySdk\Filter\GetSoldItems\ShopId;
-use AfterbuySdk\Filter\GetSoldItems\Tag;
-use AfterbuySdk\Filter\GetSoldItems\UserDefinedFlag;
-use AfterbuySdk\Request\GetSoldItemsRequest;
-use AfterbuySdk\Response\GetSoldItemsResponse;
-use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\Order;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\Orders;
+use Wundii\AfterbuySdk\Enum\DefaultFilterSoldItemsEnum;
+use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\OrderDirectionEnum;
+use Wundii\AfterbuySdk\Enum\PlattformEnum;
+use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserEmail;
+use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserId;
+use Wundii\AfterbuySdk\Filter\GetSoldItems\AlternativeItemNumber1;
+use Wundii\AfterbuySdk\Filter\GetSoldItems\AlternativeItemNumber2;
+use Wundii\AfterbuySdk\Filter\GetSoldItems\DefaultFilter;
+use Wundii\AfterbuySdk\Filter\GetSoldItems\InvoiceNumber;
+use Wundii\AfterbuySdk\Filter\GetSoldItems\OrderId;
+use Wundii\AfterbuySdk\Filter\GetSoldItems\Plattform;
+use Wundii\AfterbuySdk\Filter\GetSoldItems\RangeOrderId;
+use Wundii\AfterbuySdk\Filter\GetSoldItems\ShopId;
+use Wundii\AfterbuySdk\Filter\GetSoldItems\Tag;
+use Wundii\AfterbuySdk\Filter\GetSoldItems\UserDefinedFlag;
+use Wundii\AfterbuySdk\Request\GetSoldItemsRequest;
+use Wundii\AfterbuySdk\Response\GetSoldItemsResponse;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
 
 class GetSoldItemsTest extends TestCase
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Interface;
+namespace Wundii\AfterbuySdk\Interface;
 
-use AfterbuySdk\Dto\AfterbuyError;
-use AfterbuySdk\Dto\AfterbuyWarning;
-use AfterbuySdk\Enum\CallStatusEnum;
 use Symfony\Contracts\HttpClient\ResponseInterface;
+use Wundii\AfterbuySdk\Dto\AfterbuyError;
+use Wundii\AfterbuySdk\Dto\AfterbuyWarning;
+use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\DataMapper\DataMapper;
 
 /**

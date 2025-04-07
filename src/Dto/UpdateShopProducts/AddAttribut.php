@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\UpdateShopProducts;
+namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
-use AfterbuySdk\Enum\AttributTypEnum;
-use AfterbuySdk\Extends\SimpleXMLExtend;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Enum\AttributTypEnum;
+use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 
 final readonly class AddAttribut implements AfterbuyAppendXmlContentInterface
 {

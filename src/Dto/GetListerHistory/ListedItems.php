@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetListerHistory;
+namespace Wundii\AfterbuySdk\Dto\GetListerHistory;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class ListedItems implements AfterbuyDtoInterface
 {

@@ -5,11 +5,11 @@
 ```php
 <?php
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Request\GetShippingCostRequest;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Request\GetShippingCostRequest;
 
 $global = new AfterbuyGlobal(
     '123...',
@@ -40,7 +40,7 @@ $response->getCallStatus();
 $response->getWarningMessages();
 $response->getErrorMessages();
 
-/** @var AfterbuySdk\Dto\GetShippingCost\ShippingService $result */
+/** @var Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingService $result */
 $result = $response->getResult();
 dump($result->getShippingServiceName());
 dump($result->getShippingServicePriority());

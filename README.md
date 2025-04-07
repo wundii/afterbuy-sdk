@@ -46,10 +46,10 @@ Require the bundle and its dependencies with composer:
 
 ## Usage
 ```php
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Request\GetAfterbuyTimeRequest:
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Request\GetAfterbuyTimeRequest:
 
 $afterbuyGlobal = new AfterbuyGlobal(
     accountToken: '123...',

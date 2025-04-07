@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Response;
+namespace Wundii\AfterbuySdk\Response;
 
-use AfterbuySdk\Dto\GetTranslatedMailTemplate\TranslatedMailText;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
-use AfterbuySdk\Interface\AfterbuyResponseInterface;
-use AfterbuySdk\Trait\AfterbuyResponseTrait;
 use Exception;
+use Wundii\AfterbuySdk\Dto\GetTranslatedMailTemplate\TranslatedMailText;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
+use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
 
 /**
  * @template-implements AfterbuyResponseInterface<TranslatedMailText>

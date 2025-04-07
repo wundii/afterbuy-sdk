@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetShopProducts;
+namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
-use AfterbuySdk\Enum\BaseProductFlagEnum;
-use AfterbuySdk\Enum\ConditionEnum;
-use AfterbuySdk\Enum\EnergyClassEnum;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
+use Wundii\AfterbuySdk\Enum\BaseProductFlagEnum;
+use Wundii\AfterbuySdk\Enum\ConditionEnum;
+use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class Product implements AfterbuyDtoInterface
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter;
+namespace Wundii\AfterbuySdk\Filter;
 
-use AfterbuySdk\Interface\FilterValueInterface;
+use Wundii\AfterbuySdk\Interface\FilterValueInterface;
 
 final readonly class LevelFrom implements FilterValueInterface
 {

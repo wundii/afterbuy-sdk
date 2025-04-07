@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\Integration;
+namespace Wundii\AfterbuySdk\Tests\Integration;
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\GetShippingServices\ShippingMethod;
-use AfterbuySdk\Dto\GetShippingServices\ShippingService;
-use AfterbuySdk\Dto\GetShippingServices\ShippingServices;
-use AfterbuySdk\Enum\DetailLevelEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Request\GetShippingServicesRequest;
-use AfterbuySdk\Response\GetShippingServicesResponse;
-use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingMethod;
+use Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingService;
+use Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingServices;
+use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Request\GetShippingServicesRequest;
+use Wundii\AfterbuySdk\Response\GetShippingServicesResponse;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
 
 class GetShippingServicesTest extends TestCase
 {

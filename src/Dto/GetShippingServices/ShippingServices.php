@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetShippingServices;
+namespace Wundii\AfterbuySdk\Dto\GetShippingServices;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class ShippingServices implements AfterbuyDtoInterface
 {

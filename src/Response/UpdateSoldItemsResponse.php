@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Response;
+namespace Wundii\AfterbuySdk\Response;
 
-use AfterbuySdk\Interface\AfterbuyResponseInterface;
-use AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
+use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
 
 /**
  * Afterbuy returns only warnings and errors, no data.

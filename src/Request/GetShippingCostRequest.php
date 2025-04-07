@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Request;
+namespace Wundii\AfterbuySdk\Request;
 
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
-use AfterbuySdk\Enum\DetailLevelEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\RequestMethodEnum;
-use AfterbuySdk\Extends\SimpleXMLExtend;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyRequestInterface;
-use AfterbuySdk\Response\GetShippingCostResponse;
 use RuntimeException;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
+use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
+use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
+use Wundii\AfterbuySdk\Response\GetShippingCostResponse;
 
 final readonly class GetShippingCostRequest implements AfterbuyRequestInterface
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetSoldItems;
+namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class ChildProduct implements AfterbuyDtoInterface
 {

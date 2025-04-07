@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetSoldItems;
+namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class ShippingInfo implements AfterbuyDtoInterface
 {

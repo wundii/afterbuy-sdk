@@ -5,12 +5,12 @@
 ```php
 <?php
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\ProductFilterEnum;
-use AfterbuySdk\Filter\GetStockInfo\ProductFilter;
-use AfterbuySdk\Request\GetStockInfoRequest;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\ProductFilterEnum;
+use Wundii\AfterbuySdk\Filter\GetStockInfo\ProductFilter;
+use Wundii\AfterbuySdk\Request\GetStockInfoRequest;
 
 $global = new AfterbuyGlobal(
     '123...',
@@ -40,7 +40,7 @@ $response->getCallStatus();
 $response->getWarningMessages();
 $response->getErrorMessages();
 
-/** @var AfterbuySdk\Dto\GetStockInfo\Products $result */
+/** @var Wundii\AfterbuySdk\Dto\GetStockInfo\Products $result */
 $result = $response->getResult();
 dump($result->getProducts());
 ```

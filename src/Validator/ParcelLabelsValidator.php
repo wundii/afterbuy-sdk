@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Validator;
+namespace Wundii\AfterbuySdk\Validator;
 
-use AfterbuySdk\Dto\UpdateSoldItems\ParcelLabel;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
+use Wundii\AfterbuySdk\Dto\UpdateSoldItems\ParcelLabel;
 
 class ParcelLabelsValidator extends ConstraintValidator
 {

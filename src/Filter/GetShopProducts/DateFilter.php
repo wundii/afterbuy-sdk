@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetShopProducts;
+namespace Wundii\AfterbuySdk\Filter\GetShopProducts;
 
-use AfterbuySdk\Enum\DateFilterEnum;
-use AfterbuySdk\Filter\DateFrom;
-use AfterbuySdk\Filter\DateTo;
-use AfterbuySdk\Filter\FilterValue;
-use AfterbuySdk\Interface\Filter\GetShopProductsFilterInterface;
 use DateTimeInterface;
+use Wundii\AfterbuySdk\Enum\DateFilterEnum;
+use Wundii\AfterbuySdk\Filter\DateFrom;
+use Wundii\AfterbuySdk\Filter\DateTo;
+use Wundii\AfterbuySdk\Filter\FilterValue;
+use Wundii\AfterbuySdk\Interface\Filter\GetShopProductsFilterInterface;
 
 final readonly class DateFilter implements GetShopProductsFilterInterface
 {

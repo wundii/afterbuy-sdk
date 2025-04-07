@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetTranslatedMailTemplate;
+namespace Wundii\AfterbuySdk\Dto\GetTranslatedMailTemplate;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class TranslatedMailText implements AfterbuyDtoInterface
 {

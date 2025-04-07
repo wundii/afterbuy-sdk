@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Interface;
+namespace Wundii\AfterbuySdk\Interface;
 
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\RequestMethodEnum;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 
 interface AfterbuyRequestInterface
 {

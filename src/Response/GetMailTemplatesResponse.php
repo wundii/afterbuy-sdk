@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Response;
+namespace Wundii\AfterbuySdk\Response;
 
-use AfterbuySdk\Dto\GetMailTemplates\MailTemplates;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
-use AfterbuySdk\Interface\AfterbuyResponseInterface;
-use AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplates;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
+use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
 
 /**
  * @template-implements AfterbuyResponseInterface<MailTemplates>

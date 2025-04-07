@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetSoldItems;
+namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
-use AfterbuySdk\Enum\FulfillmentServiceLevelEnum;
-use AfterbuySdk\Enum\InternalItemTypeEnum;
-use AfterbuySdk\Enum\ItemPlatFormNameEnum;
-use AfterbuySdk\Enum\TaxCollectedByEnum;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
+use Wundii\AfterbuySdk\Enum\FulfillmentServiceLevelEnum;
+use Wundii\AfterbuySdk\Enum\InternalItemTypeEnum;
+use Wundii\AfterbuySdk\Enum\ItemPlatFormNameEnum;
+use Wundii\AfterbuySdk\Enum\TaxCollectedByEnum;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class SoldItem implements AfterbuyDtoInterface
 {

@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\Integration;
+namespace Wundii\AfterbuySdk\Tests\Integration;
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyError;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
-use AfterbuySdk\Dto\GetShippingCost\ShippingService;
-use AfterbuySdk\Enum\CallStatusEnum;
-use AfterbuySdk\Enum\CountryIsoEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Request\GetShippingCostRequest;
-use AfterbuySdk\Response\GetShippingCostResponse;
-use AfterbuySdk\Tests\DomFormatter;
-use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyError;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
+use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingService;
+use Wundii\AfterbuySdk\Enum\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Request\GetShippingCostRequest;
+use Wundii\AfterbuySdk\Response\GetShippingCostResponse;
+use Wundii\AfterbuySdk\Tests\DomFormatter;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
 
 class GetShippingCostTest extends TestCase
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetTranslatedMailTemplate;
+namespace Wundii\AfterbuySdk\Filter\GetTranslatedMailTemplate;
 
-use AfterbuySdk\Filter\FilterValue;
-use AfterbuySdk\Interface\Filter\GetTranslatedMailTemplateFilterInterface;
+use Wundii\AfterbuySdk\Filter\FilterValue;
+use Wundii\AfterbuySdk\Interface\Filter\GetTranslatedMailTemplateFilterInterface;
 
 final readonly class TemplateName implements GetTranslatedMailTemplateFilterInterface
 {

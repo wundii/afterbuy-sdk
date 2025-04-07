@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Enum;
+namespace Wundii\AfterbuySdk\Enum;
 
 enum RequestMethodEnum: string
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetMailTemplates;
+namespace Wundii\AfterbuySdk\Dto\GetMailTemplates;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class MailTemplates implements AfterbuyDtoInterface
 {

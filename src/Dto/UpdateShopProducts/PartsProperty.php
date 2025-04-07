@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\UpdateShopProducts;
+namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
-use AfterbuySdk\Enum\PropertyNameEnum;
-use AfterbuySdk\Extends\SimpleXMLExtend;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Enum\PropertyNameEnum;
+use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 
 final readonly class PartsProperty implements AfterbuyAppendXmlContentInterface
 {

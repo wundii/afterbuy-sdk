@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Interface;
+namespace Wundii\AfterbuySdk\Interface;
 
-use AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 
 interface AfterbuyAppendXmlContentInterface
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\UpdateShopProducts;
+namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class NewProduct implements AfterbuyDtoInterface
 {

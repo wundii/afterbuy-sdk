@@ -2,28 +2,28 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\Integration;
+namespace Wundii\AfterbuySdk\Tests\Integration;
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\GetShopCatalogs\Catalog;
-use AfterbuySdk\Dto\GetShopCatalogs\Catalogs;
-use AfterbuySdk\Dto\UpdateCatalogs\Catalog as UpdateCatalog;
-use AfterbuySdk\Enum\DetailLevelEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Filter\GetShopCatalogs\CatalogId;
-use AfterbuySdk\Filter\GetShopCatalogs\Level;
-use AfterbuySdk\Filter\GetShopCatalogs\RangeCatalogId;
-use AfterbuySdk\Filter\GetShopCatalogs\RangeLevel;
-use AfterbuySdk\Request\GetShopCatalogsRequest;
-use AfterbuySdk\Response\GetShopCatalogsResponse;
-use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetShopCatalogs\Catalog;
+use Wundii\AfterbuySdk\Dto\GetShopCatalogs\Catalogs;
+use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog as UpdateCatalog;
+use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Filter\GetShopCatalogs\CatalogId;
+use Wundii\AfterbuySdk\Filter\GetShopCatalogs\Level;
+use Wundii\AfterbuySdk\Filter\GetShopCatalogs\RangeCatalogId;
+use Wundii\AfterbuySdk\Filter\GetShopCatalogs\RangeLevel;
+use Wundii\AfterbuySdk\Request\GetShopCatalogsRequest;
+use Wundii\AfterbuySdk\Response\GetShopCatalogsResponse;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
 
 class GetShopCatalogsTest extends TestCase
 {

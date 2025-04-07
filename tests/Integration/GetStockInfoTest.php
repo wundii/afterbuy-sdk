@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\Integration;
+namespace Wundii\AfterbuySdk\Tests\Integration;
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\AfterbuyWarning;
-use AfterbuySdk\Dto\GetStockInfo\Product;
-use AfterbuySdk\Dto\GetStockInfo\Products;
-use AfterbuySdk\Enum\CallStatusEnum;
-use AfterbuySdk\Enum\DetailLevelEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\ProductFilterEnum;
-use AfterbuySdk\Filter\GetStockInfo\ProductFilter;
-use AfterbuySdk\Request\GetStockInfoRequest;
-use AfterbuySdk\Response\GetStockInfoResponse;
-use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\AfterbuyWarning;
+use Wundii\AfterbuySdk\Dto\GetStockInfo\Product;
+use Wundii\AfterbuySdk\Dto\GetStockInfo\Products;
+use Wundii\AfterbuySdk\Enum\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\ProductFilterEnum;
+use Wundii\AfterbuySdk\Filter\GetStockInfo\ProductFilter;
+use Wundii\AfterbuySdk\Request\GetStockInfoRequest;
+use Wundii\AfterbuySdk\Response\GetStockInfoResponse;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
 
 class GetStockInfoTest extends TestCase
 {

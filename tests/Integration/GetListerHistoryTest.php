@@ -2,38 +2,38 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\Integration;
+namespace Wundii\AfterbuySdk\Tests\Integration;
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyError;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\GetListerHistory\ListedItem;
-use AfterbuySdk\Dto\GetListerHistory\ListedItems;
-use AfterbuySdk\Enum\CallStatusEnum;
-use AfterbuySdk\Enum\DetailLevelEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\PlattformEnum;
-use AfterbuySdk\Enum\SiteIdEnum;
-use AfterbuySdk\Extends\DateTime;
-use AfterbuySdk\Filter\GetListerHistory\AccountId;
-use AfterbuySdk\Filter\GetListerHistory\Anr;
-use AfterbuySdk\Filter\GetListerHistory\EndDate;
-use AfterbuySdk\Filter\GetListerHistory\HistoryId;
-use AfterbuySdk\Filter\GetListerHistory\ListingType;
-use AfterbuySdk\Filter\GetListerHistory\Plattform;
-use AfterbuySdk\Filter\GetListerHistory\RangeAn;
-use AfterbuySdk\Filter\GetListerHistory\RangeHistoryId;
-use AfterbuySdk\Filter\GetListerHistory\SiteId;
-use AfterbuySdk\Filter\GetListerHistory\StartDate;
-use AfterbuySdk\Request\GetListerHistoryRequest;
-use AfterbuySdk\Response\GetListerHistoryResponse;
-use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyError;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetListerHistory\ListedItem;
+use Wundii\AfterbuySdk\Dto\GetListerHistory\ListedItems;
+use Wundii\AfterbuySdk\Enum\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\PlattformEnum;
+use Wundii\AfterbuySdk\Enum\SiteIdEnum;
+use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Filter\GetListerHistory\AccountId;
+use Wundii\AfterbuySdk\Filter\GetListerHistory\Anr;
+use Wundii\AfterbuySdk\Filter\GetListerHistory\EndDate;
+use Wundii\AfterbuySdk\Filter\GetListerHistory\HistoryId;
+use Wundii\AfterbuySdk\Filter\GetListerHistory\ListingType;
+use Wundii\AfterbuySdk\Filter\GetListerHistory\Plattform;
+use Wundii\AfterbuySdk\Filter\GetListerHistory\RangeAn;
+use Wundii\AfterbuySdk\Filter\GetListerHistory\RangeHistoryId;
+use Wundii\AfterbuySdk\Filter\GetListerHistory\SiteId;
+use Wundii\AfterbuySdk\Filter\GetListerHistory\StartDate;
+use Wundii\AfterbuySdk\Request\GetListerHistoryRequest;
+use Wundii\AfterbuySdk\Response\GetListerHistoryResponse;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
 
 class GetListerHistoryTest extends TestCase
 {

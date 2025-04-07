@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetSoldItems;
+namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
-use AfterbuySdk\Enum\CountryIsoEnum;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class ShippingAddress implements AfterbuyDtoInterface
 {

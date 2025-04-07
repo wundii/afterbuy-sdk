@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Extends;
+namespace Wundii\AfterbuySdk\Extends;
 
 use DateTime as DateTimeBase;
 use DateTimeZone;

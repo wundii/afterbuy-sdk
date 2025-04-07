@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Trait;
+namespace Wundii\AfterbuySdk\Trait;
 
-use AfterbuySdk\Dto\AfterbuyError;
-use AfterbuySdk\Dto\AfterbuyErrorList;
-use AfterbuySdk\Dto\AfterbuyWarning;
-use AfterbuySdk\Dto\AfterbuyWarningList;
-use AfterbuySdk\Enum\CallStatusEnum;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
+use Wundii\AfterbuySdk\Dto\AfterbuyError;
+use Wundii\AfterbuySdk\Dto\AfterbuyErrorList;
+use Wundii\AfterbuySdk\Dto\AfterbuyWarning;
+use Wundii\AfterbuySdk\Dto\AfterbuyWarningList;
+use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\DataMapper\DataMapper;
 
 trait AfterbuyResponseTrait

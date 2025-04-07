@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetStockInfo;
+namespace Wundii\AfterbuySdk\Filter\GetStockInfo;
 
-use AfterbuySdk\Enum\ProductFilterEnum;
-use AfterbuySdk\Interface\Filter\GetStockInfoFilterInterface;
+use Wundii\AfterbuySdk\Enum\ProductFilterEnum;
+use Wundii\AfterbuySdk\Interface\Filter\GetStockInfoFilterInterface;
 
 final readonly class ProductFilter implements GetStockInfoFilterInterface
 {

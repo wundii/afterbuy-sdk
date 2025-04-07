@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\UpdateShopProducts;
+namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
-use AfterbuySdk\Enum\UpdateActionAddCatalogsEnum;
-use AfterbuySdk\Extends\SimpleXMLExtend;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
+use Wundii\AfterbuySdk\Enum\UpdateActionAddCatalogsEnum;
+use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 
 final readonly class AddCatalogs implements AfterbuyAppendXmlContentInterface
 {

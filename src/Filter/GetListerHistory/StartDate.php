@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetListerHistory;
+namespace Wundii\AfterbuySdk\Filter\GetListerHistory;
 
-use AfterbuySdk\Filter\DateFrom;
-use AfterbuySdk\Filter\DateTo;
-use AfterbuySdk\Interface\Filter\GetListerHistoryFilterInterface;
 use DateTimeInterface;
+use Wundii\AfterbuySdk\Filter\DateFrom;
+use Wundii\AfterbuySdk\Filter\DateTo;
+use Wundii\AfterbuySdk\Interface\Filter\GetListerHistoryFilterInterface;
 
 final readonly class StartDate implements GetListerHistoryFilterInterface
 {

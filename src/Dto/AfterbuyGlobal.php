@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto;
+namespace Wundii\AfterbuySdk\Dto;
 
-use AfterbuySdk\Enum\DetailLevelEnum;
-use AfterbuySdk\Enum\ErrorLanguageEnum;
 use SimpleXMLElement;
+use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\ErrorLanguageEnum;
 
 final class AfterbuyGlobal
 {

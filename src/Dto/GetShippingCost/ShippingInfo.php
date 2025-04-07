@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetShippingCost;
+namespace Wundii\AfterbuySdk\Dto\GetShippingCost;
 
-use AfterbuySdk\Enum\CountryIsoEnum;
-use AfterbuySdk\Extends\SimpleXMLExtend;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
+use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 
 final readonly class ShippingInfo implements AfterbuyAppendXmlContentInterface
 {

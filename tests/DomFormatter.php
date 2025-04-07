@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests;
+namespace Wundii\AfterbuySdk\Tests;
 
 use DOMDocument;
 

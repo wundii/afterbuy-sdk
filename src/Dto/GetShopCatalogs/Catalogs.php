@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetShopCatalogs;
+namespace Wundii\AfterbuySdk\Dto\GetShopCatalogs;
 
-use AfterbuySdk\Dto\UpdateCatalogs\Catalog as UpdateCatalog;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog as UpdateCatalog;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class Catalogs implements AfterbuyDtoInterface
 {

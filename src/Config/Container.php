@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Wundii\AfterbuySdk\Config;
+
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
@@ -12,7 +14,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autoconfigure()
     ;
 
-    $services->load('AfterbuySdk\\Validator\\', __DIR__ . '/../Validator')
+    $services->load('Wundii\\AfterbuySdk\\Validator\\', __DIR__ . '/../Validator')
         ->public()
         ->autowire()
     ;

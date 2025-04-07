@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\UpdateSoldItems;
+namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
-use AfterbuySdk\Extends\SimpleXMLExtend;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use DateTimeInterface;
+use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 
 final readonly class PaymentInfo implements AfterbuyAppendXmlContentInterface
 {

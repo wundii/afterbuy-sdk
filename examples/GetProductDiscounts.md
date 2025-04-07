@@ -5,10 +5,10 @@
 ```php
 <?php
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Request\GetProductDiscountsRequest;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Request\GetProductDiscountsRequest;
 
 $global = new AfterbuyGlobal(
     '123...',
@@ -33,7 +33,7 @@ $response->getCallStatus();
 $response->getWarningMessages();
 $response->getErrorMessages();
 
-/** @var AfterbuySdk\Dto\GetProductDiscounts\ProductDiscounts $result */
+/** @var Wundii\AfterbuySdk\Dto\GetProductDiscounts\ProductDiscounts $result */
 $result = $response->getResult();
 dump($result->getProductDiscounts());
 ```

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetShopProducts;
+namespace Wundii\AfterbuySdk\Filter\GetShopProducts;
 
-use AfterbuySdk\Filter\LevelFrom;
-use AfterbuySdk\Filter\LevelTo;
-use AfterbuySdk\Interface\Filter\GetShopProductsFilterInterface;
+use Wundii\AfterbuySdk\Filter\LevelFrom;
+use Wundii\AfterbuySdk\Filter\LevelTo;
+use Wundii\AfterbuySdk\Interface\Filter\GetShopProductsFilterInterface;
 
 final readonly class Level implements GetShopProductsFilterInterface
 {

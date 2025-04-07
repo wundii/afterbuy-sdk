@@ -5,11 +5,11 @@
 ```php
 <?php
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\UpdateSoldItems\Order;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Request\UpdateSoldItemsRequest;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\UpdateSoldItems\Order;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Request\UpdateSoldItemsRequest;
 
 $global = new AfterbuyGlobal(
     '123...',

@@ -5,11 +5,11 @@
 ```php
 <?php
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Enum\DetailLevelEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Request\GetSoldItemsRequest;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Request\GetSoldItemsRequest;
 
 $global = new AfterbuyGlobal(
     '123...',
@@ -34,7 +34,7 @@ $response->getCallStatus();
 $response->getWarningMessages();
 $response->getErrorMessages();
 
-/** @var AfterbuySdk\Dto\GetSoldItems\Orders $result */
+/** @var Wundii\AfterbuySdk\Dto\GetSoldItems\Orders $result */
 $result = $response->getResult();
 dump($result->hasMoreItems());
 dump($result->getOrders());

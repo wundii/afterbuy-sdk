@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\UpdateSoldItems;
+namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
-use AfterbuySdk\Extends\SimpleXMLExtend;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use DateTimeInterface;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
+use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 
 final class Order implements AfterbuyAppendXmlContentInterface
 {

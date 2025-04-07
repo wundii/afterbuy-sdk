@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\MockClasses;
+namespace Wundii\AfterbuySdk\Tests\MockClasses;
 
 use Psr\Log\AbstractLogger;
 use Stringable;

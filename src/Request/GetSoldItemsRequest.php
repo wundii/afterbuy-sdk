@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Request;
+namespace Wundii\AfterbuySdk\Request;
 
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Enum\DetailLevelEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\OrderDirectionEnum;
-use AfterbuySdk\Enum\RequestMethodEnum;
-use AfterbuySdk\Extends\SimpleXMLExtend;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyRequestInterface;
-use AfterbuySdk\Interface\Filter\GetSoldItemsFilterInterface;
-use AfterbuySdk\Response\GetSoldItemsResponse;
 use RuntimeException;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\OrderDirectionEnum;
+use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
+use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
+use Wundii\AfterbuySdk\Interface\Filter\GetSoldItemsFilterInterface;
+use Wundii\AfterbuySdk\Response\GetSoldItemsResponse;
 
 final readonly class GetSoldItemsRequest implements AfterbuyRequestInterface
 {

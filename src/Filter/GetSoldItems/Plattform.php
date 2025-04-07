@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetSoldItems;
+namespace Wundii\AfterbuySdk\Filter\GetSoldItems;
 
-use AfterbuySdk\Enum\PlattformEnum;
-use AfterbuySdk\Filter\FilterValue;
-use AfterbuySdk\Interface\Filter\GetSoldItemsFilterInterface;
+use Wundii\AfterbuySdk\Enum\PlattformEnum;
+use Wundii\AfterbuySdk\Filter\FilterValue;
+use Wundii\AfterbuySdk\Interface\Filter\GetSoldItemsFilterInterface;
 
 final readonly class Plattform implements GetSoldItemsFilterInterface
 {

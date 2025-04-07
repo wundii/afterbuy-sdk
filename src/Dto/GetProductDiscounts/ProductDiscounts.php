@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetProductDiscounts;
+namespace Wundii\AfterbuySdk\Dto\GetProductDiscounts;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class ProductDiscounts implements AfterbuyDtoInterface
 {

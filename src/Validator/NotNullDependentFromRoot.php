@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Validator;
+namespace Wundii\AfterbuySdk\Validator;
 
 use Attribute;
 use Symfony\Component\DependencyInjection\Attribute\Exclude;

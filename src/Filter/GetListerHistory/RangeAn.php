@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetListerHistory;
+namespace Wundii\AfterbuySdk\Filter\GetListerHistory;
 
-use AfterbuySdk\Filter\ValueFrom;
-use AfterbuySdk\Filter\ValueTo;
-use AfterbuySdk\Interface\Filter\GetListerHistoryFilterInterface;
+use Wundii\AfterbuySdk\Filter\ValueFrom;
+use Wundii\AfterbuySdk\Filter\ValueTo;
+use Wundii\AfterbuySdk\Interface\Filter\GetListerHistoryFilterInterface;
 
 final readonly class RangeAn implements GetListerHistoryFilterInterface
 {

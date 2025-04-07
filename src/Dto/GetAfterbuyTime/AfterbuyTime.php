@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetAfterbuyTime;
+namespace Wundii\AfterbuySdk\Dto\GetAfterbuyTime;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class AfterbuyTime implements AfterbuyDtoInterface
 {

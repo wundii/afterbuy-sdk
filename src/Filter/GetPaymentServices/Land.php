@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetPaymentServices;
+namespace Wundii\AfterbuySdk\Filter\GetPaymentServices;
 
-use AfterbuySdk\Filter\FilterValue;
-use AfterbuySdk\Interface\Filter\GetPaymentServicesFilterInterface;
+use Wundii\AfterbuySdk\Filter\FilterValue;
+use Wundii\AfterbuySdk\Interface\Filter\GetPaymentServicesFilterInterface;
 
 final readonly class Land implements GetPaymentServicesFilterInterface
 {

@@ -2,35 +2,35 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\Integration;
+namespace Wundii\AfterbuySdk\Tests\Integration;
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\GetShopProducts\Product;
-use AfterbuySdk\Dto\GetShopProducts\Products;
-use AfterbuySdk\Enum\DateFilterEnum;
-use AfterbuySdk\Enum\DefaultFilterShopProductsEnum;
-use AfterbuySdk\Enum\DetailLevelEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Extends\DateTime;
-use AfterbuySdk\Filter\GetShopProducts\Anr;
-use AfterbuySdk\Filter\GetShopProducts\DateFilter;
-use AfterbuySdk\Filter\GetShopProducts\DefaultFilter;
-use AfterbuySdk\Filter\GetShopProducts\Ean;
-use AfterbuySdk\Filter\GetShopProducts\Level;
-use AfterbuySdk\Filter\GetShopProducts\ProductId;
-use AfterbuySdk\Filter\GetShopProducts\RangeAnr;
-use AfterbuySdk\Filter\GetShopProducts\RangeProductId;
-use AfterbuySdk\Filter\GetShopProducts\Tag;
-use AfterbuySdk\Request\GetShopProductsRequest;
-use AfterbuySdk\Response\GetShopProductsResponse;
-use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\Product;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\Products;
+use Wundii\AfterbuySdk\Enum\DateFilterEnum;
+use Wundii\AfterbuySdk\Enum\DefaultFilterShopProductsEnum;
+use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Filter\GetShopProducts\Anr;
+use Wundii\AfterbuySdk\Filter\GetShopProducts\DateFilter;
+use Wundii\AfterbuySdk\Filter\GetShopProducts\DefaultFilter;
+use Wundii\AfterbuySdk\Filter\GetShopProducts\Ean;
+use Wundii\AfterbuySdk\Filter\GetShopProducts\Level;
+use Wundii\AfterbuySdk\Filter\GetShopProducts\ProductId;
+use Wundii\AfterbuySdk\Filter\GetShopProducts\RangeAnr;
+use Wundii\AfterbuySdk\Filter\GetShopProducts\RangeProductId;
+use Wundii\AfterbuySdk\Filter\GetShopProducts\Tag;
+use Wundii\AfterbuySdk\Request\GetShopProductsRequest;
+use Wundii\AfterbuySdk\Response\GetShopProductsResponse;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
 
 class GetShopProductsTest extends TestCase
 {

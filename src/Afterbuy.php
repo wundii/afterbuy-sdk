@@ -2,16 +2,8 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk;
+namespace Wundii\AfterbuySdk;
 
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Enum\CallStatusEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Extends\DateTime;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
-use AfterbuySdk\Interface\AfterbuyRequestInterface;
-use AfterbuySdk\Interface\AfterbuyResponseInterface;
 use DateTimeInterface;
 use Exception;
 use InvalidArgumentException;
@@ -33,6 +25,14 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
 use Wundii\DataMapper\DataConfig;
 use Wundii\DataMapper\DataMapper;
 use Wundii\DataMapper\Enum\ApproachEnum;

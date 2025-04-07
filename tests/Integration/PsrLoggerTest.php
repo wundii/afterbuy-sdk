@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\Integration;
+namespace Wundii\AfterbuySdk\Tests\Integration;
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyError;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\AfterbuyWarning;
-use AfterbuySdk\Enum\CallStatusEnum;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\ProductFilterEnum;
-use AfterbuySdk\Filter\GetStockInfo\ProductFilter;
-use AfterbuySdk\Request\GetListerHistoryRequest;
-use AfterbuySdk\Request\GetStockInfoRequest;
-use AfterbuySdk\Tests\DomFormatter;
-use AfterbuySdk\Tests\MockClasses\MockApiResponse;
-use AfterbuySdk\Tests\MockClasses\MockLogger;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyError;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\AfterbuyWarning;
+use Wundii\AfterbuySdk\Enum\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\ProductFilterEnum;
+use Wundii\AfterbuySdk\Filter\GetStockInfo\ProductFilter;
+use Wundii\AfterbuySdk\Request\GetListerHistoryRequest;
+use Wundii\AfterbuySdk\Request\GetStockInfoRequest;
+use Wundii\AfterbuySdk\Tests\DomFormatter;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockLogger;
 
 class PsrLoggerTest extends TestCase
 {
@@ -83,7 +83,7 @@ class PsrLoggerTest extends TestCase
         $payload = DomFormatter::xml($payload);
 
         $expected = [
-            'message' => 'Afterbuy SDK AfterbuySdk\Request\GetStockInfoRequest',
+            'message' => 'Afterbuy SDK Wundii\AfterbuySdk\Request\GetStockInfoRequest',
             'context' => [
                 'uri' => 'http://api.afterbuy.de/afterbuy/ABInterface.aspx',
                 'method' => 'GET',
@@ -131,7 +131,7 @@ class PsrLoggerTest extends TestCase
         $payload = DomFormatter::xml($payload);
 
         $expected = [
-            'message' => 'Afterbuy SDK AfterbuySdk\Request\GetListerHistoryRequest',
+            'message' => 'Afterbuy SDK Wundii\AfterbuySdk\Request\GetListerHistoryRequest',
             'context' => [
                 'uri' => 'http://api.afterbuy.de/afterbuy/ABInterface.aspx',
                 'method' => 'GET',

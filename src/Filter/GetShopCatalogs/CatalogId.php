@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetShopCatalogs;
+namespace Wundii\AfterbuySdk\Filter\GetShopCatalogs;
 
-use AfterbuySdk\Filter\FilterValue;
-use AfterbuySdk\Interface\Filter\GetShopCatalogsFilterInterface;
+use Wundii\AfterbuySdk\Filter\FilterValue;
+use Wundii\AfterbuySdk\Interface\Filter\GetShopCatalogsFilterInterface;
 
 final readonly class CatalogId implements GetShopCatalogsFilterInterface
 {

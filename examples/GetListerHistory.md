@@ -5,12 +5,12 @@
 ```php
 <?php
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Extends\DateTime;
-use AfterbuySdk\Filter\GetListerHistory\StartDate;
-use AfterbuySdk\Request\GetListerHistoryRequest;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Filter\GetListerHistory\StartDate;
+use Wundii\AfterbuySdk\Request\GetListerHistoryRequest;
 
 $global = new AfterbuyGlobal(
     '123...',
@@ -37,7 +37,7 @@ $response->getCallStatus();
 $response->getWarningMessages();
 $response->getErrorMessages();
 
-/** @var AfterbuySdk\Dto\GetListerHistory\ListedItems $result */
+/** @var Wundii\AfterbuySdk\Dto\GetListerHistory\ListedItems $result */
 $result = $response->getResult();
 dump($result->hasMoreProducts());
 dump($result->getResultCount());

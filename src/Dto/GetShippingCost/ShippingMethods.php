@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetShippingCost;
+namespace Wundii\AfterbuySdk\Dto\GetShippingCost;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class ShippingMethods implements AfterbuyDtoInterface
 {

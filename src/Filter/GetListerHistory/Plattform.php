@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetListerHistory;
+namespace Wundii\AfterbuySdk\Filter\GetListerHistory;
 
-use AfterbuySdk\Enum\PlattformEnum;
-use AfterbuySdk\Filter\FilterValue;
-use AfterbuySdk\Interface\Filter\GetListerHistoryFilterInterface;
+use Wundii\AfterbuySdk\Enum\PlattformEnum;
+use Wundii\AfterbuySdk\Filter\FilterValue;
+use Wundii\AfterbuySdk\Interface\Filter\GetListerHistoryFilterInterface;
 
 final readonly class Plattform implements GetListerHistoryFilterInterface
 {

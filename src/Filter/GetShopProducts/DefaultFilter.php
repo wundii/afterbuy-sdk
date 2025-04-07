@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Filter\GetShopProducts;
+namespace Wundii\AfterbuySdk\Filter\GetShopProducts;
 
-use AfterbuySdk\Enum\DefaultFilterShopProductsEnum;
-use AfterbuySdk\Filter\FilterValue;
-use AfterbuySdk\Interface\Filter\GetShopProductsFilterInterface;
+use Wundii\AfterbuySdk\Enum\DefaultFilterShopProductsEnum;
+use Wundii\AfterbuySdk\Filter\FilterValue;
+use Wundii\AfterbuySdk\Interface\Filter\GetShopProductsFilterInterface;
 
 final readonly class DefaultFilter implements GetShopProductsFilterInterface
 {

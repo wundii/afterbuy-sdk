@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\UpdateShopProducts;
+namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
-use AfterbuySdk\Enum\AgeGroupEnum;
-use AfterbuySdk\Enum\BasePriceFactorEnum;
-use AfterbuySdk\Enum\ConditionEnum;
-use AfterbuySdk\Enum\CountryOfOriginEnum;
-use AfterbuySdk\Enum\EnergyClassEnum;
-use AfterbuySdk\Enum\GenderEnum;
-use AfterbuySdk\Extends\SimpleXMLExtend;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Wundii\AfterbuySdk\Enum\AgeGroupEnum;
+use Wundii\AfterbuySdk\Enum\BasePriceFactorEnum;
+use Wundii\AfterbuySdk\Enum\ConditionEnum;
+use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
+use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
+use Wundii\AfterbuySdk\Enum\GenderEnum;
+use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 
 final class Product implements AfterbuyAppendXmlContentInterface
 {

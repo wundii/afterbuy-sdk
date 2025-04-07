@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetListerHistory;
+namespace Wundii\AfterbuySdk\Dto\GetListerHistory;
 
-use AfterbuySdk\Enum\SellStatusEnum;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
 use DateTimeInterface;
+use Wundii\AfterbuySdk\Enum\SellStatusEnum;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class ListingDetails implements AfterbuyDtoInterface
 {

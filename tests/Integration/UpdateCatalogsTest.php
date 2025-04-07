@@ -2,28 +2,28 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Tests\Integration;
+namespace Wundii\AfterbuySdk\Tests\Integration;
 
-use AfterbuySdk\Afterbuy;
-use AfterbuySdk\Dto\AfterbuyGlobal;
-use AfterbuySdk\Dto\UpdateCatalogs\Catalog;
-use AfterbuySdk\Dto\UpdateCatalogs\CatalogNotDeleted;
-use AfterbuySdk\Dto\UpdateCatalogs\CatalogNotDeleteds;
-use AfterbuySdk\Dto\UpdateCatalogs\NewCatalog;
-use AfterbuySdk\Dto\UpdateCatalogs\NewCatalogs;
-use AfterbuySdk\Enum\EndpointEnum;
-use AfterbuySdk\Enum\UpdateActionCatalogsEnum;
-use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use AfterbuySdk\Request\UpdateCatalogsRequest;
-use AfterbuySdk\Response\UpdateCatalogsResponse;
-use AfterbuySdk\Tests\DomFormatter;
-use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog;
+use Wundii\AfterbuySdk\Dto\UpdateCatalogs\CatalogNotDeleted;
+use Wundii\AfterbuySdk\Dto\UpdateCatalogs\CatalogNotDeleteds;
+use Wundii\AfterbuySdk\Dto\UpdateCatalogs\NewCatalog;
+use Wundii\AfterbuySdk\Dto\UpdateCatalogs\NewCatalogs;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
+use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Request\UpdateCatalogsRequest;
+use Wundii\AfterbuySdk\Response\UpdateCatalogsResponse;
+use Wundii\AfterbuySdk\Tests\DomFormatter;
+use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
 
 class UpdateCatalogsTest extends TestCase
 {

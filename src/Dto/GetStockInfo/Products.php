@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetStockInfo;
+namespace Wundii\AfterbuySdk\Dto\GetStockInfo;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class Products implements AfterbuyDtoInterface
 {

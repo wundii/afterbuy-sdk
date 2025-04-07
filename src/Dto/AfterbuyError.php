@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto;
+namespace Wundii\AfterbuySdk\Dto;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
-use AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
 
 final class AfterbuyError implements AfterbuyDtoInterface, AfterbuyDtoLoggerInterface
 {

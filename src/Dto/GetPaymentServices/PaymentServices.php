@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Dto\GetPaymentServices;
+namespace Wundii\AfterbuySdk\Dto\GetPaymentServices;
 
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class PaymentServices implements AfterbuyDtoInterface
 {

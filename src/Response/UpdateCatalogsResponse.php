@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace AfterbuySdk\Response;
+namespace Wundii\AfterbuySdk\Response;
 
-use AfterbuySdk\Dto\UpdateCatalogs\CatalogNotDeleteds;
-use AfterbuySdk\Dto\UpdateCatalogs\NewCatalogs;
-use AfterbuySdk\Interface\AfterbuyDtoInterface;
-use AfterbuySdk\Interface\AfterbuyResponseInterface;
-use AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Dto\UpdateCatalogs\CatalogNotDeleteds;
+use Wundii\AfterbuySdk\Dto\UpdateCatalogs\NewCatalogs;
+use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
+use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
 
 /**
  * @template-implements AfterbuyResponseInterface<NewCatalogs|CatalogNotDeleteds>
