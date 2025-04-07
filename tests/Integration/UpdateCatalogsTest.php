@@ -20,7 +20,6 @@ use AfterbuySdk\Tests\DomFormatter;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
-use Symfony\Component\Validator\Validation;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -36,9 +35,8 @@ class UpdateCatalogsTest extends TestCase
     public function validate(AfterbuyAppendXmlContentInterface $afterbuyAppendXmlContent): array
     {
         $errors = [];
-        $validator = Validation::createValidatorBuilder()
-            ->enableAttributeMapping()
-            ->getValidator();
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $validator = $afterbuy->getValidator();
 
         $constraintViolationList = $validator->validate($afterbuyAppendXmlContent);
 
@@ -76,8 +74,6 @@ class UpdateCatalogsTest extends TestCase
 
     public function testValidateUpdateActionEnumCreateRequirements(): void
     {
-        $afterbuyGlobal = clone $this->afterbuyGlobal();
-
         $request = new UpdateCatalogsRequest(
             UpdateActionCatalogsEnum::CREATE,
             [
@@ -85,14 +81,16 @@ class UpdateCatalogsTest extends TestCase
             ]
         );
 
-        $this->expectExceptionMessage('Catalog name cannot be null, when creating a catalog');
-        $request->payload($afterbuyGlobal);
+        $errors = $this->validate($request->requestClass());
+        $expected = [
+            'catalogs[0].catalogName.getUpdateActionEnum: catalogName must not be empty, when creating a catalog.',
+        ];
+
+        $this->assertEquals($expected, $errors);
     }
 
     public function testValidateUpdateActionEnumRefreshRequirements(): void
     {
-        $afterbuyGlobal = clone $this->afterbuyGlobal();
-
         $request = new UpdateCatalogsRequest(
             UpdateActionCatalogsEnum::REFRESH,
             [
@@ -100,14 +98,16 @@ class UpdateCatalogsTest extends TestCase
             ]
         );
 
-        $this->expectExceptionMessage('Catalog id cannot be null, when updating or delete a catalog');
-        $request->payload($afterbuyGlobal);
+        $errors = $this->validate($request->requestClass());
+        $expected = [
+            'catalogs[0].catalogId.getUpdateActionEnum: catalogId must not be empty, when refresh or delete a catalog.',
+        ];
+
+        $this->assertEquals($expected, $errors);
     }
 
     public function testValidateUpdateActionEnumDeleteRequirements(): void
     {
-        $afterbuyGlobal = clone $this->afterbuyGlobal();
-
         $request = new UpdateCatalogsRequest(
             UpdateActionCatalogsEnum::DELETE,
             [
@@ -115,8 +115,12 @@ class UpdateCatalogsTest extends TestCase
             ]
         );
 
-        $this->expectExceptionMessage('Catalog id cannot be null, when updating or delete a catalog');
-        $request->payload($afterbuyGlobal);
+        $errors = $this->validate($request->requestClass());
+        $expected = [
+            'catalogs[0].catalogId.getUpdateActionEnum: catalogId must not be empty, when refresh or delete a catalog.',
+        ];
+
+        $this->assertEquals($expected, $errors);
     }
 
     public function testValidateCatalogDescription(): void

@@ -35,16 +35,10 @@ final readonly class UpdateCatalogsRequest implements AfterbuyRequestInterface
 
     public function requestClass(): AfterbuyAppendXmlContentInterface
     {
-        $catalogs = new Catalogs(
+        return new Catalogs(
             $this->updateActionCatalogsEnum,
             $this->catalogs
         );
-
-        if ($catalogs->isValid() === false) {
-            throw new RuntimeException($catalogs->getInvalidMessage());
-        }
-
-        return $catalogs;
     }
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string

@@ -24,7 +24,6 @@ use AfterbuySdk\Tests\DomFormatter;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
-use Symfony\Component\Validator\Validation;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -40,9 +39,8 @@ class UpdateSoldItemsTest extends TestCase
     public function validate(AfterbuyAppendXmlContentInterface $afterbuyAppendXmlContent): array
     {
         $errors = [];
-        $validator = Validation::createValidatorBuilder()
-            ->enableAttributeMapping()
-            ->getValidator();
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $validator = $afterbuy->getValidator();
 
         $constraintViolationList = $validator->validate($afterbuyAppendXmlContent);
 
@@ -72,6 +70,35 @@ class UpdateSoldItemsTest extends TestCase
         $errors = $this->validate($request->requestClass());
         $expected = [
             'orders: This collection should contain 150 elements or less.',
+        ];
+
+        $this->assertEquals($expected, $errors);
+    }
+
+    public function testValidateUniqueParcelLabel(): void
+    {
+        $request = new UpdateSoldItemsRequest(
+            [
+                new Order(
+                    12345600,
+                    shippingInfo: new ShippingInfo(
+                        parcelLabels: [
+                            new ParcelLabel(12345600, 1, '0123DHL-1'),
+                            new ParcelLabel(12345600, 5, '0123DHL-5'),
+                            new ParcelLabel(12345601, 4, '0123DHL-4'),
+                            new ParcelLabel(12345601, 5, '0123DHL-6'),
+                            new ParcelLabel(12345602, 1, '0123DHL-2'),
+                            new ParcelLabel(12345603, 2, '0123DHL-2'),
+                            new ParcelLabel(12345603, 3, '0123DHL-3'),
+                        ]
+                    ),
+                ),
+            ]
+        );
+
+        $errors = $this->validate($request->requestClass());
+        $expected = [
+            'orders[0].shippingInfo.parcelLabels: Parcel label number [0123DHL-2, 0123DHL-6] must be unique in order',
         ];
 
         $this->assertEquals($expected, $errors);

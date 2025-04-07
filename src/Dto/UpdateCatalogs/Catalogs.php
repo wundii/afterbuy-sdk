@@ -7,13 +7,10 @@ namespace AfterbuySdk\Dto\UpdateCatalogs;
 use AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
-use Exception;
 use Symfony\Component\Validator\Constraints as Assert;
 
 final class Catalogs implements AfterbuyAppendXmlContentInterface
 {
-    private string $invalidMessage = 'Is valid was not called';
-
     /**
      * @param Catalog[] $catalogs
      */
@@ -59,49 +56,5 @@ final class Catalogs implements AfterbuyAppendXmlContentInterface
     public function setCatalogs(array $catalogs): void
     {
         $this->catalogs = $catalogs;
-    }
-
-    public function isValid(): bool
-    {
-        $deepCatalog = function (?Catalog $catalog) use (&$deepCatalog): void {
-            if (! $catalog instanceof Catalog) {
-                return;
-            }
-
-            if (
-                $this->updateActionCatalogsEnum === UpdateActionCatalogsEnum::CREATE
-                && $catalog->getCatalogName() === null
-            ) {
-                throw new Exception('Catalog name cannot be null, when creating a catalog');
-            }
-
-            if (
-                $this->updateActionCatalogsEnum !== UpdateActionCatalogsEnum::CREATE
-                && $catalog->getCatalogId() === null
-            ) {
-                throw new Exception('Catalog id cannot be null, when updating or delete a catalog');
-            }
-
-            foreach ($catalog->getCatalog() as $subCatalog) {
-                $deepCatalog($subCatalog);
-            }
-        };
-
-        try {
-            foreach ($this->catalogs as $catalog) {
-                $deepCatalog($catalog);
-            }
-        } catch (Exception $exception) {
-            $this->invalidMessage = $exception->getMessage();
-
-            return false;
-        }
-
-        return true;
-    }
-
-    public function getInvalidMessage(): string
-    {
-        return $this->invalidMessage;
     }
 }

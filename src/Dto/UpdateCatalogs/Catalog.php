@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace AfterbuySdk\Dto\UpdateCatalogs;
 
+use AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use AfterbuySdk\Extends\SimpleXMLExtend;
 use AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use AfterbuySdk\Validator as AfterbuySdkAssert;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -99,6 +101,11 @@ final class Catalog implements AfterbuyAppendXmlContentInterface
         $this->catalogDescription = $catalogDescription;
     }
 
+    #[AfterbuySdkAssert\NotNullDependentFromRoot(
+        propertyPath: 'getUpdateActionEnum',
+        propertyValue: UpdateActionCatalogsEnum::CREATE,
+        message: '{{ source }} must not be empty, when refresh or delete a catalog.'
+    )]
     public function getCatalogId(): ?int
     {
         return $this->catalogId;
@@ -109,6 +116,11 @@ final class Catalog implements AfterbuyAppendXmlContentInterface
         $this->catalogId = $catalogId;
     }
 
+    #[AfterbuySdkAssert\NotNullDependentFromRoot(
+        propertyPath: 'getUpdateActionEnum',
+        propertyValue: UpdateActionCatalogsEnum::REFRESH,
+        message: '{{ source }} must not be empty, when creating a catalog.',
+    )]
     public function getCatalogName(): ?string
     {
         return $this->catalogName;

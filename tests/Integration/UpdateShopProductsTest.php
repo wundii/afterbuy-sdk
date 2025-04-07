@@ -44,7 +44,6 @@ use AfterbuySdk\Response\UpdateShopProductsResponse;
 use AfterbuySdk\Tests\DomFormatter;
 use AfterbuySdk\Tests\MockClasses\MockApiResponse;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Validator\Validation;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -59,9 +58,8 @@ class UpdateShopProductsTest extends TestCase
     public function validate(AfterbuyAppendXmlContentInterface $afterbuyAppendXmlContent): array
     {
         $errors = [];
-        $validator = Validation::createValidatorBuilder()
-            ->enableAttributeMapping()
-            ->getValidator();
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $validator = $afterbuy->getValidator();
 
         $constraintViolationList = $validator->validate($afterbuyAppendXmlContent);
 

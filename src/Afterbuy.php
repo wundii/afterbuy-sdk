@@ -19,9 +19,18 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use ReflectionClass;
 use RuntimeException;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
+use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
+use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
+use Symfony\Component\Validator\ConstraintValidatorFactoryInterface;
+use Symfony\Component\Validator\ContainerConstraintValidatorFactory;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Validator\ValidatorBuilder;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Wundii\DataMapper\DataConfig;
@@ -37,7 +46,7 @@ final readonly class Afterbuy
         private AfterbuyGlobal $afterbuyGlobal,
         private EndpointEnum $endpointEnum,
         private ?LoggerInterface $logger = null,
-        private ?ValidatorInterface $validator = null,
+        private ?ValidatorBuilder $validatorBuilder = null,
     ) {
     }
 
@@ -168,10 +177,37 @@ final readonly class Afterbuy
         return array_map(fn (AfterbuyDtoLoggerInterface $afterbuyDtoLogger): string => $afterbuyDtoLogger->getMessage(), $afterbuyDtoLogger);
     }
 
-    private function getValidator(): ValidatorInterface
+    public function getValidator(): ValidatorInterface
     {
-        return $this->validator ?? Validation::createValidatorBuilder()
-            ->enableAttributeMapping()
-            ->getValidator();
+        $validationBuilder = $this->validatorBuilder ?? Validation::createValidatorBuilder();
+        $validationBuilder->enableAttributeMapping();
+        $validationBuilder->setConstraintValidatorFactory($this->getConstraintValidatorFactory());
+        return $validationBuilder->getValidator();
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function getConstraintValidatorFactory(): ConstraintValidatorFactoryInterface
+    {
+        $containerBuilder = new ContainerBuilder();
+
+        /**
+         * register all services are needed for the validator
+         */
+        $containerBuilder->register(PropertyAccessorInterface::class, PropertyAccessor::class)
+            ->addArgument(PropertyAccessor::MAGIC_GET | PropertyAccessor::MAGIC_SET)
+            ->addArgument(PropertyAccessor::THROW_ON_INVALID_PROPERTY_PATH)
+            ->addArgument(null)
+            ->addArgument(new ReflectionExtractor([], null, null, true));
+
+        /**
+         * autowire all validators
+         */
+        $phpFileLoader = new PhpFileLoader($containerBuilder, new FileLocator(__DIR__));
+        $phpFileLoader->load(__DIR__ . '/Config/Container.php');
+
+        $containerBuilder->compile();
+        return new ContainerConstraintValidatorFactory($containerBuilder);
     }
 }

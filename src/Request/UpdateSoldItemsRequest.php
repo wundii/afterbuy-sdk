@@ -33,15 +33,9 @@ final readonly class UpdateSoldItemsRequest implements AfterbuyRequestInterface
 
     public function requestClass(): AfterbuyAppendXmlContentInterface
     {
-        $orders = new Orders(
+        return new Orders(
             $this->orders
         );
-
-        if ($orders->isValid() === false) {
-            throw new RuntimeException($orders->getInvalidMessage());
-        }
-
-        return $orders;
     }
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
