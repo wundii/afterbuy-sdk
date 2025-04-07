@@ -8,6 +8,7 @@
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Product;
+use Wundii\AfterbuySdk\Dto\UpdateShopProducts\ProductIdent;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Request\UpdateShopProductsRequest;
 
@@ -24,6 +25,7 @@ $afterbuy = new Afterbuy(
 $request = new UpdateShopProductsRequest(
     [
         new Product(
+            new ProductIdent(),
             'new Product Name',
             // ...
         )

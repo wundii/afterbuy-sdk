@@ -72,7 +72,7 @@ class UpdateShopProductsTest extends TestCase
 
     public function testValidateMaxProducts(): void
     {
-        $products = array_map(fn ($i) => new Product(new ProductIdent(), (string) ($i + 1)), range(0, 250));
+        $products = array_map(fn ($i) => new Product(new ProductIdent('validate'), (string) ($i + 1)), range(0, 250));
         $this->assertCount(251, $products);
 
         $request = new UpdateShopProductsRequest(
@@ -92,7 +92,7 @@ class UpdateShopProductsTest extends TestCase
         $request = new UpdateShopProductsRequest(
             [
                 new Product(
-                    new ProductIdent(),
+                    new ProductIdent('test'),
                     name: 'test',
                     skus: new Skus(
                         UpdateActionSkusEnum::ADD,
@@ -130,7 +130,7 @@ class UpdateShopProductsTest extends TestCase
 
         $request = new UpdateShopProductsRequest(
             [
-                new Product(new ProductIdent(), name: 'test', additionalDescriptionFields: $additionalDescriptionFields),
+                new Product(new ProductIdent('test'), name: 'test', additionalDescriptionFields: $additionalDescriptionFields),
             ],
         );
 
@@ -151,9 +151,9 @@ class UpdateShopProductsTest extends TestCase
             [
                 new Product(
                     new ProductIdent(
+                        '12345ABCD',
                         null,
                         true,
-                        '12345ABCD',
                         0,
                         0,
                     ),
@@ -162,9 +162,9 @@ class UpdateShopProductsTest extends TestCase
                 ),
                 new Product(
                     new ProductIdent(
+                        '12346ABCD',
                         null,
                         true,
-                        '12346ABCD',
                         0,
                         0,
                         'EAN',
@@ -482,7 +482,7 @@ class UpdateShopProductsTest extends TestCase
         $request = new UpdateShopProductsRequest(
             [
                 new Product(
-                    new ProductIdent(),
+                    new ProductIdent('test'),
                     'ABInterfaceNew TestItem',
                 ),
             ]

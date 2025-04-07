@@ -11,9 +11,9 @@ use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 final readonly class ProductIdent implements AfterbuyAppendXmlContentInterface
 {
     public function __construct(
+        private string $userProductId,
         private ?BaseProductTypeEnum $baseProductTypeEnum = null,
         private ?bool $productInsert = null,
-        private ?string $userProductId = null,
         private ?int $productId = null,
         private ?int $anr = null,
         private ?string $ean = null,
@@ -56,7 +56,7 @@ final readonly class ProductIdent implements AfterbuyAppendXmlContentInterface
         return $this->productInsert;
     }
 
-    public function getUserProductId(): ?string
+    public function getUserProductId(): string
     {
         return $this->userProductId;
     }
