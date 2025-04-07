@@ -18,7 +18,7 @@ class ParcelLabelsValidator extends ConstraintValidator
         }
 
         $parcelLabelNumber = [];
-        $pracelLabelInvalidNumber = [];
+        $parcelLabelInvalidNumber = [];
 
         if (! is_iterable($value)) {
             return;
@@ -33,7 +33,7 @@ class ParcelLabelsValidator extends ConstraintValidator
                 isset($parcelLabelNumber[$parcelLabel->getPackageNumber()])
                 && $parcelLabelNumber[$parcelLabel->getPackageNumber()] !== $parcelLabel->getParcelLabelNumber()
             ) {
-                $pracelLabelInvalidNumber[] = $parcelLabel->getParcelLabelNumber();
+                $parcelLabelInvalidNumber[] = $parcelLabel->getParcelLabelNumber();
             }
 
             if (
@@ -44,12 +44,12 @@ class ParcelLabelsValidator extends ConstraintValidator
             }
         }
 
-        if ($pracelLabelInvalidNumber !== []) {
-            sort($pracelLabelInvalidNumber);
+        if ($parcelLabelInvalidNumber !== []) {
+            sort($parcelLabelInvalidNumber);
 
             $this->context
                 ->buildViolation($constraint->message)
-                ->setParameter('{{ number }}', implode(', ', $pracelLabelInvalidNumber))
+                ->setParameter('{{ number }}', implode(', ', $parcelLabelInvalidNumber))
                 ->addViolation();
         }
     }

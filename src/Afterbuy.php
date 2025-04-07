@@ -77,6 +77,7 @@ final readonly class Afterbuy
             $uri = substr($uri, 0, -1);
         }
 
+        /** validate the request class */
         if ($requestClass instanceof AfterbuyAppendXmlContentInterface) {
             $constraintViolationList = $this->getValidator()->validate($requestClass);
             if ($constraintViolationList->count() > 0) {
@@ -85,23 +86,15 @@ final readonly class Afterbuy
                     $loggerMessages[] = sprintf('%s: %s', $error->getPropertyPath(), $error->getMessage());
                 }
 
-                if ($this->logger instanceof LoggerInterface) {
-                    $loggerMessage = sprintf('Afterbuy SDK %s', $requestClass::class);
-
-                    $loggerContext = [
-                        'uri' => $uri,
-                        'method' => $method,
-                        'payload' => $payload,
-                        'query' => $query,
-                        'response' => $loggerMessages,
-                    ];
-
-                    $this->logger->log(
-                        LogLevel::WARNING,
-                        $loggerMessage,
-                        $loggerContext,
-                    );
-                }
+                $this->appendLogMessage(
+                    LogLevel::WARNING,
+                    sprintf('Afterbuy SDK %s', $requestClass::class),
+                    $uri,
+                    $method,
+                    $payload,
+                    $query,
+                    $loggerMessages,
+                );
 
                 throw new InvalidArgumentException('Request class is not valid: ' . implode(', ', $loggerMessages));
             }
@@ -139,31 +132,22 @@ final readonly class Afterbuy
             throw new RuntimeException('Response class does not implement AfterbuyResponseInterface');
         }
 
-        if ($this->logger instanceof LoggerInterface) {
-            $callStatusEnum = $response->getCallStatus();
-            $loggerMessage = sprintf('Afterbuy SDK %s', $afterbuyRequest::class);
-            $loggerMessages = match ($callStatusEnum) {
-                CallStatusEnum::ERROR => $response->getErrorMessages(),
-                CallStatusEnum::WARNING => $response->getWarningMessages(),
-                default => [],
-            };
+        $callStatusEnum = $response->getCallStatus();
+        $loggerMessages = match ($callStatusEnum) {
+            CallStatusEnum::ERROR => $response->getErrorMessages(),
+            CallStatusEnum::WARNING => $response->getWarningMessages(),
+            default => [],
+        };
 
-            if ($loggerMessages !== []) {
-                $loggerContext = [
-                    'uri' => $uri,
-                    'method' => $method,
-                    'payload' => $payload,
-                    'query' => $query,
-                    'response' => $this->getAfterbuyDtoLoggerArray($loggerMessages),
-                ];
-
-                $this->logger->log(
-                    $callStatusEnum->getPsr3Level(),
-                    $loggerMessage,
-                    $loggerContext,
-                );
-            }
-        }
+        $this->appendLogMessage(
+            $callStatusEnum->getPsr3Level(),
+            sprintf('Afterbuy SDK %s', $afterbuyRequest::class),
+            $uri,
+            $method,
+            $payload,
+            $query,
+            $this->getAfterbuyDtoLoggerArray($loggerMessages),
+        );
 
         return $response;
     }
@@ -210,5 +194,41 @@ final readonly class Afterbuy
 
         $containerBuilder->compile();
         return new ContainerConstraintValidatorFactory($containerBuilder);
+    }
+
+    /**
+     * @param string[] $query
+     * @param string[] $response
+     */
+    private function appendLogMessage(
+        string $level,
+        string $message,
+        string $uri,
+        string $method,
+        string $payload,
+        array $query,
+        array $response,
+    ): void {
+        if (! $this->logger instanceof LoggerInterface) {
+            return;
+        }
+
+        if ($response === []) {
+            return;
+        }
+
+        $context = [
+            'uri' => $uri,
+            'method' => $method,
+            'payload' => $payload,
+            'query' => $query,
+            'response' => $response,
+        ];
+
+        $this->logger->log(
+            $level,
+            $message,
+            $context,
+        );
     }
 }

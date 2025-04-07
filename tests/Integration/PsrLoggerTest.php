@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyError;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
@@ -32,9 +30,7 @@ class PsrLoggerTest extends TestCase
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
@@ -55,9 +51,7 @@ class PsrLoggerTest extends TestCase
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
@@ -103,9 +97,7 @@ class PsrLoggerTest extends TestCase
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
