@@ -8,6 +8,7 @@
 [![ECS](https://img.shields.io/badge/ECS-check-blue.svg?style=flat)](https://tomasvotruba.com/blog/zen-config-in-ecs)
 [![PHPUnit](https://img.shields.io/badge/PHP--Unit-check-blue.svg?style=flat)](https://phpunit.org)
 [![PSR3](https://img.shields.io/badge/PSR--3%20Logger-optional-blue.svg?style=flat)](https://php-fig.org/psr/psr-3)
+[![Downloads](https://img.shields.io/packagist/dt/wundii/afterbuy-sdk.svg?style=flat)](https://packagist.org/packages/wundii/afterbuy-sdk)
 
 This is a modern Afterbuy Programming Interface Software Development Kit, for the selling solution [afterbuy.de](https://www.afterbuy.de/).
 

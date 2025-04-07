@@ -1,6 +1,6 @@
 {
   "name": "wundii/afterbuy-sdk",
-  "description": "Afterbuy Programming Interface Software Development Kit",
+  "description": "Modern PHP 8.2+ Afterbuy Programming Interface Software Development Kit",
   "keywords": ["afterbuy","sdk"],
   "license": "MIT",
   "authors": [
@@ -21,7 +21,7 @@
     "symfony/http-client": "^6.0 || ^7.0",
     "symfony/property-access": "^6.0 || ^7.0",
     "symfony/validator": "^6.0 || ^7.0",
-    "wundii/data-mapper": "^1.1"
+    "wundii/data-mapper": "^1.1.6"
   },
   "require-dev": {
     "phpstan/phpstan": "^2.1",
