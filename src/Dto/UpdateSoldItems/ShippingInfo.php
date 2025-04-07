@@ -66,6 +66,7 @@ final readonly class ShippingInfo implements AfterbuyAppendXmlContentInterface
     /**
      * @return ParcelLabel[]
      */
+    #[Assert\Count(min: 0)]
     #[Assert\Valid]
     #[AfterbuySdkAssert\ParcelLabels]
     public function getParcelLabels(): array

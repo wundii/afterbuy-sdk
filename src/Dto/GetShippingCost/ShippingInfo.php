@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShippingCost;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
@@ -69,6 +70,8 @@ final readonly class ShippingInfo implements AfterbuyAppendXmlContentInterface
     /**
      * @return int[]
      */
+    #[Assert\Count(min: 1)]
+    #[Assert\All(new Assert\Type('int'))]
     public function getProductIds(): array
     {
         if (is_array($this->productIds)) {

@@ -36,6 +36,7 @@ final readonly class AddBaseProducts implements AfterbuyAppendXmlContentInterfac
     /**
      * @return AddBaseProduct[]
      */
+    #[Assert\Count(min: 1)]
     #[Assert\Valid]
     public function getAddBaseProducts(): array
     {

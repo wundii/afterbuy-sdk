@@ -36,6 +36,7 @@ final readonly class AddAttributes implements AfterbuyAppendXmlContentInterface
     /**
      * @return AddAttribut[]
      */
+    #[Assert\Count(min: 1)]
     #[Assert\Valid]
     public function getAddAttributes(): array
     {

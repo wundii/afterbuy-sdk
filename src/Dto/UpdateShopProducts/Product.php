@@ -317,6 +317,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return AdditionalPriceUpdate[]
      */
+    #[Assert\Count(min: 0)]
     #[Assert\Valid]
     public function getAdditionalPriceUpdates(): array
     {
@@ -535,6 +536,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return Feature[]
      */
+    #[Assert\Count(min: 0)]
     #[Assert\Valid]
     public function getFeatures(): array
     {
@@ -872,6 +874,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return PartsProperties[]
      */
+    #[Assert\Count(min: 0)]
     #[Assert\Valid]
     public function getPartsFitment(): array
     {
@@ -930,6 +933,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return ProductPicture[]
      */
+    #[Assert\Count(min: 0)]
     #[Assert\Valid]
     public function getProductPictures(): array
     {
@@ -957,6 +961,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return ScaledDiscount[]
      */
+    #[Assert\Count(min: 0)]
     #[Assert\Valid]
     public function getScaledDiscounts(): array
     {
@@ -1136,6 +1141,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     /**
      * @return Variation[]
      */
+    #[Assert\Count(min: 0)]
     #[Assert\Valid]
     public function getUseEbayVariations(): array
     {

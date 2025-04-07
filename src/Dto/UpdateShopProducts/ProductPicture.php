@@ -47,6 +47,7 @@ final readonly class ProductPicture implements AfterbuyAppendXmlContentInterface
     /**
      * @return ProductPictureChild[]
      */
+    #[Assert\Count(min: 0)]
     #[Assert\Valid]
     public function getChilds(): array
     {

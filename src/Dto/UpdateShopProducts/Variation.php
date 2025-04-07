@@ -36,6 +36,7 @@ final readonly class Variation implements AfterbuyAppendXmlContentInterface
     /**
      * @return VariationValue[]
      */
+    #[Assert\Count(min: 1)]
     #[Assert\Valid]
     public function getVariationValues(): array
     {

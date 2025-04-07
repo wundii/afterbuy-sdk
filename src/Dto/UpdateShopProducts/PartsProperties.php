@@ -33,6 +33,7 @@ final readonly class PartsProperties implements AfterbuyAppendXmlContentInterfac
     /**
      * @return PartsProperty[]
      */
+    #[Assert\Count(min: 1)]
     #[Assert\Valid]
     public function getPartsProperties(): array
     {

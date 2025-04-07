@@ -36,6 +36,7 @@ final readonly class AddCatalogs implements AfterbuyAppendXmlContentInterface
     /**
      * @return AddCatalog[]
      */
+    #[Assert\Count(min: 1)]
     #[Assert\Valid]
     public function getAddCatalog(): array
     {

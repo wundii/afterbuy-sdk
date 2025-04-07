@@ -76,6 +76,7 @@ final class Catalog implements AfterbuyAppendXmlContentInterface
     /**
      * @return Catalog[]
      */
+    #[Assert\Count(min: 0)]
     #[Assert\Valid]
     public function getCatalog(): array
     {

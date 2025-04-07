@@ -36,9 +36,8 @@ final readonly class Economicoperators implements AfterbuyAppendXmlContentInterf
     /**
      * @return int[]
      */
-    #[Assert\All(
-        new Assert\Type('int'),
-    )]
+    #[Assert\Count(min: 1)]
+    #[Assert\All(new Assert\Type('int'))]
     public function getEconomicoperatorId(): array
     {
         return $this->economicoperatorId;
