@@ -185,9 +185,6 @@ final readonly class Afterbuy
         return $validationBuilder->getValidator();
     }
 
-    /**
-     * @throws Exception
-     */
     private function getConstraintValidatorFactory(): ConstraintValidatorFactoryInterface
     {
         $containerBuilder = new ContainerBuilder();
@@ -204,8 +201,12 @@ final readonly class Afterbuy
         /**
          * autowire all validators
          */
-        $phpFileLoader = new PhpFileLoader($containerBuilder, new FileLocator(__DIR__));
-        $phpFileLoader->load(__DIR__ . '/Config/Container.php');
+        try {
+            $phpFileLoader = new PhpFileLoader($containerBuilder, new FileLocator(__DIR__));
+            $phpFileLoader->load(__DIR__ . '/Config/Container.php');
+        } catch (Exception $exception) {
+            throw new RuntimeException('Error loading container file: ' . $exception->getMessage(), $exception->getCode(), $exception);
+        }
 
         $containerBuilder->compile();
         return new ContainerConstraintValidatorFactory($containerBuilder);
