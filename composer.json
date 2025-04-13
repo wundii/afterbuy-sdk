@@ -21,7 +21,7 @@
     "symfony/http-client": "^6.0 || ^7.0",
     "symfony/property-access": "^6.0 || ^7.0",
     "symfony/validator": "^6.0 || ^7.0",
-    "wundii/data-mapper": "^1.1.6"
+    "wundii/data-mapper": "^1.2"
   },
   "require-dev": {
     "phpstan/phpstan": "^2.1",
