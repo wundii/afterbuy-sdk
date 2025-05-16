@@ -13,6 +13,8 @@ final class ParcelLabel implements AfterbuyDtoInterface
         private int $packageNumber,
         private ?string $parcelLabelNumber = null,
         private ?string $returnLabelNumber = null,
+        private ?int $packageQuantity = null,
+        private ?float $packageWeight = null,
     ) {
     }
 
@@ -54,5 +56,25 @@ final class ParcelLabel implements AfterbuyDtoInterface
     public function setReturnLabelNumber(?string $returnLabelNumber): void
     {
         $this->returnLabelNumber = $returnLabelNumber;
+    }
+
+    public function getPackageQuantity(): ?int
+    {
+        return $this->packageQuantity;
+    }
+
+    public function setPackageQuantity(?int $packageQuantity): void
+    {
+        $this->packageQuantity = $packageQuantity;
+    }
+
+    public function getPackageWeight(): ?float
+    {
+        return $this->packageWeight;
+    }
+
+    public function setPackageWeight(?float $packageWeight): void
+    {
+        $this->packageWeight = $packageWeight;
     }
 }

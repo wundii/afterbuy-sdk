@@ -12,13 +12,24 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\BillingAddress;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\BuyerInfo;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\Order;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\Orders;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\ParcelLabel;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\PaymentInfo;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\ShippingAddress;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\ShippingInfo;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\SoldItem;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\SoldItems;
+use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\DefaultFilterSoldItemsEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\OrderDirectionEnum;
+use Wundii\AfterbuySdk\Enum\PaymentIdEnum;
 use Wundii\AfterbuySdk\Enum\PlattformEnum;
+use Wundii\AfterbuySdk\Extends\DateTime;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserEmail;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserId;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AlternativeItemNumber1;
@@ -190,5 +201,128 @@ class GetSoldItemsTest extends TestCase
         $this->assertSame(true, $orders->hasMoreItems());
         $this->assertCount(1, $orders->getOrders());
         $this->assertInstanceOf(Order::class, $orders->getOrders()[0]);
+    }
+
+    public function testUpdateVersion460(): void
+    {
+        $file = __DIR__ . '/ResponseFiles/GetSoldItemsSuccess2.0.460.xml';
+
+        $request = new GetSoldItemsRequest();
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
+
+        $response = $afterbuy->runRequest($request, $mockResponse);
+
+        /** @var Orders $orders */
+        $orders = $response->getResult();
+
+        $expected = new Order(
+            10075,
+            43151135,
+            9525249060,
+            orderDate: new DateTime('2006-05-29 09:32:50'),
+            paymentInfo: new PaymentInfo(
+                PaymentIdEnum::INVOICE,
+                alreadyPaid: 0.0,
+                fullAmount: 110.05,
+                invoiceDate: new DateTime('2006-06-01'),
+            ),
+            buyerInfo: new BuyerInfo(
+                new BillingAddress(
+                    29893553,
+                    userIdPlattform: 'afterbuy1_testaccount',
+                    firstName: 'Max',
+                    lastName: 'Mustermann',
+                    company: 'api1@via.de',
+                    street: 'Kimplerstr. 296',
+                    postalCode: '47807',
+                    city: 'Krefeld',
+                    country: 'D',
+                    countryIsoEnum: CountryIsoEnum::GERMANY,
+                    mail: 'musterman@muster.de',
+                ),
+                new ShippingAddress(
+                    firstName: 'Tom',
+                    lastName: 'Test',
+                    company: 'Testcompany',
+                    street: 'Testsreet 1',
+                    postalCode: '15478',
+                    city: 'Mustercity',
+                    country: 'F',
+                    countryIsoEnum: CountryIsoEnum::FRANCE,
+                ),
+            ),
+            soldItems: new SoldItems(
+                [
+                    new SoldItem(
+                        43151135,
+                        itemTitle: 'Testartikel',
+                        itemQuantity: 1,
+                        itemPrice: 2.0,
+                        itemEndDate: new DateTime('2006-05-29 09:32:50'),
+                        taxRate: 19.0,
+                        itemWeight: 4.13,
+                        itemModDate: new DateTime('2006-06-02 14:01:46'),
+                    ),
+                    new SoldItem(
+                        43159620,
+                        itemTitle: 'Testartikel',
+                        itemQuantity: 12,
+                        itemPrice: 2.0,
+                        itemEndDate: new DateTime('2006-05-29 09:33:24'),
+                        taxRate: 16.0,
+                        itemWeight: 0.34,
+                        itemModDate: new DateTime('2006-06-02 14:01:46'),
+                    ),
+                    new SoldItem(
+                        43161870,
+                        itemTitle: 'Attributtest MB',
+                        itemQuantity: 1,
+                        itemPrice: 1.0,
+                        itemEndDate: new DateTime('2006-05-29 12:50:03'),
+                        taxRate: 16.0,
+                        itemWeight: 4.13,
+                        itemModDate: new DateTime('2006-06-02 14:01:46'),
+                    ),
+                ],
+            ),
+            shippingInfo: new ShippingInfo(
+                shippingCost: 5.55,
+                shippingAdditionalCost: 0,
+                shippingTotalCost: 5.55,
+                shippingTaxRate: 19.00,
+                parcelLabels: [
+                    new ParcelLabel(
+                        43151135,
+                        1,
+                        '00340434464181524067',
+                        '99353347120585',
+                        packageQuantity: 1,
+                    ),
+                    new ParcelLabel(
+                        43159620,
+                        2,
+                        '00340434464181524070',
+                        '99353347120518',
+                        packageWeight: 10.5,
+                    ),
+                    new ParcelLabel(
+                        43161870,
+                        3,
+                        '00340434464181524023',
+                        '99353347120545',
+                        packageQuantity: 4,
+                    ),
+                ],
+            ),
+            feedbackDate: new DateTime('2006-06-01 11:43:38'),
+            feedbackLink: 'https://www.afterbuy.de/fb.aspx?ui=452FAF74-C14F-4A02-A541-8FA281B92173',
+        );
+
+        $this->assertInstanceOf(GetSoldItemsResponse::class, $response);
+        $this->assertSame(false, $orders->hasMoreItems());
+        $this->assertCount(1, $orders->getOrders());
+        $this->assertInstanceOf(Order::class, $orders->getOrders()[0]);
+        $this->assertEquals($expected, $orders->getOrders()[0]);
     }
 }

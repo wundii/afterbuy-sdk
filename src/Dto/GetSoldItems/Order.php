@@ -19,6 +19,7 @@ final class Order implements AfterbuyDtoInterface
         private ?SoldItems $soldItems = null,
         private ?ShippingInfo $shippingInfo = null,
         private ?DateTimeInterface $feedbackDate = null,
+        private ?string $feedbackLink = null,
         private ?int $alternativeItemNumber1 = null,
         private ?string $ebayAccount = null,
         private ?string $amazonAccount = null,
@@ -220,5 +221,15 @@ final class Order implements AfterbuyDtoInterface
     public function setUserComment(?string $userComment): void
     {
         $this->userComment = $userComment;
+    }
+
+    public function getFeedbackLink(): ?string
+    {
+        return $this->feedbackLink;
+    }
+
+    public function setFeedbackLink(?string $feedbackLink): void
+    {
+        $this->feedbackLink = $feedbackLink;
     }
 }

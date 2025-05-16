@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
-use Wundii\AfterbuySdk\Enum\UserIdPlattformEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class BillingAddress implements AfterbuyDtoInterface
@@ -13,7 +12,7 @@ final class BillingAddress implements AfterbuyDtoInterface
     public function __construct(
         private int $afterbuyUserId,
         private ?int $afterbuyUserIdAlt = null,
-        private ?UserIdPlattformEnum $userIdPlattformEnum = null,
+        private ?string $userIdPlattform = null,
         private ?string $firstName = null,
         private ?string $lastName = null,
         private ?string $title = null,
@@ -202,13 +201,13 @@ final class BillingAddress implements AfterbuyDtoInterface
         $this->title = $title;
     }
 
-    public function getUserIdPlattformEnum(): ?UserIdPlattformEnum
+    public function getUserIdPlattform(): ?string
     {
-        return $this->userIdPlattformEnum;
+        return $this->userIdPlattform;
     }
 
-    public function setUserIdPlattformEnum(?UserIdPlattformEnum $userIdPlattformEnum): void
+    public function setUserIdPlattform(?string $userIdPlattform): void
     {
-        $this->userIdPlattformEnum = $userIdPlattformEnum;
+        $this->userIdPlattform = $userIdPlattform;
     }
 }

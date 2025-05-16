@@ -12,17 +12,17 @@ final class SoldItems implements AfterbuyDtoInterface
      * @param SoldItem[] $soldItem
      */
     public function __construct(
-        private int $itemsInOrder,
         private array $soldItem = [],
+        private ?int $itemsInOrder = null,
     ) {
     }
 
-    public function getItemsInOrder(): int
+    public function getItemsInOrder(): ?int
     {
         return $this->itemsInOrder;
     }
 
-    public function setItemsInOrder(int $itemsInOrder): void
+    public function setItemsInOrder(?int $itemsInOrder): void
     {
         $this->itemsInOrder = $itemsInOrder;
     }

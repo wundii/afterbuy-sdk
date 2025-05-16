@@ -40,7 +40,7 @@ use Wundii\DataMapper\Enum\ApproachEnum;
 /**
  * @template T of object
  */
-final readonly class Afterbuy
+readonly class Afterbuy
 {
     public function __construct(
         private AfterbuyGlobal $afterbuyGlobal,
