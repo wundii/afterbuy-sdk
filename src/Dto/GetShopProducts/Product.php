@@ -269,12 +269,12 @@ final class Product implements AfterbuyDtoInterface
         $this->catalogs = $catalogs;
     }
 
-    public function getConditionEnum(): ConditionEnum
+    public function getCondition(): ConditionEnum
     {
         return $this->conditionEnum;
     }
 
-    public function setConditionEnum(ConditionEnum $conditionEnum): void
+    public function setCondition(ConditionEnum $conditionEnum): void
     {
         $this->conditionEnum = $conditionEnum;
     }
@@ -375,12 +375,12 @@ final class Product implements AfterbuyDtoInterface
         $this->economicOperators = $economicOperators;
     }
 
-    public function getEnergyClassEnum(): EnergyClassEnum
+    public function getEnergyClass(): EnergyClassEnum
     {
         return $this->energyClassEnum;
     }
 
-    public function setEnergyClassEnum(EnergyClassEnum $energyClassEnum): void
+    public function setEnergyClass(EnergyClassEnum $energyClassEnum): void
     {
         $this->energyClassEnum = $energyClassEnum;
     }

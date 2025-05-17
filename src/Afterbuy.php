@@ -169,6 +169,11 @@ readonly class Afterbuy
         return $validationBuilder->getValidator();
     }
 
+    public function getAfterbuyGlobal(): AfterbuyGlobal
+    {
+        return $this->afterbuyGlobal;
+    }
+
     private function getConstraintValidatorFactory(): ConstraintValidatorFactoryInterface
     {
         $containerBuilder = new ContainerBuilder();

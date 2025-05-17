@@ -86,12 +86,12 @@ final class SoldItem implements AfterbuyDtoInterface
         $this->eBayTransactionId = $eBayTransactionId;
     }
 
-    public function getFulfillmentServiceLevelEnum(): FulfillmentServiceLevelEnum
+    public function getFulfillmentServiceLevel(): FulfillmentServiceLevelEnum
     {
         return $this->fulfillmentServiceLevelEnum;
     }
 
-    public function setFulfillmentServiceLevelEnum(FulfillmentServiceLevelEnum $fulfillmentServiceLevelEnum): void
+    public function setFulfillmentServiceLevel(FulfillmentServiceLevelEnum $fulfillmentServiceLevelEnum): void
     {
         $this->fulfillmentServiceLevelEnum = $fulfillmentServiceLevelEnum;
     }
