@@ -18,6 +18,7 @@ final class Order implements AfterbuyDtoInterface
         private ?BuyerInfo $buyerInfo = null,
         private ?SoldItems $soldItems = null,
         private ?ShippingInfo $shippingInfo = null,
+        private ?OrderOriginalCurrency $orderOriginalCurrency = null,
         private ?DateTimeInterface $feedbackDate = null,
         private ?string $feedbackLink = null,
         private ?int $alternativeItemNumber1 = null,
@@ -30,6 +31,7 @@ final class Order implements AfterbuyDtoInterface
         private ?string $invoiceMemo = null,
         private ?int $isCheckoutConfirmedByCustomer = null,
         private ?string $orderIDAlt = null,
+        private bool $containsEbayPlusTransaction = false,
     ) {
     }
 
@@ -231,5 +233,25 @@ final class Order implements AfterbuyDtoInterface
     public function setFeedbackLink(?string $feedbackLink): void
     {
         $this->feedbackLink = $feedbackLink;
+    }
+
+    public function isContainsEbayPlusTransaction(): bool
+    {
+        return $this->containsEbayPlusTransaction;
+    }
+
+    public function setContainsEbayPlusTransaction(bool $containsEbayPlusTransaction): void
+    {
+        $this->containsEbayPlusTransaction = $containsEbayPlusTransaction;
+    }
+
+    public function getOrderOriginalCurrency(): ?OrderOriginalCurrency
+    {
+        return $this->orderOriginalCurrency;
+    }
+
+    public function setOrderOriginalCurrency(?OrderOriginalCurrency $orderOriginalCurrency): void
+    {
+        $this->orderOriginalCurrency = $orderOriginalCurrency;
     }
 }

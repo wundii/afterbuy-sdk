@@ -13,7 +13,7 @@ final class BaseProductsRelationData implements AfterbuyDtoInterface
         private string $variationLabel,
         private string $defaultProduct,
         private int $position,
-        private ?EbayVariationData $eBayVariationData = null,
+        private ?EbayVariationData $ebayVariationData = null,
     ) {
     }
 
@@ -27,14 +27,14 @@ final class BaseProductsRelationData implements AfterbuyDtoInterface
         $this->defaultProduct = $defaultProduct;
     }
 
-    public function getEBayVariationData(): ?EbayVariationData
+    public function getEbayVariationData(): ?EbayVariationData
     {
-        return $this->eBayVariationData;
+        return $this->ebayVariationData;
     }
 
-    public function setEBayVariationData(?EbayVariationData $eBayVariationData): void
+    public function setEbayVariationData(?EbayVariationData $ebayVariationData): void
     {
-        $this->eBayVariationData = $eBayVariationData;
+        $this->ebayVariationData = $ebayVariationData;
     }
 
     public function getPosition(): int

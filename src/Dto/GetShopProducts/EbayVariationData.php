@@ -9,28 +9,28 @@ use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 final class EbayVariationData implements AfterbuyDtoInterface
 {
     public function __construct(
-        private string $eBayVariationName,
-        private string $eBayVariationValue,
+        private string $ebayVariationName,
+        private string $ebayVariationValue,
     ) {
     }
 
-    public function getEBayVariationName(): string
+    public function getEbayVariationName(): string
     {
-        return $this->eBayVariationName;
+        return $this->ebayVariationName;
     }
 
-    public function setEBayVariationName(string $eBayVariationName): void
+    public function setEbayVariationName(string $ebayVariationName): void
     {
-        $this->eBayVariationName = $eBayVariationName;
+        $this->ebayVariationName = $ebayVariationName;
     }
 
-    public function getEBayVariationValue(): string
+    public function getEbayVariationValue(): string
     {
-        return $this->eBayVariationValue;
+        return $this->ebayVariationValue;
     }
 
-    public function setEBayVariationValue(string $eBayVariationValue): void
+    public function setEbayVariationValue(string $ebayVariationValue): void
     {
-        $this->eBayVariationValue = $eBayVariationValue;
+        $this->ebayVariationValue = $ebayVariationValue;
     }
 }

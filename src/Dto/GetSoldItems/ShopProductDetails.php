@@ -15,6 +15,9 @@ final class ShopProductDetails implements AfterbuyDtoInterface
         private ?string $unitOfQuantity = null,
         private ?float $basepriceFactor = null,
         private ?BaseProductData $baseProductData = null,
+        private ?string $stockLocation1 = null,
+        private ?string $stockLocation2 = null,
+        private ?string $stockLocation3 = null,
     ) {
     }
 
@@ -76,5 +79,35 @@ final class ShopProductDetails implements AfterbuyDtoInterface
     public function setUnitOfQuantity(?string $unitOfQuantity): void
     {
         $this->unitOfQuantity = $unitOfQuantity;
+    }
+
+    public function getStockLocation1(): ?string
+    {
+        return $this->stockLocation1;
+    }
+
+    public function setStockLocation1(?string $stockLocation1): void
+    {
+        $this->stockLocation1 = $stockLocation1;
+    }
+
+    public function getStockLocation2(): ?string
+    {
+        return $this->stockLocation2;
+    }
+
+    public function setStockLocation2(?string $stockLocation2): void
+    {
+        $this->stockLocation2 = $stockLocation2;
+    }
+
+    public function getStockLocation3(): ?string
+    {
+        return $this->stockLocation3;
+    }
+
+    public function setStockLocation3(?string $stockLocation3): void
+    {
+        $this->stockLocation3 = $stockLocation3;
     }
 }

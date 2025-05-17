@@ -23,14 +23,14 @@ final class ListingDetails implements AfterbuyDtoInterface
         private int $listingDuration,
         private int $listingType,
         private string $listingDescription,
-        private ?int $eBayCategoryId = null,
-        private ?int $eBayCategory2Id = null,
-        private ?int $eBaySubAccountId = null,
-        private ?float $eBayStartprice = null,
-        private ?float $eBayBuyItNowPrice = null,
-        private ?string $eBayPictureUrl = null,
-        private ?string $eBayGaleryUrl = null,
-        private ?bool $eBayRelist = null,
+        private ?int $ebayCategoryId = null,
+        private ?int $ebayCategory2Id = null,
+        private ?int $ebaySubAccountId = null,
+        private ?float $ebayStartprice = null,
+        private ?float $ebayBuyItNowPrice = null,
+        private ?string $ebayPictureUrl = null,
+        private ?string $ebayGaleryUrl = null,
+        private ?bool $ebayRelist = null,
     ) {
     }
 
@@ -44,84 +44,84 @@ final class ListingDetails implements AfterbuyDtoInterface
         $this->anr = $anr;
     }
 
-    public function getEBayBuyItNowPrice(): ?float
+    public function getEbayBuyItNowPrice(): ?float
     {
-        return $this->eBayBuyItNowPrice;
+        return $this->ebayBuyItNowPrice;
     }
 
-    public function setEBayBuyItNowPrice(?float $eBayBuyItNowPrice): void
+    public function setEbayBuyItNowPrice(?float $ebayBuyItNowPrice): void
     {
-        $this->eBayBuyItNowPrice = $eBayBuyItNowPrice;
+        $this->ebayBuyItNowPrice = $ebayBuyItNowPrice;
     }
 
-    public function getEBayCategory2Id(): ?int
+    public function getEbayCategory2Id(): ?int
     {
-        return $this->eBayCategory2Id;
+        return $this->ebayCategory2Id;
     }
 
-    public function setEBayCategory2Id(?int $eBayCategory2Id): void
+    public function setEbayCategory2Id(?int $ebayCategory2Id): void
     {
-        $this->eBayCategory2Id = $eBayCategory2Id;
+        $this->ebayCategory2Id = $ebayCategory2Id;
     }
 
-    public function getEBayCategoryId(): ?int
+    public function getEbayCategoryId(): ?int
     {
-        return $this->eBayCategoryId;
+        return $this->ebayCategoryId;
     }
 
-    public function setEBayCategoryId(?int $eBayCategoryId): void
+    public function setEbayCategoryId(?int $ebayCategoryId): void
     {
-        $this->eBayCategoryId = $eBayCategoryId;
+        $this->ebayCategoryId = $ebayCategoryId;
     }
 
-    public function getEBayGaleryUrl(): ?string
+    public function getEbayGaleryUrl(): ?string
     {
-        return $this->eBayGaleryUrl;
+        return $this->ebayGaleryUrl;
     }
 
-    public function setEBayGaleryUrl(?string $eBayGaleryUrl): void
+    public function setEbayGaleryUrl(?string $ebayGaleryUrl): void
     {
-        $this->eBayGaleryUrl = $eBayGaleryUrl;
+        $this->ebayGaleryUrl = $ebayGaleryUrl;
     }
 
-    public function getEBayPictureUrl(): ?string
+    public function getEbayPictureUrl(): ?string
     {
-        return $this->eBayPictureUrl;
+        return $this->ebayPictureUrl;
     }
 
-    public function setEBayPictureUrl(?string $eBayPictureUrl): void
+    public function setEbayPictureUrl(?string $ebayPictureUrl): void
     {
-        $this->eBayPictureUrl = $eBayPictureUrl;
+        $this->ebayPictureUrl = $ebayPictureUrl;
     }
 
-    public function getEBayRelist(): ?bool
+    public function getEbayRelist(): ?bool
     {
-        return $this->eBayRelist;
+        return $this->ebayRelist;
     }
 
-    public function setEBayRelist(?bool $eBayRelist): void
+    public function setEbayRelist(?bool $ebayRelist): void
     {
-        $this->eBayRelist = $eBayRelist;
+        $this->ebayRelist = $ebayRelist;
     }
 
-    public function getEBayStartprice(): ?float
+    public function getEbayStartprice(): ?float
     {
-        return $this->eBayStartprice;
+        return $this->ebayStartprice;
     }
 
-    public function setEBayStartprice(?float $eBayStartprice): void
+    public function setEbayStartprice(?float $ebayStartprice): void
     {
-        $this->eBayStartprice = $eBayStartprice;
+        $this->ebayStartprice = $ebayStartprice;
     }
 
-    public function getEBaySubAccountId(): ?int
+    public function getEbaySubAccountId(): ?int
     {
-        return $this->eBaySubAccountId;
+        return $this->ebaySubAccountId;
     }
 
-    public function setEBaySubAccountId(?int $eBaySubAccountId): void
+    public function setEbaySubAccountId(?int $ebaySubAccountId): void
     {
-        $this->eBaySubAccountId = $eBaySubAccountId;
+        $this->ebaySubAccountId = $ebaySubAccountId;
     }
 
     public function getEndTime(): DateTimeInterface

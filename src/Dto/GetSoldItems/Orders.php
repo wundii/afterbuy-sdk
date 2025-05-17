@@ -14,6 +14,9 @@ final class Orders implements AfterbuyDtoInterface
     public function __construct(
         private bool $hasMoreItems = false,
         private array $orders = [],
+        private int $ordersCount = 0,
+        private ?int $lastOrderId = null,
+        private int $itemsCount = 0,
     ) {
     }
 
@@ -41,5 +44,35 @@ final class Orders implements AfterbuyDtoInterface
     public function setOrders(array $orders): void
     {
         $this->orders = $orders;
+    }
+
+    public function getItemsCount(): int
+    {
+        return $this->itemsCount;
+    }
+
+    public function setItemsCount(int $itemsCount): void
+    {
+        $this->itemsCount = $itemsCount;
+    }
+
+    public function getLastOrderId(): ?int
+    {
+        return $this->lastOrderId;
+    }
+
+    public function setLastOrderId(?int $lastOrderId): void
+    {
+        $this->lastOrderId = $lastOrderId;
+    }
+
+    public function getOrdersCount(): int
+    {
+        return $this->ordersCount;
+    }
+
+    public function setOrdersCount(int $ordersCount): void
+    {
+        $this->ordersCount = $ordersCount;
     }
 }

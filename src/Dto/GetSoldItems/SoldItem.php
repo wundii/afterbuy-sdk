@@ -19,9 +19,12 @@ final class SoldItem implements AfterbuyDtoInterface
         private ?int $anr = null,
         private bool $isAmazonBusiness = false,
         private bool $isAmazonPrime = false,
+        private bool $isAmazonInvoiced = false,
+        private bool $isExternalInvoice = false,
         private FulfillmentServiceLevelEnum $fulfillmentServiceLevelEnum = FulfillmentServiceLevelEnum::NONE,
         private ?string $platformSpecificOrderId = null,
-        private ?int $eBayTransactionId = null,
+        private ?int $ebayTransactionId = null,
+        private bool $eBayPlusTransaction = false,
         private ?string $alternativeItemNumber1 = null,
         private ?string $alternativeItemNumbe1 = null,
         private ?InternalItemTypeEnum $internalItemTypeEnum = null,
@@ -38,9 +41,9 @@ final class SoldItem implements AfterbuyDtoInterface
         private ?DateTimeInterface $itemModDate = null,
         private ?ItemPlatFormNameEnum $itemPlatFormNameEnum = null,
         private ?string $itemLink = null,
-        private ?bool $eBayFeedbackCompleted = null,
-        private ?bool $eBayFeedbackReceived = null,
-        private ?string $eBayFeedbackType = null,
+        private ?bool $ebayFeedbackCompleted = null,
+        private ?bool $ebayFeedbackReceived = null,
+        private ?string $ebayFeedbackCommentType = null,
         private ?ItemOriginalCurrency $itemOriginalCurrency = null,
         private ?ShopProductDetails $shopProductDetails = null,
     ) {
@@ -76,14 +79,14 @@ final class SoldItem implements AfterbuyDtoInterface
         $this->anr = $anr;
     }
 
-    public function getEBayTransactionId(): ?int
+    public function getEbayTransactionId(): ?int
     {
-        return $this->eBayTransactionId;
+        return $this->ebayTransactionId;
     }
 
-    public function setEBayTransactionId(?int $eBayTransactionId): void
+    public function setEbayTransactionId(?int $ebayTransactionId): void
     {
-        $this->eBayTransactionId = $eBayTransactionId;
+        $this->ebayTransactionId = $ebayTransactionId;
     }
 
     public function getFulfillmentServiceLevel(): FulfillmentServiceLevelEnum
@@ -266,34 +269,34 @@ final class SoldItem implements AfterbuyDtoInterface
         $this->userDefinedFlag = $userDefinedFlag;
     }
 
-    public function getEBayFeedbackCompleted(): ?bool
+    public function getEbayFeedbackCompleted(): ?bool
     {
-        return $this->eBayFeedbackCompleted;
+        return $this->ebayFeedbackCompleted;
     }
 
-    public function setEBayFeedbackCompleted(?bool $eBayFeedbackCompleted): void
+    public function setEbayFeedbackCompleted(?bool $ebayFeedbackCompleted): void
     {
-        $this->eBayFeedbackCompleted = $eBayFeedbackCompleted;
+        $this->ebayFeedbackCompleted = $ebayFeedbackCompleted;
     }
 
-    public function getEBayFeedbackReceived(): ?bool
+    public function getEbayFeedbackReceived(): ?bool
     {
-        return $this->eBayFeedbackReceived;
+        return $this->ebayFeedbackReceived;
     }
 
-    public function setEBayFeedbackReceived(?bool $eBayFeedbackReceived): void
+    public function setEbayFeedbackReceived(?bool $ebayFeedbackReceived): void
     {
-        $this->eBayFeedbackReceived = $eBayFeedbackReceived;
+        $this->ebayFeedbackReceived = $ebayFeedbackReceived;
     }
 
-    public function getEBayFeedbackType(): ?string
+    public function getEbayFeedbackCommentType(): ?string
     {
-        return $this->eBayFeedbackType;
+        return $this->ebayFeedbackCommentType;
     }
 
-    public function setEBayFeedbackType(?string $eBayFeedbackType): void
+    public function setEbayFeedbackCommentType(?string $ebayFeedbackCommentType): void
     {
-        $this->eBayFeedbackType = $eBayFeedbackType;
+        $this->ebayFeedbackCommentType = $ebayFeedbackCommentType;
     }
 
     public function getInternalItemTypeEnum(): ?InternalItemTypeEnum
@@ -344,5 +347,35 @@ final class SoldItem implements AfterbuyDtoInterface
     public function setShopProductDetails(?ShopProductDetails $shopProductDetails): void
     {
         $this->shopProductDetails = $shopProductDetails;
+    }
+
+    public function isAmazonInvoiced(): bool
+    {
+        return $this->isAmazonInvoiced;
+    }
+
+    public function setIsAmazonInvoiced(bool $isAmazonInvoiced): void
+    {
+        $this->isAmazonInvoiced = $isAmazonInvoiced;
+    }
+
+    public function isExternalInvoice(): bool
+    {
+        return $this->isExternalInvoice;
+    }
+
+    public function setIsExternalInvoice(bool $isExternalInvoice): void
+    {
+        $this->isExternalInvoice = $isExternalInvoice;
+    }
+
+    public function isEBayPlusTransaction(): bool
+    {
+        return $this->eBayPlusTransaction;
+    }
+
+    public function setEBayPlusTransaction(bool $eBayPlusTransaction): void
+    {
+        $this->eBayPlusTransaction = $eBayPlusTransaction;
     }
 }

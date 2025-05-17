@@ -5,30 +5,38 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\BaseProductData;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\BillingAddress;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\BuyerInfo;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\ChildProduct;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\ItemOriginalCurrency;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\Order;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\OrderOriginalCurrency;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\Orders;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\ParcelLabel;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\PaymentInfo;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\ShippingAddress;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\ShippingInfo;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\ShopProductDetails;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\SoldItem;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\SoldItems;
+use Wundii\AfterbuySdk\Enum\BaseProductTypeEnum;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\DefaultFilterSoldItemsEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\InternalItemTypeEnum;
+use Wundii\AfterbuySdk\Enum\ItemPlatFormNameEnum;
 use Wundii\AfterbuySdk\Enum\OrderDirectionEnum;
+use Wundii\AfterbuySdk\Enum\PaymentFunctionEnum;
 use Wundii\AfterbuySdk\Enum\PaymentIdEnum;
 use Wundii\AfterbuySdk\Enum\PlattformEnum;
+use Wundii\AfterbuySdk\Enum\TaxCollectedByEnum;
 use Wundii\AfterbuySdk\Extends\DateTime;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserEmail;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserId;
@@ -178,9 +186,7 @@ class GetSoldItemsTest extends TestCase
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
@@ -197,10 +203,175 @@ class GetSoldItemsTest extends TestCase
         /** @var Orders $orders */
         $orders = $response->getResult();
 
+        $expected = new Order(
+            invoiceNumber: 10075,
+            orderId: 43151135,
+            anr: 12345,
+            orderDate: new DateTime('2023-09-11 12:22:07'),
+            paymentInfo: new PaymentInfo(
+                paymentIdEnum: PaymentIdEnum::INVOICE,
+                paymentMethod: 'eBay Managed Payment',
+                paymentFunctionEnum: PaymentFunctionEnum::OTHERS,
+                paymentTransactionId: '1234567890',
+                paymentStatus: 'Completed',
+                paymentDate: new DateTime('2023-09-11 12:22:14'),
+                alreadyPaid: 112.3,
+                fullAmount: 112.3,
+                invoiceDate: new DateTime('2023-09-11'),
+            ),
+            buyerInfo: new BuyerInfo(
+                new BillingAddress(
+                    afterbuyUserId: 123456,
+                    afterbuyUserIdAlt: 12345,
+                    userIdPlattform: 'afterbuy1_testaccount',
+                    firstName: 'Max',
+                    lastName: 'Mustermann',
+                    title: 'Dr',
+                    company: 'Test GmbH',
+                    street: 'Musterstrasse 8',
+                    street2: 'Hinterhof',
+                    postalCode: '12345',
+                    city: 'Musterhausen',
+                    country: 'D',
+                    countryIsoEnum: CountryIsoEnum::GERMANY,
+                    phone: '+0123456789',
+                    fax: '+0123456790',
+                    mail: 'info@example.com',
+                    isMerchant: true,
+                    taxIdNumber: '1234567890',
+                ),
+                new ShippingAddress(
+                    firstName: 'Max',
+                    lastName: 'Mustermann',
+                    company: 'Test GmbH',
+                    street: 'Musterstrasse 8',
+                    street2: 'Hinterhof',
+                    postalCode: '12345',
+                    city: 'Musterhausen',
+                    phone: '+0123456789',
+                    country: 'D',
+                    countryIsoEnum: CountryIsoEnum::GERMANY,
+                    taxIdNumber: '1234567890',
+                ),
+            ),
+            soldItems: new SoldItems(
+                [
+                    new SoldItem(
+                        itemId: 123456,
+                        anr: 12345678,
+                        platformSpecificOrderId: '01-2345-6789',
+                        ebayTransactionId: 1234567890,
+                        eBayPlusTransaction: true,
+                        internalItemTypeEnum: InternalItemTypeEnum::BUY_IT_NOW,
+                        itemTitle: 'Blumenvase',
+                        itemQuantity: 1,
+                        itemPrice: 112.3,
+                        itemEndDate: new DateTime('2023-09-11 12:22:07'),
+                        taxRate: 19.0,
+                        taxCollectedByEnum: TaxCollectedByEnum::DEFAULT,
+                        itemWeight: 9.88,
+                        itemXmlDate: new DateTime('2023-09-11T14:06:53'),
+                        itemModDate: new DateTime('2025-05-15 14:34:05'),
+                        itemPlatFormNameEnum: ItemPlatFormNameEnum::EBAY,
+                        itemLink: 'https://www.example.com/item/123456',
+                        ebayFeedbackCompleted: true,
+                        ebayFeedbackReceived: true,
+                        ebayFeedbackCommentType: 'Positive',
+                        itemOriginalCurrency: new ItemOriginalCurrency(
+                            itemPrice: 112.3,
+                            itemPriceCode: 'EUR',
+                            itemShipping: 0.0,
+                        ),
+                        shopProductDetails: new ShopProductDetails(
+                            productId: 1234567890,
+                            anr: 1234567890,
+                            ean: '3210123456789',
+                            unitOfQuantity: 'Stk',
+                            basepriceFactor: 1.0,
+                            baseProductData: new BaseProductData(
+                                baseProductTypeEnum: BaseProductTypeEnum::PRODUCT_SET,
+                                childProduct: [
+                                    new ChildProduct(
+                                        productId: 1234567891,
+                                        productAnr: 1234567891,
+                                        productEan: '3210123456790',
+                                        productName: 'Blumenvase',
+                                        productQuantity: 1,
+                                        productVat: 19.0,
+                                        productWeight: 4.94,
+                                        productUnitPrice: 54.45,
+                                        stockLocation1: 'sl1',
+                                        stockLocation2: 'sl2',
+                                        stockLocation3: 'sl3',
+                                    ),
+                                    new ChildProduct(
+                                        productId: 1234567892,
+                                        productAnr: 1234567892,
+                                        productEan: '3210123456791',
+                                        productName: 'Untersetzer',
+                                        productQuantity: 1,
+                                        productVat: 19.0,
+                                        productWeight: 0.54,
+                                        productUnitPrice: 55.73,
+                                        stockLocation1: 'sl1',
+                                        stockLocation2: 'sl2',
+                                        stockLocation3: 'sl3',
+                                    ),
+                                ],
+                            ),
+                            stockLocation1: 'sl1',
+                            stockLocation2: 'sl2',
+                            stockLocation3: 'sl3',
+                        ),
+                    ),
+                ],
+                itemsInOrder: 1,
+            ),
+            shippingInfo: new ShippingInfo(
+                shippingMethod: 'Paketdienst',
+                shippingCost: 0.0,
+                shippingAdditionalCost: 0,
+                shippingTotalCost: 0.0,
+                shippingTaxRate: 19.00,
+                deliveryDate: new DateTime('2024-03-14'),
+                parcelLabels: [
+                    new ParcelLabel(
+                        itemId: 43151135,
+                        packageNumber: 1,
+                        parcelLabelNumber: '00340434464181524067',
+                        returnLabelNumber: '99353347120585',
+                    ),
+                ],
+            ),
+            orderOriginalCurrency: new OrderOriginalCurrency(
+                ebayShippingAmount: 0.0,
+                shippingAmount: 0.0,
+                paymentSurcharge: 0.0,
+                paymentSurchargePerCent: 0.0,
+                invoiceAmount: 112.3,
+                exchangeRate: 0,
+                payedAmount: 112.3,
+            ),
+            feedbackDate: new DateTime('2023-09-11 12:22:14'),
+            feedbackLink: 'https://www.example.com',
+            ebayAccount: 'afterbuy',
+            userComment: 'User Comment',
+            additionalInfo: '0123456789',
+            trackingLink: 'https://www.example.com/track?code=1234567890',
+            memo: 'Memo',
+            isCheckoutConfirmedByCustomer: 0,
+            containsEbayPlusTransaction: true,
+        );
+
         $this->assertInstanceOf(GetSoldItemsResponse::class, $response);
+        $this->assertSame(true, $orders->hasMoreItems());
+        $this->assertSame(1, $orders->getOrdersCount());
+        $this->assertSame(43151135, $orders->getLastOrderId());
+        $this->assertSame(4, $orders->getItemsCount());
         $this->assertSame(true, $orders->hasMoreItems());
         $this->assertCount(1, $orders->getOrders());
         $this->assertInstanceOf(Order::class, $orders->getOrders()[0]);
+        $this->assertEquals($expected, $orders->getOrders()[0]);
     }
 
     public function testUpdateVersion460(): void

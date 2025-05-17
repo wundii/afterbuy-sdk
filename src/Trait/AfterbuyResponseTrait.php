@@ -107,4 +107,14 @@ trait AfterbuyResponseTrait
 
         return $this->afterbuyWarningList->getWarningList();
     }
+
+    public function hasErrors(): bool
+    {
+        return $this->afterbuyErrorList instanceof AfterbuyErrorList;
+    }
+
+    public function hasWarnings(): bool
+    {
+        return $this->afterbuyWarningList instanceof AfterbuyWarningList;
+    }
 }
