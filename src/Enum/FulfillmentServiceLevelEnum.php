@@ -14,4 +14,5 @@ enum FulfillmentServiceLevelEnum: int
     case NEXTDAY = 11;
     case SECOND = 20;
     case SECONDDAY = 21;
+    case PRIORITY = 22;
 }
