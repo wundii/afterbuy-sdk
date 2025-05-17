@@ -59,6 +59,9 @@ In preparation for the release of version 1.0, I would like to test all XML retu
 - [x] GetSoldItems
 - [ ] GetStockInfo
 - [ ] GetTranslatedMailTemplate
+- [ ] UpdateCatalogs
+- [ ] UpdateShopProducts
+- [x] UpdateSoldItems
 
 ## Usage
 ```php
