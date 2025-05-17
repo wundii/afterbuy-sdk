@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplate;
@@ -58,9 +56,7 @@ class GetMailTemplatesTest extends TestCase
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
@@ -77,8 +73,42 @@ class GetMailTemplatesTest extends TestCase
         /** @var MailTemplates $mailTemplates */
         $mailTemplates = $response->getResult();
 
+        $expected = new MailTemplates(
+            [
+                new MailTemplate(
+                    202877,
+                    'Mahnung1',
+                    'Erinnerung an eBay Auktion(en): ... (abgeschnitten)',
+                    'ErinnerungsTest',
+                    true
+                ),
+                new MailTemplate(
+                    202878,
+                    'Mahnung2',
+                    'Mahnung  eBay Auktion(en): ... (abgeschnitten)',
+                    'MahnungsTest',
+                    false
+                ),
+                new MailTemplate(
+                    268297,
+                    'BewertungsErinnerung',
+                    'Sind Sie zufrieden mit Ihrem Auktionsgewinn ? ... (abgeschnitten)',
+                    'BewertungsErinnerungTest',
+                    false,
+                ),
+                new MailTemplate(
+                    280085,
+                    'rechnugstest',
+                    'rechnungstest',
+                    'rechnungstest',
+                    false,
+                ),
+            ],
+        );
+
         $this->assertInstanceOf(GetMailTemplatesResponse::class, $response);
         $this->assertCount(4, $mailTemplates->getMailTemplates());
         $this->assertInstanceOf(MailTemplate::class, $mailTemplates->getMailTemplates()[0]);
+        $this->assertEquals($expected, $mailTemplates);
     }
 }

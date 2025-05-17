@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyError;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
+use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingMethods;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingService;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
@@ -81,9 +80,7 @@ class GetShippingCostTest extends TestCase
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
@@ -105,14 +102,34 @@ class GetShippingCostTest extends TestCase
         /** @var ShippingService $shippingService */
         $shippingService = $response->getResult();
 
+        $expected = new ShippingService(
+            'Afterbuy Express',
+            '1',
+            [
+                new ShippingMethods(
+                    1.00,
+                    'NormalPaket 2',
+                    475032,
+                    19.00,
+                    'Deutschland',
+                ),
+                new ShippingMethods(
+                    10.95,
+                    'NormalPaket',
+                    430384,
+                    19.00,
+                    'Deutschland',
+                ),
+            ],
+        );
+
         $this->assertInstanceOf(GetShippingCostResponse::class, $response);
         $this->assertInstanceOf(ShippingService::class, $shippingService);
+        $this->assertEquals($expected, $shippingService);
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */

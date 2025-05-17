@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyError;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
@@ -88,9 +86,7 @@ class GetTranslatedMailTemplateTest extends TestCase
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
@@ -107,14 +103,17 @@ class GetTranslatedMailTemplateTest extends TestCase
         /** @var TranslatedMailText $translatedMailText */
         $translatedMailText = $response->getResult();
 
+        $expected = new TranslatedMailText(
+            'Hallo Test',
+            ' Hallo Herr Meier, ... ',
+        );
+
         $this->assertInstanceOf(GetTranslatedMailTemplateResponse::class, $response);
-        $this->assertSame('Hallo Herr Meier, ...', $translatedMailText->getTranslatedMailText());
+        $this->assertEquals($expected, $translatedMailText);
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */

@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\AfterbuyWarning;
@@ -75,9 +73,7 @@ class GetStockInfoTest extends TestCase
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
@@ -94,15 +90,50 @@ class GetStockInfoTest extends TestCase
         /** @var Products $products */
         $products = $response->getResult();
 
+        $expected = new Products(
+            [
+                new Product(
+                    1737852,
+                    'Afterbuy Testauktion CheckOut-Redirect',
+                    1243123123,
+                    'E3456A277N',
+                    0,
+                    9997,
+                    0,
+                    0,
+                    true,
+                    false,
+                    9920,
+                    true,
+                    100,
+                    1,
+                ),
+                new Product(
+                    1908058,
+                    'ProduktManager Testartikel',
+                    123456789,
+                    'E3456A277N',
+                    0,
+                    99980,
+                    0,
+                    0,
+                    true,
+                    true,
+                    99980,
+                    true,
+                    900,
+                    9,
+                ),
+            ]
+        );
+
         $this->assertInstanceOf(GetStockInfoResponse::class, $response);
         $this->assertCount(2, $products->getProducts());
-        $this->assertInstanceOf(Product::class, $products->getProducts()[0]);
+        $this->assertEquals($expected, $products);
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
@@ -125,7 +156,6 @@ class GetStockInfoTest extends TestCase
         /** @var Products $products */
         $products = $response->getResult();
 
-        $this->assertInstanceOf(GetStockInfoResponse::class, $response);
         $this->assertCount(1, $products->getProducts());
         $this->assertInstanceOf(Product::class, $products->getProducts()[0]);
     }

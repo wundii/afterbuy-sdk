@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetPaymentServices\PaymentService;
@@ -51,9 +49,7 @@ class GetPaymentServicesTest extends TestCase
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
@@ -70,8 +66,46 @@ class GetPaymentServicesTest extends TestCase
         /** @var PaymentServices $paymentServices */
         $paymentServices = $response->getResult();
 
+        $expected = new PaymentServices(
+            [
+                new PaymentService(
+                    126376,
+                    1,
+                    'Nachname',
+                    'Nachname',
+                    6,
+                    0,
+                    0.0,
+                    0.0,
+                    9.5,
+                    95.0,
+                    'ebay',
+                    true,
+                    false,
+                    '0',
+                    '0',
+                ),
+                new PaymentService(
+                    107506,
+                    1,
+                    'Vorkasse/Überweisung',
+                    'Vorkasse/Überweisung',
+                    1,
+                    0,
+                    0.0,
+                    5.0,
+                    0.0,
+                    0.0,
+                    'shop',
+                    true,
+                    true,
+                    'D',
+                    'D',
+                ),
+            ],
+        );
+
         $this->assertInstanceOf(GetPaymentServicesResponse::class, $response);
-        $this->assertCount(2, $paymentServices->getPaymentService());
-        $this->assertInstanceOf(PaymentService::class, $paymentServices->getPaymentService()[0]);
+        $this->assertEquals($expected, $paymentServices);
     }
 }

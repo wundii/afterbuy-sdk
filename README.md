@@ -47,18 +47,18 @@ Require the bundle and its dependencies with composer:
 
 ## The road to Version 1.0
 In preparation for the release of version 1.0, I would like to test all XML returns.
-- [ ] GetAfterbuyTime
+- [x] GetAfterbuyTime
 - [ ] GetListerHistory
-- [ ] GetMailTemplates
-- [ ] GetPaymentServices
+- [x] GetMailTemplates
+- [x] GetPaymentServices
 - [ ] GetProductDiscounts
-- [ ] GetShippingCost
-- [ ] GetShippingServices
+- [x] GetShippingCost
+- [x] GetShippingServices
 - [ ] GetShopCatalogs
 - [ ] GetShopProducts
 - [x] GetSoldItems
-- [ ] GetStockInfo
-- [ ] GetTranslatedMailTemplate
+- [x] GetStockInfo
+- [x] GetTranslatedMailTemplate
 - [ ] UpdateCatalogs
 - [ ] UpdateShopProducts
 - [x] UpdateSoldItems

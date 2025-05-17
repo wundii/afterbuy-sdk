@@ -12,6 +12,7 @@ final class ShippingMethod implements AfterbuyDtoInterface
         private int $shippingMethodID,
         private string $name,
         private ?string $countryGroup = null,
+        private ?string $countryGroupCountries = null,
         private ?int $level = null,
         private ?float $taxRate = null,
         private ?float $priceFrom = null,
@@ -41,6 +42,16 @@ final class ShippingMethod implements AfterbuyDtoInterface
     public function setCountryGroup(?string $countryGroup): void
     {
         $this->countryGroup = $countryGroup;
+    }
+
+    public function getCountryGroupCountries(): ?string
+    {
+        return $this->countryGroupCountries;
+    }
+
+    public function setCountryGroupCountries(?string $countryGroupCountries): void
+    {
+        $this->countryGroupCountries = $countryGroupCountries;
     }
 
     public function getFreeShippingPriceFrom(): ?float

@@ -4,17 +4,21 @@
     <CallName>GetShippingCost</CallName>
     <Result>
         <ShippingService>
-            <ShippingServiceName>DPD</ShippingServiceName>
+            <ShippingServiceName>Afterbuy Express</ShippingServiceName>
             <ShippingServicePriority>1</ShippingServicePriority>
             <ShippingMethods>
-                <ShippingCost>1</ShippingCost>
+                <ShippingCost>1,00</ShippingCost>
                 <ShippingMethod><![CDATA[NormalPaket 2]]></ShippingMethod>
                 <ShippingMethodID>475032</ShippingMethodID>
+                <ShippingTaxRate>19</ShippingTaxRate>
+                <ShippingMethodDescription><![CDATA[Deutschland]]></ShippingMethodDescription>
             </ShippingMethods>
             <ShippingMethods>
-                <ShippingCost>10</ShippingCost>
+                <ShippingCost>10,95</ShippingCost>
                 <ShippingMethod><![CDATA[NormalPaket]]></ShippingMethod>
                 <ShippingMethodID>430384</ShippingMethodID>
+                <ShippingTaxRate>19</ShippingTaxRate>
+                <ShippingMethodDescription><![CDATA[Deutschland]]></ShippingMethodDescription>
             </ShippingMethods>
         </ShippingService>
     </Result>

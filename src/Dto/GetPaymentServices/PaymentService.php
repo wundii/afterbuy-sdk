@@ -23,6 +23,7 @@ final class PaymentService implements AfterbuyDtoInterface
         private bool $standardForAll = false,
         private bool $default = false,
         private ?string $countryGroup = null,
+        private ?string $countryGroupCountries = null,
     ) {
     }
 
@@ -164,5 +165,15 @@ final class PaymentService implements AfterbuyDtoInterface
     public function setSurchargePercent(float $surchargePercent): void
     {
         $this->surchargePercent = $surchargePercent;
+    }
+
+    public function getCountryGroupCountries(): ?string
+    {
+        return $this->countryGroupCountries;
+    }
+
+    public function setCountryGroupCountries(?string $countryGroupCountries): void
+    {
+        $this->countryGroupCountries = $countryGroupCountries;
     }
 }

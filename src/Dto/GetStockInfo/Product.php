@@ -19,9 +19,10 @@ final class Product implements AfterbuyDtoInterface
         private ?int $minimumStock = null,
         private bool $discontinued = false,
         private bool $mergeStock = false,
-        private bool $availableShop = false,
+        private ?int $availableShop = null,
         private bool $available = false,
         private ?int $realQuantity = null,
+        private ?int $level = null,
     ) {
     }
 
@@ -55,12 +56,12 @@ final class Product implements AfterbuyDtoInterface
         $this->available = $available;
     }
 
-    public function isAvailableShop(): bool
+    public function getAvailableShop(): ?int
     {
         return $this->availableShop;
     }
 
-    public function setAvailableShop(bool $availableShop): void
+    public function setAvailableShop(?int $availableShop): void
     {
         $this->availableShop = $availableShop;
     }
@@ -153,5 +154,15 @@ final class Product implements AfterbuyDtoInterface
     public function setRealQuantity(?int $realQuantity): void
     {
         $this->realQuantity = $realQuantity;
+    }
+
+    public function getLevel(): ?int
+    {
+        return $this->level;
+    }
+
+    public function setLevel(?int $level): void
+    {
+        $this->level = $level;
     }
 }

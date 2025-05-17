@@ -5,12 +5,15 @@
     <Result>
         <ShippingServices>
             <ShippingService>
-                <Name><![CDATA[DPD]]></Name>
+                <Name><![CDATA[Afterbuy Express]]></Name>
+                <DisplayArea><![CDATA[0]]></DisplayArea>
+                <GroupPrio>0</GroupPrio>
                 <ShippingMethods>
                     <ShippingMethod>
                         <ShippingMethodID>198416</ShippingMethodID>
                         <Name>NormalPaket</Name>
                         <CountryGroup>0</CountryGroup>
+                        <CountryGroupCountries>0</CountryGroupCountries>
                         <Level>0</Level>
                         <TaxRate>0</TaxRate>
                         <PriceFrom>0</PriceFrom>
@@ -18,13 +21,17 @@
                         <IslandAdditionalCosts>0</IslandAdditionalCosts>
                         <FreeShippingPriceFrom>0</FreeShippingPriceFrom>
                         <AdditionalItemCosts>0</AdditionalItemCosts>
-                        <WeightTo>4</WeightTo>
-                        <Price>10</Price>
+                        <WeightDefinitions>
+                            <WeightFrom>1</WeightFrom>
+                            <WeightTo>4</WeightTo>
+                            <Price>10</Price>
+                        </WeightDefinitions>
                     </ShippingMethod>
                     <ShippingMethod>
                         <ShippingMethodID>198417</ShippingMethodID>
                         <Name>KleinPaket</Name>
                         <CountryGroup>0</CountryGroup>
+                        <CountryGroupCountries>0</CountryGroupCountries>
                         <Level>0</Level>
                         <TaxRate>0</TaxRate>
                         <PriceFrom>0</PriceFrom>
@@ -32,22 +39,29 @@
                         <IslandAdditionalCosts>0</IslandAdditionalCosts>
                         <FreeShippingPriceFrom>0</FreeShippingPriceFrom>
                         <AdditionalItemCosts>0</AdditionalItemCosts>
-                        <WeightTo>2</WeightTo>
-                        <Price>0,05</Price>
+                        <WeightDefinitions>
+                            <WeightFrom>0</WeightFrom>
+                            <WeightTo>2</WeightTo>
+                            <Price>0,05</Price>
+                        </WeightDefinitions>
                     </ShippingMethod>
                     <ShippingMethod>
                         <ShippingMethodID>199473</ShippingMethodID>
-                        <Name>DPD / Postfach - Packstation</Name>
+                        <Name>Postfach - Packstation</Name>
                         <CountryGroup>0</CountryGroup>
-                        <Level>0</Level>
-                        <TaxRate>0</TaxRate>
-                        <PriceFrom>0</PriceFrom>
-                        <PriceTo>0</PriceTo>
-                        <IslandAdditionalCosts>0</IslandAdditionalCosts>
-                        <FreeShippingPriceFrom>0</FreeShippingPriceFrom>
-                        <AdditionalItemCosts>0</AdditionalItemCosts>
-                        <WeightTo>3</WeightTo>
-                        <Price>6,9</Price>
+                        <CountryGroupCountries>0</CountryGroupCountries>
+                        <Level>1</Level>
+                        <TaxRate>19</TaxRate>
+                        <PriceFrom>4</PriceFrom>
+                        <PriceTo>5.9</PriceTo>
+                        <IslandAdditionalCosts>2</IslandAdditionalCosts>
+                        <FreeShippingPriceFrom>3</FreeShippingPriceFrom>
+                        <AdditionalItemCosts>4</AdditionalItemCosts>
+                        <WeightDefinitions>
+                            <WeightFrom>0</WeightFrom>
+                            <WeightTo>3</WeightTo>
+                            <Price>6,9</Price>
+                        </WeightDefinitions>
                     </ShippingMethod>
                 </ShippingMethods>
             </ShippingService>

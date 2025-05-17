@@ -16,7 +16,11 @@
                 <MinimumStock>0</MinimumStock>
                 <Discontinued>1</Discontinued>
                 <Stock>1</Stock>
+                <MergeStock>0</MergeStock>
                 <AvailableShop>9920</AvailableShop>
+                <Available>True</Available>
+                <Level>1</Level>
+                <RealQuantity>100</RealQuantity>
             </Product>
             <Product>
                 <ProductID>1908058</ProductID>
@@ -29,7 +33,11 @@
                 <MinimumStock>0</MinimumStock>
                 <Discontinued>1</Discontinued>
                 <Stock>1</Stock>
+                <MergeStock>True</MergeStock>
                 <AvailableShop>99980</AvailableShop>
+                <Available>1</Available>
+                <Level>9</Level>
+                <RealQuantity>900</RealQuantity>
             </Product>
         </Products>
     </Result>

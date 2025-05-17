@@ -9,7 +9,7 @@
                 <TemplateName><![CDATA[Mahnung1]]></TemplateName>
                 <TemplateSubject><![CDATA[Erinnerung an eBay Auktion(en): ... (abgeschnitten)]]></TemplateSubject>
                 <TemplateText><![CDATA[ErinnerungsTest]]></TemplateText>
-                <TemplateHtml>0</TemplateHtml>
+                <TemplateHtml>1</TemplateHtml>
             </MailTemplate>
             <MailTemplate>
                 <TemplateID>202878</TemplateID>

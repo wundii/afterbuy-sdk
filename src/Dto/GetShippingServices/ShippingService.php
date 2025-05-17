@@ -13,6 +13,8 @@ final class ShippingService implements AfterbuyDtoInterface
      */
     public function __construct(
         private string $name,
+        private ?string $displayArea = null,
+        private int $groupPrio = 0,
         private array $shippingMethods = [],
     ) {
     }
@@ -41,5 +43,25 @@ final class ShippingService implements AfterbuyDtoInterface
     public function setShippingMethods(array $shippingMethods): void
     {
         $this->shippingMethods = $shippingMethods;
+    }
+
+    public function getDisplayArea(): ?string
+    {
+        return $this->displayArea;
+    }
+
+    public function setDisplayArea(?string $displayArea): void
+    {
+        $this->displayArea = $displayArea;
+    }
+
+    public function getGroupPrio(): int
+    {
+        return $this->groupPrio;
+    }
+
+    public function setGroupPrio(int $groupPrio): void
+    {
+        $this->groupPrio = $groupPrio;
     }
 }

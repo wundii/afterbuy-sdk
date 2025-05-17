@@ -9,9 +9,20 @@ use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 final class WeightDefinitions implements AfterbuyDtoInterface
 {
     public function __construct(
+        private float $weightFrom,
         private float $weightTo,
         private float $price,
     ) {
+    }
+
+    public function getWeightFrom(): float
+    {
+        return $this->weightFrom;
+    }
+
+    public function setWeightFrom(float $weightFrom): void
+    {
+        $this->weightFrom = $weightFrom;
     }
 
     public function getWeightTo(): float

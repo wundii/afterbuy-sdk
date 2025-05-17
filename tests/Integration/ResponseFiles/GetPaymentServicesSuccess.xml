@@ -7,8 +7,8 @@
         <PaymentService>
             <PaymentID>126376</PaymentID>
             <PaymentFunctionID>1</PaymentFunctionID>
-            <StandardText><![CDATA[rger]]></StandardText>
-            <Name><![CDATA[Zahlart [Thomas]]]></Name>
+            <StandardText><![CDATA[Nachname]]></StandardText>
+            <Name><![CDATA[Nachname]]></Name>
             <Position>6</Position>
             <Surcharge>0</Surcharge>
             <SurchargePercent>0</SurchargePercent>
@@ -17,13 +17,15 @@
             <PlattformName>ebay</PlattformName>
             <StandardForAll>1</StandardForAll>
             <Default>0</Default>
+            <Level>0</Level>
             <CountryGroup>0</CountryGroup>
+            <CountryGroupCountries>0</CountryGroupCountries>
         </PaymentService>
         <PaymentService>
             <PaymentID>107506</PaymentID>
             <PaymentFunctionID>1</PaymentFunctionID>
-            <StandardText><![CDATA[Vorkasse/Überweisung (SHOP)]]></StandardText>
-            <Name><![CDATA[Vorkasse/Überweisung [Thomas]]]></Name>
+            <StandardText><![CDATA[Vorkasse/Überweisung]]></StandardText>
+            <Name><![CDATA[Vorkasse/Überweisung]]></Name>
             <InfoText><![CDATA[<img src=http://bilder.afterbuy.de/images/29956/zahlung.gif border=0>]]></InfoText>
             <Position>1</Position>
             <Surcharge>0</Surcharge>
@@ -33,7 +35,9 @@
             <PlattformName>shop</PlattformName>
             <StandardForAll>1</StandardForAll>
             <Default>0</Default>
-            <CountryGroup>0</CountryGroup>
+            <Default>1</Default>
+            <CountryGroup>D</CountryGroup>
+            <CountryGroupCountries>D</CountryGroupCountries>
         </PaymentService>
     </Result>
 </Afterbuy>

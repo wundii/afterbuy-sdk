@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingMethod;
 use Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingService;
 use Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingServices;
+use Wundii\AfterbuySdk\Dto\GetShippingServices\WeightDefinitions;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Request\GetShippingServicesRequest;
@@ -46,9 +45,7 @@ class GetShippingServicesTest extends TestCase
     }
 
     /**
-     * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
-     * @throws ReflectionException
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
@@ -65,10 +62,73 @@ class GetShippingServicesTest extends TestCase
         /** @var ShippingServices $shippingServices */
         $shippingServices = $response->getResult();
 
+        $expected = new ShippingServices(
+            [
+                new ShippingService(
+                    'Afterbuy Express',
+                    '0',
+                    0,
+                    [
+                        new ShippingMethod(
+                            198416,
+                            'NormalPaket',
+                            '0',
+                            '0',
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            new WeightDefinitions(
+                                1.0,
+                                4.0,
+                                10.0,
+                            )
+                        ),
+                        new ShippingMethod(
+                            198417,
+                            'KleinPaket',
+                            '0',
+                            '0',
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            new WeightDefinitions(
+                                0.0,
+                                2.0,
+                                0.05,
+                            )
+                        ),
+                        new ShippingMethod(
+                            199473,
+                            'Postfach - Packstation',
+                            '0',
+                            '0',
+                            1,
+                            19,
+                            4.00,
+                            5.90,
+                            2.0,
+                            3.0,
+                            4.0,
+                            new WeightDefinitions(
+                                0.0,
+                                3.0,
+                                6.9,
+                            )
+                        ),
+                    ],
+                ),
+            ],
+        );
+
         $this->assertInstanceOf(GetShippingServicesResponse::class, $response);
-        $this->assertCount(1, $shippingServices->getShippingServices());
-        $this->assertInstanceOf(ShippingService::class, $shippingServices->getShippingServices()[0]);
-        $this->assertCount(3, $shippingServices->getShippingServices()[0]->getShippingMethods());
-        $this->assertInstanceOf(ShippingMethod::class, $shippingServices->getShippingServices()[0]->getShippingMethods()[0]);
+        $this->assertEquals($expected, $shippingServices);
     }
 }
