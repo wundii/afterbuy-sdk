@@ -14,6 +14,8 @@ final readonly class ParcelLabel implements AfterbuyAppendXmlContentInterface
         private int $packageNumber,
         private ?string $parcelLabelNumber = null,
         private ?string $returnLabelNumber = null,
+        private ?int $packageQuantity = null,
+        private ?float $packageWeight = null,
     ) {
     }
 
@@ -24,6 +26,8 @@ final readonly class ParcelLabel implements AfterbuyAppendXmlContentInterface
         $parcelLabel->addNumber('PackageNumber', $this->packageNumber);
         $parcelLabel->addString('ParcelLabelNumber', $this->parcelLabelNumber);
         $parcelLabel->addString('ReturnLabelNumber', $this->returnLabelNumber);
+        $parcelLabel->addNumber('PackageQuantity', $this->packageQuantity);
+        $parcelLabel->addNumber('PackageWeight', $this->packageWeight);
     }
 
     public function getItemId(): int
@@ -44,5 +48,15 @@ final readonly class ParcelLabel implements AfterbuyAppendXmlContentInterface
     public function getReturnLabelNumber(): ?string
     {
         return $this->returnLabelNumber;
+    }
+
+    public function getPackageQuantity(): ?int
+    {
+        return $this->packageQuantity;
+    }
+
+    public function getPackageWeight(): ?float
+    {
+        return $this->packageWeight;
     }
 }

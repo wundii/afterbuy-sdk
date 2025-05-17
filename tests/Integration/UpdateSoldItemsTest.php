@@ -197,13 +197,13 @@ class UpdateSoldItemsTest extends TestCase
                     12345600,
                     shippingInfo: new ShippingInfo(
                         parcelLabels: [
-                            new ParcelLabel(12345600, 1, '0123DHL-1'),
-                            new ParcelLabel(12345600, 5, '0123DHL-5'),
-                            new ParcelLabel(12345601, 4, '0123DHL-4'),
-                            new ParcelLabel(12345601, 5, '0123DHL-5'),
-                            new ParcelLabel(12345602, 1, '0123DHL-1'),
-                            new ParcelLabel(12345603, 2, '0123DHL-2'),
-                            new ParcelLabel(12345603, 3, '0123DHL-3'),
+                            new ParcelLabel(12345600, 1, '0123DHL-1', null, 1, 1.2),
+                            new ParcelLabel(12345600, 5, '0123DHL-5', null, 1, 2.2),
+                            new ParcelLabel(12345601, 4, '0123DHL-4', null, 1, 2.1),
+                            new ParcelLabel(12345601, 5, '0123DHL-5', null, 1, 3.44),
+                            new ParcelLabel(12345602, 1, '0123DHL-1', null, 1, 44.3),
+                            new ParcelLabel(12345603, 2, '0123DHL-2', null, 1, 1.0),
+                            new ParcelLabel(12345603, 3, '0123DHL-3', null, 1, 2.0),
                         ]
                     ),
                 ),

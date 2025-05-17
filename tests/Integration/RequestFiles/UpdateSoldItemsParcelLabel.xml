@@ -16,36 +16,50 @@
                         <ItemID>12345600</ItemID>
                         <PackageNumber>1</PackageNumber>
                         <ParcelLabelNumber>0123DHL-1</ParcelLabelNumber>
+                        <PackageQuantity>1</PackageQuantity>
+                        <PackageWeight>1,20</PackageWeight>
                     </ParcelLabel>
                     <ParcelLabel>
                         <ItemID>12345600</ItemID>
                         <PackageNumber>5</PackageNumber>
                         <ParcelLabelNumber>0123DHL-5</ParcelLabelNumber>
+                        <PackageQuantity>1</PackageQuantity>
+                        <PackageWeight>2,20</PackageWeight>
                     </ParcelLabel>
                     <ParcelLabel>
                         <ItemID>12345601</ItemID>
                         <PackageNumber>4</PackageNumber>
                         <ParcelLabelNumber>0123DHL-4</ParcelLabelNumber>
+                        <PackageQuantity>1</PackageQuantity>
+                        <PackageWeight>2,10</PackageWeight>
                     </ParcelLabel>
                     <ParcelLabel>
                         <ItemID>12345601</ItemID>
                         <PackageNumber>5</PackageNumber>
                         <ParcelLabelNumber>0123DHL-5</ParcelLabelNumber>
+                        <PackageQuantity>1</PackageQuantity>
+                        <PackageWeight>3,44</PackageWeight>
                     </ParcelLabel>
                     <ParcelLabel>
                         <ItemID>12345602</ItemID>
                         <PackageNumber>1</PackageNumber>
                         <ParcelLabelNumber>0123DHL-1</ParcelLabelNumber>
+                        <PackageQuantity>1</PackageQuantity>
+                        <PackageWeight>44,30</PackageWeight>
                     </ParcelLabel>
                     <ParcelLabel>
                         <ItemID>12345603</ItemID>
                         <PackageNumber>2</PackageNumber>
                         <ParcelLabelNumber>0123DHL-2</ParcelLabelNumber>
+                        <PackageQuantity>1</PackageQuantity>
+                        <PackageWeight>1,00</PackageWeight>
                     </ParcelLabel>
                     <ParcelLabel>
                         <ItemID>12345603</ItemID>
                         <PackageNumber>3</PackageNumber>
                         <ParcelLabelNumber>0123DHL-3</ParcelLabelNumber>
+                        <PackageQuantity>1</PackageQuantity>
+                        <PackageWeight>2,00</PackageWeight>
                     </ParcelLabel>
                 </ParcelLabels>
             </ShippingInfo>
