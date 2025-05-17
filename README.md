@@ -45,6 +45,21 @@ Require the bundle and its dependencies with composer:
 - [x] [UpdateShopProducts](examples/UpdateShopProducts.md)
 - [x] [UpdateSoldItems](examples/UpdateSoldItems.md)
 
+## The road to Version 1.0
+In preparation for the release of version 1.0, I would like to test all XML returns.
+- [ ] GetAfterbuyTime
+- [ ] GetListerHistory
+- [ ] GetMailTemplates
+- [ ] GetPaymentServices
+- [ ] GetProductDiscounts
+- [ ] GetShippingCost
+- [ ] GetShippingServices
+- [ ] GetShopCatalogs
+- [ ] GetShopProducts
+- [x] GetSoldItems
+- [ ] GetStockInfo
+- [ ] GetTranslatedMailTemplate
+
 ## Usage
 ```php
 use Wundii\AfterbuySdk\Afterbuy;
