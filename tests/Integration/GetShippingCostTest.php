@@ -33,8 +33,8 @@ class GetShippingCostTest extends TestCase
         $shippingInfo = new ShippingInfo(
             123456,
             2,
-            3,
-            45,
+            3.0,
+            45.0,
         );
 
         $request = new GetShippingCostRequest($shippingInfo);
@@ -63,8 +63,8 @@ class GetShippingCostTest extends TestCase
                 234567,
             ],
             2,
-            3,
-            45,
+            3.0,
+            45.0,
             CountryIsoEnum::GERMANY,
             'standard',
             '34567',
@@ -82,8 +82,8 @@ class GetShippingCostTest extends TestCase
         $shippingInfo = new ShippingInfo(
             123456,
             2,
-            3,
-            45,
+            3.0,
+            45.0,
         );
         $request = new GetShippingCostRequest($shippingInfo);
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
@@ -127,8 +127,8 @@ class GetShippingCostTest extends TestCase
         $shippingInfo = new ShippingInfo(
             123456,
             2,
-            3,
-            45,
+            3.0,
+            45.0,
         );
         $request = new GetShippingCostRequest($shippingInfo);
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

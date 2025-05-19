@@ -24,8 +24,9 @@ $afterbuy = new Afterbuy(
 
 $request = new GetStockInfoRequest(
     productFilter: [
-        new ProductFilter(ProductFilterEnum::PRODUCTID, 1000),
+        new ProductFilter(ProductFilterEnum::ANR, 1000),
         new ProductFilter(ProductFilterEnum::PRODUCTID, 1001),
+        new ProductFilter(ProductFilterEnum::EAN, 1002),
     ],
 );
 $response = $afterbuy->runRequest($request);

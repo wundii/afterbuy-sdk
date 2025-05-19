@@ -7,7 +7,11 @@
 
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Filter\GetPaymentServices\Land;
+use Wundii\AfterbuySdk\Filter\GetPaymentServices\Plattform;
+use Wundii\AfterbuySdk\Filter\GetPaymentServices\ValueOfGoods;
 use Wundii\AfterbuySdk\Request\GetPaymentServicesRequest;
 
 $global = new AfterbuyGlobal(
@@ -20,7 +24,13 @@ $afterbuy = new Afterbuy(
     EndpointEnum::SANDBOX,
 );
 
-$request = new GetPaymentServicesRequest();
+$request = new GetPaymentServicesRequest(
+    filter: [
+        new Land(CountryIsoEnum::GERMANY),
+        new Plattform('ebay'),
+        new ValueOfGoods(99.95),
+    ],
+);
 $response = $afterbuy->runRequest($request);
 
 if ($response->getStatusCode() !== 200) {

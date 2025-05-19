@@ -8,6 +8,8 @@
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Filter\GetTranslatedMailTemplate\TemplateId;
+use Wundii\AfterbuySdk\Filter\GetTranslatedMailTemplate\TemplateName;
 use Wundii\AfterbuySdk\Request\GetTranslatedMailTemplateRequest;
 
 $global = new AfterbuyGlobal(
@@ -20,7 +22,15 @@ $afterbuy = new Afterbuy(
     EndpointEnum::SANDBOX,
 );
 
-$request = new GetTranslatedMailTemplateRequest(10203040, true, templateText: 'Hallo Test');
+$request = new GetTranslatedMailTemplateRequest(
+    offerId: 10203040, 
+    useTemplate: true,
+    templateText: 'Hallo Test',
+    filter: [
+        new TemplateId(1000),
+        new TemplateName('Erstkontakt'),
+    ]
+);
 $response = $afterbuy->runRequest($request);
 
 if ($response->getStatusCode() !== 200) {

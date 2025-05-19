@@ -10,7 +10,7 @@ use Wundii\AfterbuySdk\Interface\Filter\GetPaymentServicesFilterInterface;
 final readonly class ValueOfGoods implements GetPaymentServicesFilterInterface
 {
     public function __construct(
-        private string $valueOfGoods
+        private float $valueOfGoods
     ) {
     }
 
@@ -22,7 +22,7 @@ final readonly class ValueOfGoods implements GetPaymentServicesFilterInterface
     public function getFilterValues(): array
     {
         return [
-            new FilterValue($this->valueOfGoods),
+            new FilterValue(number_format($this->valueOfGoods, 2, ',', '')),
         ];
     }
 }

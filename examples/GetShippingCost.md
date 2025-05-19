@@ -22,10 +22,10 @@ $afterbuy = new Afterbuy(
 );
 
 $shippingInfo = new ShippingInfo(
-    123456,
-    10,
-    3,
-    0,
+    productIds: 123456,
+    itemsCount: 10,
+    itemsWeight: 3.0,
+    itemsPrice: 49.95,
 );
 $request = new GetShippingCostRequest($shippingInfo);
 $response = $afterbuy->runRequest($request);

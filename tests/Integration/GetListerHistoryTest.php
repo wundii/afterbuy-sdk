@@ -28,7 +28,7 @@ use Wundii\AfterbuySdk\Filter\GetListerHistory\EndDate;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\HistoryId;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\ListingType;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\Plattform;
-use Wundii\AfterbuySdk\Filter\GetListerHistory\RangeAn;
+use Wundii\AfterbuySdk\Filter\GetListerHistory\RangeAnr;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\RangeHistoryId;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\SiteId;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\StartDate;
@@ -88,7 +88,7 @@ class GetListerHistoryTest extends TestCase
             new ListingType(0),
             new Plattform(PlattformEnum::HOOD),
             new SiteId(SiteIdEnum::EBAY_GERMANY),
-            new RangeAn(333, 444),
+            new RangeAnr(333, 444),
             new RangeHistoryId(111, 222),
             new StartDate(new DateTime('2025-03-01'), new DateTime('2025-03-31')),
             new EndDate(new DateTime('2025-03-01'), new DateTime('2025-03-31')),

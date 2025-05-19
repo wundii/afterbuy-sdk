@@ -9,6 +9,7 @@ use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetPaymentServices\PaymentService;
 use Wundii\AfterbuySdk\Dto\GetPaymentServices\PaymentServices;
+use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Filter\GetPaymentServices\Land;
 use Wundii\AfterbuySdk\Filter\GetPaymentServices\Plattform;
@@ -33,16 +34,16 @@ class GetPaymentServicesTest extends TestCase
         $this->assertStringNotContainsString('<DataFilter>', $payload);
 
         $request = new GetPaymentServicesRequest(filter: [
-            new Land('DE'),
+            new Land(CountryIsoEnum::GERMANY),
             new Plattform('ebay'),
-            new ValueOfGoods('1'),
+            new ValueOfGoods(54.99),
         ]);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DataFilter>', $payload);
         $this->assertStringContainsString('</DataFilter>', $payload);
         $this->assertStringContainsString('<Filter><FilterName>Land</FilterName><FilterValues><FilterValue>DE</FilterValue></FilterValues></Filter>', $payload);
         $this->assertStringContainsString('<Filter><FilterName>Plattform</FilterName><FilterValues><FilterValue>ebay</FilterValue></FilterValues></Filter>', $payload);
-        $this->assertStringContainsString('<Filter><FilterName>ValueOfGoods</FilterName><FilterValues><FilterValue>1</FilterValue></FilterValues></Filter>', $payload);
+        $this->assertStringContainsString('<Filter><FilterName>ValueOfGoods</FilterName><FilterValues><FilterValue>54,99</FilterValue></FilterValues></Filter>', $payload);
     }
 
     public function testPaymentServicesBasic(): void

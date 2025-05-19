@@ -17,8 +17,8 @@ final readonly class ShippingInfo implements AfterbuyAppendXmlContentInterface
     public function __construct(
         private int|array $productIds,
         private int $itemsCount,
-        private int $itemsWeight,
-        private int $itemsPrice,
+        private float $itemsWeight,
+        private float $itemsPrice,
         private ?CountryIsoEnum $countryIsoEnum = null,
         private ?string $shippingGroup = null,
         private ?string $PostalCode = null,
@@ -52,12 +52,12 @@ final readonly class ShippingInfo implements AfterbuyAppendXmlContentInterface
         return $this->itemsCount;
     }
 
-    public function getItemsPrice(): int
+    public function getItemsPrice(): float
     {
         return $this->itemsPrice;
     }
 
-    public function getItemsWeight(): int
+    public function getItemsWeight(): float
     {
         return $this->itemsWeight;
     }

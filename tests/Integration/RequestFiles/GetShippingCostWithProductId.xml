@@ -10,7 +10,7 @@
     <ShippingInfo>
         <ProductID>123456</ProductID>
         <ItemsCount>2</ItemsCount>
-        <ItemsWeight>3</ItemsWeight>
-        <ItemsPrice>45</ItemsPrice>
+        <ItemsWeight>3,00</ItemsWeight>
+        <ItemsPrice>45,00</ItemsPrice>
     </ShippingInfo>
 </Request>

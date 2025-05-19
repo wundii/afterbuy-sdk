@@ -9,7 +9,7 @@ use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\Product;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\Products;
-use Wundii\AfterbuySdk\Enum\DateFilterEnum;
+use Wundii\AfterbuySdk\Enum\DateFilterShopProductsEnum;
 use Wundii\AfterbuySdk\Enum\DefaultFilterShopProductsEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
@@ -137,7 +137,7 @@ class GetShopProductsTest extends TestCase
             new Level(0, 2),
             new RangeProductId(12, 34),
             new RangeAnr(56, 78),
-            new DateFilter(new DateTime('2025-03-01'), new DateTime('2025-03-31'), DateFilterEnum::MOD_DATE),
+            new DateFilter(new DateTime('2025-03-01'), new DateTime('2025-03-31'), DateFilterShopProductsEnum::MOD_DATE),
         ]);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DataFilter>', $payload);

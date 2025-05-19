@@ -8,7 +8,7 @@ use Wundii\AfterbuySdk\Filter\ValueFrom;
 use Wundii\AfterbuySdk\Filter\ValueTo;
 use Wundii\AfterbuySdk\Interface\Filter\GetListerHistoryFilterInterface;
 
-final readonly class RangeAn implements GetListerHistoryFilterInterface
+final readonly class RangeAnr implements GetListerHistoryFilterInterface
 {
     public function __construct(
         private int $itemNumberFrom,

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Wundii\AfterbuySdk\Filter\GetShopProducts;
+namespace Wundii\AfterbuySdk\Filter\GetSoldItems;
 
 use DateTimeInterface;
-use Wundii\AfterbuySdk\Enum\DateFilterShopProductsEnum;
+use Wundii\AfterbuySdk\Enum\DateFilterSoldItemsEnum;
 use Wundii\AfterbuySdk\Filter\DateFrom;
 use Wundii\AfterbuySdk\Filter\DateTo;
 use Wundii\AfterbuySdk\Filter\FilterValue;
@@ -16,7 +16,7 @@ final readonly class DateFilter implements GetShopProductsFilterInterface
     public function __construct(
         private DateTimeInterface $dateFrom,
         private DateTimeInterface $dateTo,
-        private DateFilterShopProductsEnum $dateFilterShopProductsEnum
+        private DateFilterSoldItemsEnum $dateFilterSoldItemsEnum
     ) {
     }
 
@@ -30,7 +30,7 @@ final readonly class DateFilter implements GetShopProductsFilterInterface
         return [
             new DateFrom($this->dateFrom->format('d.m.Y H:i:s')),
             new DateTo($this->dateTo->format('d.m.Y H:i:s')),
-            new FilterValue($this->dateFilterShopProductsEnum->value),
+            new FilterValue($this->dateFilterSoldItemsEnum->value),
         ];
     }
 }

@@ -13,8 +13,8 @@
             <ProductID>234567</ProductID>
         </Products>
         <ItemsCount>2</ItemsCount>
-        <ItemsWeight>3</ItemsWeight>
-        <ItemsPrice>45</ItemsPrice>
+        <ItemsWeight>3,00</ItemsWeight>
+        <ItemsPrice>45,00</ItemsPrice>
         <ShippingCountry>DE</ShippingCountry>
         <PostalCode>34567</PostalCode>
         <ShippingGroup>standard</ShippingGroup>
