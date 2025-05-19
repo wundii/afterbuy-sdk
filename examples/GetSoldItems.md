@@ -13,6 +13,7 @@ use Wundii\AfterbuySdk\Enum\DefaultFilterSoldItemsEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\PlattformEnum;
+use Wundii\AfterbuySdk\Extends\DateTime;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserEmail;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserId;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AlternativeItemNumber1;
@@ -49,7 +50,11 @@ $request = new GetSoldItemsRequest(
         new AfterbuyUserId(1234),
         new AlternativeItemNumber1('number01'),
         new AlternativeItemNumber2('number02'),
-        new DateFilter(new DateTime('2025-05-01'), new DateTime('2025-05-31'), DateFilterSoldItemsEnum::AUCTION_END_DATE),
+        new DateFilter(
+            new DateTime('2025-05-01'), 
+            new DateTime('2025-05-31'), 
+            DateFilterSoldItemsEnum::AUCTION_END_DATE,
+        ),
         new DefaultFilter(DefaultFilterSoldItemsEnum::INVOICEPRINTED),
         new InvoiceNumber(1000),
         new OrderId(2000),

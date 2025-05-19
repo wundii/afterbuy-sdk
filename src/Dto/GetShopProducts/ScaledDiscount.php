@@ -9,38 +9,38 @@ use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 final class ScaledDiscount implements AfterbuyDtoInterface
 {
     public function __construct(
-        private int $scaledQuantity,
-        private float $scaledPrice,
-        private float $scaledDPrice,
+        private ?int $scaledQuantity = null,
+        private ?float $scaledPrice = null,
+        private ?float $scaledDPrice = null,
     ) {
     }
 
-    public function getScaledDPrice(): float
+    public function getScaledDPrice(): ?float
     {
         return $this->scaledDPrice;
     }
 
-    public function setScaledDPrice(float $scaledDPrice): void
+    public function setScaledDPrice(?float $scaledDPrice): void
     {
         $this->scaledDPrice = $scaledDPrice;
     }
 
-    public function getScaledPrice(): float
+    public function getScaledPrice(): ?float
     {
         return $this->scaledPrice;
     }
 
-    public function setScaledPrice(float $scaledPrice): void
+    public function setScaledPrice(?float $scaledPrice): void
     {
         $this->scaledPrice = $scaledPrice;
     }
 
-    public function getScaledQuantity(): int
+    public function getScaledQuantity(): ?int
     {
         return $this->scaledQuantity;
     }
 
-    public function setScaledQuantity(int $scaledQuantity): void
+    public function setScaledQuantity(?int $scaledQuantity): void
     {
         $this->scaledQuantity = $scaledQuantity;
     }

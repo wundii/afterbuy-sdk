@@ -7,7 +7,12 @@
 
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Filter\GetShopCatalogs\CatalogId;
+use Wundii\AfterbuySdk\Filter\GetShopCatalogs\Level;
+use Wundii\AfterbuySdk\Filter\GetShopCatalogs\RangeCatalogId;
+use Wundii\AfterbuySdk\Filter\GetShopCatalogs\RangeLevel;
 use Wundii\AfterbuySdk\Request\GetShopCatalogsRequest;
 
 $global = new AfterbuyGlobal(
@@ -20,7 +25,16 @@ $afterbuy = new Afterbuy(
     EndpointEnum::SANDBOX,
 );
 
-$request = new GetShopCatalogsRequest();
+$request = new GetShopCatalogsRequest(
+    detailLevelEnum: DetailLevelEnum::FIRST,
+    maxCatalogs: 10,
+    filter: [
+        new CatalogId(1000),
+        new Level(2000),
+        new RangeCatalogId(3000, 3010),
+        new RangeLevel(4000, 4010),
+    ],
+);
 $response = $afterbuy->runRequest($request);
 
 if ($response->getStatusCode() !== 200) {

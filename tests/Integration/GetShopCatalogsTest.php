@@ -93,9 +93,42 @@ class GetShopCatalogsTest extends TestCase
         /** @var Catalogs $catalogs */
         $catalogs = $response->getResult();
 
+        $expected = new Catalogs(
+            hasMoreCatalogs: false,
+            catalogs: [
+                new Catalog(
+                    catalogId: 1010101,
+                    name: 'TestName',
+                    level: 0,
+                    position: 0,
+                    description: 'Testbeschreibung',
+                    parnetId: 0,
+                    additionalText: 'Zusatztext',
+                    show: true,
+                    picture1: 'picture1.jpg',
+                    picture2: 'picture2.jpg',
+                    titlePicture: 'picture3.jpg',
+                    catalogProducts: [
+                        1737852,
+                        1915685,
+                    ],
+                ),
+                new Catalog(
+                    catalogId: 1110101,
+                    name: 'TestName1',
+                    level: 0,
+                    position: 0,
+                    description: 'Testbeschreibung1',
+                    parnetId: 0,
+                    additionalText: 'Zusatztext1',
+                    show: true,
+                ),
+            ],
+            lastCatalogId: 1110101,
+        );
+
         $this->assertInstanceOf(GetShopCatalogsResponse::class, $response);
-        $this->assertCount(2, $catalogs->getCatalogs());
-        $this->assertInstanceOf(Catalog::class, $catalogs->getCatalogs()[0]);
+        $this->assertEquals($expected, $catalogs);
     }
 
     public function testShopCatalogsSerializeToUpdateCatalogs(): void

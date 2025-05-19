@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Response;
 
-use Wundii\AfterbuySdk\Dto\GetShopProducts\PaginationResult;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\Products;
 use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
 use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
 
 /**
- * @template-implements AfterbuyResponseInterface<Products|PaginationResult>
+ * @template-implements AfterbuyResponseInterface<Products>
  */
 final class GetShopProductsResponse implements AfterbuyResponseInterface
 {
@@ -22,30 +21,6 @@ final class GetShopProductsResponse implements AfterbuyResponseInterface
      */
     public function getResult(): AfterbuyDtoInterface
     {
-        $content = $this->content;
-
-        $matches = [];
-        preg_match('/<LastProductID>(.*)<\/LastProductID>/s', $content, $matches);
-        $lastProductId = $matches[1] ?? null;
-        $lastProductId = is_numeric($lastProductId) ? (int) $lastProductId : null;
-
-        $matches = [];
-        preg_match('/<PaginationResult>(.*)<\/PaginationResult>/s', $content, $matches);
-        $paginationContent = $matches[1] ?? null;
-        $paginationResult = null;
-        if ($paginationContent !== null) {
-            $paginationContent = '<?xml version="1.0" encoding="UTF-8"?><root>' . $paginationContent . '</root>';
-            /** @var PaginationResult $paginationResult */
-            $paginationResult = $this->dataMapper->xml($paginationContent, PaginationResult::class);
-        }
-
-        $content = (string) preg_replace('/<LastProductID>(.*)<\/LastProductID>/i', '', $content);
-
-        /** @var Products $shopProducts */
-        $shopProducts = $this->dataMapper->xml($content, Products::class, ['Result'], true);
-        $shopProducts->setLastProductId($lastProductId);
-        $shopProducts->setPaginationResult($paginationResult);
-
-        return $shopProducts;
+        return $this->dataMapper->xml($this->content, Products::class, ['Result'], true);
     }
 }

@@ -4,20 +4,21 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
+use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class EconomicOperator implements AfterbuyDtoInterface
 {
     public function __construct(
-        private ?string $company,
-        private ?string $street1,
-        private ?string $street2,
-        private ?string $postalCode,
-        private ?string $city,
-        private ?string $stateOrProvince,
-        private ?string $country,
-        private ?string $email,
-        private ?string $phone,
+        private ?string $company = null,
+        private ?string $street1 = null,
+        private ?string $street2 = null,
+        private ?string $postalCode = null,
+        private ?string $city = null,
+        private ?string $stateOrProvince = null,
+        private ?CountryIsoEnum $countryIsoEnum = null,
+        private ?string $email = null,
+        private ?string $phone = null,
     ) {
     }
 
@@ -41,14 +42,14 @@ final class EconomicOperator implements AfterbuyDtoInterface
         $this->company = $company;
     }
 
-    public function getCountry(): ?string
+    public function getCountry(): ?CountryIsoEnum
     {
-        return $this->country;
+        return $this->countryIsoEnum;
     }
 
-    public function setCountry(?string $country): void
+    public function setCountry(?CountryIsoEnum $countryIsoEnum): void
     {
-        $this->country = $country;
+        $this->countryIsoEnum = $countryIsoEnum;
     }
 
     public function getEmail(): ?string

@@ -15,6 +15,7 @@ final class Products implements AfterbuyDtoInterface
         private bool $hasMoreProducts = false,
         private ?int $lastProductId = null,
         private array $products = [],
+        private ?string $shippingServicesList = null,
         private ?PaginationResult $paginationResult = null,
     ) {
     }
@@ -53,6 +54,16 @@ final class Products implements AfterbuyDtoInterface
     public function setProducts(array $products): void
     {
         $this->products = $products;
+    }
+
+    public function getShippingServicesList(): ?string
+    {
+        return $this->shippingServicesList;
+    }
+
+    public function setShippingServicesList(?string $shippingServicesList): void
+    {
+        $this->shippingServicesList = $shippingServicesList;
     }
 
     public function getPaginationResult(): ?PaginationResult

@@ -7,6 +7,7 @@ namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 use DateTimeInterface;
 use Wundii\AfterbuySdk\Enum\BaseProductFlagEnum;
 use Wundii\AfterbuySdk\Enum\ConditionEnum;
+use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
 use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
@@ -20,18 +21,19 @@ final class Product implements AfterbuyDtoInterface
      * @param string[] $skus
      * @param ProductPicture[] $productPictures
      * @param int[] $catalogs
-     * @param Attribute[] $attributes
+     * @param Attribut[] $attributes
      * @param PartsProperties[] $partsFitment
      * @param AdditionalDescriptionField[] $additionalDescriptionFields
      * @param AdditionalPrice[] $additionalPrices
      * @param EconomicOperator[] $economicOperators
      */
     public function __construct(
-        private int $shop20Id,
-        private int $productId,
-        private int $anr,
-        private string $ean,
-        private string $name,
+        private ?int $shop20Id = null,
+        private ?int $productId = null,
+        private ?int $anr = null,
+        private ?string $ean = null,
+        private ?string $name = null,
+        private ?string $seoName = null,
         private ?DateTimeInterface $modDate = null,
         private ?string $variationName = null,
         private ?BaseProductFlagEnum $baseProductFlagEnum = null,
@@ -39,6 +41,7 @@ final class Product implements AfterbuyDtoInterface
         private ?string $shortDescription = null,
         private array $tags = [],
         private ?string $memo = null,
+        private ?string $googleBaseLabels = null,
         private ?string $headerDescriptionName = null,
         private ?string $headerDescriptionValue = null,
         private ?string $description = null,
@@ -46,14 +49,14 @@ final class Product implements AfterbuyDtoInterface
         private ?string $footerDescriptionValue = null,
         private ?string $googleBaseShipping = null,
         private ?string $keywords = null,
-        private int $quantity = 1,
+        private ?int $quantity = null,
         private bool $availableShop = false,
-        private int $auctionQuantity = 0,
+        private ?int $auctionQuantity = null,
         private bool $stock = false,
         private bool $discontinued = false,
         private bool $mergeStock = false,
         private ?string $unitOfQuantity = null,
-        private ?float $basepriceFactor = null,
+        private ?int $basepriceFactor = null,
         private ?int $minimumStock = null,
         private ?int $minimumOrderQuantity = null,
         private ?int $fullFilmentQuantity = null,
@@ -63,7 +66,6 @@ final class Product implements AfterbuyDtoInterface
         private ?float $dealerPrice = null,
         private ?int $level = null,
         private ?int $position = null,
-        private bool $ttitleReplace = false,
         private bool $titleReplace = false,
         private array $scaledDiscounts = [],
         private ?float $taxRate = null,
@@ -91,20 +93,32 @@ final class Product implements AfterbuyDtoInterface
         private ?string $stocklocation_2 = null,
         private ?string $stocklocation_3 = null,
         private ?string $stocklocation_4 = null,
-        private ?string $countryOfOrigin = null,
-        private ?string $lastSale = null,
+        private ?CountryOfOriginEnum $countryOfOriginEnum = null,
+        private ?DateTimeInterface $lastSale = null,
         private ?string $imageSmallURL = null,
         private ?string $imageLargeURL = null,
-        private ?string $manufacturerStandardProductIDType = null,
-        private ?string $manufacturerStandardProductIDValue = null,
+        private ?string $amazonStandardProductIdType = null,
+        private ?string $amazonStandardProductIdValue = null,
+        private ?string $manufacturerStandardProductIdType = null,
+        private ?string $manufacturerStandardProductIdValue = null,
         private ?string $productBrand = null,
+        private ?string $customsTariffNumber = null,
         private ?string $manufacturerPartNumber = null,
+        private bool $facebook = false,
         private ?string $googleProductCategory = null,
+        private ?string $adwordsGrouping = null,
         private ConditionEnum $conditionEnum = ConditionEnum::NO_CONDITION,
+        private ?int $ageGroup = null,
+        private ?int $gender = null,
         private ?string $pattern = null,
         private ?string $material = null,
         private ?string $itemColor = null,
         private ?string $itemSize = null,
+        private ?string $customLabel0 = null,
+        private ?string $customLabel1 = null,
+        private ?string $customLabel2 = null,
+        private ?string $customLabel3 = null,
+        private ?string $customLabel4 = null,
         private ?string $canonicalUrl = null,
         private EnergyClassEnum $energyClassEnum = EnergyClassEnum::NO_CLASS,
         private ?string $dataSheetUrl = null,
@@ -151,18 +165,18 @@ final class Product implements AfterbuyDtoInterface
         $this->additionalPrices = $additionalPrices;
     }
 
-    public function getAnr(): int
+    public function getAnr(): ?int
     {
         return $this->anr;
     }
 
-    public function setAnr(int $anr): void
+    public function setAnr(?int $anr): void
     {
         $this->anr = $anr;
     }
 
     /**
-     * @return Attribute[]
+     * @return Attribut[]
      */
     public function getAttributes(): array
     {
@@ -170,19 +184,19 @@ final class Product implements AfterbuyDtoInterface
     }
 
     /**
-     * @param Attribute[] $attributes
+     * @param Attribut[] $attributes
      */
     public function setAttributes(array $attributes): void
     {
         $this->attributes = $attributes;
     }
 
-    public function getAuctionQuantity(): int
+    public function getAuctionQuantity(): ?int
     {
         return $this->auctionQuantity;
     }
 
-    public function setAuctionQuantity(int $auctionQuantity): void
+    public function setAuctionQuantity(?int $auctionQuantity): void
     {
         $this->auctionQuantity = $auctionQuantity;
     }
@@ -197,12 +211,12 @@ final class Product implements AfterbuyDtoInterface
         $this->availableShop = $availableShop;
     }
 
-    public function getBasepriceFactor(): ?float
+    public function getBasepriceFactor(): ?int
     {
         return $this->basepriceFactor;
     }
 
-    public function setBasepriceFactor(?float $basepriceFactor): void
+    public function setBasepriceFactor(?int $basepriceFactor): void
     {
         $this->basepriceFactor = $basepriceFactor;
     }
@@ -279,14 +293,14 @@ final class Product implements AfterbuyDtoInterface
         $this->conditionEnum = $conditionEnum;
     }
 
-    public function getCountryOfOrigin(): ?string
+    public function getCountryOfOrigin(): ?CountryOfOriginEnum
     {
-        return $this->countryOfOrigin;
+        return $this->countryOfOriginEnum;
     }
 
-    public function setCountryOfOrigin(?string $countryOfOrigin): void
+    public function setCountryOfOrigin(?CountryOfOriginEnum $countryOfOriginEnum): void
     {
-        $this->countryOfOrigin = $countryOfOrigin;
+        $this->countryOfOriginEnum = $countryOfOriginEnum;
     }
 
     public function getCrossCatalogID(): ?int
@@ -349,12 +363,12 @@ final class Product implements AfterbuyDtoInterface
         $this->discontinued = $discontinued;
     }
 
-    public function getEan(): string
+    public function getEan(): ?string
     {
         return $this->ean;
     }
 
-    public function setEan(string $ean): void
+    public function setEan(?string $ean): void
     {
         $this->ean = $ean;
     }
@@ -651,12 +665,12 @@ final class Product implements AfterbuyDtoInterface
         $this->keywords = $keywords;
     }
 
-    public function getLastSale(): ?string
+    public function getLastSale(): ?DateTimeInterface
     {
         return $this->lastSale;
     }
 
-    public function setLastSale(?string $lastSale): void
+    public function setLastSale(?DateTimeInterface $lastSale): void
     {
         $this->lastSale = $lastSale;
     }
@@ -681,24 +695,24 @@ final class Product implements AfterbuyDtoInterface
         $this->manufacturerPartNumber = $manufacturerPartNumber;
     }
 
-    public function getManufacturerStandardProductIDType(): ?string
+    public function getManufacturerStandardProductIdType(): ?string
     {
-        return $this->manufacturerStandardProductIDType;
+        return $this->manufacturerStandardProductIdType;
     }
 
-    public function setManufacturerStandardProductIDType(?string $manufacturerStandardProductIDType): void
+    public function setManufacturerStandardProductIdType(?string $manufacturerStandardProductIdType): void
     {
-        $this->manufacturerStandardProductIDType = $manufacturerStandardProductIDType;
+        $this->manufacturerStandardProductIdType = $manufacturerStandardProductIdType;
     }
 
-    public function getManufacturerStandardProductIDValue(): ?string
+    public function getManufacturerStandardProductIdValue(): ?string
     {
-        return $this->manufacturerStandardProductIDValue;
+        return $this->manufacturerStandardProductIdValue;
     }
 
-    public function setManufacturerStandardProductIDValue(?string $manufacturerStandardProductIDValue): void
+    public function setManufacturerStandardProductIdValue(?string $manufacturerStandardProductIdValue): void
     {
-        $this->manufacturerStandardProductIDValue = $manufacturerStandardProductIDValue;
+        $this->manufacturerStandardProductIdValue = $manufacturerStandardProductIdValue;
     }
 
     public function getMaterial(): ?string
@@ -761,12 +775,12 @@ final class Product implements AfterbuyDtoInterface
         $this->modDate = $modDate;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -817,12 +831,12 @@ final class Product implements AfterbuyDtoInterface
         $this->productBrand = $productBrand;
     }
 
-    public function getProductId(): int
+    public function getProductId(): ?int
     {
         return $this->productId;
     }
 
-    public function setProductId(int $productId): void
+    public function setProductId(?int $productId): void
     {
         $this->productId = $productId;
     }
@@ -843,12 +857,12 @@ final class Product implements AfterbuyDtoInterface
         $this->productPictures = $productPictures;
     }
 
-    public function getQuantity(): int
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
-    public function setQuantity(int $quantity): void
+    public function setQuantity(?int $quantity): void
     {
         $this->quantity = $quantity;
     }
@@ -909,12 +923,12 @@ final class Product implements AfterbuyDtoInterface
         $this->shippingGroup = $shippingGroup;
     }
 
-    public function getShop20Id(): int
+    public function getShop20Id(): ?int
     {
         return $this->shop20Id;
     }
 
-    public function setShop20Id(int $shop20Id): void
+    public function setShop20Id(?int $shop20Id): void
     {
         $this->shop20Id = $shop20Id;
     }
@@ -965,42 +979,42 @@ final class Product implements AfterbuyDtoInterface
         $this->stock = $stock;
     }
 
-    public function getStocklocation1(): ?string
+    public function getStocklocation_1(): ?string
     {
         return $this->stocklocation_1;
     }
 
-    public function setStocklocation1(?string $stocklocation_1): void
+    public function setStocklocation_1(?string $stocklocation_1): void
     {
         $this->stocklocation_1 = $stocklocation_1;
     }
 
-    public function getStocklocation2(): ?string
+    public function getStocklocation_2(): ?string
     {
         return $this->stocklocation_2;
     }
 
-    public function setStocklocation2(?string $stocklocation_2): void
+    public function setStocklocation_2(?string $stocklocation_2): void
     {
         $this->stocklocation_2 = $stocklocation_2;
     }
 
-    public function getStocklocation3(): ?string
+    public function getStocklocation_3(): ?string
     {
         return $this->stocklocation_3;
     }
 
-    public function setStocklocation3(?string $stocklocation_3): void
+    public function setStocklocation_3(?string $stocklocation_3): void
     {
         $this->stocklocation_3 = $stocklocation_3;
     }
 
-    public function getStocklocation4(): ?string
+    public function getStocklocation_4(): ?string
     {
         return $this->stocklocation_4;
     }
 
-    public function setStocklocation4(?string $stocklocation_4): void
+    public function setStocklocation_4(?string $stocklocation_4): void
     {
         $this->stocklocation_4 = $stocklocation_4;
     }
@@ -1041,16 +1055,6 @@ final class Product implements AfterbuyDtoInterface
         $this->titleReplace = $titleReplace;
     }
 
-    public function isTtitleReplace(): bool
-    {
-        return $this->ttitleReplace;
-    }
-
-    public function setTtitleReplace(bool $ttitleReplace): void
-    {
-        $this->ttitleReplace = $ttitleReplace;
-    }
-
     public function getUnitOfQuantity(): ?string
     {
         return $this->unitOfQuantity;
@@ -1079,5 +1083,145 @@ final class Product implements AfterbuyDtoInterface
     public function setWeight(?float $weight): void
     {
         $this->weight = $weight;
+    }
+
+    public function getAdwordsGrouping(): ?string
+    {
+        return $this->adwordsGrouping;
+    }
+
+    public function setAdwordsGrouping(?string $adwordsGrouping): void
+    {
+        $this->adwordsGrouping = $adwordsGrouping;
+    }
+
+    public function getAgeGroup(): ?int
+    {
+        return $this->ageGroup;
+    }
+
+    public function setAgeGroup(?int $ageGroup): void
+    {
+        $this->ageGroup = $ageGroup;
+    }
+
+    public function getAmazonStandardProductIdType(): ?string
+    {
+        return $this->amazonStandardProductIdType;
+    }
+
+    public function setAmazonStandardProductIdType(?string $amazonStandardProductIdType): void
+    {
+        $this->amazonStandardProductIdType = $amazonStandardProductIdType;
+    }
+
+    public function getAmazonStandardProductIdValue(): ?string
+    {
+        return $this->amazonStandardProductIdValue;
+    }
+
+    public function setAmazonStandardProductIdValue(?string $amazonStandardProductIdValue): void
+    {
+        $this->amazonStandardProductIdValue = $amazonStandardProductIdValue;
+    }
+
+    public function getCustomLabel0(): ?string
+    {
+        return $this->customLabel0;
+    }
+
+    public function setCustomLabel0(?string $customLabel0): void
+    {
+        $this->customLabel0 = $customLabel0;
+    }
+
+    public function getCustomLabel1(): ?string
+    {
+        return $this->customLabel1;
+    }
+
+    public function setCustomLabel1(?string $customLabel1): void
+    {
+        $this->customLabel1 = $customLabel1;
+    }
+
+    public function getCustomLabel3(): ?string
+    {
+        return $this->customLabel3;
+    }
+
+    public function setCustomLabel3(?string $customLabel3): void
+    {
+        $this->customLabel3 = $customLabel3;
+    }
+
+    public function getCustomLabel2(): ?string
+    {
+        return $this->customLabel2;
+    }
+
+    public function setCustomLabel2(?string $customLabel2): void
+    {
+        $this->customLabel2 = $customLabel2;
+    }
+
+    public function getCustomLabel4(): ?string
+    {
+        return $this->customLabel4;
+    }
+
+    public function setCustomLabel4(?string $customLabel4): void
+    {
+        $this->customLabel4 = $customLabel4;
+    }
+
+    public function getCustomsTariffNumber(): ?string
+    {
+        return $this->customsTariffNumber;
+    }
+
+    public function setCustomsTariffNumber(?string $customsTariffNumber): void
+    {
+        $this->customsTariffNumber = $customsTariffNumber;
+    }
+
+    public function isFacebook(): bool
+    {
+        return $this->facebook;
+    }
+
+    public function setFacebook(bool $facebook): void
+    {
+        $this->facebook = $facebook;
+    }
+
+    public function getGender(): ?int
+    {
+        return $this->gender;
+    }
+
+    public function setGender(?int $gender): void
+    {
+        $this->gender = $gender;
+    }
+
+    public function getGoogleBaseLabels(): ?string
+    {
+        return $this->googleBaseLabels;
+    }
+
+    public function setGoogleBaseLabels(?string $googleBaseLabels): void
+    {
+        $this->googleBaseLabels = $googleBaseLabels;
+    }
+
+    public function getSeoName(): ?string
+    {
+        return $this->seoName;
+    }
+
+    public function setSeoName(?string $seoName): void
+    {
+        $this->seoName = $seoName;
     }
 }

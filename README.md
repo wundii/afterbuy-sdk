@@ -54,14 +54,15 @@ In preparation for the release of version 1.0, I would like to test all XML retu
 - [ ] GetProductDiscounts
 - [x] GetShippingCost
 - [x] GetShippingServices
-- [ ] GetShopCatalogs
-- [ ] GetShopProducts
+- [x] GetShopCatalogs
+- [x] GetShopProducts
 - [x] GetSoldItems
 - [x] GetStockInfo
 - [x] GetTranslatedMailTemplate
 - [x] UpdateCatalogs
 - [x] UpdateShopProducts
 - [x] UpdateSoldItems
+- [ ] DetailLevelEnum combination
 
 ## Usage
 ```php
@@ -92,8 +93,3 @@ $response->getXmlResponse()
 $response->getErrorMessages();
 $response->getWarningMessages();
 ```
-
-- GetSoldItems:Order new feedbackLink property
-- GetSoldItems:BillingAddress bugfix UserIdPlattformEnum
-- GetSoldItems:ParcelLabel new packageQuantity and packageWeight property
-- Afterbuy:Class final attribute removed

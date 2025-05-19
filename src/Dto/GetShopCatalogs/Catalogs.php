@@ -15,6 +15,7 @@ final class Catalogs implements AfterbuyDtoInterface
     public function __construct(
         private bool $hasMoreCatalogs = false,
         private array $catalogs = [],
+        private ?int $lastCatalogId = null,
     ) {
     }
 
@@ -50,5 +51,15 @@ final class Catalogs implements AfterbuyDtoInterface
     public function setCatalogs(array $catalogs): void
     {
         $this->catalogs = $catalogs;
+    }
+
+    public function getLastCatalogId(): ?int
+    {
+        return $this->lastCatalogId;
+    }
+
+    public function setLastCatalogId(?int $lastCatalogId): void
+    {
+        $this->lastCatalogId = $lastCatalogId;
     }
 }

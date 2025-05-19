@@ -7,12 +7,28 @@ namespace Wundii\AfterbuySdk\Tests\Integration;
 use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\AdditionalDescriptionField;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\AdditionalPrice;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\Attribut;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\EconomicOperator;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\Feature;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\PaginationResult;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\PartsProperties;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\PartsProperty;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\Product;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\ProductPicture;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\ProductPictureChild;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\Products;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\ScaledDiscount;
+use Wundii\AfterbuySdk\Enum\BaseProductFlagEnum;
+use Wundii\AfterbuySdk\Enum\ConditionEnum;
+use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
+use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
 use Wundii\AfterbuySdk\Enum\DateFilterShopProductsEnum;
 use Wundii\AfterbuySdk\Enum\DefaultFilterShopProductsEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
 use Wundii\AfterbuySdk\Extends\DateTime;
 use Wundii\AfterbuySdk\Filter\GetShopProducts\Anr;
 use Wundii\AfterbuySdk\Filter\GetShopProducts\DateFilter;
@@ -166,10 +182,290 @@ class GetShopProductsTest extends TestCase
         /** @var Products $products */
         $products = $response->getResult();
 
+        $expected = new Products(
+            hasMoreProducts: true,
+            lastProductId: 1010101,
+            products: [
+                new Product(
+                    shop20Id: null,
+                    productId: 1010101,
+                    anr: 101010110,
+                    ean: '1E2A3N',
+                    name: 'Afterbuy Testartikel',
+                    seoName: 'Afterbuy Testartikel',
+                    modDate: new DateTime('2025-05-19 16:12:23'),
+                    variationName: 'Variation',
+                    baseProductFlagEnum: BaseProductFlagEnum::PRODUCT,
+                    baseProducts: [],
+                    shortDescription: 'Kurzbeschreibung',
+                    tags: [
+                        'Tag1',
+                        'Tag2',
+                    ],
+                    memo: 'Mein Memo',
+                    googleBaseLabels: 'googleBaseLabels',
+                    headerDescriptionName: 'headerDescriptionName',
+                    headerDescriptionValue: 'headerDescriptionValue',
+                    description: 'Beschreibung',
+                    footerDescriptionName: 'footerDescriptionName',
+                    footerDescriptionValue: 'footerDescriptionValue',
+                    googleBaseShipping: 'DE:Afterbuy Express',
+                    keywords: 'Meine Keywords',
+                    quantity: 1,
+                    availableShop: true,
+                    auctionQuantity: 0,
+                    stock: true,
+                    discontinued: true,
+                    mergeStock: true,
+                    unitOfQuantity: 'Stk',
+                    basepriceFactor: 0,
+                    minimumStock: 1,
+                    minimumOrderQuantity: 1,
+                    fullFilmentQuantity: 0,
+                    fullFilmentImport: new DateTime('2006-05-12T12:00:00'),
+                    sellingPrice: 0.0,
+                    buyingPrice: 0.0,
+                    dealerPrice: 0.0,
+                    level: 1000,
+                    position: 10000,
+                    titleReplace: false,
+                    scaledDiscounts: [
+                        new ScaledDiscount(
+                            scaledQuantity: 2,
+                            scaledPrice: 1.2,
+                            scaledDPrice: 1.1,
+                        ),
+                        new ScaledDiscount(
+                            scaledQuantity: 4,
+                            scaledPrice: 0.0,
+                            scaledDPrice: 0.0,
+                        ),
+                        new ScaledDiscount(
+                            scaledQuantity: 5,
+                            scaledPrice: 0.0,
+                            scaledDPrice: 0.0,
+                        ),
+                    ],
+                    taxRate: 19.0,
+                    weight: 0.0,
+                    searchAlias: 'Suchalias',
+                    froogle: true,
+                    kelkoo: true,
+                    shippingGroup: 'Packstationtest',
+                    shopShippingGroup: '1',
+                    searchEngineShipping: 'searchEngineShipping',
+                    crossCatalogID: 141556,
+                    features: [
+                        new Feature(
+                            id: 1,
+                            name: 'Feature1',
+                            value: 'Value1',
+                        ),
+                        new Feature(
+                            id: 2,
+                            name: 'Feature2',
+                            value: 'Value2',
+                        ),
+                    ],
+                    freeValue1: 'FV1',
+                    freeValue2: 'FV2',
+                    freeValue3: 'FV3',
+                    freeValue4: 'FV4',
+                    freeValue5: 'FV5',
+                    freeValue6: 'FV6',
+                    freeValue7: 'FV7',
+                    freeValue8: 'FV8',
+                    freeValue9: 'FV9',
+                    freeValue10: 'FV10',
+                    deliveryTime: '1-3 Tage',
+                    stocklocation_1: 'Lagerort 1',
+                    stocklocation_2: 'Lagerort 2',
+                    stocklocation_3: 'Lagerort 3',
+                    stocklocation_4: 'Lagerort 4',
+                    countryOfOriginEnum: CountryOfOriginEnum::GERMANY,
+                    lastSale: new DateTime('2024-01-02T22:33:44'),
+                    imageSmallURL: 'https://example.com/small.jpg',
+                    imageLargeURL: 'https://example.com/large.jpg',
+                    amazonStandardProductIdType: 'EAN',
+                    amazonStandardProductIdValue: '99999999999999',
+                    manufacturerStandardProductIdType: 'EAN',
+                    manufacturerStandardProductIdValue: '99999999999999',
+                    productBrand: 'Afterbuy',
+                    customsTariffNumber: 'CustomsTariffNumber',
+                    manufacturerPartNumber: '99999999999999',
+                    facebook: true,
+                    googleProductCategory: 'save',
+                    adwordsGrouping: 'adwordsGrouping',
+                    conditionEnum: ConditionEnum::NEW,
+                    ageGroup: 0,
+                    gender: 0,
+                    pattern: 'pattern',
+                    material: 'Metall',
+                    itemColor: 'itemColor',
+                    itemSize: 'itemSize',
+                    customLabel0: 'cl0',
+                    customLabel1: 'cl1',
+                    customLabel2: 'cl2',
+                    customLabel3: 'cl3',
+                    customLabel4: 'cl4',
+                    canonicalUrl: 'https://example.com/canonical',
+                    energyClassEnum: EnergyClassEnum::NO_CLASS,
+                    dataSheetUrl: 'https://example.com/datasheet',
+                    skus: [
+                        'NewSKU1',
+                        'NewSKU2',
+                        'NewSKU3',
+                    ],
+                    productPictures: [
+                        new ProductPicture(
+                            nr: 1,
+                            typ: 0,
+                            url: 'http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1.jpg',
+                            altText: null,
+                            childs: [
+                                new ProductPictureChild(
+                                    nr: 1,
+                                    typ: 1,
+                                    url: 'http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_thumb.jpg',
+                                ),
+                                new ProductPictureChild(
+                                    nr: 1,
+                                    typ: 2,
+                                    url: 'http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_zoom.jpg',
+                                ),
+                                new ProductPictureChild(
+                                    nr: 1,
+                                    typ: 3,
+                                    url: 'http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_list.jpg',
+                                ),
+                            ],
+                        ),
+                    ],
+                    catalogs: [
+                        141556,
+                    ],
+                    attributes: [
+                        new Attribut(
+                            attributName: 'Attribut 1',
+                            attributWert: 'Dies ist ein Testattribut mit reinem Text',
+                            attributTyp: 0,
+                            attributRequired: false,
+                        ),
+                        new Attribut(
+                            attributName: 'Attribut 4',
+                            attributWert: ';1. Wahl;2. Wahl;3. Wahl;4. Wahl',
+                            attributTyp: 2,
+                            attributRequired: false,
+                        ),
+                        new Attribut(
+                            attributName: 'Attribut 5',
+                            attributWert: 'http://www.afterbuy.de',
+                            attributTyp: 3,
+                            attributRequired: true,
+                        ),
+                    ],
+                    partsFitment: [
+                        new PartsProperties(
+                            partsProperty: [
+                                new PartsProperty(
+                                    propertyName: 'KType',
+                                    propertyValue: '3313',
+                                ),
+                                new PartsProperty(
+                                    propertyName: 'KType2',
+                                    propertyValue: '3313',
+                                ),
+                                new PartsProperty(
+                                    propertyName: 'HSN',
+                                    propertyValue: '7107',
+                                ),
+                                new PartsProperty(
+                                    propertyName: 'TSN',
+                                    propertyValue: '449',
+                                ),
+                                new PartsProperty(
+                                    propertyName: 'TSN',
+                                    propertyValue: '449',
+                                ),
+                            ]
+                        ),
+                        new PartsProperties(
+                            partsProperty: [
+                                new PartsProperty(
+                                    propertyName: 'KType',
+                                    propertyValue: '3314',
+                                ),
+                                new PartsProperty(
+                                    propertyName: 'HSN',
+                                    propertyValue: '7107',
+                                ),
+                                new PartsProperty(
+                                    propertyName: 'TSN',
+                                    propertyValue: '203',
+                                ),
+                            ]
+                        ),
+                        new PartsProperties(
+                            partsProperty: [
+                                new PartsProperty(
+                                    propertyName: 'KType',
+                                    propertyValue: '3315',
+                                ),
+                            ]
+                        ),
+                        new PartsProperties(
+                            partsProperty: [
+                                new PartsProperty(
+                                    propertyName: 'KType',
+                                    propertyValue: '3316',
+                                ),
+                                new PartsProperty(
+                                    propertyName: 'HSN',
+                                    propertyValue: '',
+                                ),
+                            ]
+                        ),
+                    ],
+                    additionalDescriptionFields: [
+                        new AdditionalDescriptionField(
+                            fieldId: 1,
+                            fieldName: 'fieldName1',
+                            fieldLabel: 'fieldLabel1',
+                            fieldContent: 'fieldContent1',
+                        ),
+                    ],
+                    additionalPrices: [
+                        new AdditionalPrice(
+                            definitionId: 100,
+                            name: 'Hood',
+                            value: 1.2,
+                            pretax: true,
+                        ),
+                    ],
+                    economicOperators: [
+                        new EconomicOperator(
+                            company: 'Muster GmbH',
+                            street1: 'Musterstrasse 1',
+                            street2: 'Hinterhof',
+                            postalCode: '01234',
+                            city: 'Musterstadt',
+                            countryIsoEnum: CountryIsoEnum::GERMANY,
+                            email: 'mail@example.com',
+                            phone: '+0123456789',
+                        ),
+                    ],
+                ),
+            ],
+            shippingServicesList: 'https://www.afterbuy.de/',
+            paginationResult: new PaginationResult(
+                1,
+                1,
+                1,
+                1,
+            ),
+        );
+
         $this->assertInstanceOf(GetShopProductsResponse::class, $response);
-        $this->assertCount(1, $products->getProducts());
-        $this->assertSame(true, $products->hasMoreProducts());
-        $this->assertSame(1010101, $products->getLastProductId());
-        $this->assertInstanceOf(Product::class, $products->getProducts()[0]);
+        $this->assertEquals($expected, $products);
     }
 }

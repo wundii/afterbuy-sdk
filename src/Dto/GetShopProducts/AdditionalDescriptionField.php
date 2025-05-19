@@ -9,49 +9,49 @@ use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 final class AdditionalDescriptionField implements AfterbuyDtoInterface
 {
     public function __construct(
-        private int $fieldId,
-        private string $fieldName,
-        private string $fieldLabel,
-        private string $fieldContent,
+        private ?int $fieldId = null,
+        private ?string $fieldName = null,
+        private ?string $fieldLabel = null,
+        private ?string $fieldContent = null,
     ) {
     }
 
-    public function getFieldContent(): string
+    public function getFieldContent(): ?string
     {
         return $this->fieldContent;
     }
 
-    public function setFieldContent(string $fieldContent): void
+    public function setFieldContent(?string $fieldContent): void
     {
         $this->fieldContent = $fieldContent;
     }
 
-    public function getFieldId(): int
+    public function getFieldId(): ?int
     {
         return $this->fieldId;
     }
 
-    public function setFieldId(int $fieldId): void
+    public function setFieldId(?int $fieldId): void
     {
         $this->fieldId = $fieldId;
     }
 
-    public function getFieldLabel(): string
+    public function getFieldLabel(): ?string
     {
         return $this->fieldLabel;
     }
 
-    public function setFieldLabel(string $fieldLabel): void
+    public function setFieldLabel(?string $fieldLabel): void
     {
         $this->fieldLabel = $fieldLabel;
     }
 
-    public function getFieldName(): string
+    public function getFieldName(): ?string
     {
         return $this->fieldName;
     }
 
-    public function setFieldName(string $fieldName): void
+    public function setFieldName(?string $fieldName): void
     {
         $this->fieldName = $fieldName;
     }

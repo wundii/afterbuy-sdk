@@ -6,22 +6,22 @@ namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
 use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
-final class Attribute implements AfterbuyDtoInterface
+final class Attribut implements AfterbuyDtoInterface
 {
     public function __construct(
-        private string $attributName,
-        private string $attributWert,
-        private int $attributTyp,
+        private ?string $attributName = null,
+        private ?string $attributWert = null,
+        private ?int $attributTyp = null,
         private bool $attributRequired = false,
     ) {
     }
 
-    public function getAttributName(): string
+    public function getAttributName(): ?string
     {
         return $this->attributName;
     }
 
-    public function setAttributName(string $attributName): void
+    public function setAttributName(?string $attributName): void
     {
         $this->attributName = $attributName;
     }
@@ -36,22 +36,22 @@ final class Attribute implements AfterbuyDtoInterface
         $this->attributRequired = $attributRequired;
     }
 
-    public function getAttributTyp(): int
+    public function getAttributTyp(): ?int
     {
         return $this->attributTyp;
     }
 
-    public function setAttributTyp(int $attributTyp): void
+    public function setAttributTyp(?int $attributTyp): void
     {
         $this->attributTyp = $attributTyp;
     }
 
-    public function getAttributWert(): string
+    public function getAttributWert(): ?string
     {
         return $this->attributWert;
     }
 
-    public function setAttributWert(string $attributWert): void
+    public function setAttributWert(?string $attributWert): void
     {
         $this->attributWert = $attributWert;
     }

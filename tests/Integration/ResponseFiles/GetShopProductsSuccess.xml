@@ -10,23 +10,54 @@
                 <Anr>101010110</Anr>
                 <EAN>1E2A3N</EAN>
                 <Name><![CDATA[Afterbuy Testartikel]]></Name>
-                <ShortDescription><![CDATA[ Kurzbeschreibung ]]></ShortDescription>
-                <Memo><![CDATA[ Mein Memo ]]></Memo>
-                <Description><![CDATA[ Beschreibung ]]></Description>
-                <Keywords><![CDATA[ Meine Keywords ]]></Keywords>
+                <SeoName><![CDATA[Afterbuy Testartikel]]></SeoName>
+                <ModDate>19.05.2025 16:12:23</ModDate>
+                <variationName><![CDATA[Variation]]></variationName>
+                <ShortDescription><![CDATA[Kurzbeschreibung]]></ShortDescription>
+                <Memo><![CDATA[Mein Memo]]></Memo>
+                <BaseProductFlag>2</BaseProductFlag>
+                <GoogleBaseLabels><![CDATA[googleBaseLabels]]></GoogleBaseLabels>
+                <headerDescriptionName><![CDATA[headerDescriptionName]]></headerDescriptionName>
+                <headerDescriptionValue><![CDATA[headerDescriptionValue]]></headerDescriptionValue>
+                <Description><![CDATA[Beschreibung]]></Description>
+                <footerDescriptionName><![CDATA[footerDescriptionName]]></footerDescriptionName>
+                <footerDescriptionValue><![CDATA[footerDescriptionValue]]></footerDescriptionValue>
+                <Keywords><![CDATA[Meine Keywords]]></Keywords>
                 <Quantity>1</Quantity>
                 <AuctionQuantity>0</AuctionQuantity>
+                <availableShop>1</availableShop>
                 <Stock>1</Stock>
+                <Tags>
+                    <Tag>Tag1</Tag>
+                    <Tag>Tag2</Tag>
+                </Tags>
                 <Discontinued>1</Discontinued>
-                <MergeStock>-1</MergeStock>
-                <UnitOfQuantity>0</UnitOfQuantity>
+                <MergeStock>1</MergeStock>
+                <UnitOfQuantity>Stk</UnitOfQuantity>
                 <BasepriceFactor>0</BasepriceFactor>
                 <MinimumStock>1</MinimumStock>
+                <MinimumOrderQuantity>1</MinimumOrderQuantity>
                 <FullFilmentQuantity>0</FullFilmentQuantity>
                 <FullFilmentImport>12.05.2006 12:00:00</FullFilmentImport>
                 <SellingPrice>0</SellingPrice>
                 <BuyingPrice>0</BuyingPrice>
                 <DealerPrice>0</DealerPrice>
+                <AdditionalDescriptionFields>
+                    <AdditionalDescriptionField>
+                       <FieldID>1</FieldID>
+                       <FieldName>fieldName1</FieldName>
+                       <FieldLabel>fieldLabel1</FieldLabel>
+                       <FieldContent>fieldContent1</FieldContent>
+                    </AdditionalDescriptionField>
+                </AdditionalDescriptionFields>
+                <AdditionalPrices>
+                    <AdditionalPrice>
+                        <DefinitionId>100</DefinitionId>
+                        <Name>Hood</Name>
+                        <Value>1,20</Value>
+                        <Pretax>true</Pretax>
+                    </AdditionalPrice>
+                </AdditionalPrices>
                 <Level>1000</Level>
                 <Position>10000</Position>
                 <TtitleReplace>0</TtitleReplace>
@@ -47,38 +78,58 @@
                         <ScaledDPrice>0</ScaledDPrice>
                     </ScaledDiscount>
                 </ScaledDiscounts>
-                <TaxRate>16</TaxRate>
+                <TaxRate>19</TaxRate>
                 <Weight>0</Weight>
-                <SearchAlias><![CDATA[ Suchalias ]]></SearchAlias>
-                <Froogle>0</Froogle>
-                <Kelkoo>-1</Kelkoo>
+                <SearchAlias><![CDATA[Suchalias]]></SearchAlias>
+                <Froogle>1</Froogle>
+                <GoogleBaseShipping><![CDATA[DE:Afterbuy Express]]></GoogleBaseShipping>
+                <AmazonStandardProductIDType><![CDATA[EAN]]></AmazonStandardProductIDType>
+                <AmazonStandardProductIDValue><![CDATA[99999999999999]]></AmazonStandardProductIDValue>
+                <ManufacturerStandardProductIDType><![CDATA[EAN]]></ManufacturerStandardProductIDType>
+                <ManufacturerStandardProductIDValue><![CDATA[99999999999999]]></ManufacturerStandardProductIDValue>
+                <ProductBrand><![CDATA[Afterbuy]]></ProductBrand>
+                <CustomsTariffNumber><![CDATA[CustomsTariffNumber]]></CustomsTariffNumber>
+                <CountryOfOrigin><![CDATA[DE]]></CountryOfOrigin>
+                <Kelkoo>1</Kelkoo>
                 <ShippingGroup>Packstationtest</ShippingGroup>
-                <ShopShippingGroup></ShopShippingGroup>
+                <ShopShippingGroup>1</ShopShippingGroup>
+                <SearchEngineShipping><![CDATA[searchEngineShipping]]></SearchEngineShipping>
                 <CrossCatalogID>141556</CrossCatalogID>
-                <FreeValue1><![CDATA[]]></FreeValue1>
-                <FreeValue2><![CDATA[]]></FreeValue2>
-                <FreeValue3><![CDATA[]]></FreeValue3>
-                <FreeValue4><![CDATA[]]></FreeValue4>
-                <FreeValue5><![CDATA[]]></FreeValue5>
-                <DeliveryTime><![CDATA[]]></DeliveryTime>
-                <Stocklocation_1><![CDATA[]]></Stocklocation_1>
-                <Stocklocation_2><![CDATA[]]></Stocklocation_2>
-                <Stocklocation_3><![CDATA[]]></Stocklocation_3>
-                <Stocklocation_4><![CDATA[]]></Stocklocation_4>
-                <ImageSmallURL></ImageSmallURL>
-                <ImageLargeURL></ImageLargeURL>
+                <FreeValue1><![CDATA[FV1]]></FreeValue1>
+                <FreeValue2><![CDATA[FV2]]></FreeValue2>
+                <FreeValue3><![CDATA[FV3]]></FreeValue3>
+                <FreeValue4><![CDATA[FV4]]></FreeValue4>
+                <FreeValue5><![CDATA[FV5]]></FreeValue5>
+                <FreeValue6><![CDATA[FV6]]></FreeValue6>
+                <FreeValue7><![CDATA[FV7]]></FreeValue7>
+                <FreeValue8><![CDATA[FV8]]></FreeValue8>
+                <FreeValue9><![CDATA[FV9]]></FreeValue9>
+                <FreeValue10><![CDATA[FV10]]></FreeValue10>
+                <DeliveryTime><![CDATA[1-3 Tage]]></DeliveryTime>
+                <Stocklocation_1><![CDATA[Lagerort 1]]></Stocklocation_1>
+                <Stocklocation_2><![CDATA[Lagerort 2]]></Stocklocation_2>
+                <Stocklocation_3><![CDATA[Lagerort 3]]></Stocklocation_3>
+                <Stocklocation_4><![CDATA[Lagerort 4]]></Stocklocation_4>
+                <ImageSmallURL>https://example.com/small.jpg</ImageSmallURL>
+                <ImageLargeURL>https://example.com/large.jpg</ImageLargeURL>
+                <LastSale><![CDATA[2024-01-02T22:33:44]]></LastSale>
                 <Skus>
                     <Sku>NewSKU1</Sku>
                     <Sku>NewSKU2</Sku>
                     <Sku>NewSKU3</Sku>
-                    <Sku>NewSKU4</Sku>
-                    <Sku>NewSKU5</Sku>
-                    <Sku>NewSKU6</Sku>
-                    <Sku>NewSKU7</Sku>
-                    <Sku>NewSKU8</Sku>
-                    <Sku>NewSKU9</Sku>
-                    <Sku>NewSKU10</Sku>
                 </Skus>
+                <Features>
+                    <Feature>
+                        <ID>1</ID>
+                        <Name><![CDATA[Feature1]]></Name>
+                        <Value><![CDATA[Value1]]></Value>
+                    </Feature>
+                    <Feature>
+                        <ID>2</ID>
+                        <Name><![CDATA[Feature2]]></Name>
+                        <Value><![CDATA[Value2]]></Value>
+                    </Feature>
+                </Features>
                 <ProductPictures>
                     <ProductPicture>
                         <Nr>1</Nr>
@@ -127,7 +178,7 @@
                         <AttributName><![CDATA[Attribut 5]]></AttributName>
                         <AttributWert><![CDATA[http://www.afterbuy.de]]></AttributWert>
                         <AttributTyp>3</AttributTyp>
-                        <AttributRequired>0</AttributRequired>
+                        <AttributRequired>1</AttributRequired>
                     </Attribut>
                 </Attributes>
                 <PartsFitment>
@@ -184,14 +235,48 @@
                         </PartsProperty>
                     </PartsProperties>
                 </PartsFitment>
+                <Facebook>1</Facebook>
+                <GoogleProductCategory>save</GoogleProductCategory>
+                <AdwordsGrouping><![CDATA[adwordsGrouping]]></AdwordsGrouping>
+                <ManufacturerPartNumber><![CDATA[99999999999999]]></ManufacturerPartNumber>
+                <Condition>1</Condition>
+                <AgeGroup>0</AgeGroup>
+                <Gender>0</Gender>
+                <Material><![CDATA[Metall]]></Material>
+                <Pattern><![CDATA[pattern]]></Pattern>
+                <CustomLabel0><![CDATA[cl0]]></CustomLabel0>
+                <CustomLabel1><![CDATA[cl1]]></CustomLabel1>
+                <CustomLabel2><![CDATA[cl2]]></CustomLabel2>
+                <CustomLabel3><![CDATA[cl3]]></CustomLabel3>
+                <CustomLabel4><![CDATA[cl4]]></CustomLabel4>
+                <ItemColor><![CDATA[itemColor]]></ItemColor>
+                <ItemSize><![CDATA[itemSize]]></ItemSize>
+                <CanonicalURL><![CDATA[https://example.com/canonical]]></CanonicalURL>
+                <DatasheetURL><![CDATA[https://example.com/datasheet]]></DatasheetURL>
+                <EconomicOperators>
+                    <EconomicOperator>
+                        <DatabaseId>1000</DatabaseId>
+                        <ContactType>0</ContactType>
+                        <Company><![CDATA[Muster GmbH]]></Company>
+                        <Street1><![CDATA[Musterstrasse 1]]></Street1>
+                        <Street2><![CDATA[Hinterhof]]></Street2>
+                        <PostalCode><![CDATA[01234]]></PostalCode>
+                        <City><![CDATA[Musterstadt]]></City>
+                        <Country><![CDATA[DE]]></Country>
+                        <Email><![CDATA[mail@example.com]]></Email>
+                        <ContactUrl><![CDATA[https://]]></ContactUrl>
+                        <Phone><![CDATA[+0123456789]]></Phone>
+                    </EconomicOperator>
+                </EconomicOperators>
             </Product>
         </Products>
+        <ShippingServicesList><![CDATA[https://www.afterbuy.de/]]></ShippingServicesList>
         <LastProductID>1010101</LastProductID>
         <PaginationResult>
-            <TotalNumberOfEntries> 1 </TotalNumberOfEntries>
-            <TotalNumberOfPages> 1 </TotalNumberOfPages>
-            <ItemsPerPage> 1 </ItemsPerPage>
-            <PageNumber> 1 </PageNumber>
+            <TotalNumberOfEntries>1</TotalNumberOfEntries>
+            <TotalNumberOfPages>1</TotalNumberOfPages>
+            <ItemsPerPage>1</ItemsPerPage>
+            <PageNumber>1</PageNumber>
         </PaginationResult>
     </Result>
 </Afterbuy>
