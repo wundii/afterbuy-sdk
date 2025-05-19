@@ -9,38 +9,38 @@ use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 final class ProductDetailsCatalog implements AfterbuyDtoInterface
 {
     public function __construct(
-        private int $catalogID,
-        private int $catalogPath,
-        private int $catalogURL,
+        private ?int $catalogID = null,
+        private ?string $catalogPath = null,
+        private ?string $catalogURL = null,
     ) {
     }
 
-    public function getCatalogID(): int
+    public function getCatalogID(): ?int
     {
         return $this->catalogID;
     }
 
-    public function setCatalogID(int $catalogID): void
+    public function setCatalogID(?int $catalogID): void
     {
         $this->catalogID = $catalogID;
     }
 
-    public function getCatalogPath(): int
+    public function getCatalogPath(): ?string
     {
         return $this->catalogPath;
     }
 
-    public function setCatalogPath(int $catalogPath): void
+    public function setCatalogPath(?string $catalogPath): void
     {
         $this->catalogPath = $catalogPath;
     }
 
-    public function getCatalogURL(): int
+    public function getCatalogURL(): ?string
     {
         return $this->catalogURL;
     }
 
-    public function setCatalogURL(int $catalogURL): void
+    public function setCatalogURL(?string $catalogURL): void
     {
         $this->catalogURL = $catalogURL;
     }

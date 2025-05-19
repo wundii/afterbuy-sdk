@@ -5,24 +5,30 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetListerHistory;
 
 use DateTimeInterface;
+use Wundii\AfterbuySdk\Enum\EbayCurrencyEnum;
+use Wundii\AfterbuySdk\Enum\ListingCountryEnum;
 use Wundii\AfterbuySdk\Enum\SellStatusEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class ListingDetails implements AfterbuyDtoInterface
 {
     public function __construct(
-        private float $anr,
-        private int $soldItems,
-        private int $listedQuantity,
-        private string $listingPlattform,
-        private string $listingTitle,
-        private SellStatusEnum $sellStatusEnum,
-        private float $listingFee,
-        private DateTimeInterface $startTime,
-        private DateTimeInterface $endTime,
-        private int $listingDuration,
-        private int $listingType,
-        private string $listingDescription,
+        private int $anr,
+        private ?int $soldItems = null,
+        private ?int $listedQuantity = null,
+        private ?string $listingPlattform = null,
+        private ?string $listingTitle = null,
+        private ?string $listerSubTitle = null,
+        private ?int $listingDuration = null,
+        private ?int $listingType = null,
+        private ?string $listingDescription = null,
+        private ?float $listingFee = null,
+        private ?ListingCountryEnum $listingCountryEnum = null,
+        private ?SellStatusEnum $sellStatusEnum = null,
+        private ?DateTimeInterface $startTime = null,
+        private ?DateTimeInterface $endTime = null,
+        private ?int $ebayCurrencyId = null,
+        private ?EbayCurrencyEnum $ebayCurrencyEnum = null,
         private ?int $ebayCategoryId = null,
         private ?int $ebayCategory2Id = null,
         private ?int $ebaySubAccountId = null,
@@ -34,14 +40,58 @@ final class ListingDetails implements AfterbuyDtoInterface
     ) {
     }
 
-    public function getAnr(): float
+    public function getAnr(): int
     {
         return $this->anr;
     }
 
-    public function setAnr(float $anr): void
+    public function setAnr(int $anr): void
     {
         $this->anr = $anr;
+    }
+
+    /**
+     * Description of the item. If the ListerArticle has already been deleted, the 'ListingDescription' will be displayed as empty.
+     */
+    public function getListingDescription(): ?string
+    {
+        return $this->listingDescription;
+    }
+
+    public function setListingDescription(?string $listingDescription): void
+    {
+        $this->listingDescription = $listingDescription;
+    }
+
+    /**
+     * Item title. If ListerArticle has already been deleted, the 'ListingTitle' will be displayed as empty.
+     */
+    public function getListingTitle(): ?string
+    {
+        return $this->listingTitle;
+    }
+
+    public function setListingTitle(?string $listingTitle): void
+    {
+        $this->listingTitle = $listingTitle;
+    }
+
+    /**
+     * Auction type
+     * Possible values:
+     * eBay: 1 - Auktion, 2 - PowerAuktion, 7 - eBayStore, 9 - SofortKauf
+     * Azubo: 1 - Auktion, 9 - FixKauf
+     * elimbo: 0 - Festpreis
+     * Escout24: 0 - Keine Angabe
+     */
+    public function getListingType(): ?int
+    {
+        return $this->listingType;
+    }
+
+    public function setListingType(?int $listingType): void
+    {
+        $this->listingType = $listingType;
     }
 
     public function getEbayBuyItNowPrice(): ?float
@@ -72,6 +122,26 @@ final class ListingDetails implements AfterbuyDtoInterface
     public function setEbayCategoryId(?int $ebayCategoryId): void
     {
         $this->ebayCategoryId = $ebayCategoryId;
+    }
+
+    public function getEbayCurrency(): ?EbayCurrencyEnum
+    {
+        return $this->ebayCurrencyEnum;
+    }
+
+    public function setEbayCurrency(?EbayCurrencyEnum $ebayCurrencyEnum): void
+    {
+        $this->ebayCurrencyEnum = $ebayCurrencyEnum;
+    }
+
+    public function getEbayCurrencyId(): ?int
+    {
+        return $this->ebayCurrencyId;
+    }
+
+    public function setEbayCurrencyId(?int $ebayCurrencyId): void
+    {
+        $this->ebayCurrencyId = $ebayCurrencyId;
     }
 
     public function getEbayGaleryUrl(): ?string
@@ -124,127 +194,103 @@ final class ListingDetails implements AfterbuyDtoInterface
         $this->ebaySubAccountId = $ebaySubAccountId;
     }
 
-    public function getEndTime(): DateTimeInterface
+    public function getEndTime(): ?DateTimeInterface
     {
         return $this->endTime;
     }
 
-    public function setEndTime(DateTimeInterface $endTime): void
+    public function setEndTime(?DateTimeInterface $endTime): void
     {
         $this->endTime = $endTime;
     }
 
-    public function getListedQuantity(): int
+    public function getListedQuantity(): ?int
     {
         return $this->listedQuantity;
     }
 
-    public function setListedQuantity(int $listedQuantity): void
+    public function setListedQuantity(?int $listedQuantity): void
     {
         $this->listedQuantity = $listedQuantity;
     }
 
-    /**
-     * Description of the item. If the ListerArticle has already been deleted, the 'ListingDescription' will be displayed as empty.
-     */
-    public function getListingDescription(): string
+    public function getListerSubTitle(): ?string
     {
-        return $this->listingDescription;
+        return $this->listerSubTitle;
     }
 
-    public function setListingDescription(string $listingDescription): void
+    public function setListerSubTitle(?string $listerSubTitle): void
     {
-        $this->listingDescription = $listingDescription;
+        $this->listerSubTitle = $listerSubTitle;
     }
 
-    public function getListingDuration(): int
+    public function getListingCountry(): ?ListingCountryEnum
+    {
+        return $this->listingCountryEnum;
+    }
+
+    public function setListingCountry(?ListingCountryEnum $listingCountryEnum): void
+    {
+        $this->listingCountryEnum = $listingCountryEnum;
+    }
+
+    public function getListingDuration(): ?int
     {
         return $this->listingDuration;
     }
 
-    public function setListingDuration(int $listingDuration): void
+    public function setListingDuration(?int $listingDuration): void
     {
         $this->listingDuration = $listingDuration;
     }
 
-    public function getListingFee(): float
+    public function getListingFee(): ?float
     {
         return $this->listingFee;
     }
 
-    public function setListingFee(float $listingFee): void
+    public function setListingFee(?float $listingFee): void
     {
         $this->listingFee = $listingFee;
     }
 
-    public function getListingPlattform(): string
+    public function getListingPlattform(): ?string
     {
         return $this->listingPlattform;
     }
 
-    public function setListingPlattform(string $listingPlattform): void
+    public function setListingPlattform(?string $listingPlattform): void
     {
         $this->listingPlattform = $listingPlattform;
     }
 
-    /**
-     * Item title. If ListerArticle has already been deleted, the 'ListingTitle' will be displayed as empty.
-     */
-    public function getListingTitle(): string
-    {
-        return $this->listingTitle;
-    }
-
-    public function setListingTitle(string $listingTitle): void
-    {
-        $this->listingTitle = $listingTitle;
-    }
-
-    /**
-     * Auction type
-     * Possible values:
-     * eBay: 1 - Auktion, 2 - PowerAuktion, 7 - eBayStore, 9 - SofortKauf
-     * Azubo: 1 - Auktion, 9 - FixKauf
-     * elimbo: 0 - Festpreis
-     * Escout24: 0 - Keine Angabe
-     */
-    public function getListingType(): int
-    {
-        return $this->listingType;
-    }
-
-    public function setListingType(int $listingType): void
-    {
-        $this->listingType = $listingType;
-    }
-
-    public function getSellStatus(): SellStatusEnum
-    {
-        return $this->sellStatusEnum;
-    }
-
-    public function setSellStatus(SellStatusEnum $sellStatusEnum): void
-    {
-        $this->sellStatusEnum = $sellStatusEnum;
-    }
-
-    public function getSoldItems(): int
+    public function getSoldItems(): ?int
     {
         return $this->soldItems;
     }
 
-    public function setSoldItems(int $soldItems): void
+    public function setSoldItems(?int $soldItems): void
     {
         $this->soldItems = $soldItems;
     }
 
-    public function getStartTime(): DateTimeInterface
+    public function getStartTime(): ?DateTimeInterface
     {
         return $this->startTime;
     }
 
-    public function setStartTime(DateTimeInterface $startTime): void
+    public function setStartTime(?DateTimeInterface $startTime): void
     {
         $this->startTime = $startTime;
+    }
+
+    public function getSellStatus(): ?SellStatusEnum
+    {
+        return $this->sellStatusEnum;
+    }
+
+    public function setSellStatus(?SellStatusEnum $sellStatusEnum): void
+    {
+        $this->sellStatusEnum = $sellStatusEnum;
     }
 }

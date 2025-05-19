@@ -5,11 +5,6 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetUserDefinedFlags\UserDefinedFlag;
@@ -26,13 +21,6 @@ class GetUserDefinedFlagsTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     * @throws ServerExceptionInterface
-     * @throws ReflectionException
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testUserDefinedFlagsBasic(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetUserDefinedFlagsSuccess.xml';

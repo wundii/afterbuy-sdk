@@ -5,11 +5,6 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetProductDiscounts\ProductDiscount;
@@ -42,13 +37,6 @@ class GetProductDiscountsTest extends TestCase
         $this->assertStringContainsString('<FromModificationDate>01.03.2025 00:00:00</FromModificationDate>', $payload);
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     * @throws ServerExceptionInterface
-     * @throws ReflectionException
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testProductDiscountsBasic(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetProductDiscountsSuccess.xml';

@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\AfterbuyWarning;
@@ -72,11 +69,6 @@ class GetStockInfoTest extends TestCase
         $this->assertStringContainsString('<Product><EAN>ArNrEan</EAN></Product>', $payload);
     }
 
-    /**
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testStockInfoBasic(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetStockInfoSuccess.xml';
@@ -132,11 +124,6 @@ class GetStockInfoTest extends TestCase
         $this->assertEquals($expected, $products);
     }
 
-    /**
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testShippingCostErrorCode27(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetStockInfoWarning.xml';

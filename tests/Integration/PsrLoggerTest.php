@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyError;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
@@ -29,11 +26,6 @@ class PsrLoggerTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
-    /**
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testWithoutLogs(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetListerHistorySuccess.xml';
@@ -50,11 +42,6 @@ class PsrLoggerTest extends TestCase
         $this->assertCount(0, $psrLogger->getLogger());
     }
 
-    /**
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testWithWarning(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetStockInfoWarning.xml';
@@ -96,11 +83,6 @@ class PsrLoggerTest extends TestCase
         $this->assertEquals($expected, $warning);
     }
 
-    /**
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testWithError(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetListerHistoryErrorCode30.xml';

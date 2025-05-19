@@ -12,6 +12,7 @@ final class ListedItem implements AfterbuyDtoInterface
         private int $historyId,
         private int $listingId,
         private int $productId,
+        private ?int $variationType = null,
         private ?ListingDetails $listingDetails = null,
         private ?ProductDetails $productDetails = null,
     ) {
@@ -65,5 +66,15 @@ final class ListedItem implements AfterbuyDtoInterface
     public function setProductId(int $productId): void
     {
         $this->productId = $productId;
+    }
+
+    public function getVariationType(): ?int
+    {
+        return $this->variationType;
+    }
+
+    public function setVariationType(?int $variationType): void
+    {
+        $this->variationType = $variationType;
     }
 }

@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
+use Wundii\AfterbuySdk\Enum\ItemPriceCodeEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
 
 final class ItemOriginalCurrency implements AfterbuyDtoInterface
 {
     public function __construct(
         private ?float $itemPrice = null,
-        private ?string $itemPriceCode = null,
+        private ?ItemPriceCodeEnum $itemPriceCodeEnum = null,
         private ?float $itemShipping = null,
     ) {
     }
@@ -25,14 +26,14 @@ final class ItemOriginalCurrency implements AfterbuyDtoInterface
         $this->itemPrice = $itemPrice;
     }
 
-    public function getItemPriceCode(): ?string
+    public function getItemPriceCode(): ?ItemPriceCodeEnum
     {
-        return $this->itemPriceCode;
+        return $this->itemPriceCodeEnum;
     }
 
-    public function setItemPriceCode(?string $itemPriceCode): void
+    public function setItemPriceCode(?ItemPriceCodeEnum $itemPriceCodeEnum): void
     {
-        $this->itemPriceCode = $itemPriceCode;
+        $this->itemPriceCodeEnum = $itemPriceCodeEnum;
     }
 
     public function getItemShipping(): ?float

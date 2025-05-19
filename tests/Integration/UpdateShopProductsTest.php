@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddAttribut;
@@ -441,40 +438,6 @@ class UpdateShopProductsTest extends TestCase
         $this->assertEquals(DomFormatter::xml($expected), DomFormatter::xml($payload));
     }
 
-    // public function testUpdateShopProductsRequestParcelLabel(): void
-    // {
-    //     $file = __DIR__ . '/RequestFiles/UpdateShopProductsParcelLabel.xml';
-    //     $afterbuyGlobal = clone $this->afterbuyGlobal();
-    //
-    //     $request = new UpdateShopProductsRequest(
-    //         [
-    //             new Product(
-    //                 12345600,
-    //                 shippingInfo: new ShippingInfo(
-    //                     parcelLabels: [
-    //                         new ParcelLabel(12345600, 1, '0123DHL-1'),
-    //                         new ParcelLabel(12345600, 5, '0123DHL-5'),
-    //                         new ParcelLabel(12345601, 4, '0123DHL-4'),
-    //                         new ParcelLabel(12345601, 5, '0123DHL-5'),
-    //                         new ParcelLabel(12345602, 1, '0123DHL-1'),
-    //                         new ParcelLabel(12345603, 2, '0123DHL-2'),
-    //                         new ParcelLabel(12345603, 3, '0123DHL-3'),
-    //                     ]
-    //                 ),
-    //             ),
-    //         ]
-    //     );
-    //     $payload = $request->payload($afterbuyGlobal);
-    //     $expected = file_get_contents($file);
-    //
-    //     $this->assertEquals(DomFormatter::xml($expected), DomFormatter::xml($payload));
-    // }
-
-    /**
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testUpdateShopProductsResponseBasic(): void
     {
         $file = __DIR__ . '/ResponseFiles/UpdateShopProductsSuccess.xml';

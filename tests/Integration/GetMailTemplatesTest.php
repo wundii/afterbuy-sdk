@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplate;
@@ -55,11 +52,6 @@ class GetMailTemplatesTest extends TestCase
         $this->assertStringContainsString('<TemplateID>1234</TemplateID>', $payload);
     }
 
-    /**
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testMailTemplatesBasic(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetMailTemplatesSuccess.xml';

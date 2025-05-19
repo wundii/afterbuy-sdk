@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyError;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
@@ -85,11 +82,6 @@ class GetTranslatedMailTemplateTest extends TestCase
         $this->assertStringContainsString('<Filter><FilterName>TemplateName</FilterName><FilterValues><FilterValue>Mail</FilterValue></FilterValues></Filter>', $payload);
     }
 
-    /**
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testTranslatedMailTemplateBasic(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetTranslatedMailTemplateSuccess.xml';
@@ -112,11 +104,6 @@ class GetTranslatedMailTemplateTest extends TestCase
         $this->assertEquals($expected, $translatedMailText);
     }
 
-    /**
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testShippingCostErrorCode27(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetTranslatedMailTemplateError37.xml';

@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\BaseProductData;
@@ -32,6 +29,7 @@ use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\InternalItemTypeEnum;
 use Wundii\AfterbuySdk\Enum\ItemPlatFormNameEnum;
+use Wundii\AfterbuySdk\Enum\ItemPriceCodeEnum;
 use Wundii\AfterbuySdk\Enum\OrderDirectionEnum;
 use Wundii\AfterbuySdk\Enum\PaymentFunctionEnum;
 use Wundii\AfterbuySdk\Enum\PaymentIdEnum;
@@ -185,11 +183,6 @@ class GetSoldItemsTest extends TestCase
         $this->assertStringContainsString('<Filter><FilterName>AlternativeItemNumber2</FilterName><FilterValues><FilterValue>31</FilterValue></FilterValues></Filter>', $payload);
     }
 
-    /**
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testSoldItemsBasic(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetSoldItemsSuccess.xml';
@@ -279,7 +272,7 @@ class GetSoldItemsTest extends TestCase
                         ebayFeedbackCommentType: 'Positive',
                         itemOriginalCurrency: new ItemOriginalCurrency(
                             itemPrice: 112.3,
-                            itemPriceCode: 'EUR',
+                            itemPriceCodeEnum: ItemPriceCodeEnum::EURO,
                             itemShipping: 0.0,
                         ),
                         shopProductDetails: new ShopProductDetails(

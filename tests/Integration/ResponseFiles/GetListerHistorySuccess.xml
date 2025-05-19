@@ -11,13 +11,18 @@
                 <HistoryID>38897689</HistoryID>
                 <ListingID>3041718</ListingID>
                 <ProductID>1737852</ProductID>
+                <VariationType>0</VariationType>
                 <ListingDetails>
                     <Anr>9526337680</Anr>
                     <SoldItems>1</SoldItems>
                     <ListedQuantity>1</ListedQuantity>
                     <ListingPlattform>eBay</ListingPlattform>
                     <ListingTitle><![CDATA[Afterbuy Testauktion CheckOut Redirect C-O-R 4]]></ListingTitle>
+                    <ListerSubTitle>Testauktion 4</ListerSubTitle>
+                    <eBayCurrencyId>7</eBayCurrencyId>
+                    <eBayCurrency>EUR</eBayCurrency>
                     <eBayCategoryID>31448</eBayCategoryID>
+                    <eBaySubAccountID>1001</eBaySubAccountID>
                     <eBayStartprice>1</eBayStartprice>
                     <eBayBuyItNowPrice>0</eBayBuyItNowPrice>
                     <eBayPictureURL><![CDATA[http://bilder.afterbuy.de/images/29956/ab-logo.gif]]></eBayPictureURL>
@@ -29,19 +34,38 @@
                     <EndTime>11.06.2006 15:08:48</EndTime>
                     <ListingDuration>10</ListingDuration>
                     <ListingType>9</ListingType>
+                    <ListingCountry>DE</ListingCountry>
                 </ListingDetails>
+                <ProductDetails>
+                    <EAN>3210123456789</EAN>
+                    <Anr>9526337680</Anr>
+                    <Name><![CDATA[Test Artikel]]></Name>
+                    <ShortDescription><![CDATA[Test]]></ShortDescription>
+                    <Catalogs>
+                        <Catalog>
+                            <CatalogID>4</CatalogID>
+                            <CatalogPath><![CDATA[test]]></CatalogPath>
+                            <CatalogURL><![CDATA[https://www.example.com/test]]></CatalogURL>
+                        </Catalog>
+                    </Catalogs>
+                </ProductDetails>
             </ListedItem>
             <ListedItem>
                 <HistoryID>38898441</HistoryID>
                 <ListingID>3041716</ListingID>
                 <ProductID>1915544</ProductID>
+                <VariationType>0</VariationType>
                 <ListingDetails>
                     <Anr>9526339276</Anr>
                     <SoldItems>1</SoldItems>
                     <ListedQuantity>3</ListedQuantity>
                     <ListingPlattform>eBay</ListingPlattform>
                     <ListingTitle><![CDATA[Afterbuy Testauktion CheckOutRedirect C-O-R 3]]></ListingTitle>
+                    <ListerSubTitle>Testauktion 3</ListerSubTitle>
+                    <eBayCurrencyId>7</eBayCurrencyId>
+                    <eBayCurrency>EUR</eBayCurrency>
                     <eBayCategoryID>31448</eBayCategoryID>
+                    <eBaySubAccountID>1001</eBaySubAccountID>
                     <eBayStartprice>1</eBayStartprice>
                     <eBayBuyItNowPrice>0</eBayBuyItNowPrice>
                     <eBayPictureURL><![CDATA[http://bilder.afterbuy.de/images/29956/ab-logo.gif]]></eBayPictureURL>
@@ -53,31 +77,27 @@
                     <EndTime>11.06.2006 15:13:51</EndTime>
                     <ListingDuration>10</ListingDuration>
                     <ListingType>9</ListingType>
+                    <ListingCountry>DE</ListingCountry>
                 </ListingDetails>
             </ListedItem>
             <ListedItem>
                 <HistoryID>38899469</HistoryID>
                 <ListingID>3777146</ListingID>
                 <ProductID>1913970</ProductID>
-                <ListingDetails>
-                    <Anr>7625481145</Anr>
-                    <SoldItems>1</SoldItems>
-                    <ListedQuantity>1</ListedQuantity>
-                    <ListingPlattform>eBay</ListingPlattform>
-                    <ListingTitle><![CDATA[Afterbuy Testauktion CheckOutRedirect EditTest 2]]></ListingTitle>
-                    <eBayCategoryID>83616</eBayCategoryID>
-                    <eBayStartprice>10</eBayStartprice>
-                    <eBayBuyItNowPrice>0</eBayBuyItNowPrice>
-                    <eBayPictureURL><![CDATA[http://bilder.afterbuy.de/images/29956/ab-logo.gif]]></eBayPictureURL>
-                    <eBayGaleryURL><![CDATA[http://bilder.afterbuy.de/images/29956/ab-logo-icon.gif]]></eBayGaleryURL>
-                    <eBayRelist>0</eBayRelist>
-                    <SellStatus>erfolgreich</SellStatus>
-                    <ListingFee>1,55</ListingFee>
-                    <StartTime>01.06.2006 15:23:52</StartTime>
-                    <EndTime>04.06.2006 15:23:52</EndTime>
-                    <ListingDuration>3</ListingDuration>
-                    <ListingType>9</ListingType>
-                </ListingDetails>
+                <VariationType>0</VariationType>
+                <ProductDetails>
+                    <EAN>3210123456790</EAN>
+                    <Anr>9526337681</Anr>
+                    <Name><![CDATA[Test Artikel 2]]></Name>
+                    <ShortDescription><![CDATA[Test 2]]></ShortDescription>
+                    <Catalogs>
+                        <Catalog>
+                            <CatalogID>4</CatalogID>
+                            <CatalogPath><![CDATA[test2]]></CatalogPath>
+                            <CatalogURL><![CDATA[https://www.example.com/test2]]></CatalogURL>
+                        </Catalog>
+                    </Catalogs>
+                </ProductDetails>
             </ListedItem>
             <LastHistoryID>38897689</LastHistoryID>
         </ListedItems>

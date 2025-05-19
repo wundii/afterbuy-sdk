@@ -5,11 +5,6 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetShopCatalogs\Catalog;
@@ -85,13 +80,6 @@ class GetShopCatalogsTest extends TestCase
         $this->assertStringContainsString('<Filter><FilterName>RangeLevel</FilterName><FilterValues><ValueFrom>0</ValueFrom><ValueTo>2</ValueTo></FilterValues></Filter>', $payload);
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     * @throws ServerExceptionInterface
-     * @throws ReflectionException
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testShopCatalogsBasic(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetShopCatalogsSuccess.xml';
@@ -110,13 +98,6 @@ class GetShopCatalogsTest extends TestCase
         $this->assertInstanceOf(Catalog::class, $catalogs->getCatalogs()[0]);
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     * @throws ServerExceptionInterface
-     * @throws ReflectionException
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testShopCatalogsSerializeToUpdateCatalogs(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetShopCatalogsSuccess.xml';

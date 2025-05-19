@@ -5,11 +5,6 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Wundii\AfterbuySdk\Afterbuy;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog;
@@ -207,13 +202,6 @@ class UpdateCatalogsTest extends TestCase
         $this->assertEquals(DomFormatter::xml($expected), DomFormatter::xml($payload));
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     * @throws ServerExceptionInterface
-     * @throws ReflectionException
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testUpdateCatalogsNewCatalogsResponseBasic(): void
     {
         $file = __DIR__ . '/ResponseFiles/UpdateCatalogsNewCatalogsSuccess.xml';
@@ -234,13 +222,6 @@ class UpdateCatalogsTest extends TestCase
         $this->assertInstanceOf(NewCatalog::class, $newCatalogs->getNewCatalogs()[0]);
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     * @throws ServerExceptionInterface
-     * @throws ReflectionException
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
     public function testCatalogsCatalogNotDeletedsResponseBasic(): void
     {
         $file = __DIR__ . '/ResponseFiles/UpdateCatalogsCatalogNotDeletedsSuccess.xml';

@@ -48,7 +48,7 @@ Require the bundle and its dependencies with composer:
 ## The road to Version 1.0
 In preparation for the release of version 1.0, I would like to test all XML returns.
 - [x] GetAfterbuyTime
-- [ ] GetListerHistory
+- [x] GetListerHistory
 - [x] GetMailTemplates
 - [x] GetPaymentServices
 - [ ] GetProductDiscounts
@@ -59,8 +59,8 @@ In preparation for the release of version 1.0, I would like to test all XML retu
 - [x] GetSoldItems
 - [x] GetStockInfo
 - [x] GetTranslatedMailTemplate
-- [ ] UpdateCatalogs
-- [ ] UpdateShopProducts
+- [x] UpdateCatalogs
+- [x] UpdateShopProducts
 - [x] UpdateSoldItems
 
 ## Usage
