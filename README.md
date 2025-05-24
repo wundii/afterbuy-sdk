@@ -62,7 +62,7 @@ In preparation for the release of version 1.0, I would like to test all XML retu
 - [x] UpdateCatalogs
 - [x] UpdateShopProducts
 - [x] UpdateSoldItems
-- [ ] DetailLevelEnum combination
+- [x] DetailLevelEnum combination
 
 ## Usage
 ```php
