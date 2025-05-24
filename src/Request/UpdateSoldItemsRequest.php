@@ -8,7 +8,6 @@ use RuntimeException;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateSoldItems\Order;
 use Wundii\AfterbuySdk\Dto\UpdateSoldItems\Orders;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
@@ -41,7 +40,6 @@ final readonly class UpdateSoldItemsRequest implements AfterbuyRequestInterface
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
         $afterbuyGlobal->setCallName('UpdateSoldItems');
-        $afterbuyGlobal->setDetailLevelEnum(DetailLevelEnum::FIRST);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

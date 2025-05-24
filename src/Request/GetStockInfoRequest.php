@@ -18,12 +18,18 @@ use Wundii\AfterbuySdk\Response\GetStockInfoResponse;
 final readonly class GetStockInfoRequest implements AfterbuyRequestInterface
 {
     /**
+     * @var DetailLevelEnum[]
+     */
+    private array $detailLevelEnums;
+
+    /**
      * @param GetStockInfoFilterInterface[] $productFilter
      */
     public function __construct(
-        private DetailLevelEnum $detailLevelEnum = DetailLevelEnum::FIRST,
         private array $productFilter = [],
+        DetailLevelEnum ...$detailLevelEnum,
     ) {
+        $this->detailLevelEnums = $detailLevelEnum;
     }
 
     public function method(): RequestMethodEnum
@@ -42,16 +48,8 @@ final readonly class GetStockInfoRequest implements AfterbuyRequestInterface
             throw new RuntimeException('ProductFilter is required');
         }
 
-        $detailLevelEnum = match ($this->detailLevelEnum) {
-            DetailLevelEnum::FIRST,
-            DetailLevelEnum::SECOND,
-            DetailLevelEnum::THIRD,
-            DetailLevelEnum::FOURTH => $this->detailLevelEnum,
-            default => DetailLevelEnum::FIRST,
-        };
-
         $afterbuyGlobal->setCallName('GetStockInfo');
-        $afterbuyGlobal->setDetailLevelEnum($detailLevelEnum);
+        $afterbuyGlobal->setDetailLevelEnums($this->detailLevelEnums, DetailLevelEnum::FOURTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

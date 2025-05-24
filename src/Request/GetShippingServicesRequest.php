@@ -16,9 +16,15 @@ use Wundii\AfterbuySdk\Response\GetShippingServicesResponse;
 
 final readonly class GetShippingServicesRequest implements AfterbuyRequestInterface
 {
+    /**
+     * @var DetailLevelEnum[]
+     */
+    private array $detailLevelEnums;
+
     public function __construct(
-        private DetailLevelEnum $detailLevelEnum = DetailLevelEnum::FIRST,
+        DetailLevelEnum ...$detailLevelEnum,
     ) {
+        $this->detailLevelEnums = $detailLevelEnum;
     }
 
     public function method(): RequestMethodEnum
@@ -33,15 +39,8 @@ final readonly class GetShippingServicesRequest implements AfterbuyRequestInterf
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
-        $detailLevelEnum = match ($this->detailLevelEnum) {
-            DetailLevelEnum::FIRST,
-            DetailLevelEnum::SECOND,
-            DetailLevelEnum::THIRD => $this->detailLevelEnum,
-            default => DetailLevelEnum::FIRST,
-        };
-
         $afterbuyGlobal->setCallName('GetShippingServices');
-        $afterbuyGlobal->setDetailLevelEnum($detailLevelEnum);
+        $afterbuyGlobal->setDetailLevelEnums($this->detailLevelEnums, DetailLevelEnum::THIRD);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

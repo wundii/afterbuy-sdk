@@ -7,7 +7,6 @@ namespace Wundii\AfterbuySdk\Request;
 use DateTimeInterface;
 use RuntimeException;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
@@ -37,7 +36,6 @@ final readonly class GetProductDiscountsRequest implements AfterbuyRequestInterf
     {
 
         $afterbuyGlobal->setCallName('GetProductDiscounts');
-        $afterbuyGlobal->setDetailLevelEnum(DetailLevelEnum::FIRST);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

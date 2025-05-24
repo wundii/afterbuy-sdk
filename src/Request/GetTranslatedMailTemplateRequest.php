@@ -6,7 +6,6 @@ namespace Wundii\AfterbuySdk\Request;
 
 use RuntimeException;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
@@ -41,7 +40,6 @@ final readonly class GetTranslatedMailTemplateRequest implements AfterbuyRequest
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
         $afterbuyGlobal->setCallName('GetTranslatedMailTemplate');
-        $afterbuyGlobal->setDetailLevelEnum(DetailLevelEnum::FIRST);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

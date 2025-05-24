@@ -6,7 +6,6 @@ namespace Wundii\AfterbuySdk\Request;
 
 use RuntimeException;
 use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
@@ -38,7 +37,6 @@ final readonly class GetPaymentServicesRequest implements AfterbuyRequestInterfa
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
         $afterbuyGlobal->setCallName('GetPaymentServices');
-        $afterbuyGlobal->setDetailLevelEnum(DetailLevelEnum::FIRST); // only first level is allowed
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

@@ -18,13 +18,19 @@ use Wundii\AfterbuySdk\Response\GetShopCatalogsResponse;
 final readonly class GetShopCatalogsRequest implements AfterbuyRequestInterface
 {
     /**
+     * @var DetailLevelEnum[]
+     */
+    private array $detailLevelEnums;
+
+    /**
      * @param GetShopCatalogsFilterInterface[] $filter
      */
     public function __construct(
-        private DetailLevelEnum $detailLevelEnum = DetailLevelEnum::FIRST,
-        private int $maxCatalogs = 100,
         private array $filter = [],
+        private int $maxCatalogs = 100,
+        DetailLevelEnum ...$detailLevelEnum,
     ) {
+        $this->detailLevelEnums = $detailLevelEnum;
     }
 
     public function method(): RequestMethodEnum
@@ -39,14 +45,8 @@ final readonly class GetShopCatalogsRequest implements AfterbuyRequestInterface
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
-        $detailLevelEnum = match ($this->detailLevelEnum) {
-            DetailLevelEnum::FIRST,
-            DetailLevelEnum::SECOND => $this->detailLevelEnum,
-            default => DetailLevelEnum::FIRST,
-        };
-
         $afterbuyGlobal->setCallName('GetShopCatalogs');
-        $afterbuyGlobal->setDetailLevelEnum($detailLevelEnum);
+        $afterbuyGlobal->setDetailLevelEnums($this->detailLevelEnums, DetailLevelEnum::SECOND);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

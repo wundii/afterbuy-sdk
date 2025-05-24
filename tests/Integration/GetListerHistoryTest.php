@@ -51,11 +51,11 @@ class GetListerHistoryTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
-        $request = new GetListerHistoryRequest(DetailLevelEnum::SECOND);
+        $request = new GetListerHistoryRequest(detailLevelEnum: DetailLevelEnum::SECOND);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>2</DetailLevel>', $payload);
 
-        $request = new GetListerHistoryRequest(DetailLevelEnum::SIXTH);
+        $request = new GetListerHistoryRequest(detailLevelEnum: DetailLevelEnum::SIXTH);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }

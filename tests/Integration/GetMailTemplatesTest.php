@@ -30,11 +30,11 @@ class GetMailTemplatesTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
-        $request = new GetMailTemplatesRequest(DetailLevelEnum::SECOND);
+        $request = new GetMailTemplatesRequest(detailLevelEnum: DetailLevelEnum::SECOND);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>2</DetailLevel>', $payload);
 
-        $request = new GetMailTemplatesRequest(DetailLevelEnum::THIRD);
+        $request = new GetMailTemplatesRequest(detailLevelEnum: DetailLevelEnum::THIRD);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }

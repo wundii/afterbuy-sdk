@@ -34,11 +34,11 @@ class GetStockInfoTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
-        $request = new GetStockInfoRequest(DetailLevelEnum::FOURTH, [new ProductFilter(ProductFilterEnum::ANR, 1)]);
+        $request = new GetStockInfoRequest([new ProductFilter(ProductFilterEnum::ANR, 1)], DetailLevelEnum::FOURTH);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>8</DetailLevel>', $payload);
 
-        $request = new GetStockInfoRequest(DetailLevelEnum::FIFTH, [new ProductFilter(ProductFilterEnum::ANR, 1)]);
+        $request = new GetStockInfoRequest([new ProductFilter(ProductFilterEnum::ANR, 1)], DetailLevelEnum::FIFTH);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }

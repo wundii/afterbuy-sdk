@@ -19,16 +19,22 @@ use Wundii\AfterbuySdk\Response\GetSoldItemsResponse;
 final readonly class GetSoldItemsRequest implements AfterbuyRequestInterface
 {
     /**
+     * @var DetailLevelEnum[]
+     */
+    private array $detailLevelEnums;
+
+    /**
      * @param GetSoldItemsFilterInterface[] $filter
      */
     public function __construct(
-        private DetailLevelEnum $detailLevelEnum = DetailLevelEnum::FIRST,
-        private ?bool $requestAllItems = null,
-        private int $maxSoldItems = 250,
-        private OrderDirectionEnum $orderDirectionEnum = OrderDirectionEnum::ASC,
-        private bool $returnHiddenItems = false,
         private array $filter = [],
+        private int $maxSoldItems = 250,
+        private bool $returnHiddenItems = false,
+        private OrderDirectionEnum $orderDirectionEnum = OrderDirectionEnum::ASC,
+        private ?bool $requestAllItems = null,
+        DetailLevelEnum ...$detailLevelEnum,
     ) {
+        $this->detailLevelEnums = $detailLevelEnum;
     }
 
     public function method(): RequestMethodEnum
@@ -43,23 +49,13 @@ final readonly class GetSoldItemsRequest implements AfterbuyRequestInterface
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
-        $detailLevelEnum = match ($this->detailLevelEnum) {
-            DetailLevelEnum::FIRST,
-            DetailLevelEnum::SECOND,
-            DetailLevelEnum::THIRD,
-            DetailLevelEnum::FOURTH,
-            DetailLevelEnum::FIFTH,
-            DetailLevelEnum::SIXTH => $this->detailLevelEnum,
-            default => DetailLevelEnum::FIRST,
-        };
-
         $maxSoldItems = $this->maxSoldItems;
         if ($maxSoldItems > 250) {
             $maxSoldItems = 250;
         }
 
         $afterbuyGlobal->setCallName('GetSoldItems');
-        $afterbuyGlobal->setDetailLevelEnum($detailLevelEnum);
+        $afterbuyGlobal->setDetailLevelEnums($this->detailLevelEnums, DetailLevelEnum::SIXTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

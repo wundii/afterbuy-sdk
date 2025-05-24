@@ -58,11 +58,11 @@ class GetShopProductsTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
-        $request = new GetShopProductsRequest(DetailLevelEnum::EIGHTH);
+        $request = new GetShopProductsRequest(detailLevelEnum: DetailLevelEnum::EIGHTH);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>128</DetailLevel>', $payload);
 
-        $request = new GetShopProductsRequest(DetailLevelEnum::SIXTH);
+        $request = new GetShopProductsRequest(detailLevelEnum: DetailLevelEnum::SIXTH);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }

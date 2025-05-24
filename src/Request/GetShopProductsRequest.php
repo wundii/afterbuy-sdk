@@ -18,17 +18,23 @@ use Wundii\AfterbuySdk\Response\GetShopProductsResponse;
 final readonly class GetShopProductsRequest implements AfterbuyRequestInterface
 {
     /**
+     * @var DetailLevelEnum[]
+     */
+    private array $detailLevelEnums;
+
+    /**
      * @param GetShopProductsFilterInterface[] $filter
      */
     public function __construct(
-        private DetailLevelEnum $detailLevelEnum = DetailLevelEnum::FIRST,
+        private array $filter = [],
         private int $maxShopItems = 100,
         private bool $suppressBaseProductRelatedData = false,
         private bool $paginationEnabled = false,
         private ?int $pageNumber = null,
         private bool $returnShop20Container = false,
-        private array $filter = [],
+        DetailLevelEnum ...$detailLevelEnum,
     ) {
+        $this->detailLevelEnums = $detailLevelEnum;
     }
 
     public function method(): RequestMethodEnum
@@ -43,24 +49,18 @@ final readonly class GetShopProductsRequest implements AfterbuyRequestInterface
 
     public function payload(AfterbuyGlobal $afterbuyGlobal): string
     {
-        $detailLevelEnum = match ($this->detailLevelEnum) {
-            DetailLevelEnum::FIRST,
-            DetailLevelEnum::SECOND,
-            DetailLevelEnum::THIRD,
-            DetailLevelEnum::FOURTH,
-            DetailLevelEnum::FIFTH,
-            DetailLevelEnum::SEVENTH,
-            DetailLevelEnum::EIGHTH => $this->detailLevelEnum,
-            default => DetailLevelEnum::FIRST,
-        };
-
         $maxShopItems = $this->maxShopItems;
         if ($maxShopItems > 250) {
             $maxShopItems = 250;
         }
 
+        $detailLevelEnums = array_filter(
+            $this->detailLevelEnums,
+            static fn (DetailLevelEnum $detailLevelEnum): bool => $detailLevelEnum !== DetailLevelEnum::SIXTH
+        );
+
         $afterbuyGlobal->setCallName('GetShopProducts');
-        $afterbuyGlobal->setDetailLevelEnum($detailLevelEnum);
+        $afterbuyGlobal->setDetailLevelEnums($detailLevelEnums, DetailLevelEnum::EIGHTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

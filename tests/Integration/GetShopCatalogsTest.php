@@ -35,11 +35,11 @@ class GetShopCatalogsTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
-        $request = new GetShopCatalogsRequest(DetailLevelEnum::SECOND);
+        $request = new GetShopCatalogsRequest(detailLevelEnum: DetailLevelEnum::SECOND);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>2</DetailLevel>', $payload);
 
-        $request = new GetShopCatalogsRequest(DetailLevelEnum::THIRD);
+        $request = new GetShopCatalogsRequest(detailLevelEnum: DetailLevelEnum::THIRD);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }
