@@ -26,14 +26,14 @@ $afterbuy = new Afterbuy(
 );
 
 $request = new GetShopCatalogsRequest(
-    detailLevelEnum: DetailLevelEnum::FIRST,
-    maxCatalogs: 10,
     filter: [
         new CatalogId(1000),
         new Level(2000),
         new RangeCatalogId(3000, 3010),
         new RangeLevel(4000, 4010),
     ],
+    maxCatalogs: 10,
+    detailLevelEnum: DetailLevelEnum::FIRST,
 );
 $response = $afterbuy->runRequest($request);
 

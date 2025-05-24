@@ -34,12 +34,6 @@ $afterbuy = new Afterbuy(
 );
 
 $request = new GetShopProductsRequest(
-    detailLevelEnum: DetailLevelEnum::FIRST,
-    maxShopItems: 10,
-    suppressBaseProductRelatedData: false,
-    paginationEnabled: false,
-    pageNumber: null,
-    returnShop20Container: false,
     filter: [
         new Anr(1000),
         new DateFilter(
@@ -55,6 +49,12 @@ $request = new GetShopProductsRequest(
         new RangeProductId(6000, 6010),
         new Tag('myTag'),  
     ],
+    maxShopItems: 10,
+    suppressBaseProductRelatedData: false,
+    paginationEnabled: false,
+    pageNumber: null,
+    returnShop20Container: false,
+    detailLevelEnum: DetailLevelEnum::FIRST,
 );
 $response = $afterbuy->runRequest($request);
 

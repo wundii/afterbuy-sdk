@@ -35,8 +35,6 @@ $afterbuy = new Afterbuy(
 );
 
 $request = new GetListerHistoryRequest(
-    detailLevelEnum: DetailLevelEnum::FIRST,
-    maxHistoryItems: 10, 
     filter: [
         new StartDate(
             new DateTime('2025-03-17 00:00:00'),
@@ -55,6 +53,8 @@ $request = new GetListerHistoryRequest(
         new RangeHistoryId(5000, 5010),
         new SiteId(SiteIdEnum::EBAY_COM),
     ],
+    maxHistoryItems: 10,
+    detailLevelEnum: DetailLevelEnum::FIRST,
 );
 $response = $afterbuy->runRequest($request);
 
