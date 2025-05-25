@@ -7,7 +7,7 @@
 <?php
 
 use Wundii\AfterbuySdk\Afterbuy;
-use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\DateFilterSoldItemsEnum;
 use Wundii\AfterbuySdk\Enum\DefaultFilterSoldItemsEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;

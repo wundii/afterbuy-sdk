@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Wundii\AfterbuySdk\Dto;
+namespace Wundii\AfterbuySdk\Core;
 
 use RuntimeException;
 use SimpleXMLElement;

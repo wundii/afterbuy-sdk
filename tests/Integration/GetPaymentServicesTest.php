@@ -6,7 +6,7 @@ namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Afterbuy;
-use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetPaymentServices\PaymentService;
 use Wundii\AfterbuySdk\Dto\GetPaymentServices\PaymentServices;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;

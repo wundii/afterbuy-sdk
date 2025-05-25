@@ -7,7 +7,7 @@ namespace Wundii\AfterbuySdk\Extends;
 use DateTimeInterface;
 use DOMDocument;
 use SimpleXMLElement;
-use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Wundii\AfterbuySdk\Interface\FilterInterface;
 use Wundii\AfterbuySdk\Interface\ProductFilterInterface;

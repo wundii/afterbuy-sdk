@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Request;
 
 use RuntimeException;
-use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalogs;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;

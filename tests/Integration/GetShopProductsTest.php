@@ -6,7 +6,7 @@ namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Afterbuy;
-use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\AdditionalDescriptionField;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\AdditionalPrice;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\Attribut;

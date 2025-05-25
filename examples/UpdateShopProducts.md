@@ -6,7 +6,7 @@
 <?php
 
 use Wundii\AfterbuySdk\Afterbuy;
-use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Product;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\ProductIdent;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;

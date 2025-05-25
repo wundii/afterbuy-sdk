@@ -6,8 +6,8 @@ namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\AfterbuyError;
-use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingMethods;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingService;

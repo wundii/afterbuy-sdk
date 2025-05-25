@@ -63,13 +63,14 @@ In preparation for the release of version 1.0, I would like to test all XML retu
 - [x] UpdateShopProducts
 - [x] UpdateSoldItems
 - [x] DetailLevelEnum combination
+- [x] AfterbuyGlobal namespace refactoring
 
 ## Usage
 ```php
 use Wundii\AfterbuySdk\Afterbuy;
-use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
-use Wundii\AfterbuySdk\Request\GetAfterbuyTimeRequest:
+use Wundii\AfterbuySdk\Request\GetAfterbuyTimeRequest;
 
 $afterbuyGlobal = new AfterbuyGlobal(
     accountToken: '123...',

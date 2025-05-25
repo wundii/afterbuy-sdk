@@ -6,7 +6,7 @@ namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Afterbuy;
-use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetUserDefinedFlags\UserDefinedFlag;
 use Wundii\AfterbuySdk\Dto\GetUserDefinedFlags\UserDefinedFlags;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;

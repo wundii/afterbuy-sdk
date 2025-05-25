@@ -6,7 +6,7 @@ namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Afterbuy;
-use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplate;
 use Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplates;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;

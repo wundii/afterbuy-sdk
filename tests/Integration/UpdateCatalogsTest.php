@@ -6,7 +6,7 @@ namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Afterbuy;
-use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\CatalogNotDeleted;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\CatalogNotDeleteds;

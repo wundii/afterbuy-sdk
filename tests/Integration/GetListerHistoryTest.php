@@ -6,8 +6,8 @@ namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\AfterbuyError;
-use Wundii\AfterbuySdk\Dto\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetListerHistory\ListedItem;
 use Wundii\AfterbuySdk\Dto\GetListerHistory\ListedItems;
 use Wundii\AfterbuySdk\Dto\GetListerHistory\ListingDetails;
