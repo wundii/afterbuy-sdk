@@ -66,6 +66,7 @@ In preparation for the release of version 1.0, I would like to test all XML retu
 - [x] AfterbuyGlobal namespace refactoring
 - [x] AfterbuyGlobalInterface implementation
 - [ ] Sandbox and Production environment final testing
+- [ ] Unittest for the Validator classes
 
 ## Usage
 ```php
