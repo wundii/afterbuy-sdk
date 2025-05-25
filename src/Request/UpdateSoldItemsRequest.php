@@ -12,6 +12,7 @@ use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Response\UpdateSoldItemsResponse;
 
@@ -37,7 +38,7 @@ final readonly class UpdateSoldItemsRequest implements AfterbuyRequestInterface
         );
     }
 
-    public function payload(AfterbuyGlobal $afterbuyGlobal): string
+    public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
         $afterbuyGlobal->setCallName('UpdateSoldItems');
 

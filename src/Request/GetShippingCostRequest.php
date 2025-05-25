@@ -11,6 +11,7 @@ use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Response\GetShippingCostResponse;
 
@@ -31,7 +32,7 @@ final readonly class GetShippingCostRequest implements AfterbuyRequestInterface
         return null;
     }
 
-    public function payload(AfterbuyGlobal $afterbuyGlobal): string
+    public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
         $afterbuyGlobal->setCallName('GetShippingCost');
 

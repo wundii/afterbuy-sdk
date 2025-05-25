@@ -11,6 +11,7 @@ use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Interface\Filter\GetStockInfoFilterInterface;
 use Wundii\AfterbuySdk\Response\GetStockInfoResponse;
@@ -42,7 +43,7 @@ final readonly class GetStockInfoRequest implements AfterbuyRequestInterface
         return null;
     }
 
-    public function payload(AfterbuyGlobal $afterbuyGlobal): string
+    public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
         if ($this->productFilter === []) {
             throw new RuntimeException('ProductFilter is required');

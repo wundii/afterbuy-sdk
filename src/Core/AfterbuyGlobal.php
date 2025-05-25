@@ -8,8 +8,9 @@ use RuntimeException;
 use SimpleXMLElement;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\ErrorLanguageEnum;
+use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 
-final class AfterbuyGlobal
+final class AfterbuyGlobal implements AfterbuyGlobalInterface
 {
     public const DefaultXmlRoot = '<?xml version="1.0" encoding="utf-8"?><Request></Request>';
 

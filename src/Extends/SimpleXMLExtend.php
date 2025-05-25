@@ -7,14 +7,14 @@ namespace Wundii\AfterbuySdk\Extends;
 use DateTimeInterface;
 use DOMDocument;
 use SimpleXMLElement;
-use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\FilterInterface;
 use Wundii\AfterbuySdk\Interface\ProductFilterInterface;
 
 final class SimpleXMLExtend extends SimpleXMLElement
 {
-    public function addAfterbuyGlobal(AfterbuyGlobal $afterbuyGlobal): void
+    public function addAfterbuyGlobal(AfterbuyGlobalInterface $afterbuyGlobal): void
     {
         $afterbuyGlobal->simpleXmlElement($this);
     }

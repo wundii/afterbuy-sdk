@@ -25,12 +25,12 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
-use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Extends\DateTime;
 use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
 use Wundii\DataMapper\DataConfig;
@@ -43,7 +43,7 @@ use Wundii\DataMapper\Enum\ApproachEnum;
 readonly class Afterbuy
 {
     public function __construct(
-        private AfterbuyGlobal $afterbuyGlobal,
+        private AfterbuyGlobalInterface $afterbuyGlobal,
         private EndpointEnum $endpointEnum,
         private ?LoggerInterface $logger = null,
         private ?ValidatorBuilder $validatorBuilder = null,
@@ -169,7 +169,7 @@ readonly class Afterbuy
         return $validationBuilder->getValidator();
     }
 
-    public function getAfterbuyGlobal(): AfterbuyGlobal
+    public function getAfterbuyGlobal(): AfterbuyGlobalInterface
     {
         return $this->afterbuyGlobal;
     }

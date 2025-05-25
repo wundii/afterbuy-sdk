@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Interface;
 
-use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 
@@ -12,7 +11,7 @@ interface AfterbuyRequestInterface
 {
     public function method(): RequestMethodEnum;
 
-    public function payload(AfterbuyGlobal $afterbuyGlobal): string;
+    public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string;
 
     public function responseClass(): string;
 

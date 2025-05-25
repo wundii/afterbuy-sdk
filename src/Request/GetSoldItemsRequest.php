@@ -12,6 +12,7 @@ use Wundii\AfterbuySdk\Enum\OrderDirectionEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Interface\Filter\GetSoldItemsFilterInterface;
 use Wundii\AfterbuySdk\Response\GetSoldItemsResponse;
@@ -47,7 +48,7 @@ final readonly class GetSoldItemsRequest implements AfterbuyRequestInterface
         return null;
     }
 
-    public function payload(AfterbuyGlobal $afterbuyGlobal): string
+    public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
         $maxSoldItems = $this->maxSoldItems;
         if ($maxSoldItems > 250) {

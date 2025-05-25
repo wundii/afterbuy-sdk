@@ -10,6 +10,7 @@ use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Interface\Filter\GetPaymentServicesFilterInterface;
 use Wundii\AfterbuySdk\Response\GetPaymentServicesResponse;
@@ -34,7 +35,7 @@ final readonly class GetPaymentServicesRequest implements AfterbuyRequestInterfa
         return null;
     }
 
-    public function payload(AfterbuyGlobal $afterbuyGlobal): string
+    public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
         $afterbuyGlobal->setCallName('GetPaymentServices');
 
