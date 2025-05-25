@@ -64,6 +64,8 @@ In preparation for the release of version 1.0, I would like to test all XML retu
 - [x] UpdateSoldItems
 - [x] DetailLevelEnum combination
 - [x] AfterbuyGlobal namespace refactoring
+- [x] AfterbuyGlobalInterface implementation
+- [ ] Sandbox and Production environment final testing
 
 ## Usage
 ```php
