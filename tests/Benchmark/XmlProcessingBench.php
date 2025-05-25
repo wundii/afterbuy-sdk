@@ -15,12 +15,25 @@ use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 class XmlProcessingBench
 {
     private const SAMPLE_PRODUCTS = [
-        ['id' => 1, 'name' => 'Product 1', 'price' => 19.99],
-        ['id' => 2, 'name' => 'Product 2', 'price' => 29.99],
-        ['id' => 3, 'name' => 'Product 3', 'price' => 54.99],
+        [
+            'id' => 1,
+            'name' => 'Product 1',
+            'price' => 19.99,
+        ],
+        [
+            'id' => 2,
+            'name' => 'Product 2',
+            'price' => 29.99,
+        ],
+        [
+            'id' => 3,
+            'name' => 'Product 3',
+            'price' => 54.99,
+        ],
     ];
 
     private SimpleXMLExtend $xml;
+
     private array $testData;
 
     public function setUp(): void
@@ -39,9 +52,9 @@ class XmlProcessingBench
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         foreach ($this->testData as $product) {
             $productNode = $xml->addChild('Product');
-            $productNode->addChild('ProductID', (string)$product['id']);
+            $productNode->addChild('ProductID', (string) $product['id']);
             $productNode->addChild('ProductName', $product['name']);
-            $productNode->addChild('ProductPrice', (string)$product['price']);
+            $productNode->addChild('ProductPrice', (string) $product['price']);
         }
         $xml->asXML();
     }
@@ -54,8 +67,16 @@ class XmlProcessingBench
     public function benchFilterProcessing(): void
     {
         $filters = [
-            ['field' => 'price', 'value' => 20.00, 'operator' => '>'],
-            ['field' => 'name', 'value' => 'Product', 'operator' => 'contains']
+            [
+                'field' => 'price',
+                'value' => 20.00,
+                'operator' => '>',
+            ],
+            [
+                'field' => 'name',
+                'value' => 'Product',
+                'operator' => 'contains',
+            ],
         ];
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
@@ -64,7 +85,7 @@ class XmlProcessingBench
         foreach ($filters as $filter) {
             $filterItemNode = $filterNode->addChild('Filter');
             $filterItemNode->addChild('FilterField', $filter['field']);
-            $filterItemNode->addChild('FilterValue', (string)$filter['value']);
+            $filterItemNode->addChild('FilterValue', (string) $filter['value']);
             $filterItemNode->addChild('FilterOperator', $filter['operator']);
         }
     }
@@ -79,7 +100,7 @@ class XmlProcessingBench
         $detailLevels = [
             DetailLevelEnum::FIRST,
             DetailLevelEnum::SECOND,
-            DetailLevelEnum::THIRD
+            DetailLevelEnum::THIRD,
         ];
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
@@ -100,9 +121,12 @@ class XmlProcessingBench
         $complexData = [
             'products' => self::SAMPLE_PRODUCTS,
             'filters' => [
-                'price' => ['min' => 10, 'max' => 100],
-                'categories' => ['1', '2', '3']
-            ]
+                'price' => [
+                    'min' => 10,
+                    'max' => 100,
+                ],
+                'categories' => ['1', '2', '3'],
+            ],
         ];
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
@@ -116,7 +140,7 @@ class XmlProcessingBench
                 $child = $xml->addChild(is_numeric($key) ? 'item' : $key);
                 $this->arrayToXml($value, $child);
             } else {
-                $xml->addChild(is_numeric($key) ? 'item' : $key, (string)$value);
+                $xml->addChild(is_numeric($key) ? 'item' : $key, (string) $value);
             }
         }
     }
