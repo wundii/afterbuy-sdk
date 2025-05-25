@@ -53,6 +53,7 @@
     ],
     "complete-check": [
       "@cache-clear",
+      "@phplint",
       "@rector-dry",
       "@phpstan",
       "@ecs-dry",
@@ -78,6 +79,9 @@
     ],
     "cache-clear": [
       "rm -R ./cache/* -f"
+    ],
+    "phplint": [
+      "php vendor/bin/phplint"
     ]
   },
   "minimum-stability": "dev",

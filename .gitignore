@@ -1,5 +1,4 @@
 /.idea/
-/.phplint/
 /spielwiese/
 /cache/*
 /vendor/
