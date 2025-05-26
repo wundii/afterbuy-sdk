@@ -14,9 +14,9 @@ interface AfterbuyGlobalInterface
     public function setCallName(string $callName): void;
 
     /**
-     * @param DetailLevelEnum[] $detailLevelEnums
+     * @param DetailLevelEnum[] $detailLevelEnum
      */
-    public function setDetailLevelEnums(array $detailLevelEnums, DetailLevelEnum $maxDetailLevelEnum): void;
+    public function setDetailLevelEnum(DetailLevelEnum|array $detailLevelEnum, DetailLevelEnum $maxDetailLevelEnum): void;
 
     public function simpleXmlElement(SimpleXMLElement $xml): void;
 }

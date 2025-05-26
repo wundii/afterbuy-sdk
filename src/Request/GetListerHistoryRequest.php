@@ -19,19 +19,14 @@ use Wundii\AfterbuySdk\Response\GetListerHistoryResponse;
 final readonly class GetListerHistoryRequest implements AfterbuyRequestInterface
 {
     /**
-     * @var DetailLevelEnum[]
-     */
-    private array $detailLevelEnums;
-
-    /**
      * @param GetListerHistoryFilterInterface[] $filter
+     * @param DetailLevelEnum[] $detailLevelEnum empty array === first detail level
      */
     public function __construct(
         private array $filter = [],
         private int $maxHistoryItems = 100,
-        DetailLevelEnum ...$detailLevelEnum,
+        private DetailLevelEnum|array $detailLevelEnum = DetailLevelEnum::FIRST,
     ) {
-        $this->detailLevelEnums = $detailLevelEnum;
     }
 
     public function method(): RequestMethodEnum
@@ -47,7 +42,7 @@ final readonly class GetListerHistoryRequest implements AfterbuyRequestInterface
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
         $afterbuyGlobal->setCallName('GetListerHistory');
-        $afterbuyGlobal->setDetailLevelEnums($this->detailLevelEnums, DetailLevelEnum::FIFTH);
+        $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::FIFTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

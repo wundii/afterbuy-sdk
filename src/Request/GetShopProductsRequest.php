@@ -19,12 +19,8 @@ use Wundii\AfterbuySdk\Response\GetShopProductsResponse;
 final readonly class GetShopProductsRequest implements AfterbuyRequestInterface
 {
     /**
-     * @var DetailLevelEnum[]
-     */
-    private array $detailLevelEnums;
-
-    /**
      * @param GetShopProductsFilterInterface[] $filter
+     * @param DetailLevelEnum[] $detailLevelEnum empty array === first detail level
      */
     public function __construct(
         private array $filter = [],
@@ -33,9 +29,8 @@ final readonly class GetShopProductsRequest implements AfterbuyRequestInterface
         private bool $paginationEnabled = false,
         private ?int $pageNumber = null,
         private bool $returnShop20Container = false,
-        DetailLevelEnum ...$detailLevelEnum,
+        private DetailLevelEnum|array $detailLevelEnum = DetailLevelEnum::FIRST,
     ) {
-        $this->detailLevelEnums = $detailLevelEnum;
     }
 
     public function method(): RequestMethodEnum
@@ -55,13 +50,18 @@ final readonly class GetShopProductsRequest implements AfterbuyRequestInterface
             $maxShopItems = 250;
         }
 
-        $detailLevelEnums = array_filter(
-            $this->detailLevelEnums,
+        $detailLevelEnum = $this->detailLevelEnum;
+        if ($detailLevelEnum instanceof DetailLevelEnum) {
+            $detailLevelEnum = [$detailLevelEnum];
+        }
+
+        $detailLevelEnum = array_filter(
+            $detailLevelEnum,
             static fn (DetailLevelEnum $detailLevelEnum): bool => $detailLevelEnum !== DetailLevelEnum::SIXTH
         );
 
         $afterbuyGlobal->setCallName('GetShopProducts');
-        $afterbuyGlobal->setDetailLevelEnums($detailLevelEnums, DetailLevelEnum::EIGHTH);
+        $afterbuyGlobal->setDetailLevelEnum($detailLevelEnum, DetailLevelEnum::EIGHTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

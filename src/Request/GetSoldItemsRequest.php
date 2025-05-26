@@ -20,12 +20,8 @@ use Wundii\AfterbuySdk\Response\GetSoldItemsResponse;
 final readonly class GetSoldItemsRequest implements AfterbuyRequestInterface
 {
     /**
-     * @var DetailLevelEnum[]
-     */
-    private array $detailLevelEnums;
-
-    /**
      * @param GetSoldItemsFilterInterface[] $filter
+     * @param DetailLevelEnum[] $detailLevelEnum empty array === first detail level
      */
     public function __construct(
         private array $filter = [],
@@ -33,9 +29,8 @@ final readonly class GetSoldItemsRequest implements AfterbuyRequestInterface
         private bool $returnHiddenItems = false,
         private OrderDirectionEnum $orderDirectionEnum = OrderDirectionEnum::ASC,
         private ?bool $requestAllItems = null,
-        DetailLevelEnum ...$detailLevelEnum,
+        private DetailLevelEnum|array $detailLevelEnum = DetailLevelEnum::FIRST,
     ) {
-        $this->detailLevelEnums = $detailLevelEnum;
     }
 
     public function method(): RequestMethodEnum
@@ -56,7 +51,7 @@ final readonly class GetSoldItemsRequest implements AfterbuyRequestInterface
         }
 
         $afterbuyGlobal->setCallName('GetSoldItems');
-        $afterbuyGlobal->setDetailLevelEnums($this->detailLevelEnums, DetailLevelEnum::SIXTH);
+        $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::SIXTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

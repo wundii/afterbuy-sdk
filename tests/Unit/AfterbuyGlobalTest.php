@@ -34,6 +34,13 @@ class AfterbuyGlobalTest extends TestCase
         $this->assertSame('0', $this->afterbuyGlobal->getDetailLevel());
     }
 
+    public function testSetDetailLevelEnumWithOneEnum(): void
+    {
+        $this->afterbuyGlobal->setDetailLevelEnum(DetailLevelEnum::FIRST, DetailLevelEnum::SECOND);
+
+        $this->assertSame('0', $this->afterbuyGlobal->getDetailLevel());
+    }
+
     public function testSetDetailLevelEnumsFiltersEnumsAboveMaxLevel(): void
     {
         $enums = [
@@ -42,14 +49,14 @@ class AfterbuyGlobalTest extends TestCase
             DetailLevelEnum::THIRD,
         ];
 
-        $this->afterbuyGlobal->setDetailLevelEnums($enums, DetailLevelEnum::SECOND);
+        $this->afterbuyGlobal->setDetailLevelEnum($enums, DetailLevelEnum::SECOND);
 
         $this->assertSame('2', $this->afterbuyGlobal->getDetailLevel());
     }
 
     public function testSetDetailLevelEnumsHandlesEmptyArray(): void
     {
-        $this->afterbuyGlobal->setDetailLevelEnums([], DetailLevelEnum::THIRD);
+        $this->afterbuyGlobal->setDetailLevelEnum([], DetailLevelEnum::THIRD);
 
         $this->assertSame('0', $this->afterbuyGlobal->getDetailLevel());
     }
@@ -62,7 +69,7 @@ class AfterbuyGlobalTest extends TestCase
             DetailLevelEnum::SECOND,
         ];
 
-        $this->afterbuyGlobal->setDetailLevelEnums($enums, DetailLevelEnum::SECOND);
+        $this->afterbuyGlobal->setDetailLevelEnum($enums, DetailLevelEnum::SECOND);
 
         $this->assertSame('2', $this->afterbuyGlobal->getDetailLevel());
     }
@@ -75,7 +82,7 @@ class AfterbuyGlobalTest extends TestCase
             DetailLevelEnum::FIFTH,
         ];
 
-        $this->afterbuyGlobal->setDetailLevelEnums($enums, DetailLevelEnum::FIRST);
+        $this->afterbuyGlobal->setDetailLevelEnum($enums, DetailLevelEnum::FIRST);
 
         $this->assertSame('0', $this->afterbuyGlobal->getDetailLevel());
     }
@@ -88,7 +95,7 @@ class AfterbuyGlobalTest extends TestCase
             DetailLevelEnum::SIXTH,
         ];
 
-        $this->afterbuyGlobal->setDetailLevelEnums($enums, DetailLevelEnum::THIRD);
+        $this->afterbuyGlobal->setDetailLevelEnum($enums, DetailLevelEnum::THIRD);
 
         $this->assertSame('2', $this->afterbuyGlobal->getDetailLevel());
     }
@@ -96,7 +103,7 @@ class AfterbuyGlobalTest extends TestCase
     #[DataProvider('detailLevelCombinationsProvider')]
     public function testVariousDetailLevelCombinations(array $enums, DetailLevelEnum $maxLevel, string $expectedSum): void
     {
-        $this->afterbuyGlobal->setDetailLevelEnums($enums, $maxLevel);
+        $this->afterbuyGlobal->setDetailLevelEnum($enums, $maxLevel);
         $this->assertSame($expectedSum, $this->afterbuyGlobal->getDetailLevel());
     }
 
@@ -142,7 +149,7 @@ class AfterbuyGlobalTest extends TestCase
     public function testGeneratesCorrectXmlStructure(): void
     {
         $this->afterbuyGlobal->setCallName('TestCall');
-        $this->afterbuyGlobal->setDetailLevelEnums(
+        $this->afterbuyGlobal->setDetailLevelEnum(
             [
                 DetailLevelEnum::FIRST,
                 DetailLevelEnum::SECOND,
@@ -168,7 +175,7 @@ class AfterbuyGlobalTest extends TestCase
     public function testGeneratesCorrectXmlWithCustomDetailLevel(): void
     {
         $this->afterbuyGlobal->setCallName('TestCall');
-        $this->afterbuyGlobal->setDetailLevelEnums(
+        $this->afterbuyGlobal->setDetailLevelEnum(
             [DetailLevelEnum::FIRST, DetailLevelEnum::SECOND],
             DetailLevelEnum::SECOND
         );

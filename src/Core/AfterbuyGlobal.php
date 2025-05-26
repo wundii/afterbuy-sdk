@@ -62,12 +62,16 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
     }
 
     /**
-     * @param DetailLevelEnum[] $detailLevelEnums
+     * @param DetailLevelEnum[] $detailLevelEnum
      */
-    public function setDetailLevelEnums(array $detailLevelEnums, DetailLevelEnum $maxDetailLevelEnum): void
+    public function setDetailLevelEnum(DetailLevelEnum|array $detailLevelEnum, DetailLevelEnum $maxDetailLevelEnum): void
     {
+        if ($detailLevelEnum instanceof DetailLevelEnum) {
+            $detailLevelEnum = [$detailLevelEnum];
+        }
+
         $filteredEnums = array_filter(
-            $detailLevelEnums,
+            $detailLevelEnum,
             fn (DetailLevelEnum $detailLevelEnum): bool => $detailLevelEnum->value <= $maxDetailLevelEnum->value
         );
 

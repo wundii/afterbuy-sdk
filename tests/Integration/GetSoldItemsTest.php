@@ -71,7 +71,7 @@ class GetSoldItemsTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>32</DetailLevel>', $payload);
 
-        $request = new GetSoldItemsRequest(detailLevelEnum: DetailLevelEnum::SEVENTH);
+        $request = new GetSoldItemsRequest(detailLevelEnum: [DetailLevelEnum::SEVENTH]);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }

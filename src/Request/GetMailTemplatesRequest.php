@@ -18,15 +18,12 @@ use Wundii\AfterbuySdk\Response\GetMailTemplatesResponse;
 final readonly class GetMailTemplatesRequest implements AfterbuyRequestInterface
 {
     /**
-     * @var DetailLevelEnum[]
+     * @param DetailLevelEnum[] $detailLevelEnum empty array === first detail level
      */
-    private array $detailLevelEnums;
-
     public function __construct(
         private ?int $templateId = null,
-        DetailLevelEnum ...$detailLevelEnum,
+        private DetailLevelEnum|array $detailLevelEnum = DetailLevelEnum::FIRST,
     ) {
-        $this->detailLevelEnums = $detailLevelEnum;
     }
 
     public function method(): RequestMethodEnum
@@ -42,7 +39,7 @@ final readonly class GetMailTemplatesRequest implements AfterbuyRequestInterface
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
         $afterbuyGlobal->setCallName('GetMailTemplates');
-        $afterbuyGlobal->setDetailLevelEnums($this->detailLevelEnums, DetailLevelEnum::SECOND);
+        $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::SECOND);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
