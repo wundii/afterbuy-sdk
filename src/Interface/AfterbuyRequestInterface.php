@@ -11,6 +11,8 @@ interface AfterbuyRequestInterface
 {
     public function method(): RequestMethodEnum;
 
+    public function callName(): string;
+
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string;
 
     public function responseClass(): string;

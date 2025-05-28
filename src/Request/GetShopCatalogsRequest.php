@@ -34,6 +34,11 @@ final readonly class GetShopCatalogsRequest implements AfterbuyRequestInterface
         return RequestMethodEnum::GET;
     }
 
+    public function callName(): string
+    {
+        return 'GetShopCatalogs';
+    }
+
     public function requestClass(): ?AfterbuyAppendXmlContentInterface
     {
         return null;
@@ -41,7 +46,7 @@ final readonly class GetShopCatalogsRequest implements AfterbuyRequestInterface
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setCallName('GetShopCatalogs');
+        $afterbuyGlobal->setCallName($this->callName());
         $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::SECOND);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);

@@ -21,6 +21,11 @@ final readonly class GetVersionRequest implements AfterbuyRequestInterface
         return RequestMethodEnum::GET;
     }
 
+    public function callName(): string
+    {
+        return 'GetVersion';
+    }
+
     public function requestClass(): ?AfterbuyAppendXmlContentInterface
     {
         return null;
@@ -28,7 +33,7 @@ final readonly class GetVersionRequest implements AfterbuyRequestInterface
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setCallName('GetVersion');
+        $afterbuyGlobal->setCallName($this->callName());
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

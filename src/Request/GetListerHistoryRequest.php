@@ -34,6 +34,11 @@ final readonly class GetListerHistoryRequest implements AfterbuyRequestInterface
         return RequestMethodEnum::GET;
     }
 
+    public function callName(): string
+    {
+        return 'GetListerHistory';
+    }
+
     public function requestClass(): ?AfterbuyAppendXmlContentInterface
     {
         return null;
@@ -41,7 +46,7 @@ final readonly class GetListerHistoryRequest implements AfterbuyRequestInterface
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setCallName('GetListerHistory');
+        $afterbuyGlobal->setCallName($this->callName());
         $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::FIFTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);

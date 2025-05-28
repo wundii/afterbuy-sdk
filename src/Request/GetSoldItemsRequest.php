@@ -38,6 +38,11 @@ final readonly class GetSoldItemsRequest implements AfterbuyRequestInterface
         return RequestMethodEnum::GET;
     }
 
+    public function callName(): string
+    {
+        return 'GetSoldItems';
+    }
+
     public function requestClass(): ?AfterbuyAppendXmlContentInterface
     {
         return null;
@@ -50,7 +55,7 @@ final readonly class GetSoldItemsRequest implements AfterbuyRequestInterface
             $maxSoldItems = 250;
         }
 
-        $afterbuyGlobal->setCallName('GetSoldItems');
+        $afterbuyGlobal->setCallName($this->callName());
         $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::SIXTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);

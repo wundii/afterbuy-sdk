@@ -14,6 +14,7 @@ use Wundii\AfterbuySdk\Dto\AfterbuyErrorList;
 use Wundii\AfterbuySdk\Dto\AfterbuyWarning;
 use Wundii\AfterbuySdk\Dto\AfterbuyWarningList;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\DataMapper\DataMapper;
 
 trait AfterbuyResponseTrait
@@ -36,7 +37,8 @@ trait AfterbuyResponseTrait
      */
     public function __construct(
         protected DataMapper $dataMapper,
-        protected ResponseInterface $response
+        protected ResponseInterface $response,
+        protected EndpointEnum $endpointEnum,
     ) {
         $content = $this->response->getContent(false);
         $this->content = $content;
@@ -86,6 +88,11 @@ trait AfterbuyResponseTrait
     public function getVersionId(): int
     {
         return $this->versionId;
+    }
+
+    public function getEndpoint(): EndpointEnum
+    {
+        return $this->endpointEnum;
     }
 
     public function getXmlResponse(): string

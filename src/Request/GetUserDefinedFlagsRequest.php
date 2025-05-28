@@ -21,6 +21,11 @@ final readonly class GetUserDefinedFlagsRequest implements AfterbuyRequestInterf
         return RequestMethodEnum::GET;
     }
 
+    public function callName(): string
+    {
+        return 'GetUserDefinedFlags';
+    }
+
     public function requestClass(): ?AfterbuyAppendXmlContentInterface
     {
         return null;
@@ -28,7 +33,7 @@ final readonly class GetUserDefinedFlagsRequest implements AfterbuyRequestInterf
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setCallName('GetUserDefinedFlags');
+        $afterbuyGlobal->setCallName($this->callName());
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

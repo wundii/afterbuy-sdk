@@ -30,6 +30,11 @@ final readonly class GetPaymentServicesRequest implements AfterbuyRequestInterfa
         return RequestMethodEnum::GET;
     }
 
+    public function callName(): string
+    {
+        return 'GetPaymentServices';
+    }
+
     public function requestClass(): ?AfterbuyAppendXmlContentInterface
     {
         return null;
@@ -37,7 +42,7 @@ final readonly class GetPaymentServicesRequest implements AfterbuyRequestInterfa
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setCallName('GetPaymentServices');
+        $afterbuyGlobal->setCallName($this->callName());
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

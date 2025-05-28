@@ -25,6 +25,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
+use Wundii\AfterbuySdk\Core\AfterbuySandboxResponse;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Extends\DateTime;
@@ -42,6 +43,11 @@ use Wundii\DataMapper\Enum\ApproachEnum;
  */
 readonly class Afterbuy
 {
+    /**
+     * @var int
+     */
+    public const DefaultSandboxVersion = 8;
+
     public function __construct(
         private AfterbuyGlobalInterface $afterbuyGlobal,
         private EndpointEnum $endpointEnum,
@@ -57,6 +63,7 @@ readonly class Afterbuy
     public function runRequest(AfterbuyRequestInterface $afterbuyRequest, ?ResponseInterface $response = null): AfterbuyResponseInterface
     {
         $method = $afterbuyRequest->method()->value;
+        $callName = $afterbuyRequest->callName();
         $requestClass = $afterbuyRequest->requestClass();
         $payload = $afterbuyRequest->payload($this->afterbuyGlobal);
         $query = $afterbuyRequest->query();
@@ -101,6 +108,34 @@ readonly class Afterbuy
             }
         }
 
+        if (
+            $this->endpointEnum === EndpointEnum::SANDBOX
+            && $requestClass instanceof AfterbuyAppendXmlContentInterface
+            && ! $response instanceof ResponseInterface
+        ) {
+            $info = 'According to the Afterbuy documentation, the scheme should be changed from https to http for the test environment.';
+            $info .= ' However, this is currently not working as expected - all changes continue to affect the production environment.';
+            $info .= ' The afterbuy sdk always returns default a successful response, alternatively you can pass your own response class.';
+
+            $this->appendLogMessage(
+                LogLevel::INFO,
+                sprintf('Afterbuy SDK %s', $afterbuyRequest::class),
+                $uri,
+                $method,
+                $payload,
+                $query,
+                [$info],
+            );
+
+            $defaultResponse = sprintf(
+                '<?xml version="1.0" encoding="UTF-8" sandbox="true"?>' .
+                '<Afterbuy><CallStatus>Success</CallStatus><CallName>%s</CallName><VersionID>%f</VersionID></Afterbuy>',
+                htmlspecialchars($callName, ENT_XML1),
+                self::DefaultSandboxVersion
+            );
+            $response = new AfterbuySandboxResponse($defaultResponse);
+        }
+
         /** $response is always null, this variable is only filled in for the unit test */
         if (! $response instanceof ResponseInterface) {
             try {
@@ -124,7 +159,7 @@ readonly class Afterbuy
         }
 
         try {
-            $response = (new ReflectionClass($responseClass))->newInstance($dataMapper, $response);
+            $response = (new ReflectionClass($responseClass))->newInstance($dataMapper, $response, $this->endpointEnum);
         } catch (Exception $exception) {
             throw new RuntimeException($exception->getMessage(), $exception->getCode(), $exception);
         }
@@ -204,7 +239,7 @@ readonly class Afterbuy
 
     /**
      * @param string[] $query
-     * @param string[] $response
+     * @param string[] $messages
      */
     private function appendLogMessage(
         string $level,
@@ -213,7 +248,7 @@ readonly class Afterbuy
         string $method,
         string $payload,
         array $query,
-        array $response,
+        array $messages,
     ): void {
         if (! $this->logger instanceof LoggerInterface) {
             return;
@@ -223,16 +258,12 @@ readonly class Afterbuy
             return;
         }
 
-        if ($response === [] && $this->debugMode === false) {
-            return;
-        }
-
         $context = [
             'uri' => $uri,
             'method' => $method,
             'payload' => $payload,
             'query' => $query,
-            'response' => $response,
+            'messages' => $messages,
         ];
 
         $this->logger->log(

@@ -8,6 +8,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 use Wundii\AfterbuySdk\Dto\AfterbuyError;
 use Wundii\AfterbuySdk\Dto\AfterbuyWarning;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\DataMapper\DataMapper;
 
 /**
@@ -18,7 +19,7 @@ interface AfterbuyResponseInterface
     /**
      * @param DataMapper<T> $dataMapper
      */
-    public function __construct(DataMapper $dataMapper, ResponseInterface $response);
+    public function __construct(DataMapper $dataMapper, ResponseInterface $response, EndpointEnum $endpointEnum);
 
     public function getStatusCode(): int;
 
@@ -39,4 +40,8 @@ interface AfterbuyResponseInterface
     public function getResult(): ?AfterbuyDtoInterface;
 
     public function getXmlResponse(): string;
+
+    public function getVersionId(): int;
+
+    public function getEndpoint(): EndpointEnum;
 }

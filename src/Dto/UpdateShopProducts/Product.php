@@ -392,6 +392,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->buyingPrice = $buyingPrice;
     }
 
+    #[Assert\Length(max: 300)]
     public function getCanonicalUrl(): ?string
     {
         return $this->canonicalUrl;
@@ -462,6 +463,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->dealerPrice = $dealerPrice;
     }
 
+    #[Assert\Length(max: 255)]
     public function getDeliveryTime(): ?string
     {
         return $this->deliveryTime;
@@ -561,6 +563,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->footerId = $footerId;
     }
 
+    #[Assert\Length(max: 500)]
     public function getFreeValue1(): ?string
     {
         return $this->freeValue1;
@@ -571,16 +574,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->freeValue1 = $freeValue1;
     }
 
-    public function getFreeValue10(): ?string
-    {
-        return $this->freeValue10;
-    }
-
-    public function setFreeValue10(?string $freeValue10): void
-    {
-        $this->freeValue10 = $freeValue10;
-    }
-
+    #[Assert\Length(max: 500)]
     public function getFreeValue2(): ?string
     {
         return $this->freeValue2;
@@ -591,6 +585,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->freeValue2 = $freeValue2;
     }
 
+    #[Assert\Length(max: 500)]
     public function getFreeValue3(): ?string
     {
         return $this->freeValue3;
@@ -601,6 +596,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->freeValue3 = $freeValue3;
     }
 
+    #[Assert\Length(max: 500)]
     public function getFreeValue4(): ?string
     {
         return $this->freeValue4;
@@ -611,6 +607,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->freeValue4 = $freeValue4;
     }
 
+    #[Assert\Length(max: 500)]
     public function getFreeValue5(): ?string
     {
         return $this->freeValue5;
@@ -621,6 +618,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->freeValue5 = $freeValue5;
     }
 
+    #[Assert\Length(max: 500)]
     public function getFreeValue6(): ?string
     {
         return $this->freeValue6;
@@ -631,6 +629,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->freeValue6 = $freeValue6;
     }
 
+    #[Assert\Length(max: 500)]
     public function getFreeValue7(): ?string
     {
         return $this->freeValue7;
@@ -641,6 +640,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->freeValue7 = $freeValue7;
     }
 
+    #[Assert\Length(max: 500)]
     public function getFreeValue8(): ?string
     {
         return $this->freeValue8;
@@ -651,6 +651,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->freeValue8 = $freeValue8;
     }
 
+    #[Assert\Length(max: 500)]
     public function getFreeValue9(): ?string
     {
         return $this->freeValue9;
@@ -659,6 +660,17 @@ final class Product implements AfterbuyAppendXmlContentInterface
     public function setFreeValue9(?string $freeValue9): void
     {
         $this->freeValue9 = $freeValue9;
+    }
+
+    #[Assert\Length(max: 500)]
+    public function getFreeValue10(): ?string
+    {
+        return $this->freeValue10;
+    }
+
+    public function setFreeValue10(?string $freeValue10): void
+    {
+        $this->freeValue10 = $freeValue10;
     }
 
     public function getFroogle(): ?bool
@@ -681,6 +693,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->genderEnum = $genderEnum;
     }
 
+    #[Assert\Length(max: 255)]
     public function getGoogleProductCategory(): ?string
     {
         return $this->googleProductCategory;
@@ -751,6 +764,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->itemColor = $itemColor;
     }
 
+    #[Assert\Length(max: 25)]
     public function getItemSize(): ?string
     {
         return $this->itemSize;
@@ -771,6 +785,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->kelkoo = $kelkoo;
     }
 
+    #[Assert\Length(max: 1000)]
     public function getKeywords(): ?string
     {
         return $this->keywords;
@@ -791,6 +806,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->level = $level;
     }
 
+    #[Assert\Length(max: 255)]
     public function getManufacturerPartNumber(): ?string
     {
         return $this->manufacturerPartNumber;
@@ -821,6 +837,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->manufacturerStandardProductIdValue = $manufacturerStandardProductIdValue;
     }
 
+    #[Assert\Length(max: 200)]
     public function getMaterial(): ?string
     {
         return $this->material;
@@ -861,6 +878,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->minimumStock = $minimumStock;
     }
 
+    #[Assert\Length(max: 255)]
     public function getName(): string
     {
         return $this->name;
@@ -976,6 +994,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->scaledDiscounts = $scaledDiscounts;
     }
 
+    #[Assert\Length(max: 255)]
     public function getSearchAlias(): ?string
     {
         return $this->searchAlias;
@@ -1016,6 +1035,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
         $this->shopShippingGroup = $shopShippingGroup;
     }
 
+    #[Assert\Length(max: 800)]
     public function getShortDescription(): ?string
     {
         return $this->shortDescription;

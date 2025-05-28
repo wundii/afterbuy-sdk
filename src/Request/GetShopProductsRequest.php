@@ -38,6 +38,11 @@ final readonly class GetShopProductsRequest implements AfterbuyRequestInterface
         return RequestMethodEnum::GET;
     }
 
+    public function callName(): string
+    {
+        return 'GetShopProducts';
+    }
+
     public function requestClass(): ?AfterbuyAppendXmlContentInterface
     {
         return null;
@@ -60,7 +65,7 @@ final readonly class GetShopProductsRequest implements AfterbuyRequestInterface
             static fn (DetailLevelEnum $detailLevelEnum): bool => $detailLevelEnum !== DetailLevelEnum::SIXTH
         );
 
-        $afterbuyGlobal->setCallName('GetShopProducts');
+        $afterbuyGlobal->setCallName($this->callName());
         $afterbuyGlobal->setDetailLevelEnum($detailLevelEnum, DetailLevelEnum::EIGHTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);

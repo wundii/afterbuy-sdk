@@ -86,7 +86,7 @@ class PsrLoggerTest extends TestCase
                 'method' => 'GET',
                 'payload' => $payload,
                 'query' => [],
-                'response' => [
+                'messages' => [
                     'Code 2: Produkt nicht gefunden.',
                 ],
             ],
@@ -127,7 +127,7 @@ class PsrLoggerTest extends TestCase
                 'method' => 'GET',
                 'payload' => $payload,
                 'query' => [],
-                'response' => [
+                'messages' => [
                     'Code 30: Kein gültiger Filter angegeben.',
                 ],
             ],

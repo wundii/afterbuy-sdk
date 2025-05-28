@@ -30,6 +30,11 @@ final readonly class GetShippingServicesRequest implements AfterbuyRequestInterf
         return RequestMethodEnum::GET;
     }
 
+    public function callName(): string
+    {
+        return 'GetShippingServices';
+    }
+
     public function requestClass(): ?AfterbuyAppendXmlContentInterface
     {
         return null;
@@ -37,7 +42,7 @@ final readonly class GetShippingServicesRequest implements AfterbuyRequestInterf
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setCallName('GetShippingServices');
+        $afterbuyGlobal->setCallName($this->callName());
         $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::THIRD);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);

@@ -33,6 +33,11 @@ final readonly class GetTranslatedMailTemplateRequest implements AfterbuyRequest
         return RequestMethodEnum::GET;
     }
 
+    public function callName(): string
+    {
+        return 'GetTranslatedMailTemplate';
+    }
+
     public function requestClass(): ?AfterbuyAppendXmlContentInterface
     {
         return null;
@@ -40,7 +45,7 @@ final readonly class GetTranslatedMailTemplateRequest implements AfterbuyRequest
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setCallName('GetTranslatedMailTemplate');
+        $afterbuyGlobal->setCallName($this->callName());
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

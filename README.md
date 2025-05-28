@@ -51,7 +51,7 @@ In preparation for the release of version 1.0, I would like to test all XML retu
 - [x] GetListerHistory
 - [x] GetMailTemplates
 - [x] GetPaymentServices
-- [ ] GetProductDiscounts
+- [ ] <s>GetProductDiscounts</s>
 - [x] GetShippingCost
 - [x] GetShippingServices
 - [x] GetShopCatalogs
@@ -65,8 +65,9 @@ In preparation for the release of version 1.0, I would like to test all XML retu
 - [x] DetailLevelEnum combination
 - [x] AfterbuyGlobal namespace refactoring
 - [x] AfterbuyGlobalInterface implementation
-- [ ] Sandbox and Production environment final testing
+- [x] Sandbox and Production environment final testing
 - [ ] Unittest for the Validator classes
+- [x] important asserts for the UpdateRequest classes
 
 ## Usage
 ```php

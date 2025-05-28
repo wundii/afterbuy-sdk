@@ -33,6 +33,11 @@ final readonly class GetStockInfoRequest implements AfterbuyRequestInterface
         return RequestMethodEnum::GET;
     }
 
+    public function callName(): string
+    {
+        return 'GetStockInfo';
+    }
+
     public function requestClass(): ?AfterbuyAppendXmlContentInterface
     {
         return null;
@@ -44,7 +49,7 @@ final readonly class GetStockInfoRequest implements AfterbuyRequestInterface
             throw new RuntimeException('ProductFilter is required');
         }
 
-        $afterbuyGlobal->setCallName('GetStockInfo');
+        $afterbuyGlobal->setCallName($this->callName());
         $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::FOURTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);

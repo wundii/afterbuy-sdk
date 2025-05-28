@@ -31,6 +31,11 @@ final readonly class UpdateShopProductsRequest implements AfterbuyRequestInterfa
         return RequestMethodEnum::POST;
     }
 
+    public function callName(): string
+    {
+        return 'UpdateShopProducts';
+    }
+
     public function requestClass(): AfterbuyAppendXmlContentInterface
     {
         return new Products(
@@ -40,7 +45,7 @@ final readonly class UpdateShopProductsRequest implements AfterbuyRequestInterfa
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setCallName('UpdateShopProducts');
+        $afterbuyGlobal->setCallName($this->callName());
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

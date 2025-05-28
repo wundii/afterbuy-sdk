@@ -18,8 +18,14 @@
     <server name="SHELL_VERBOSITY" value="-1"/>
   </php>
   <testsuites>
-    <testsuite name="main">
+    <testsuite name="preprocessing">
+      <file>tests/Integration/PsrLoggerTest.php</file>
+      <file>tests/Integration/SandBoxTest.php</file>
       <directory>tests/Unit</directory>
+    </testsuite>
+    <testsuite name="main">
+      <exclude>tests/Integration/PsrLoggerTest.php</exclude>
+      <exclude>tests/Integration/SandBoxTest.php</exclude>
       <directory>tests/Integration</directory>
     </testsuite>
   </testsuites>

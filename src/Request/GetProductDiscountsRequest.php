@@ -28,6 +28,11 @@ final readonly class GetProductDiscountsRequest implements AfterbuyRequestInterf
         return RequestMethodEnum::GET;
     }
 
+    public function callName(): string
+    {
+        return 'GetProductDiscounts';
+    }
+
     public function requestClass(): ?AfterbuyAppendXmlContentInterface
     {
         return null;
@@ -36,7 +41,7 @@ final readonly class GetProductDiscountsRequest implements AfterbuyRequestInterf
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
 
-        $afterbuyGlobal->setCallName('GetProductDiscounts');
+        $afterbuyGlobal->setCallName($this->callName());
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
