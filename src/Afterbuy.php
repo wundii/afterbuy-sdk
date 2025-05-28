@@ -115,7 +115,8 @@ readonly class Afterbuy
         ) {
             $info = 'According to the Afterbuy documentation, the scheme should be changed from https to http for the test environment.';
             $info .= ' However, this is currently not working as expected - all changes continue to affect the production environment.';
-            $info .= ' The afterbuy sdk always returns default a successful response, alternatively you can pass your own response class.';
+            $info .= ' This afterbuy sdk always returns default a successful response if it is an update request.';
+            $info .= ' Alternatively you can pass your own update response class.';
 
             $this->appendLogMessage(
                 LogLevel::INFO,

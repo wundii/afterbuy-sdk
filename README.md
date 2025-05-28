@@ -45,29 +45,83 @@ Require the bundle and its dependencies with composer:
 - [x] [UpdateShopProducts](examples/UpdateShopProducts.md)
 - [x] [UpdateSoldItems](examples/UpdateSoldItems.md)
 
+## Afterbuy Sandbox Environment
+```php
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\UpdateShopProducts;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+
+$global = new AfterbuyGlobal(
+    '123...',
+    '456...',
+);
+
+$afterbuy = new Afterbuy(
+    $global,
+    EndpointEnum::SANDBOX,
+);
+
+$afterbuy->runRequest(
+    new UpdateShopProducts(
+        ... // afterbuy sdk request object
+    ),
+);
+```
+According to the Afterbuy documentation, the scheme should be changed from https to http for the test environment.
+However, this is currently not working as expected - all changes continue to affect the production environment.
+This afterbuy sdk always returns default a successful response if it is an update request.
+Alternatively, you can pass your own update response class.
+
+```php
+use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Core\AfterbuySandboxResponse;
+use Wundii\AfterbuySdk\Dto\UpdateShopProducts;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
+
+$global = new AfterbuyGlobal(
+    '123...',
+    '456...',
+);
+
+$afterbuy = new Afterbuy(
+    $global,
+    EndpointEnum::SANDBOX,
+);
+
+/** your own response version */
+$afterbuy->runRequest(
+    new UpdateShopProducts(
+        ... // afterbuy sdk request object
+    ),
+    new AfterbuySandboxResponse('<your custom xml response here>', 200),
+);
+```
+
 ## The road to Version 1.0
-In preparation for the release of version 1.0, I would like to test all XML returns.
-- [x] GetAfterbuyTime
-- [x] GetListerHistory
-- [x] GetMailTemplates
-- [x] GetPaymentServices
-- [ ] <s>GetProductDiscounts</s>
-- [x] GetShippingCost
-- [x] GetShippingServices
-- [x] GetShopCatalogs
-- [x] GetShopProducts
-- [x] GetSoldItems
-- [x] GetStockInfo
-- [x] GetTranslatedMailTemplate
-- [x] UpdateCatalogs
-- [x] UpdateShopProducts
-- [x] UpdateSoldItems
+In preparation for the release of version 1.0.
+- [x] GetAfterbuyTime, test XML returns
+- [x] GetListerHistory, test XML returns
+- [x] GetMailTemplates, test XML returns
+- [x] GetPaymentServices, test XML returns
+- [ ] <s>GetProductDiscounts, test XML returns</s>
+- [x] GetShippingCost, test XML returns
+- [x] GetShippingServices, test XML returns
+- [x] GetShopCatalogs, test XML returns
+- [x] GetShopProducts, test XML returns
+- [x] GetSoldItems, test XML returns
+- [x] GetStockInfo, test XML returns
+- [x] GetTranslatedMailTemplate, test XML returns
+- [x] UpdateCatalogs, test XML returns
+- [x] UpdateShopProducts, test XML returns
+- [x] UpdateSoldItems, test XML returns
 - [x] DetailLevelEnum combination
 - [x] AfterbuyGlobal namespace refactoring
 - [x] AfterbuyGlobalInterface implementation
 - [x] Sandbox and Production environment final testing
 - [ ] Unittest for the Validator classes
-- [x] important asserts for the UpdateRequest classes
+- [x] first important asserts for the UpdateRequest classes
 
 ## Usage
 ```php
