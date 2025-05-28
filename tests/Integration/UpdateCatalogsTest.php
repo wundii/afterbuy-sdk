@@ -202,6 +202,25 @@ class UpdateCatalogsTest extends TestCase
         $this->assertEquals(DomFormatter::xml($expected), DomFormatter::xml($payload));
     }
 
+    public function testUpdateCatalogsResponseBasic(): void
+    {
+        $file = __DIR__ . '/ResponseFiles/UpdateCatalogsSuccess.xml';
+
+        $request = new UpdateCatalogsRequest(UpdateActionCatalogsEnum::CREATE, [
+            new Catalog(1, 'First'),
+        ]);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
+
+        $response = $afterbuy->runRequest($request, $mockResponse);
+
+        /** @var NewCatalogs $newCatalogs */
+        $newCatalogs = $response->getResult();
+
+        $this->assertInstanceOf(UpdateCatalogsResponse::class, $response);
+        $this->assertCount(0, $newCatalogs->getNewCatalogs());
+    }
+
     public function testUpdateCatalogsNewCatalogsResponseBasic(): void
     {
         $file = __DIR__ . '/ResponseFiles/UpdateCatalogsNewCatalogsSuccess.xml';

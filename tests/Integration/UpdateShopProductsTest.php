@@ -440,7 +440,7 @@ class UpdateShopProductsTest extends TestCase
 
     public function testUpdateShopProductsResponseBasic(): void
     {
-        $file = __DIR__ . '/ResponseFiles/UpdateShopProductsSuccessOnly.xml';
+        $file = __DIR__ . '/ResponseFiles/UpdateShopProductsSuccess.xml';
 
         $request = new UpdateShopProductsRequest(
             [
@@ -463,7 +463,7 @@ class UpdateShopProductsTest extends TestCase
 
     public function testUpdateShopProductsResponseCombination(): void
     {
-        $file = __DIR__ . '/ResponseFiles/UpdateShopProductsSuccess.xml';
+        $file = __DIR__ . '/ResponseFiles/UpdateShopProductsSuccessCombination.xml';
 
         $request = new UpdateShopProductsRequest(
             [
