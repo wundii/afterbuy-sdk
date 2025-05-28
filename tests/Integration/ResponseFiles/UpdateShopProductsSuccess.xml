@@ -2,6 +2,7 @@
 <Afterbuy>
     <CallStatus>Warning</CallStatus>
     <CallName>UpdateShopProducts</CallName>
+    <VersionID>8</VersionID>
     <Result>
         <WarningList>
             <Warning>

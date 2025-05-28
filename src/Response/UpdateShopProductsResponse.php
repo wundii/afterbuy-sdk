@@ -21,6 +21,6 @@ final class UpdateShopProductsResponse implements AfterbuyResponseInterface
      */
     public function getResult(): AfterbuyDtoInterface
     {
-        return $this->dataMapper->xml($this->content, NewProducts::class, ['Result']);
+        return $this->dataMapper->xml($this->content, NewProducts::class, ['Result'], forceInstance: true);
     }
 }

@@ -440,6 +440,29 @@ class UpdateShopProductsTest extends TestCase
 
     public function testUpdateShopProductsResponseBasic(): void
     {
+        $file = __DIR__ . '/ResponseFiles/UpdateShopProductsSuccessOnly.xml';
+
+        $request = new UpdateShopProductsRequest(
+            [
+                new Product(
+                    new ProductIdent('test'),
+                    'ABInterfaceNew TestItem',
+                ),
+            ]
+        );
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
+
+        $response = $afterbuy->runRequest($request, $mockResponse);
+        $result = $response->getResult();
+
+        $this->assertInstanceOf(UpdateShopProductsResponse::class, $response);
+        $this->assertCount(0, $result->getNewProducts());
+        $this->assertCount(0, $response->getWarningMessages());
+    }
+
+    public function testUpdateShopProductsResponseCombination(): void
+    {
         $file = __DIR__ . '/ResponseFiles/UpdateShopProductsSuccess.xml';
 
         $request = new UpdateShopProductsRequest(
@@ -460,5 +483,29 @@ class UpdateShopProductsTest extends TestCase
         $this->assertCount(1, $result->getNewProducts());
         $this->assertCount(1, $response->getWarningMessages());
         $this->assertSame(4, $response->getWarningMessages()[0]->getWarningCode());
+    }
+
+    public function testUpdateShopProductsResponseWarning(): void
+    {
+        $file = __DIR__ . '/ResponseFiles/UpdateShopProductsWarning.xml';
+
+        $request = new UpdateShopProductsRequest(
+            [
+                new Product(
+                    new ProductIdent('test'),
+                    'ABInterfaceNew TestItem',
+                ),
+            ]
+        );
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
+
+        $response = $afterbuy->runRequest($request, $mockResponse);
+        $result = $response->getResult();
+
+        $this->assertInstanceOf(UpdateShopProductsResponse::class, $response);
+        $this->assertCount(0, $result->getNewProducts());
+        $this->assertCount(1, $response->getWarningMessages());
+        $this->assertSame(3, $response->getWarningMessages()[0]->getWarningCode());
     }
 }

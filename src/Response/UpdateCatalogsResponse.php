@@ -26,6 +26,6 @@ final class UpdateCatalogsResponse implements AfterbuyResponseInterface
             return $this->dataMapper->xml($this->content, CatalogNotDeleteds::class, ['Result']);
         }
 
-        return $this->dataMapper->xml($this->content, NewCatalogs::class, ['Result']);
+        return $this->dataMapper->xml($this->content, NewCatalogs::class, ['Result'], true);
     }
 }

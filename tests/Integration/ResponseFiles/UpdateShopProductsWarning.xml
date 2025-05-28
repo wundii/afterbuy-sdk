@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Afterbuy>
+    <CallStatus>Warning</CallStatus>
+    <CallName>UpdateShopProducts</CallName>
+    <VersionID>8</VersionID>
+    <Result>
+        <WarningList>
+            <Warning>
+                <WarningCode>3</WarningCode>
+                <WarningDescription><![CDATA[Keine ProduktIdentifizierung gefunden.]]></WarningDescription>
+                <WarningLongDescription><![CDATA[Keine ProduktIdentifizierung gefunden.]]></WarningLongDescription>
+                <UserProductID><![CDATA[35524277]]></UserProductID>
+            </Warning>
+        </WarningList>
+    </Result>
+</Afterbuy>

@@ -2,5 +2,6 @@
 <Afterbuy>
     <CallStatus>Success</CallStatus>
     <CallName>UpdateSoldItems</CallName>
+    <VersionID>8</VersionID>
     <Result/>
 </Afterbuy>
