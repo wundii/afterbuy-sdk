@@ -26,6 +26,8 @@ trait AfterbuyResponseTrait
 
     protected CallStatusEnum $callStatus;
 
+    protected int $versionId;
+
     /**
      * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
@@ -39,9 +41,11 @@ trait AfterbuyResponseTrait
         $content = $this->response->getContent(false);
         $this->content = $content;
 
-        $matches = [];
         preg_match('/<CallStatus>(.*)<\/CallStatus>/s', $content, $matches);
         $callStatus = $matches[1] ?? null;
+
+        preg_match('/<VersionID>(.*)<\/VersionID>/s', $content, $matches);
+        $this->versionId = (int) $matches[1];
 
         $this->callStatus = match ($callStatus) {
             'Success' => CallStatusEnum::SUCCESS,
@@ -77,6 +81,11 @@ trait AfterbuyResponseTrait
     public function getInfo(): mixed
     {
         return $this->response->getInfo();
+    }
+
+    public function getVersionId(): int
+    {
+        return $this->versionId;
     }
 
     public function getXmlResponse(): string
