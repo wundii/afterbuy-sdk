@@ -47,6 +47,7 @@ readonly class Afterbuy
         private EndpointEnum $endpointEnum,
         private ?LoggerInterface $logger = null,
         private ?ValidatorBuilder $validatorBuilder = null,
+        private bool $debugMode = false,
     ) {
     }
 
@@ -218,7 +219,11 @@ readonly class Afterbuy
             return;
         }
 
-        if ($response === []) {
+        if ($level === LogLevel::DEBUG && $this->debugMode === false) {
+            return;
+        }
+
+        if ($response === [] && $this->debugMode === false) {
             return;
         }
 

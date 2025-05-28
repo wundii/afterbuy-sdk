@@ -42,6 +42,22 @@ class PsrLoggerTest extends TestCase
         $this->assertCount(0, $psrLogger->getLogger());
     }
 
+    public function testDebugModeOn(): void
+    {
+        $file = __DIR__ . '/ResponseFiles/GetListerHistorySuccess.xml';
+
+        $psrLogger = new MockLogger();
+        $request = new GetListerHistoryRequest();
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX, $psrLogger, debugMode: true);
+        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
+
+        $response = $afterbuy->runRequest($request, $mockResponse);
+
+        $this->assertCount(0, $response->getErrorMessages());
+        $this->assertCount(0, $response->getWarningMessages());
+        $this->assertCount(1, $psrLogger->getLogger());
+    }
+
     public function testWithWarning(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetStockInfoWarning.xml';
