@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Afterbuy>
+    <CallStatus>Warning</CallStatus>
+    <CallName>UpdateShopProducts</CallName>
+    <VersionID>8</VersionID>
+    <Result>
+        <WarningList>
+            <Warning>
+                <WarningCode>4</WarningCode>
+                <WarningDescription><![CDATA[Produkt konnte nicht angelegt werden.]]></WarningDescription>
+                <WarningLongDescription><![CDATA[Produkt konnte nicht angelegt werden, ... (abgeschnitten)]]></WarningLongDescription>
+                <UserProductID>12345ABCD</UserProductID>
+            </Warning>
+        </WarningList>
+        <NewProducts>
+            <NewProduct>
+                <ProductID>2123681</ProductID>
+                <UserProductID>12345ABCD</UserProductID>
+                <ProductIDRequested>0</ProductIDRequested>
+                <AnrRequested>0</AnrRequested>
+                <EANRequested>MYEAN</EANRequested>
+                <EAN>MYEAN</EAN>
+                <Anr>123123</Anr>
+            </NewProduct>
+        </NewProducts>
+    </Result>
+</Afterbuy>

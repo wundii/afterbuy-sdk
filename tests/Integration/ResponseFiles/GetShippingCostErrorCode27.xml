@@ -2,6 +2,7 @@
 <Afterbuy>
     <CallStatus>Error</CallStatus>
     <CallName>GetShippingCost</CallName>
+    <VersionID>8</VersionID>
     <Result>
         <ErrorList>
             <Error>

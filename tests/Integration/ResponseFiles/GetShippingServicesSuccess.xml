@@ -2,6 +2,7 @@
 <Afterbuy>
     <CallStatus>Success</CallStatus>
     <CallName>GetShippingServices</CallName>
+    <VersionID>8</VersionID>
     <Result>
         <ShippingServices>
             <ShippingService>

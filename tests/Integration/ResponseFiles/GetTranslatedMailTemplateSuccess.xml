@@ -2,6 +2,7 @@
 <Afterbuy>
     <CallStatus>Success</CallStatus>
     <CallName>GetTranslatedMailTemplate</CallName>
+    <VersionID>8</VersionID>
     <Result>
         <TranslatedMailSubject><![CDATA[Hallo Test]]></TranslatedMailSubject>
         <TranslatedMailText><![CDATA[ Hallo Herr Meier, ... ]]></TranslatedMailText>

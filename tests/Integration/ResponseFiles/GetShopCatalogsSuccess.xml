@@ -2,6 +2,7 @@
 <Afterbuy>
     <CallStatus>Success</CallStatus>
     <CallName>GetShopCatalogs</CallName>
+    <VersionID>8</VersionID>
     <Result>
         <HasMoreCatalogs>0</HasMoreCatalogs>
         <Catalogs>

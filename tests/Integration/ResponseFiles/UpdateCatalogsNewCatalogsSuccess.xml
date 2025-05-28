@@ -2,6 +2,7 @@
 <Afterbuy>
     <CallStatus>Success</CallStatus>
     <CallName>UpdateCatalogs</CallName>
+    <VersionID>8</VersionID>
     <Result>
         <NewCatalogs>
             <NewCatalog>

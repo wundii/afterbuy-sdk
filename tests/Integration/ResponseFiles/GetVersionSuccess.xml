@@ -2,6 +2,7 @@
 <Afterbuy>
     <CallStatus>Success</CallStatus>
     <CallName>Getversion</CallName>
+    <VersionID>8</VersionID>
     <Result>
         <Versions>
             <Version>
