@@ -32,7 +32,7 @@ class ParcelLabelsValidatorTest extends ConstraintValidatorTestCase
     {
         $parcelLabels = [
             new stdClass(),
-            new ParcelLabel(1, 2, 'LBL123'),
+            new ParcelLabel(1, 2, 'Express100'),
         ];
 
         $constraint = new ParcelLabels();
