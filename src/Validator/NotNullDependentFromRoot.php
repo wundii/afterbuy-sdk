@@ -19,7 +19,7 @@ class NotNullDependentFromRoot extends Constraint
     public function __construct(
         public string $propertyPath,
         public mixed $propertyValue = null,
-        public string $message = '{{ source }} must not be empty if the {{ target }} has a value.',
+        public string $message = 'The property "{{ source }}" must not be null when "{{ target }}" has a specific value.',
         ?array $groups = null,
         mixed $payload = null,
     ) {

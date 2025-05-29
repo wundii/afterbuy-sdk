@@ -119,9 +119,10 @@ In preparation for the release of version 1.0.
 - [x] DetailLevelEnum combination
 - [x] AfterbuyGlobal namespace refactoring
 - [x] AfterbuyGlobalInterface implementation
-- [x] Sandbox and Production environment final testing
-- [ ] Unittest for the Validator classes
+- [x] Sandbox and Production environment testing
+- [x] Unittest for the Validator classes
 - [x] first important asserts for the UpdateRequest classes
+- [ ] final productive testing
 
 ## Usage
 ```php
@@ -151,4 +152,24 @@ $response->getResult();
 $response->getXmlResponse()
 $response->getErrorMessages();
 $response->getWarningMessages();
+```
+
+## Development for Afterbuy SDK
+
+### composer scripts
+
+```shell
+composer cache-clear
+composer ecs-apply
+composer ecs-dry
+composer phpstan
+composer rector-apply
+composer rector-dry
+composer unittest
+```
+
+### complete checks before merge
+
+```shell
+composer complete-check
 ```

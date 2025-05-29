@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Wundii\AfterbuySdk\Tests\Unit;
+namespace Wundii\AfterbuySdk\Tests\Unit\Core;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
