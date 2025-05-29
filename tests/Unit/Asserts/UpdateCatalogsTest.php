@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Asserts;
+namespace Wundii\AfterbuySdk\Tests\Unit\Asserts;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\ConstraintViolation;
