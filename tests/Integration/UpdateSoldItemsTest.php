@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateSoldItems\Attribute;
 use Wundii\AfterbuySdk\Dto\UpdateSoldItems\BuyerInfo;

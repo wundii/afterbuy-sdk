@@ -46,8 +46,9 @@ Require the bundle and its dependencies with composer:
 - [x] [UpdateSoldItems](examples/UpdateSoldItems.md)
 
 ## Afterbuy Sandbox Environment
+
 ```php
-use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
@@ -74,7 +75,7 @@ This afterbuy sdk always returns default a successful response if it is an updat
 Alternatively, you can pass your own update response class.
 
 ```php
-use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Core\AfterbuySandboxResponse;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts;
@@ -125,8 +126,9 @@ In preparation for the release of version 1.0.
 - [ ] final productive testing
 
 ## Usage
+
 ```php
-use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Request\GetAfterbuyTimeRequest;

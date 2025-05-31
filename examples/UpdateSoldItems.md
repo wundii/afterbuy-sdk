@@ -5,7 +5,7 @@
 ```php
 <?php
 
-use Wundii\AfterbuySdk\Afterbuy;
+use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateSoldItems\Order;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;

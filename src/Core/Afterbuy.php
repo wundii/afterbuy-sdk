@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Wundii\AfterbuySdk;
+namespace Wundii\AfterbuySdk\Core;
 
 use DateTimeInterface;
 use Exception;
@@ -25,7 +25,6 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
-use Wundii\AfterbuySdk\Core\AfterbuySandboxResponse;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Extends\DateTime;
@@ -113,10 +112,10 @@ readonly class Afterbuy
             && $requestClass instanceof AfterbuyAppendXmlContentInterface
             && ! $response instanceof ResponseInterface
         ) {
-            $info = 'According to the Afterbuy documentation, the scheme should be changed from https to http for the test environment.';
-            $info .= ' However, this is currently not working as expected - all changes continue to affect the production environment.';
-            $info .= ' This afterbuy sdk always returns default a successful response if it is an update request.';
-            $info .= ' Alternatively you can pass your own update response class.';
+            $info = 'According to the Afterbuy documentation, the scheme should be changed from https to http for the test environment. ' .
+                    'However, this is currently not working as expected - all changes continue to affect the production environment. ' .
+                    'This afterbuy sdk always returns default a successful response if it is an update request. ' .
+                    'Alternatively you can pass your own update response class.';
 
             $this->appendLogMessage(
                 LogLevel::INFO,
@@ -229,7 +228,7 @@ readonly class Afterbuy
          */
         try {
             $phpFileLoader = new PhpFileLoader($containerBuilder, new FileLocator(__DIR__));
-            $phpFileLoader->load(__DIR__ . '/Config/Container.php');
+            $phpFileLoader->load(__DIR__ . '/../Config/Container.php');
         } catch (Exception $exception) {
             throw new RuntimeException('Error loading container file: ' . $exception->getMessage(), $exception->getCode(), $exception);
         }
