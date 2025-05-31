@@ -10,8 +10,8 @@ use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Response\GetProductDiscountsResponse;
 
@@ -23,19 +23,14 @@ final readonly class GetProductDiscountsRequest implements AfterbuyRequestInterf
     ) {
     }
 
-    public function method(): RequestMethodEnum
-    {
-        return RequestMethodEnum::GET;
-    }
-
     public function callName(): string
     {
         return 'GetProductDiscounts';
     }
 
-    public function requestClass(): ?AfterbuyAppendXmlContentInterface
+    public function method(): RequestMethodEnum
     {
-        return null;
+        return RequestMethodEnum::GET;
     }
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
@@ -54,6 +49,11 @@ final readonly class GetProductDiscountsRequest implements AfterbuyRequestInterf
         }
 
         return $string;
+    }
+
+    public function requestDto(): ?AfterbuyRequestDtoInterface
+    {
+        return null;
     }
 
     public function responseClass(): string

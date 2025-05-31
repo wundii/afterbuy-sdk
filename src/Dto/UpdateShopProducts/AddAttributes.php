@@ -8,9 +8,9 @@ use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\UpdateActionAttributesEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 
-final readonly class AddAttributes implements AfterbuyAppendXmlContentInterface
+final readonly class AddAttributes implements AfterbuyRequestDtoInterface
 {
     /**
      * @param AddAttribut[] $addAttributes

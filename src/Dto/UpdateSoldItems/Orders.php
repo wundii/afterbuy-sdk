@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 
-final class Orders implements AfterbuyAppendXmlContentInterface
+final class Orders implements AfterbuyRequestDtoInterface
 {
     /**
      * @param Order[] $orders

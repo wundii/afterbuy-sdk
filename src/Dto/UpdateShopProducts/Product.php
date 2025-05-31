@@ -12,16 +12,16 @@ use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
 use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
 use Wundii\AfterbuySdk\Enum\GenderEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 
-final class Product implements AfterbuyAppendXmlContentInterface
+final class Product implements AfterbuyRequestDtoInterface
 {
     /**
      * @param ScaledDiscount[] $scaledDiscounts
      * @param string[] $tags
      * @param Variation[] $useEbayVariations
      * @param PartsProperties[] $partsFitment
-     * @param AdditionalPriceUpdate[] $additionalPriceUpdates
+     * @param AdditionalPriceUpdateRequest[] $additionalPriceUpdates
      * @param ProductPicture[] $productPictures
      * @param AdditionalDescriptionField[] $additionalDescriptionFields
      * @param Feature[] $features
@@ -315,7 +315,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     }
 
     /**
-     * @return AdditionalPriceUpdate[]
+     * @return AdditionalPriceUpdateRequest[]
      */
     #[Assert\Count(min: 0)]
     #[Assert\Valid]
@@ -325,7 +325,7 @@ final class Product implements AfterbuyAppendXmlContentInterface
     }
 
     /**
-     * @param AdditionalPriceUpdate[] $additionalPriceUpdates
+     * @param AdditionalPriceUpdateRequest[] $additionalPriceUpdates
      */
     public function setAdditionalPriceUpdates(array $additionalPriceUpdates): void
     {

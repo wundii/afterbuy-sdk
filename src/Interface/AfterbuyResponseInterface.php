@@ -21,27 +21,27 @@ interface AfterbuyResponseInterface
      */
     public function __construct(DataMapper $dataMapper, ResponseInterface $response, EndpointEnum $endpointEnum);
 
-    public function getStatusCode(): int;
-
     public function getCallStatus(): CallStatusEnum;
 
-    public function getInfo(): mixed;
+    public function getEndpoint(): EndpointEnum;
 
     /**
      * @return AfterbuyError[]
      */
     public function getErrorMessages(): array;
 
+    public function getInfo(): mixed;
+
+    public function getResult(): ?AfterbuyDtoInterface;
+
+    public function getStatusCode(): int;
+
+    public function getVersionId(): int;
+
     /**
      * @return AfterbuyWarning[]
      */
     public function getWarningMessages(): array;
 
-    public function getResult(): ?AfterbuyDtoInterface;
-
     public function getXmlResponse(): string;
-
-    public function getVersionId(): int;
-
-    public function getEndpoint(): EndpointEnum;
 }

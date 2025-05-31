@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use InvalidArgumentException;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 
-final readonly class AdditionalDescriptionField implements AfterbuyAppendXmlContentInterface
+final readonly class AdditionalDescriptionField implements AfterbuyRequestDtoInterface
 {
     public function __construct(
         private ?int $fieldIdIdent = null,

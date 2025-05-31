@@ -14,7 +14,7 @@ use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddBaseProducts;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddCatalog;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddCatalogs;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AdditionalDescriptionField;
-use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AdditionalPriceUpdate;
+use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AdditionalPriceUpdateRequest;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Economicoperators;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Feature;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\PartsProperties;
@@ -39,7 +39,7 @@ use Wundii\AfterbuySdk\Enum\UpdateActionAddCatalogsEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionAttributesEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionEconomicoperatorsEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionSkusEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 use Wundii\AfterbuySdk\Request\UpdateShopProductsRequest;
 use Wundii\AfterbuySdk\Response\UpdateShopProductsResponse;
 use Wundii\AfterbuySdk\Tests\DomFormatter;
@@ -52,7 +52,7 @@ class UpdateShopProductsTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
-    public function validate(AfterbuyAppendXmlContentInterface $afterbuyAppendXmlContent): array
+    public function validate(AfterbuyRequestDtoInterface $afterbuyAppendXmlContent): array
     {
         $errors = [];
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
@@ -76,7 +76,7 @@ class UpdateShopProductsTest extends TestCase
             $products,
         );
 
-        $errors = $this->validate($request->requestClass());
+        $errors = $this->validate($request->requestDto());
         $expected = [
             'products: This collection should contain 250 elements or less.',
         ];
@@ -111,7 +111,7 @@ class UpdateShopProductsTest extends TestCase
             ],
         );
 
-        $errors = $this->validate($request->requestClass());
+        $errors = $this->validate($request->requestDto());
         $expected = [
             'products[0].skus.skus: This collection should contain 10 elements or less.',
         ];
@@ -131,7 +131,7 @@ class UpdateShopProductsTest extends TestCase
             ],
         );
 
-        $errors = $this->validate($request->requestClass());
+        $errors = $this->validate($request->requestDto());
         $expected = [
             'products[0].additionalDescriptionFields: This collection should contain 10 elements or less.',
         ];
@@ -384,12 +384,12 @@ class UpdateShopProductsTest extends TestCase
                         ),
                     ],
                     [
-                        new AdditionalPriceUpdate(
+                        new AdditionalPriceUpdateRequest(
                             1,
                             123456,
                             1.23,
                         ),
-                        new AdditionalPriceUpdate(
+                        new AdditionalPriceUpdateRequest(
                             2,
                             234567,
                             2.34,

@@ -9,20 +9,20 @@ use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 
 interface AfterbuyRequestInterface
 {
-    public function method(): RequestMethodEnum;
-
     public function callName(): string;
 
+    public function method(): RequestMethodEnum;
+
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string;
-
-    public function responseClass(): string;
-
-    public function uri(EndpointEnum $endpointEnum): string;
 
     /**
      * @return string[]
      */
     public function query(): array;
 
-    public function requestClass(): ?AfterbuyAppendXmlContentInterface;
+    public function requestDto(): ?AfterbuyRequestDtoInterface;
+
+    public function responseClass(): string;
+
+    public function uri(EndpointEnum $endpointEnum): string;
 }

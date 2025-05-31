@@ -28,9 +28,9 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Extends\DateTime;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
 use Wundii\DataMapper\DataConfig;
@@ -63,7 +63,7 @@ readonly class Afterbuy
     {
         $method = $afterbuyRequest->method()->value;
         $callName = $afterbuyRequest->callName();
-        $requestClass = $afterbuyRequest->requestClass();
+        $requestDto = $afterbuyRequest->requestDto();
         $payload = $afterbuyRequest->payload($this->afterbuyGlobal);
         $query = $afterbuyRequest->query();
         $responseClass = $afterbuyRequest->responseClass();
@@ -85,8 +85,8 @@ readonly class Afterbuy
         }
 
         /** validate the request class */
-        if ($requestClass instanceof AfterbuyAppendXmlContentInterface) {
-            $constraintViolationList = $this->getValidator()->validate($requestClass);
+        if ($requestDto instanceof AfterbuyRequestDtoInterface) {
+            $constraintViolationList = $this->getValidator()->validate($requestDto);
             if ($constraintViolationList->count() > 0) {
                 $loggerMessages = [];
                 foreach ($constraintViolationList as $error) {
@@ -95,7 +95,7 @@ readonly class Afterbuy
 
                 $this->appendLogMessage(
                     LogLevel::WARNING,
-                    sprintf('Afterbuy SDK %s', $requestClass::class),
+                    sprintf('Afterbuy SDK %s', $requestDto::class),
                     $uri,
                     $method,
                     $payload,
@@ -109,7 +109,7 @@ readonly class Afterbuy
 
         if (
             $this->endpointEnum === EndpointEnum::SANDBOX
-            && $requestClass instanceof AfterbuyAppendXmlContentInterface
+            && $requestDto instanceof AfterbuyRequestDtoInterface
             && ! $response instanceof ResponseInterface
         ) {
             $info = 'According to the Afterbuy documentation, the scheme should be changed from https to http for the test environment. ' .

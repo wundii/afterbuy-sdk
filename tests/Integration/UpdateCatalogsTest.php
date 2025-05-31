@@ -14,7 +14,7 @@ use Wundii\AfterbuySdk\Dto\UpdateCatalogs\NewCatalog;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\NewCatalogs;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 use Wundii\AfterbuySdk\Request\UpdateCatalogsRequest;
 use Wundii\AfterbuySdk\Response\UpdateCatalogsResponse;
 use Wundii\AfterbuySdk\Tests\DomFormatter;
@@ -27,7 +27,7 @@ class UpdateCatalogsTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
-    public function validate(AfterbuyAppendXmlContentInterface $afterbuyAppendXmlContent): array
+    public function validate(AfterbuyRequestDtoInterface $afterbuyAppendXmlContent): array
     {
         $errors = [];
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
@@ -59,7 +59,7 @@ class UpdateCatalogsTest extends TestCase
             $catalogs,
         );
 
-        $errors = $this->validate($request->requestClass());
+        $errors = $this->validate($request->requestDto());
         $expected = [
             'catalogs: This collection should contain 50 elements or less.',
         ];
@@ -76,7 +76,7 @@ class UpdateCatalogsTest extends TestCase
             ]
         );
 
-        $errors = $this->validate($request->requestClass());
+        $errors = $this->validate($request->requestDto());
         $expected = [
             'catalogs[0].catalogName.getUpdateActionEnum: catalogName must not be empty, when creating a catalog.',
         ];
@@ -93,7 +93,7 @@ class UpdateCatalogsTest extends TestCase
             ]
         );
 
-        $errors = $this->validate($request->requestClass());
+        $errors = $this->validate($request->requestDto());
         $expected = [
             'catalogs[0].catalogId.getUpdateActionEnum: catalogId must not be empty, when refresh or delete a catalog.',
         ];
@@ -110,7 +110,7 @@ class UpdateCatalogsTest extends TestCase
             ]
         );
 
-        $errors = $this->validate($request->requestClass());
+        $errors = $this->validate($request->requestDto());
         $expected = [
             'catalogs[0].catalogId.getUpdateActionEnum: catalogId must not be empty, when refresh or delete a catalog.',
         ];
@@ -130,7 +130,7 @@ class UpdateCatalogsTest extends TestCase
             ]
         );
 
-        $errors = $this->validate($request->requestClass());
+        $errors = $this->validate($request->requestDto());
         $this->assertEquals([], $errors);
 
         $request = new UpdateCatalogsRequest(
@@ -140,7 +140,7 @@ class UpdateCatalogsTest extends TestCase
             ]
         );
 
-        $errors = $this->validate($request->requestClass());
+        $errors = $this->validate($request->requestDto());
         $expected = [
             'catalogs[0].catalogDescription: This value is too long. It should have 255 characters or less.',
         ];

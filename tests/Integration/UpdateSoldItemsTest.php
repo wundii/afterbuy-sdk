@@ -18,7 +18,7 @@ use Wundii\AfterbuySdk\Dto\UpdateSoldItems\VorgangsInfo;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Extends\DateTime;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 use Wundii\AfterbuySdk\Request\UpdateSoldItemsRequest;
 use Wundii\AfterbuySdk\Response\UpdateSoldItemsResponse;
 use Wundii\AfterbuySdk\Tests\DomFormatter;
@@ -31,7 +31,7 @@ class UpdateSoldItemsTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
-    public function validate(AfterbuyAppendXmlContentInterface $afterbuyAppendXmlContent): array
+    public function validate(AfterbuyRequestDtoInterface $afterbuyAppendXmlContent): array
     {
         $errors = [];
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
@@ -62,7 +62,7 @@ class UpdateSoldItemsTest extends TestCase
             $orders,
         );
 
-        $errors = $this->validate($request->requestClass());
+        $errors = $this->validate($request->requestDto());
         $expected = [
             'orders: This collection should contain 150 elements or less.',
         ];
@@ -91,7 +91,7 @@ class UpdateSoldItemsTest extends TestCase
             ]
         );
 
-        $errors = $this->validate($request->requestClass());
+        $errors = $this->validate($request->requestDto());
         $expected = [
             'orders[0].shippingInfo.parcelLabels: Parcel label number [0123DHL-2, 0123DHL-6] must be unique in order',
         ];

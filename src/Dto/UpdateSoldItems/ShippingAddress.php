@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 
-final readonly class ShippingAddress implements AfterbuyAppendXmlContentInterface
+final readonly class ShippingAddress implements AfterbuyRequestDtoInterface
 {
     public function __construct(
         private ?bool $useShippingAddress = null,

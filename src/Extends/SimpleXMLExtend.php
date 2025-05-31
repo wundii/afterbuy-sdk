@@ -7,8 +7,8 @@ namespace Wundii\AfterbuySdk\Extends;
 use DateTimeInterface;
 use DOMDocument;
 use SimpleXMLElement;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 use Wundii\AfterbuySdk\Interface\FilterInterface;
 use Wundii\AfterbuySdk\Interface\ProductFilterInterface;
 
@@ -102,8 +102,8 @@ final class SimpleXMLExtend extends SimpleXMLElement
         }
     }
 
-    public function appendContent(AfterbuyAppendXmlContentInterface $afterbuyAppendXmlContent): void
+    public function appendContent(AfterbuyRequestDtoInterface $afterbuyRequestDto): void
     {
-        $afterbuyAppendXmlContent->appendXmlContent($this);
+        $afterbuyRequestDto->appendXmlContent($this);
     }
 }

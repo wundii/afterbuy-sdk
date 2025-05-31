@@ -7,10 +7,10 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 use DateTimeInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 use Wundii\AfterbuySdk\Validator as AfterbuySdkAssert;
 
-final readonly class ShippingInfo implements AfterbuyAppendXmlContentInterface
+final readonly class ShippingInfo implements AfterbuyRequestDtoInterface
 {
     /**
      * @param ParcelLabel[] $parcelLabels

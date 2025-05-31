@@ -6,7 +6,7 @@ namespace Wundii\AfterbuySdk\Interface;
 
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 
-interface AfterbuyAppendXmlContentInterface
+interface AfterbuyRequestDtoInterface
 {
     public function appendXmlContent(SimpleXMLExtend $xml): void;
 }

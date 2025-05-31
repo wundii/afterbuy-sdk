@@ -9,8 +9,8 @@ use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Interface\Filter\GetPaymentServicesFilterInterface;
 use Wundii\AfterbuySdk\Response\GetPaymentServicesResponse;
@@ -25,19 +25,14 @@ final readonly class GetPaymentServicesRequest implements AfterbuyRequestInterfa
     ) {
     }
 
-    public function method(): RequestMethodEnum
-    {
-        return RequestMethodEnum::GET;
-    }
-
     public function callName(): string
     {
         return 'GetPaymentServices';
     }
 
-    public function requestClass(): ?AfterbuyAppendXmlContentInterface
+    public function method(): RequestMethodEnum
     {
-        return null;
+        return RequestMethodEnum::GET;
     }
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
@@ -54,6 +49,11 @@ final readonly class GetPaymentServicesRequest implements AfterbuyRequestInterfa
         }
 
         return $string;
+    }
+
+    public function requestDto(): ?AfterbuyRequestDtoInterface
+    {
+        return null;
     }
 
     public function responseClass(): string

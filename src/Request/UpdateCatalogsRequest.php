@@ -12,8 +12,8 @@ use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Response\UpdateCatalogsResponse;
 
@@ -28,22 +28,14 @@ final readonly class UpdateCatalogsRequest implements AfterbuyRequestInterface
     ) {
     }
 
-    public function method(): RequestMethodEnum
-    {
-        return RequestMethodEnum::POST;
-    }
-
     public function callName(): string
     {
         return 'UpdateCatalogs';
     }
 
-    public function requestClass(): AfterbuyAppendXmlContentInterface
+    public function method(): RequestMethodEnum
     {
-        return new Catalogs(
-            $this->updateActionCatalogsEnum,
-            $this->catalogs
-        );
+        return RequestMethodEnum::POST;
     }
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
@@ -52,7 +44,7 @@ final readonly class UpdateCatalogsRequest implements AfterbuyRequestInterface
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        $xml->appendContent($this->requestClass());
+        $xml->appendContent($this->requestDto());
 
         $string = $xml->asXML();
         if ($string === false) {
@@ -60,6 +52,14 @@ final readonly class UpdateCatalogsRequest implements AfterbuyRequestInterface
         }
 
         return $string;
+    }
+
+    public function requestDto(): AfterbuyRequestDtoInterface
+    {
+        return new Catalogs(
+            $this->updateActionCatalogsEnum,
+            $this->catalogs
+        );
     }
 
     public function responseClass(): string

@@ -8,9 +8,9 @@ use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\UpdateActionAddCatalogsEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 
-final readonly class AddCatalogs implements AfterbuyAppendXmlContentInterface
+final readonly class AddCatalogs implements AfterbuyRequestDtoInterface
 {
     /**
      * @param AddCatalog[] $addCatalog

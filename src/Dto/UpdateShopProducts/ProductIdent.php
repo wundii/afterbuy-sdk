@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Enum\BaseProductTypeEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 
-final readonly class ProductIdent implements AfterbuyAppendXmlContentInterface
+final readonly class ProductIdent implements AfterbuyRequestDtoInterface
 {
     public function __construct(
         private string $userProductId,

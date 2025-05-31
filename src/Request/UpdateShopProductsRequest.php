@@ -11,8 +11,8 @@ use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Products;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Response\UpdateShopProductsResponse;
 
@@ -26,21 +26,14 @@ final readonly class UpdateShopProductsRequest implements AfterbuyRequestInterfa
     ) {
     }
 
-    public function method(): RequestMethodEnum
-    {
-        return RequestMethodEnum::POST;
-    }
-
     public function callName(): string
     {
         return 'UpdateShopProducts';
     }
 
-    public function requestClass(): AfterbuyAppendXmlContentInterface
+    public function method(): RequestMethodEnum
     {
-        return new Products(
-            $this->products
-        );
+        return RequestMethodEnum::POST;
     }
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
@@ -49,7 +42,7 @@ final readonly class UpdateShopProductsRequest implements AfterbuyRequestInterfa
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
-        $xml->appendContent($this->requestClass());
+        $xml->appendContent($this->requestDto());
 
         $string = $xml->asXML();
         if ($string === false) {
@@ -57,6 +50,13 @@ final readonly class UpdateShopProductsRequest implements AfterbuyRequestInterfa
         }
 
         return $string;
+    }
+
+    public function requestDto(): AfterbuyRequestDtoInterface
+    {
+        return new Products(
+            $this->products
+        );
     }
 
     public function responseClass(): string

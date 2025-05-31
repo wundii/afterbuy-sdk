@@ -8,9 +8,9 @@ use DateTimeInterface;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 
-final class Order implements AfterbuyAppendXmlContentInterface
+final class Order implements AfterbuyRequestDtoInterface
 {
     /**
      * @param string[] $tags

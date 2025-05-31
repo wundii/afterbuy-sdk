@@ -10,8 +10,8 @@ use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyAppendXmlContentInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Response\GetShippingCostResponse;
 
@@ -22,19 +22,14 @@ final readonly class GetShippingCostRequest implements AfterbuyRequestInterface
     ) {
     }
 
-    public function method(): RequestMethodEnum
-    {
-        return RequestMethodEnum::GET;
-    }
-
     public function callName(): string
     {
         return 'GetShippingCost';
     }
 
-    public function requestClass(): ?AfterbuyAppendXmlContentInterface
+    public function method(): RequestMethodEnum
     {
-        return null;
+        return RequestMethodEnum::GET;
     }
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
@@ -51,6 +46,11 @@ final readonly class GetShippingCostRequest implements AfterbuyRequestInterface
         }
 
         return $string;
+    }
+
+    public function requestDto(): ?AfterbuyRequestDtoInterface
+    {
+        return null;
     }
 
     public function responseClass(): string
