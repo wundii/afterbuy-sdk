@@ -14,7 +14,7 @@ use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddBaseProducts;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddCatalog;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddCatalogs;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AdditionalDescriptionField;
-use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AdditionalPriceUpdateRequest;
+use Wundii\AfterbuySdk\Dto\UpdateShopProducts\AdditionalPriceUpdate;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Economicoperators;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Feature;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\PartsProperties;
@@ -384,12 +384,12 @@ class UpdateShopProductsTest extends TestCase
                         ),
                     ],
                     [
-                        new AdditionalPriceUpdateRequest(
+                        new AdditionalPriceUpdate(
                             1,
                             123456,
                             1.23,
                         ),
-                        new AdditionalPriceUpdateRequest(
+                        new AdditionalPriceUpdate(
                             2,
                             234567,
                             2.34,

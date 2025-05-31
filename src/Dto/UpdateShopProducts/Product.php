@@ -21,7 +21,7 @@ final class Product implements AfterbuyRequestDtoInterface
      * @param string[] $tags
      * @param Variation[] $useEbayVariations
      * @param PartsProperties[] $partsFitment
-     * @param AdditionalPriceUpdateRequest[] $additionalPriceUpdates
+     * @param AdditionalPriceUpdate[] $additionalPriceUpdates
      * @param ProductPicture[] $productPictures
      * @param AdditionalDescriptionField[] $additionalDescriptionFields
      * @param Feature[] $features
@@ -315,7 +315,7 @@ final class Product implements AfterbuyRequestDtoInterface
     }
 
     /**
-     * @return AdditionalPriceUpdateRequest[]
+     * @return AdditionalPriceUpdate[]
      */
     #[Assert\Count(min: 0)]
     #[Assert\Valid]
@@ -325,7 +325,7 @@ final class Product implements AfterbuyRequestDtoInterface
     }
 
     /**
-     * @param AdditionalPriceUpdateRequest[] $additionalPriceUpdates
+     * @param AdditionalPriceUpdate[] $additionalPriceUpdates
      */
     public function setAdditionalPriceUpdates(array $additionalPriceUpdates): void
     {

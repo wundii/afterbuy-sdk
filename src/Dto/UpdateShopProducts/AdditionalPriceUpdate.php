@@ -7,7 +7,7 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
 
-final readonly class AdditionalPriceUpdateRequest implements AfterbuyRequestDtoInterface
+final readonly class AdditionalPriceUpdate implements AfterbuyRequestDtoInterface
 {
     public function __construct(
         private int $definitionId,
