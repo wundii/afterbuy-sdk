@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final readonly class Variation implements AfterbuyRequestDtoInterface
+final readonly class Variation implements AfterbuyRequestDtoXmlInterface
 {
     /**
      * @param VariationValue[] $variationValues

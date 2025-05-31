@@ -27,6 +27,7 @@ Require the bundle and its dependencies with composer:
 
 ## Afterbuy API Documentation
 [Afterbuy XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
+[Afterbuy Shop API Documentation](https://xmldoku.afterbuy.de/shopdoku/)
 
 ### Supported Requests with Examples
 - [x] [GetAfterbuyTime](examples/GetAfterbuyTime.md)
@@ -123,6 +124,7 @@ In preparation for the release of version 1.0.
 - [x] Sandbox and Production environment testing
 - [x] Unittest for the Validator classes
 - [x] first important asserts for the UpdateRequest classes
+- [ ] shop api (create afterbuy order) implementation
 - [ ] final productive testing
 
 ## Usage

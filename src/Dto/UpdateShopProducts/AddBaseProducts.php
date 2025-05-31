@@ -8,9 +8,9 @@ use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\UpdateActionAddBaseProductEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final readonly class AddBaseProducts implements AfterbuyRequestDtoInterface
+final readonly class AddBaseProducts implements AfterbuyRequestDtoXmlInterface
 {
     /**
      * @param AddBaseProduct[] $addBaseProducts

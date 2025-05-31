@@ -7,9 +7,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final readonly class ProductPicture implements AfterbuyRequestDtoInterface
+final readonly class ProductPicture implements AfterbuyRequestDtoXmlInterface
 {
     /**
      * @param ProductPictureChild[] $childs

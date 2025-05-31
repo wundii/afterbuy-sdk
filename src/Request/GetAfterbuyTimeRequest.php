@@ -53,7 +53,7 @@ final readonly class GetAfterbuyTimeRequest implements AfterbuyRequestInterface
 
     public function uri(EndpointEnum $endpointEnum): string
     {
-        return $endpointEnum->value;
+        return $endpointEnum->afterbuyApiUri();
     }
 
     public function query(): array

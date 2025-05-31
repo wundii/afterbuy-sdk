@@ -13,7 +13,7 @@ interface AfterbuyRequestInterface
 
     public function method(): RequestMethodEnum;
 
-    public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string;
+    public function payload(AfterbuyGlobalInterface $afterbuyGlobal): ?string;
 
     /**
      * @return string[]

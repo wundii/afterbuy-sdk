@@ -12,9 +12,9 @@ use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
 use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
 use Wundii\AfterbuySdk\Enum\GenderEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final class Product implements AfterbuyRequestDtoInterface
+final class Product implements AfterbuyRequestDtoXmlInterface
 {
     /**
      * @param ScaledDiscount[] $scaledDiscounts

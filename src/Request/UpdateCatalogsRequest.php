@@ -13,7 +13,7 @@ use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Response\UpdateCatalogsResponse;
 
@@ -54,7 +54,7 @@ final readonly class UpdateCatalogsRequest implements AfterbuyRequestInterface
         return $string;
     }
 
-    public function requestDto(): AfterbuyRequestDtoInterface
+    public function requestDto(): AfterbuyRequestDtoXmlInterface
     {
         return new Catalogs(
             $this->updateActionCatalogsEnum,
@@ -69,7 +69,7 @@ final readonly class UpdateCatalogsRequest implements AfterbuyRequestInterface
 
     public function uri(EndpointEnum $endpointEnum): string
     {
-        return $endpointEnum->value;
+        return $endpointEnum->afterbuyApiUri();
     }
 
     public function query(): array

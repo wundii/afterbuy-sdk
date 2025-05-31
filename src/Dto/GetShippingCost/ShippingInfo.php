@@ -7,9 +7,9 @@ namespace Wundii\AfterbuySdk\Dto\GetShippingCost;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final readonly class ShippingInfo implements AfterbuyRequestDtoInterface
+final readonly class ShippingInfo implements AfterbuyRequestDtoXmlInterface
 {
     /**
      * @param int|int[] $productIds

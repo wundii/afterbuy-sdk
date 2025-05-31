@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final readonly class VorgangsInfo implements AfterbuyRequestDtoInterface
+final readonly class VorgangsInfo implements AfterbuyRequestDtoXmlInterface
 {
     public function __construct(
         private ?string $VorgangsInfo1 = null,

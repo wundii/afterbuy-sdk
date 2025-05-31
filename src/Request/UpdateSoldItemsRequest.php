@@ -12,7 +12,7 @@ use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Response\UpdateSoldItemsResponse;
 
@@ -52,7 +52,7 @@ final readonly class UpdateSoldItemsRequest implements AfterbuyRequestInterface
         return $string;
     }
 
-    public function requestDto(): AfterbuyRequestDtoInterface
+    public function requestDto(): AfterbuyRequestDtoXmlInterface
     {
         return new Orders(
             $this->orders
@@ -66,7 +66,7 @@ final readonly class UpdateSoldItemsRequest implements AfterbuyRequestInterface
 
     public function uri(EndpointEnum $endpointEnum): string
     {
-        return $endpointEnum->value;
+        return $endpointEnum->afterbuyApiUri();
     }
 
     public function query(): array

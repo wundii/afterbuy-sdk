@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Enum\PictureTypEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final readonly class ProductPictureChild implements AfterbuyRequestDtoInterface
+final readonly class ProductPictureChild implements AfterbuyRequestDtoXmlInterface
 {
     public function __construct(
         private PictureTypEnum $pictureTypEnum,

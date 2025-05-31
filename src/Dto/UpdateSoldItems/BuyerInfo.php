@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final readonly class BuyerInfo implements AfterbuyRequestDtoInterface
+final readonly class BuyerInfo implements AfterbuyRequestDtoXmlInterface
 {
     public function __construct(
         private ShippingAddress $shippingAddress,

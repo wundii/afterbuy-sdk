@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final readonly class ScaledDiscount implements AfterbuyRequestDtoInterface
+final readonly class ScaledDiscount implements AfterbuyRequestDtoXmlInterface
 {
     public function __construct(
         private ?int $scaledQuantity = null,

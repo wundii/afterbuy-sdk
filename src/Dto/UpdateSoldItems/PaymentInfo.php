@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use DateTimeInterface;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final readonly class PaymentInfo implements AfterbuyRequestDtoInterface
+final readonly class PaymentInfo implements AfterbuyRequestDtoXmlInterface
 {
     public function __construct(
         private ?string $paymentMethod = null,

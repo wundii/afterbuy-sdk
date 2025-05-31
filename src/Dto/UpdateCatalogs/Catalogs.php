@@ -7,9 +7,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateCatalogs;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final class Catalogs implements AfterbuyRequestDtoInterface
+final class Catalogs implements AfterbuyRequestDtoXmlInterface
 {
     /**
      * @param Catalog[] $catalogs

@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Enum\AttributTypEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final readonly class AddAttribut implements AfterbuyRequestDtoInterface
+final readonly class AddAttribut implements AfterbuyRequestDtoXmlInterface
 {
     public function __construct(
         private ?string $AttributName = null,

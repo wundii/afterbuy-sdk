@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Enum\PropertyNameEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final readonly class PartsProperty implements AfterbuyRequestDtoInterface
+final readonly class PartsProperty implements AfterbuyRequestDtoXmlInterface
 {
     public function __construct(
         private PropertyNameEnum $propertyNameEnum,

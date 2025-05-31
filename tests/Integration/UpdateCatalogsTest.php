@@ -14,7 +14,7 @@ use Wundii\AfterbuySdk\Dto\UpdateCatalogs\NewCatalog;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\NewCatalogs;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Request\UpdateCatalogsRequest;
 use Wundii\AfterbuySdk\Response\UpdateCatalogsResponse;
 use Wundii\AfterbuySdk\Tests\DomFormatter;
@@ -27,7 +27,7 @@ class UpdateCatalogsTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
-    public function validate(AfterbuyRequestDtoInterface $afterbuyAppendXmlContent): array
+    public function validate(AfterbuyRequestDtoXmlInterface $afterbuyAppendXmlContent): array
     {
         $errors = [];
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

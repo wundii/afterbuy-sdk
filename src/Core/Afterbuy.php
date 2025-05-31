@@ -80,10 +80,6 @@ readonly class Afterbuy
             throw new RuntimeException('Response class does not exist');
         }
 
-        if (str_ends_with($uri, '/')) {
-            $uri = substr($uri, 0, -1);
-        }
-
         /** validate the request class */
         if ($requestDto instanceof AfterbuyRequestDtoInterface) {
             $constraintViolationList = $this->getValidator()->validate($requestDto);
@@ -246,7 +242,7 @@ readonly class Afterbuy
         string $message,
         string $uri,
         string $method,
-        string $payload,
+        ?string $payload,
         array $query,
         array $messages,
     ): void {

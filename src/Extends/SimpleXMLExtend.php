@@ -8,7 +8,7 @@ use DateTimeInterface;
 use DOMDocument;
 use SimpleXMLElement;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Interface\FilterInterface;
 use Wundii\AfterbuySdk\Interface\ProductFilterInterface;
 
@@ -19,7 +19,7 @@ final class SimpleXMLExtend extends SimpleXMLElement
         $afterbuyGlobal->simpleXmlElement($this);
     }
 
-    public function addNumber(string $string, null|int|float $value): void
+    public function addNumber(string $key, null|int|float $value): void
     {
         if ($value === null) {
             return;
@@ -29,17 +29,17 @@ final class SimpleXMLExtend extends SimpleXMLElement
             $value = number_format($value, 2, ',', '');
         }
 
-        $this->addChild($string, (string) $value);
+        $this->addChild($key, (string) $value);
     }
 
-    public function addString(string $string, ?string $value): void
+    public function addString(string $key, ?string $value): void
     {
         if ($value === null) {
             return;
         }
 
         if (preg_match('/[<>&]/', $value)) {
-            $child = $this->addChild($string);
+            $child = $this->addChild($key);
             $node = dom_import_simplexml($child);
             $domDocument = $node->ownerDocument;
             if (! $domDocument instanceof DOMDocument) {
@@ -49,26 +49,26 @@ final class SimpleXMLExtend extends SimpleXMLElement
             $cdata = $domDocument->createCDATASection($value);
             $node->appendChild($cdata);
         } else {
-            $this->addChild($string, $value);
+            $this->addChild($key, $value);
         }
     }
 
-    public function addBool(string $string, ?bool $value): void
+    public function addBool(string $key, ?bool $value): void
     {
         if ($value === null) {
             return;
         }
 
-        $this->addChild($string, $value ? '1' : '0');
+        $this->addChild($key, $value ? '1' : '0');
     }
 
-    public function addDateTime(string $string, ?DateTimeInterface $dateTime): void
+    public function addDateTime(string $key, ?DateTimeInterface $dateTime): void
     {
         if (! $dateTime instanceof DateTimeInterface) {
             return;
         }
 
-        $this->addChild($string, $dateTime->format('d.m.Y H:i:s'));
+        $this->addChild($key, $dateTime->format('d.m.Y H:i:s'));
     }
 
     /**
@@ -102,8 +102,8 @@ final class SimpleXMLExtend extends SimpleXMLElement
         }
     }
 
-    public function appendContent(AfterbuyRequestDtoInterface $afterbuyRequestDto): void
+    public function appendContent(AfterbuyRequestDtoXmlInterface $afterbuyRequestDtoXml): void
     {
-        $afterbuyRequestDto->appendXmlContent($this);
+        $afterbuyRequestDtoXml->appendXmlContent($this);
     }
 }

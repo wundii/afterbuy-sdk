@@ -8,9 +8,9 @@ use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\UpdateActionEconomicoperatorsEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 
-final readonly class Economicoperators implements AfterbuyRequestDtoInterface
+final readonly class Economicoperators implements AfterbuyRequestDtoXmlInterface
 {
     /**
      * @param int[] $economicoperatorId

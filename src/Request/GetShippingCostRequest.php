@@ -11,7 +11,7 @@ use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Response\GetShippingCostResponse;
 
@@ -48,7 +48,7 @@ final readonly class GetShippingCostRequest implements AfterbuyRequestInterface
         return $string;
     }
 
-    public function requestDto(): ?AfterbuyRequestDtoInterface
+    public function requestDto(): ?AfterbuyRequestDtoXmlInterface
     {
         return null;
     }
@@ -60,7 +60,7 @@ final readonly class GetShippingCostRequest implements AfterbuyRequestInterface
 
     public function uri(EndpointEnum $endpointEnum): string
     {
-        return $endpointEnum->value;
+        return $endpointEnum->afterbuyApiUri();
     }
 
     public function query(): array
