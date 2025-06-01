@@ -1,4 +1,4 @@
-# GetAfterbuyTime
+# CreateShopOrder
 [back to index](./../README.md)
 
 ## Example
@@ -9,7 +9,7 @@
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
-use Wundii\AfterbuySdk\Request\GetAfterbuyTimeRequest;
+use Wundii\AfterbuySdk\Request\CreateShopOrderRequest;
 
 $global = new AfterbuyGlobal(
     '123...',
@@ -21,7 +21,11 @@ $afterbuy = new Afterbuy(
     EndpointEnum::SANDBOX,
 );
 
-$request = new GetAfterbuyTimeRequest();
+$order = new Order(
+    ...
+);
+
+$request = new CreateShopOrderRequest($order);
 $response = $afterbuy->runRequest($request);
 
 if ($response->getStatusCode() !== 200) {
@@ -34,8 +38,7 @@ $response->getCallStatus();
 $response->getWarningMessages();
 $response->getErrorMessages();
 
-/** @var Wundii\AfterbuySdk\Dto\GetAfterbuyTime\AfterbuyTime $result */
+/** @var Wundii\AfterbuySdk\Dto\CreateShopOrder\ShopResponse $result */
 $result = $response->getResult();
-dump($result->getAfterbuyTimeStamp());
-dump($result->getAfterbuyUniversalTimeStamp());
+...
 ```

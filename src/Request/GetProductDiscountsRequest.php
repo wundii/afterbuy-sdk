@@ -9,7 +9,7 @@ use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
-use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Interface\RequestInterface;
@@ -61,7 +61,7 @@ final readonly class GetProductDiscountsRequest implements RequestInterface
         return GetProductDiscountsResponse::class;
     }
 
-    public function uri(EndpointEnum $endpointEnum): string
+    public function url(EndpointEnum $endpointEnum): string
     {
         return $endpointEnum->afterbuyApiUri();
     }

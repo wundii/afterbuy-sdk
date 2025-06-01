@@ -10,7 +10,7 @@ use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Product;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Products;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
-use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Interface\RequestInterface;
@@ -64,7 +64,7 @@ final readonly class UpdateShopProductsRequest implements RequestInterface
         return UpdateShopProductsResponse::class;
     }
 
-    public function uri(EndpointEnum $endpointEnum): string
+    public function url(EndpointEnum $endpointEnum): string
     {
         return $endpointEnum->afterbuyApiUri();
     }

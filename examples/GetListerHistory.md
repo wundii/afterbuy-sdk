@@ -11,7 +11,7 @@ use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\PlattformEnum;
 use Wundii\AfterbuySdk\Enum\SiteIdEnum;
-use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\AccountId;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\Anr;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\EndDate;

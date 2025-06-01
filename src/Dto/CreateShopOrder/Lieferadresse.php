@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Wundii\AfterbuySdk\Dto\CreateSoldItems;
+namespace Wundii\AfterbuySdk\Dto\CreateShopOrder;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;

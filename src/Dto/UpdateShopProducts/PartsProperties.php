@@ -6,7 +6,7 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
-use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
 final readonly class PartsProperties implements RequestDtoXmlInterface

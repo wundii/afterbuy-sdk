@@ -7,7 +7,7 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 use DateTimeInterface;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
-use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
 final class Order implements RequestDtoXmlInterface

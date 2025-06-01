@@ -11,7 +11,7 @@ use Wundii\AfterbuySdk\Enum\ConditionEnum;
 use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
 use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
 use Wundii\AfterbuySdk\Enum\GenderEnum;
-use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
 final class Product implements RequestDtoXmlInterface

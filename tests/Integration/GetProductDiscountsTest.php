@@ -10,7 +10,7 @@ use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetProductDiscounts\ProductDiscount;
 use Wundii\AfterbuySdk\Dto\GetProductDiscounts\ProductDiscounts;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
-use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Request\GetProductDiscountsRequest;
 use Wundii\AfterbuySdk\Response\GetProductDiscountsResponse;
 use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;

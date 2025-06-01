@@ -11,7 +11,7 @@ use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalogs;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
-use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Interface\RequestInterface;
@@ -67,7 +67,7 @@ final readonly class UpdateCatalogsRequest implements RequestInterface
         return UpdateCatalogsResponse::class;
     }
 
-    public function uri(EndpointEnum $endpointEnum): string
+    public function url(EndpointEnum $endpointEnum): string
     {
         return $endpointEnum->afterbuyApiUri();
     }

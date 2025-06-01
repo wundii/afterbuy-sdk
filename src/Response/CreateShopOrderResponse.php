@@ -13,7 +13,7 @@ use Wundii\AfterbuySdk\Trait\ResponseTrait;
 /**
  * @template-implements ResponseInterface<AfterbuyTime>
  */
-final class CreateSoldItemsResponse implements ResponseInterface
+final class CreateShopOrderResponse implements ResponseInterface
 {
     use ResponseTrait;
 

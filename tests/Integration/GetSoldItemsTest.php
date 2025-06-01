@@ -35,7 +35,7 @@ use Wundii\AfterbuySdk\Enum\PaymentFunctionEnum;
 use Wundii\AfterbuySdk\Enum\PaymentIdEnum;
 use Wundii\AfterbuySdk\Enum\PlattformEnum;
 use Wundii\AfterbuySdk\Enum\TaxCollectedByEnum;
-use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserEmail;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserId;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AlternativeItemNumber1;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Wundii\AfterbuySdk\Dto\CreateSoldItems;
+namespace Wundii\AfterbuySdk\Dto\CreateShopOrder;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Interface\RequestDtoArrayInterface;
@@ -26,6 +26,10 @@ final readonly class Order implements RequestDtoArrayInterface
      */
     public function toArray(array $data): array
     {
+        /**
+         * PosAnz
+         */
+
         $data = $this->addObject($data, $this->kunde);
         return $this->addObject($data, $this->lieferadresse);
     }

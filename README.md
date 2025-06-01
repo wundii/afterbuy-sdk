@@ -26,10 +26,11 @@ Require the bundle and its dependencies with composer:
 > composer require wundii/afterbuy-sdk
 
 ## Afterbuy API Documentation
-[Afterbuy XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
 [Afterbuy Shop API Documentation](https://xmldoku.afterbuy.de/shopdoku/)
+[Afterbuy XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
 
 ### Supported Requests with Examples
+- [ ] [CreateShopOrder](examples/CreateShopOrder.md)
 - [x] [GetAfterbuyTime](examples/GetAfterbuyTime.md)
 - [x] [GetListerHistory](examples/GetListerHistory.md)
 - [x] [GetMailTemplates](examples/GetMailTemplates.md)

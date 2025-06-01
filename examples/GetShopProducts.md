@@ -2,6 +2,7 @@
 [back to index](./../README.md)
 
 ## Example
+
 ```php
 <?php
 
@@ -11,7 +12,7 @@ use Wundii\AfterbuySdk\Enum\DateFilterShopProductsEnum;
 use Wundii\AfterbuySdk\Enum\DefaultFilterShopProductsEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
-use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Filter\GetShopProducts\Anr;
 use Wundii\AfterbuySdk\Filter\GetShopProducts\DateFilter;
 use Wundii\AfterbuySdk\Filter\GetShopProducts\DefaultFilter;

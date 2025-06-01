@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use DateTimeInterface;
-use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
 final readonly class PaymentInfo implements RequestDtoXmlInterface

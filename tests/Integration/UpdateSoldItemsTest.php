@@ -17,7 +17,7 @@ use Wundii\AfterbuySdk\Dto\UpdateSoldItems\ShippingInfo;
 use Wundii\AfterbuySdk\Dto\UpdateSoldItems\VorgangsInfo;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
-use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Request\UpdateSoldItemsRequest;
 use Wundii\AfterbuySdk\Response\UpdateSoldItemsResponse;

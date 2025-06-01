@@ -82,13 +82,13 @@ class PsrLoggerTest extends TestCase
         $expected = [
             'message' => 'Afterbuy SDK Wundii\AfterbuySdk\Request\GetStockInfoRequest',
             'context' => [
-                'uri' => 'http://api.afterbuy.de/afterbuy/ABInterface.aspx',
                 'method' => 'GET',
                 'payload' => $payload,
                 'query' => [],
                 'messages' => [
                     'Code 2: Produkt nicht gefunden.',
                 ],
+                'url' => 'http://api.afterbuy.de/afterbuy/ABInterface.aspx',
             ],
         ];
 
@@ -123,13 +123,13 @@ class PsrLoggerTest extends TestCase
         $expected = [
             'message' => 'Afterbuy SDK Wundii\AfterbuySdk\Request\GetListerHistoryRequest',
             'context' => [
-                'uri' => 'http://api.afterbuy.de/afterbuy/ABInterface.aspx',
                 'method' => 'GET',
                 'payload' => $payload,
                 'query' => [],
                 'messages' => [
                     'Code 30: Kein gültiger Filter angegeben.',
                 ],
+                'url' => 'http://api.afterbuy.de/afterbuy/ABInterface.aspx',
             ],
         ];
 

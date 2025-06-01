@@ -9,7 +9,7 @@ use PhpBench\Attributes\Iterations;
 use PhpBench\Attributes\Revs;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
-use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 
 #[BeforeMethods('setUp')]
 class XmlProcessingBench

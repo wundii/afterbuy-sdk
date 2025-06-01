@@ -24,5 +24,5 @@ interface RequestInterface
 
     public function responseClass(): string;
 
-    public function uri(EndpointEnum $endpointEnum): string;
+    public function url(EndpointEnum $endpointEnum): string;
 }

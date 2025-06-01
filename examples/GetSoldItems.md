@@ -13,7 +13,7 @@ use Wundii\AfterbuySdk\Enum\DefaultFilterSoldItemsEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\PlattformEnum;
-use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserEmail;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserId;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AlternativeItemNumber1;

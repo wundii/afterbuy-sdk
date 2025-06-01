@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
-use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
 final readonly class ScaledDiscount implements RequestDtoXmlInterface

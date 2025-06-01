@@ -27,7 +27,8 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface as HttpClientResponseInterface;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
-use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Extension\DateTime;
+use Wundii\AfterbuySdk\Extension\HttpClientHelper;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\RequestDtoInterface;
 use Wundii\AfterbuySdk\Interface\RequestInterface;
@@ -67,7 +68,7 @@ readonly class Afterbuy
         $payload = $afterbuyRequest->payload($this->afterbuyGlobal);
         $query = $afterbuyRequest->query();
         $responseClass = $afterbuyRequest->responseClass();
-        $uri = $afterbuyRequest->uri($this->endpointEnum);
+        $url = $afterbuyRequest->url($this->endpointEnum);
         $dataConfig = new DataConfig(
             ApproachEnum::SETTER,
             classMap: [
@@ -92,7 +93,7 @@ readonly class Afterbuy
                 $this->appendLogMessage(
                     LogLevel::WARNING,
                     sprintf('Afterbuy SDK %s', $requestDto::class),
-                    $uri,
+                    $url,
                     $method,
                     $payload,
                     $query,
@@ -116,7 +117,7 @@ readonly class Afterbuy
             $this->appendLogMessage(
                 LogLevel::INFO,
                 sprintf('Afterbuy SDK %s', $afterbuyRequest::class),
-                $uri,
+                $url,
                 $method,
                 $payload,
                 $query,
@@ -134,10 +135,16 @@ readonly class Afterbuy
 
         /** $response is always null, this variable is only filled in for the unit test */
         if (! $httpClientResponse instanceof HttpClientResponseInterface) {
+            $uri = HttpClientHelper::prepareUri($url, $query);
+
+            if (strlen($uri) > 2048) {
+                throw new InvalidArgumentException('URI is too long (more than 2048 characters), please reduce the query parameters');
+            }
+
             try {
                 $httpClientResponse = HttpClient::create()->request(
                     $method,
-                    $uri,
+                    $url,
                     [
                         'headers' => [
                             'Content-Type: application/xml; charset=utf-8',
@@ -174,7 +181,7 @@ readonly class Afterbuy
         $this->appendLogMessage(
             $callStatusEnum->getPsr3Level(),
             sprintf('Afterbuy SDK %s', $afterbuyRequest::class),
-            $uri,
+            $url,
             $method,
             $payload,
             $query,
@@ -242,7 +249,7 @@ readonly class Afterbuy
     private function appendLogMessage(
         string $level,
         string $message,
-        string $uri,
+        string $url,
         string $method,
         ?string $payload,
         array $query,
@@ -257,7 +264,7 @@ readonly class Afterbuy
         }
 
         $context = [
-            'uri' => $uri,
+            'url' => $url,
             'method' => $method,
             'payload' => $payload,
             'query' => $query,

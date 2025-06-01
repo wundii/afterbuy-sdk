@@ -21,7 +21,7 @@ use Wundii\AfterbuySdk\Enum\ListingCountryEnum;
 use Wundii\AfterbuySdk\Enum\PlattformEnum;
 use Wundii\AfterbuySdk\Enum\SellStatusEnum;
 use Wundii\AfterbuySdk\Enum\SiteIdEnum;
-use Wundii\AfterbuySdk\Extends\DateTime;
+use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\AccountId;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\Anr;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\EndDate;

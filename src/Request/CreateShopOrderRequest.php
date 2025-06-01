@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Request;
 
-use Wundii\AfterbuySdk\Dto\CreateSoldItems\Order;
+use Wundii\AfterbuySdk\Dto\CreateShopOrder\Order;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\RequestDtoArrayInterface;
 use Wundii\AfterbuySdk\Interface\RequestInterface;
-use Wundii\AfterbuySdk\Response\CreateSoldItemsResponse;
+use Wundii\AfterbuySdk\Response\CreateShopOrderResponse;
 
-final readonly class CreateSoldItemsRequest implements RequestInterface
+final readonly class CreateShopOrderRequest implements RequestInterface
 {
     public function __construct(
         private Order $order,
@@ -21,7 +21,7 @@ final readonly class CreateSoldItemsRequest implements RequestInterface
 
     public function callName(): string
     {
-        return 'CreateSoldItems';
+        return 'CreateShopOrder';
     }
 
     public function method(): RequestMethodEnum
@@ -41,10 +41,10 @@ final readonly class CreateSoldItemsRequest implements RequestInterface
 
     public function responseClass(): string
     {
-        return CreateSoldItemsResponse::class;
+        return CreateShopOrderResponse::class;
     }
 
-    public function uri(EndpointEnum $endpointEnum): string
+    public function url(EndpointEnum $endpointEnum): string
     {
         return $endpointEnum->shopApiUri();
     }

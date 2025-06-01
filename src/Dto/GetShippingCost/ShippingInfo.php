@@ -6,7 +6,7 @@ namespace Wundii\AfterbuySdk\Dto\GetShippingCost;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
-use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
 final readonly class ShippingInfo implements RequestDtoXmlInterface

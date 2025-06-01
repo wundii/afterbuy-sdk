@@ -10,7 +10,7 @@ use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\OrderDirectionEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
-use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
+use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\Filter\GetSoldItemsFilterInterface;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
@@ -79,7 +79,7 @@ final readonly class GetSoldItemsRequest implements RequestInterface
         return GetSoldItemsResponse::class;
     }
 
-    public function uri(EndpointEnum $endpointEnum): string
+    public function url(EndpointEnum $endpointEnum): string
     {
         return $endpointEnum->afterbuyApiUri();
     }
