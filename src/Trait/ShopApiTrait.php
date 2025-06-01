@@ -81,12 +81,12 @@ trait ShopApiTrait
      * @param array<string,string> $data
      * @return array<string,string>
      */
-    public function addObject(array $data, ?object $object): array
+    public function addObject(array $data, ?object $object, ?int $index = null): array
     {
         if (! $object instanceof RequestDtoArrayInterface) {
             return $data;
         }
 
-        return $object->toArray($data);
+        return $object->toArray($data, $index);
     }
 }

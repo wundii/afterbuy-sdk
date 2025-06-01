@@ -61,4 +61,27 @@ class HttpClientHelperTest extends TestCase
         $this->assertStringContainsString('special=b%C3%A4r%3F', $uri);
         $this->assertStringContainsString('?', $uri);
     }
+
+    public function testUriLengthWithValidUrlAndQuery(): void
+    {
+        $url = 'https://api.example.com/test';
+        $query = [
+            'foo' => 'bar',
+            'baz' => '42',
+        ];
+
+        $length = HttpClientHelper::uriLength($url, $query);
+
+        $this->assertLessThanOrEqual(HttpClientHelper::URI_MAX_LENGTH, $length);
+    }
+
+    public function testUriLengthExceedsMaxLength(): void
+    {
+        $url = 'https://api.example.com/test/';
+        $query = array_fill(0, 355, 'a'); // Create a long query
+
+        $length = HttpClientHelper::uriLength($url, $query);
+
+        $this->assertGreaterThan(HttpClientHelper::URI_MAX_LENGTH, $length);
+    }
 }

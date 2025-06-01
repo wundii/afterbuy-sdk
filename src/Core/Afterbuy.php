@@ -135,9 +135,7 @@ readonly class Afterbuy
 
         /** $response is always null, this variable is only filled in for the unit test */
         if (! $httpClientResponse instanceof HttpClientResponseInterface) {
-            $uri = HttpClientHelper::prepareUri($url, $query);
-
-            if (strlen($uri) > 2048) {
+            if (HttpClientHelper::uriLength($url, $query) > HttpClientHelper::URI_MAX_LENGTH) {
                 throw new InvalidArgumentException('URI is too long (more than 2048 characters), please reduce the query parameters');
             }
 

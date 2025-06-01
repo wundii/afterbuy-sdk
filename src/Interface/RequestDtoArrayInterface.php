@@ -10,5 +10,5 @@ interface RequestDtoArrayInterface extends RequestDtoInterface
      * @param array<string,string> $data
      * @return array<string,string>
      */
-    public function toArray(array $data): array;
+    public function toArray(array $data, ?int $index = null): array;
 }
