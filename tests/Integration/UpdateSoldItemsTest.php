@@ -18,7 +18,7 @@ use Wundii\AfterbuySdk\Dto\UpdateSoldItems\VorgangsInfo;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Extends\DateTime;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Request\UpdateSoldItemsRequest;
 use Wundii\AfterbuySdk\Response\UpdateSoldItemsResponse;
 use Wundii\AfterbuySdk\Tests\DomFormatter;
@@ -31,7 +31,7 @@ class UpdateSoldItemsTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
-    public function validate(AfterbuyRequestDtoXmlInterface $afterbuyAppendXmlContent): array
+    public function validate(RequestDtoXmlInterface $afterbuyAppendXmlContent): array
     {
         $errors = [];
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

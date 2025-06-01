@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ShippingAddress implements AfterbuyDtoInterface
+final class ShippingAddress implements ResponseDtoInterface
 {
     public function __construct(
         private ?string $firstName = null,

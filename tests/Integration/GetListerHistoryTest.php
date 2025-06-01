@@ -7,12 +7,12 @@ namespace Wundii\AfterbuySdk\Tests\Integration;
 use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Dto\AfterbuyError;
 use Wundii\AfterbuySdk\Dto\GetListerHistory\ListedItem;
 use Wundii\AfterbuySdk\Dto\GetListerHistory\ListedItems;
 use Wundii\AfterbuySdk\Dto\GetListerHistory\ListingDetails;
 use Wundii\AfterbuySdk\Dto\GetListerHistory\ProductDetails;
 use Wundii\AfterbuySdk\Dto\GetListerHistory\ProductDetailsCatalog;
+use Wundii\AfterbuySdk\Dto\ResponseError;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EbayCurrencyEnum;
@@ -237,7 +237,7 @@ class GetListerHistoryTest extends TestCase
         $this->assertEquals(CallStatusEnum::ERROR, $response->getCallStatus());
         $this->assertInstanceOf(GetListerHistoryResponse::class, $response);
         $this->assertCount(1, $response->getErrorMessages());
-        $this->assertInstanceOf(AfterbuyError::class, $response->getErrorMessages()[0]);
+        $this->assertInstanceOf(ResponseError::class, $response->getErrorMessages()[0]);
         $this->assertSame(30, $response->getErrorMessages()[0]->getErrorCode());
 
         /** @var ListedItems $listedItems */

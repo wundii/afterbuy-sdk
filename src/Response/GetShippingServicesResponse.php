@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Response;
 
 use Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingServices;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
-use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseInterface;
+use Wundii\AfterbuySdk\Trait\ResponseTrait;
 
 /**
- * @template-implements AfterbuyResponseInterface<ShippingServices>
+ * @template-implements ResponseInterface<ShippingServices>
  */
-final class GetShippingServicesResponse implements AfterbuyResponseInterface
+final class GetShippingServicesResponse implements ResponseInterface
 {
-    use AfterbuyResponseTrait;
+    use ResponseTrait;
 
     /**
      * @return ShippingServices
      */
-    public function getResult(): AfterbuyDtoInterface
+    public function getResult(): ResponseDtoInterface
     {
         return $this->dataMapper->xml($this->content, ShippingServices::class, ['Result'], true);
     }

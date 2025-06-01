@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class NewProducts implements AfterbuyDtoInterface
+final class NewProducts implements ResponseDtoInterface
 {
     /**
      * @param NewProduct[] $newProducts

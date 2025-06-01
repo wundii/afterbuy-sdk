@@ -7,10 +7,10 @@ namespace Wundii\AfterbuySdk\Tests\Integration;
 use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Dto\AfterbuyError;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingMethods;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingService;
+use Wundii\AfterbuySdk\Dto\ResponseError;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
@@ -139,7 +139,7 @@ class GetShippingCostTest extends TestCase
         $this->assertEquals(CallStatusEnum::ERROR, $response->getCallStatus());
         $this->assertInstanceOf(GetShippingCostResponse::class, $response);
         $this->assertCount(1, $response->getErrorMessages());
-        $this->assertInstanceOf(AfterbuyError::class, $response->getErrorMessages()[0]);
+        $this->assertInstanceOf(ResponseError::class, $response->getErrorMessages()[0]);
         $this->assertSame(27, $response->getErrorMessages()[0]->getErrorCode());
 
         /** @var ShippingService $shippingService */

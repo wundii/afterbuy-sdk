@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetVersion;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class Versions implements AfterbuyDtoInterface
+final class Versions implements ResponseDtoInterface
 {
     /**
      * @param Version[] $versions

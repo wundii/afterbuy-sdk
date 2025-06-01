@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class ParcelLabel implements AfterbuyRequestDtoXmlInterface
+final readonly class ParcelLabel implements RequestDtoXmlInterface
 {
     public function __construct(
         private int $itemId,
@@ -19,9 +19,9 @@ final readonly class ParcelLabel implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $parcelLabel = $xml->addChild('ParcelLabel');
+        $parcelLabel = $simpleXml->addChild('ParcelLabel');
         $parcelLabel->addNumber('ItemID', $this->itemId);
         $parcelLabel->addNumber('PackageNumber', $this->packageNumber);
         $parcelLabel->addString('ParcelLabelNumber', $this->parcelLabelNumber);

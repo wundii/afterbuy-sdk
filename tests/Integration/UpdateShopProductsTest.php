@@ -39,7 +39,7 @@ use Wundii\AfterbuySdk\Enum\UpdateActionAddCatalogsEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionAttributesEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionEconomicoperatorsEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionSkusEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Request\UpdateShopProductsRequest;
 use Wundii\AfterbuySdk\Response\UpdateShopProductsResponse;
 use Wundii\AfterbuySdk\Tests\DomFormatter;
@@ -52,7 +52,7 @@ class UpdateShopProductsTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
-    public function validate(AfterbuyRequestDtoXmlInterface $afterbuyAppendXmlContent): array
+    public function validate(RequestDtoXmlInterface $afterbuyAppendXmlContent): array
     {
         $errors = [];
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);

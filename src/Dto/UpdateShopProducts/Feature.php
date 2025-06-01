@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class Feature implements AfterbuyRequestDtoXmlInterface
+final readonly class Feature implements RequestDtoXmlInterface
 {
     public function __construct(
         private int $id,
@@ -15,9 +15,9 @@ final readonly class Feature implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $feature = $xml->addChild('Feature');
+        $feature = $simpleXml->addChild('Feature');
         $feature->addNumber('ID', $this->id);
         $feature->addString('Value', $this->value);
     }

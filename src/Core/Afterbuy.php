@@ -24,15 +24,15 @@ use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
-use Symfony\Contracts\HttpClient\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface as HttpClientResponseInterface;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Extends\DateTime;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\RequestInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoLoggerInterface;
+use Wundii\AfterbuySdk\Interface\ResponseInterface;
 use Wundii\DataMapper\DataConfig;
 use Wundii\DataMapper\DataMapper;
 use Wundii\DataMapper\Enum\ApproachEnum;
@@ -57,9 +57,9 @@ readonly class Afterbuy
     }
 
     /**
-     * @return AfterbuyResponseInterface<T>
+     * @return ResponseInterface<T>
      */
-    public function runRequest(AfterbuyRequestInterface $afterbuyRequest, ?ResponseInterface $response = null): AfterbuyResponseInterface
+    public function runRequest(RequestInterface $afterbuyRequest, ?HttpClientResponseInterface $httpClientResponse = null): ResponseInterface
     {
         $method = $afterbuyRequest->method()->value;
         $callName = $afterbuyRequest->callName();
@@ -81,7 +81,7 @@ readonly class Afterbuy
         }
 
         /** validate the request class */
-        if ($requestDto instanceof AfterbuyRequestDtoInterface) {
+        if ($requestDto instanceof RequestDtoInterface) {
             $constraintViolationList = $this->getValidator()->validate($requestDto);
             if ($constraintViolationList->count() > 0) {
                 $loggerMessages = [];
@@ -105,8 +105,8 @@ readonly class Afterbuy
 
         if (
             $this->endpointEnum === EndpointEnum::SANDBOX
-            && $requestDto instanceof AfterbuyRequestDtoInterface
-            && ! $response instanceof ResponseInterface
+            && $requestDto instanceof RequestDtoInterface
+            && ! $httpClientResponse instanceof HttpClientResponseInterface
         ) {
             $info = 'According to the Afterbuy documentation, the scheme should be changed from https to http for the test environment. ' .
                     'However, this is currently not working as expected - all changes continue to affect the production environment. ' .
@@ -129,13 +129,13 @@ readonly class Afterbuy
                 htmlspecialchars($callName, ENT_XML1),
                 self::DefaultSandboxVersion
             );
-            $response = new AfterbuySandboxResponse($defaultResponse);
+            $httpClientResponse = new AfterbuySandboxResponse($defaultResponse);
         }
 
         /** $response is always null, this variable is only filled in for the unit test */
-        if (! $response instanceof ResponseInterface) {
+        if (! $httpClientResponse instanceof HttpClientResponseInterface) {
             try {
-                $response = HttpClient::create()->request(
+                $httpClientResponse = HttpClient::create()->request(
                     $method,
                     $uri,
                     [
@@ -155,19 +155,19 @@ readonly class Afterbuy
         }
 
         try {
-            $response = (new ReflectionClass($responseClass))->newInstance($dataMapper, $response, $this->endpointEnum);
+            $httpClientResponse = (new ReflectionClass($responseClass))->newInstance($dataMapper, $httpClientResponse, $this->endpointEnum);
         } catch (Exception $exception) {
             throw new RuntimeException($exception->getMessage(), $exception->getCode(), $exception);
         }
 
-        if (! $response instanceof AfterbuyResponseInterface) {
+        if (! $httpClientResponse instanceof ResponseInterface) {
             throw new RuntimeException('Response class does not implement AfterbuyResponseInterface');
         }
 
-        $callStatusEnum = $response->getCallStatus();
+        $callStatusEnum = $httpClientResponse->getCallStatus();
         $loggerMessages = match ($callStatusEnum) {
-            CallStatusEnum::ERROR => $response->getErrorMessages(),
-            CallStatusEnum::WARNING => $response->getWarningMessages(),
+            CallStatusEnum::ERROR => $httpClientResponse->getErrorMessages(),
+            CallStatusEnum::WARNING => $httpClientResponse->getWarningMessages(),
             default => [],
         };
 
@@ -178,19 +178,21 @@ readonly class Afterbuy
             $method,
             $payload,
             $query,
-            $this->getAfterbuyDtoLoggerArray($loggerMessages),
+            $this->getResponseDtoLoggerArray($loggerMessages),
         );
 
-        return $response;
+        return $httpClientResponse;
     }
 
     /**
-     * @param AfterbuyDtoLoggerInterface[] $afterbuyDtoLogger
+     * @param ResponseDtoLoggerInterface[] $responseDtoLogger
      * @return string[]
      */
-    public function getAfterbuyDtoLoggerArray(array $afterbuyDtoLogger): array
+    public function getResponseDtoLoggerArray(array $responseDtoLogger): array
     {
-        return array_map(fn (AfterbuyDtoLoggerInterface $afterbuyDtoLogger): string => $afterbuyDtoLogger->getMessage(), $afterbuyDtoLogger);
+        return array_map(fn (
+            ResponseDtoLoggerInterface $responseDtoLogger
+        ): string => $responseDtoLogger->getMessage(), $responseDtoLogger);
     }
 
     public function getValidator(): ValidatorInterface

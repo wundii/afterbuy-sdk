@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class Variation implements AfterbuyRequestDtoXmlInterface
+final readonly class Variation implements RequestDtoXmlInterface
 {
     /**
      * @param VariationValue[] $variationValues
@@ -19,9 +19,9 @@ final readonly class Variation implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $variation = $xml->addChild('Variation');
+        $variation = $simpleXml->addChild('Variation');
         $variation->addString('VariationName', $this->variationName);
         foreach ($this->variationValues as $variationValue) {
             $variationValue->appendXmlContent($variation);

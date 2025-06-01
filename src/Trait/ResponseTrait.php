@@ -9,21 +9,21 @@ use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
-use Wundii\AfterbuySdk\Dto\AfterbuyError;
-use Wundii\AfterbuySdk\Dto\AfterbuyErrorList;
-use Wundii\AfterbuySdk\Dto\AfterbuyWarning;
-use Wundii\AfterbuySdk\Dto\AfterbuyWarningList;
+use Wundii\AfterbuySdk\Dto\ResponseError;
+use Wundii\AfterbuySdk\Dto\ResponseErrorList;
+use Wundii\AfterbuySdk\Dto\ResponseWarning;
+use Wundii\AfterbuySdk\Dto\ResponseWarningList;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\DataMapper\DataMapper;
 
-trait AfterbuyResponseTrait
+trait ResponseTrait
 {
     protected string $content;
 
-    protected ?AfterbuyErrorList $afterbuyErrorList = null;
+    protected ?ResponseErrorList $afterbuyErrorList = null;
 
-    protected ?AfterbuyWarningList $afterbuyWarningList = null;
+    protected ?ResponseWarningList $afterbuyWarningList = null;
 
     protected CallStatusEnum $callStatus;
 
@@ -37,10 +37,10 @@ trait AfterbuyResponseTrait
      */
     public function __construct(
         protected DataMapper $dataMapper,
-        protected ResponseInterface $response,
+        protected ResponseInterface $httpClientResponse,
         protected EndpointEnum $endpointEnum,
     ) {
-        $content = $this->response->getContent(false);
+        $content = $this->httpClientResponse->getContent(false);
         $this->content = $content;
 
         preg_match('/<CallStatus>(.*)<\/CallStatus>/s', $content, $matches);
@@ -58,12 +58,12 @@ trait AfterbuyResponseTrait
 
         if ($this->callStatus === CallStatusEnum::ERROR) {
             /** @phpstan-ignore-next-line */
-            $this->afterbuyErrorList = $this->dataMapper->xml($content, AfterbuyErrorList::class, ['Result'], true);
+            $this->afterbuyErrorList = $this->dataMapper->xml($content, ResponseErrorList::class, ['Result'], true);
         }
 
         if ($this->callStatus === CallStatusEnum::WARNING) {
             /** @phpstan-ignore-next-line */
-            $this->afterbuyWarningList = $this->dataMapper->xml($content, AfterbuyWarningList::class, ['Result'], true);
+            $this->afterbuyWarningList = $this->dataMapper->xml($content, ResponseWarningList::class, ['Result'], true);
         }
     }
 
@@ -72,7 +72,7 @@ trait AfterbuyResponseTrait
      */
     public function getStatusCode(): int
     {
-        return $this->response->getStatusCode();
+        return $this->httpClientResponse->getStatusCode();
     }
 
     public function getCallStatus(): CallStatusEnum
@@ -82,7 +82,7 @@ trait AfterbuyResponseTrait
 
     public function getInfo(): mixed
     {
-        return $this->response->getInfo();
+        return $this->httpClientResponse->getInfo();
     }
 
     public function getVersionId(): int
@@ -101,11 +101,11 @@ trait AfterbuyResponseTrait
     }
 
     /**
-     * @return AfterbuyError[]
+     * @return ResponseError[]
      */
     public function getErrorMessages(): array
     {
-        if (! $this->afterbuyErrorList instanceof AfterbuyErrorList) {
+        if (! $this->afterbuyErrorList instanceof ResponseErrorList) {
             return [];
         }
 
@@ -113,11 +113,11 @@ trait AfterbuyResponseTrait
     }
 
     /**
-     * @return AfterbuyWarning[]
+     * @return ResponseWarning[]
      */
     public function getWarningMessages(): array
     {
-        if (! $this->afterbuyWarningList instanceof AfterbuyWarningList) {
+        if (! $this->afterbuyWarningList instanceof ResponseWarningList) {
             return [];
         }
 
@@ -126,11 +126,11 @@ trait AfterbuyResponseTrait
 
     public function hasErrors(): bool
     {
-        return $this->afterbuyErrorList instanceof AfterbuyErrorList;
+        return $this->afterbuyErrorList instanceof ResponseErrorList;
     }
 
     public function hasWarnings(): bool
     {
-        return $this->afterbuyWarningList instanceof AfterbuyWarningList;
+        return $this->afterbuyWarningList instanceof ResponseWarningList;
     }
 }

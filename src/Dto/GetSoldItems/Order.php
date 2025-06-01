@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
 use DateTimeInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class Order implements AfterbuyDtoInterface
+final class Order implements ResponseDtoInterface
 {
     public function __construct(
         private int $invoiceNumber,

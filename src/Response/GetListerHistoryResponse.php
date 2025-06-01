@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Response;
 
 use Wundii\AfterbuySdk\Dto\GetListerHistory\ListedItems;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
-use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseInterface;
+use Wundii\AfterbuySdk\Trait\ResponseTrait;
 
 /**
- * @template-implements AfterbuyResponseInterface<ListedItems>
+ * @template-implements ResponseInterface<ListedItems>
  */
-final class GetListerHistoryResponse implements AfterbuyResponseInterface
+final class GetListerHistoryResponse implements ResponseInterface
 {
-    use AfterbuyResponseTrait;
+    use ResponseTrait;
 
     /**
      * @return ListedItems
      */
-    public function getResult(): AfterbuyDtoInterface
+    public function getResult(): ResponseDtoInterface
     {
         $content = $this->content;
         $matches = [];

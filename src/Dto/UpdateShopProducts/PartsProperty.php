@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Enum\PropertyNameEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class PartsProperty implements AfterbuyRequestDtoXmlInterface
+final readonly class PartsProperty implements RequestDtoXmlInterface
 {
     public function __construct(
         private PropertyNameEnum $propertyNameEnum,
@@ -16,9 +16,9 @@ final readonly class PartsProperty implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $partsProperty = $xml->addChild('PartsProperty');
+        $partsProperty = $simpleXml->addChild('PartsProperty');
         $partsProperty->addString('PropertyName', $this->propertyNameEnum->value);
         $partsProperty->addString('PropertyValue', $this->propertyValue);
     }

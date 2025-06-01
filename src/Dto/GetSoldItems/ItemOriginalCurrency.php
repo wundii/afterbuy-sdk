@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
 use Wundii\AfterbuySdk\Enum\ItemPriceCodeEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ItemOriginalCurrency implements AfterbuyDtoInterface
+final class ItemOriginalCurrency implements ResponseDtoInterface
 {
     public function __construct(
         private ?float $itemPrice = null,

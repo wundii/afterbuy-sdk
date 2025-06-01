@@ -6,12 +6,12 @@ namespace Wundii\AfterbuySdk\Dto\CreateSoldItems;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoArrayInterface;
-use Wundii\AfterbuySdk\Trait\AfterbuyShopApiTrait;
+use Wundii\AfterbuySdk\Interface\RequestDtoArrayInterface;
+use Wundii\AfterbuySdk\Trait\ShopApiTrait;
 
-final readonly class Lieferadresse implements AfterbuyRequestDtoArrayInterface
+final readonly class Lieferadresse implements RequestDtoArrayInterface
 {
-    use AfterbuyShopApiTrait;
+    use ShopApiTrait;
 
     public function __construct(
         #[Assert\Length(min: 1, max: 255)]

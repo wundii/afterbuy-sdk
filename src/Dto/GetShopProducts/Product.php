@@ -9,9 +9,9 @@ use Wundii\AfterbuySdk\Enum\BaseProductFlagEnum;
 use Wundii\AfterbuySdk\Enum\ConditionEnum;
 use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
 use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class Product implements AfterbuyDtoInterface
+final class Product implements ResponseDtoInterface
 {
     /**
      * @param BaseProduct[] $baseProducts

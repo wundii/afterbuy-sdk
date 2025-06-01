@@ -7,9 +7,9 @@ namespace Wundii\AfterbuySdk\Tests\Integration;
 use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Dto\AfterbuyWarning;
 use Wundii\AfterbuySdk\Dto\GetStockInfo\Product;
 use Wundii\AfterbuySdk\Dto\GetStockInfo\Products;
+use Wundii\AfterbuySdk\Dto\ResponseWarning;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
@@ -137,7 +137,7 @@ class GetStockInfoTest extends TestCase
         $this->assertEquals(CallStatusEnum::WARNING, $response->getCallStatus());
         $this->assertInstanceOf(GetStockInfoResponse::class, $response);
         $this->assertCount(1, $response->getWarningMessages());
-        $this->assertInstanceOf(AfterbuyWarning::class, $response->getWarningMessages()[0]);
+        $this->assertInstanceOf(ResponseWarning::class, $response->getWarningMessages()[0]);
         $this->assertSame(2, $response->getWarningMessages()[0]->getWarningCode());
 
         /** @var Products $products */

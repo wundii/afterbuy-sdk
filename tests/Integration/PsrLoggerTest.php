@@ -7,8 +7,8 @@ namespace Wundii\AfterbuySdk\Tests\Integration;
 use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Dto\AfterbuyError;
-use Wundii\AfterbuySdk\Dto\AfterbuyWarning;
+use Wundii\AfterbuySdk\Dto\ResponseError;
+use Wundii\AfterbuySdk\Dto\ResponseWarning;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\ProductFilterEnum;
@@ -72,7 +72,7 @@ class PsrLoggerTest extends TestCase
 
         $this->assertCount(0, $response->getErrorMessages());
         $this->assertCount(1, $response->getWarningMessages());
-        $this->assertInstanceOf(AfterbuyWarning::class, $response->getWarningMessages()[0]);
+        $this->assertInstanceOf(ResponseWarning::class, $response->getWarningMessages()[0]);
 
         $payload = '<?xml version="1.0" encoding="utf-8"?><Request><AfterbuyGlobal><AccountToken>account</AccountToken>';
         $payload .= '<PartnerToken>partner</PartnerToken><ErrorLanguage>DE</ErrorLanguage><CallName>GetStockInfo</CallName>';
@@ -113,7 +113,7 @@ class PsrLoggerTest extends TestCase
 
         $this->assertCount(1, $response->getErrorMessages());
         $this->assertCount(0, $response->getWarningMessages());
-        $this->assertInstanceOf(AfterbuyError::class, $response->getErrorMessages()[0]);
+        $this->assertInstanceOf(ResponseError::class, $response->getErrorMessages()[0]);
 
         $payload = '<?xml version="1.0" encoding="utf-8"?><Request><AfterbuyGlobal><AccountToken>account</AccountToken>';
         $payload .= '<PartnerToken>partner</PartnerToken><ErrorLanguage>DE</ErrorLanguage><CallName>GetListerHistory</CallName>';

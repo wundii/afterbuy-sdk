@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class ScaledDiscount implements AfterbuyRequestDtoXmlInterface
+final readonly class ScaledDiscount implements RequestDtoXmlInterface
 {
     public function __construct(
         private ?int $scaledQuantity = null,
@@ -16,9 +16,9 @@ final readonly class ScaledDiscount implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $scaledDiscount = $xml->addChild('ScaledDiscount');
+        $scaledDiscount = $simpleXml->addChild('ScaledDiscount');
         $scaledDiscount->addNumber('ScaledQuantity', $this->scaledQuantity);
         $scaledDiscount->addNumber('ScaledPrice', $this->scaledPrice);
         $scaledDiscount->addNumber('ScaledDPrice', $this->scaledDPrice);

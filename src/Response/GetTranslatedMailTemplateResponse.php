@@ -6,21 +6,21 @@ namespace Wundii\AfterbuySdk\Response;
 
 use Exception;
 use Wundii\AfterbuySdk\Dto\GetTranslatedMailTemplate\TranslatedMailText;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
-use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseInterface;
+use Wundii\AfterbuySdk\Trait\ResponseTrait;
 
 /**
- * @template-implements AfterbuyResponseInterface<TranslatedMailText>
+ * @template-implements ResponseInterface<TranslatedMailText>
  */
-final class GetTranslatedMailTemplateResponse implements AfterbuyResponseInterface
+final class GetTranslatedMailTemplateResponse implements ResponseInterface
 {
-    use AfterbuyResponseTrait;
+    use ResponseTrait;
 
     /**
      * @return ?TranslatedMailText
      */
-    public function getResult(): ?AfterbuyDtoInterface
+    public function getResult(): ?ResponseDtoInterface
     {
         try {
             return $this->dataMapper->xml($this->content, TranslatedMailText::class, ['Result']);

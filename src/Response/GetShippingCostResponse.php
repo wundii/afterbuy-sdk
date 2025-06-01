@@ -6,21 +6,21 @@ namespace Wundii\AfterbuySdk\Response;
 
 use Exception;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingService;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
-use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseInterface;
+use Wundii\AfterbuySdk\Trait\ResponseTrait;
 
 /**
- * @template-implements AfterbuyResponseInterface<ShippingService>
+ * @template-implements ResponseInterface<ShippingService>
  */
-final class GetShippingCostResponse implements AfterbuyResponseInterface
+final class GetShippingCostResponse implements ResponseInterface
 {
-    use AfterbuyResponseTrait;
+    use ResponseTrait;
 
     /**
      * @return ?ShippingService
      */
-    public function getResult(): ?AfterbuyDtoInterface
+    public function getResult(): ?ResponseDtoInterface
     {
         try {
             return $this->dataMapper->xml($this->content, ShippingService::class, ['Result', 'ShippingService']);

@@ -7,7 +7,7 @@ namespace Wundii\AfterbuySdk\Interface;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 
-interface AfterbuyRequestInterface
+interface RequestInterface
 {
     public function callName(): string;
 
@@ -20,7 +20,7 @@ interface AfterbuyRequestInterface
      */
     public function query(): array;
 
-    public function requestDto(): ?AfterbuyRequestDtoInterface;
+    public function requestDto(): ?RequestDtoInterface;
 
     public function responseClass(): string;
 

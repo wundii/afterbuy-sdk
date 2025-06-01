@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class AfterbuyWarningList implements AfterbuyDtoInterface
+final class ResponseWarningList implements ResponseDtoInterface
 {
     /**
-     * @param AfterbuyWarning[] $warningList
+     * @param ResponseWarning[] $warningList
      */
     public function __construct(
         private array $warningList,
@@ -17,7 +17,7 @@ final class AfterbuyWarningList implements AfterbuyDtoInterface
     }
 
     /**
-     * @return AfterbuyWarning[]
+     * @return ResponseWarning[]
      */
     public function getWarningList(): array
     {
@@ -25,7 +25,7 @@ final class AfterbuyWarningList implements AfterbuyDtoInterface
     }
 
     /**
-     * @param AfterbuyWarning[] $warningList
+     * @param ResponseWarning[] $warningList
      */
     public function setWarningList(array $warningList): void
     {

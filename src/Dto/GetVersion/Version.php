@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetVersion;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class Version implements AfterbuyDtoInterface
+final class Version implements ResponseDtoInterface
 {
     public function __construct(
         private int $id,

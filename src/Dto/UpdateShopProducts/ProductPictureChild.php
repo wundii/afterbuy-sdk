@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Enum\PictureTypEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class ProductPictureChild implements AfterbuyRequestDtoXmlInterface
+final readonly class ProductPictureChild implements RequestDtoXmlInterface
 {
     public function __construct(
         private PictureTypEnum $pictureTypEnum,
@@ -17,9 +17,9 @@ final readonly class ProductPictureChild implements AfterbuyRequestDtoXmlInterfa
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $productPicture = $xml->addChild('ProductPicture');
+        $productPicture = $simpleXml->addChild('ProductPicture');
         $productPicture->addNumber('Typ', $this->pictureTypEnum->value);
         $productPicture->addString('URL', $this->url);
         $productPicture->addString('AltText', $this->altText);

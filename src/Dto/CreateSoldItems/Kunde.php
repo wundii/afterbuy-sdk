@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\CreateSoldItems;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoArrayInterface;
-use Wundii\AfterbuySdk\Trait\AfterbuyShopApiTrait;
+use Wundii\AfterbuySdk\Interface\RequestDtoArrayInterface;
+use Wundii\AfterbuySdk\Trait\ShopApiTrait;
 
-final readonly class Kunde implements AfterbuyRequestDtoArrayInterface
+final readonly class Kunde implements RequestDtoArrayInterface
 {
-    use AfterbuyShopApiTrait;
+    use ShopApiTrait;
 
     public function __construct(
         #[Assert\Length(min: 1, max: 50)]

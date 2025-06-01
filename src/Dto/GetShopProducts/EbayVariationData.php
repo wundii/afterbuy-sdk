@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class EbayVariationData implements AfterbuyDtoInterface
+final class EbayVariationData implements ResponseDtoInterface
 {
     public function __construct(
         private string $ebayVariationName,

@@ -10,12 +10,12 @@ use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
 use Wundii\AfterbuySdk\Interface\Filter\GetPaymentServicesFilterInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestInterface;
 use Wundii\AfterbuySdk\Response\GetPaymentServicesResponse;
 
-final readonly class GetPaymentServicesRequest implements AfterbuyRequestInterface
+final readonly class GetPaymentServicesRequest implements RequestInterface
 {
     /**
      * @param GetPaymentServicesFilterInterface[] $filter
@@ -51,7 +51,7 @@ final readonly class GetPaymentServicesRequest implements AfterbuyRequestInterfa
         return $string;
     }
 
-    public function requestDto(): ?AfterbuyRequestDtoXmlInterface
+    public function requestDto(): ?RequestDtoXmlInterface
     {
         return null;
     }

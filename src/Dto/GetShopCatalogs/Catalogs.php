@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetShopCatalogs;
 
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog as UpdateCatalog;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class Catalogs implements AfterbuyDtoInterface
+final class Catalogs implements ResponseDtoInterface
 {
     /**
      * @param Catalog[] $catalogs

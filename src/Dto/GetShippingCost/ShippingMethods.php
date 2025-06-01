@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShippingCost;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ShippingMethods implements AfterbuyDtoInterface
+final class ShippingMethods implements ResponseDtoInterface
 {
     public function __construct(
         private float $shippingCost,

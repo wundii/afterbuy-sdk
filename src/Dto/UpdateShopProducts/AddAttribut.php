@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Enum\AttributTypEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class AddAttribut implements AfterbuyRequestDtoXmlInterface
+final readonly class AddAttribut implements RequestDtoXmlInterface
 {
     public function __construct(
         private ?string $AttributName = null,
@@ -19,9 +19,9 @@ final readonly class AddAttribut implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $addAttribut = $xml->addChild('AddAttribut');
+        $addAttribut = $simpleXml->addChild('AddAttribut');
         $addAttribut->addString('AttributName', $this->AttributName);
         $addAttribut->addString('AttributValue', $this->AttributValue);
         $addAttribut->addNumber('AttributTyp', $this->attributTypEnum?->value);

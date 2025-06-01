@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ScaledDiscount implements AfterbuyDtoInterface
+final class ScaledDiscount implements ResponseDtoInterface
 {
     public function __construct(
         private ?int $scaledQuantity = null,

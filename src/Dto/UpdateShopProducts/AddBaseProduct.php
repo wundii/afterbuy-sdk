@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class AddBaseProduct implements AfterbuyRequestDtoXmlInterface
+final readonly class AddBaseProduct implements RequestDtoXmlInterface
 {
     public function __construct(
         private ?int $productId = null,
@@ -18,14 +18,14 @@ final readonly class AddBaseProduct implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
         $productLabel = $this->productLabel;
         if (is_string($productLabel)) {
             $productLabel = substr($productLabel, 0, 50);
         }
 
-        $addBaseProduct = $xml->addChild('AddBaseProduct');
+        $addBaseProduct = $simpleXml->addChild('AddBaseProduct');
         $addBaseProduct->addNumber('ProductID', $this->productId);
         $addBaseProduct->addString('ProductLabel', $productLabel);
         $addBaseProduct->addNumber('ProductPos', $this->productPos);

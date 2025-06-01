@@ -8,9 +8,9 @@ use DateTimeInterface;
 use DOMDocument;
 use SimpleXMLElement;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Interface\FilterInterface;
 use Wundii\AfterbuySdk\Interface\ProductFilterInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
 final class SimpleXMLExtend extends SimpleXMLElement
 {
@@ -102,7 +102,7 @@ final class SimpleXMLExtend extends SimpleXMLElement
         }
     }
 
-    public function appendContent(AfterbuyRequestDtoXmlInterface $afterbuyRequestDtoXml): void
+    public function appendContent(RequestDtoXmlInterface $afterbuyRequestDtoXml): void
     {
         $afterbuyRequestDtoXml->appendXmlContent($this);
     }

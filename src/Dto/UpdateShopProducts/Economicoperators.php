@@ -8,9 +8,9 @@ use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\UpdateActionEconomicoperatorsEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class Economicoperators implements AfterbuyRequestDtoXmlInterface
+final readonly class Economicoperators implements RequestDtoXmlInterface
 {
     /**
      * @param int[] $economicoperatorId
@@ -24,9 +24,9 @@ final readonly class Economicoperators implements AfterbuyRequestDtoXmlInterface
         }
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $economicoperators = $xml->addChild('Economicoperators');
+        $economicoperators = $simpleXml->addChild('Economicoperators');
         $economicoperators->addNumber('UpdateAction', $this->updateActionEconomicoperatorsEnum->value);
         foreach ($this->economicoperatorId as $economicoperatorId) {
             $economicoperators->addNumber('EconomicoperatorId', $economicoperatorId);

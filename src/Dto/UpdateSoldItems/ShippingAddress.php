@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class ShippingAddress implements AfterbuyRequestDtoXmlInterface
+final readonly class ShippingAddress implements RequestDtoXmlInterface
 {
     public function __construct(
         private ?bool $useShippingAddress = null,
@@ -26,9 +26,9 @@ final readonly class ShippingAddress implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $shippingAddress = $xml->addChild('ShippingAddress');
+        $shippingAddress = $simpleXml->addChild('ShippingAddress');
         $shippingAddress->addBool('UseShippingAddress', $this->useShippingAddress);
         $shippingAddress->addString('FirstName', $this->firstName);
         $shippingAddress->addString('LastName', $this->lastName);

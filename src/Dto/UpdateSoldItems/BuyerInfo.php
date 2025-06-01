@@ -6,18 +6,18 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class BuyerInfo implements AfterbuyRequestDtoXmlInterface
+final readonly class BuyerInfo implements RequestDtoXmlInterface
 {
     public function __construct(
         private ShippingAddress $shippingAddress,
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $buyerInfo = $xml->addChild('BuyerInfo');
+        $buyerInfo = $simpleXml->addChild('BuyerInfo');
         $this->shippingAddress->appendXmlContent($buyerInfo);
     }
 

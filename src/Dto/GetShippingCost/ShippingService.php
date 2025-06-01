@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShippingCost;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ShippingService implements AfterbuyDtoInterface
+final class ShippingService implements ResponseDtoInterface
 {
     /**
      * @param ShippingMethods[] $shippingMethods

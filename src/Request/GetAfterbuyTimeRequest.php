@@ -10,11 +10,11 @@ use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoInterface;
+use Wundii\AfterbuySdk\Interface\RequestInterface;
 use Wundii\AfterbuySdk\Response\GetAfterbuyTimeResponse;
 
-final readonly class GetAfterbuyTimeRequest implements AfterbuyRequestInterface
+final readonly class GetAfterbuyTimeRequest implements RequestInterface
 {
     public function callName(): string
     {
@@ -41,7 +41,7 @@ final readonly class GetAfterbuyTimeRequest implements AfterbuyRequestInterface
         return $string;
     }
 
-    public function requestDto(): ?AfterbuyRequestDtoInterface
+    public function requestDto(): ?RequestDtoInterface
     {
         return null;
     }

@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Response;
 
 use Wundii\AfterbuySdk\Dto\GetProductDiscounts\ProductDiscounts;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
-use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseInterface;
+use Wundii\AfterbuySdk\Trait\ResponseTrait;
 
 /**
- * @template-implements AfterbuyResponseInterface<ProductDiscounts>
+ * @template-implements ResponseInterface<ProductDiscounts>
  */
-final class GetProductDiscountsResponse implements AfterbuyResponseInterface
+final class GetProductDiscountsResponse implements ResponseInterface
 {
-    use AfterbuyResponseTrait;
+    use ResponseTrait;
 
     /**
      * @return ProductDiscounts
      */
-    public function getResult(): AfterbuyDtoInterface
+    public function getResult(): ResponseDtoInterface
     {
         return $this->dataMapper->xml($this->content, ProductDiscounts::class, ['Result'], true);
     }

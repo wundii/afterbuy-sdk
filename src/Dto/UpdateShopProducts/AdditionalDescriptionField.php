@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use InvalidArgumentException;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class AdditionalDescriptionField implements AfterbuyRequestDtoXmlInterface
+final readonly class AdditionalDescriptionField implements RequestDtoXmlInterface
 {
     public function __construct(
         private ?int $fieldIdIdent = null,
@@ -22,9 +22,9 @@ final readonly class AdditionalDescriptionField implements AfterbuyRequestDtoXml
         }
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $additinalDescriptionField = $xml->addChild('AdditionalDescriptionField');
+        $additinalDescriptionField = $simpleXml->addChild('AdditionalDescriptionField');
         $additinalDescriptionField->addNumber('FieldIDIdent', $this->fieldIdIdent);
         $additinalDescriptionField->addString('FieldNameIdent', $this->fieldNameIdent);
         $additinalDescriptionField->addString('FieldName', $this->fieldName);

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\UpdateCatalogs;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class CatalogNotDeleteds implements AfterbuyDtoInterface
+final class CatalogNotDeleteds implements ResponseDtoInterface
 {
     /**
      * @param CatalogNotDeleted[] $catalogNotDeleteds

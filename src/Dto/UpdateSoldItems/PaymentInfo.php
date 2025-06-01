@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use DateTimeInterface;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class PaymentInfo implements AfterbuyRequestDtoXmlInterface
+final readonly class PaymentInfo implements RequestDtoXmlInterface
 {
     public function __construct(
         private ?string $paymentMethod = null,
@@ -20,9 +20,9 @@ final readonly class PaymentInfo implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $paymentInfo = $xml->addChild('PaymentInfo');
+        $paymentInfo = $simpleXml->addChild('PaymentInfo');
         $paymentInfo->addString('PaymentMethod', $this->paymentMethod);
         $paymentInfo->addDateTime('PaymentDate', $this->paymentDate);
         $paymentInfo->addString('PaymentTransactionID', $this->paymentTransactionId);

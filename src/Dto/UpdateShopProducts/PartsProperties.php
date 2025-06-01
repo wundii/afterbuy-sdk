@@ -7,9 +7,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class PartsProperties implements AfterbuyRequestDtoXmlInterface
+final readonly class PartsProperties implements RequestDtoXmlInterface
 {
     /**
      * @param PartsProperty[] $partsProperties
@@ -22,9 +22,9 @@ final readonly class PartsProperties implements AfterbuyRequestDtoXmlInterface
         }
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $partsProperties = $xml->addChild('PartsProperties');
+        $partsProperties = $simpleXml->addChild('PartsProperties');
         foreach ($this->partsProperties as $partProperty) {
             $partProperty->appendXmlContent($partsProperties);
         }

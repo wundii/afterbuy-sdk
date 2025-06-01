@@ -7,9 +7,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateCatalogs;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final class Catalogs implements AfterbuyRequestDtoXmlInterface
+final class Catalogs implements RequestDtoXmlInterface
 {
     /**
      * @param Catalog[] $catalogs
@@ -20,9 +20,9 @@ final class Catalogs implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $catalogs = $xml->addChild('Catalogs');
+        $catalogs = $simpleXml->addChild('Catalogs');
         $catalogs->addNumber('UpdateAction', $this->updateActionCatalogsEnum->value);
 
         foreach ($this->catalogs as $catalog) {

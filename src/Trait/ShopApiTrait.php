@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Trait;
 
 use DateTimeInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoArrayInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoArrayInterface;
 
-trait AfterbuyShopApiTrait
+trait ShopApiTrait
 {
     /**
      * @param array<string,string> $data
@@ -83,7 +83,7 @@ trait AfterbuyShopApiTrait
      */
     public function addObject(array $data, ?object $object): array
     {
-        if (! $object instanceof AfterbuyRequestDtoArrayInterface) {
+        if (! $object instanceof RequestDtoArrayInterface) {
             return $data;
         }
 

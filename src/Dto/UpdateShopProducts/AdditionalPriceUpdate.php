@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class AdditionalPriceUpdate implements AfterbuyRequestDtoXmlInterface
+final readonly class AdditionalPriceUpdate implements RequestDtoXmlInterface
 {
     public function __construct(
         private int $definitionId,
@@ -16,9 +16,9 @@ final readonly class AdditionalPriceUpdate implements AfterbuyRequestDtoXmlInter
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $additionalPriceUpdate = $xml->addChild('AdditionalPriceUpdate');
+        $additionalPriceUpdate = $simpleXml->addChild('AdditionalPriceUpdate');
         $additionalPriceUpdate->addNumber('DefinitionID', $this->definitionId);
         $additionalPriceUpdate->addNumber('ProductID', $this->productId);
         $additionalPriceUpdate->addNumber('Price', $this->price);

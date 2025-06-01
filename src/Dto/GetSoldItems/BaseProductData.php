@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
 use Wundii\AfterbuySdk\Enum\BaseProductTypeEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class BaseProductData implements AfterbuyDtoInterface
+final class BaseProductData implements ResponseDtoInterface
 {
     /**
      * @param ChildProduct[] $childProduct

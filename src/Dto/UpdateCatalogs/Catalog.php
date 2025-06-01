@@ -8,10 +8,10 @@ use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Validator as AfterbuySdkAssert;
 
-final class Catalog implements AfterbuyRequestDtoXmlInterface
+final class Catalog implements RequestDtoXmlInterface
 {
     /**
      * @param Catalog[] $catalog
@@ -34,9 +34,9 @@ final class Catalog implements AfterbuyRequestDtoXmlInterface
         }
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $catalog = $xml->addChild('Catalog');
+        $catalog = $simpleXml->addChild('Catalog');
         $catalog->addNumber('CatalogID', $this->catalogId);
         $catalog->addString('CatalogName', $this->catalogName);
         $catalog->addString('CatalogDescription', $this->catalogDescription);

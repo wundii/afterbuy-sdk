@@ -8,9 +8,9 @@ use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\UpdateActionSkusEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class Skus implements AfterbuyRequestDtoXmlInterface
+final readonly class Skus implements RequestDtoXmlInterface
 {
     /**
      * @param string[] $skus
@@ -24,9 +24,9 @@ final readonly class Skus implements AfterbuyRequestDtoXmlInterface
         }
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $skus = $xml->addChild('Skus');
+        $skus = $simpleXml->addChild('Skus');
         $skus->addNumber('UpdateAction', $this->updateActionSkusEnum->value);
         foreach ($this->skus as $sku) {
             $skus->addString('Sku', $sku);

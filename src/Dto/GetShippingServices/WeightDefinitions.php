@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShippingServices;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class WeightDefinitions implements AfterbuyDtoInterface
+final class WeightDefinitions implements ResponseDtoInterface
 {
     public function __construct(
         private float $weightFrom,

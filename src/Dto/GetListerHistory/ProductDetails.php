@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetListerHistory;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ProductDetails implements AfterbuyDtoInterface
+final class ProductDetails implements ResponseDtoInterface
 {
     /**
      * @param ProductDetailsCatalog[] $catalogs

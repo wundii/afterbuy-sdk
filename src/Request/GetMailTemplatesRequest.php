@@ -11,11 +11,11 @@ use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestInterface;
 use Wundii\AfterbuySdk\Response\GetMailTemplatesResponse;
 
-final readonly class GetMailTemplatesRequest implements AfterbuyRequestInterface
+final readonly class GetMailTemplatesRequest implements RequestInterface
 {
     /**
      * @param DetailLevelEnum[] $detailLevelEnum empty array === first detail level
@@ -53,7 +53,7 @@ final readonly class GetMailTemplatesRequest implements AfterbuyRequestInterface
         return $string;
     }
 
-    public function requestDto(): ?AfterbuyRequestDtoXmlInterface
+    public function requestDto(): ?RequestDtoXmlInterface
     {
         return null;
     }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShippingServices;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ShippingMethod implements AfterbuyDtoInterface
+final class ShippingMethod implements ResponseDtoInterface
 {
     public function __construct(
         private int $shippingMethodID,

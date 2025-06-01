@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class EconomicOperator implements AfterbuyDtoInterface
+final class EconomicOperator implements ResponseDtoInterface
 {
     public function __construct(
         private ?string $company = null,

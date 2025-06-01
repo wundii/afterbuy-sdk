@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Response;
 
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\NewProducts;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
-use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseInterface;
+use Wundii\AfterbuySdk\Trait\ResponseTrait;
 
 /**
- * @template-implements AfterbuyResponseInterface<NewProducts>
+ * @template-implements ResponseInterface<NewProducts>
  */
-final class UpdateShopProductsResponse implements AfterbuyResponseInterface
+final class UpdateShopProductsResponse implements ResponseInterface
 {
-    use AfterbuyResponseTrait;
+    use ResponseTrait;
 
     /**
      * @return NewProducts
      */
-    public function getResult(): AfterbuyDtoInterface
+    public function getResult(): ResponseDtoInterface
     {
         return $this->dataMapper->xml($this->content, NewProducts::class, ['Result'], true);
     }

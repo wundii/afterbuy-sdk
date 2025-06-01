@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetProductDiscounts;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ProductDiscounts implements AfterbuyDtoInterface
+final class ProductDiscounts implements ResponseDtoInterface
 {
     /**
      * @param ProductDiscount[] $productDiscounts

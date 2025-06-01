@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetProductDiscounts;
 
 use DateTimeInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ProductDiscount implements AfterbuyDtoInterface
+final class ProductDiscount implements ResponseDtoInterface
 {
     public function __construct(
         private int $productId,

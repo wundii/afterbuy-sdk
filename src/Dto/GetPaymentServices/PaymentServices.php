@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetPaymentServices;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class PaymentServices implements AfterbuyDtoInterface
+final class PaymentServices implements ResponseDtoInterface
 {
     /**
      * @param PaymentService[] $paymentService

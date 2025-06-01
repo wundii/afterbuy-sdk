@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class Feature implements AfterbuyDtoInterface
+final class Feature implements ResponseDtoInterface
 {
     public function __construct(
         private int $id,

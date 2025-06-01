@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetStockInfo;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class Product implements AfterbuyDtoInterface
+final class Product implements ResponseDtoInterface
 {
     public function __construct(
         private int $productId,

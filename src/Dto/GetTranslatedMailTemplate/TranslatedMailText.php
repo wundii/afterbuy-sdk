@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetTranslatedMailTemplate;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class TranslatedMailText implements AfterbuyDtoInterface
+final class TranslatedMailText implements ResponseDtoInterface
 {
     public function __construct(
         private string $translatedMailSubject,

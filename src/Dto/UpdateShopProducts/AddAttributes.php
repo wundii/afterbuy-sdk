@@ -8,9 +8,9 @@ use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\UpdateActionAttributesEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class AddAttributes implements AfterbuyRequestDtoXmlInterface
+final readonly class AddAttributes implements RequestDtoXmlInterface
 {
     /**
      * @param AddAttribut[] $addAttributes
@@ -24,9 +24,9 @@ final readonly class AddAttributes implements AfterbuyRequestDtoXmlInterface
         }
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $addAttributes = $xml->addChild('AddAttributes');
+        $addAttributes = $simpleXml->addChild('AddAttributes');
         $addAttributes->addNumber('UpdateAction', $this->updateActionAttributesEnum->value);
         foreach ($this->addAttributes as $addAttribute) {
             $addAttribute->appendXmlContent($addAttributes);

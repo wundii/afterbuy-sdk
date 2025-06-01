@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Response;
 
 use Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplates;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
-use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseInterface;
+use Wundii\AfterbuySdk\Trait\ResponseTrait;
 
 /**
- * @template-implements AfterbuyResponseInterface<MailTemplates>
+ * @template-implements ResponseInterface<MailTemplates>
  */
-final class GetMailTemplatesResponse implements AfterbuyResponseInterface
+final class GetMailTemplatesResponse implements ResponseInterface
 {
-    use AfterbuyResponseTrait;
+    use ResponseTrait;
 
     /**
      * @return MailTemplates
      */
-    public function getResult(): AfterbuyDtoInterface
+    public function getResult(): ResponseDtoInterface
     {
         return $this->dataMapper->xml($this->content, MailTemplates::class, ['Result'], true);
     }

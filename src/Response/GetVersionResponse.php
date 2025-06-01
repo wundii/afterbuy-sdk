@@ -6,21 +6,21 @@ namespace Wundii\AfterbuySdk\Response;
 
 use Exception;
 use Wundii\AfterbuySdk\Dto\GetVersion\Versions;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
-use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseInterface;
+use Wundii\AfterbuySdk\Trait\ResponseTrait;
 
 /**
- * @template-implements AfterbuyResponseInterface<Versions>
+ * @template-implements ResponseInterface<Versions>
  */
-final class GetVersionResponse implements AfterbuyResponseInterface
+final class GetVersionResponse implements ResponseInterface
 {
-    use AfterbuyResponseTrait;
+    use ResponseTrait;
 
     /**
      * @return ?Versions
      */
-    public function getResult(): ?AfterbuyDtoInterface
+    public function getResult(): ?ResponseDtoInterface
     {
         try {
             return $this->dataMapper->xml($this->content, Versions::class, ['Result']);

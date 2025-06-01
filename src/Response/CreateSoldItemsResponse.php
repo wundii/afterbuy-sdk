@@ -6,21 +6,21 @@ namespace Wundii\AfterbuySdk\Response;
 
 use Exception;
 use Wundii\AfterbuySdk\Dto\GetAfterbuyTime\AfterbuyTime;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
-use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseInterface;
+use Wundii\AfterbuySdk\Trait\ResponseTrait;
 
 /**
- * @template-implements AfterbuyResponseInterface<AfterbuyTime>
+ * @template-implements ResponseInterface<AfterbuyTime>
  */
-final class CreateSoldItemsResponse implements AfterbuyResponseInterface
+final class CreateSoldItemsResponse implements ResponseInterface
 {
-    use AfterbuyResponseTrait;
+    use ResponseTrait;
 
     /**
      * @return ?AfterbuyTime
      */
-    public function getResult(): ?AfterbuyDtoInterface
+    public function getResult(): ?ResponseDtoInterface
     {
         try {
             return $this->dataMapper->xml($this->content, AfterbuyTime::class, ['Result']);

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class PaymentData implements AfterbuyDtoInterface
+final class PaymentData implements ResponseDtoInterface
 {
     public function __construct(
         private ?string $bankCode = null,

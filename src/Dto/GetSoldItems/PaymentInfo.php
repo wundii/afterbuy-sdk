@@ -7,9 +7,9 @@ namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 use DateTimeInterface;
 use Wundii\AfterbuySdk\Enum\PaymentFunctionEnum;
 use Wundii\AfterbuySdk\Enum\PaymentIdEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class PaymentInfo implements AfterbuyDtoInterface
+final class PaymentInfo implements ResponseDtoInterface
 {
     /**
      * @param PayoutId[] $payoutIds

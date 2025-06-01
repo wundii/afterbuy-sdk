@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class PartsProperties implements AfterbuyDtoInterface
+final class PartsProperties implements ResponseDtoInterface
 {
     /**
      * @param PartsProperty[] $partsProperty

@@ -8,9 +8,9 @@ use DateTimeInterface;
 use Wundii\AfterbuySdk\Enum\EbayCurrencyEnum;
 use Wundii\AfterbuySdk\Enum\ListingCountryEnum;
 use Wundii\AfterbuySdk\Enum\SellStatusEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ListingDetails implements AfterbuyDtoInterface
+final class ListingDetails implements ResponseDtoInterface
 {
     public function __construct(
         private int $anr,

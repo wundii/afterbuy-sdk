@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetUserDefinedFlags;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class UserDefinedFlags implements AfterbuyDtoInterface
+final class UserDefinedFlags implements ResponseDtoInterface
 {
     /**
      * @param UserDefinedFlag[] $userDefinedFlags

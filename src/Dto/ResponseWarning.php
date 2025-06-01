@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoLoggerInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoLoggerInterface;
 
-final class AfterbuyWarning implements AfterbuyDtoInterface, AfterbuyDtoLoggerInterface
+final class ResponseWarning implements ResponseDtoLoggerInterface
 {
     public function __construct(
         private int $warningCode,

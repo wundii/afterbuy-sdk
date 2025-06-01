@@ -7,9 +7,9 @@ namespace Wundii\AfterbuySdk\Dto\GetShippingCost;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class ShippingInfo implements AfterbuyRequestDtoXmlInterface
+final readonly class ShippingInfo implements RequestDtoXmlInterface
 {
     /**
      * @param int|int[] $productIds
@@ -25,9 +25,9 @@ final readonly class ShippingInfo implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $shippingInfo = $xml->addChild('ShippingInfo');
+        $shippingInfo = $simpleXml->addChild('ShippingInfo');
 
         if (is_array($this->productIds) && count($this->productIds) > 1) {
             $productIdsElement = $shippingInfo->addChild('Products');

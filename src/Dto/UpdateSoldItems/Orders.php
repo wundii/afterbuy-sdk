@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final class Orders implements AfterbuyRequestDtoXmlInterface
+final class Orders implements RequestDtoXmlInterface
 {
     /**
      * @param Order[] $orders
@@ -28,9 +28,9 @@ final class Orders implements AfterbuyRequestDtoXmlInterface
         return $this->orders;
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $orders = $xml->addChild('Orders');
+        $orders = $simpleXml->addChild('Orders');
 
         foreach ($this->orders as $order) {
             $order->appendXmlContent($orders);

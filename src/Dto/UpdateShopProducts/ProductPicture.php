@@ -7,9 +7,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class ProductPicture implements AfterbuyRequestDtoXmlInterface
+final readonly class ProductPicture implements RequestDtoXmlInterface
 {
     /**
      * @param ProductPictureChild[] $childs
@@ -25,9 +25,9 @@ final readonly class ProductPicture implements AfterbuyRequestDtoXmlInterface
         }
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $productPicture = $xml->addChild('Feature');
+        $productPicture = $simpleXml->addChild('Feature');
         $productPicture->addNumber('Nr', $this->nr);
         $productPicture->addString('URL', $this->url);
         $productPicture->addString('AltText', $this->altText);

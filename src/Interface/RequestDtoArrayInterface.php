@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Interface;
 
-interface AfterbuyRequestDtoArrayInterface extends AfterbuyRequestDtoInterface
+interface RequestDtoArrayInterface extends RequestDtoInterface
 {
     /**
      * @param array<string,string> $data

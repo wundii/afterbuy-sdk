@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ParcelLabel implements AfterbuyDtoInterface
+final class ParcelLabel implements ResponseDtoInterface
 {
     public function __construct(
         private int $itemId,

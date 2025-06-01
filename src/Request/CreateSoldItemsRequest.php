@@ -8,11 +8,11 @@ use Wundii\AfterbuySdk\Dto\CreateSoldItems\Order;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoArrayInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoArrayInterface;
+use Wundii\AfterbuySdk\Interface\RequestInterface;
 use Wundii\AfterbuySdk\Response\CreateSoldItemsResponse;
 
-final readonly class CreateSoldItemsRequest implements AfterbuyRequestInterface
+final readonly class CreateSoldItemsRequest implements RequestInterface
 {
     public function __construct(
         private Order $order,
@@ -34,7 +34,7 @@ final readonly class CreateSoldItemsRequest implements AfterbuyRequestInterface
         return null;
     }
 
-    public function requestDto(): AfterbuyRequestDtoArrayInterface
+    public function requestDto(): RequestDtoArrayInterface
     {
         return $this->order;
     }

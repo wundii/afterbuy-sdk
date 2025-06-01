@@ -8,9 +8,9 @@ use DateTimeInterface;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final class Order implements AfterbuyRequestDtoXmlInterface
+final class Order implements RequestDtoXmlInterface
 {
     /**
      * @param string[] $tags
@@ -47,9 +47,9 @@ final class Order implements AfterbuyRequestDtoXmlInterface
         }
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $order = $xml->addChild('Order');
+        $order = $simpleXml->addChild('Order');
         $order->addNumber('OrderID', $this->orderId);
         $order->addNumber('ItemID', $this->itemId);
         $order->addNumber('UserDefindedFlag', $this->userDefindedFlag);

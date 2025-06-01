@@ -12,9 +12,9 @@ use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
 use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
 use Wundii\AfterbuySdk\Enum\GenderEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final class Product implements AfterbuyRequestDtoXmlInterface
+final class Product implements RequestDtoXmlInterface
 {
     /**
      * @param ScaledDiscount[] $scaledDiscounts
@@ -114,9 +114,9 @@ final class Product implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $product = $xml->addChild('Product');
+        $product = $simpleXml->addChild('Product');
         $this->productIdent->appendXmlContent($product);
         $product->addString('Name', $this->name);
         $product->addNumber('Anr', $this->anr);

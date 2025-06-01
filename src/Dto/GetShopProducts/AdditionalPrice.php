@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class AdditionalPrice implements AfterbuyDtoInterface
+final class AdditionalPrice implements ResponseDtoInterface
 {
     public function __construct(
         private ?int $definitionId = null,

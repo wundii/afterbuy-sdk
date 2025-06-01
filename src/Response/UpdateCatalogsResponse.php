@@ -6,21 +6,21 @@ namespace Wundii\AfterbuySdk\Response;
 
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\CatalogNotDeleteds;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\NewCatalogs;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyResponseInterface;
-use Wundii\AfterbuySdk\Trait\AfterbuyResponseTrait;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseInterface;
+use Wundii\AfterbuySdk\Trait\ResponseTrait;
 
 /**
- * @template-implements AfterbuyResponseInterface<NewCatalogs|CatalogNotDeleteds>
+ * @template-implements ResponseInterface<NewCatalogs|CatalogNotDeleteds>
  */
-final class UpdateCatalogsResponse implements AfterbuyResponseInterface
+final class UpdateCatalogsResponse implements ResponseInterface
 {
-    use AfterbuyResponseTrait;
+    use ResponseTrait;
 
     /**
      * @return NewCatalogs|CatalogNotDeleteds
      */
-    public function getResult(): AfterbuyDtoInterface
+    public function getResult(): ResponseDtoInterface
     {
         if (str_contains($this->content, 'CatalogNotDeleted')) {
             return $this->dataMapper->xml($this->content, CatalogNotDeleteds::class, ['Result']);

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ProductPicture implements AfterbuyDtoInterface
+final class ProductPicture implements ResponseDtoInterface
 {
     /**
      * @param ProductPictureChild[] $childs

@@ -9,9 +9,9 @@ use Wundii\AfterbuySdk\Enum\FulfillmentServiceLevelEnum;
 use Wundii\AfterbuySdk\Enum\InternalItemTypeEnum;
 use Wundii\AfterbuySdk\Enum\ItemPlatFormNameEnum;
 use Wundii\AfterbuySdk\Enum\TaxCollectedByEnum;
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class SoldItem implements AfterbuyDtoInterface
+final class SoldItem implements ResponseDtoInterface
 {
     public function __construct(
         private int $itemId,

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class VorgangsInfo implements AfterbuyRequestDtoXmlInterface
+final readonly class VorgangsInfo implements RequestDtoXmlInterface
 {
     public function __construct(
         private ?string $VorgangsInfo1 = null,
@@ -16,9 +16,9 @@ final readonly class VorgangsInfo implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $vorgangsInfo = $xml->addChild('VorgangsInfo');
+        $vorgangsInfo = $simpleXml->addChild('VorgangsInfo');
         $vorgangsInfo->addString('VorgangsInfo1', $this->VorgangsInfo1);
         $vorgangsInfo->addString('VorgangsInfo2', $this->VorgangsInfo2);
         $vorgangsInfo->addString('VorgangsInfo3', $this->VorgangsInfo3);

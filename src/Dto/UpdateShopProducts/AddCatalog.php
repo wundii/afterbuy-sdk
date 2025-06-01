@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class AddCatalog implements AfterbuyRequestDtoXmlInterface
+final readonly class AddCatalog implements RequestDtoXmlInterface
 {
     public function __construct(
         private ?int $catalogId = null,
@@ -16,9 +16,9 @@ final readonly class AddCatalog implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $addCatalog = $xml->addChild('AddCatalog');
+        $addCatalog = $simpleXml->addChild('AddCatalog');
         $addCatalog->addNumber('CatalogID', $this->catalogId);
         $addCatalog->addString('CatalogName', $this->catalogName);
         $addCatalog->addNumber('CatalogLevel', $this->catalogLevel);

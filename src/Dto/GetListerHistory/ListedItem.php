@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetListerHistory;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class ListedItem implements AfterbuyDtoInterface
+final class ListedItem implements ResponseDtoInterface
 {
     public function __construct(
         private int $historyId,

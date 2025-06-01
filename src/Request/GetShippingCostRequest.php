@@ -11,11 +11,11 @@ use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestInterface;
 use Wundii\AfterbuySdk\Response\GetShippingCostResponse;
 
-final readonly class GetShippingCostRequest implements AfterbuyRequestInterface
+final readonly class GetShippingCostRequest implements RequestInterface
 {
     public function __construct(
         private ShippingInfo $shippingInfo,
@@ -48,7 +48,7 @@ final readonly class GetShippingCostRequest implements AfterbuyRequestInterface
         return $string;
     }
 
-    public function requestDto(): ?AfterbuyRequestDtoXmlInterface
+    public function requestDto(): ?RequestDtoXmlInterface
     {
         return null;
     }

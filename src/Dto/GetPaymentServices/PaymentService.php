@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetPaymentServices;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class PaymentService implements AfterbuyDtoInterface
+final class PaymentService implements ResponseDtoInterface
 {
     public function __construct(
         private int $paymentId,

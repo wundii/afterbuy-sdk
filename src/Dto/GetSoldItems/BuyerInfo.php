@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class BuyerInfo implements AfterbuyDtoInterface
+final class BuyerInfo implements ResponseDtoInterface
 {
     public function __construct(
         private BillingAddress $billingAddress,

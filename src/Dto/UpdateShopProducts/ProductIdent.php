@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 
 use Wundii\AfterbuySdk\Enum\BaseProductTypeEnum;
 use Wundii\AfterbuySdk\Extends\SimpleXMLExtend;
-use Wundii\AfterbuySdk\Interface\AfterbuyRequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 
-final readonly class ProductIdent implements AfterbuyRequestDtoXmlInterface
+final readonly class ProductIdent implements RequestDtoXmlInterface
 {
     public function __construct(
         private string $userProductId,
@@ -20,9 +20,9 @@ final readonly class ProductIdent implements AfterbuyRequestDtoXmlInterface
     ) {
     }
 
-    public function appendXmlContent(SimpleXMLExtend $xml): void
+    public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $productIdent = $xml->addChild('ProductIdent');
+        $productIdent = $simpleXml->addChild('ProductIdent');
         $productIdent->addNumber('BaseProductType', $this->baseProductTypeEnum?->value);
         $productIdent->addBool('ProductInsert', $this->productInsert);
         $productIdent->addString('UserProductID', $this->userProductId);

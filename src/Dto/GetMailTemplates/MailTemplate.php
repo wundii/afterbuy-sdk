@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetMailTemplates;
 
-use Wundii\AfterbuySdk\Interface\AfterbuyDtoInterface;
+use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
-final class MailTemplate implements AfterbuyDtoInterface
+final class MailTemplate implements ResponseDtoInterface
 {
     public function __construct(
         private int $templateId,
