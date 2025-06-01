@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Core;
 
-use Symfony\Contracts\HttpClient\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface as HttpClientResponseInterface;
 
-class AfterbuySandboxResponse implements ResponseInterface
+class AfterbuySandboxResponse implements HttpClientResponseInterface
 {
     /**
      * @param array<string,string> $headers

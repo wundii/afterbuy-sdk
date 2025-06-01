@@ -8,7 +8,7 @@ use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
-use Symfony\Contracts\HttpClient\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface as HttpClientResponseInterface;
 use Wundii\AfterbuySdk\Dto\ResponseError;
 use Wundii\AfterbuySdk\Dto\ResponseErrorList;
 use Wundii\AfterbuySdk\Dto\ResponseWarning;
@@ -37,7 +37,7 @@ trait ResponseTrait
      */
     public function __construct(
         protected DataMapper $dataMapper,
-        protected ResponseInterface $httpClientResponse,
+        protected HttpClientResponseInterface $httpClientResponse,
         protected EndpointEnum $endpointEnum,
     ) {
         $content = $this->httpClientResponse->getContent(false);

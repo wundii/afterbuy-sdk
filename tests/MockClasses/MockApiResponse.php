@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Tests\MockClasses;
 
-use Symfony\Contracts\HttpClient\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface as HttpClientResponseInterface;
 
-class MockApiResponse implements ResponseInterface
+class MockApiResponse implements HttpClientResponseInterface
 {
     /**
      * @param array<string,string> $headers
