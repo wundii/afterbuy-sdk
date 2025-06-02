@@ -8,7 +8,6 @@ use DateTimeInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\CurrencyEnum;
 use Wundii\AfterbuySdk\Enum\CustomerIdentificationEnum;
-use Wundii\AfterbuySdk\Enum\NoDeliveryCalcEnum;
 use Wundii\AfterbuySdk\Enum\NoFeedbackEnum;
 use Wundii\AfterbuySdk\Enum\PaymentMethodIdEnum;
 use Wundii\AfterbuySdk\Enum\ProductIdentificationEnum;
@@ -35,9 +34,6 @@ final readonly class Order implements RequestDtoArrayInterface
         #[Assert\Count(min: 1, max: 5)]
         #[Assert\Valid]
         public array $products = [],
-
-
-
         #[Assert\Length(max: 255)]
         public ?string $comment = null,
         public ?bool $useComplWeight = null,
@@ -156,7 +152,6 @@ final readonly class Order implements RequestDtoArrayInterface
         $data = $this->addBool($data, 'CheckPackstation', $this->checkPackStation);
         $data = $this->addBool($data, 'OverrideMarkID', $this->overrideMarkId);
 
-
         $data = $this->addString($data, 'SoldCurrency', $this->currencyEnum?->value);
         $data = $this->addBool($data, 'SetPay', $this->payed);
         $data = $this->addDateTime($data, 'SetPayDate', $this->payDate);
@@ -170,12 +165,12 @@ final readonly class Order implements RequestDtoArrayInterface
         $data = $this->addNumber($data, 'Kontonummer', $this->bankAccountNumber);
         $data = $this->addString($data, 'Kontoinhaber', $this->bankAccountOwner);
         $data = $this->addString($data, 'BIC', $this->bic);
-        $data = $this->addString($data, 'IBAN', $this->iban);
+        return $this->addString($data, 'IBAN', $this->iban);
 
         /**
          * evtl. einiges noch in eigenständiges Dto auslagern (z.B. Customer, DeliveryAddress, etc.)
          */
 
-        return $data;
+        // return $data;
     }
 }
