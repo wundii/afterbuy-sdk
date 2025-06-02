@@ -24,6 +24,10 @@ final readonly class Order implements RequestDtoArrayInterface
      * @param Product[] $products
      */
     public function __construct(
+        public CustomerIdentificationEnum $customerIdentificationEnum,
+        public ProductIdentificationEnum $productIdentificationEnum,
+        public StockTypeEnum $stockTypeEnum,
+        public DateTimeInterface $buyDate,
         #[Assert\Valid]
         public Customer $customer,
         #[Assert\Valid]
@@ -31,13 +35,13 @@ final readonly class Order implements RequestDtoArrayInterface
         #[Assert\Count(min: 1, max: 5)]
         #[Assert\Valid]
         public array $products = [],
-        public ?bool $dealer = null,
+
+
+
         #[Assert\Length(max: 255)]
         public ?string $comment = null,
         public ?bool $useComplWeight = null,
         public ?bool $useProductTaxRate = null,
-        public ?DateTimeInterface $buyDate = null,
-        public ?StockTypeEnum $stockTypeEnum = null,
         #[Assert\Length(max: 150)]
         public ?string $shippingMethod = null,
         #[Assert\Length(max: 150)]
@@ -61,21 +65,13 @@ final readonly class Order implements RequestDtoArrayInterface
         public ?int $bankAccountNumber = null,
         #[Assert\Length(max: 100)]
         public ?string $bankAccountOwner = null,
-        #[Assert\Regex(
-            pattern: '/^[A-Z0-9]{2,15}$/',
-            message: 'USt-IdNr must be alphanumeric and between 2 and 50 characters long.'
-        )]
-        public ?string $ustIdNr = null,
         public ?NoFeedbackEnum $noFeedbackEnum = null,
-        public ?NoDeliveryCalcEnum $noDeliveryCalcEnum = null,
+        public ?bool $noDeliveryCalc = null,
         #[Assert\Length(max: 50)]
         public ?string $shippingGroup = null,
         public ?bool $doNotShowVat = null,
         public ?int $markerId = null,
-        public ?int $customerNumber = null,
-        public ?CustomerIdentificationEnum $customerIdentificationEnum = null,
         public ?bool $noEbayName = null,
-        public ?ProductIdentificationEnum $productIdentificationEnum = null,
         #[Assert\Length(max: 255)]
         public ?string $memo = null,
         #[Assert\Length(max: 255)]
@@ -87,8 +83,8 @@ final readonly class Order implements RequestDtoArrayInterface
         #[Assert\Length(max: 40)]
         public ?string $vid = null,
         public ?CurrencyEnum $currencyEnum = null,
-        public ?bool $setPay = null,
-        public ?DateTimeInterface $setPayDate = null,
+        public ?bool $payed = null,
+        public ?DateTimeInterface $payDate = null,
         public ?bool $checkVid = null,
         public ?bool $checkPackStation = null,
         public ?bool $overrideMarkId = null,
@@ -115,20 +111,29 @@ final readonly class Order implements RequestDtoArrayInterface
      */
     public function toArray(array $data, ?int $index = null): array
     {
+        $data = $this->addNumber($data, 'Kundenerkennung', $this->customerIdentificationEnum->value);
+        $data = $this->addNumber($data, 'Artikelerkennung', $this->productIdentificationEnum->value);
+        $data = $this->addString($data, 'Bestandart', $this->stockTypeEnum->value);
+        $data = $this->addDateTime($data, 'BuyDate', $this->buyDate);
         $data = $this->addObject($data, $this->customer);
         $data = $this->addObject($data, $this->deliveryAddress);
-        $data = $this->addBool($data, 'Haendler', $this->dealer);
         $data = $this->addNumber($data, 'PosAnz', count($this->products));
 
         foreach ($this->products as $index => $product) {
             $data = $this->addObject($data, $product, $index);
         }
 
+        $data = $this->addString($data, 'reference', $this->reference);
+        $data = $this->addString($data, 'OrderInfo1', $this->orderInfo1);
+        $data = $this->addString($data, 'OrderInfo2', $this->orderInfo2);
+        $data = $this->addString($data, 'OrderInfo3', $this->orderInfo3);
+
         $data = $this->addString($data, 'Kommentar', $this->comment);
+        $data = $this->addString($data, 'VMemo', $this->memo);
+
         $data = $this->addBool($data, 'UseComplWeight', $this->useComplWeight);
         $data = $this->addBool($data, 'UseProductTaxRate', $this->useProductTaxRate);
-        $data = $this->addDateTime($data, 'BuyDate', $this->buyDate);
-        $data = $this->addString($data, 'Bestandart', $this->stockTypeEnum?->value);
+
         $data = $this->addString($data, 'Versandart', $this->shippingMethod);
         $data = $this->addString($data, 'ReturnCarrier', $this->returnCarrier);
         $data = $this->addNumber($data, 'Versandkosten', $this->deliveryCost);
@@ -140,38 +145,32 @@ final readonly class Order implements RequestDtoArrayInterface
             $data = $this->addString($data, 'Zahlart', $this->paymentMethodCustom);
         }
 
+        $data = $this->addNumber($data, 'NoFeedback', $this->noFeedbackEnum?->value);
+        $data = $this->addBool($data, 'NoVersandCalc', $this->noDeliveryCalc);
+        $data = $this->addString($data, 'Versandgruppe', $this->shippingGroup);
+        $data = $this->addBool($data, 'MwStNichtAusweisen', $this->doNotShowVat);
+        $data = $this->addNumber($data, 'MarkierungID', $this->markerId);
+        $data = $this->addBool($data, 'NoeBayNameAktu', $this->noEbayName);
+        $data = $this->addString($data, 'VID', $this->vid);
+        $data = $this->addBool($data, 'CheckVID', $this->checkVid);
+        $data = $this->addBool($data, 'CheckPackstation', $this->checkPackStation);
+        $data = $this->addBool($data, 'OverrideMarkID', $this->overrideMarkId);
+
+
+        $data = $this->addString($data, 'SoldCurrency', $this->currencyEnum?->value);
+        $data = $this->addBool($data, 'SetPay', $this->payed);
+        $data = $this->addDateTime($data, 'SetPayDate', $this->payDate);
+        $data = $this->addString($data, 'BillsafeTransactionID', $this->billSafeTransactionId);
+        $data = $this->addString($data, 'BillsafeOrderNumber', $this->billSafeOrderNumber);
+        $data = $this->addString($data, 'PaymentStatus', $this->paymentStatus);
+        $data = $this->addString($data, 'PaymentTransactionID', $this->paymentTransactionId);
+
         $data = $this->addString($data, 'Bankname', $this->bankName);
         $data = $this->addNumber($data, 'BLZ', $this->blz);
         $data = $this->addNumber($data, 'Kontonummer', $this->bankAccountNumber);
         $data = $this->addString($data, 'Kontoinhaber', $this->bankAccountOwner);
-        $data = $this->addString($data, 'UsStID', $this->ustIdNr);
-        $data = $this->addNumber($data, 'NoFeedback', $this->noFeedbackEnum?->value);
-        $data = $this->addNumber($data, 'NoDeliveryCalc', $this->noDeliveryCalcEnum?->value);
-        $data = $this->addString($data, 'Versandgruppe', $this->shippingGroup);
-        $data = $this->addBool($data, 'MwStNichtAusweisen', $this->doNotShowVat);
-        $data = $this->addNumber($data, 'MarkierungID', $this->markerId);
-        $data = $this->addNumber($data, 'EKundenNr', $this->customerNumber);
-        $data = $this->addNumber($data, 'Kundenerkennung', $this->customerIdentificationEnum?->value);
-        $data = $this->addBool($data, 'NoeBayNameAktu', $this->noEbayName);
-        $data = $this->addNumber($data, 'Artikelerkennung', $this->productIdentificationEnum?->value);
-        $data = $this->addString($data, 'VMemo', $this->memo);
-        $data = $this->addString($data, 'OrderInfo1', $this->orderInfo1);
-        $data = $this->addString($data, 'OrderInfo2', $this->orderInfo2);
-        $data = $this->addString($data, 'OrderInfo3', $this->orderInfo3);
-        $data = $this->addString($data, 'VID', $this->vid);
-        $data = $this->addString($data, 'SoldCurrency', $this->currencyEnum?->value);
-        $data = $this->addBool($data, 'SetPay', $this->setPay);
-        $data = $this->addDateTime($data, 'SetPayDate', $this->setPayDate);
-        $data = $this->addBool($data, 'CheckVID', $this->checkVid);
-        $data = $this->addBool($data, 'CheckPackstation', $this->checkPackStation);
-        $data = $this->addBool($data, 'OverrideMarkID', $this->overrideMarkId);
-        $data = $this->addString($data, 'BillsafeTransactionID', $this->billSafeTransactionId);
-        $data = $this->addString($data, 'BillsafeOrderNumber', $this->billSafeOrderNumber);
         $data = $this->addString($data, 'BIC', $this->bic);
         $data = $this->addString($data, 'IBAN', $this->iban);
-        $data = $this->addString($data, 'reference', $this->reference);
-        $data = $this->addString($data, 'PaymentStatus', $this->paymentStatus);
-        $data = $this->addString($data, 'PaymentTransactionID', $this->paymentTransactionId);
 
         /**
          * evtl. einiges noch in eigenständiges Dto auslagern (z.B. Customer, DeliveryAddress, etc.)

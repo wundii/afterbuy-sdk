@@ -30,6 +30,13 @@ final readonly class Customer implements RequestDtoArrayInterface
         #[Assert\Length(min: 1, max: 150)]
         public string $city,
         public CountryIsoEnum $countryIsoEnum,
+        public ?int $customerNumber = null,
+        public ?bool $dealer = null,
+        #[Assert\Regex(
+            pattern: '/^[A-Z0-9]{2,12}$/',
+            message: 'USt-IdNr must be alphanumeric and between 2 and 12 characters long.'
+        )]
+        public ?string $ustId = null,
         #[Assert\Length(max: 150)]
         public ?string $salutation = null,
         #[Assert\Length(max: 150)]
@@ -53,8 +60,11 @@ final readonly class Customer implements RequestDtoArrayInterface
     public function toArray(array $data, ?int $index = null): array
     {
         $data = $this->addString($data, 'kbenutzername', $this->username);
+        $data = $this->addBool($data, 'Haendler', $this->dealer);
+        $data = $this->addNumber($data, 'EKundenNr', $this->customerNumber);
         $data = $this->addString($data, 'Kanrede', $this->salutation);
         $data = $this->addString($data, 'KFirma', $this->company);
+        $data = $this->addString($data, 'UsStID', $this->ustId);
         $data = $this->addString($data, 'KVorname', $this->firstName);
         $data = $this->addString($data, 'KNachname', $this->lastName);
         $data = $this->addString($data, 'KStrasse', $this->street1);
