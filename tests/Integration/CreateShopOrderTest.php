@@ -21,7 +21,7 @@ class CreateShopOrderTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
-    public function testShopOrderUriBasic(): void
+    public function testShopOrderUriMinimal(): void
     {
         $order = new Order(
             customer: new Customer(
@@ -53,7 +53,7 @@ class CreateShopOrderTest extends TestCase
         $url = $request->url(EndpointEnum::SANDBOX);
         $query = $request->query();
 
-        $expectedUri = 'http://api.afterbuy.de/afterbuy/ShopInterface.aspx?Action=new' .
+        $expectedUri = 'http://api.afterbuy.de/afterbuy/ShopInterface_test.aspx?Action=new' .
             '&kbenutzername=Mustermann&KVorname=Max&KNachname=Mustermann&KStrasse=Musterstra%C3%9Fe%201&KPLZ=12345&KOrt=Musterstadt&Kemail=mustermann@example.com&KLand=DE' .
             '&PosAnz=1&Artikelnr_1=1234567890&Artikelname_1=Test%20Product&ArtikelEpreis_1=29%2C99&ArtikelMwSt_1=19%2C00&ArtikelMenge_1=2&Tag_1_1=TestTag1&Tag_2_1=TestTag2' .
             '';

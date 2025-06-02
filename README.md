@@ -1,5 +1,6 @@
 # afterbuy-sdk
 
+[![AfterbuyShopApi](https://img.shields.io/badge/Afterbuy%20Shop--API-Version%201.77.248-yellow.svg?style=flat)](https://xmldoku.afterbuy.de/shopdoku)
 [![AfterbuyXmlApi](https://img.shields.io/badge/Afterbuy%20XML--API-Version%202.0.460-yellow.svg?style=flat)](https://xmldoku.afterbuy.de/dokued)
 [![PHP-Tests](https://github.com/wundii/afterbuy-sdk/actions/workflows/code_quality.yml/badge.svg)](https://github.com/wundii/afterbuy-sdk/actions/workflows/code_quality.yml)
 [![PHPStan](https://img.shields.io/badge/PHPStan-level%2010-brightgreen.svg?style=flat)](https://phpstan.org)
