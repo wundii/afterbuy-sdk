@@ -11,8 +11,8 @@ final class ShopResponse implements ResponseDtoInterface
     public function __construct(
         private ?int $aid = null,
         private ?string $uid = null,
-        private ?int $kundeNr = null,
-        private ?int $ekundeNr = null,
+        private ?int $kundenNr = null,
+        private ?int $ekundenNr = null,
     ) {
     }
 
@@ -26,24 +26,24 @@ final class ShopResponse implements ResponseDtoInterface
         $this->aid = $aid;
     }
 
-    public function getEkundeNr(): ?int
+    public function getEkundenNr(): ?int
     {
-        return $this->ekundeNr;
+        return $this->ekundenNr;
     }
 
-    public function setEkundeNr(?int $ekundeNr): void
+    public function setEkundenNr(?int $ekundenNr): void
     {
-        $this->ekundeNr = $ekundeNr;
+        $this->ekundenNr = $ekundenNr;
     }
 
-    public function getKundeNr(): ?int
+    public function getKundenNr(): ?int
     {
-        return $this->kundeNr;
+        return $this->kundenNr;
     }
 
-    public function setKundeNr(?int $kundeNr): void
+    public function setKundenNr(?int $kundenNr): void
     {
-        $this->kundeNr = $kundeNr;
+        $this->kundenNr = $kundenNr;
     }
 
     public function getUid(): ?string
