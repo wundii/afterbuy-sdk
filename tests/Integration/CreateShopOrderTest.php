@@ -318,28 +318,31 @@ class CreateShopOrderTest extends TestCase
         $this->assertEquals($expectedErrors, $errors);
     }
 
-    // public function testCreateShopOrderResponseError(): void
-    // {
-    //     $file = __DIR__ . '/ResponseFiles/CreateShopOrderError.xml';
-    //
-    //     $buyDate = new DateTime('now');
-    //     $request = new CreateShopOrderRequest($this->getOrderMininum($buyDate));
-    //     $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
-    //     $mockResponse = new MockApiResponse(file_get_contents($file), 200);
-    //
-    //     $response = $afterbuy->runRequest($request, $mockResponse);
-    //
-    //     $shopResponse = $response->getResult();
-    //
-    //     $expectedShopResponse = new ShopResponse();
-    //
-    //     $this->assertInstanceOf(CreateShopOrderResponse::class, $response);
-    //     $this->assertEquals(CallStatusEnum::ERROR, $response->getCallStatus());
-    //     $this->assertCount(1, $response->getErrorMessages());
-    //     $this->assertEquals('Code 0: SSL erforderlich', $response->getErrorMessages()[0]->getMessage());
-    //     $this->assertInstanceOf(ShopResponse::class, $shopResponse);
-    //     $this->assertEquals($expectedShopResponse, $shopResponse);
-    // }
+    public function testCreateShopOrderResponseError(): void
+    {
+        $file = __DIR__ . '/ResponseFiles/CreateShopOrderError.xml';
+
+        $buyDate = new DateTime('now');
+        $request = new CreateShopOrderRequest($this->getOrderMininum($buyDate));
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
+
+        /**
+         * responseTrait muss für die andere errorlogik angepasst werden -,-
+         */
+        $response = $afterbuy->runRequest($request, $mockResponse);
+
+        $shopResponse = $response->getResult();
+
+        $expectedShopResponse = new ShopResponse();
+
+        $this->assertInstanceOf(CreateShopOrderResponse::class, $response);
+        $this->assertEquals(CallStatusEnum::ERROR, $response->getCallStatus());
+        $this->assertCount(1, $response->getErrorMessages());
+        $this->assertEquals('Code 0: SSL erforderlich', $response->getErrorMessages()[0]->getMessage());
+        $this->assertInstanceOf(ShopResponse::class, $shopResponse);
+        $this->assertEquals($expectedShopResponse, $shopResponse);
+    }
 
     public function testCreateShopOrderResponseBasic(): void
     {

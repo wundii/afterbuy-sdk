@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Trait;
 
+use SimpleXMLElement;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -54,6 +55,8 @@ trait ResponseTrait
                 '0' => 'Error',
                 default => null,
             };
+
+            $content = $this->convertErrorXmlToAfterbuyFormat($content);
         }
 
         preg_match('/<VersionID>(.*)<\/VersionID>/s', $content, $matches);
@@ -75,6 +78,40 @@ trait ResponseTrait
             /** @phpstan-ignore-next-line */
             $this->afterbuyWarningList = $this->dataMapper->xml($content, ResponseWarningList::class, ['Result'], true);
         }
+    }
+
+    public function convertErrorXmlToAfterbuyFormat(string $xmlString): string
+    {
+        $originalXml = simplexml_load_string($xmlString);
+        if (! $originalXml instanceof SimpleXMLElement) {
+            return $xmlString;
+        }
+
+        if (! property_exists($originalXml, 'success') || $originalXml->success === null) {
+            return $xmlString;
+        }
+
+        if (! property_exists($originalXml->errorlist, 'error') || $originalXml->errorlist->error === null) {
+            return $xmlString;
+        }
+
+        $afterbuy = new SimpleXMLElement('<?xml version="1.0" encoding="iso-8859-1"?><afterbuy></afterbuy>');
+
+        $afterbuy->addChild('success', (string) $originalXml->success);
+
+        $result = $afterbuy->addChild('Result');
+        $errorlist = $result->addChild('ErrorList');
+
+        foreach ($originalXml->errorlist->error as $errorMessage) {
+            $error = $errorlist->addChild('Error');
+            $error->addChild('ErrorCode', '0');
+            $error->addChild('ErrorDescription', (string) $errorMessage);
+            $error->addChild('ErrorLongDescription', (string) $errorMessage);
+        }
+
+        $newXmlString = $afterbuy->asXML();
+
+        return $newXmlString !== false ? $newXmlString : $xmlString;
     }
 
     /**

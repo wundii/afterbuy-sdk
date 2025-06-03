@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<afterbuy><success>0</success><Result><ErrorList><Error><ErrorCode>0</ErrorCode><ErrorDescription>Fehlertext 1</ErrorDescription><ErrorLongDescription>Fehlertext 1</ErrorLongDescription></Error><Error><ErrorCode>0</ErrorCode><ErrorDescription>Fehlertext 2</ErrorDescription><ErrorLongDescription>Fehlertext 2</ErrorLongDescription></Error></ErrorList></Result></afterbuy>
