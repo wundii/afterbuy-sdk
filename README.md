@@ -31,7 +31,7 @@ Require the bundle and its dependencies with composer:
 - [XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
 
 ### Supported Requests with Examples
-- [ ] [CreateShopOrder](examples/CreateShopOrder.md)
+- [x] [CreateShopOrder](examples/CreateShopOrder.md)
 - [x] [GetAfterbuyTime](examples/GetAfterbuyTime.md)
 - [x] [GetListerHistory](examples/GetListerHistory.md)
 - [x] [GetMailTemplates](examples/GetMailTemplates.md)
@@ -126,7 +126,7 @@ In preparation for the release of version 1.0.
 - [x] Sandbox and Production environment testing
 - [x] Unittest for the Validator classes
 - [x] first important asserts for the UpdateRequest classes
-- [ ] shop api (create afterbuy order) implementation
+- [x] shop api (create afterbuy order) implementation
 - [ ] final productive testing
 
 ## Usage

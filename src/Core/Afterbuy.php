@@ -124,12 +124,18 @@ readonly class Afterbuy
                 [$info],
             );
 
-            $defaultResponse = sprintf(
-                '<?xml version="1.0" encoding="UTF-8" sandbox="true"?>' .
-                '<Afterbuy><CallStatus>Success</CallStatus><CallName>%s</CallName><VersionID>%f</VersionID></Afterbuy>',
+            $defaultShopApiResponse = '<?xml version="1.0" encoding="utf-8"?><result><sandbox>shop</sandbox><success>1</success><data/></result>';
+            $defaultXmlApiResponse = sprintf(
+                '<?xml version="1.0" encoding="utf-8"?>' .
+                '<Afterbuy><Sandbox>XML</Sandbox><CallStatus>Success</CallStatus><CallName>%s</CallName><VersionID>%f</VersionID></Afterbuy>',
                 htmlspecialchars($callName, ENT_XML1),
                 self::DefaultSandboxVersion
             );
+
+            $defaultResponse = str_contains($url, 'ShopInterface')
+                ? $defaultShopApiResponse
+                : $defaultXmlApiResponse;
+
             $httpClientResponse = new AfterbuySandboxResponse($defaultResponse);
         }
 
