@@ -36,7 +36,7 @@ final readonly class Customer implements RequestDtoArrayInterface
             pattern: '/^[A-Z0-9]{2,12}$/',
             message: 'USt-IdNr must be alphanumeric and between 2 and 12 characters long.'
         )]
-        public ?string $ustId = null,
+        public ?string $ustid = null,
         #[Assert\Length(max: 150)]
         public ?string $salutation = null,
         #[Assert\Length(max: 150)]
@@ -64,7 +64,7 @@ final readonly class Customer implements RequestDtoArrayInterface
         $data = $this->addNumber($data, 'EKundenNr', $this->customerNumber);
         $data = $this->addString($data, 'Kanrede', $this->salutation);
         $data = $this->addString($data, 'KFirma', $this->company);
-        $data = $this->addString($data, 'UsStID', $this->ustId);
+        $data = $this->addString($data, 'UsStID', $this->ustid);
         $data = $this->addString($data, 'KVorname', $this->firstName);
         $data = $this->addString($data, 'KNachname', $this->lastName);
         $data = $this->addString($data, 'KStrasse', $this->street1);
@@ -76,6 +76,6 @@ final readonly class Customer implements RequestDtoArrayInterface
         $data = $this->addString($data, 'Kfax', $this->fax);
         $data = $this->addString($data, 'Kemail', $this->email);
         $data = $this->addString($data, 'KLand', $this->countryIsoEnum->value);
-        return $this->addDateTime($data, 'KBirthday', $this->birthday);
+        return $this->addDate($data, 'KBirthday', $this->birthday);
     }
 }

@@ -4,34 +4,55 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\CreateShopOrder;
 
-use Symfony\Component\Validator\Constraints as Assert;
-use Wundii\AfterbuySdk\Dto\UpdateShopProducts\NewProduct;
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
 final class ShopResponse implements ResponseDtoInterface
 {
-    /**
-     * @param NewProduct[] $newProducts
-     */
     public function __construct(
-        private array $newProducts = [],
+        private ?int $aid = null,
+        private ?string $uid = null,
+        private ?int $kundeNr = null,
+        private ?int $ekundeNr = null,
     ) {
     }
 
-    /**
-     * @return NewProduct[]
-     */
-    #[Assert\Valid]
-    public function getNewProducts(): array
+    public function getAid(): ?int
     {
-        return $this->newProducts;
+        return $this->aid;
     }
 
-    /**
-     * @param NewProduct[] $newProducts
-     */
-    public function setNewProducts(array $newProducts): void
+    public function setAid(?int $aid): void
     {
-        $this->newProducts = $newProducts;
+        $this->aid = $aid;
+    }
+
+    public function getEkundeNr(): ?int
+    {
+        return $this->ekundeNr;
+    }
+
+    public function setEkundeNr(?int $ekundeNr): void
+    {
+        $this->ekundeNr = $ekundeNr;
+    }
+
+    public function getKundeNr(): ?int
+    {
+        return $this->kundeNr;
+    }
+
+    public function setKundeNr(?int $kundeNr): void
+    {
+        $this->kundeNr = $kundeNr;
+    }
+
+    public function getUid(): ?string
+    {
+        return $this->uid;
+    }
+
+    public function setUid(?string $uid): void
+    {
+        $this->uid = $uid;
     }
 }

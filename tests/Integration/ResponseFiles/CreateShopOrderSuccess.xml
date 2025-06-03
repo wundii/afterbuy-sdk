@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<result>
+    <success>1</success>
+    <Action>new</Action>
+    <data>
+        <AID>1234567</AID>
+        <UID>1868E8AB-6D6F-49EB-8C6A-4B6325DFF190</UID>
+        <KundeNr>9876543</KundeNr>
+        <EKundeNr>10267</EKundeNr>
+    </data>
+</result>

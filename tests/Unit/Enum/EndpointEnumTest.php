@@ -33,7 +33,7 @@ class EndpointEnumTest extends TestCase
     public function testShopApiUriForSandbox()
     {
         $endpoint = EndpointEnum::SANDBOX;
-        $expected = 'http://api.afterbuy.de/afterbuy/ShopInterface_test.aspx';
+        $expected = 'http://api.afterbuy.de/afterbuy/ShopInterface.aspx';
         $this->assertEquals($expected, $endpoint->shopApiUri());
     }
 }

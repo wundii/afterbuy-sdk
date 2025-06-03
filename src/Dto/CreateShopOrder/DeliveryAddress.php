@@ -31,7 +31,20 @@ final readonly class DeliveryAddress implements RequestDtoArrayInterface
         public ?string $street2 = null,
         #[Assert\Length(max: 255)]
         public ?string $phone = null,
+        public ?Customer $customerAddressCheck = null,
     ) {
+    }
+
+    public function isCustomerAddressDifferent(Customer $customer): bool
+    {
+        return $this->firstName !== $customer->firstName
+            || $this->lastName !== $customer->lastName
+            || $this->street1 !== $customer->street1
+            || $this->zip !== $customer->zip
+            || $this->city !== $customer->city
+            || $this->countryIsoEnum !== $customer->countryIsoEnum
+            || $this->company !== $customer->company
+            || $this->street2 !== $customer->street2;
     }
 
     /**
@@ -40,6 +53,13 @@ final readonly class DeliveryAddress implements RequestDtoArrayInterface
      */
     public function toArray(array $data, ?int $index = null): array
     {
+        if (
+            $this->customerAddressCheck instanceof Customer
+            && ! $this->isCustomerAddressDifferent($this->customerAddressCheck)
+        ) {
+            return $data;
+        }
+
         $data = $this->addBool($data, 'Lieferanschrift', true);
         $data = $this->addString($data, 'KLFirma', $this->company);
         $data = $this->addString($data, 'KLVorname', $this->firstName);

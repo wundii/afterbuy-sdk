@@ -14,7 +14,7 @@ use Wundii\AfterbuySdk\Dto\UpdateCatalogs\NewCatalog;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\NewCatalogs;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
-use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\AfterbuySdk\Interface\RequestDtoInterface;
 use Wundii\AfterbuySdk\Request\UpdateCatalogsRequest;
 use Wundii\AfterbuySdk\Response\UpdateCatalogsResponse;
 use Wundii\AfterbuySdk\Tests\DomFormatter;
@@ -27,13 +27,13 @@ class UpdateCatalogsTest extends TestCase
         return new AfterbuyGlobal('account', 'partner');
     }
 
-    public function validate(RequestDtoXmlInterface $afterbuyAppendXmlContent): array
+    public function validate(RequestDtoInterface $afterbuyAppendContent): array
     {
         $errors = [];
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
         $validator = $afterbuy->getValidator();
 
-        $constraintViolationList = $validator->validate($afterbuyAppendXmlContent);
+        $constraintViolationList = $validator->validate($afterbuyAppendContent);
 
         foreach ($constraintViolationList as $error) {
             $errors[] = sprintf('%s: %s', $error->getPropertyPath(), $error->getMessage());

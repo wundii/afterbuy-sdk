@@ -16,10 +16,6 @@ enum EndpointEnum: string
 
     public function shopApiUri(): string
     {
-        if ($this === self::SANDBOX) {
-            return $this->value . 'ShopInterface_test.aspx';
-        }
-
         return $this->value . 'ShopInterface.aspx';
     }
 }

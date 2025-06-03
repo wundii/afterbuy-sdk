@@ -81,6 +81,21 @@ trait ShopApiTrait
      * @param array<string,string> $data
      * @return array<string,string>
      */
+    public function addDate(array $data, string $key, ?DateTimeInterface $dateTime): array
+    {
+        if (! $dateTime instanceof DateTimeInterface) {
+            return $data;
+        }
+
+        $data[$key] = $dateTime->format('d.m.Y');
+
+        return $data;
+    }
+
+    /**
+     * @param array<string,string> $data
+     * @return array<string,string>
+     */
     public function addObject(array $data, ?object $object, ?int $index = null): array
     {
         if (! $object instanceof RequestDtoArrayInterface) {
