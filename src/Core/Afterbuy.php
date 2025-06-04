@@ -56,6 +56,7 @@ readonly class Afterbuy
         private ?ValidatorBuilder $validatorBuilder = null,
         private bool $debugMode = false,
     ) {
+        $this->afterbuyGlobal->setEndpointEnum($this->endpointEnum);
     }
 
     /**
@@ -63,8 +64,6 @@ readonly class Afterbuy
      */
     public function runRequest(RequestInterface $afterbuyRequest, ?HttpClientResponseInterface $httpClientResponse = null): ResponseInterface
     {
-        $this->afterbuyGlobal->setEndpointEnum($this->endpointEnum);
-
         $method = $afterbuyRequest->method()->value;
         $callName = $afterbuyRequest->callName();
         $requestDto = $afterbuyRequest->requestDto();
