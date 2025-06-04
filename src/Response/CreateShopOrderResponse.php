@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Response;
 
-use Exception;
 use Wundii\AfterbuySdk\Dto\CreateShopOrder\ShopResponse;
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 use Wundii\AfterbuySdk\Interface\ResponseInterface;
@@ -18,14 +17,10 @@ final class CreateShopOrderResponse implements ResponseInterface
     use ResponseTrait;
 
     /**
-     * @return ?ShopResponse
+     * @return ShopResponse
      */
-    public function getResult(): ?ResponseDtoInterface
+    public function getResult(): ResponseDtoInterface
     {
-        try {
-            return $this->dataMapper->xml($this->content, ShopResponse::class, ['data'], true);
-        } catch (Exception) {
-            return null;
-        }
+        return $this->dataMapper->xml($this->content, ShopResponse::class, ['data'], true);
     }
 }
