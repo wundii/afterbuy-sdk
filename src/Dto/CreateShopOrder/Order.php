@@ -35,7 +35,7 @@ final readonly class Order implements RequestDtoArrayInterface
         public Customer $customer,
         #[Assert\Valid]
         public ?DeliveryAddress $deliveryAddress = null,
-        #[Assert\Count(min: 1, max: 5)]
+        #[Assert\Count(min: 1, max: 6)]
         #[Assert\Valid]
         public array $products = [],
         public ?Shipping $shipping = null,

@@ -297,7 +297,7 @@ class CreateShopOrderTest extends TestCase
                 'Musterstadt',
                 CountryIsoEnum::GERMANY,
             ),
-            products: array_fill(0, 6, new Product(
+            products: array_fill(0, 7, new Product(
                 1234567890,
                 'Test Product',
                 29.99,
@@ -313,7 +313,7 @@ class CreateShopOrderTest extends TestCase
         $expectedErrors = [
             'reference: This value is too long. It should have 50 characters or less.',
             'customer.username: This value is too long. It should have 50 characters or less.',
-            'products: This collection should contain 5 elements or less.',
+            'products: This collection should contain 6 elements or less.',
         ];
         $this->assertEquals($expectedErrors, $errors);
     }
