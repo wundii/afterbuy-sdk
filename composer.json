@@ -86,6 +86,9 @@
     ],
     "phpbench": [
       "php vendor/bin/phpbench run --report=aggregate"
+    ],
+    "coverage": [
+      "php vendor/bin/phpunit --coverage-clover coverage.xml"
     ]
   },
   "minimum-stability": "dev",
