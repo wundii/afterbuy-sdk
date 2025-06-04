@@ -7,6 +7,7 @@ namespace Wundii\AfterbuySdk\Request;
 use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
+use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
@@ -35,6 +36,7 @@ final readonly class GetShippingCostRequest implements RequestInterface
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
         $afterbuyGlobal->setCallName($this->callName());
+        $afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);

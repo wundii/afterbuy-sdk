@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Request>
     <AfterbuyGlobal>
-    <AccountToken>account</AccountToken>
-    <PartnerToken>partner</PartnerToken>
-    <ErrorLanguage>DE</ErrorLanguage>
-    <CallName>UpdateCatalogs</CallName>
-    <DetailLevel>0</DetailLevel>
+        <Sandbox>XML</Sandbox>
+        <AccountToken>account</AccountToken>
+        <PartnerToken>partner</PartnerToken>
+        <ErrorLanguage>DE</ErrorLanguage>
+        <CallName>UpdateCatalogs</CallName>
+        <DetailLevel>0</DetailLevel>
     </AfterbuyGlobal>
     <Catalogs>
         <UpdateAction>1</UpdateAction>

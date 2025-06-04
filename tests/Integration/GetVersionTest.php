@@ -18,7 +18,11 @@ class GetVersionTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner');
+
+        $afterbuyGlobal = new AfterbuyGlobal('account', 'partner');
+        $afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
+
+        return $afterbuyGlobal;
     }
 
     public function testVersionBasic(): void

@@ -6,6 +6,7 @@ namespace Wundii\AfterbuySdk\Request;
 
 use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
@@ -39,6 +40,7 @@ final readonly class GetMailTemplatesRequest implements RequestInterface
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
         $afterbuyGlobal->setCallName($this->callName());
+        $afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
         $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::SECOND);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);

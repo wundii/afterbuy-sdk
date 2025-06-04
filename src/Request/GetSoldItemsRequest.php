@@ -6,6 +6,7 @@ namespace Wundii\AfterbuySdk\Request;
 
 use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\OrderDirectionEnum;
@@ -51,6 +52,7 @@ final readonly class GetSoldItemsRequest implements RequestInterface
         }
 
         $afterbuyGlobal->setCallName($this->callName());
+        $afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
         $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::SIXTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);

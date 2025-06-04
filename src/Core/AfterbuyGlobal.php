@@ -6,7 +6,9 @@ namespace Wundii\AfterbuySdk\Core;
 
 use RuntimeException;
 use SimpleXMLElement;
+use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\ErrorLanguageEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 
@@ -15,6 +17,10 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
     public const DefaultXmlRoot = '<?xml version="1.0" encoding="utf-8"?><Request></Request>';
 
     private ?string $callName = null;
+
+    private ?EndpointEnum $endpointEnum = null;
+
+    private ?AfterbuyApiSourceEnum $afterbuyApiSourceEnum = null;
 
     /**
      * @var DetailLevelEnum[]
@@ -34,7 +40,20 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
             throw new RuntimeException('Call name must be set before generating XML');
         }
 
+        if (! $this->endpointEnum instanceof EndpointEnum) {
+            throw new RuntimeException('Endpoint must be set before generating XML');
+        }
+
+        if (! $this->afterbuyApiSourceEnum instanceof AfterbuyApiSourceEnum) {
+            throw new RuntimeException('Afterbuy API source must be set before generating XML');
+        }
+
         $afterbuyGlobal = $xml->addChild('AfterbuyGlobal');
+
+        if ($this->endpointEnum === EndpointEnum::SANDBOX) {
+            $afterbuyGlobal->addChild('Sandbox', $this->afterbuyApiSourceEnum->value);
+        }
+
         $afterbuyGlobal->addChild('AccountToken', $this->accountToken);
         $afterbuyGlobal->addChild('PartnerToken', $this->partnerToken);
         $afterbuyGlobal->addChild('ErrorLanguage', $this->errorLanguageEnum->value);
@@ -45,6 +64,16 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
     public function setCallName(string $callName): void
     {
         $this->callName = $callName;
+    }
+
+    public function setEndpointEnum(EndpointEnum $endpointEnum): void
+    {
+        $this->endpointEnum = $endpointEnum;
+    }
+
+    public function setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum $afterbuyApiSourceEnum): void
+    {
+        $this->afterbuyApiSourceEnum = $afterbuyApiSourceEnum;
     }
 
     public function getDetailLevel(): string

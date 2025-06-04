@@ -40,7 +40,10 @@ class GetListerHistoryTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner');
+        $afterbuyGlobal = new AfterbuyGlobal('account', 'partner');
+        $afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
+
+        return $afterbuyGlobal;
     }
 
     public function testDetailLevel(): void
@@ -49,6 +52,7 @@ class GetListerHistoryTest extends TestCase
 
         $request = new GetListerHistoryRequest();
         $payload = $request->payload($afterbuyGlobal);
+
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
         $request = new GetListerHistoryRequest(detailLevelEnum: DetailLevelEnum::SECOND);

@@ -23,7 +23,11 @@ class PsrLoggerTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner');
+
+        $afterbuyGlobal = new AfterbuyGlobal('account', 'partner');
+        $afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
+
+        return $afterbuyGlobal;
     }
 
     public function testWithoutLogs(): void
@@ -74,7 +78,7 @@ class PsrLoggerTest extends TestCase
         $this->assertCount(1, $response->getWarningMessages());
         $this->assertInstanceOf(ResponseWarning::class, $response->getWarningMessages()[0]);
 
-        $payload = '<?xml version="1.0" encoding="utf-8"?><Request><AfterbuyGlobal><AccountToken>account</AccountToken>';
+        $payload = '<?xml version="1.0" encoding="utf-8"?><Request><AfterbuyGlobal><Sandbox>XML</Sandbox><AccountToken>account</AccountToken>';
         $payload .= '<PartnerToken>partner</PartnerToken><ErrorLanguage>DE</ErrorLanguage><CallName>GetStockInfo</CallName>';
         $payload .= '<DetailLevel>0</DetailLevel></AfterbuyGlobal><Products><Product><Anr>1</Anr></Product></Products></Request>';
         $payload = DomFormatter::xml($payload);
@@ -115,7 +119,7 @@ class PsrLoggerTest extends TestCase
         $this->assertCount(0, $response->getWarningMessages());
         $this->assertInstanceOf(ResponseError::class, $response->getErrorMessages()[0]);
 
-        $payload = '<?xml version="1.0" encoding="utf-8"?><Request><AfterbuyGlobal><AccountToken>account</AccountToken>';
+        $payload = '<?xml version="1.0" encoding="utf-8"?><Request><AfterbuyGlobal><Sandbox>XML</Sandbox><AccountToken>account</AccountToken>';
         $payload .= '<PartnerToken>partner</PartnerToken><ErrorLanguage>DE</ErrorLanguage><CallName>GetListerHistory</CallName>';
         $payload .= '<DetailLevel>0</DetailLevel></AfterbuyGlobal><MaxHistoryItems>100</MaxHistoryItems><DataFilter/></Request>';
         $payload = DomFormatter::xml($payload);

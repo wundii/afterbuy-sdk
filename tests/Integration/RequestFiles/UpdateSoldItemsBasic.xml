@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Request>
     <AfterbuyGlobal>
+        <Sandbox>XML</Sandbox>
         <AccountToken>account</AccountToken>
         <PartnerToken>partner</PartnerToken>
         <ErrorLanguage>DE</ErrorLanguage>

@@ -25,6 +25,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface as HttpClientResponseInterface;
+use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
 use Wundii\AfterbuySdk\Enum\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Extension\DateTime;
@@ -62,6 +63,8 @@ readonly class Afterbuy
      */
     public function runRequest(RequestInterface $afterbuyRequest, ?HttpClientResponseInterface $httpClientResponse = null): ResponseInterface
     {
+        $this->afterbuyGlobal->setEndpointEnum($this->endpointEnum);
+
         $method = $afterbuyRequest->method()->value;
         $callName = $afterbuyRequest->callName();
         $requestDto = $afterbuyRequest->requestDto();
@@ -124,10 +127,15 @@ readonly class Afterbuy
                 [$info],
             );
 
-            $defaultShopApiResponse = '<?xml version="1.0" encoding="utf-8"?><result><sandbox>shop</sandbox><success>1</success><data/></result>';
+            $defaultShopApiResponse = sprintf(
+                '<?xml version="1.0" encoding="utf-8"?>' .
+                '<result><sandbox>%s</sandbox><success>1</success><data/></result>',
+                AfterbuyApiSourceEnum::SHOP->value,
+            );
             $defaultXmlApiResponse = sprintf(
                 '<?xml version="1.0" encoding="utf-8"?>' .
-                '<Afterbuy><Sandbox>XML</Sandbox><CallStatus>Success</CallStatus><CallName>%s</CallName><VersionID>%f</VersionID></Afterbuy>',
+                '<Afterbuy><Sandbox>%s</Sandbox><CallStatus>Success</CallStatus><CallName>%s</CallName><VersionID>%f</VersionID></Afterbuy>',
+                AfterbuyApiSourceEnum::XML->value,
                 htmlspecialchars($callName, ENT_XML1),
                 self::DefaultSandboxVersion
             );
