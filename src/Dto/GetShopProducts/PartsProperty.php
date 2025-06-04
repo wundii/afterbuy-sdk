@@ -4,24 +4,25 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
+use Wundii\AfterbuySdk\Enum\PropertyNameEnum;
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
 final class PartsProperty implements ResponseDtoInterface
 {
     public function __construct(
-        private string $propertyName,
+        private PropertyNameEnum $propertyNameEnum,
         private string $propertyValue,
     ) {
     }
 
-    public function getPropertyName(): string
+    public function getPropertyName(): PropertyNameEnum
     {
-        return $this->propertyName;
+        return $this->propertyNameEnum;
     }
 
-    public function setPropertyName(string $propertyName): void
+    public function setPropertyName(PropertyNameEnum $propertyNameEnum): void
     {
-        $this->propertyName = $propertyName;
+        $this->propertyNameEnum = $propertyNameEnum;
     }
 
     public function getPropertyValue(): string

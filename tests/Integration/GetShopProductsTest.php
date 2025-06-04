@@ -29,6 +29,7 @@ use Wundii\AfterbuySdk\Enum\DefaultFilterShopProductsEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
+use Wundii\AfterbuySdk\Enum\PropertyNameEnum;
 use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Filter\GetShopProducts\Anr;
 use Wundii\AfterbuySdk\Filter\GetShopProducts\DateFilter;
@@ -368,23 +369,23 @@ class GetShopProductsTest extends TestCase
                         new PartsProperties(
                             partsProperty: [
                                 new PartsProperty(
-                                    propertyName: 'KType',
+                                    propertyNameEnum: PropertyNameEnum::KType,
                                     propertyValue: '3313',
                                 ),
                                 new PartsProperty(
-                                    propertyName: 'KType2',
+                                    propertyNameEnum: PropertyNameEnum::KType,
                                     propertyValue: '3313',
                                 ),
                                 new PartsProperty(
-                                    propertyName: 'HSN',
+                                    propertyNameEnum: PropertyNameEnum::HSN,
                                     propertyValue: '7107',
                                 ),
                                 new PartsProperty(
-                                    propertyName: 'TSN',
+                                    propertyNameEnum: PropertyNameEnum::TSN,
                                     propertyValue: '449',
                                 ),
                                 new PartsProperty(
-                                    propertyName: 'TSN',
+                                    propertyNameEnum: PropertyNameEnum::TSN,
                                     propertyValue: '449',
                                 ),
                             ]
@@ -392,15 +393,15 @@ class GetShopProductsTest extends TestCase
                         new PartsProperties(
                             partsProperty: [
                                 new PartsProperty(
-                                    propertyName: 'KType',
+                                    propertyNameEnum: PropertyNameEnum::KType,
                                     propertyValue: '3314',
                                 ),
                                 new PartsProperty(
-                                    propertyName: 'HSN',
+                                    propertyNameEnum: PropertyNameEnum::HSN,
                                     propertyValue: '7107',
                                 ),
                                 new PartsProperty(
-                                    propertyName: 'TSN',
+                                    propertyNameEnum: PropertyNameEnum::TSN,
                                     propertyValue: '203',
                                 ),
                             ]
@@ -408,7 +409,7 @@ class GetShopProductsTest extends TestCase
                         new PartsProperties(
                             partsProperty: [
                                 new PartsProperty(
-                                    propertyName: 'KType',
+                                    propertyNameEnum: PropertyNameEnum::KType,
                                     propertyValue: '3315',
                                 ),
                             ]
@@ -416,11 +417,11 @@ class GetShopProductsTest extends TestCase
                         new PartsProperties(
                             partsProperty: [
                                 new PartsProperty(
-                                    propertyName: 'KType',
+                                    propertyNameEnum: PropertyNameEnum::KType,
                                     propertyValue: '3316',
                                 ),
                                 new PartsProperty(
-                                    propertyName: 'HSN',
+                                    propertyNameEnum: PropertyNameEnum::HSN,
                                     propertyValue: '',
                                 ),
                             ]
