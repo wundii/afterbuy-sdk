@@ -2,18 +2,19 @@
 [back to index](./../README.md)
 
 ## Example
+
 ```php
 <?php
 
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Request\GetVersionRequest;
 
 $afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
-    EndpointEnum::SANDBOX,
+    AfterbuyEndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(

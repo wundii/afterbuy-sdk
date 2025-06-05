@@ -9,8 +9,8 @@ use PHPUnit\Framework\TestCase;
 use SimpleXMLElement;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\ErrorLanguageEnum;
 
 class AfterbuyGlobalTest extends TestCase
@@ -24,7 +24,7 @@ class AfterbuyGlobalTest extends TestCase
         $this->afterbuyGlobal = new AfterbuyGlobal(
             accountToken: 'test_token',
             partnerToken: 'partner_token',
-            endpointEnum: EndpointEnum::SANDBOX,
+            afterbuyEndpointEnum: AfterbuyEndpointEnum::SANDBOX,
             errorLanguageEnum: ErrorLanguageEnum::GERMAN
         );
 
@@ -33,7 +33,7 @@ class AfterbuyGlobalTest extends TestCase
 
     public function testGetEndpointEnum(): void
     {
-        $this->assertSame(EndpointEnum::SANDBOX, $this->afterbuyGlobal->getEndpointEnum());
+        $this->assertSame(AfterbuyEndpointEnum::SANDBOX, $this->afterbuyGlobal->getEndpointEnum());
     }
 
     public function testGetDetailLevelReturnsFirstLevelWhenNoEnumsSet(): void
@@ -43,7 +43,7 @@ class AfterbuyGlobalTest extends TestCase
 
     public function testSetDetailLevelEnumWithOneEnum(): void
     {
-        $this->afterbuyGlobal->setDetailLevelEnum(DetailLevelEnum::FIRST, DetailLevelEnum::SECOND);
+        $this->afterbuyGlobal->setDetailLevelEnum(AfterbuyDetailLevelEnum::FIRST, AfterbuyDetailLevelEnum::SECOND);
 
         $this->assertSame('0', $this->afterbuyGlobal->getDetailLevel());
     }
@@ -51,19 +51,19 @@ class AfterbuyGlobalTest extends TestCase
     public function testSetDetailLevelEnumsFiltersEnumsAboveMaxLevel(): void
     {
         $enums = [
-            DetailLevelEnum::FIRST,
-            DetailLevelEnum::SECOND,
-            DetailLevelEnum::THIRD,
+            AfterbuyDetailLevelEnum::FIRST,
+            AfterbuyDetailLevelEnum::SECOND,
+            AfterbuyDetailLevelEnum::THIRD,
         ];
 
-        $this->afterbuyGlobal->setDetailLevelEnum($enums, DetailLevelEnum::SECOND);
+        $this->afterbuyGlobal->setDetailLevelEnum($enums, AfterbuyDetailLevelEnum::SECOND);
 
         $this->assertSame('2', $this->afterbuyGlobal->getDetailLevel());
     }
 
     public function testSetDetailLevelEnumsHandlesEmptyArray(): void
     {
-        $this->afterbuyGlobal->setDetailLevelEnum([], DetailLevelEnum::THIRD);
+        $this->afterbuyGlobal->setDetailLevelEnum([], AfterbuyDetailLevelEnum::THIRD);
 
         $this->assertSame('0', $this->afterbuyGlobal->getDetailLevel());
     }
@@ -71,12 +71,12 @@ class AfterbuyGlobalTest extends TestCase
     public function testSetDetailLevelEnumsRemovesDuplicates(): void
     {
         $enums = [
-            DetailLevelEnum::FIRST,
-            DetailLevelEnum::FIRST,
-            DetailLevelEnum::SECOND,
+            AfterbuyDetailLevelEnum::FIRST,
+            AfterbuyDetailLevelEnum::FIRST,
+            AfterbuyDetailLevelEnum::SECOND,
         ];
 
-        $this->afterbuyGlobal->setDetailLevelEnum($enums, DetailLevelEnum::SECOND);
+        $this->afterbuyGlobal->setDetailLevelEnum($enums, AfterbuyDetailLevelEnum::SECOND);
 
         $this->assertSame('2', $this->afterbuyGlobal->getDetailLevel());
     }
@@ -84,12 +84,12 @@ class AfterbuyGlobalTest extends TestCase
     public function testSetDetailLevelEnumsWithMaxLevelFirst(): void
     {
         $enums = [
-            DetailLevelEnum::THIRD,
-            DetailLevelEnum::FOURTH,
-            DetailLevelEnum::FIFTH,
+            AfterbuyDetailLevelEnum::THIRD,
+            AfterbuyDetailLevelEnum::FOURTH,
+            AfterbuyDetailLevelEnum::FIFTH,
         ];
 
-        $this->afterbuyGlobal->setDetailLevelEnum($enums, DetailLevelEnum::FIRST);
+        $this->afterbuyGlobal->setDetailLevelEnum($enums, AfterbuyDetailLevelEnum::FIRST);
 
         $this->assertSame('0', $this->afterbuyGlobal->getDetailLevel());
     }
@@ -97,18 +97,18 @@ class AfterbuyGlobalTest extends TestCase
     public function testSetDetailLevelEnumsWithSixthLevel(): void
     {
         $enums = [
-            DetailLevelEnum::FIRST,
-            DetailLevelEnum::SECOND,
-            DetailLevelEnum::SIXTH,
+            AfterbuyDetailLevelEnum::FIRST,
+            AfterbuyDetailLevelEnum::SECOND,
+            AfterbuyDetailLevelEnum::SIXTH,
         ];
 
-        $this->afterbuyGlobal->setDetailLevelEnum($enums, DetailLevelEnum::THIRD);
+        $this->afterbuyGlobal->setDetailLevelEnum($enums, AfterbuyDetailLevelEnum::THIRD);
 
         $this->assertSame('2', $this->afterbuyGlobal->getDetailLevel());
     }
 
     #[DataProvider('detailLevelCombinationsProvider')]
-    public function testVariousDetailLevelCombinations(array $enums, DetailLevelEnum $maxLevel, string $expectedSum): void
+    public function testVariousDetailLevelCombinations(array $enums, AfterbuyDetailLevelEnum $maxLevel, string $expectedSum): void
     {
         $this->afterbuyGlobal->setDetailLevelEnum($enums, $maxLevel);
         $this->assertSame($expectedSum, $this->afterbuyGlobal->getDetailLevel());
@@ -118,28 +118,28 @@ class AfterbuyGlobalTest extends TestCase
     {
         return [
             'FIRST' => [
-                [DetailLevelEnum::FIRST],
-                DetailLevelEnum::FIRST,
+                [AfterbuyDetailLevelEnum::FIRST],
+                AfterbuyDetailLevelEnum::FIRST,
                 '0',
             ],
             'FIRST and SECOND' => [
-                [DetailLevelEnum::FIRST, DetailLevelEnum::SECOND],
-                DetailLevelEnum::SECOND,
+                [AfterbuyDetailLevelEnum::FIRST, AfterbuyDetailLevelEnum::SECOND],
+                AfterbuyDetailLevelEnum::SECOND,
                 '2',
             ],
             'FIRST, SECOND and THIRD' => [
-                [DetailLevelEnum::FIRST, DetailLevelEnum::SECOND, DetailLevelEnum::THIRD],
-                DetailLevelEnum::THIRD,
+                [AfterbuyDetailLevelEnum::FIRST, AfterbuyDetailLevelEnum::SECOND, AfterbuyDetailLevelEnum::THIRD],
+                AfterbuyDetailLevelEnum::THIRD,
                 '6',
             ],
             'FOURTH' => [
-                [DetailLevelEnum::FOURTH],
-                DetailLevelEnum::EIGHTH,
+                [AfterbuyDetailLevelEnum::FOURTH],
+                AfterbuyDetailLevelEnum::EIGHTH,
                 '8',
             ],
             'FIRST and SIXTH, max SECOND' => [
-                [DetailLevelEnum::FIRST, DetailLevelEnum::SIXTH],
-                DetailLevelEnum::SECOND,
+                [AfterbuyDetailLevelEnum::FIRST, AfterbuyDetailLevelEnum::SIXTH],
+                AfterbuyDetailLevelEnum::SECOND,
                 '0',
             ],
         ];
@@ -178,7 +178,7 @@ class AfterbuyGlobalTest extends TestCase
         $afterbuyGlobal = new AfterbuyGlobal(
             accountToken: 'test_token',
             partnerToken: 'partner_token',
-            endpointEnum: EndpointEnum::PROD,
+            afterbuyEndpointEnum: AfterbuyEndpointEnum::PROD,
             errorLanguageEnum: ErrorLanguageEnum::GERMAN
         );
 
@@ -199,11 +199,11 @@ class AfterbuyGlobalTest extends TestCase
         $this->afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, 'TestCall');
         $this->afterbuyGlobal->setDetailLevelEnum(
             [
-                DetailLevelEnum::FIRST,
-                DetailLevelEnum::SECOND,
-                DetailLevelEnum::THIRD,
+                AfterbuyDetailLevelEnum::FIRST,
+                AfterbuyDetailLevelEnum::SECOND,
+                AfterbuyDetailLevelEnum::THIRD,
             ],
-            DetailLevelEnum::SIXTH,
+            AfterbuyDetailLevelEnum::SIXTH,
         );
         $this->afterbuyGlobal->simpleXmlElement($this->xml);
 
@@ -224,8 +224,8 @@ class AfterbuyGlobalTest extends TestCase
     {
         $this->afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, 'TestCall');
         $this->afterbuyGlobal->setDetailLevelEnum(
-            [DetailLevelEnum::FIRST, DetailLevelEnum::SECOND],
-            DetailLevelEnum::SECOND
+            [AfterbuyDetailLevelEnum::FIRST, AfterbuyDetailLevelEnum::SECOND],
+            AfterbuyDetailLevelEnum::SECOND
         );
 
         $this->afterbuyGlobal->simpleXmlElement($this->xml);

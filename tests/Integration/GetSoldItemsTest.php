@@ -22,11 +22,11 @@ use Wundii\AfterbuySdk\Dto\GetSoldItems\ShippingInfo;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\ShopProductDetails;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\SoldItem;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\SoldItems;
+use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\BaseProductTypeEnum;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\DefaultFilterSoldItemsEnum;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\InternalItemTypeEnum;
 use Wundii\AfterbuySdk\Enum\ItemPlatFormNameEnum;
 use Wundii\AfterbuySdk\Enum\ItemPriceCodeEnum;
@@ -56,7 +56,7 @@ class GetSoldItemsTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
     }
 
     public function testDetailLevel(): void
@@ -67,11 +67,11 @@ class GetSoldItemsTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
-        $request = new GetSoldItemsRequest(detailLevelEnum: DetailLevelEnum::SIXTH);
+        $request = new GetSoldItemsRequest(afterbuyDetailLevelEnum: AfterbuyDetailLevelEnum::SIXTH);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>32</DetailLevel>', $payload);
 
-        $request = new GetSoldItemsRequest(detailLevelEnum: [DetailLevelEnum::SEVENTH]);
+        $request = new GetSoldItemsRequest(afterbuyDetailLevelEnum: [AfterbuyDetailLevelEnum::SEVENTH]);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }

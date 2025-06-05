@@ -7,8 +7,8 @@ namespace Wundii\AfterbuySdk\Request;
 use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\OrderDirectionEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
@@ -22,7 +22,7 @@ final readonly class GetSoldItemsRequest implements RequestInterface
 {
     /**
      * @param GetSoldItemsFilterInterface[] $filter
-     * @param DetailLevelEnum[] $detailLevelEnum empty array === first detail level
+     * @param AfterbuyDetailLevelEnum[] $afterbuyDetailLevelEnum empty array === first detail level
      */
     public function __construct(
         private array $filter = [],
@@ -30,7 +30,7 @@ final readonly class GetSoldItemsRequest implements RequestInterface
         private bool $returnHiddenItems = false,
         private OrderDirectionEnum $orderDirectionEnum = OrderDirectionEnum::ASC,
         private ?bool $requestAllItems = null,
-        private DetailLevelEnum|array $detailLevelEnum = DetailLevelEnum::FIRST,
+        private AfterbuyDetailLevelEnum|array $afterbuyDetailLevelEnum = AfterbuyDetailLevelEnum::FIRST,
     ) {
     }
 
@@ -52,7 +52,7 @@ final readonly class GetSoldItemsRequest implements RequestInterface
         }
 
         $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, $this->callName());
-        $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::SIXTH);
+        $afterbuyGlobal->setDetailLevelEnum($this->afterbuyDetailLevelEnum, AfterbuyDetailLevelEnum::SIXTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
@@ -80,9 +80,9 @@ final readonly class GetSoldItemsRequest implements RequestInterface
         return GetSoldItemsResponse::class;
     }
 
-    public function url(EndpointEnum $endpointEnum): string
+    public function url(AfterbuyEndpointEnum $afterbuyEndpointEnum): string
     {
-        return $endpointEnum->afterbuyApiUri();
+        return $afterbuyEndpointEnum->afterbuyApiUri();
     }
 
     public function query(): array

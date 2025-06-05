@@ -6,8 +6,8 @@ namespace Wundii\AfterbuySdk\Core;
 
 use SimpleXMLElement;
 use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\ErrorLanguageEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 
@@ -20,14 +20,14 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
     private AfterbuyApiSourceEnum $afterbuyApiSourceEnum = AfterbuyApiSourceEnum::XML;
 
     /**
-     * @var DetailLevelEnum[]
+     * @var AfterbuyDetailLevelEnum[]
      */
-    private array $detailLevelEnums = [];
+    private array $afterbuyDetailLevelEnums = [];
 
     public function __construct(
         private readonly string $accountToken,
         private readonly string $partnerToken,
-        private readonly EndpointEnum $endpointEnum,
+        private readonly AfterbuyEndpointEnum $afterbuyEndpointEnum,
         private readonly ErrorLanguageEnum $errorLanguageEnum = ErrorLanguageEnum::GERMAN,
     ) {
     }
@@ -36,7 +36,7 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
     {
         $afterbuyGlobal = $xml->addChild('AfterbuyGlobal');
 
-        if ($this->endpointEnum === EndpointEnum::SANDBOX) {
+        if ($this->afterbuyEndpointEnum === AfterbuyEndpointEnum::SANDBOX) {
             $afterbuyGlobal->addChild('Sandbox', $this->afterbuyApiSourceEnum->value);
         }
 
@@ -73,38 +73,38 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
 
     public function getDetailLevel(): string
     {
-        $detailLevelEnums = $this->detailLevelEnums;
+        $afterbuyDetailLevelEnums = $this->afterbuyDetailLevelEnums;
 
-        if ($detailLevelEnums === []) {
-            return (string) DetailLevelEnum::FIRST->value;
+        if ($afterbuyDetailLevelEnums === []) {
+            return (string) AfterbuyDetailLevelEnum::FIRST->value;
         }
 
-        $detailLevelArray = array_map(static fn (DetailLevelEnum $detailLevelEnum): int => $detailLevelEnum->value, $this->detailLevelEnums);
-        $detailLevelArray = array_unique($detailLevelArray);
+        $afterbuyDetailLevelArray = array_map(static fn (AfterbuyDetailLevelEnum $AfterbuyDetailLevelEnum): int => $AfterbuyDetailLevelEnum->value, $this->afterbuyDetailLevelEnums);
+        $afterbuyDetailLevelArray = array_unique($afterbuyDetailLevelArray);
 
-        return (string) array_sum($detailLevelArray);
+        return (string) array_sum($afterbuyDetailLevelArray);
     }
 
-    public function getEndpointEnum(): EndpointEnum
+    public function getEndpointEnum(): AfterbuyEndpointEnum
     {
-        return $this->endpointEnum;
+        return $this->afterbuyEndpointEnum;
     }
 
     /**
-     * @param DetailLevelEnum[] $detailLevelEnum
+     * @param AfterbuyDetailLevelEnum[] $afterbuyDetailLevelEnum
      */
-    public function setDetailLevelEnum(DetailLevelEnum|array $detailLevelEnum, DetailLevelEnum $maxDetailLevelEnum): void
+    public function setDetailLevelEnum(AfterbuyDetailLevelEnum|array $afterbuyDetailLevelEnum, AfterbuyDetailLevelEnum $maxAfterbuyDetailLevelEnum): void
     {
-        if ($detailLevelEnum instanceof DetailLevelEnum) {
-            $detailLevelEnum = [$detailLevelEnum];
+        if ($afterbuyDetailLevelEnum instanceof AfterbuyDetailLevelEnum) {
+            $afterbuyDetailLevelEnum = [$afterbuyDetailLevelEnum];
         }
 
         $filteredEnums = array_filter(
-            $detailLevelEnum,
-            fn (DetailLevelEnum $detailLevelEnum): bool => $detailLevelEnum->value <= $maxDetailLevelEnum->value
+            $afterbuyDetailLevelEnum,
+            fn (AfterbuyDetailLevelEnum $afterbuyDetailLevelEnum): bool => $afterbuyDetailLevelEnum->value <= $maxAfterbuyDetailLevelEnum->value
         );
 
-        $this->detailLevelEnums = $filteredEnums;
+        $this->afterbuyDetailLevelEnums = $filteredEnums;
     }
 
     public function setPayloadEnvironments(AfterbuyApiSourceEnum $afterbuyApiSourceEnum, string $callName): void

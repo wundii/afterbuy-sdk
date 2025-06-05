@@ -9,7 +9,7 @@ use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetProductDiscounts\ProductDiscount;
 use Wundii\AfterbuySdk\Dto\GetProductDiscounts\ProductDiscounts;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Request\GetProductDiscountsRequest;
 use Wundii\AfterbuySdk\Response\GetProductDiscountsResponse;
@@ -19,7 +19,7 @@ class GetProductDiscountsTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
     }
 
     public function testShopIdAndModDate(): void

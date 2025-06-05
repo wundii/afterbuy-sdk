@@ -13,10 +13,10 @@ use Wundii\AfterbuySdk\Dto\GetListerHistory\ListingDetails;
 use Wundii\AfterbuySdk\Dto\GetListerHistory\ProductDetails;
 use Wundii\AfterbuySdk\Dto\GetListerHistory\ProductDetailsCatalog;
 use Wundii\AfterbuySdk\Dto\ResponseError;
-use Wundii\AfterbuySdk\Enum\CallStatusEnum;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyCallStatusEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\EbayCurrencyEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\ListingCountryEnum;
 use Wundii\AfterbuySdk\Enum\PlattformEnum;
 use Wundii\AfterbuySdk\Enum\SellStatusEnum;
@@ -40,7 +40,7 @@ class GetListerHistoryTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
     }
 
     public function testDetailLevel(): void
@@ -52,11 +52,11 @@ class GetListerHistoryTest extends TestCase
 
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
-        $request = new GetListerHistoryRequest(detailLevelEnum: DetailLevelEnum::SECOND);
+        $request = new GetListerHistoryRequest(afterbuyDetailLevelEnum: AfterbuyDetailLevelEnum::SECOND);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>2</DetailLevel>', $payload);
 
-        $request = new GetListerHistoryRequest(detailLevelEnum: [DetailLevelEnum::SIXTH]);
+        $request = new GetListerHistoryRequest(afterbuyDetailLevelEnum: [AfterbuyDetailLevelEnum::SIXTH]);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }
@@ -235,7 +235,7 @@ class GetListerHistoryTest extends TestCase
 
         $response = $afterbuy->runRequest($request, $mockResponse);
 
-        $this->assertEquals(CallStatusEnum::ERROR, $response->getCallStatus());
+        $this->assertEquals(AfterbuyCallStatusEnum::ERROR, $response->getCallStatus());
         $this->assertInstanceOf(GetListerHistoryResponse::class, $response);
         $this->assertCount(1, $response->getErrorMessages());
         $this->assertInstanceOf(ResponseError::class, $response->getErrorMessages()[0]);

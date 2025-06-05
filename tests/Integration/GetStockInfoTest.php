@@ -10,9 +10,9 @@ use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetStockInfo\Product;
 use Wundii\AfterbuySdk\Dto\GetStockInfo\Products;
 use Wundii\AfterbuySdk\Dto\ResponseWarning;
-use Wundii\AfterbuySdk\Enum\CallStatusEnum;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyCallStatusEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\ProductFilterEnum;
 use Wundii\AfterbuySdk\Filter\GetStockInfo\ProductFilter;
 use Wundii\AfterbuySdk\Request\GetStockInfoRequest;
@@ -23,7 +23,7 @@ class GetStockInfoTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
     }
 
     public function testDetailLevel(): void
@@ -34,11 +34,11 @@ class GetStockInfoTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
-        $request = new GetStockInfoRequest([new ProductFilter(ProductFilterEnum::ANR, 1)], [DetailLevelEnum::FOURTH]);
+        $request = new GetStockInfoRequest([new ProductFilter(ProductFilterEnum::ANR, 1)], [AfterbuyDetailLevelEnum::FOURTH]);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>8</DetailLevel>', $payload);
 
-        $request = new GetStockInfoRequest([new ProductFilter(ProductFilterEnum::ANR, 1)], [DetailLevelEnum::FIFTH]);
+        $request = new GetStockInfoRequest([new ProductFilter(ProductFilterEnum::ANR, 1)], [AfterbuyDetailLevelEnum::FIFTH]);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }
@@ -134,7 +134,7 @@ class GetStockInfoTest extends TestCase
 
         $response = $afterbuy->runRequest($request, $mockResponse);
 
-        $this->assertEquals(CallStatusEnum::WARNING, $response->getCallStatus());
+        $this->assertEquals(AfterbuyCallStatusEnum::WARNING, $response->getCallStatus());
         $this->assertInstanceOf(GetStockInfoResponse::class, $response);
         $this->assertCount(1, $response->getWarningMessages());
         $this->assertInstanceOf(ResponseWarning::class, $response->getWarningMessages()[0]);

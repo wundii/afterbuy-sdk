@@ -10,8 +10,8 @@ use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\DateFilterSoldItemsEnum;
 use Wundii\AfterbuySdk\Enum\DefaultFilterSoldItemsEnum;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\PlattformEnum;
 use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\AfterbuyUserEmail;
@@ -32,7 +32,7 @@ use Wundii\AfterbuySdk\Request\GetSoldItemsRequest;
 $afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
-    EndpointEnum::SANDBOX,
+    AfterbuyEndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
@@ -40,7 +40,7 @@ $afterbuy = new Afterbuy(
 );
 
 $request = new GetSoldItemsRequest(
-    detailLevelEnum: DetailLevelEnum::FIRST,
+    detailLevelEnum: AfterbuyDetailLevelEnum::FIRST,
     requestAllItems: null,
     maxSoldItems: 10,
     orderDirectionEnum: OrderDirectionEnum::ASC,

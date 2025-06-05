@@ -10,8 +10,8 @@ use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\DateFilterShopProductsEnum;
 use Wundii\AfterbuySdk\Enum\DefaultFilterShopProductsEnum;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Filter\GetShopProducts\Anr;
 use Wundii\AfterbuySdk\Filter\GetShopProducts\DateFilter;
@@ -27,7 +27,7 @@ use Wundii\AfterbuySdk\Request\GetShopProductsRequest;
 $afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
-    EndpointEnum::SANDBOX,
+    AfterbuyEndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
@@ -55,7 +55,7 @@ $request = new GetShopProductsRequest(
     paginationEnabled: false,
     pageNumber: null,
     returnShop20Container: false,
-    detailLevelEnum: DetailLevelEnum::FIRST,
+    detailLevelEnum: AfterbuyDetailLevelEnum::FIRST,
 );
 $response = $afterbuy->runRequest($request);
 

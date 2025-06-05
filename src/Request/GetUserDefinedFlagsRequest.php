@@ -7,7 +7,7 @@ namespace Wundii\AfterbuySdk\Request;
 use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
@@ -52,9 +52,9 @@ final readonly class GetUserDefinedFlagsRequest implements RequestInterface
         return GetUserDefinedFlagsResponse::class;
     }
 
-    public function url(EndpointEnum $endpointEnum): string
+    public function url(AfterbuyEndpointEnum $afterbuyEndpointEnum): string
     {
-        return $endpointEnum->afterbuyApiUri();
+        return $afterbuyEndpointEnum->afterbuyApiUri();
     }
 
     public function query(): array

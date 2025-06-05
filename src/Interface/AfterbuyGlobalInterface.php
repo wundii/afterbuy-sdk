@@ -7,8 +7,8 @@ namespace Wundii\AfterbuySdk\Interface;
 use SimpleXMLElement;
 use Wundii\AfterbuySdk\Core\AfterbuySandboxResponse;
 use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 
 interface AfterbuyGlobalInterface
 {
@@ -16,12 +16,12 @@ interface AfterbuyGlobalInterface
 
     public function getDetailLevel(): string;
 
-    public function getEndpointEnum(): EndpointEnum;
+    public function getEndpointEnum(): AfterbuyEndpointEnum;
 
     /**
-     * @param DetailLevelEnum[] $detailLevelEnum
+     * @param AfterbuyDetailLevelEnum[] $afterbuyDetailLevelEnum
      */
-    public function setDetailLevelEnum(DetailLevelEnum|array $detailLevelEnum, DetailLevelEnum $maxDetailLevelEnum): void;
+    public function setDetailLevelEnum(AfterbuyDetailLevelEnum|array $afterbuyDetailLevelEnum, AfterbuyDetailLevelEnum $maxAfterbuyDetailLevelEnum): void;
 
     public function setPayloadEnvironments(AfterbuyApiSourceEnum $afterbuyApiSourceEnum, string $callName): void;
 

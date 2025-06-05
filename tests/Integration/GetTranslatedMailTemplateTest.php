@@ -9,8 +9,8 @@ use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetTranslatedMailTemplate\TranslatedMailText;
 use Wundii\AfterbuySdk\Dto\ResponseError;
-use Wundii\AfterbuySdk\Enum\CallStatusEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyCallStatusEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Filter\GetTranslatedMailTemplate\TemplateId;
 use Wundii\AfterbuySdk\Filter\GetTranslatedMailTemplate\TemplateName;
 use Wundii\AfterbuySdk\Request\GetTranslatedMailTemplateRequest;
@@ -21,7 +21,7 @@ class GetTranslatedMailTemplateTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
     }
 
     public function testOfferId(): void
@@ -114,7 +114,7 @@ class GetTranslatedMailTemplateTest extends TestCase
 
         $response = $afterbuy->runRequest($request, $mockResponse);
 
-        $this->assertEquals(CallStatusEnum::ERROR, $response->getCallStatus());
+        $this->assertEquals(AfterbuyCallStatusEnum::ERROR, $response->getCallStatus());
         $this->assertInstanceOf(GetTranslatedMailTemplateResponse::class, $response);
         $this->assertCount(1, $response->getErrorMessages());
         $this->assertInstanceOf(ResponseError::class, $response->getErrorMessages()[0]);

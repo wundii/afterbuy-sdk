@@ -8,7 +8,7 @@ use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
 use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
@@ -59,9 +59,9 @@ final readonly class GetShippingCostRequest implements RequestInterface
         return GetShippingCostResponse::class;
     }
 
-    public function url(EndpointEnum $endpointEnum): string
+    public function url(AfterbuyEndpointEnum $afterbuyEndpointEnum): string
     {
-        return $endpointEnum->afterbuyApiUri();
+        return $afterbuyEndpointEnum->afterbuyApiUri();
     }
 
     public function query(): array

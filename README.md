@@ -55,12 +55,12 @@ Require the bundle and its dependencies with composer:
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 
 $afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
-    EndpointEnum::SANDBOX,
+    AfterbuyEndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
@@ -83,12 +83,12 @@ use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Core\AfterbuySandboxResponse;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 
 $afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
-    EndpointEnum::SANDBOX,
+    AfterbuyEndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
@@ -135,13 +135,13 @@ In preparation for the release of version 1.0.
 ```php
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Request\GetAfterbuyTimeRequest;
 
 $afterbuyGlobal = new AfterbuyGlobal(
     accountToken: '123...',
     partnerToken: '456...',
-    EndpointEnum::SANDBOX,
+    AfterbuyEndpointEnum::SANDBOX,
 );
 
 $request = new GetAfterbuyTimeRequest();

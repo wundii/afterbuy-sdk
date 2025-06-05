@@ -8,7 +8,7 @@ use PhpBench\Attributes\BeforeMethods;
 use PhpBench\Attributes\Iterations;
 use PhpBench\Attributes\Revs;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 
 #[BeforeMethods('setUp')]
@@ -98,9 +98,9 @@ class XmlProcessingBench
     public function benchDetailLevelProcessing(): void
     {
         $detailLevels = [
-            DetailLevelEnum::FIRST,
-            DetailLevelEnum::SECOND,
-            DetailLevelEnum::THIRD,
+            AfterbuyDetailLevelEnum::FIRST,
+            AfterbuyDetailLevelEnum::SECOND,
+            AfterbuyDetailLevelEnum::THIRD,
         ];
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);

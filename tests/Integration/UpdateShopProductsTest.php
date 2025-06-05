@@ -25,12 +25,12 @@ use Wundii\AfterbuySdk\Dto\UpdateShopProducts\ScaledDiscount;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Skus;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Variation;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\VariationValue;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\AgeGroupEnum;
 use Wundii\AfterbuySdk\Enum\AttributTypEnum;
 use Wundii\AfterbuySdk\Enum\BasePriceFactorEnum;
 use Wundii\AfterbuySdk\Enum\ConditionEnum;
 use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
 use Wundii\AfterbuySdk\Enum\GenderEnum;
 use Wundii\AfterbuySdk\Enum\PropertyNameEnum;
@@ -49,7 +49,7 @@ class UpdateShopProductsTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
     }
 
     public function validate(RequestDtoInterface $afterbuyAppendContent): array

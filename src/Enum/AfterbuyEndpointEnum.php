@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Enum;
 
-enum EndpointEnum: string
+enum AfterbuyEndpointEnum: string
 {
     case PROD = 'https://api.afterbuy.de/afterbuy/';
     case SANDBOX = 'http://api.afterbuy.de/afterbuy/';

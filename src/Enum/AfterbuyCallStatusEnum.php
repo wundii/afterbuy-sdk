@@ -6,7 +6,7 @@ namespace Wundii\AfterbuySdk\Enum;
 
 use Psr\Log\LogLevel;
 
-enum CallStatusEnum: string
+enum AfterbuyCallStatusEnum: string
 {
     case SUCCESS = 'Success';
     case ERROR = 'Error';

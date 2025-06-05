@@ -9,7 +9,7 @@ use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetUserDefinedFlags\UserDefinedFlag;
 use Wundii\AfterbuySdk\Dto\GetUserDefinedFlags\UserDefinedFlags;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Request\GetUserDefinedFlagsRequest;
 use Wundii\AfterbuySdk\Response\GetUserDefinedFlagsResponse;
 use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
@@ -18,7 +18,7 @@ class GetUserDefinedFlagsTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
     }
 
     public function testUserDefinedFlagsBasic(): void

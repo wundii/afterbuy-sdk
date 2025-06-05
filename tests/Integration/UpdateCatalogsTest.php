@@ -12,7 +12,7 @@ use Wundii\AfterbuySdk\Dto\UpdateCatalogs\CatalogNotDeleted;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\CatalogNotDeleteds;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\NewCatalog;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\NewCatalogs;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use Wundii\AfterbuySdk\Interface\RequestDtoInterface;
 use Wundii\AfterbuySdk\Request\UpdateCatalogsRequest;
@@ -24,7 +24,7 @@ class UpdateCatalogsTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
     }
 
     public function validate(RequestDtoInterface $afterbuyAppendContent): array

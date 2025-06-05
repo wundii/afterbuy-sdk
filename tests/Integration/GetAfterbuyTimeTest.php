@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetAfterbuyTime\AfterbuyTime;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Request\GetAfterbuyTimeRequest;
 use Wundii\AfterbuySdk\Response\GetAfterbuyTimeResponse;
 use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
@@ -17,7 +17,7 @@ class GetAfterbuyTimeTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
     }
 
     public function testDateTimeBasic(): void

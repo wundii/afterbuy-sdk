@@ -9,8 +9,8 @@ use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplate;
 use Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplates;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Request\GetMailTemplatesRequest;
 use Wundii\AfterbuySdk\Response\GetMailTemplatesResponse;
 use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
@@ -19,7 +19,7 @@ class GetMailTemplatesTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
     }
 
     public function testDetailLevel(): void
@@ -30,11 +30,11 @@ class GetMailTemplatesTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
-        $request = new GetMailTemplatesRequest(detailLevelEnum: DetailLevelEnum::SECOND);
+        $request = new GetMailTemplatesRequest(afterbuyDetailLevelEnum: AfterbuyDetailLevelEnum::SECOND);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>2</DetailLevel>', $payload);
 
-        $request = new GetMailTemplatesRequest(detailLevelEnum: [DetailLevelEnum::THIRD]);
+        $request = new GetMailTemplatesRequest(afterbuyDetailLevelEnum: [AfterbuyDetailLevelEnum::THIRD]);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }

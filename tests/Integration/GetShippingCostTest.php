@@ -11,9 +11,9 @@ use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingInfo;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingMethods;
 use Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingService;
 use Wundii\AfterbuySdk\Dto\ResponseError;
-use Wundii\AfterbuySdk\Enum\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyCallStatusEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Request\GetShippingCostRequest;
 use Wundii\AfterbuySdk\Response\GetShippingCostResponse;
 use Wundii\AfterbuySdk\Tests\DomFormatter;
@@ -23,7 +23,7 @@ class GetShippingCostTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
     }
 
     public function testShippingInfo(): void
@@ -136,7 +136,7 @@ class GetShippingCostTest extends TestCase
 
         $response = $afterbuy->runRequest($request, $mockResponse);
 
-        $this->assertEquals(CallStatusEnum::ERROR, $response->getCallStatus());
+        $this->assertEquals(AfterbuyCallStatusEnum::ERROR, $response->getCallStatus());
         $this->assertInstanceOf(GetShippingCostResponse::class, $response);
         $this->assertCount(1, $response->getErrorMessages());
         $this->assertInstanceOf(ResponseError::class, $response->getErrorMessages()[0]);

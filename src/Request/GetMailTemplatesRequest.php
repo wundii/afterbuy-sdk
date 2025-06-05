@@ -7,8 +7,8 @@ namespace Wundii\AfterbuySdk\Request;
 use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
@@ -19,11 +19,11 @@ use Wundii\AfterbuySdk\Response\GetMailTemplatesResponse;
 final readonly class GetMailTemplatesRequest implements RequestInterface
 {
     /**
-     * @param DetailLevelEnum[] $detailLevelEnum empty array === first detail level
+     * @param AfterbuyDetailLevelEnum[] $afterbuyDetailLevelEnum empty array === first detail level
      */
     public function __construct(
         private ?int $templateId = null,
-        private DetailLevelEnum|array $detailLevelEnum = DetailLevelEnum::FIRST,
+        private AfterbuyDetailLevelEnum|array $afterbuyDetailLevelEnum = AfterbuyDetailLevelEnum::FIRST,
     ) {
     }
 
@@ -40,7 +40,7 @@ final readonly class GetMailTemplatesRequest implements RequestInterface
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
         $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, $this->callName());
-        $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::SECOND);
+        $afterbuyGlobal->setDetailLevelEnum($this->afterbuyDetailLevelEnum, AfterbuyDetailLevelEnum::SECOND);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
@@ -64,9 +64,9 @@ final readonly class GetMailTemplatesRequest implements RequestInterface
         return GetMailTemplatesResponse::class;
     }
 
-    public function url(EndpointEnum $endpointEnum): string
+    public function url(AfterbuyEndpointEnum $afterbuyEndpointEnum): string
     {
-        return $endpointEnum->afterbuyApiUri();
+        return $afterbuyEndpointEnum->afterbuyApiUri();
     }
 
     public function query(): array
