@@ -12,14 +12,14 @@ use Wundii\AfterbuySdk\Enum\ProductFilterEnum;
 use Wundii\AfterbuySdk\Filter\GetStockInfo\ProductFilter;
 use Wundii\AfterbuySdk\Request\GetStockInfoRequest;
 
-$global = new AfterbuyGlobal(
+$afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
+    EndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
-    $global,
-    EndpointEnum::SANDBOX,
+    $afterbuyGlobal,
 );
 
 $request = new GetStockInfoRequest(

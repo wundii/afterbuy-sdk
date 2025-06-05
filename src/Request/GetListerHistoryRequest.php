@@ -42,8 +42,7 @@ final readonly class GetListerHistoryRequest implements RequestInterface
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setCallName($this->callName());
-        $afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
+        $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, $this->callName());
         $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::FIFTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);

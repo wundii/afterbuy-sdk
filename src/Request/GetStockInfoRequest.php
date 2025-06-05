@@ -45,8 +45,7 @@ final readonly class GetStockInfoRequest implements RequestInterface
             throw new RuntimeException('ProductFilter is required');
         }
 
-        $afterbuyGlobal->setCallName($this->callName());
-        $afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
+        $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, $this->callName());
         $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::FOURTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);

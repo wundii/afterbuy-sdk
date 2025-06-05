@@ -57,14 +57,14 @@ use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 
-$global = new AfterbuyGlobal(
+$afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
+    EndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
-    $global,
-    EndpointEnum::SANDBOX,
+    $afterbuyGlobal,
 );
 
 $afterbuy->runRequest(
@@ -85,14 +85,14 @@ use Wundii\AfterbuySdk\Core\AfterbuySandboxResponse;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 
-$global = new AfterbuyGlobal(
+$afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
+    EndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
-    $global,
-    EndpointEnum::SANDBOX,
+    $afterbuyGlobal,
 );
 
 /** your own response version */
@@ -141,13 +141,13 @@ use Wundii\AfterbuySdk\Request\GetAfterbuyTimeRequest;
 $afterbuyGlobal = new AfterbuyGlobal(
     accountToken: '123...',
     partnerToken: '456...',
+    EndpointEnum::SANDBOX,
 );
 
 $request = new GetAfterbuyTimeRequest();
 
 $afterbuy = new Afterbuy(
     $afterbuyGlobal,
-    EndpointEnum::SANDBOX,
     Optional_PsrLoggerInterface::class,
 );
 $response = $afterbuy->runRequest($request);

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Request;
 
 use Wundii\AfterbuySdk\Dto\CreateShopOrder\Order;
+use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
 use Wundii\AfterbuySdk\Enum\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
@@ -31,6 +32,8 @@ final readonly class CreateShopOrderRequest implements RequestInterface
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): null
     {
+        $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::SHOP, $this->callName());
+
         return null;
     }
 

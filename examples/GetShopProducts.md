@@ -24,14 +24,14 @@ use Wundii\AfterbuySdk\Filter\GetShopProducts\RangeProductId;
 use Wundii\AfterbuySdk\Filter\GetShopProducts\Tag;  
 use Wundii\AfterbuySdk\Request\GetShopProductsRequest;
 
-$global = new AfterbuyGlobal(
+$afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
+    EndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
-    $global,
-    EndpointEnum::SANDBOX,
+    $afterbuyGlobal,
 );
 
 $request = new GetShopProductsRequest(

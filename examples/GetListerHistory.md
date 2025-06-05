@@ -24,14 +24,14 @@ use Wundii\AfterbuySdk\Filter\GetListerHistory\SiteId;
 use Wundii\AfterbuySdk\Filter\GetListerHistory\StartDate;
 use Wundii\AfterbuySdk\Request\GetListerHistoryRequest;
 
-$global = new AfterbuyGlobal(
+$afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
+    EndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
-    $global,
-    EndpointEnum::SANDBOX,
+    $afterbuyGlobal,
 );
 
 $request = new GetListerHistoryRequest(

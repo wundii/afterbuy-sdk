@@ -17,17 +17,13 @@ class UpdateShopProductsTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-
-        $afterbuyGlobal = new AfterbuyGlobal('account', 'partner');
-        $afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-
-        return $afterbuyGlobal;
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function validator(): ValidatorInterface
     {
         $errors = [];
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal());
         return $afterbuy->getValidator();
     }
 

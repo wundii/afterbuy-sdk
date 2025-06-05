@@ -23,10 +23,7 @@ class GetShippingCostTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        $afterbuyGlobal = new AfterbuyGlobal('account', 'partner');
-        $afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-
-        return $afterbuyGlobal;
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testShippingInfo(): void
@@ -89,7 +86,7 @@ class GetShippingCostTest extends TestCase
             45.0,
         );
         $request = new GetShippingCostRequest($shippingInfo);
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal());
         $mockResponse = new MockApiResponse(file_get_contents($file), 200);
 
         $response = $afterbuy->runRequest($request, $mockResponse);
@@ -134,7 +131,7 @@ class GetShippingCostTest extends TestCase
             45.0,
         );
         $request = new GetShippingCostRequest($shippingInfo);
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal());
         $mockResponse = new MockApiResponse(file_get_contents($file), 200);
 
         $response = $afterbuy->runRequest($request, $mockResponse);

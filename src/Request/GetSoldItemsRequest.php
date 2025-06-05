@@ -51,8 +51,7 @@ final readonly class GetSoldItemsRequest implements RequestInterface
             $maxSoldItems = 250;
         }
 
-        $afterbuyGlobal->setCallName($this->callName());
-        $afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
+        $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, $this->callName());
         $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::SIXTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);

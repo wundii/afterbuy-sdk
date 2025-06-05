@@ -29,7 +29,6 @@ final class Versions implements ResponseDtoInterface
      */
     public function setVersions(array $versions): void
     {
-
         $this->versions = array_merge($this->versions, $versions);
     }
 

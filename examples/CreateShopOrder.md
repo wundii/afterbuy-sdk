@@ -18,14 +18,14 @@ use Wundii\AfterbuySdk\Enum\NoFeedbackEnum;
 use Wundii\AfterbuySdk\Enum\StockTypeEnum;
 use Wundii\AfterbuySdk\Request\CreateShopOrderRequest;
 
-$global = new AfterbuyGlobal(
+$afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
+    EndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
-    $global,
-    EndpointEnum::SANDBOX,
+    $afterbuyGlobal,
 );
 
 $order = new Order(

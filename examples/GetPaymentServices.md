@@ -14,14 +14,14 @@ use Wundii\AfterbuySdk\Filter\GetPaymentServices\Plattform;
 use Wundii\AfterbuySdk\Filter\GetPaymentServices\ValueOfGoods;
 use Wundii\AfterbuySdk\Request\GetPaymentServicesRequest;
 
-$global = new AfterbuyGlobal(
+$afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
+    EndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
-    $global,
-    EndpointEnum::SANDBOX,
+    $afterbuyGlobal,
 );
 
 $request = new GetPaymentServicesRequest(

@@ -29,7 +29,6 @@ final class UserDefinedFlags implements ResponseDtoInterface
      */
     public function setUserDefinedFlags(array $userDefinedFlags): void
     {
-
         $this->userDefinedFlags = array_merge($this->userDefinedFlags, $userDefinedFlags);
     }
 }

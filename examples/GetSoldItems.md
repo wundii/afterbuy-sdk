@@ -29,14 +29,14 @@ use Wundii\AfterbuySdk\Filter\GetSoldItems\Tag;
 use Wundii\AfterbuySdk\Filter\GetSoldItems\UserDefinedFlag;
 use Wundii\AfterbuySdk\Request\GetSoldItemsRequest;
 
-$global = new AfterbuyGlobal(
+$afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
+    EndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
-    $global,
-    EndpointEnum::SANDBOX,
+    $afterbuyGlobal,
 );
 
 $request = new GetSoldItemsRequest(

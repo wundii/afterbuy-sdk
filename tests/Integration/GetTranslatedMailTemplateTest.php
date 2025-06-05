@@ -21,11 +21,7 @@ class GetTranslatedMailTemplateTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-
-        $afterbuyGlobal = new AfterbuyGlobal('account', 'partner');
-        $afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-
-        return $afterbuyGlobal;
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testOfferId(): void
@@ -91,7 +87,7 @@ class GetTranslatedMailTemplateTest extends TestCase
         $file = __DIR__ . '/ResponseFiles/GetTranslatedMailTemplateSuccess.xml';
 
         $request = new GetTranslatedMailTemplateRequest(1);
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal());
         $mockResponse = new MockApiResponse(file_get_contents($file), 200);
 
         $response = $afterbuy->runRequest($request, $mockResponse);
@@ -113,7 +109,7 @@ class GetTranslatedMailTemplateTest extends TestCase
         $file = __DIR__ . '/ResponseFiles/GetTranslatedMailTemplateError37.xml';
 
         $request = new GetTranslatedMailTemplateRequest(123456);
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal());
         $mockResponse = new MockApiResponse(file_get_contents($file), 200);
 
         $response = $afterbuy->runRequest($request, $mockResponse);

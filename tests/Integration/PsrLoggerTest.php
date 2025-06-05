@@ -23,11 +23,7 @@ class PsrLoggerTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-
-        $afterbuyGlobal = new AfterbuyGlobal('account', 'partner');
-        $afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-
-        return $afterbuyGlobal;
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testWithoutLogs(): void
@@ -36,7 +32,7 @@ class PsrLoggerTest extends TestCase
 
         $psrLogger = new MockLogger();
         $request = new GetListerHistoryRequest();
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX, $psrLogger);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), $psrLogger);
         $mockResponse = new MockApiResponse(file_get_contents($file), 200);
 
         $response = $afterbuy->runRequest($request, $mockResponse);
@@ -52,7 +48,7 @@ class PsrLoggerTest extends TestCase
 
         $psrLogger = new MockLogger();
         $request = new GetListerHistoryRequest();
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX, $psrLogger, debugMode: true);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), $psrLogger, debugMode: true);
         $mockResponse = new MockApiResponse(file_get_contents($file), 200);
 
         $response = $afterbuy->runRequest($request, $mockResponse);
@@ -69,7 +65,7 @@ class PsrLoggerTest extends TestCase
 
         $psrLogger = new MockLogger();
         $request = new GetStockInfoRequest(productFilter: [new ProductFilter(ProductFilterEnum::ANR, 1)]);
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX, $psrLogger);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), $psrLogger);
         $mockResponse = new MockApiResponse(file_get_contents($file), 200);
 
         $response = $afterbuy->runRequest($request, $mockResponse);
@@ -110,7 +106,7 @@ class PsrLoggerTest extends TestCase
 
         $psrLogger = new MockLogger();
         $request = new GetListerHistoryRequest();
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX, $psrLogger);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), $psrLogger);
         $mockResponse = new MockApiResponse(file_get_contents($file), 200);
 
         $response = $afterbuy->runRequest($request, $mockResponse);

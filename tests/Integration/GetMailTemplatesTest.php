@@ -19,10 +19,7 @@ class GetMailTemplatesTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        $afterbuyGlobal = new AfterbuyGlobal('account', 'partner');
-        $afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-
-        return $afterbuyGlobal;
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testDetailLevel(): void
@@ -60,7 +57,7 @@ class GetMailTemplatesTest extends TestCase
         $file = __DIR__ . '/ResponseFiles/GetMailTemplatesSuccess.xml';
 
         $request = new GetMailTemplatesRequest();
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal());
         $mockResponse = new MockApiResponse(file_get_contents($file), 200);
 
         $response = $afterbuy->runRequest($request, $mockResponse);

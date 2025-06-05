@@ -6,7 +6,6 @@ namespace Wundii\AfterbuySdk\Tests\Unit\Core;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use RuntimeException;
 use SimpleXMLElement;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
@@ -25,10 +24,16 @@ class AfterbuyGlobalTest extends TestCase
         $this->afterbuyGlobal = new AfterbuyGlobal(
             accountToken: 'test_token',
             partnerToken: 'partner_token',
+            endpointEnum: EndpointEnum::SANDBOX,
             errorLanguageEnum: ErrorLanguageEnum::GERMAN
         );
 
         $this->xml = new SimpleXMLElement(AfterbuyGlobal::DefaultXmlRoot);
+    }
+
+    public function testGetEndpointEnum(): void
+    {
+        $this->assertSame(EndpointEnum::SANDBOX, $this->afterbuyGlobal->getEndpointEnum());
     }
 
     public function testGetDetailLevelReturnsFirstLevelWhenNoEnumsSet(): void
@@ -140,54 +145,23 @@ class AfterbuyGlobalTest extends TestCase
         ];
     }
 
-    public function testThrowsExceptionWhenCallNameNotSet(): void
-    {
-        $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage('Call name must be set before generating XML');
-
-        $this->afterbuyGlobal->simpleXmlElement($this->xml);
-    }
-
-    public function testThrowsExceptionWhenEndpointEnumNotSet(): void
-    {
-        $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage('Endpoint must be set before generating XML');
-
-        $this->afterbuyGlobal->setCallName('TestCall');
-        $this->afterbuyGlobal->simpleXmlElement($this->xml);
-    }
-
-    public function testThrowsExceptionWhenAfterbuyApiSourceEnumNotSet(): void
-    {
-        $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage('Afterbuy API source must be set before generating XML');
-
-        $this->afterbuyGlobal->setCallName('TestCall');
-        $this->afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-        $this->afterbuyGlobal->simpleXmlElement($this->xml);
-    }
-
     public function testGenerateSandboxElementWithShop(): void
     {
-        $this->afterbuyGlobal->setCallName('TestCall');
-        $this->afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-        $this->afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::SHOP);
+        $this->afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::SHOP, 'TestCall');
         $this->afterbuyGlobal->simpleXmlElement($this->xml);
 
         $xmlString = $this->xml->asXML();
         $this->assertNotFalse($xmlString);
 
-        $afterbuyGlobal = $this->xml->AfterbuyGlobal;
+        $afterbuyGlobalXml = $this->xml->AfterbuyGlobal;
 
-        $this->assertNotFalse($afterbuyGlobal);
-        $this->assertSame('shop', (string) $afterbuyGlobal->Sandbox);
+        $this->assertNotFalse($afterbuyGlobalXml);
+        $this->assertSame('shop', (string) $afterbuyGlobalXml->Sandbox);
     }
 
     public function testGenerateSandboxElementWithXML(): void
     {
-        $this->afterbuyGlobal->setCallName('TestCall');
-        $this->afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-        $this->afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
+        $this->afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, 'TestCall');
         $this->afterbuyGlobal->simpleXmlElement($this->xml);
 
         $xmlString = $this->xml->asXML();
@@ -201,10 +175,15 @@ class AfterbuyGlobalTest extends TestCase
 
     public function testGenerateProductionXml(): void
     {
-        $this->afterbuyGlobal->setCallName('TestCall');
-        $this->afterbuyGlobal->setEndpointEnum(EndpointEnum::PROD);
-        $this->afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
-        $this->afterbuyGlobal->simpleXmlElement($this->xml);
+        $afterbuyGlobal = new AfterbuyGlobal(
+            accountToken: 'test_token',
+            partnerToken: 'partner_token',
+            endpointEnum: EndpointEnum::PROD,
+            errorLanguageEnum: ErrorLanguageEnum::GERMAN
+        );
+
+        $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, 'TestCall');
+        $afterbuyGlobal->simpleXmlElement($this->xml);
 
         $xmlString = $this->xml->asXML();
         $this->assertNotFalse($xmlString);
@@ -217,9 +196,7 @@ class AfterbuyGlobalTest extends TestCase
 
     public function testGeneratesCorrectXmlStructure(): void
     {
-        $this->afterbuyGlobal->setCallName('TestCall');
-        $this->afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-        $this->afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
+        $this->afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, 'TestCall');
         $this->afterbuyGlobal->setDetailLevelEnum(
             [
                 DetailLevelEnum::FIRST,
@@ -245,9 +222,7 @@ class AfterbuyGlobalTest extends TestCase
 
     public function testGeneratesCorrectXmlWithCustomDetailLevel(): void
     {
-        $this->afterbuyGlobal->setCallName('TestCall');
-        $this->afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-        $this->afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
+        $this->afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, 'TestCall');
         $this->afterbuyGlobal->setDetailLevelEnum(
             [DetailLevelEnum::FIRST, DetailLevelEnum::SECOND],
             DetailLevelEnum::SECOND
@@ -261,9 +236,7 @@ class AfterbuyGlobalTest extends TestCase
 
     public function testXmlStructureCompleteness(): void
     {
-        $this->afterbuyGlobal->setCallName('TestCall');
-        $this->afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-        $this->afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
+        $this->afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, 'TestCall');
         $this->afterbuyGlobal->simpleXmlElement($this->xml);
 
         $afterbuyGlobal = $this->xml->AfterbuyGlobal;
@@ -286,9 +259,7 @@ class AfterbuyGlobalTest extends TestCase
 
     public function testXmlEncodingAndFormat(): void
     {
-        $this->afterbuyGlobal->setCallName('TestCall');
-        $this->afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-        $this->afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
+        $this->afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, 'TestCall');
         $this->afterbuyGlobal->simpleXmlElement($this->xml);
 
         $xmlString = $this->xml->asXML();
@@ -303,9 +274,7 @@ class AfterbuyGlobalTest extends TestCase
     #[DataProvider('callNameProvider')]
     public function testVariousCallNames(string $callName): void
     {
-        $this->afterbuyGlobal->setCallName($callName);
-        $this->afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-        $this->afterbuyGlobal->setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum::XML);
+        $this->afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, $callName);
         $this->afterbuyGlobal->simpleXmlElement($this->xml);
 
         $this->assertEquals($callName, (string) $this->xml->AfterbuyGlobal->CallName);
@@ -317,7 +286,7 @@ class AfterbuyGlobalTest extends TestCase
             'standard call name' => ['GetSoldItems'],
             'with numbers' => ['Test123'],
             'with special chars' => ['Test-Call'],
-            'empty string' => [''],
+            'empty string' => ['noCallNameSet'],
         ];
     }
 }

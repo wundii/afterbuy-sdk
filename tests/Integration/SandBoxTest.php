@@ -29,11 +29,7 @@ class SandBoxTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-
-        $afterbuyGlobal = new AfterbuyGlobal('account', 'partner');
-        $afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-
-        return $afterbuyGlobal;
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testSandboxWithDefaultShopApiResponse(): void
@@ -70,8 +66,8 @@ class SandBoxTest extends TestCase
                 ],
             )
         );
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX, $psrLogger);
 
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), $psrLogger);
         $response = $afterbuy->runRequest($request);
 
         $this->assertEquals(EndpointEnum::SANDBOX, $response->getEndpoint());
@@ -91,8 +87,8 @@ class SandBoxTest extends TestCase
                 ),
             ],
         );
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX, $psrLogger);
 
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), $psrLogger);
         $response = $afterbuy->runRequest($request);
 
         $this->assertEquals(EndpointEnum::SANDBOX, $response->getEndpoint());
@@ -114,9 +110,9 @@ class SandBoxTest extends TestCase
                 ),
             ],
         );
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX, $psrLogger);
-        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
 
+        $afterbuy = new Afterbuy($this->afterbuyGlobal(), $psrLogger);
+        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
         $response = $afterbuy->runRequest($request, $mockResponse);
 
         $this->assertEquals(EndpointEnum::SANDBOX, $response->getEndpoint());

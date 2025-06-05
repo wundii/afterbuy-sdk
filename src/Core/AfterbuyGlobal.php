@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Core;
 
-use RuntimeException;
 use SimpleXMLElement;
 use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
 use Wundii\AfterbuySdk\Enum\DetailLevelEnum;
@@ -16,11 +15,9 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
 {
     public const DefaultXmlRoot = '<?xml version="1.0" encoding="utf-8"?><Request></Request>';
 
-    private ?string $callName = null;
+    private string $callName = 'noCallNameSet';
 
-    private ?EndpointEnum $endpointEnum = null;
-
-    private ?AfterbuyApiSourceEnum $afterbuyApiSourceEnum = null;
+    private AfterbuyApiSourceEnum $afterbuyApiSourceEnum = AfterbuyApiSourceEnum::XML;
 
     /**
      * @var DetailLevelEnum[]
@@ -30,24 +27,13 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
     public function __construct(
         private readonly string $accountToken,
         private readonly string $partnerToken,
+        private readonly EndpointEnum $endpointEnum,
         private readonly ErrorLanguageEnum $errorLanguageEnum = ErrorLanguageEnum::GERMAN,
     ) {
     }
 
     public function simpleXmlElement(SimpleXMLElement $xml): void
     {
-        if ($this->callName === null) {
-            throw new RuntimeException('Call name must be set before generating XML');
-        }
-
-        if (! $this->endpointEnum instanceof EndpointEnum) {
-            throw new RuntimeException('Endpoint must be set before generating XML');
-        }
-
-        if (! $this->afterbuyApiSourceEnum instanceof AfterbuyApiSourceEnum) {
-            throw new RuntimeException('Afterbuy API source must be set before generating XML');
-        }
-
         $afterbuyGlobal = $xml->addChild('AfterbuyGlobal');
 
         if ($this->endpointEnum === EndpointEnum::SANDBOX) {
@@ -61,19 +47,28 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
         $afterbuyGlobal->addChild('DetailLevel', $this->getDetailLevel());
     }
 
-    public function setCallName(string $callName): void
+    public function getAfterbuySandboxResponse(): AfterbuySandboxResponse
     {
-        $this->callName = $callName;
-    }
+        $defaultShopApiResponse = sprintf(
+            '<?xml version="1.0" encoding="utf-8"?>' .
+            '<result><sandbox>%s</sandbox><success>1</success><data/></result>',
+            AfterbuyApiSourceEnum::SHOP->value,
+        );
+        $defaultXmlApiResponse = sprintf(
+            '<?xml version="1.0" encoding="utf-8"?>' .
+            '<Afterbuy><Sandbox>%s</Sandbox><CallStatus>Success</CallStatus><CallName>%s</CallName><VersionID>%f</VersionID></Afterbuy>',
+            AfterbuyApiSourceEnum::XML->value,
+            htmlspecialchars($this->callName, ENT_XML1),
+            Afterbuy::DefaultSandboxVersion
+        );
 
-    public function setEndpointEnum(EndpointEnum $endpointEnum): void
-    {
-        $this->endpointEnum = $endpointEnum;
-    }
+        $defaultResponse = $defaultXmlApiResponse;
 
-    public function setAfterbuyApiSourceEnum(AfterbuyApiSourceEnum $afterbuyApiSourceEnum): void
-    {
-        $this->afterbuyApiSourceEnum = $afterbuyApiSourceEnum;
+        if ($this->afterbuyApiSourceEnum === AfterbuyApiSourceEnum::SHOP) {
+            $defaultResponse = $defaultShopApiResponse;
+        }
+
+        return new AfterbuySandboxResponse($defaultResponse);
     }
 
     public function getDetailLevel(): string
@@ -88,6 +83,11 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
         $detailLevelArray = array_unique($detailLevelArray);
 
         return (string) array_sum($detailLevelArray);
+    }
+
+    public function getEndpointEnum(): EndpointEnum
+    {
+        return $this->endpointEnum;
     }
 
     /**
@@ -105,5 +105,11 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
         );
 
         $this->detailLevelEnums = $filteredEnums;
+    }
+
+    public function setPayloadEnvironments(AfterbuyApiSourceEnum $afterbuyApiSourceEnum, string $callName): void
+    {
+        $this->callName = $callName;
+        $this->afterbuyApiSourceEnum = $afterbuyApiSourceEnum;
     }
 }

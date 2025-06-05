@@ -17,11 +17,7 @@ class GetAfterbuyTimeTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-
-        $afterbuyGlobal = new AfterbuyGlobal('account', 'partner');
-        $afterbuyGlobal->setEndpointEnum(EndpointEnum::SANDBOX);
-
-        return $afterbuyGlobal;
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testDateTimeBasic(): void
@@ -29,7 +25,7 @@ class GetAfterbuyTimeTest extends TestCase
         $file = __DIR__ . '/ResponseFiles/GetAfterbuyTimeSuccess.xml';
 
         $request = new GetAfterbuyTimeRequest();
-        $afterbuy = new Afterbuy($this->afterbuyGlobal(), EndpointEnum::SANDBOX);
+        $afterbuy = new Afterbuy($this->afterbuyGlobal());
         $mockResponse = new MockApiResponse(file_get_contents($file), 200);
 
         $response = $afterbuy->runRequest($request, $mockResponse);
