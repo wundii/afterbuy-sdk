@@ -108,6 +108,7 @@
             <Material>wood</Material>
             <ItemColor>brown</ItemColor>
             <ItemSize>xxl</ItemSize>
+            <SEOName>seoName</SEOName>
             <CanonicalURL>https://www.example.com</CanonicalURL>
             <EnergyClass>10</EnergyClass>
             <EnergyClassPictureURL>https://www.example.com/energy-label</EnergyClassPictureURL>

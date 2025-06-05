@@ -93,6 +93,7 @@ final class Product implements RequestDtoXmlInterface
         private ?string $material = null,
         private ?string $itemColor = null,
         private ?string $itemSize = null,
+        private ?string $seoName = null,
         private ?string $canonicalUrl = null,
         private ?EnergyClassEnum $energyClassEnum = null,
         private ?string $energyClassPictureUrl = null,
@@ -190,6 +191,7 @@ final class Product implements RequestDtoXmlInterface
         $product->addString('Material', $this->material);
         $product->addString('ItemColor', $this->itemColor);
         $product->addString('ItemSize', $this->itemSize);
+        $product->addString('SEOName', $this->seoName);
         $product->addString('CanonicalURL', $this->canonicalUrl);
         $product->addNumber('EnergyClass', $this->energyClassEnum?->value);
         $product->addString('EnergyClassPictureURL', $this->energyClassPictureUrl);
@@ -907,6 +909,7 @@ final class Product implements RequestDtoXmlInterface
         $this->partsFitment = $partsFitment;
     }
 
+    #[Assert\Length(max: 100)]
     public function getPattern(): ?string
     {
         return $this->pattern;
@@ -1003,6 +1006,17 @@ final class Product implements RequestDtoXmlInterface
     public function setSearchAlias(?string $searchAlias): void
     {
         $this->searchAlias = $searchAlias;
+    }
+
+    #[Assert\Length(max: 255)]
+    public function getSeoName(): ?string
+    {
+        return $this->seoName;
+    }
+
+    public function setSeoName(?string $seoName): void
+    {
+        $this->seoName = $seoName;
     }
 
     public function getSellingPrice(): ?float

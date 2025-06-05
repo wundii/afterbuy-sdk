@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
 use DateTimeInterface;
+use Wundii\AfterbuySdk\Enum\AgeGroupEnum;
 use Wundii\AfterbuySdk\Enum\BaseProductFlagEnum;
 use Wundii\AfterbuySdk\Enum\ConditionEnum;
 use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
 use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
+use Wundii\AfterbuySdk\Enum\GenderEnum;
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 
 final class Product implements ResponseDtoInterface
@@ -108,8 +110,8 @@ final class Product implements ResponseDtoInterface
         private ?string $googleProductCategory = null,
         private ?string $adwordsGrouping = null,
         private ConditionEnum $conditionEnum = ConditionEnum::NO_CONDITION,
-        private ?int $ageGroup = null,
-        private ?int $gender = null,
+        private ?AgeGroupEnum $ageGroupEnum = null,
+        private ?GenderEnum $genderEnum = null,
         private ?string $pattern = null,
         private ?string $material = null,
         private ?string $itemColor = null,
@@ -1095,14 +1097,14 @@ final class Product implements ResponseDtoInterface
         $this->adwordsGrouping = $adwordsGrouping;
     }
 
-    public function getAgeGroup(): ?int
+    public function getAgeGroup(): ?AgeGroupEnum
     {
-        return $this->ageGroup;
+        return $this->ageGroupEnum;
     }
 
-    public function setAgeGroup(?int $ageGroup): void
+    public function setAgeGroup(?AgeGroupEnum $ageGroupEnum): void
     {
-        $this->ageGroup = $ageGroup;
+        $this->ageGroupEnum = $ageGroupEnum;
     }
 
     public function getAmazonStandardProductIdType(): ?string
@@ -1195,14 +1197,14 @@ final class Product implements ResponseDtoInterface
         $this->facebook = $facebook;
     }
 
-    public function getGender(): ?int
+    public function getGender(): ?GenderEnum
     {
-        return $this->gender;
+        return $this->genderEnum;
     }
 
-    public function setGender(?int $gender): void
+    public function setGender(?GenderEnum $genderEnum): void
     {
-        $this->gender = $gender;
+        $this->genderEnum = $genderEnum;
     }
 
     public function getGoogleBaseLabels(): ?string

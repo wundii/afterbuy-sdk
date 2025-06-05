@@ -241,8 +241,8 @@
                 <AdwordsGrouping><![CDATA[adwordsGrouping]]></AdwordsGrouping>
                 <ManufacturerPartNumber><![CDATA[99999999999999]]></ManufacturerPartNumber>
                 <Condition>1</Condition>
-                <AgeGroup>0</AgeGroup>
-                <Gender>0</Gender>
+                <AgeGroup>5</AgeGroup>
+                <Gender>3</Gender>
                 <Material><![CDATA[Metall]]></Material>
                 <Pattern><![CDATA[pattern]]></Pattern>
                 <CustomLabel0><![CDATA[cl0]]></CustomLabel0>

@@ -22,6 +22,7 @@ use Wundii\AfterbuySdk\Dto\GetShopProducts\Products;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\ScaledDiscount;
 use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\AgeGroupEnum;
 use Wundii\AfterbuySdk\Enum\BaseProductFlagEnum;
 use Wundii\AfterbuySdk\Enum\ConditionEnum;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
@@ -29,6 +30,7 @@ use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
 use Wundii\AfterbuySdk\Enum\DateFilterShopProductsEnum;
 use Wundii\AfterbuySdk\Enum\DefaultFilterShopProductsEnum;
 use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
+use Wundii\AfterbuySdk\Enum\GenderEnum;
 use Wundii\AfterbuySdk\Enum\PropertyNameEnum;
 use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Filter\GetShopProducts\Anr;
@@ -298,8 +300,8 @@ class GetShopProductsTest extends TestCase
                     googleProductCategory: 'save',
                     adwordsGrouping: 'adwordsGrouping',
                     conditionEnum: ConditionEnum::NEW,
-                    ageGroup: 0,
-                    gender: 0,
+                    ageGroupEnum: AgeGroupEnum::NEWBORNS,
+                    genderEnum: GenderEnum::LADIES,
                     pattern: 'pattern',
                     material: 'Metall',
                     itemColor: 'itemColor',

@@ -234,6 +234,7 @@ class UpdateShopProductsTest extends TestCase
                     'wood',
                     'brown',
                     'xxl',
+                    'seoName',
                     'https://www.example.com',
                     EnergyClassEnum::A_PLUS_PLUS_PLUS,
                     'https://www.example.com/energy-label',
