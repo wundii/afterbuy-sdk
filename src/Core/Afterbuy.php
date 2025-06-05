@@ -36,6 +36,7 @@ use Wundii\AfterbuySdk\Interface\ResponseDtoLoggerInterface;
 use Wundii\AfterbuySdk\Interface\ResponseInterface;
 use Wundii\DataMapper\DataConfig;
 use Wundii\DataMapper\DataMapper;
+use Wundii\DataMapper\Enum\AccessibleEnum;
 use Wundii\DataMapper\Enum\ApproachEnum;
 
 /**
@@ -48,12 +49,26 @@ readonly class Afterbuy
      */
     public const DefaultSandboxVersion = 8;
 
+    /**
+     * @var DataMapper<T>
+     */
+    public DataMapper $dataMapper;
+
     public function __construct(
         private AfterbuyGlobalInterface $afterbuyGlobal,
         private ?LoggerInterface $logger = null,
         private ?ValidatorBuilder $validatorBuilder = null,
         private bool $debugMode = false,
     ) {
+        $dataConfig = new DataConfig(
+            approachEnum: ApproachEnum::SETTER,
+            accessibleEnum: AccessibleEnum::PUBLIC,
+            classMap: [
+                DateTimeInterface::class => DateTime::class,
+            ],
+        );
+
+        $this->dataMapper = new DataMapper($dataConfig);
     }
 
     /**
@@ -68,16 +83,9 @@ readonly class Afterbuy
         $requestDto = $afterbuyRequest->requestDto();
         $responseClass = $afterbuyRequest->responseClass();
         $url = $afterbuyRequest->url($endpointEnum);
-        $dataConfig = new DataConfig(
-            ApproachEnum::SETTER,
-            classMap: [
-                DateTimeInterface::class => DateTime::class,
-            ]
-        );
-        $dataMapper = new DataMapper($dataConfig);
 
         if (! class_exists($responseClass)) {
-            throw new RuntimeException('Response class does not exist');
+            throw new RuntimeException(sprintf('Response class %s does not exist', $responseClass));
         }
 
         /** validate the request class */
@@ -153,13 +161,13 @@ readonly class Afterbuy
         }
 
         try {
-            $httpClientResponse = (new ReflectionClass($responseClass))->newInstance($dataMapper, $httpClientResponse, $endpointEnum);
+            $httpClientResponse = (new ReflectionClass($responseClass))->newInstance($this->dataMapper, $httpClientResponse, $endpointEnum);
         } catch (Exception $exception) {
             throw new RuntimeException($exception->getMessage(), $exception->getCode(), $exception);
         }
 
         if (! $httpClientResponse instanceof ResponseInterface) {
-            throw new RuntimeException('Response class does not implement AfterbuyResponseInterface');
+            throw new RuntimeException(sprintf('Response class %s does not implement ResponseInterface', $responseClass));
         }
 
         $callStatusEnum = $httpClientResponse->getCallStatus();
