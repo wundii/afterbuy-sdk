@@ -52,7 +52,10 @@ Require the bundle and its dependencies with composer:
 ## Afterbuy Sandbox Environment
 
 ```php
-use Wundii\AfterbuySdk\Core\Afterbuy;use Wundii\AfterbuySdk\Core\AfterbuyGlobal;use Wundii\AfterbuySdk\Dto\UpdateShopProducts;use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
+use Wundii\AfterbuySdk\Core\Afterbuy;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Dto\UpdateShopProducts;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 
 $afterbuyGlobal = new AfterbuyGlobal(
     '123...',
@@ -76,7 +79,11 @@ This afterbuy sdk always returns default a successful response if it is an updat
 Alternatively, you can pass your own update response class.
 
 ```php
-use Wundii\AfterbuySdk\Core\Afterbuy;use Wundii\AfterbuySdk\Core\AfterbuyGlobal;use Wundii\AfterbuySdk\Core\SandboxResponse;use Wundii\AfterbuySdk\Dto\UpdateShopProducts;use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
+use Wundii\AfterbuySdk\Core\Afterbuy;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Core\SandboxResponse;
+use Wundii\AfterbuySdk\Dto\UpdateShopProducts;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 
 $afterbuyGlobal = new AfterbuyGlobal(
     '123...',
@@ -126,7 +133,10 @@ In preparation for the release of version 1.0.
 ## Usage
 
 ```php
-use Wundii\AfterbuySdk\Core\Afterbuy;use Wundii\AfterbuySdk\Core\AfterbuyGlobal;use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;use Wundii\AfterbuySdk\Request\GetAfterbuyTimeRequest;
+use Wundii\AfterbuySdk\Core\Afterbuy;
+use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
+use Wundii\AfterbuySdk\Request\GetAfterbuyTimeRequest;
 
 $afterbuyGlobal = new AfterbuyGlobal(
     accountToken: '123...',
