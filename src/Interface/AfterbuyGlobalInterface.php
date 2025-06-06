@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Interface;
 
 use SimpleXMLElement;
-use Wundii\AfterbuySdk\Core\AfterbuySandboxResponse;
-use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Core\SandboxResponse;
+use Wundii\AfterbuySdk\Enum\Core\ApiSourceEnum;
+use Wundii\AfterbuySdk\Enum\Core\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 
 interface AfterbuyGlobalInterface
 {
-    public function getAfterbuySandboxResponse(): AfterbuySandboxResponse;
+    public function getSandboxResponse(): SandboxResponse;
 
     public function getDetailLevel(): string;
 
-    public function getEndpointEnum(): AfterbuyEndpointEnum;
+    public function getEndpointEnum(): EndpointEnum;
 
     /**
-     * @param AfterbuyDetailLevelEnum[] $afterbuyDetailLevelEnum
+     * @param DetailLevelEnum[] $detailLevelEnum
      */
-    public function setDetailLevelEnum(AfterbuyDetailLevelEnum|array $afterbuyDetailLevelEnum, AfterbuyDetailLevelEnum $maxAfterbuyDetailLevelEnum): void;
+    public function setDetailLevelEnum(DetailLevelEnum|array $detailLevelEnum, DetailLevelEnum $maxDetailLevelEnum): void;
 
-    public function setPayloadEnvironments(AfterbuyApiSourceEnum $afterbuyApiSourceEnum, string $callName): void;
+    public function setPayloadEnvironments(ApiSourceEnum $apiSourceEnum, string $callName): void;
 
     public function simpleXmlElement(SimpleXMLElement $xml): void;
 }

@@ -6,8 +6,8 @@ namespace Wundii\AfterbuySdk\Request;
 
 use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\ApiSourceEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
@@ -29,7 +29,7 @@ final readonly class GetAfterbuyTimeRequest implements RequestInterface
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, $this->callName());
+        $afterbuyGlobal->setPayloadEnvironments(ApiSourceEnum::XML, $this->callName());
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
@@ -52,9 +52,9 @@ final readonly class GetAfterbuyTimeRequest implements RequestInterface
         return GetAfterbuyTimeResponse::class;
     }
 
-    public function url(AfterbuyEndpointEnum $afterbuyEndpointEnum): string
+    public function url(EndpointEnum $endpointEnum): string
     {
-        return $afterbuyEndpointEnum->afterbuyApiUri();
+        return $endpointEnum->afterbuyApiUri();
     }
 
     public function query(): array

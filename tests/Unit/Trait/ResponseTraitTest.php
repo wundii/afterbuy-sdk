@@ -15,8 +15,8 @@ use Wundii\AfterbuySdk\Dto\ResponseError;
 use Wundii\AfterbuySdk\Dto\ResponseErrorList;
 use Wundii\AfterbuySdk\Dto\ResponseWarning;
 use Wundii\AfterbuySdk\Dto\ResponseWarningList;
-use Wundii\AfterbuySdk\Enum\AfterbuyCallStatusEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Tests\MockClasses\MockResponseTrait;
 use Wundii\DataMapper\DataMapper;
 
@@ -79,7 +79,7 @@ class ResponseTraitTest extends TestCase
     {
         $xml = '<CallStatus>Success</CallStatus><VersionID>3</VersionID>';
         $trait = $this->getMockResponseTrait($xml);
-        $this->assertEquals(AfterbuyCallStatusEnum::SUCCESS, $trait->getCallStatus());
+        $this->assertEquals(CallStatusEnum::SUCCESS, $trait->getCallStatus());
     }
 
     /**
@@ -106,7 +106,7 @@ class ResponseTraitTest extends TestCase
     public function testGetEndpointReturnsEndpoint()
     {
         $trait = $this->getMockResponseTrait('<CallStatus>Success</CallStatus><VersionID>1</VersionID>');
-        $this->assertEquals(AfterbuyEndpointEnum::SANDBOX, $trait->getEndpoint());
+        $this->assertEquals(EndpointEnum::SANDBOX, $trait->getEndpoint());
     }
 
     /**
@@ -136,7 +136,7 @@ class ResponseTraitTest extends TestCase
         $errorList = new ResponseErrorList([$error]);
         $xml = '<CallStatus>Error</CallStatus><VersionID>1</VersionID>';
         $trait = $this->getMockResponseTrait($xml, errorList: $errorList);
-        $this->assertEquals(AfterbuyCallStatusEnum::ERROR, $trait->getCallStatus());
+        $this->assertEquals(CallStatusEnum::ERROR, $trait->getCallStatus());
         $this->assertCount(1, $trait->getErrorMessages());
         $this->assertSame($error, $trait->getErrorMessages()[0]);
         $this->assertTrue($trait->hasErrors());
@@ -155,7 +155,7 @@ class ResponseTraitTest extends TestCase
         $warningList = new ResponseWarningList([$warning]);
         $xml = '<CallStatus>Warning</CallStatus><VersionID>1</VersionID>';
         $trait = $this->getMockResponseTrait($xml, warningList: $warningList);
-        $this->assertEquals(AfterbuyCallStatusEnum::WARNING, $trait->getCallStatus());
+        $this->assertEquals(CallStatusEnum::WARNING, $trait->getCallStatus());
         $this->assertCount(1, $trait->getWarningMessages());
         $this->assertInstanceOf(ResponseWarning::class, $trait->getWarningMessages()[0]);
         $this->assertTrue($trait->hasWarnings());
@@ -228,6 +228,6 @@ class ResponseTraitTest extends TestCase
                 ->willReturn($warningList);
         }
 
-        return new MockResponseTrait($dataMapper, $httpClientResponse, AfterbuyEndpointEnum::SANDBOX);
+        return new MockResponseTrait($dataMapper, $httpClientResponse, EndpointEnum::SANDBOX);
     }
 }

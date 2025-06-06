@@ -9,13 +9,13 @@
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateSoldItems\Order;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Request\UpdateSoldItemsRequest;
 
 $afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
-    AfterbuyEndpointEnum::SANDBOX,
+    EndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(

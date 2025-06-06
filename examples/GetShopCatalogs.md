@@ -8,8 +8,8 @@
 
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Filter\GetShopCatalogs\CatalogId;
 use Wundii\AfterbuySdk\Filter\GetShopCatalogs\Level;
 use Wundii\AfterbuySdk\Filter\GetShopCatalogs\RangeCatalogId;
@@ -19,7 +19,7 @@ use Wundii\AfterbuySdk\Request\GetShopCatalogsRequest;
 $afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
-    AfterbuyEndpointEnum::SANDBOX,
+    EndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(
@@ -34,7 +34,7 @@ $request = new GetShopCatalogsRequest(
         new RangeLevel(4000, 4010),
     ],
     maxCatalogs: 10,
-    detailLevelEnum: AfterbuyDetailLevelEnum::FIRST,
+    detailLevelEnum: DetailLevelEnum::FIRST,
 );
 $response = $afterbuy->runRequest($request);
 

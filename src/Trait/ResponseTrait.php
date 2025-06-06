@@ -14,8 +14,8 @@ use Wundii\AfterbuySdk\Dto\ResponseError;
 use Wundii\AfterbuySdk\Dto\ResponseErrorList;
 use Wundii\AfterbuySdk\Dto\ResponseWarning;
 use Wundii\AfterbuySdk\Dto\ResponseWarningList;
-use Wundii\AfterbuySdk\Enum\AfterbuyCallStatusEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\DataMapper\DataMapper;
 
 trait ResponseTrait
@@ -26,7 +26,7 @@ trait ResponseTrait
 
     protected ?ResponseWarningList $afterbuyWarningList = null;
 
-    protected AfterbuyCallStatusEnum $afterbuyCallStatusEnum;
+    protected CallStatusEnum $callStatusEnum;
 
     protected int $versionId;
 
@@ -39,7 +39,7 @@ trait ResponseTrait
     public function __construct(
         protected DataMapper $dataMapper,
         protected HttpClientResponseInterface $httpClientResponse,
-        protected AfterbuyEndpointEnum $afterbuyEndpointEnum,
+        protected EndpointEnum $endpointEnum,
     ) {
         $content = $this->httpClientResponse->getContent(false);
         $this->content = $content;
@@ -62,19 +62,19 @@ trait ResponseTrait
         preg_match('/<VersionID>(.*)<\/VersionID>/s', $content, $matches);
         $this->versionId = (int) ($matches[1] ?? 0);
 
-        $this->afterbuyCallStatusEnum = match ($callStatus) {
-            'Success' => AfterbuyCallStatusEnum::SUCCESS,
-            'Warning' => AfterbuyCallStatusEnum::WARNING,
-            'Error' => AfterbuyCallStatusEnum::ERROR,
-            default => AfterbuyCallStatusEnum::UNKNOWN,
+        $this->callStatusEnum = match ($callStatus) {
+            'Success' => CallStatusEnum::SUCCESS,
+            'Warning' => CallStatusEnum::WARNING,
+            'Error' => CallStatusEnum::ERROR,
+            default => CallStatusEnum::UNKNOWN,
         };
 
-        if ($this->afterbuyCallStatusEnum === AfterbuyCallStatusEnum::ERROR) {
+        if ($this->callStatusEnum === CallStatusEnum::ERROR) {
             /** @phpstan-ignore-next-line */
             $this->afterbuyErrorList = $this->dataMapper->xml($content, ResponseErrorList::class, ['Result'], true);
         }
 
-        if ($this->afterbuyCallStatusEnum === AfterbuyCallStatusEnum::WARNING) {
+        if ($this->callStatusEnum === CallStatusEnum::WARNING) {
             /** @phpstan-ignore-next-line */
             $this->afterbuyWarningList = $this->dataMapper->xml($content, ResponseWarningList::class, ['Result'], true);
         }
@@ -122,9 +122,9 @@ trait ResponseTrait
         return $this->httpClientResponse->getStatusCode();
     }
 
-    public function getCallStatus(): AfterbuyCallStatusEnum
+    public function getCallStatus(): CallStatusEnum
     {
-        return $this->afterbuyCallStatusEnum;
+        return $this->callStatusEnum;
     }
 
     public function getInfo(): mixed
@@ -137,9 +137,9 @@ trait ResponseTrait
         return $this->versionId;
     }
 
-    public function getEndpoint(): AfterbuyEndpointEnum
+    public function getEndpoint(): EndpointEnum
     {
-        return $this->afterbuyEndpointEnum;
+        return $this->endpointEnum;
     }
 
     public function getXmlResponse(): string

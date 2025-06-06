@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Request;
 
 use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\ApiSourceEnum;
+use Wundii\AfterbuySdk\Enum\Core\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
@@ -21,12 +21,12 @@ final readonly class GetListerHistoryRequest implements RequestInterface
 {
     /**
      * @param GetListerHistoryFilterInterface[] $filter
-     * @param AfterbuyDetailLevelEnum[] $afterbuyDetailLevelEnum empty array === first detail level
+     * @param DetailLevelEnum[] $detailLevelEnum empty array === first detail level
      */
     public function __construct(
         private array $filter = [],
         private int $maxHistoryItems = 100,
-        private AfterbuyDetailLevelEnum|array $afterbuyDetailLevelEnum = AfterbuyDetailLevelEnum::FIRST,
+        private DetailLevelEnum|array $detailLevelEnum = DetailLevelEnum::FIRST,
     ) {
     }
 
@@ -42,8 +42,8 @@ final readonly class GetListerHistoryRequest implements RequestInterface
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, $this->callName());
-        $afterbuyGlobal->setDetailLevelEnum($this->afterbuyDetailLevelEnum, AfterbuyDetailLevelEnum::FIFTH);
+        $afterbuyGlobal->setPayloadEnvironments(ApiSourceEnum::XML, $this->callName());
+        $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::FIFTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
@@ -68,9 +68,9 @@ final readonly class GetListerHistoryRequest implements RequestInterface
         return GetListerHistoryResponse::class;
     }
 
-    public function url(AfterbuyEndpointEnum $afterbuyEndpointEnum): string
+    public function url(EndpointEnum $endpointEnum): string
     {
-        return $afterbuyEndpointEnum->afterbuyApiUri();
+        return $endpointEnum->afterbuyApiUri();
     }
 
     public function query(): array

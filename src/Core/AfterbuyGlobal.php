@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Core;
 
 use SimpleXMLElement;
-use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\ApiSourceEnum;
+use Wundii\AfterbuySdk\Enum\Core\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\ErrorLanguageEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 
@@ -17,17 +17,17 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
 
     private string $callName = 'noCallNameSet';
 
-    private AfterbuyApiSourceEnum $afterbuyApiSourceEnum = AfterbuyApiSourceEnum::XML;
+    private ApiSourceEnum $apiSourceEnum = ApiSourceEnum::XML;
 
     /**
-     * @var AfterbuyDetailLevelEnum[]
+     * @var DetailLevelEnum[]
      */
-    private array $afterbuyDetailLevelEnums = [];
+    private array $detailLevelEnums = [];
 
     public function __construct(
         private readonly string $accountToken,
         private readonly string $partnerToken,
-        private readonly AfterbuyEndpointEnum $afterbuyEndpointEnum,
+        private readonly EndpointEnum $endpointEnum,
         private readonly ErrorLanguageEnum $errorLanguageEnum = ErrorLanguageEnum::GERMAN,
     ) {
     }
@@ -36,8 +36,8 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
     {
         $afterbuyGlobal = $xml->addChild('AfterbuyGlobal');
 
-        if ($this->afterbuyEndpointEnum === AfterbuyEndpointEnum::SANDBOX) {
-            $afterbuyGlobal->addChild('Sandbox', $this->afterbuyApiSourceEnum->value);
+        if ($this->endpointEnum === EndpointEnum::SANDBOX) {
+            $afterbuyGlobal->addChild('Sandbox', $this->apiSourceEnum->value);
         }
 
         $afterbuyGlobal->addChild('AccountToken', $this->accountToken);
@@ -47,69 +47,69 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
         $afterbuyGlobal->addChild('DetailLevel', $this->getDetailLevel());
     }
 
-    public function getAfterbuySandboxResponse(): AfterbuySandboxResponse
+    public function getSandboxResponse(): SandboxResponse
     {
         $defaultShopApiResponse = sprintf(
             '<?xml version="1.0" encoding="utf-8"?>' .
             '<result><sandbox>%s</sandbox><success>1</success><data/></result>',
-            AfterbuyApiSourceEnum::SHOP->value,
+            ApiSourceEnum::SHOP->value,
         );
         $defaultXmlApiResponse = sprintf(
             '<?xml version="1.0" encoding="utf-8"?>' .
             '<Afterbuy><Sandbox>%s</Sandbox><CallStatus>Success</CallStatus><CallName>%s</CallName><VersionID>%f</VersionID></Afterbuy>',
-            AfterbuyApiSourceEnum::XML->value,
+            ApiSourceEnum::XML->value,
             htmlspecialchars($this->callName, ENT_XML1),
             Afterbuy::DefaultSandboxVersion
         );
 
         $defaultResponse = $defaultXmlApiResponse;
 
-        if ($this->afterbuyApiSourceEnum === AfterbuyApiSourceEnum::SHOP) {
+        if ($this->apiSourceEnum === ApiSourceEnum::SHOP) {
             $defaultResponse = $defaultShopApiResponse;
         }
 
-        return new AfterbuySandboxResponse($defaultResponse);
+        return new SandboxResponse($defaultResponse);
     }
 
     public function getDetailLevel(): string
     {
-        $afterbuyDetailLevelEnums = $this->afterbuyDetailLevelEnums;
+        $detailLevelEnums = $this->detailLevelEnums;
 
-        if ($afterbuyDetailLevelEnums === []) {
-            return (string) AfterbuyDetailLevelEnum::FIRST->value;
+        if ($detailLevelEnums === []) {
+            return (string) DetailLevelEnum::FIRST->value;
         }
 
-        $afterbuyDetailLevelArray = array_map(static fn (AfterbuyDetailLevelEnum $AfterbuyDetailLevelEnum): int => $AfterbuyDetailLevelEnum->value, $this->afterbuyDetailLevelEnums);
-        $afterbuyDetailLevelArray = array_unique($afterbuyDetailLevelArray);
+        $detailLevelArray = array_map(static fn (DetailLevelEnum $detailLevelEnum): int => $detailLevelEnum->value, $this->detailLevelEnums);
+        $detailLevelArray = array_unique($detailLevelArray);
 
-        return (string) array_sum($afterbuyDetailLevelArray);
+        return (string) array_sum($detailLevelArray);
     }
 
-    public function getEndpointEnum(): AfterbuyEndpointEnum
+    public function getEndpointEnum(): EndpointEnum
     {
-        return $this->afterbuyEndpointEnum;
+        return $this->endpointEnum;
     }
 
     /**
-     * @param AfterbuyDetailLevelEnum[] $afterbuyDetailLevelEnum
+     * @param DetailLevelEnum[] $detailLevelEnum
      */
-    public function setDetailLevelEnum(AfterbuyDetailLevelEnum|array $afterbuyDetailLevelEnum, AfterbuyDetailLevelEnum $maxAfterbuyDetailLevelEnum): void
+    public function setDetailLevelEnum(DetailLevelEnum|array $detailLevelEnum, DetailLevelEnum $maxDetailLevelEnum): void
     {
-        if ($afterbuyDetailLevelEnum instanceof AfterbuyDetailLevelEnum) {
-            $afterbuyDetailLevelEnum = [$afterbuyDetailLevelEnum];
+        if ($detailLevelEnum instanceof DetailLevelEnum) {
+            $detailLevelEnum = [$detailLevelEnum];
         }
 
         $filteredEnums = array_filter(
-            $afterbuyDetailLevelEnum,
-            fn (AfterbuyDetailLevelEnum $afterbuyDetailLevelEnum): bool => $afterbuyDetailLevelEnum->value <= $maxAfterbuyDetailLevelEnum->value
+            $detailLevelEnum,
+            fn (DetailLevelEnum $detailLevelEnum): bool => $detailLevelEnum->value <= $maxDetailLevelEnum->value
         );
 
-        $this->afterbuyDetailLevelEnums = $filteredEnums;
+        $this->detailLevelEnums = $filteredEnums;
     }
 
-    public function setPayloadEnvironments(AfterbuyApiSourceEnum $afterbuyApiSourceEnum, string $callName): void
+    public function setPayloadEnvironments(ApiSourceEnum $apiSourceEnum, string $callName): void
     {
         $this->callName = $callName;
-        $this->afterbuyApiSourceEnum = $afterbuyApiSourceEnum;
+        $this->apiSourceEnum = $apiSourceEnum;
     }
 }

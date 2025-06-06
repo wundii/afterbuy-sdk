@@ -9,8 +9,8 @@ use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\ResponseError;
 use Wundii\AfterbuySdk\Dto\ResponseWarning;
-use Wundii\AfterbuySdk\Enum\AfterbuyCallStatusEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\ProductFilterEnum;
 use Wundii\AfterbuySdk\Filter\GetStockInfo\ProductFilter;
 use Wundii\AfterbuySdk\Request\GetListerHistoryRequest;
@@ -23,7 +23,7 @@ class PsrLoggerTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testWithoutLogs(): void
@@ -61,7 +61,7 @@ class PsrLoggerTest extends TestCase
     public function testWithWarning(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetStockInfoWarning.xml';
-        $callStatusEnum = AfterbuyCallStatusEnum::WARNING;
+        $callStatusEnum = CallStatusEnum::WARNING;
 
         $psrLogger = new MockLogger();
         $request = new GetStockInfoRequest(productFilter: [new ProductFilter(ProductFilterEnum::ANR, 1)]);
@@ -102,7 +102,7 @@ class PsrLoggerTest extends TestCase
     public function testWithError(): void
     {
         $file = __DIR__ . '/ResponseFiles/GetListerHistoryErrorCode30.xml';
-        $callStatusEnum = AfterbuyCallStatusEnum::ERROR;
+        $callStatusEnum = CallStatusEnum::ERROR;
 
         $psrLogger = new MockLogger();
         $request = new GetListerHistoryRequest();

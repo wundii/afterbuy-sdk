@@ -11,9 +11,9 @@ use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\CreateShopOrder\Customer;
 use Wundii\AfterbuySdk\Dto\CreateShopOrder\Order;
 use Wundii\AfterbuySdk\Dto\CreateShopOrder\Product;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\CurrencyEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\NoFeedbackEnum;
 use Wundii\AfterbuySdk\Enum\StockTypeEnum;
 use Wundii\AfterbuySdk\Request\CreateShopOrderRequest;
@@ -21,7 +21,7 @@ use Wundii\AfterbuySdk\Request\CreateShopOrderRequest;
 $afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
-    AfterbuyEndpointEnum::SANDBOX,
+    EndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(

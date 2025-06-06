@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Request;
 
 use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\ApiSourceEnum;
+use Wundii\AfterbuySdk\Enum\Core\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
@@ -21,7 +21,7 @@ final readonly class GetShopProductsRequest implements RequestInterface
 {
     /**
      * @param GetShopProductsFilterInterface[] $filter
-     * @param AfterbuyDetailLevelEnum[] $afterbuyDetailLevelEnum empty array === first detail level
+     * @param DetailLevelEnum[] $detailLevelEnum empty array === first detail level
      */
     public function __construct(
         private array $filter = [],
@@ -30,7 +30,7 @@ final readonly class GetShopProductsRequest implements RequestInterface
         private bool $paginationEnabled = false,
         private ?int $pageNumber = null,
         private bool $returnShop20Container = false,
-        private AfterbuyDetailLevelEnum|array $afterbuyDetailLevelEnum = AfterbuyDetailLevelEnum::FIRST,
+        private DetailLevelEnum|array $detailLevelEnum = DetailLevelEnum::FIRST,
     ) {
     }
 
@@ -51,18 +51,18 @@ final readonly class GetShopProductsRequest implements RequestInterface
             $maxShopItems = 250;
         }
 
-        $afterbuyDetailLevelEnum = $this->afterbuyDetailLevelEnum;
-        if ($afterbuyDetailLevelEnum instanceof AfterbuyDetailLevelEnum) {
-            $afterbuyDetailLevelEnum = [$afterbuyDetailLevelEnum];
+        $detailLevelEnum = $this->detailLevelEnum;
+        if ($detailLevelEnum instanceof DetailLevelEnum) {
+            $detailLevelEnum = [$detailLevelEnum];
         }
 
-        $afterbuyDetailLevelEnum = array_filter(
-            $afterbuyDetailLevelEnum,
-            static fn (AfterbuyDetailLevelEnum $afterbuyDetailLevelEnum): bool => $afterbuyDetailLevelEnum !== AfterbuyDetailLevelEnum::SIXTH
+        $detailLevelEnum = array_filter(
+            $detailLevelEnum,
+            static fn (DetailLevelEnum $detailLevelEnum): bool => $detailLevelEnum !== DetailLevelEnum::SIXTH
         );
 
-        $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, $this->callName());
-        $afterbuyGlobal->setDetailLevelEnum($afterbuyDetailLevelEnum, AfterbuyDetailLevelEnum::EIGHTH);
+        $afterbuyGlobal->setPayloadEnvironments(ApiSourceEnum::XML, $this->callName());
+        $afterbuyGlobal->setDetailLevelEnum($detailLevelEnum, DetailLevelEnum::EIGHTH);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
@@ -91,9 +91,9 @@ final readonly class GetShopProductsRequest implements RequestInterface
         return GetShopProductsResponse::class;
     }
 
-    public function url(AfterbuyEndpointEnum $afterbuyEndpointEnum): string
+    public function url(EndpointEnum $endpointEnum): string
     {
-        return $afterbuyEndpointEnum->afterbuyApiUri();
+        return $endpointEnum->afterbuyApiUri();
     }
 
     public function query(): array

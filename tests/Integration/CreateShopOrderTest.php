@@ -15,8 +15,8 @@ use Wundii\AfterbuySdk\Dto\CreateShopOrder\Payment;
 use Wundii\AfterbuySdk\Dto\CreateShopOrder\Product;
 use Wundii\AfterbuySdk\Dto\CreateShopOrder\Shipping;
 use Wundii\AfterbuySdk\Dto\CreateShopOrder\ShopResponse;
-use Wundii\AfterbuySdk\Enum\AfterbuyCallStatusEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\CurrencyEnum;
 use Wundii\AfterbuySdk\Enum\CustomerIdentificationEnum;
@@ -35,7 +35,7 @@ class CreateShopOrderTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function validate(RequestDtoInterface $afterbuyAppendContent): array
@@ -97,7 +97,7 @@ class CreateShopOrderTest extends TestCase
 
         $request = new CreateShopOrderRequest($this->getOrderMininum($buyDate));
 
-        $url = $request->url(AfterbuyEndpointEnum::SANDBOX);
+        $url = $request->url(EndpointEnum::SANDBOX);
         $query = $request->query();
 
         $expectedUri = $this->getSandboxUrl() . '?Action=new' .
@@ -223,7 +223,7 @@ class CreateShopOrderTest extends TestCase
         );
         $request = new CreateShopOrderRequest($order);
 
-        $url = $request->url(AfterbuyEndpointEnum::SANDBOX);
+        $url = $request->url(EndpointEnum::SANDBOX);
         $query = $request->query();
 
         $expectedUri = $this->getSandboxUrl() . '?Action=new' .
@@ -337,7 +337,7 @@ class CreateShopOrderTest extends TestCase
         $expectedShopResponse = new ShopResponse();
 
         $this->assertInstanceOf(CreateShopOrderResponse::class, $response);
-        $this->assertEquals(AfterbuyCallStatusEnum::ERROR, $response->getCallStatus());
+        $this->assertEquals(CallStatusEnum::ERROR, $response->getCallStatus());
         $this->assertCount(1, $response->getErrorMessages());
         $this->assertEquals('Code 0: SSL erforderlich', $response->getErrorMessages()[0]->getMessage());
         $this->assertInstanceOf(ShopResponse::class, $shopResponse);
@@ -365,7 +365,7 @@ class CreateShopOrderTest extends TestCase
         );
 
         $this->assertInstanceOf(CreateShopOrderResponse::class, $response);
-        $this->assertEquals(AfterbuyCallStatusEnum::SUCCESS, $response->getCallStatus());
+        $this->assertEquals(CallStatusEnum::SUCCESS, $response->getCallStatus());
         $this->assertInstanceOf(ShopResponse::class, $shopResponse);
         $this->assertEquals($expectedShopResponse, $shopResponse);
     }

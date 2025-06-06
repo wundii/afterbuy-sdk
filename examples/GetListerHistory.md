@@ -8,7 +8,7 @@
 
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\PlattformEnum;
 use Wundii\AfterbuySdk\Enum\SiteIdEnum;
 use Wundii\AfterbuySdk\Extension\DateTime;
@@ -27,7 +27,7 @@ use Wundii\AfterbuySdk\Request\GetListerHistoryRequest;
 $afterbuyGlobal = new AfterbuyGlobal(
     '123...',
     '456...',
-    AfterbuyEndpointEnum::SANDBOX,
+    EndpointEnum::SANDBOX,
 );
 
 $afterbuy = new Afterbuy(

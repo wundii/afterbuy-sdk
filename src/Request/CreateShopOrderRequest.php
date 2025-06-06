@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Request;
 
 use Wundii\AfterbuySdk\Dto\CreateShopOrder\Order;
-use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\ApiSourceEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
 use Wundii\AfterbuySdk\Interface\RequestDtoArrayInterface;
@@ -32,7 +32,7 @@ final readonly class CreateShopOrderRequest implements RequestInterface
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): null
     {
-        $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::SHOP, $this->callName());
+        $afterbuyGlobal->setPayloadEnvironments(ApiSourceEnum::SHOP, $this->callName());
 
         return null;
     }
@@ -47,9 +47,9 @@ final readonly class CreateShopOrderRequest implements RequestInterface
         return CreateShopOrderResponse::class;
     }
 
-    public function url(AfterbuyEndpointEnum $afterbuyEndpointEnum): string
+    public function url(EndpointEnum $endpointEnum): string
     {
-        return $afterbuyEndpointEnum->shopApiUri();
+        return $endpointEnum->shopApiUri();
     }
 
     public function query(): array

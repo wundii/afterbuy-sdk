@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Interface;
 
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 
 interface RequestInterface
@@ -24,5 +24,5 @@ interface RequestInterface
 
     public function responseClass(): string;
 
-    public function url(AfterbuyEndpointEnum $afterbuyEndpointEnum): string;
+    public function url(EndpointEnum $endpointEnum): string;
 }

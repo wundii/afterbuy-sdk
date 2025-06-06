@@ -15,7 +15,7 @@ use Wundii\AfterbuySdk\Dto\UpdateSoldItems\PaymentInfo;
 use Wundii\AfterbuySdk\Dto\UpdateSoldItems\ShippingAddress;
 use Wundii\AfterbuySdk\Dto\UpdateSoldItems\ShippingInfo;
 use Wundii\AfterbuySdk\Dto\UpdateSoldItems\VorgangsInfo;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Interface\RequestDtoInterface;
@@ -28,7 +28,7 @@ class UpdateSoldItemsTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function validate(RequestDtoInterface $afterbuyAppendContent): array

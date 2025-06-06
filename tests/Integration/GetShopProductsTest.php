@@ -20,11 +20,11 @@ use Wundii\AfterbuySdk\Dto\GetShopProducts\ProductPicture;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\ProductPictureChild;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\Products;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\ScaledDiscount;
-use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
 use Wundii\AfterbuySdk\Enum\AgeGroupEnum;
 use Wundii\AfterbuySdk\Enum\BaseProductFlagEnum;
 use Wundii\AfterbuySdk\Enum\ConditionEnum;
+use Wundii\AfterbuySdk\Enum\Core\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
 use Wundii\AfterbuySdk\Enum\DateFilterShopProductsEnum;
@@ -50,7 +50,7 @@ class GetShopProductsTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testDetailLevel(): void
@@ -61,11 +61,11 @@ class GetShopProductsTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
-        $request = new GetShopProductsRequest(afterbuyDetailLevelEnum: AfterbuyDetailLevelEnum::EIGHTH);
+        $request = new GetShopProductsRequest(detailLevelEnum: DetailLevelEnum::EIGHTH);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>128</DetailLevel>', $payload);
 
-        $request = new GetShopProductsRequest(afterbuyDetailLevelEnum: [AfterbuyDetailLevelEnum::SIXTH]);
+        $request = new GetShopProductsRequest(detailLevelEnum: [DetailLevelEnum::SIXTH]);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }

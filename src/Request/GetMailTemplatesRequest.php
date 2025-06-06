@@ -6,9 +6,9 @@ namespace Wundii\AfterbuySdk\Request;
 
 use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\ApiSourceEnum;
+use Wundii\AfterbuySdk\Enum\Core\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
@@ -19,11 +19,11 @@ use Wundii\AfterbuySdk\Response\GetMailTemplatesResponse;
 final readonly class GetMailTemplatesRequest implements RequestInterface
 {
     /**
-     * @param AfterbuyDetailLevelEnum[] $afterbuyDetailLevelEnum empty array === first detail level
+     * @param DetailLevelEnum[] $detailLevelEnum empty array === first detail level
      */
     public function __construct(
         private ?int $templateId = null,
-        private AfterbuyDetailLevelEnum|array $afterbuyDetailLevelEnum = AfterbuyDetailLevelEnum::FIRST,
+        private DetailLevelEnum|array $detailLevelEnum = DetailLevelEnum::FIRST,
     ) {
     }
 
@@ -39,8 +39,8 @@ final readonly class GetMailTemplatesRequest implements RequestInterface
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, $this->callName());
-        $afterbuyGlobal->setDetailLevelEnum($this->afterbuyDetailLevelEnum, AfterbuyDetailLevelEnum::SECOND);
+        $afterbuyGlobal->setPayloadEnvironments(ApiSourceEnum::XML, $this->callName());
+        $afterbuyGlobal->setDetailLevelEnum($this->detailLevelEnum, DetailLevelEnum::SECOND);
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
@@ -64,9 +64,9 @@ final readonly class GetMailTemplatesRequest implements RequestInterface
         return GetMailTemplatesResponse::class;
     }
 
-    public function url(AfterbuyEndpointEnum $afterbuyEndpointEnum): string
+    public function url(EndpointEnum $endpointEnum): string
     {
-        return $afterbuyEndpointEnum->afterbuyApiUri();
+        return $endpointEnum->afterbuyApiUri();
     }
 
     public function query(): array

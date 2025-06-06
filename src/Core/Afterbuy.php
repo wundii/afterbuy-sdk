@@ -25,8 +25,8 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface as HttpClientResponseInterface;
-use Wundii\AfterbuySdk\Enum\AfterbuyCallStatusEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Extension\HttpClientHelper;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
@@ -76,13 +76,13 @@ readonly class Afterbuy
      */
     public function runRequest(RequestInterface $afterbuyRequest, ?HttpClientResponseInterface $httpClientResponse = null): ResponseInterface
     {
-        $afterbuyEndpointEnum = $this->afterbuyGlobal->getEndpointEnum();
+        $endpointEnum = $this->afterbuyGlobal->getEndpointEnum();
         $method = $afterbuyRequest->method()->value;
         $payload = $afterbuyRequest->payload($this->afterbuyGlobal);
         $query = $afterbuyRequest->query();
         $requestDto = $afterbuyRequest->requestDto();
         $responseClass = $afterbuyRequest->responseClass();
-        $url = $afterbuyRequest->url($afterbuyEndpointEnum);
+        $url = $afterbuyRequest->url($endpointEnum);
 
         if (! class_exists($responseClass)) {
             throw new RuntimeException(sprintf('Response class %s does not exist', $responseClass));
@@ -112,7 +112,7 @@ readonly class Afterbuy
         }
 
         if (
-            $afterbuyEndpointEnum === AfterbuyEndpointEnum::SANDBOX
+            $endpointEnum === EndpointEnum::SANDBOX
             && $requestDto instanceof RequestDtoInterface
             && ! $httpClientResponse instanceof HttpClientResponseInterface
         ) {
@@ -131,7 +131,7 @@ readonly class Afterbuy
                 [$info],
             );
 
-            $httpClientResponse = $this->getAfterbuyGlobal()->getAfterbuySandboxResponse();
+            $httpClientResponse = $this->getAfterbuyGlobal()->getSandboxResponse();
         }
 
         /** $response is always null, this variable is only filled in for the unit test */
@@ -161,7 +161,7 @@ readonly class Afterbuy
         }
 
         try {
-            $httpClientResponse = (new ReflectionClass($responseClass))->newInstance($this->dataMapper, $httpClientResponse, $afterbuyEndpointEnum);
+            $httpClientResponse = (new ReflectionClass($responseClass))->newInstance($this->dataMapper, $httpClientResponse, $endpointEnum);
         } catch (Exception $exception) {
             throw new RuntimeException($exception->getMessage(), $exception->getCode(), $exception);
         }
@@ -170,15 +170,15 @@ readonly class Afterbuy
             throw new RuntimeException(sprintf('Response class %s does not implement ResponseInterface', $responseClass));
         }
 
-        $afterbuyCallStatusEnum = $httpClientResponse->getCallStatus();
-        $loggerMessages = match ($afterbuyCallStatusEnum) {
-            AfterbuyCallStatusEnum::ERROR => $httpClientResponse->getErrorMessages(),
-            AfterbuyCallStatusEnum::WARNING => $httpClientResponse->getWarningMessages(),
+        $callStatusEnum = $httpClientResponse->getCallStatus();
+        $loggerMessages = match ($callStatusEnum) {
+            CallStatusEnum::ERROR => $httpClientResponse->getErrorMessages(),
+            CallStatusEnum::WARNING => $httpClientResponse->getWarningMessages(),
             default => [],
         };
 
         $this->appendLogMessage(
-            $afterbuyCallStatusEnum->getPsr3Level(),
+            $callStatusEnum->getPsr3Level(),
             sprintf('Afterbuy SDK %s', $afterbuyRequest::class),
             $url,
             $method,

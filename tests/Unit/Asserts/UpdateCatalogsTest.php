@@ -11,14 +11,14 @@ use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalogs;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 
 class UpdateCatalogsTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function validator(): ValidatorInterface

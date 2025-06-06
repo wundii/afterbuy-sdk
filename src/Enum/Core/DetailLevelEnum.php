@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Wundii\AfterbuySdk\Enum;
+namespace Wundii\AfterbuySdk\Enum\Core;
 
-enum AfterbuyDetailLevelEnum: int
+enum DetailLevelEnum: int
 {
     case FIRST = 0;
     case SECOND = 2;

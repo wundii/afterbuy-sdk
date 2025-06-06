@@ -10,8 +10,8 @@ use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetShopCatalogs\Catalog;
 use Wundii\AfterbuySdk\Dto\GetShopCatalogs\Catalogs;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog as UpdateCatalog;
-use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Filter\GetShopCatalogs\CatalogId;
 use Wundii\AfterbuySdk\Filter\GetShopCatalogs\Level;
 use Wundii\AfterbuySdk\Filter\GetShopCatalogs\RangeCatalogId;
@@ -24,7 +24,7 @@ class GetShopCatalogsTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testDetailLevel(): void
@@ -35,11 +35,11 @@ class GetShopCatalogsTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
-        $request = new GetShopCatalogsRequest(afterbuyDetailLevelEnum: AfterbuyDetailLevelEnum::SECOND);
+        $request = new GetShopCatalogsRequest(detailLevelEnum: DetailLevelEnum::SECOND);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>2</DetailLevel>', $payload);
 
-        $request = new GetShopCatalogsRequest(afterbuyDetailLevelEnum: [AfterbuyDetailLevelEnum::THIRD]);
+        $request = new GetShopCatalogsRequest(detailLevelEnum: [DetailLevelEnum::THIRD]);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }

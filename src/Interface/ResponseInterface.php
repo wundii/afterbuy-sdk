@@ -7,8 +7,8 @@ namespace Wundii\AfterbuySdk\Interface;
 use Symfony\Contracts\HttpClient\ResponseInterface as HttpClientResponseInterface;
 use Wundii\AfterbuySdk\Dto\ResponseError;
 use Wundii\AfterbuySdk\Dto\ResponseWarning;
-use Wundii\AfterbuySdk\Enum\AfterbuyCallStatusEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\CallStatusEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\DataMapper\DataMapper;
 
 /**
@@ -19,11 +19,11 @@ interface ResponseInterface
     /**
      * @param DataMapper<T> $dataMapper
      */
-    public function __construct(DataMapper $dataMapper, HttpClientResponseInterface $httpClientResponse, AfterbuyEndpointEnum $afterbuyEndpointEnum);
+    public function __construct(DataMapper $dataMapper, HttpClientResponseInterface $httpClientResponse, EndpointEnum $endpointEnum);
 
-    public function getCallStatus(): AfterbuyCallStatusEnum;
+    public function getCallStatus(): CallStatusEnum;
 
-    public function getEndpoint(): AfterbuyEndpointEnum;
+    public function getEndpoint(): EndpointEnum;
 
     /**
      * @return ResponseError[]

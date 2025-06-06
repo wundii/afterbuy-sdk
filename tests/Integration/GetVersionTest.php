@@ -9,7 +9,7 @@ use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetVersion\Version;
 use Wundii\AfterbuySdk\Dto\GetVersion\Versions;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Request\GetVersionRequest;
 use Wundii\AfterbuySdk\Response\GetVersionResponse;
 use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
@@ -18,7 +18,7 @@ class GetVersionTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testVersionBasic(): void

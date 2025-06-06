@@ -9,7 +9,7 @@ use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetPaymentServices\PaymentService;
 use Wundii\AfterbuySdk\Dto\GetPaymentServices\PaymentServices;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Filter\GetPaymentServices\Land;
 use Wundii\AfterbuySdk\Filter\GetPaymentServices\Plattform;
@@ -22,7 +22,7 @@ class GetPaymentServicesTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testFilter(): void

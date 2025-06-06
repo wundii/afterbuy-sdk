@@ -8,8 +8,8 @@ use RuntimeException;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalogs;
-use Wundii\AfterbuySdk\Enum\AfterbuyApiSourceEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\ApiSourceEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
@@ -41,7 +41,7 @@ final readonly class UpdateCatalogsRequest implements RequestInterface
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $afterbuyGlobal->setPayloadEnvironments(AfterbuyApiSourceEnum::XML, $this->callName());
+        $afterbuyGlobal->setPayloadEnvironments(ApiSourceEnum::XML, $this->callName());
 
         $xml = new SimpleXMLExtend(AfterbuyGlobal::DefaultXmlRoot);
         $xml->addAfterbuyGlobal($afterbuyGlobal);
@@ -68,9 +68,9 @@ final readonly class UpdateCatalogsRequest implements RequestInterface
         return UpdateCatalogsResponse::class;
     }
 
-    public function url(AfterbuyEndpointEnum $afterbuyEndpointEnum): string
+    public function url(EndpointEnum $endpointEnum): string
     {
-        return $afterbuyEndpointEnum->afterbuyApiUri();
+        return $endpointEnum->afterbuyApiUri();
     }
 
     public function query(): array

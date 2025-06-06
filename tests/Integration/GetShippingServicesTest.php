@@ -11,8 +11,8 @@ use Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingMethod;
 use Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingService;
 use Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingServices;
 use Wundii\AfterbuySdk\Dto\GetShippingServices\WeightDefinitions;
-use Wundii\AfterbuySdk\Enum\AfterbuyDetailLevelEnum;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\DetailLevelEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Request\GetShippingServicesRequest;
 use Wundii\AfterbuySdk\Response\GetShippingServicesResponse;
 use Wundii\AfterbuySdk\Tests\MockClasses\MockApiResponse;
@@ -21,7 +21,7 @@ class GetShippingServicesTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testDetailLevel(): void
@@ -32,11 +32,11 @@ class GetShippingServicesTest extends TestCase
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
 
-        $request = new GetShippingServicesRequest(AfterbuyDetailLevelEnum::THIRD);
+        $request = new GetShippingServicesRequest(DetailLevelEnum::THIRD);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>4</DetailLevel>', $payload);
 
-        $request = new GetShippingServicesRequest(AfterbuyDetailLevelEnum::FOURTH);
+        $request = new GetShippingServicesRequest(DetailLevelEnum::FOURTH);
         $payload = $request->payload($afterbuyGlobal);
         $this->assertStringContainsString('<DetailLevel>0</DetailLevel>', $payload);
     }

@@ -11,7 +11,7 @@ use Wundii\AfterbuySdk\Dto\CreateShopOrder\Customer;
 use Wundii\AfterbuySdk\Dto\CreateShopOrder\Order;
 use Wundii\AfterbuySdk\Dto\CreateShopOrder\Product;
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog;
-use Wundii\AfterbuySdk\Enum\AfterbuyEndpointEnum;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Enum\CurrencyEnum;
 use Wundii\AfterbuySdk\Enum\CustomerIdentificationEnum;
@@ -29,7 +29,7 @@ class SandBoxTest extends TestCase
 {
     public function afterbuyGlobal(): AfterbuyGlobal
     {
-        return new AfterbuyGlobal('account', 'partner', AfterbuyEndpointEnum::SANDBOX);
+        return new AfterbuyGlobal('account', 'partner', EndpointEnum::SANDBOX);
     }
 
     public function testSandboxWithDefaultShopApiResponse(): void
@@ -70,7 +70,7 @@ class SandBoxTest extends TestCase
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), $psrLogger);
         $response = $afterbuy->runRequest($request);
 
-        $this->assertEquals(AfterbuyEndpointEnum::SANDBOX, $response->getEndpoint());
+        $this->assertEquals(EndpointEnum::SANDBOX, $response->getEndpoint());
         $this->assertStringContainsString('<sandbox>shop</sandbox>', $response->getXmlResponse());
         $this->assertCount(1, $psrLogger->getLogger());
     }
@@ -91,7 +91,7 @@ class SandBoxTest extends TestCase
         $afterbuy = new Afterbuy($this->afterbuyGlobal(), $psrLogger);
         $response = $afterbuy->runRequest($request);
 
-        $this->assertEquals(AfterbuyEndpointEnum::SANDBOX, $response->getEndpoint());
+        $this->assertEquals(EndpointEnum::SANDBOX, $response->getEndpoint());
         $this->assertStringContainsString('<Sandbox>XML</Sandbox>', $response->getXmlResponse());
         $this->assertCount(1, $psrLogger->getLogger());
     }
@@ -115,7 +115,7 @@ class SandBoxTest extends TestCase
         $mockResponse = new MockApiResponse(file_get_contents($file), 200);
         $response = $afterbuy->runRequest($request, $mockResponse);
 
-        $this->assertEquals(AfterbuyEndpointEnum::SANDBOX, $response->getEndpoint());
+        $this->assertEquals(EndpointEnum::SANDBOX, $response->getEndpoint());
         $this->assertStringNotContainsString('sandbox="true"', $response->getXmlResponse());
         $this->assertCount(0, $response->getErrorMessages());
         $this->assertCount(0, $response->getWarningMessages());
