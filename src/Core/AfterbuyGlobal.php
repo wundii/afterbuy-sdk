@@ -24,12 +24,18 @@ final class AfterbuyGlobal implements AfterbuyGlobalInterface
      */
     private array $detailLevelEnums = [];
 
+    private readonly EndpointEnum $endpointEnum;
+
+    private readonly ErrorLanguageEnum $errorLanguageEnum;
+
     public function __construct(
         private readonly string $accountToken,
         private readonly string $partnerToken,
-        private readonly EndpointEnum $endpointEnum,
-        private readonly ErrorLanguageEnum $errorLanguageEnum = ErrorLanguageEnum::GERMAN,
+        string|EndpointEnum $endpointEnum,
+        string|ErrorLanguageEnum $errorLanguageEnum = ErrorLanguageEnum::GERMAN,
     ) {
+        $this->endpointEnum = $endpointEnum instanceof EndpointEnum ? $endpointEnum : EndpointEnum::from($endpointEnum);
+        $this->errorLanguageEnum = $errorLanguageEnum instanceof ErrorLanguageEnum ? $errorLanguageEnum : ErrorLanguageEnum::from($errorLanguageEnum);
     }
 
     public function simpleXmlElement(SimpleXMLElement $xml): void
