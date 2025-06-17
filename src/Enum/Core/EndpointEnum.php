@@ -6,16 +6,24 @@ namespace Wundii\AfterbuySdk\Enum\Core;
 
 enum EndpointEnum: string
 {
-    case PROD = 'https://api.afterbuy.de/afterbuy/';
-    case SANDBOX = 'http://api.afterbuy.de/afterbuy/';
+    case PROD = 'prod';
+    case SANDBOX = 'sandbox';
+
+    public function domain(): string
+    {
+        return match ($this) {
+            self::PROD => 'https://api.afterbuy.de/afterbuy/',
+            self::SANDBOX => 'http://api.afterbuy.de/afterbuy/',
+        };
+    }
 
     public function afterbuyApiUri(): string
     {
-        return $this->value . 'ABInterface.aspx';
+        return $this->domain() . 'ABInterface.aspx';
     }
 
     public function shopApiUri(): string
     {
-        return $this->value . 'ShopInterface.aspx';
+        return $this->domain() . 'ShopInterface.aspx';
     }
 }
