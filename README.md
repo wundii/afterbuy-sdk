@@ -27,6 +27,10 @@ Require the bundle and its dependencies with composer:
 
 > composer require wundii/afterbuy-sdk
 
+### Installations for frameworks
+- Laravel Package is in development
+- [Symfony Bundle](https://github.com/wundii/afterbuy-sdk-symfony-bundle)
+
 ## Afterbuy API Documentation
 - [Shop API Documentation](https://xmldoku.afterbuy.de/shopdoku/)
 - [XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
