@@ -1,16 +1,17 @@
 # afterbuy-sdk
 
-[![AfterbuyShopApi](https://img.shields.io/badge/Afterbuy%20Shop--API-Version%201.77.248-yellow.svg?style=flat)](https://xmldoku.afterbuy.de/shopdoku)
-[![AfterbuyXmlApi](https://img.shields.io/badge/Afterbuy%20XML--API-Version%202.0.460-yellow.svg?style=flat)](https://xmldoku.afterbuy.de/dokued)
-[![PHP-Tests](https://github.com/wundii/afterbuy-sdk/actions/workflows/code_quality.yml/badge.svg)](https://github.com/wundii/afterbuy-sdk/actions/workflows/code_quality.yml)
-[![PHPStan](https://img.shields.io/badge/PHPStan-level%2010-brightgreen.svg?style=flat)](https://phpstan.org)
-[![PHP](https://img.shields.io/badge/PHP-8.2+-blue.svg?style=flat)](https://www.php.net/)
-[![Rector](https://img.shields.io/badge/Rector-8.2-blue.svg?style=flat)](https://getrector.com)
-[![ECS](https://img.shields.io/badge/ECS-check-blue.svg?style=flat)](https://tomasvotruba.com/blog/zen-config-in-ecs)
-[![PHPUnit](https://img.shields.io/badge/PHP--Unit-check-blue.svg?style=flat)](https://phpunit.org)
-[![codecov](https://codecov.io/github/wundii/afterbuy-sdk/branch/main/graph/badge.svg?token=UXR8UBCXMK)](https://codecov.io/github/wundii/afterbuy-sdk)
-[![PSR3](https://img.shields.io/badge/PSR--3%20Logger-optional-blue.svg?style=flat)](https://php-fig.org/psr/psr-3)
-[![Downloads](https://img.shields.io/packagist/dt/wundii/afterbuy-sdk.svg?style=flat)](https://packagist.org/packages/wundii/afterbuy-sdk)
+[![AfterbuyShopApi](https://img.shields.io/badge/Afterbuy%20Shop--API-Version%201.77.248-yellow.svg?style=for-the-badge)](https://xmldoku.afterbuy.de/shopdoku)
+[![AfterbuyXmlApi](https://img.shields.io/badge/Afterbuy%20XML--API-Version%202.0.460-yellow.svg?style=for-the-badge)](https://xmldoku.afterbuy.de/dokued)
+[![PHP-Tests](https://img.shields.io/github/actions/workflow/status/wundii/afterbuy-sdk/code_quality.yml?branch=main&style=for-the-badge)](https://github.com/wundii/afterbuy-sdk/actions/workflows/code_quality.yml)
+[![PHPStan](https://img.shields.io/badge/PHPStan-level%2010-brightgreen.svg?style=for-the-badge)](https://phpstan.org/)
+![VERSION](https://img.shields.io/packagist/v/wundii/afterbuy-sdk?style=for-the-badge)
+[![PHP](https://img.shields.io/packagist/php-v/wundii/afterbuy-sdk?style=for-the-badge)](https://www.php.net/)
+[![Rector](https://img.shields.io/badge/Rector-8.2-blue.svg?style=for-the-badge)](https://getrector.com)
+[![ECS](https://img.shields.io/badge/ECS-check-blue.svg?style=for-the-badge)](https://tomasvotruba.com/blog/zen-config-in-ecs)
+[![PHPUnit](https://img.shields.io/badge/PHP--Unit-check-blue.svg?style=for-the-badge)](https://phpunit.org)
+[![codecov](https://img.shields.io/codecov/c/github/wundii/afterbuy-sdk/main?token=UXR8UBCXMK&style=for-the-badge)](https://codecov.io/github/wundii/afterbuy-sdk)
+[![PSR3](https://img.shields.io/badge/PSR--3%20Logger-optional-blue.svg?style=for-the-badge)](https://php-fig.org/psr/psr-3)
+[![Downloads](https://img.shields.io/packagist/dt/wundii/afterbuy-sdk.svg?style=for-the-badge)](https://packagist.org/packages/wundii/afterbuy-sdk)
 
 This is a modern Afterbuy Programming Interface Software Development Kit, for the selling solution [afterbuy.de](https://www.afterbuy.de/).
 
