@@ -36,6 +36,10 @@ Require the bundle and its dependencies with composer:
 - [Shop API Documentation](https://xmldoku.afterbuy.de/shopdoku/)
 - [XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
 
+### Current Afterbuy API Informations
+- last update 2.0.460 was recalled by Afterbuy, current version is 2.0.459
+  - the afterbuy sdk is compatible with the recalled version 2.0.460
+
 ### Supported Requests with Examples
 - [x] [CreateShopOrder](examples/CreateShopOrder.md)
 - [x] [GetAfterbuyTime](examples/GetAfterbuyTime.md)
