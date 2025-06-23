@@ -22,20 +22,20 @@ final class ListingDetails implements ResponseDtoInterface
         private ?int $listedQuantity = null,
         #[Description('Listing platform')]
         private ?string $listingPlattform = null,
-        #[Description('Item title. If ListerArticle has already been deleted, the \'ListingTitle\' will be displayed as empty')]
+        #[Description("Item title. If ListerArticle has already been deleted, the 'ListingTitle' will be displayed as empty")]
         private ?string $listingTitle = null,
         #[Description('')]
         private ?string $listerSubTitle = null,
         #[Description('Duration in days')]
         private ?int $listingDuration = null,
         #[Description('Auction type<br>
-Possible values:<br>
-eBay: 1 - Auktion, 2 - PowerAuktion, 7 - eBayStore, 9 - SofortKauf<br>
-Azubo: 1 - Auktion, 9 - FixKauf<br>
-elimbo: 0 - Festpreis<br>
-Escout24: 0 - Keine Angabe')]
+            Possible values:<br>
+            eBay: 1 - Auktion, 2 - PowerAuktion, 7 - eBayStore, 9 - SofortKauf<br>
+            Azubo: 1 - Auktion, 9 - FixKauf<br>
+            elimbo: 0 - Festpreis<br>
+            Escout24: 0 - Keine Angabe')]
         private ?int $listingType = null,
-        #[Description('Description of the item. If the ListerArticle has already been deleted, the \'ListingDescription\' will be displayed as empty')]
+        #[Description("Description of the item. If the ListerArticle has already been deleted, the 'ListingDescription' will be displayed as empty")]
         private ?string $listingDescription = null,
         #[Description('Listing costs of the respective platform')]
         private ?float $listingFee = null,
@@ -51,19 +51,19 @@ Escout24: 0 - Keine Angabe')]
         private ?int $ebayCurrencyId = null,
         #[Description('')]
         private ?EbayCurrencyEnum $ebayCurrencyEnum = null,
-        #[Description('eBay category. If ListerItem has already been deleted, the \'eBayCategoryID\' will be displayed as empty')]
+        #[Description("eBay category. If ListerItem has already been deleted, the 'eBayCategoryID' will be displayed as empty")]
         private ?int $ebayCategoryId = null,
-        #[Description('Second eBay category. If the ListerItem has already been deleted, the \'eBayCategory2ID\' will be displayed as empty')]
+        #[Description("Second eBay category. If the ListerItem has already been deleted, the 'eBayCategory2ID' will be displayed as empty")]
         private ?int $ebayCategory2Id = null,
         #[Description('SubAccountID of the account that the listing was created with')]
         private ?int $ebaySubAccountId = null,
-        #[Description('eBay starting price of the item. If ListerArticle has already been deleted, the \'eBayStartprice\' will be displayed as empty')]
+        #[Description("eBay starting price of the item. If ListerArticle has already been deleted, the 'eBayStartprice' will be displayed as empty")]
         private ?float $ebayStartprice = null,
-        #[Description('eBay SofortKaufpreis of the item. If ListerArticle has already been deleted, the \'eBayBuyItNowPrice\' will be displayed as empty')]
+        #[Description("eBay SofortKaufpreis of the item. If ListerArticle has already been deleted, the 'eBayBuyItNowPrice' will be displayed as empty")]
         private ?float $ebayBuyItNowPrice = null,
-        #[Description('eBay SofortKaufpreis of the item. If ListerArticle has already been deleted, the \'eBayPictureURL\' will not be returned')]
+        #[Description("eBay SofortKaufpreis of the item. If ListerArticle has already been deleted, the 'eBayPictureURL' will not be returned")]
         private ?string $ebayPictureUrl = null,
-        #[Description('eBay SofortKaufpreis of the item. If ListerArticle has already been deleted, the \'eBayGaleryURL\' will not be returned')]
+        #[Description("eBay SofortKaufpreis of the item. If ListerArticle has already been deleted, the 'eBayGaleryURL' will not be returned")]
         private ?string $ebayGaleryUrl = null,
         #[Description('Indicates whether the item is an eBay relist')]
         private ?bool $ebayRelist = null,
