@@ -8,7 +8,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\UpdateActionCatalogsEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\DataMapper\Enum\ApproachEnum;
+use Wundii\Structron\Attribute\Approach;
+use Wundii\Structron\Attribute\Structron;
 
+// #[Structron('Holds a list of payment services.')]
+// #[Approach(ApproachEnum::CONSTRUCTOR)]
 final class Catalogs implements RequestDtoXmlInterface
 {
     /**

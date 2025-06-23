@@ -8,7 +8,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Enum\CountryIsoEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\DataMapper\Enum\ApproachEnum;
+use Wundii\Structron\Attribute\Approach;
+use Wundii\Structron\Attribute\Structron;
 
+#[Structron('Holds the shipping information for a product or products.')]
+#[Approach(ApproachEnum::CONSTRUCTOR)]
 final readonly class ShippingInfo implements RequestDtoXmlInterface
 {
     /**

@@ -5,7 +5,12 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetListerHistory;
 
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\DataMapper\Enum\ApproachEnum;
+use Wundii\Structron\Attribute\Approach;
+use Wundii\Structron\Attribute\Structron;
 
+#[Structron('Hold a list of items that were listed in the Lister history.')]
+#[Approach(ApproachEnum::CONSTRUCTOR)]
 final class ListedItems implements ResponseDtoInterface
 {
     /**

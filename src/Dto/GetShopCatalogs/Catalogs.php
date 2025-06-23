@@ -6,7 +6,12 @@ namespace Wundii\AfterbuySdk\Dto\GetShopCatalogs;
 
 use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog as UpdateCatalog;
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\DataMapper\Enum\ApproachEnum;
+use Wundii\Structron\Attribute\Approach;
+use Wundii\Structron\Attribute\Structron;
 
+#[Structron('Holds a list of catalogs.')]
+#[Approach(ApproachEnum::CONSTRUCTOR)]
 final class Catalogs implements ResponseDtoInterface
 {
     /**
