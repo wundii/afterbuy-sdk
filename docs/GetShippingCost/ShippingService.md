@@ -10,13 +10,13 @@ Holds a list of payment services.
 | Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingMethods | ShippingMethods |
 
 ## Properties
-| ShippingService                                  | Type              | Default  | Description |
-| ------------------------------------------------ | ----------------- | -------- | ----------- |
-| shippingServiceName                              | string            | required |             |
-| shippingServicePriority                          | string            | required |             |
-| **shippingMethods**                              | ShippingMethods[] | []       |             |
-| &nbsp; shippingMethods.shippingCost              | float             | required |             |
-| &nbsp; shippingMethods.shippingMethod            | string            | required |             |
-| &nbsp; shippingMethods.shippingMethodId          | int               | required |             |
-| &nbsp; shippingMethods.shippingTaxRate           | float             | null     |             |
-| &nbsp; shippingMethods.shippingMethodDescription | string            | null     |             |
+| ShippingService                           | Type              | Default  | Description |
+| ----------------------------------------- | ----------------- | -------- | ----------- |
+| shippingServiceName                       | string            | required |             |
+| shippingServicePriority                   | string            | required |             |
+| **shippingMethods**                       | ShippingMethods[] | []       |             |
+| shippingMethods.shippingCost              | float             | required |             |
+| shippingMethods.shippingMethod            | string            | required |             |
+| shippingMethods.shippingMethodId          | int               | required |             |
+| shippingMethods.shippingTaxRate           | float             | null     |             |
+| shippingMethods.shippingMethodDescription | string            | null     |             |

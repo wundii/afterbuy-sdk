@@ -17,67 +17,67 @@ Holds a list of payment services.
 | Wundii\AfterbuySdk\Enum\CountryIsoEnum | CountryIsoEnum |
 
 ## Properties
-| Orders                                                  | Type              | Default  | Description |
-| ------------------------------------------------------- | ----------------- | -------- | ----------- |
-| **orders**                                              | Order[]           | []       |             |
-| &nbsp; orders.orderId                                   | int               | null     |             |
-| &nbsp; orders.itemId                                    | int               | null     |             |
-| &nbsp; orders.userDefindedFlag                          | int               | null     |             |
-| &nbsp; orders.productId                                 | int               | null     |             |
-| &nbsp; orders.additionalInfo                            | string            | null     |             |
-| &nbsp; orders.mailDate                                  | DateTimeInterface | null     |             |
-| &nbsp; orders.reminderMailDate                          | DateTimeInterface | null     |             |
-| &nbsp; orders.userComment                               | string            | null     |             |
-| &nbsp; orders.orderMemo                                 | string            | null     |             |
-| &nbsp; orders.invoiceMemo                               | string            | null     |             |
-| &nbsp; orders.orderExported                             | bool              | null     |             |
-| &nbsp; orders.invoiceDate                               | DateTimeInterface | null     |             |
-| &nbsp; orders.invoiceNumber                             | int               | null     |             |
-| &nbsp; orders.hideOrder                                 | bool              | null     |             |
-| &nbsp; orders.reminder1Date                             | DateTimeInterface | null     |             |
-| &nbsp; orders.reminder2Date                             | DateTimeInterface | null     |             |
-| &nbsp; orders.feedbackDate                              | DateTimeInterface | null     |             |
-| &nbsp; orders.xmlDate                                   | DateTimeInterface | null     |             |
-| **&nbsp; orders.buyerInfo**                             | BuyerInfo         | null     |             |
-| **&nbsp; &nbsp; buyerInfo.shippingAddress**             | ShippingAddress   | required |             |
-| &nbsp; &nbsp; &nbsp; shippingAddress.useShippingAddress | bool              | null     |             |
-| &nbsp; &nbsp; &nbsp; shippingAddress.firstName          | string            | null     |             |
-| &nbsp; &nbsp; &nbsp; shippingAddress.lastName           | string            | null     |             |
-| &nbsp; &nbsp; &nbsp; shippingAddress.company            | string            | null     |             |
-| &nbsp; &nbsp; &nbsp; shippingAddress.street             | string            | null     |             |
-| &nbsp; &nbsp; &nbsp; shippingAddress.street2            | string            | null     |             |
-| &nbsp; &nbsp; &nbsp; shippingAddress.stateOrProvince    | string            | null     |             |
-| &nbsp; &nbsp; &nbsp; shippingAddress.phone              | string            | null     |             |
-| &nbsp; &nbsp; &nbsp; shippingAddress.postalCode         | string            | null     |             |
-| &nbsp; &nbsp; &nbsp; shippingAddress.city               | string            | null     |             |
-| &nbsp; &nbsp; &nbsp; shippingAddress.country            | string            | null     |             |
-| &nbsp; &nbsp; &nbsp; shippingAddress.countryIsoEnum     | CountryIsoEnum    | null     |             |
-| **&nbsp; orders.paymentInfo**                           | PaymentInfo       | null     |             |
-| &nbsp; &nbsp; paymentInfo.paymentMethod                 | string            | null     |             |
-| &nbsp; &nbsp; paymentInfo.paymentDate                   | DateTimeInterface | null     |             |
-| &nbsp; &nbsp; paymentInfo.paymentTransactionId          | string            | null     |             |
-| &nbsp; &nbsp; paymentInfo.alreadyPaid                   | float             | null     |             |
-| &nbsp; &nbsp; paymentInfo.paymentAdditionalCost         | float             | null     |             |
-| &nbsp; &nbsp; paymentInfo.sendPaymentMail               | float             | null     |             |
-| **&nbsp; orders.shippingInfo**                          | ShippingInfo      | null     |             |
-| &nbsp; &nbsp; shippingInfo.shippingMethod               | string            | null     |             |
-| &nbsp; &nbsp; shippingInfo.shippingReturnMethod         | string            | null     |             |
-| &nbsp; &nbsp; shippingInfo.shippingGroup                | string            | null     |             |
-| &nbsp; &nbsp; shippingInfo.shippingCost                 | float             | null     |             |
-| &nbsp; &nbsp; shippingInfo.deliveryDate                 | DateTimeInterface | null     |             |
-| &nbsp; &nbsp; shippingInfo.deliveryService              | string            | null     |             |
-| &nbsp; &nbsp; shippingInfo.ebayShippingCost             | float             | null     |             |
-| &nbsp; &nbsp; shippingInfo.sendShippingMail             | bool              | null     |             |
-| **&nbsp; &nbsp; shippingInfo.parcelLabels**             | ParcelLabel[]     | []       |             |
-| &nbsp; &nbsp; &nbsp; parcelLabels.itemId                | int               | required |             |
-| &nbsp; &nbsp; &nbsp; parcelLabels.packageNumber         | int               | required |             |
-| &nbsp; &nbsp; &nbsp; parcelLabels.parcelLabelNumber     | string            | null     |             |
-| &nbsp; &nbsp; &nbsp; parcelLabels.returnLabelNumber     | string            | null     |             |
-| &nbsp; &nbsp; &nbsp; parcelLabels.packageQuantity       | int               | null     |             |
-| &nbsp; &nbsp; &nbsp; parcelLabels.packageWeight         | float             | null     |             |
-| **&nbsp; orders.vorgangsInfo**                          | VorgangsInfo      | null     |             |
-| &nbsp; &nbsp; vorgangsInfo.VorgangsInfo1                | string            | null     |             |
-| &nbsp; &nbsp; vorgangsInfo.VorgangsInfo2                | string            | null     |             |
-| &nbsp; &nbsp; vorgangsInfo.VorgangsInfo3                | string            | null     |             |
-| &nbsp; orders.tags                                      | string[]          | []       |             |
-| &nbsp; orders.attributes                                | Attribute         | []       |             |
+| Orders                             | Type              | Default  | Description |
+| ---------------------------------- | ----------------- | -------- | ----------- |
+| **orders**                         | Order[]           | []       |             |
+| orders.orderId                     | int               | null     |             |
+| orders.itemId                      | int               | null     |             |
+| orders.userDefindedFlag            | int               | null     |             |
+| orders.productId                   | int               | null     |             |
+| orders.additionalInfo              | string            | null     |             |
+| orders.mailDate                    | DateTimeInterface | null     |             |
+| orders.reminderMailDate            | DateTimeInterface | null     |             |
+| orders.userComment                 | string            | null     |             |
+| orders.orderMemo                   | string            | null     |             |
+| orders.invoiceMemo                 | string            | null     |             |
+| orders.orderExported               | bool              | null     |             |
+| orders.invoiceDate                 | DateTimeInterface | null     |             |
+| orders.invoiceNumber               | int               | null     |             |
+| orders.hideOrder                   | bool              | null     |             |
+| orders.reminder1Date               | DateTimeInterface | null     |             |
+| orders.reminder2Date               | DateTimeInterface | null     |             |
+| orders.feedbackDate                | DateTimeInterface | null     |             |
+| orders.xmlDate                     | DateTimeInterface | null     |             |
+| **orders.buyerInfo**               | BuyerInfo         | null     |             |
+| **buyerInfo.shippingAddress**      | ShippingAddress   | required |             |
+| shippingAddress.useShippingAddress | bool              | null     |             |
+| shippingAddress.firstName          | string            | null     |             |
+| shippingAddress.lastName           | string            | null     |             |
+| shippingAddress.company            | string            | null     |             |
+| shippingAddress.street             | string            | null     |             |
+| shippingAddress.street2            | string            | null     |             |
+| shippingAddress.stateOrProvince    | string            | null     |             |
+| shippingAddress.phone              | string            | null     |             |
+| shippingAddress.postalCode         | string            | null     |             |
+| shippingAddress.city               | string            | null     |             |
+| shippingAddress.country            | string            | null     |             |
+| shippingAddress.countryIsoEnum     | CountryIsoEnum    | null     |             |
+| **orders.paymentInfo**             | PaymentInfo       | null     |             |
+| paymentInfo.paymentMethod          | string            | null     |             |
+| paymentInfo.paymentDate            | DateTimeInterface | null     |             |
+| paymentInfo.paymentTransactionId   | string            | null     |             |
+| paymentInfo.alreadyPaid            | float             | null     |             |
+| paymentInfo.paymentAdditionalCost  | float             | null     |             |
+| paymentInfo.sendPaymentMail        | float             | null     |             |
+| **orders.shippingInfo**            | ShippingInfo      | null     |             |
+| shippingInfo.shippingMethod        | string            | null     |             |
+| shippingInfo.shippingReturnMethod  | string            | null     |             |
+| shippingInfo.shippingGroup         | string            | null     |             |
+| shippingInfo.shippingCost          | float             | null     |             |
+| shippingInfo.deliveryDate          | DateTimeInterface | null     |             |
+| shippingInfo.deliveryService       | string            | null     |             |
+| shippingInfo.ebayShippingCost      | float             | null     |             |
+| shippingInfo.sendShippingMail      | bool              | null     |             |
+| **shippingInfo.parcelLabels**      | ParcelLabel[]     | []       |             |
+| parcelLabels.itemId                | int               | required |             |
+| parcelLabels.packageNumber         | int               | required |             |
+| parcelLabels.parcelLabelNumber     | string            | null     |             |
+| parcelLabels.returnLabelNumber     | string            | null     |             |
+| parcelLabels.packageQuantity       | int               | null     |             |
+| parcelLabels.packageWeight         | float             | null     |             |
+| **orders.vorgangsInfo**            | VorgangsInfo      | null     |             |
+| vorgangsInfo.VorgangsInfo1         | string            | null     |             |
+| vorgangsInfo.VorgangsInfo2         | string            | null     |             |
+| vorgangsInfo.VorgangsInfo3         | string            | null     |             |
+| orders.tags                        | string[]          | []       |             |
+| orders.attributes                  | Attribute         | []       |             |

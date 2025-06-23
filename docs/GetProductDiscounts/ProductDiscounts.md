@@ -10,16 +10,16 @@ Holds a list of product discounts.
 | Wundii\AfterbuySdk\Dto\GetProductDiscounts\ProductDiscount | ProductDiscount |
 
 ## Properties
-| ProductDiscounts                                     | Type              | Default  | Description |
-| ---------------------------------------------------- | ----------------- | -------- | ----------- |
-| **productDiscounts**                                 | ProductDiscount[] | []       |             |
-| &nbsp; productDiscounts.productId                    | int               | required |             |
-| &nbsp; productDiscounts.controlId                    | int               | required |             |
-| &nbsp; productDiscounts.amountDiscount               | float             | null     |             |
-| &nbsp; productDiscounts.percentDiscount              | float             | null     |             |
-| &nbsp; productDiscounts.startDate                    | DateTimeInterface | null     |             |
-| &nbsp; productDiscounts.endDate                      | DateTimeInterface | null     |             |
-| &nbsp; productDiscounts.itemLastUserModificationDate | DateTimeInterface | null     |             |
-| &nbsp; productDiscounts.priceType                    | string            | null     |             |
-| &nbsp; productDiscounts.newPriceType                 | string            | null     |             |
-| &nbsp; productDiscounts.timeLeftInMinutes            | int               | null     |             |
+| ProductDiscounts                              | Type              | Default  | Description |
+| --------------------------------------------- | ----------------- | -------- | ----------- |
+| **productDiscounts**                          | ProductDiscount[] | []       |             |
+| productDiscounts.productId                    | int               | required |             |
+| productDiscounts.controlId                    | int               | required |             |
+| productDiscounts.amountDiscount               | float             | null     |             |
+| productDiscounts.percentDiscount              | float             | null     |             |
+| productDiscounts.startDate                    | DateTimeInterface | null     |             |
+| productDiscounts.endDate                      | DateTimeInterface | null     |             |
+| productDiscounts.itemLastUserModificationDate | DateTimeInterface | null     |             |
+| productDiscounts.priceType                    | string            | null     |             |
+| productDiscounts.newPriceType                 | string            | null     |             |
+| productDiscounts.timeLeftInMinutes            | int               | null     |             |

@@ -10,9 +10,9 @@ Holds a list of payment services.
 | Wundii\AfterbuySdk\Dto\GetVersion\Version | Version |
 
 ## Properties
-| Versions                    | Type      | Default  | Description |
-| --------------------------- | --------- | -------- | ----------- |
-| **versions**                | Version[] | []       |             |
-| &nbsp; versions.id          | int       | required |             |
-| &nbsp; versions.name        | string    | required |             |
-| &nbsp; versions.description | string    | required |             |
+| Versions             | Type      | Default  | Description |
+| -------------------- | --------- | -------- | ----------- |
+| **versions**         | Version[] | []       |             |
+| versions.id          | int       | required |             |
+| versions.name        | string    | required |             |
+| versions.description | string    | required |             |

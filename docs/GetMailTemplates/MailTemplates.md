@@ -10,11 +10,11 @@ Hold a list of mail templates.
 | Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplate | MailTemplate |
 
 ## Properties
-| MailTemplates                        | Type           | Default  | Description |
-| ------------------------------------ | -------------- | -------- | ----------- |
-| **mailTemplates**                    | MailTemplate[] | required |             |
-| &nbsp; mailTemplates.templateId      | int            | required |             |
-| &nbsp; mailTemplates.templateName    | string         | null     |             |
-| &nbsp; mailTemplates.templateSubject | string         | null     |             |
-| &nbsp; mailTemplates.templateText    | string         | null     |             |
-| &nbsp; mailTemplates.templateHtml    | bool           | false    |             |
+| MailTemplates                 | Type           | Default  | Description |
+| ----------------------------- | -------------- | -------- | ----------- |
+| **mailTemplates**             | MailTemplate[] | required |             |
+| mailTemplates.templateId      | int            | required |             |
+| mailTemplates.templateName    | string         | null     |             |
+| mailTemplates.templateSubject | string         | null     |             |
+| mailTemplates.templateText    | string         | null     |             |
+| mailTemplates.templateHtml    | bool           | false    |             |

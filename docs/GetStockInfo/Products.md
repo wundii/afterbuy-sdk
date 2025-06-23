@@ -10,20 +10,20 @@ Holds a list of payment services.
 | Wundii\AfterbuySdk\Dto\GetStockInfo\Product | Product |
 
 ## Properties
-| Products                            | Type      | Default  | Description |
-| ----------------------------------- | --------- | -------- | ----------- |
-| **products**                        | Product[] | []       |             |
-| &nbsp; products.productId           | int       | required |             |
-| &nbsp; products.name                | string    | null     |             |
-| &nbsp; products.anr                 | int       | null     |             |
-| &nbsp; products.ean                 | string    | null     |             |
-| &nbsp; products.auctionQuantity     | int       | null     |             |
-| &nbsp; products.quantity            | int       | null     |             |
-| &nbsp; products.fullFilmentQuantity | int       | null     |             |
-| &nbsp; products.minimumStock        | int       | null     |             |
-| &nbsp; products.discontinued        | bool      | false    |             |
-| &nbsp; products.mergeStock          | bool      | false    |             |
-| &nbsp; products.availableShop       | int       | null     |             |
-| &nbsp; products.available           | bool      | false    |             |
-| &nbsp; products.realQuantity        | int       | null     |             |
-| &nbsp; products.level               | int       | null     |             |
+| Products                     | Type      | Default  | Description |
+| ---------------------------- | --------- | -------- | ----------- |
+| **products**                 | Product[] | []       |             |
+| products.productId           | int       | required |             |
+| products.name                | string    | null     |             |
+| products.anr                 | int       | null     |             |
+| products.ean                 | string    | null     |             |
+| products.auctionQuantity     | int       | null     |             |
+| products.quantity            | int       | null     |             |
+| products.fullFilmentQuantity | int       | null     |             |
+| products.minimumStock        | int       | null     |             |
+| products.discontinued        | bool      | false    |             |
+| products.mergeStock          | bool      | false    |             |
+| products.availableShop       | int       | null     |             |
+| products.available           | bool      | false    |             |
+| products.realQuantity        | int       | null     |             |
+| products.level               | int       | null     |             |

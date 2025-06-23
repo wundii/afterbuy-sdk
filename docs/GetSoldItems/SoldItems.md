@@ -20,64 +20,64 @@ Holds a list of sold items.
 | Wundii\AfterbuySdk\Enum\TaxCollectedByEnum | TaxCollectedByEnum |
 
 ## Properties
-| SoldItems                                                 | Type                        | Default                           | Description |
-| --------------------------------------------------------- | --------------------------- | --------------------------------- | ----------- |
-| **soldItem**                                              | SoldItem[]                  | []                                |             |
-| &nbsp; soldItem.itemId                                    | int                         | required                          |             |
-| &nbsp; soldItem.itemDetailsDone                           | bool                        | false                             |             |
-| &nbsp; soldItem.anr                                       | int                         | null                              |             |
-| &nbsp; soldItem.isAmazonBusiness                          | bool                        | false                             |             |
-| &nbsp; soldItem.isAmazonPrime                             | bool                        | false                             |             |
-| &nbsp; soldItem.isAmazonInvoiced                          | bool                        | false                             |             |
-| &nbsp; soldItem.isExternalInvoice                         | bool                        | false                             |             |
-| &nbsp; soldItem.fulfillmentServiceLevelEnum               | FulfillmentServiceLevelEnum | FulfillmentServiceLevelEnum::NONE |             |
-| &nbsp; soldItem.platformSpecificOrderId                   | string                      | null                              |             |
-| &nbsp; soldItem.ebayTransactionId                         | int                         | null                              |             |
-| &nbsp; soldItem.eBayPlusTransaction                       | bool                        | false                             |             |
-| &nbsp; soldItem.alternativeItemNumber1                    | string                      | null                              |             |
-| &nbsp; soldItem.alternativeItemNumbe1                     | string                      | null                              |             |
-| &nbsp; soldItem.internalItemTypeEnum                      | InternalItemTypeEnum        | null                              |             |
-| &nbsp; soldItem.userDefinedFlag                           | int                         | null                              |             |
-| &nbsp; soldItem.itemTitle                                 | string                      | null                              |             |
-| &nbsp; soldItem.itemQuantity                              | int                         | null                              |             |
-| &nbsp; soldItem.itemPrice                                 | float                       | null                              |             |
-| &nbsp; soldItem.itemEndDate                               | DateTimeInterface           | null                              |             |
-| &nbsp; soldItem.taxRate                                   | float                       | null                              |             |
-| &nbsp; soldItem.taxCollectedByEnum                        | TaxCollectedByEnum          | null                              |             |
-| &nbsp; soldItem.platformTaxReference                      | string                      | null                              |             |
-| &nbsp; soldItem.itemWeight                                | float                       | null                              |             |
-| &nbsp; soldItem.itemXmlDate                               | DateTimeInterface           | null                              |             |
-| &nbsp; soldItem.itemModDate                               | DateTimeInterface           | null                              |             |
-| &nbsp; soldItem.itemPlatFormNameEnum                      | ItemPlatFormNameEnum        | null                              |             |
-| &nbsp; soldItem.itemLink                                  | string                      | null                              |             |
-| &nbsp; soldItem.ebayFeedbackCompleted                     | bool                        | null                              |             |
-| &nbsp; soldItem.ebayFeedbackReceived                      | bool                        | null                              |             |
-| &nbsp; soldItem.ebayFeedbackCommentType                   | string                      | null                              |             |
-| **&nbsp; soldItem.itemOriginalCurrency**                  | ItemOriginalCurrency        | null                              |             |
-| &nbsp; &nbsp; itemOriginalCurrency.itemPrice              | float                       | null                              |             |
-| &nbsp; &nbsp; itemOriginalCurrency.itemPriceCodeEnum      | ItemPriceCodeEnum           | null                              |             |
-| &nbsp; &nbsp; itemOriginalCurrency.itemShipping           | float                       | null                              |             |
-| **&nbsp; soldItem.shopProductDetails**                    | ShopProductDetails          | null                              |             |
-| &nbsp; &nbsp; shopProductDetails.productId                | int                         | null                              |             |
-| &nbsp; &nbsp; shopProductDetails.anr                      | int                         | null                              |             |
-| &nbsp; &nbsp; shopProductDetails.ean                      | string                      | null                              |             |
-| &nbsp; &nbsp; shopProductDetails.unitOfQuantity           | string                      | null                              |             |
-| &nbsp; &nbsp; shopProductDetails.basepriceFactor          | float                       | null                              |             |
-| **&nbsp; &nbsp; shopProductDetails.baseProductData**      | BaseProductData             | null                              |             |
-| &nbsp; &nbsp; &nbsp; baseProductData.baseProductTypeEnum  | BaseProductTypeEnum         | required                          |             |
-| **&nbsp; &nbsp; &nbsp; baseProductData.childProduct**     | ChildProduct[]              | []                                |             |
-| &nbsp; &nbsp; &nbsp; &nbsp; childProduct.productId        | int                         | null                              |             |
-| &nbsp; &nbsp; &nbsp; &nbsp; childProduct.productAnr       | int                         | null                              |             |
-| &nbsp; &nbsp; &nbsp; &nbsp; childProduct.productEan       | string                      | null                              |             |
-| &nbsp; &nbsp; &nbsp; &nbsp; childProduct.productName      | string                      | null                              |             |
-| &nbsp; &nbsp; &nbsp; &nbsp; childProduct.productQuantity  | int                         | 0                                 |             |
-| &nbsp; &nbsp; &nbsp; &nbsp; childProduct.productVat       | float                       | 0                                 |             |
-| &nbsp; &nbsp; &nbsp; &nbsp; childProduct.productWeight    | float                       | 0                                 |             |
-| &nbsp; &nbsp; &nbsp; &nbsp; childProduct.productUnitPrice | float                       | 0                                 |             |
-| &nbsp; &nbsp; &nbsp; &nbsp; childProduct.stockLocation1   | string                      | null                              |             |
-| &nbsp; &nbsp; &nbsp; &nbsp; childProduct.stockLocation2   | string                      | null                              |             |
-| &nbsp; &nbsp; &nbsp; &nbsp; childProduct.stockLocation3   | string                      | null                              |             |
-| &nbsp; &nbsp; shopProductDetails.stockLocation1           | string                      | null                              |             |
-| &nbsp; &nbsp; shopProductDetails.stockLocation2           | string                      | null                              |             |
-| &nbsp; &nbsp; shopProductDetails.stockLocation3           | string                      | null                              |             |
-| itemsInOrder                                              | int                         | null                              |             |
+| SoldItems                              | Type                        | Default                           | Description |
+| -------------------------------------- | --------------------------- | --------------------------------- | ----------- |
+| **soldItem**                           | SoldItem[]                  | []                                |             |
+| soldItem.itemId                        | int                         | required                          |             |
+| soldItem.itemDetailsDone               | bool                        | false                             |             |
+| soldItem.anr                           | int                         | null                              |             |
+| soldItem.isAmazonBusiness              | bool                        | false                             |             |
+| soldItem.isAmazonPrime                 | bool                        | false                             |             |
+| soldItem.isAmazonInvoiced              | bool                        | false                             |             |
+| soldItem.isExternalInvoice             | bool                        | false                             |             |
+| soldItem.fulfillmentServiceLevelEnum   | FulfillmentServiceLevelEnum | FulfillmentServiceLevelEnum::NONE |             |
+| soldItem.platformSpecificOrderId       | string                      | null                              |             |
+| soldItem.ebayTransactionId             | int                         | null                              |             |
+| soldItem.eBayPlusTransaction           | bool                        | false                             |             |
+| soldItem.alternativeItemNumber1        | string                      | null                              |             |
+| soldItem.alternativeItemNumbe1         | string                      | null                              |             |
+| soldItem.internalItemTypeEnum          | InternalItemTypeEnum        | null                              |             |
+| soldItem.userDefinedFlag               | int                         | null                              |             |
+| soldItem.itemTitle                     | string                      | null                              |             |
+| soldItem.itemQuantity                  | int                         | null                              |             |
+| soldItem.itemPrice                     | float                       | null                              |             |
+| soldItem.itemEndDate                   | DateTimeInterface           | null                              |             |
+| soldItem.taxRate                       | float                       | null                              |             |
+| soldItem.taxCollectedByEnum            | TaxCollectedByEnum          | null                              |             |
+| soldItem.platformTaxReference          | string                      | null                              |             |
+| soldItem.itemWeight                    | float                       | null                              |             |
+| soldItem.itemXmlDate                   | DateTimeInterface           | null                              |             |
+| soldItem.itemModDate                   | DateTimeInterface           | null                              |             |
+| soldItem.itemPlatFormNameEnum          | ItemPlatFormNameEnum        | null                              |             |
+| soldItem.itemLink                      | string                      | null                              |             |
+| soldItem.ebayFeedbackCompleted         | bool                        | null                              |             |
+| soldItem.ebayFeedbackReceived          | bool                        | null                              |             |
+| soldItem.ebayFeedbackCommentType       | string                      | null                              |             |
+| **soldItem.itemOriginalCurrency**      | ItemOriginalCurrency        | null                              |             |
+| itemOriginalCurrency.itemPrice         | float                       | null                              |             |
+| itemOriginalCurrency.itemPriceCodeEnum | ItemPriceCodeEnum           | null                              |             |
+| itemOriginalCurrency.itemShipping      | float                       | null                              |             |
+| **soldItem.shopProductDetails**        | ShopProductDetails          | null                              |             |
+| shopProductDetails.productId           | int                         | null                              |             |
+| shopProductDetails.anr                 | int                         | null                              |             |
+| shopProductDetails.ean                 | string                      | null                              |             |
+| shopProductDetails.unitOfQuantity      | string                      | null                              |             |
+| shopProductDetails.basepriceFactor     | float                       | null                              |             |
+| **shopProductDetails.baseProductData** | BaseProductData             | null                              |             |
+| baseProductData.baseProductTypeEnum    | BaseProductTypeEnum         | required                          |             |
+| **baseProductData.childProduct**       | ChildProduct[]              | []                                |             |
+| childProduct.productId                 | int                         | null                              |             |
+| childProduct.productAnr                | int                         | null                              |             |
+| childProduct.productEan                | string                      | null                              |             |
+| childProduct.productName               | string                      | null                              |             |
+| childProduct.productQuantity           | int                         | 0                                 |             |
+| childProduct.productVat                | float                       | 0                                 |             |
+| childProduct.productWeight             | float                       | 0                                 |             |
+| childProduct.productUnitPrice          | float                       | 0                                 |             |
+| childProduct.stockLocation1            | string                      | null                              |             |
+| childProduct.stockLocation2            | string                      | null                              |             |
+| childProduct.stockLocation3            | string                      | null                              |             |
+| shopProductDetails.stockLocation1      | string                      | null                              |             |
+| shopProductDetails.stockLocation2      | string                      | null                              |             |
+| shopProductDetails.stockLocation3      | string                      | null                              |             |
+| itemsInOrder                           | int                         | null                              |             |

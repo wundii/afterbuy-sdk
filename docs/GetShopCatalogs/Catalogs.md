@@ -10,20 +10,20 @@ Holds a list of catalogs.
 | Wundii\AfterbuySdk\Dto\GetShopCatalogs\Catalog | Catalog |
 
 ## Properties
-| Catalogs                        | Type      | Default  | Description |
-| ------------------------------- | --------- | -------- | ----------- |
-| hasMoreCatalogs                 | bool      | false    |             |
-| **catalogs**                    | Catalog[] | []       |             |
-| &nbsp; catalogs.catalogId       | int       | required |             |
-| &nbsp; catalogs.name            | string    | required |             |
-| &nbsp; catalogs.level           | int       | required |             |
-| &nbsp; catalogs.position        | int       | required |             |
-| &nbsp; catalogs.description     | string    | null     |             |
-| &nbsp; catalogs.parnetId        | int       | null     |             |
-| &nbsp; catalogs.additionalText  | string    | null     |             |
-| &nbsp; catalogs.show            | bool      | false    |             |
-| &nbsp; catalogs.picture1        | string    | null     |             |
-| &nbsp; catalogs.picture2        | string    | null     |             |
-| &nbsp; catalogs.titlePicture    | string    | null     |             |
-| &nbsp; catalogs.catalogProducts | int[]     | []       |             |
-| lastCatalogId                   | int       | null     |             |
+| Catalogs                 | Type      | Default  | Description |
+| ------------------------ | --------- | -------- | ----------- |
+| hasMoreCatalogs          | bool      | false    |             |
+| **catalogs**             | Catalog[] | []       |             |
+| catalogs.catalogId       | int       | required |             |
+| catalogs.name            | string    | required |             |
+| catalogs.level           | int       | required |             |
+| catalogs.position        | int       | required |             |
+| catalogs.description     | string    | null     |             |
+| catalogs.parnetId        | int       | null     |             |
+| catalogs.additionalText  | string    | null     |             |
+| catalogs.show            | bool      | false    |             |
+| catalogs.picture1        | string    | null     |             |
+| catalogs.picture2        | string    | null     |             |
+| catalogs.titlePicture    | string    | null     |             |
+| catalogs.catalogProducts | int[]     | []       |             |
+| lastCatalogId            | int       | null     |             |

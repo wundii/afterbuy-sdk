@@ -10,13 +10,13 @@ Holds a list of payment services.
 | Wundii\AfterbuySdk\Dto\UpdateShopProducts\NewProduct | NewProduct |
 
 ## Properties
-| NewProducts                           | Type         | Default | Description |
-| ------------------------------------- | ------------ | ------- | ----------- |
-| **newProducts**                       | NewProduct[] | []      |             |
-| &nbsp; newProducts.productId          | int          | null    |             |
-| &nbsp; newProducts.productIdRequested | int          | null    |             |
-| &nbsp; newProducts.userProductId      | string       | null    |             |
-| &nbsp; newProducts.anrRequested       | int          | null    |             |
-| &nbsp; newProducts.eanRequested       | string       | null    |             |
-| &nbsp; newProducts.anr                | int          | null    |             |
-| &nbsp; newProducts.ean                | string       | null    |             |
+| NewProducts                    | Type         | Default | Description |
+| ------------------------------ | ------------ | ------- | ----------- |
+| **newProducts**                | NewProduct[] | []      |             |
+| newProducts.productId          | int          | null    |             |
+| newProducts.productIdRequested | int          | null    |             |
+| newProducts.userProductId      | string       | null    |             |
+| newProducts.anrRequested       | int          | null    |             |
+| newProducts.eanRequested       | string       | null    |             |
+| newProducts.anr                | int          | null    |             |
+| newProducts.ean                | string       | null    |             |
