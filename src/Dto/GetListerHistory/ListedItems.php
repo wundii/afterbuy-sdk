@@ -7,6 +7,7 @@ namespace Wundii\AfterbuySdk\Dto\GetListerHistory;
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 use Wundii\DataMapper\Enum\ApproachEnum;
 use Wundii\Structron\Attribute\Approach;
+use Wundii\Structron\Attribute\Description;
 use Wundii\Structron\Attribute\Structron;
 
 #[Structron('Hold a list of items that were listed in the Lister history.')]
@@ -17,9 +18,13 @@ final class ListedItems implements ResponseDtoInterface
      * @param ListedItem[] $listedItems
      */
     public function __construct(
+        #[Description('The total number of results')]
         private int $resultCount = 0,
+        #[Description('Indicates whether there are any other results')]
         private bool $hasMoreProducts = false,
+        #[Description('A list of items that were listed in the Lister history')]
         private array $listedItems = [],
+        #[Description('The ID of the last history entry, used for pagination')]
         private ?int $lastHistoryId = null,
     ) {
     }

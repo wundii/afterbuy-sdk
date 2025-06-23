@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetListerHistory;
 
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class ProductDetails implements ResponseDtoInterface
 {
@@ -12,8 +13,11 @@ final class ProductDetails implements ResponseDtoInterface
      * @param ProductDetailsCatalog[] $catalogs
      */
     public function __construct(
+        #[Description('Stammartikel name')]
         private string $name,
+        #[Description('Short description of the Stammartikel')]
         private ?string $shortDescription = null,
+        #[Description('Container with shop catalogs')]
         private array $catalogs = [],
     ) {
     }

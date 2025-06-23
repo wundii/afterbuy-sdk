@@ -5,15 +5,22 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetListerHistory;
 
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class ListedItem implements ResponseDtoInterface
 {
     public function __construct(
+        #[Description('Internal Afterbuy ID of the history entry')]
         private int $historyId,
+        #[Description('Item number. This article number is assigned after creating a listing on the respective platform')]
         private int $listingId,
+        #[Description('Item number. This article number is assigned after creating a listing on the respective platform')]
         private int $productId,
+        #[Description('')]
         private ?int $variationType = null,
+        #[Description('Container with details concerning the listing')]
         private ?ListingDetails $listingDetails = null,
+        #[Description('Container with product details for the listing')]
         private ?ProductDetails $productDetails = null,
     ) {
     }
