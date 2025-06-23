@@ -9,11 +9,11 @@ Hold a list of items that were listed in the Lister history.
 | -------------- | ------ |
 | Wundii\AfterbuySdk\Dto\GetListerHistory\ListedItem | ListedItem |
 | Wundii\AfterbuySdk\Dto\GetListerHistory\ListingDetails | ListingDetails |
-| Wundii\AfterbuySdk\Enum\ListingCountryEnum | ListingCountryEnum |
-| Wundii\AfterbuySdk\Enum\SellStatusEnum | SellStatusEnum |
-| Wundii\AfterbuySdk\Enum\EbayCurrencyEnum | EbayCurrencyEnum |
 | Wundii\AfterbuySdk\Dto\GetListerHistory\ProductDetails | ProductDetails |
 | Wundii\AfterbuySdk\Dto\GetListerHistory\ProductDetailsCatalog | ProductDetailsCatalog |
+| Wundii\AfterbuySdk\Enum\EbayCurrencyEnum | EbayCurrencyEnum |
+| Wundii\AfterbuySdk\Enum\ListingCountryEnum | ListingCountryEnum |
+| Wundii\AfterbuySdk\Enum\SellStatusEnum | SellStatusEnum |
 
 ## Properties
 | ListedItems                                     | Type                    | Default  | Description |

@@ -7,17 +7,17 @@ Holds a list of sold items.
 ## Class glossary
 | FullObjectName | Object |
 | -------------- | ------ |
+| Wundii\AfterbuySdk\Dto\GetSoldItems\BaseProductData | BaseProductData |
+| Wundii\AfterbuySdk\Dto\GetSoldItems\ChildProduct | ChildProduct |
+| Wundii\AfterbuySdk\Dto\GetSoldItems\ItemOriginalCurrency | ItemOriginalCurrency |
+| Wundii\AfterbuySdk\Dto\GetSoldItems\ShopProductDetails | ShopProductDetails |
 | Wundii\AfterbuySdk\Dto\GetSoldItems\SoldItem | SoldItem |
+| Wundii\AfterbuySdk\Enum\BaseProductTypeEnum | BaseProductTypeEnum |
 | Wundii\AfterbuySdk\Enum\FulfillmentServiceLevelEnum | FulfillmentServiceLevelEnum |
 | Wundii\AfterbuySdk\Enum\InternalItemTypeEnum | InternalItemTypeEnum |
-| Wundii\AfterbuySdk\Enum\TaxCollectedByEnum | TaxCollectedByEnum |
 | Wundii\AfterbuySdk\Enum\ItemPlatFormNameEnum | ItemPlatFormNameEnum |
-| Wundii\AfterbuySdk\Dto\GetSoldItems\ItemOriginalCurrency | ItemOriginalCurrency |
 | Wundii\AfterbuySdk\Enum\ItemPriceCodeEnum | ItemPriceCodeEnum |
-| Wundii\AfterbuySdk\Dto\GetSoldItems\ShopProductDetails | ShopProductDetails |
-| Wundii\AfterbuySdk\Dto\GetSoldItems\BaseProductData | BaseProductData |
-| Wundii\AfterbuySdk\Enum\BaseProductTypeEnum | BaseProductTypeEnum |
-| Wundii\AfterbuySdk\Dto\GetSoldItems\ChildProduct | ChildProduct |
+| Wundii\AfterbuySdk\Enum\TaxCollectedByEnum | TaxCollectedByEnum |
 
 ## Properties
 | SoldItems                                                 | Type                        | Default                           | Description |

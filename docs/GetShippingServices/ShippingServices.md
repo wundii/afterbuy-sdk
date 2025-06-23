@@ -7,8 +7,8 @@ Holds a list of shipping services.
 ## Class glossary
 | FullObjectName | Object |
 | -------------- | ------ |
-| Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingService | ShippingService |
 | Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingMethod | ShippingMethod |
+| Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingService | ShippingService |
 | Wundii\AfterbuySdk\Dto\GetShippingServices\WeightDefinitions | WeightDefinitions |
 
 ## Properties
