@@ -1,6 +1,6 @@
 # Wundii\AfterbuySdk\Dto\GetListerHistory\ListedItems
-- [Back to Structron Documentation](/var/www/afterbuy-sdk/docs//_Structron.md)
-- [Go to ListedItems.php](/var/www/afterbuy-sdk/src/Dto/GetListerHistory/ListedItems.php)
+- [Back to Structron Documentation](./../_Structron.md)
+- [Go to ListedItems.php](./../../src/Dto/GetListerHistory/ListedItems.php)
 
 Hold a list of items that were listed in the Lister history.
 

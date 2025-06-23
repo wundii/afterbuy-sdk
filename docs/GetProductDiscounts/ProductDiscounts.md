@@ -1,6 +1,6 @@
 # Wundii\AfterbuySdk\Dto\GetProductDiscounts\ProductDiscounts
-- [Back to Structron Documentation](/var/www/afterbuy-sdk/docs//_Structron.md)
-- [Go to ProductDiscounts.php](/var/www/afterbuy-sdk/src/Dto/GetProductDiscounts/ProductDiscounts.php)
+- [Back to Structron Documentation](./../_Structron.md)
+- [Go to ProductDiscounts.php](./../../src/Dto/GetProductDiscounts/ProductDiscounts.php)
 
 Holds a list of product discounts.
 

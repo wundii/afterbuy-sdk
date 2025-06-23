@@ -1,6 +1,6 @@
 # Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingInfo
-- [Back to Structron Documentation](/var/www/afterbuy-sdk/docs//_Structron.md)
-- [Go to ShippingInfo.php](/var/www/afterbuy-sdk/src/Dto/GetShippingCost/ShippingInfo.php)
+- [Back to Structron Documentation](./../_Structron.md)
+- [Go to ShippingInfo.php](./../../src/Dto/GetShippingCost/ShippingInfo.php)
 
 Holds the shipping information for a product or products.
 

@@ -1,6 +1,6 @@
 # Wundii\AfterbuySdk\Dto\GetVersion\Versions
-- [Back to Structron Documentation](/var/www/afterbuy-sdk/docs//_Structron.md)
-- [Go to Versions.php](/var/www/afterbuy-sdk/src/Dto/GetVersion/Versions.php)
+- [Back to Structron Documentation](./../_Structron.md)
+- [Go to Versions.php](./../../src/Dto/GetVersion/Versions.php)
 
 Holds a list of payment services.
 

@@ -1,6 +1,6 @@
 # Wundii\AfterbuySdk\Dto\GetStockInfo\Products
-- [Back to Structron Documentation](/var/www/afterbuy-sdk/docs//_Structron.md)
-- [Go to Products.php](/var/www/afterbuy-sdk/src/Dto/GetStockInfo/Products.php)
+- [Back to Structron Documentation](./../_Structron.md)
+- [Go to Products.php](./../../src/Dto/GetStockInfo/Products.php)
 
 Holds a list of payment services.
 

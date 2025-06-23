@@ -1,6 +1,6 @@
 # Wundii\AfterbuySdk\Dto\GetShippingServices\ShippingServices
-- [Back to Structron Documentation](/var/www/afterbuy-sdk/docs//_Structron.md)
-- [Go to ShippingServices.php](/var/www/afterbuy-sdk/src/Dto/GetShippingServices/ShippingServices.php)
+- [Back to Structron Documentation](./../_Structron.md)
+- [Go to ShippingServices.php](./../../src/Dto/GetShippingServices/ShippingServices.php)
 
 Holds a list of shipping services.
 

@@ -1,6 +1,6 @@
 # Wundii\AfterbuySdk\Dto\GetAfterbuyTime\AfterbuyTime
-- [Back to Structron Documentation](/var/www/afterbuy-sdk/docs//_Structron.md)
-- [Go to AfterbuyTime.php](/var/www/afterbuy-sdk/src/Dto/GetAfterbuyTime/AfterbuyTime.php)
+- [Back to Structron Documentation](./../_Structron.md)
+- [Go to AfterbuyTime.php](./../../src/Dto/GetAfterbuyTime/AfterbuyTime.php)
 
 A simple DTO to hold the Afterbuy time and universal time stamp.
 

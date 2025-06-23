@@ -1,6 +1,6 @@
 # Wundii\AfterbuySdk\Dto\GetUserDefinedFlags\UserDefinedFlags
-- [Back to Structron Documentation](/var/www/afterbuy-sdk/docs//_Structron.md)
-- [Go to UserDefinedFlags.php](/var/www/afterbuy-sdk/src/Dto/GetUserDefinedFlags/UserDefinedFlags.php)
+- [Back to Structron Documentation](./../_Structron.md)
+- [Go to UserDefinedFlags.php](./../../src/Dto/GetUserDefinedFlags/UserDefinedFlags.php)
 
 Holds a list of payment services.
 

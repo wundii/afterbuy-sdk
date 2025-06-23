@@ -1,6 +1,6 @@
 # Wundii\AfterbuySdk\Dto\GetShopCatalogs\Catalogs
-- [Back to Structron Documentation](/var/www/afterbuy-sdk/docs//_Structron.md)
-- [Go to Catalogs.php](/var/www/afterbuy-sdk/src/Dto/GetShopCatalogs/Catalogs.php)
+- [Back to Structron Documentation](./../_Structron.md)
+- [Go to Catalogs.php](./../../src/Dto/GetShopCatalogs/Catalogs.php)
 
 Holds a list of catalogs.
 

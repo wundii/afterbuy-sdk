@@ -1,6 +1,6 @@
 # Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplates
-- [Back to Structron Documentation](/var/www/afterbuy-sdk/docs//_Structron.md)
-- [Go to MailTemplates.php](/var/www/afterbuy-sdk/src/Dto/GetMailTemplates/MailTemplates.php)
+- [Back to Structron Documentation](./../_Structron.md)
+- [Go to MailTemplates.php](./../../src/Dto/GetMailTemplates/MailTemplates.php)
 
 Hold a list of mail templates.
 

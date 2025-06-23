@@ -1,6 +1,6 @@
 # Wundii\AfterbuySdk\Dto\GetSoldItems\SoldItems
-- [Back to Structron Documentation](/var/www/afterbuy-sdk/docs//_Structron.md)
-- [Go to SoldItems.php](/var/www/afterbuy-sdk/src/Dto/GetSoldItems/SoldItems.php)
+- [Back to Structron Documentation](./../_Structron.md)
+- [Go to SoldItems.php](./../../src/Dto/GetSoldItems/SoldItems.php)
 
 Holds a list of sold items.
 
