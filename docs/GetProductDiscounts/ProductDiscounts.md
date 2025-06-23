@@ -4,6 +4,12 @@
 
 Holds a list of product discounts.
 
+## Class glossary
+| FullObjectName | Object |
+| -------------- | ------ |
+| Wundii\AfterbuySdk\Dto\GetProductDiscounts\ProductDiscount | ProductDiscount |
+
+## Properties
 | ProductDiscounts                                     | Type              | Default  | Description |
 | ---------------------------------------------------- | ----------------- | -------- | ----------- |
 | **productDiscounts**                                 | ProductDiscount[] | []       |             |

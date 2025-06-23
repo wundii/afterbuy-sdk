@@ -4,6 +4,46 @@
 
 Holds a list of payment services.
 
+## Class glossary
+| FullObjectName | Object |
+| -------------- | ------ |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\Product | Product |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\ProductIdent | ProductIdent |
+| Wundii\AfterbuySdk\Enum\BaseProductTypeEnum | BaseProductTypeEnum |
+| Wundii\AfterbuySdk\Enum\BasePriceFactorEnum | BasePriceFactorEnum |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\ScaledDiscount | ScaledDiscount |
+| Wundii\AfterbuySdk\Enum\CountryOfOriginEnum | CountryOfOriginEnum |
+| Wundii\AfterbuySdk\Enum\ConditionEnum | ConditionEnum |
+| Wundii\AfterbuySdk\Enum\EnergyClassEnum | EnergyClassEnum |
+| Wundii\AfterbuySdk\Enum\GenderEnum | GenderEnum |
+| Wundii\AfterbuySdk\Enum\AgeGroupEnum | AgeGroupEnum |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\Economicoperators | Economicoperators |
+| Wundii\AfterbuySdk\Enum\UpdateActionEconomicoperatorsEnum | UpdateActionEconomicoperatorsEnum |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\Skus | Skus |
+| Wundii\AfterbuySdk\Enum\UpdateActionSkusEnum | UpdateActionSkusEnum |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddCatalogs | AddCatalogs |
+| Wundii\AfterbuySdk\Enum\UpdateActionAddCatalogsEnum | UpdateActionAddCatalogsEnum |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddCatalog | AddCatalog |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddAttributes | AddAttributes |
+| Wundii\AfterbuySdk\Enum\UpdateActionAttributesEnum | UpdateActionAttributesEnum |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddAttribut | AddAttribut |
+| Wundii\AfterbuySdk\Enum\AttributTypEnum | AttributTypEnum |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddBaseProducts | AddBaseProducts |
+| Wundii\AfterbuySdk\Enum\UpdateActionAddBaseProductEnum | UpdateActionAddBaseProductEnum |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\AddBaseProduct | AddBaseProduct |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\Variation | Variation |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\VariationValue | VariationValue |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\PartsProperties | PartsProperties |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\PartsProperty | PartsProperty |
+| Wundii\AfterbuySdk\Enum\PropertyNameEnum | PropertyNameEnum |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\AdditionalPriceUpdate | AdditionalPriceUpdate |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\AdditionalDescriptionField | AdditionalDescriptionField |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\ProductPicture | ProductPicture |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\ProductPictureChild | ProductPictureChild |
+| Wundii\AfterbuySdk\Enum\PictureTypEnum | PictureTypEnum |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\Feature | Feature |
+
+## Properties
 | Products                                                          | Type                              | Default  | Description |
 | ----------------------------------------------------------------- | --------------------------------- | -------- | ----------- |
 | **products**                                                      | Product[]                         | []       |             |

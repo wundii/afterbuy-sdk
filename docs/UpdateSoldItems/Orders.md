@@ -4,6 +4,19 @@
 
 Holds a list of payment services.
 
+## Class glossary
+| FullObjectName | Object |
+| -------------- | ------ |
+| Wundii\AfterbuySdk\Dto\UpdateSoldItems\Order | Order |
+| Wundii\AfterbuySdk\Dto\UpdateSoldItems\BuyerInfo | BuyerInfo |
+| Wundii\AfterbuySdk\Dto\UpdateSoldItems\ShippingAddress | ShippingAddress |
+| Wundii\AfterbuySdk\Enum\CountryIsoEnum | CountryIsoEnum |
+| Wundii\AfterbuySdk\Dto\UpdateSoldItems\PaymentInfo | PaymentInfo |
+| Wundii\AfterbuySdk\Dto\UpdateSoldItems\ShippingInfo | ShippingInfo |
+| Wundii\AfterbuySdk\Dto\UpdateSoldItems\ParcelLabel | ParcelLabel |
+| Wundii\AfterbuySdk\Dto\UpdateSoldItems\VorgangsInfo | VorgangsInfo |
+
+## Properties
 | Orders                                                  | Type              | Default  | Description |
 | ------------------------------------------------------- | ----------------- | -------- | ----------- |
 | **orders**                                              | Order[]           | []       |             |

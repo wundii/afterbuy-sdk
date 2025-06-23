@@ -4,6 +4,12 @@
 
 Hold a list of mail templates.
 
+## Class glossary
+| FullObjectName | Object |
+| -------------- | ------ |
+| Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplate | MailTemplate |
+
+## Properties
 | MailTemplates                        | Type           | Default  | Description |
 | ------------------------------------ | -------------- | -------- | ----------- |
 | **mailTemplates**                    | MailTemplate[] | required |             |

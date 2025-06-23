@@ -4,6 +4,12 @@
 
 Holds a list of catalogs.
 
+## Class glossary
+| FullObjectName | Object |
+| -------------- | ------ |
+| Wundii\AfterbuySdk\Dto\GetShopCatalogs\Catalog | Catalog |
+
+## Properties
 | Catalogs                        | Type      | Default  | Description |
 | ------------------------------- | --------- | -------- | ----------- |
 | hasMoreCatalogs                 | bool      | false    |             |

@@ -4,6 +4,7 @@
 
 A simple DTO to hold the Afterbuy time and universal time stamp.
 
+## Properties
 | AfterbuyTime               | Type              | Default  | Description                   |
 | -------------------------- | ----------------- | -------- | ----------------------------- |
 | afterbuyTimeStamp          | DateTimeInterface | required | Local time stamp of Afterbuy. |

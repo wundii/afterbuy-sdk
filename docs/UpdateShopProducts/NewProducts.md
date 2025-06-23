@@ -4,6 +4,12 @@
 
 Holds a list of payment services.
 
+## Class glossary
+| FullObjectName | Object |
+| -------------- | ------ |
+| Wundii\AfterbuySdk\Dto\UpdateShopProducts\NewProduct | NewProduct |
+
+## Properties
 | NewProducts                           | Type         | Default | Description |
 | ------------------------------------- | ------------ | ------- | ----------- |
 | **newProducts**                       | NewProduct[] | []      |             |

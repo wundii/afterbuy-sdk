@@ -4,6 +4,12 @@
 
 Holds a list of payment services.
 
+## Class glossary
+| FullObjectName | Object |
+| -------------- | ------ |
+| Wundii\AfterbuySdk\Dto\GetVersion\Version | Version |
+
+## Properties
 | Versions                    | Type      | Default  | Description |
 | --------------------------- | --------- | -------- | ----------- |
 | **versions**                | Version[] | []       |             |

@@ -4,6 +4,12 @@
 
 Holds a list of payment services.
 
+## Class glossary
+| FullObjectName | Object |
+| -------------- | ------ |
+| Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingMethods | ShippingMethods |
+
+## Properties
 | ShippingService                                  | Type              | Default  | Description |
 | ------------------------------------------------ | ----------------- | -------- | ----------- |
 | shippingServiceName                              | string            | required |             |

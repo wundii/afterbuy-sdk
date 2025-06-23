@@ -4,6 +4,34 @@
 
 Holds a list of payment services.
 
+## Class glossary
+| FullObjectName | Object |
+| -------------- | ------ |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\Product | Product |
+| Wundii\AfterbuySdk\Enum\BaseProductFlagEnum | BaseProductFlagEnum |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\BaseProduct | BaseProduct |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\BaseProductsRelationData | BaseProductsRelationData |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\EbayVariationData | EbayVariationData |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\ScaledDiscount | ScaledDiscount |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\Feature | Feature |
+| Wundii\AfterbuySdk\Enum\CountryOfOriginEnum | CountryOfOriginEnum |
+| Wundii\AfterbuySdk\Enum\ConditionEnum | ConditionEnum |
+| Wundii\AfterbuySdk\Enum\AgeGroupEnum | AgeGroupEnum |
+| Wundii\AfterbuySdk\Enum\GenderEnum | GenderEnum |
+| Wundii\AfterbuySdk\Enum\EnergyClassEnum | EnergyClassEnum |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\ProductPicture | ProductPicture |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\ProductPictureChild | ProductPictureChild |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\Attribut | Attribut |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\PartsProperties | PartsProperties |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\PartsProperty | PartsProperty |
+| Wundii\AfterbuySdk\Enum\PropertyNameEnum | PropertyNameEnum |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\AdditionalDescriptionField | AdditionalDescriptionField |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\AdditionalPrice | AdditionalPrice |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\EconomicOperator | EconomicOperator |
+| Wundii\AfterbuySdk\Enum\CountryIsoEnum | CountryIsoEnum |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\PaginationResult | PaginationResult |
+
+## Properties
 | Products                                                         | Type                         | Default                     | Description |
 | ---------------------------------------------------------------- | ---------------------------- | --------------------------- | ----------- |
 | hasMoreProducts                                                  | bool                         | false                       |             |

@@ -4,6 +4,12 @@
 
 Holds the shipping information for a product or products.
 
+## Class glossary
+| FullObjectName | Object |
+| -------------- | ------ |
+| Wundii\AfterbuySdk\Enum\CountryIsoEnum | CountryIsoEnum |
+
+## Properties
 | ShippingInfo   | Type           | Default  | Description |
 | -------------- | -------------- | -------- | ----------- |
 | productIds     | int[]          | required |             |

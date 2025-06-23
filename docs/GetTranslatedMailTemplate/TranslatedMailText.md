@@ -4,6 +4,7 @@
 
 Holds a list of payment services.
 
+## Properties
 | TranslatedMailText    | Type   | Default  | Description |
 | --------------------- | ------ | -------- | ----------- |
 | translatedMailSubject | string | required |             |

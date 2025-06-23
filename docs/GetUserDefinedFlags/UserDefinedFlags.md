@@ -4,6 +4,12 @@
 
 Holds a list of payment services.
 
+## Class glossary
+| FullObjectName | Object |
+| -------------- | ------ |
+| Wundii\AfterbuySdk\Dto\GetUserDefinedFlags\UserDefinedFlag | UserDefinedFlag |
+
+## Properties
 | UserDefinedFlags               | Type              | Default  | Description |
 | ------------------------------ | ----------------- | -------- | ----------- |
 | **userDefinedFlags**           | UserDefinedFlag[] | []       |             |

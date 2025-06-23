@@ -4,6 +4,12 @@
 
 Holds a list of payment services.
 
+## Class glossary
+| FullObjectName | Object |
+| -------------- | ------ |
+| Wundii\AfterbuySdk\Dto\GetPaymentServices\PaymentService | PaymentService |
+
+## Properties
 | PaymentServices                             | Type             | Default  | Description |
 | ------------------------------------------- | ---------------- | -------- | ----------- |
 | **paymentService**                          | PaymentService[] | required |             |
