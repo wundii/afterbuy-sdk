@@ -4,11 +4,11 @@
 
 Hold a list of mail templates.
 
-| MailTemplates                        | Type                                                   | Default  | Description |
-| ------------------------------------ | ------------------------------------------------------ | -------- | ----------- |
-| **mailTemplates**                    | Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplate[] | required |             |
-| &nbsp; mailTemplates.templateId      | int                                                    | required |             |
-| &nbsp; mailTemplates.templateName    | string                                                 | null     |             |
-| &nbsp; mailTemplates.templateSubject | string                                                 | null     |             |
-| &nbsp; mailTemplates.templateText    | string                                                 | null     |             |
-| &nbsp; mailTemplates.templateHtml    | bool                                                   | false    |             |
+| MailTemplates                        | Type           | Default  | Description |
+| ------------------------------------ | -------------- | -------- | ----------- |
+| **mailTemplates**                    | MailTemplate[] | required |             |
+| &nbsp; mailTemplates.templateId      | int            | required |             |
+| &nbsp; mailTemplates.templateName    | string         | null     |             |
+| &nbsp; mailTemplates.templateSubject | string         | null     |             |
+| &nbsp; mailTemplates.templateText    | string         | null     |             |
+| &nbsp; mailTemplates.templateHtml    | bool           | false    |             |

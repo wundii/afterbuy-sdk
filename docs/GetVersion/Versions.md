@@ -4,9 +4,9 @@
 
 Holds a list of payment services.
 
-| Versions                    | Type                                        | Default  | Description |
-| --------------------------- | ------------------------------------------- | -------- | ----------- |
-| **versions**                | Wundii\AfterbuySdk\Dto\GetVersion\Version[] | []       |             |
-| &nbsp; versions.id          | int                                         | required |             |
-| &nbsp; versions.name        | string                                      | required |             |
-| &nbsp; versions.description | string                                      | required |             |
+| Versions                    | Type      | Default  | Description |
+| --------------------------- | --------- | -------- | ----------- |
+| **versions**                | Version[] | []       |             |
+| &nbsp; versions.id          | int       | required |             |
+| &nbsp; versions.name        | string    | required |             |
+| &nbsp; versions.description | string    | required |             |

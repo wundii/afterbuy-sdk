@@ -4,9 +4,9 @@
 
 Holds a list of payment services.
 
-| UserDefinedFlags               | Type                                                         | Default  | Description |
-| ------------------------------ | ------------------------------------------------------------ | -------- | ----------- |
-| **userDefinedFlags**           | Wundii\AfterbuySdk\Dto\GetUserDefinedFlags\UserDefinedFlag[] | []       |             |
-| &nbsp; userDefinedFlags.name   | string                                                       | required |             |
-| &nbsp; userDefinedFlags.color  | string                                                       | required |             |
-| &nbsp; userDefinedFlags.flagId | int                                                          | required |             |
+| UserDefinedFlags               | Type              | Default  | Description |
+| ------------------------------ | ----------------- | -------- | ----------- |
+| **userDefinedFlags**           | UserDefinedFlag[] | []       |             |
+| &nbsp; userDefinedFlags.name   | string            | required |             |
+| &nbsp; userDefinedFlags.color  | string            | required |             |
+| &nbsp; userDefinedFlags.flagId | int               | required |             |

@@ -4,12 +4,12 @@
 
 Holds the shipping information for a product or products.
 
-| ShippingInfo   | Type                                   | Default  | Description |
-| -------------- | -------------------------------------- | -------- | ----------- |
-| productIds     | int[]                                  | required |             |
-| itemsCount     | int                                    | required |             |
-| itemsWeight    | float                                  | required |             |
-| itemsPrice     | float                                  | required |             |
-| countryIsoEnum | Wundii\AfterbuySdk\Enum\CountryIsoEnum | null     |             |
-| shippingGroup  | string                                 | null     |             |
-| PostalCode     | string                                 | null     |             |
+| ShippingInfo   | Type           | Default  | Description |
+| -------------- | -------------- | -------- | ----------- |
+| productIds     | int[]          | required |             |
+| itemsCount     | int            | required |             |
+| itemsWeight    | float          | required |             |
+| itemsPrice     | float          | required |             |
+| countryIsoEnum | CountryIsoEnum | null     |             |
+| shippingGroup  | string         | null     |             |
+| PostalCode     | string         | null     |             |

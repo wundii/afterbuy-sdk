@@ -4,13 +4,13 @@
 
 Holds a list of payment services.
 
-| ShippingService                                  | Type                                                     | Default  | Description |
-| ------------------------------------------------ | -------------------------------------------------------- | -------- | ----------- |
-| shippingServiceName                              | string                                                   | required |             |
-| shippingServicePriority                          | string                                                   | required |             |
-| **shippingMethods**                              | Wundii\AfterbuySdk\Dto\GetShippingCost\ShippingMethods[] | []       |             |
-| &nbsp; shippingMethods.shippingCost              | float                                                    | required |             |
-| &nbsp; shippingMethods.shippingMethod            | string                                                   | required |             |
-| &nbsp; shippingMethods.shippingMethodId          | int                                                      | required |             |
-| &nbsp; shippingMethods.shippingTaxRate           | float                                                    | null     |             |
-| &nbsp; shippingMethods.shippingMethodDescription | string                                                   | null     |             |
+| ShippingService                                  | Type              | Default  | Description |
+| ------------------------------------------------ | ----------------- | -------- | ----------- |
+| shippingServiceName                              | string            | required |             |
+| shippingServicePriority                          | string            | required |             |
+| **shippingMethods**                              | ShippingMethods[] | []       |             |
+| &nbsp; shippingMethods.shippingCost              | float             | required |             |
+| &nbsp; shippingMethods.shippingMethod            | string            | required |             |
+| &nbsp; shippingMethods.shippingMethodId          | int               | required |             |
+| &nbsp; shippingMethods.shippingTaxRate           | float             | null     |             |
+| &nbsp; shippingMethods.shippingMethodDescription | string            | null     |             |
