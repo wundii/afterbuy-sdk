@@ -9,8 +9,8 @@ use Wundii\DataMapper\Enum\ApproachEnum;
 use Wundii\Structron\Attribute\Approach;
 use Wundii\Structron\Attribute\Structron;
 
-// #[Structron('Holds a list of payment services.')]
-// #[Approach(ApproachEnum::CONSTRUCTOR)]
+#[Structron('Holds a list of payment services.')]
+#[Approach(ApproachEnum::CONSTRUCTOR)]
 final class CatalogNotDeleteds implements ResponseDtoInterface
 {
     /**
