@@ -1,5 +1,6 @@
 {
   "name": "wundii/afterbuy-sdk",
+  "type": "library",
   "description": "Modern PHP 8.2+ Afterbuy Programming Interface Software Development Kit",
   "keywords": ["afterbuy","sdk"],
   "license": "MIT",
@@ -63,40 +64,18 @@
       "@structron",
       "@unittest"
     ],
-    "rector-dry": [
-      "php vendor/bin/rector process --dry-run --ansi"
-    ],
-    "rector-apply": [
-      "php vendor/bin/rector process --ansi"
-    ],
-    "ecs-dry": [
-      "php vendor/bin/ecs check"
-    ],
-    "ecs-apply": [
-      "php vendor/bin/ecs check --fix"
-    ],
-    "phpstan": [
-      "php vendor/bin/phpstan analyse"
-    ],
-    "unittest": [
-      "php vendor/bin/phpunit --configuration phpunit.xml"
-    ],
-    "cache-clear": [
-      "rm -R ./cache/* -f"
-    ],
-    "phplint": [
-      "php vendor/bin/phplint"
-    ],
-    "structron": [
-      "php vendor/bin/structron"
-    ],
-    "phpbench": [
-      "php vendor/bin/phpbench run --report=aggregate"
-    ],
-    "coverage": [
-      "php vendor/bin/phpunit --coverage-clover coverage.xml"
-    ]
+    "cache-clear": "rm -R ./cache/* -f",
+    "coverage": "php vendor/bin/phpunit --coverage-clover coverage.xml",
+    "ecs-apply": "php vendor/bin/ecs check --fix",
+    "ecs-dry": "php vendor/bin/ecs check",
+    "phpbench": "php vendor/bin/phpbench run --report=aggregate",
+    "phplint": "php vendor/bin/phplint",
+    "phpstan": "php vendor/bin/phpstan analyse",
+    "rector-apply": "php vendor/bin/rector process --ansi",
+    "rector-dry": "php vendor/bin/rector process --dry-run --ansi",
+    "structron": "php vendor/bin/structron",
+    "unittest": "php vendor/bin/phpunit --configuration phpunit.xml"
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "prefer-stable": true
 }
