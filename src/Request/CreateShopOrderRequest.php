@@ -9,7 +9,6 @@ use Wundii\AfterbuySdk\Enum\Core\ApiSourceEnum;
 use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\RequestDtoArrayInterface;
 use Wundii\AfterbuySdk\Interface\RequestInterface;
 use Wundii\AfterbuySdk\Response\CreateShopOrderResponse;
 
@@ -37,7 +36,7 @@ final readonly class CreateShopOrderRequest implements RequestInterface
         return null;
     }
 
-    public function requestDto(): RequestDtoArrayInterface
+    public function requestDto(): Order
     {
         return $this->order;
     }

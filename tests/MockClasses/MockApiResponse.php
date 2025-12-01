@@ -49,7 +49,7 @@ class MockApiResponse implements HttpClientResponseInterface
     {
     }
 
-    public function getInfo(string $type = null): mixed
+    public function getInfo(?string $type = null): mixed
     {
         return null;
     }

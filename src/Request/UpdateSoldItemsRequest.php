@@ -13,7 +13,6 @@ use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\RequestMethodEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\AfterbuyGlobalInterface;
-use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Interface\RequestInterface;
 use Wundii\AfterbuySdk\Response\UpdateSoldItemsResponse;
 
@@ -53,7 +52,7 @@ final readonly class UpdateSoldItemsRequest implements RequestInterface
         return $string;
     }
 
-    public function requestDto(): RequestDtoXmlInterface
+    public function requestDto(): Orders
     {
         return new Orders(
             $this->orders

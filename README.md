@@ -119,7 +119,7 @@ In preparation for the release of version 1.0.
 - [x] GetListerHistory, test XML returns
 - [x] GetMailTemplates, test XML returns
 - [x] GetPaymentServices, test XML returns
-- [ ] <s>GetProductDiscounts, test XML returns</s>
+- [x] <s>GetProductDiscounts, test XML returns</s>
 - [x] GetShippingCost, test XML returns
 - [x] GetShippingServices, test XML returns
 - [x] GetShopCatalogs, test XML returns

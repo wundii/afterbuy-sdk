@@ -49,7 +49,7 @@ class SandboxResponse implements HttpClientResponseInterface
     {
     }
 
-    public function getInfo(string $type = null): null
+    public function getInfo(?string $type = null): null
     {
         return null;
     }
