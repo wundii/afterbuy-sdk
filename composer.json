@@ -30,8 +30,8 @@
     "phpstan/phpstan-strict-rules": "2.0.7",
     "phpunit/phpunit": "11.5.45",
     "rector/rector": "2.2.10",
-    "symfony/intl": "8.0.0",
-    "symfony/var-dumper": "8.0.0",
+    "symfony/intl": "7.4.0 || 8.0.0",
+    "symfony/var-dumper": "7.4.0 || 8.0.0",
     "symplify/easy-coding-standard": "12.6.2",
     "wundii/phplint": "0.3.3",
     "wundii/structron": "1.0.4"
