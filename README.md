@@ -113,32 +113,6 @@ $afterbuy->runRequest(
 );
 ```
 
-## The road to Version 1.0
-In preparation for the release of version 1.0.
-- [x] GetAfterbuyTime, test XML returns
-- [x] GetListerHistory, test XML returns
-- [x] GetMailTemplates, test XML returns
-- [x] GetPaymentServices, test XML returns
-- [x] <s>GetProductDiscounts, test XML returns</s>
-- [x] GetShippingCost, test XML returns
-- [x] GetShippingServices, test XML returns
-- [x] GetShopCatalogs, test XML returns
-- [x] GetShopProducts, test XML returns
-- [x] GetSoldItems, test XML returns
-- [x] GetStockInfo, test XML returns
-- [x] GetTranslatedMailTemplate, test XML returns
-- [x] UpdateCatalogs, test XML returns
-- [x] UpdateShopProducts, test XML returns
-- [x] UpdateSoldItems, test XML returns
-- [x] DetailLevelEnum combination
-- [x] AfterbuyGlobal namespace refactoring
-- [x] AfterbuyGlobalInterface implementation
-- [x] Sandbox and Production environment testing
-- [x] Unittest for the Validator classes
-- [x] first important asserts for the UpdateRequest classes
-- [x] shop api (create afterbuy order) implementation
-- [ ] final productive testing
-
 ## Usage
 
 ```php
