@@ -18,23 +18,23 @@
     "ext-simplexml": "*",
     "ext-xml": "*",
     "psr/log": "^1.0 || ^2.0 || ^3.0",
-    "symfony/dependency-injection" : "^6.0 || ^7.0",
-    "symfony/http-client": "^6.0 || ^7.0",
-    "symfony/property-access": "^6.0 || ^7.0",
-    "symfony/validator": "^6.0 || ^7.0",
+    "symfony/dependency-injection" : "^6.0 || ^7.0 || ^8.0",
+    "symfony/http-client": "^6.0 || ^7.0 || ^8.0",
+    "symfony/property-access": "^6.0 || ^7.0 || ^8.0",
+    "symfony/validator": "^6.0 || ^7.0 || ^8.0",
     "wundii/data-mapper": "^1.3.5"
   },
   "require-dev": {
-    "phpbench/phpbench": "^1.4",
-    "phpstan/phpstan": "^2.1",
-    "phpstan/phpstan-strict-rules": "^2.0",
-    "phpunit/phpunit": "^11.5",
-    "rector/rector": "^2.0",
-    "symfony/intl": "^7.0",
-    "symfony/var-dumper": "^7.0",
-    "symplify/easy-coding-standard": "^12.5",
-    "wundii/phplint": "^0.3",
-    "wundii/structron": "^1.0"
+    "phpbench/phpbench": "1.4.3",
+    "phpstan/phpstan": "2.1.32",
+    "phpstan/phpstan-strict-rules": "2.0.7",
+    "phpunit/phpunit": "11.5.45",
+    "rector/rector": "2.2.10",
+    "symfony/intl": "8.0.0",
+    "symfony/var-dumper": "8.0.0",
+    "symplify/easy-coding-standard": "12.6.2",
+    "wundii/phplint": "0.3.3",
+    "wundii/structron": "1.0.4"
   },
   "autoload": {
     "psr-4": {
