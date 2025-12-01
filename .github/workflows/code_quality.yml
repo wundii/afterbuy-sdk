@@ -79,12 +79,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [ 8.2, 8.3, 8.4 ]
+        version: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
     steps:
       - name: PHP-Setup
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+          php-version: ${{ matrix.version }}
 
       - name: Checkout
         uses: actions/checkout@v4
