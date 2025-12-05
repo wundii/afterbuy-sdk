@@ -52,6 +52,45 @@ class GetProductDiscountsTest extends TestCase
 
         $this->assertInstanceOf(GetProductDiscountsResponse::class, $response);
         $this->assertCount(1, $productDiscounts->getProductDiscounts());
-        $this->assertInstanceOf(ProductDiscount::class, $productDiscounts->getProductDiscounts()[0]);
+
+        $productDiscount = $productDiscounts->getProductDiscounts()[0];
+        $this->assertInstanceOf(ProductDiscount::class, $productDiscount);
+        $this->assertSame(1234567, $productDiscount->getProductId());
+        $this->assertSame(3, $productDiscount->getControlId());
+        $this->assertSame(0.0, $productDiscount->getAmountDiscount());
+        $this->assertSame(25.0, $productDiscount->getPercentDiscount());
+        $this->assertEquals(new DateTime('2015-12-11 00:00:00'), $productDiscount->getStartDate());
+        $this->assertEquals(new DateTime('2025-10-30 23:59:59'), $productDiscount->getEndDate());
+        $this->assertEquals(new DateTime('2022-02-01 14:28:03'), $productDiscount->getItemLastUserModificationDate());
+        $this->assertSame('UVP', $productDiscount->getPriceType());
+        $this->assertSame('Jetzt', $productDiscount->getNewPriceType());
+        $this->assertSame(1967589, $productDiscount->getTimeLeftInMinutes());
+    }
+
+    public function testCreateConstructor(): void
+    {
+        $productDiscount = new ProductDiscount(
+            1234567,
+            3,
+            0.0,
+            25.0,
+            new DateTime('2015-12-11 00:00:00'),
+            new DateTime('2025-10-30 23:59:59'),
+            new DateTime('2022-02-01 14:28:03'),
+            'UVP',
+            'Jetzt',
+            1967589
+        );
+
+        $this->assertSame(1234567, $productDiscount->getProductId());
+        $this->assertSame(3, $productDiscount->getControlId());
+        $this->assertSame(0.0, $productDiscount->getAmountDiscount());
+        $this->assertSame(25.0, $productDiscount->getPercentDiscount());
+        $this->assertEquals(new DateTime('2015-12-11 00:00:00'), $productDiscount->getStartDate());
+        $this->assertEquals(new DateTime('2025-10-30 23:59:59'), $productDiscount->getEndDate());
+        $this->assertEquals(new DateTime('2022-02-01 14:28:03'), $productDiscount->getItemLastUserModificationDate());
+        $this->assertSame('UVP', $productDiscount->getPriceType());
+        $this->assertSame('Jetzt', $productDiscount->getNewPriceType());
+        $this->assertSame(1967589, $productDiscount->getTimeLeftInMinutes());
     }
 }

@@ -93,42 +93,60 @@ class GetShopCatalogsTest extends TestCase
         /** @var Catalogs $catalogs */
         $catalogs = $response->getResult();
 
+        $expectedCatalogs = [
+            new Catalog(
+                catalogId: 1010101,
+                name: 'TestName',
+                level: 0,
+                position: 0,
+                description: 'Testbeschreibung',
+                parnetId: 0,
+                additionalText: 'Zusatztext',
+                show: true,
+                picture1: 'picture1.jpg',
+                picture2: 'picture2.jpg',
+                titlePicture: 'picture3.jpg',
+                catalogProducts: [
+                    1737852,
+                    1915685,
+                ],
+            ),
+            new Catalog(
+                catalogId: 1110101,
+                name: 'TestName1',
+                level: 0,
+                position: 0,
+                description: 'Testbeschreibung1',
+                parnetId: 0,
+                additionalText: 'Zusatztext1',
+                show: true,
+            ),
+        ];
         $expected = new Catalogs(
             hasMoreCatalogs: false,
-            catalogs: [
-                new Catalog(
-                    catalogId: 1010101,
-                    name: 'TestName',
-                    level: 0,
-                    position: 0,
-                    description: 'Testbeschreibung',
-                    parnetId: 0,
-                    additionalText: 'Zusatztext',
-                    show: true,
-                    picture1: 'picture1.jpg',
-                    picture2: 'picture2.jpg',
-                    titlePicture: 'picture3.jpg',
-                    catalogProducts: [
-                        1737852,
-                        1915685,
-                    ],
-                ),
-                new Catalog(
-                    catalogId: 1110101,
-                    name: 'TestName1',
-                    level: 0,
-                    position: 0,
-                    description: 'Testbeschreibung1',
-                    parnetId: 0,
-                    additionalText: 'Zusatztext1',
-                    show: true,
-                ),
-            ],
+            catalogs: $expectedCatalogs,
             lastCatalogId: 1110101,
         );
 
         $this->assertInstanceOf(GetShopCatalogsResponse::class, $response);
         $this->assertEquals($expected, $catalogs);
+        $this->assertEquals($expectedCatalogs, $catalogs->getCatalogs());
+        $this->assertSame(1110101, $catalogs->getLastCatalogId());
+
+        $catalog = $catalogs->getCatalogs()[0];
+        $this->assertInstanceOf(Catalog::class, $catalog);
+        $this->assertEquals(1010101, $catalog->getCatalogId());
+        $this->assertEquals('TestName', $catalog->getName());
+        $this->assertEquals(0, $catalog->getLevel());
+        $this->assertEquals(0, $catalog->getPosition());
+        $this->assertEquals('Testbeschreibung', $catalog->getDescription());
+        $this->assertEquals(0, $catalog->getParnetId());
+        $this->assertEquals('Zusatztext', $catalog->getAdditionalText());
+        $this->assertTrue($catalog->isShow());
+        $this->assertEquals('picture1.jpg', $catalog->getPicture1());
+        $this->assertEquals('picture2.jpg', $catalog->getPicture2());
+        $this->assertEquals('picture3.jpg', $catalog->getTitlePicture());
+        $this->assertEquals([1737852, 1915685], $catalog->getCatalogProducts());
     }
 
     public function testShopCatalogsSerializeToUpdateCatalogs(): void

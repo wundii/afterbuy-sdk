@@ -363,6 +363,10 @@ class CreateShopOrderTest extends TestCase
             9876543,
             10267,
         );
+        $this->assertSame(1234567, $expectedShopResponse->getAid());
+        $this->assertSame('1868E8AB-6D6F-49EB-8C6A-4B6325DFF190', $expectedShopResponse->getUid());
+        $this->assertSame(9876543, $expectedShopResponse->getKundenNr());
+        $this->assertSame(10267, $expectedShopResponse->getEkundenNr());
 
         $this->assertInstanceOf(CreateShopOrderResponse::class, $response);
         $this->assertEquals(CallStatusEnum::SUCCESS, $response->getCallStatus());

@@ -36,6 +36,24 @@ class GetUserDefinedFlagsTest extends TestCase
 
         $this->assertInstanceOf(GetUserDefinedFlagsResponse::class, $response);
         $this->assertCount(6, $userDefinedFlags->getUserDefinedFlags());
-        $this->assertInstanceOf(UserDefinedFlag::class, $userDefinedFlags->getUserDefinedFlags()[0]);
+
+        $userDefinedFlag = $userDefinedFlags->getUserDefinedFlags()[0];
+        $this->assertInstanceOf(UserDefinedFlag::class, $userDefinedFlag);
+        $this->assertSame('Markierung 2', $userDefinedFlag->getName());
+        $this->assertSame('#999966', $userDefinedFlag->getColor());
+        $this->assertSame(1337, $userDefinedFlag->getFlagId());
+    }
+
+    public function testCreateConstructor(): void
+    {
+        $userDefinedFlag = new UserDefinedFlag(
+            name: 'Test Flag',
+            color: '#FF0000',
+            flagId: 42,
+        );
+
+        $this->assertSame('Test Flag', $userDefinedFlag->getName());
+        $this->assertSame('#FF0000', $userDefinedFlag->getColor());
+        $this->assertSame(42, $userDefinedFlag->getFlagId());
     }
 }

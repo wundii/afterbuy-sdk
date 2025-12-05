@@ -102,6 +102,8 @@ class GetTranslatedMailTemplateTest extends TestCase
 
         $this->assertInstanceOf(GetTranslatedMailTemplateResponse::class, $response);
         $this->assertEquals($expected, $translatedMailText);
+        $this->assertSame('Hallo Test', $translatedMailText->getTranslatedMailSubject());
+        $this->assertSame('Hallo Herr Meier, ...', $translatedMailText->getTranslatedMailText());
     }
 
     public function testShippingCostErrorCode27(): void

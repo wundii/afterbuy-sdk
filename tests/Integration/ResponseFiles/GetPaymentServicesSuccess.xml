@@ -7,7 +7,7 @@
         <PaymentService>
             <PaymentID>126376</PaymentID>
             <PaymentFunctionID>1</PaymentFunctionID>
-            <StandardText><![CDATA[Nachname]]></StandardText>
+            <StandardText><![CDATA[StandardText]]></StandardText>
             <Name><![CDATA[Nachname]]></Name>
             <Position>6</Position>
             <Surcharge>0</Surcharge>

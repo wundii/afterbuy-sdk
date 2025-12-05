@@ -59,46 +59,66 @@ class GetPaymentServicesTest extends TestCase
         /** @var PaymentServices $paymentServices */
         $paymentServices = $response->getResult();
 
+        $expectedPaymentServices = [
+            new PaymentService(
+                126376,
+                1,
+                'Nachname',
+                'StandardText',
+                6,
+                0,
+                0.0,
+                0.0,
+                9.5,
+                95.0,
+                'ebay',
+                true,
+                false,
+                '0',
+                '0',
+            ),
+            new PaymentService(
+                107506,
+                1,
+                'Vorkasse/Überweisung',
+                'Vorkasse/Überweisung',
+                1,
+                0,
+                0.0,
+                5.0,
+                0.0,
+                0.0,
+                'shop',
+                true,
+                true,
+                'D',
+                'D',
+            ),
+        ];
         $expected = new PaymentServices(
-            [
-                new PaymentService(
-                    126376,
-                    1,
-                    'Nachname',
-                    'Nachname',
-                    6,
-                    0,
-                    0.0,
-                    0.0,
-                    9.5,
-                    95.0,
-                    'ebay',
-                    true,
-                    false,
-                    '0',
-                    '0',
-                ),
-                new PaymentService(
-                    107506,
-                    1,
-                    'Vorkasse/Überweisung',
-                    'Vorkasse/Überweisung',
-                    1,
-                    0,
-                    0.0,
-                    5.0,
-                    0.0,
-                    0.0,
-                    'shop',
-                    true,
-                    true,
-                    'D',
-                    'D',
-                ),
-            ],
+            $expectedPaymentServices,
         );
 
         $this->assertInstanceOf(GetPaymentServicesResponse::class, $response);
         $this->assertEquals($expected, $paymentServices);
+        $this->assertEquals($expectedPaymentServices, $paymentServices->getPaymentService());
+
+        $firstService = $paymentServices->getPaymentService()[0];
+        $this->assertInstanceOf(PaymentService::class, $firstService);
+        $this->assertSame('0', $firstService->getCountryGroup());
+        $this->assertFalse($firstService->isDefault());
+        $this->assertSame(0, $firstService->getLevel());
+        $this->assertSame(95.0, $firstService->getMaxAmount());
+        $this->assertSame(9.5, $firstService->getMinAmount());
+        $this->assertSame('Nachname', $firstService->getName());
+        $this->assertSame(1, $firstService->getPaymentFunctionId());
+        $this->assertSame(126376, $firstService->getPaymentId());
+        $this->assertSame('ebay', $firstService->getPlattformName());
+        $this->assertSame(6, $firstService->getPosition());
+        $this->assertTrue($firstService->isStandardForAll());
+        $this->assertSame('StandardText', $firstService->getStandardText());
+        $this->assertSame(0.0, $firstService->getSurcharge());
+        $this->assertSame(0.0, $firstService->getSurchargePercent());
+        $this->assertSame('0', $firstService->getCountryGroupCountries());
     }
 }

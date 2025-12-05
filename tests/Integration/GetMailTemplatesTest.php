@@ -100,7 +100,14 @@ class GetMailTemplatesTest extends TestCase
 
         $this->assertInstanceOf(GetMailTemplatesResponse::class, $response);
         $this->assertCount(4, $mailTemplates->getMailTemplates());
-        $this->assertInstanceOf(MailTemplate::class, $mailTemplates->getMailTemplates()[0]);
         $this->assertEquals($expected, $mailTemplates);
+
+        $mailTemplate = $mailTemplates->getMailTemplates()[0];
+        $this->assertInstanceOf(MailTemplate::class, $mailTemplate);
+        $this->assertEquals(202877, $mailTemplate->getTemplateId());
+        $this->assertEquals('Mahnung1', $mailTemplate->getTemplateName());
+        $this->assertEquals('Erinnerung an eBay Auktion(en): ... (abgeschnitten)', $mailTemplate->getTemplateSubject());
+        $this->assertEquals('ErinnerungsTest', $mailTemplate->getTemplateText());
+        $this->assertTrue($mailTemplate->isTemplateHtml());
     }
 }

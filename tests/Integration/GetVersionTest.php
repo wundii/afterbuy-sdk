@@ -36,6 +36,19 @@ class GetVersionTest extends TestCase
 
         $this->assertInstanceOf(GetVersionResponse::class, $response);
         $this->assertCount(1, $versions->getVersions());
-        $this->assertInstanceOf(Version::class, $versions->getVersions()[0]);
+        $version = $versions->getLastVersion();
+        $this->assertInstanceOf(Version::class, $version);
+        $this->assertEquals(1, $version->getId());
+        $this->assertEquals('2.0', $version->getName());
+        $this->assertEquals('Start Version', $version->getDescription());
+    }
+
+    public function testCreateConstructor(): void
+    {
+        $version = new Version(1, '2.0', 'Start Version');
+
+        $this->assertEquals(1, $version->getId());
+        $this->assertEquals('2.0', $version->getName());
+        $this->assertEquals('Start Version', $version->getDescription());
     }
 }

@@ -70,6 +70,14 @@ class GetShippingCostTest extends TestCase
             '34567',
         );
 
+        $this->assertSame([123456, 234567], $shippingInfo->getProductIDs());
+        $this->assertSame(CountryIsoEnum::GERMANY, $shippingInfo->getShippingCountry());
+        $this->assertSame('standard', $shippingInfo->getShippingGroup());
+        $this->assertSame('34567', $shippingInfo->getPostalCode());
+        $this->assertSame(2, $shippingInfo->getItemsCount());
+        $this->assertSame(3.0, $shippingInfo->getItemsWeight());
+        $this->assertSame(45.0, $shippingInfo->getItemsPrice());
+
         $request = new GetShippingCostRequest($shippingInfo);
         $payload = $request->payload($afterbuyGlobal);
         $expected = file_get_contents($file);
@@ -94,30 +102,41 @@ class GetShippingCostTest extends TestCase
         /** @var ShippingService $shippingService */
         $shippingService = $response->getResult();
 
+        $expectedShippingMethods = [
+            new ShippingMethods(
+                1.00,
+                'NormalPaket 2',
+                475032,
+                19.00,
+                'Deutschland',
+            ),
+            new ShippingMethods(
+                10.95,
+                'NormalPaket',
+                430384,
+                19.00,
+                'Deutschland',
+            ),
+        ];
         $expected = new ShippingService(
             'Afterbuy Express',
             '1',
-            [
-                new ShippingMethods(
-                    1.00,
-                    'NormalPaket 2',
-                    475032,
-                    19.00,
-                    'Deutschland',
-                ),
-                new ShippingMethods(
-                    10.95,
-                    'NormalPaket',
-                    430384,
-                    19.00,
-                    'Deutschland',
-                ),
-            ],
+            $expectedShippingMethods,
         );
 
         $this->assertInstanceOf(GetShippingCostResponse::class, $response);
         $this->assertInstanceOf(ShippingService::class, $shippingService);
         $this->assertEquals($expected, $shippingService);
+        $this->assertEquals('Afterbuy Express', $shippingService->getShippingServiceName());
+        $this->assertEquals('1', $shippingService->getShippingServicePriority());
+
+        $shippinggMethod = $shippingService->getShippingMethods()[0];
+        $this->assertInstanceOf(ShippingMethods::class, $shippinggMethod);
+        $this->assertEquals(1.00, $shippinggMethod->getShippingCost());
+        $this->assertEquals('NormalPaket 2', $shippinggMethod->getShippingMethod());
+        $this->assertEquals(475032, $shippinggMethod->getShippingMethodId());
+        $this->assertEquals(19.00, $shippinggMethod->getShippingTaxRate());
+        $this->assertEquals('Deutschland', $shippinggMethod->getShippingMethodDescription());
     }
 
     public function testShippingCostErrorCode27(): void

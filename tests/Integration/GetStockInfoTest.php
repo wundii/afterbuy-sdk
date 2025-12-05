@@ -122,6 +122,23 @@ class GetStockInfoTest extends TestCase
         $this->assertInstanceOf(GetStockInfoResponse::class, $response);
         $this->assertCount(2, $products->getProducts());
         $this->assertEquals($expected, $products);
+
+        $product = $products->getProducts()[0];
+        $this->assertInstanceOf(Product::class, $product);
+        $this->assertSame(1737852, $product->getProductId());
+        $this->assertSame('Afterbuy Testauktion CheckOut-Redirect', $product->getName());
+        $this->assertSame(1243123123, $product->getAnr());
+        $this->assertSame('E3456A277N', $product->getEan());
+        $this->assertSame(0, $product->getAuctionQuantity());
+        $this->assertSame(9997, $product->getQuantity());
+        $this->assertSame(0, $product->getFullFilmentQuantity());
+        $this->assertSame(0, $product->getMinimumStock());
+        $this->assertTrue($product->isDiscontinued());
+        $this->assertFalse($product->isMergeStock());
+        $this->assertSame(9920, $product->getAvailableShop());
+        $this->assertTrue($product->isAvailable());
+        $this->assertSame(100, $product->getRealQuantity());
+        $this->assertSame(1, $product->getLevel());
     }
 
     public function testShippingCostErrorCode27(): void
