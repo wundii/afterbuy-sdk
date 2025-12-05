@@ -71,4 +71,25 @@ class UpdateCatalogsTest extends TestCase
 
         $this->assertEquals($expectedMessages, $messages);
     }
+
+    public function testCatalogSetters(): void
+    {
+        $catalogs = new Catalogs(
+            UpdateActionCatalogsEnum::REFRESH,
+            [],
+        );
+
+        $this->assertSame(UpdateActionCatalogsEnum::REFRESH, $catalogs->getUpdateActionEnum());
+        $this->assertSame([], $catalogs->getCatalogs());
+
+        $catalogs->setUpdateActionEnum(UpdateActionCatalogsEnum::DELETE);
+        $this->assertSame(UpdateActionCatalogsEnum::DELETE, $catalogs->getUpdateActionEnum());
+
+        $catalog = new Catalog(
+            catalogId: 456,
+            catalogName: 'AnotherCatalog'
+        );
+        $catalogs->setCatalogs([$catalog]);
+        $this->assertSame([$catalog], $catalogs->getCatalogs());
+    }
 }

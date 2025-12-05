@@ -54,73 +54,102 @@ class GetShippingServicesTest extends TestCase
         /** @var ShippingServices $shippingServices */
         $shippingServices = $response->getResult();
 
-        $expected = new ShippingServices(
-            [
-                new ShippingService(
-                    'Afterbuy Express',
-                    '0',
-                    0,
-                    [
-                        new ShippingMethod(
-                            198416,
-                            'NormalPaket',
-                            '0',
-                            '0',
-                            0,
-                            0,
-                            0,
-                            0,
-                            0,
-                            0,
-                            0,
-                            new WeightDefinitions(
-                                1.0,
-                                4.0,
-                                10.0,
-                            )
-                        ),
-                        new ShippingMethod(
-                            198417,
-                            'KleinPaket',
-                            '0',
-                            '0',
-                            0,
-                            0,
-                            0,
-                            0,
-                            0,
-                            0,
-                            0,
-                            new WeightDefinitions(
-                                0.0,
-                                2.0,
-                                0.05,
-                            )
-                        ),
-                        new ShippingMethod(
-                            199473,
-                            'Postfach - Packstation',
-                            '0',
-                            '0',
-                            1,
-                            19,
-                            4.00,
-                            5.90,
-                            2.0,
-                            3.0,
+        $expectedShippingServices = [
+            new ShippingService(
+                'Afterbuy Express',
+                '0',
+                0,
+                [
+                    new ShippingMethod(
+                        198416,
+                        'NormalPaket',
+                        '0',
+                        '0',
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        new WeightDefinitions(
+                            1.0,
                             4.0,
-                            new WeightDefinitions(
-                                0.0,
-                                3.0,
-                                6.9,
-                            )
-                        ),
-                    ],
-                ),
-            ],
+                            10.0,
+                        )
+                    ),
+                    new ShippingMethod(
+                        198417,
+                        'KleinPaket',
+                        '0',
+                        '0',
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        new WeightDefinitions(
+                            0.0,
+                            2.0,
+                            0.05,
+                        )
+                    ),
+                    new ShippingMethod(
+                        199473,
+                        'Postfach - Packstation',
+                        '0',
+                        '0',
+                        1,
+                        19,
+                        4.00,
+                        5.90,
+                        2.0,
+                        3.0,
+                        4.0,
+                        new WeightDefinitions(
+                            0.0,
+                            3.0,
+                            6.9,
+                        )
+                    ),
+                ],
+            ),
+        ];
+        $expected = new ShippingServices(
+            $expectedShippingServices,
         );
 
         $this->assertInstanceOf(GetShippingServicesResponse::class, $response);
         $this->assertEquals($expected, $shippingServices);
+        $this->assertEquals($expectedShippingServices, $shippingServices->getShippingServices());
+
+        $shippingService = $shippingServices->getShippingServices()[0];
+        $this->assertInstanceOf(ShippingService::class, $shippingService);
+        $this->assertSame('Afterbuy Express', $shippingService->getName());
+        $this->assertSame('0', $shippingService->getDisplayArea());
+        $this->assertSame(0, $shippingService->getGroupPrio());
+        $this->assertCount(3, $shippingService->getShippingMethods());
+
+        $shippingMethod = $shippingService->getShippingMethods()[0];
+        $this->assertInstanceOf(ShippingMethod::class, $shippingMethod);
+        $this->assertSame(198416, $shippingMethod->getShippingMethodID());
+        $this->assertSame('NormalPaket', $shippingMethod->getName());
+        $this->assertSame('0', $shippingMethod->getCountryGroup());
+        $this->assertSame('0', $shippingMethod->getCountryGroupCountries());
+        $this->assertSame(0, $shippingMethod->getLevel());
+        $this->assertSame(0.0, $shippingMethod->getTaxRate());
+        $this->assertSame(0.0, $shippingMethod->getPriceFrom());
+        $this->assertSame(0.0, $shippingMethod->getPriceTo());
+        $this->assertSame(0.0, $shippingMethod->getIslandAdditionalCosts());
+        $this->assertSame(0.0, $shippingMethod->getFreeShippingPriceFrom());
+        $this->assertSame(0.0, $shippingMethod->getAdditionalItemCosts());
+
+        $weightDefinitions = $shippingMethod->getWeightDefinitions();
+        $this->assertInstanceOf(WeightDefinitions::class, $weightDefinitions);
+        $this->assertSame(1.0, $weightDefinitions->getWeightFrom());
+        $this->assertSame(4.0, $weightDefinitions->getWeightTo());
+        $this->assertSame(10.0, $weightDefinitions->getPrice());
     }
 }

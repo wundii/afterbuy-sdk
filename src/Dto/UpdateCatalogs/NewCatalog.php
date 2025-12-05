@@ -41,7 +41,7 @@ final class NewCatalog implements ResponseDtoInterface
 
     public function getCatalogName(): string
     {
-        return $this->catalogName;
+        return trim($this->catalogName);
     }
 
     public function setCatalogName(string $catalogName): void

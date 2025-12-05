@@ -121,108 +121,156 @@ class GetListerHistoryTest extends TestCase
         /** @var ListedItems $listedItems */
         $listedItems = $response->getResult();
 
+        $expectedListedItems = [
+            new ListedItem(
+                38897689,
+                3041718,
+                1737852,
+                0,
+                listingDetails: new ListingDetails(
+                    anr: 9526337680,
+                    soldItems: 1,
+                    listedQuantity: 1,
+                    listingPlattform: 'eBay',
+                    listingTitle: 'Afterbuy Testauktion CheckOut Redirect C-O-R 4',
+                    listerSubTitle: 'Testauktion 4',
+                    listingDuration: 10,
+                    listingType: 9,
+                    listingDescription: null,
+                    listingFee: 1.0,
+                    listingCountryEnum: ListingCountryEnum::GERMANY,
+                    sellStatusEnum: SellStatusEnum::ERFOLGREICH,
+                    startTime: new DateTime('2006-06-01T15:08:48'),
+                    endTime: new DateTime('2006-06-11T15:08:48'),
+                    ebayCurrencyId: 7,
+                    ebayCurrencyEnum: EbayCurrencyEnum::EURO,
+                    ebayCategoryId: 31448,
+                    ebayCategory2Id: null,
+                    ebaySubAccountId: 1001,
+                    ebayStartprice: 1.0,
+                    ebayBuyItNowPrice: 0.0,
+                    ebayPictureUrl: 'http://bilder.afterbuy.de/images/29956/ab-logo.gif',
+                    ebayGaleryUrl: 'http://bilder.afterbuy.de/images/29956/ab-logo-icon.gif',
+                    ebayRelist: false,
+                ),
+                productDetails: new ProductDetails(
+                    name: 'Test Artikel',
+                    shortDescription: 'Test',
+                    catalogs: [
+                        new ProductDetailsCatalog(
+                            catalogID: 4,
+                            catalogPath: 'test',
+                            catalogURL: 'https://www.example.com/test',
+                        ),
+                    ],
+                ),
+            ),
+            new ListedItem(
+                38898441,
+                3041716,
+                1915544,
+                0,
+                listingDetails: new ListingDetails(
+                    anr: 9526339276,
+                    soldItems: 1,
+                    listedQuantity: 3,
+                    listingPlattform: 'eBay',
+                    listingTitle: 'Afterbuy Testauktion CheckOutRedirect C-O-R 3',
+                    listerSubTitle: 'Testauktion 3',
+                    listingDuration: 10,
+                    listingType: 9,
+                    listingDescription: null,
+                    listingFee: 1.2,
+                    listingCountryEnum: ListingCountryEnum::GERMANY,
+                    sellStatusEnum: SellStatusEnum::ERFOLGREICH,
+                    startTime: new DateTime('2006-06-01T15:13:51'),
+                    endTime: new DateTime('2006-06-11T15:13:51'),
+                    ebayCurrencyId: 7,
+                    ebayCurrencyEnum: EbayCurrencyEnum::EURO,
+                    ebayCategoryId: 31448,
+                    ebayCategory2Id: null,
+                    ebaySubAccountId: 1001,
+                    ebayStartprice: 1.0,
+                    ebayBuyItNowPrice: 0.0,
+                    ebayPictureUrl: 'http://bilder.afterbuy.de/images/29956/ab-logo.gif',
+                    ebayGaleryUrl: 'http://bilder.afterbuy.de/images/29956/ab-logo-icon.gif',
+                    ebayRelist: false,
+                ),
+            ),
+            new ListedItem(
+                38899469,
+                3777146,
+                1913970,
+                0,
+                productDetails: new ProductDetails(
+                    name: 'Test Artikel 2',
+                    shortDescription: 'Test 2',
+                    catalogs: [
+                        new ProductDetailsCatalog(
+                            catalogID: 4,
+                            catalogPath: 'test2',
+                            catalogURL: 'https://www.example.com/test2',
+                        ),
+                    ],
+                ),
+            ),
+        ];
         $expected = new ListedItems(
             3,
             false,
-            [
-                new ListedItem(
-                    38897689,
-                    3041718,
-                    1737852,
-                    0,
-                    listingDetails: new ListingDetails(
-                        anr: 9526337680,
-                        soldItems: 1,
-                        listedQuantity: 1,
-                        listingPlattform: 'eBay',
-                        listingTitle: 'Afterbuy Testauktion CheckOut Redirect C-O-R 4',
-                        listerSubTitle: 'Testauktion 4',
-                        listingDuration: 10,
-                        listingType: 9,
-                        listingDescription: null,
-                        listingFee: 1.0,
-                        listingCountryEnum: ListingCountryEnum::GERMANY,
-                        sellStatusEnum: SellStatusEnum::ERFOLGREICH,
-                        startTime: new DateTime('2006-06-01T15:08:48'),
-                        endTime: new DateTime('2006-06-11T15:08:48'),
-                        ebayCurrencyId: 7,
-                        ebayCurrencyEnum: EbayCurrencyEnum::EURO,
-                        ebayCategoryId: 31448,
-                        ebayCategory2Id: null,
-                        ebaySubAccountId: 1001,
-                        ebayStartprice: 1.0,
-                        ebayBuyItNowPrice: 0.0,
-                        ebayPictureUrl: 'http://bilder.afterbuy.de/images/29956/ab-logo.gif',
-                        ebayGaleryUrl: 'http://bilder.afterbuy.de/images/29956/ab-logo-icon.gif',
-                        ebayRelist: false,
-                    ),
-                    productDetails: new ProductDetails(
-                        name: 'Test Artikel',
-                        shortDescription: 'Test',
-                        catalogs: [
-                            new ProductDetailsCatalog(
-                                catalogID: 4,
-                                catalogPath: 'test',
-                                catalogURL: 'https://www.example.com/test',
-                            ),
-                        ],
-                    ),
-                ),
-                new ListedItem(
-                    38898441,
-                    3041716,
-                    1915544,
-                    0,
-                    listingDetails: new ListingDetails(
-                        anr: 9526339276,
-                        soldItems: 1,
-                        listedQuantity: 3,
-                        listingPlattform: 'eBay',
-                        listingTitle: 'Afterbuy Testauktion CheckOutRedirect C-O-R 3',
-                        listerSubTitle: 'Testauktion 3',
-                        listingDuration: 10,
-                        listingType: 9,
-                        listingDescription: null,
-                        listingFee: 1.2,
-                        listingCountryEnum: ListingCountryEnum::GERMANY,
-                        sellStatusEnum: SellStatusEnum::ERFOLGREICH,
-                        startTime: new DateTime('2006-06-01T15:13:51'),
-                        endTime: new DateTime('2006-06-11T15:13:51'),
-                        ebayCurrencyId: 7,
-                        ebayCurrencyEnum: EbayCurrencyEnum::EURO,
-                        ebayCategoryId: 31448,
-                        ebayCategory2Id: null,
-                        ebaySubAccountId: 1001,
-                        ebayStartprice: 1.0,
-                        ebayBuyItNowPrice: 0.0,
-                        ebayPictureUrl: 'http://bilder.afterbuy.de/images/29956/ab-logo.gif',
-                        ebayGaleryUrl: 'http://bilder.afterbuy.de/images/29956/ab-logo-icon.gif',
-                        ebayRelist: false,
-                    ),
-                ),
-                new ListedItem(
-                    38899469,
-                    3777146,
-                    1913970,
-                    0,
-                    productDetails: new ProductDetails(
-                        name: 'Test Artikel 2',
-                        shortDescription: 'Test 2',
-                        catalogs: [
-                            new ProductDetailsCatalog(
-                                catalogID: 4,
-                                catalogPath: 'test2',
-                                catalogURL: 'https://www.example.com/test2',
-                            ),
-                        ],
-                    ),
-                ),
-            ],
+            $expectedListedItems,
             38897689,
         );
 
         $this->assertInstanceOf(GetListerHistoryResponse::class, $response);
         $this->assertEquals($expected, $listedItems);
+        $this->assertEquals($expectedListedItems, $listedItems->getListedItems());
+
+        $listedItem = $listedItems->getListedItems()[0];
+        $this->assertInstanceOf(ListedItem::class, $listedItem);
+        $this->assertSame(38897689, $listedItem->getHistoryId());
+        $this->assertSame(3041718, $listedItem->getListingId());
+        $this->assertSame(1737852, $listedItem->getProductId());
+        $this->assertSame(0, $listedItem->getVariationType());
+
+        $listingDetails = $listedItem->getListingDetails();
+        $this->assertInstanceOf(ListingDetails::class, $listingDetails);
+        $this->assertSame(9526337680, $listingDetails->getAnr());
+        $this->assertSame(1, $listingDetails->getSoldItems());
+        $this->assertSame(1, $listingDetails->getListedQuantity());
+        $this->assertSame('eBay', $listingDetails->getListingPlattform());
+        $this->assertSame('Afterbuy Testauktion CheckOut Redirect C-O-R 4', $listingDetails->getListingTitle());
+        $this->assertSame('Testauktion 4', $listingDetails->getListerSubTitle());
+        $this->assertSame(10, $listingDetails->getListingDuration());
+        $this->assertSame(9, $listingDetails->getListingType());
+        $this->assertNull($listingDetails->getListingDescription());
+        $this->assertSame(1.0, $listingDetails->getListingFee());
+        $this->assertSame(ListingCountryEnum::GERMANY, $listingDetails->getListingCountry());
+        $this->assertSame(SellStatusEnum::ERFOLGREICH, $listingDetails->getSellStatus());
+        $this->assertEquals(new DateTime('2006-06-01T15:08:48'), $listingDetails->getStartTime());
+        $this->assertEquals(new DateTime('2006-06-11T15:08:48'), $listingDetails->getEndTime());
+        $this->assertSame(7, $listingDetails->getEbayCurrencyId());
+        $this->assertSame(EbayCurrencyEnum::EURO, $listingDetails->getEbayCurrency());
+        $this->assertSame(31448, $listingDetails->getEbayCategoryId());
+        $this->assertNull($listingDetails->getEbayCategory2Id());
+        $this->assertSame(1001, $listingDetails->getEbaySubAccountId());
+        $this->assertSame(1.0, $listingDetails->getEbayStartprice());
+        $this->assertSame(0.0, $listingDetails->getEbayBuyItNowPrice());
+        $this->assertSame('http://bilder.afterbuy.de/images/29956/ab-logo.gif', $listingDetails->getEbayPictureUrl());
+        $this->assertSame('http://bilder.afterbuy.de/images/29956/ab-logo-icon.gif', $listingDetails->getEbayGaleryUrl());
+        $this->assertFalse($listingDetails->getEbayRelist());
+
+        $productDetails = $listedItem->getProductDetails();
+        $this->assertInstanceOf(ProductDetails::class, $productDetails);
+        $this->assertSame('Test Artikel', $productDetails->getName());
+        $this->assertSame('Test', $productDetails->getShortDescription());
+        $this->assertCount(1, $productDetails->getCatalogs());
+
+        $productCatalog = $productDetails->getCatalogs()[0];
+        $this->assertInstanceOf(ProductDetailsCatalog::class, $productCatalog);
+        $this->assertSame(4, $productCatalog->getCatalogID());
+        $this->assertSame('test', $productCatalog->getCatalogPath());
+        $this->assertSame('https://www.example.com/test', $productCatalog->getCatalogURL());
     }
 
     public function testListerHistoryErrorCode30(): void

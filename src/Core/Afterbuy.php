@@ -54,18 +54,26 @@ readonly class Afterbuy
      */
     public DataMapper $dataMapper;
 
+    /**
+     * @param array<class-string, class-string>|null $classMap
+     */
     public function __construct(
         private AfterbuyGlobalInterface $afterbuyGlobal,
         private ?LoggerInterface $logger = null,
         private ?ValidatorBuilder $validatorBuilder = null,
         private bool $debugMode = false,
+        ?array $classMap = null,
     ) {
+        if ($classMap === null) {
+            $classMap = [
+                DateTimeInterface::class => DateTime::class,
+            ];
+        }
+
         $dataConfig = new DataConfig(
             approachEnum: ApproachEnum::SETTER,
             accessibleEnum: AccessibleEnum::PUBLIC,
-            classMap: [
-                DateTimeInterface::class => DateTime::class,
-            ],
+            classMap: $classMap,
         );
 
         $this->dataMapper = new DataMapper($dataConfig);

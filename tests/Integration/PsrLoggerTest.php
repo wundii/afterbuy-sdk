@@ -72,7 +72,13 @@ class PsrLoggerTest extends TestCase
 
         $this->assertCount(0, $response->getErrorMessages());
         $this->assertCount(1, $response->getWarningMessages());
-        $this->assertInstanceOf(ResponseWarning::class, $response->getWarningMessages()[0]);
+
+        $warningMessage = $response->getWarningMessages()[0];
+        $this->assertInstanceOf(ResponseWarning::class, $warningMessage);
+        $this->assertEquals(1908058, $warningMessage->getProductId());
+        $this->assertEquals(2, $warningMessage->getWarningCode());
+        $this->assertEquals('Produkt nicht gefunden.', $warningMessage->getWarningDescription());
+        $this->assertEquals('Das angeforderte Produkt konnte nicht gefunden werden.', $warningMessage->getWarningLongDescription());
 
         $payload = '<?xml version="1.0" encoding="utf-8"?><Request><AfterbuyGlobal><Sandbox>XML</Sandbox><AccountToken>account</AccountToken>';
         $payload .= '<PartnerToken>partner</PartnerToken><ErrorLanguage>DE</ErrorLanguage><CallName>GetStockInfo</CallName>';
@@ -113,7 +119,12 @@ class PsrLoggerTest extends TestCase
 
         $this->assertCount(1, $response->getErrorMessages());
         $this->assertCount(0, $response->getWarningMessages());
+
+        $errorMessage = $response->getErrorMessages()[0];
         $this->assertInstanceOf(ResponseError::class, $response->getErrorMessages()[0]);
+        $this->assertEquals(30, $errorMessage->getErrorCode());
+        $this->assertEquals('Kein gültiger Filter angegeben.', $errorMessage->getErrorDescription());
+        $this->assertEquals('Keine Filter oder kein gültiger Filter angegeben.', $errorMessage->getErrorLongDescription());
 
         $payload = '<?xml version="1.0" encoding="utf-8"?><Request><AfterbuyGlobal><Sandbox>XML</Sandbox><AccountToken>account</AccountToken>';
         $payload .= '<PartnerToken>partner</PartnerToken><ErrorLanguage>DE</ErrorLanguage><CallName>GetListerHistory</CallName>';
