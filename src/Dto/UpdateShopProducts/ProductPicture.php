@@ -27,7 +27,7 @@ final readonly class ProductPicture implements RequestDtoXmlInterface
 
     public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
-        $productPicture = $simpleXml->addChild('Feature');
+        $productPicture = $simpleXml->addChild('ProductPicture');
         $productPicture->addNumber('Nr', $this->nr);
         $productPicture->addString('URL', $this->url);
         $productPicture->addString('AltText', $this->altText);

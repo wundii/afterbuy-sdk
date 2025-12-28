@@ -406,4 +406,372 @@ class ProductsTest extends TestCase
         $this->assertCount(0, $product->getProductPictures());
         $this->assertCount(2, $product->getFeatures());
     }
+
+    public function testSetters(): void
+    {
+        $product = new Product(
+            new ProductIdent(
+                userProductId: '12346ABCD',
+                baseProductTypeEnum: null,
+                productInsert: true,
+                productId: 0,
+                anr: 0,
+                ean: 'EAN',
+            ),
+            'Temporary Name',
+        );
+        $product->setName('ABInterfaceNew TestItem');
+        $product->setAnr(123456);
+        $product->setEan('123ABC');
+        $product->setHeaderId(111);
+        $product->setFooterId(333);
+        $product->setManufacturerPartNumber('C-B-A-Test');
+        $product->setShortDescription('TestKurzbeschreibung');
+        $product->setMemo('TestMemo');
+        $product->setDescription('TestBeschreibung');
+        $product->setKeywords('TestKeywords');
+        $product->setQuantity(10);
+        $product->setAuctionQuantity(100);
+        $product->setAddQuantity(20);
+        $product->setAddAuctionQuantity(30);
+        $product->setStock(true);
+        $product->setDiscontinued(true);
+        $product->setMergeStock(true);
+        $product->setUnitOfQuantity(2.55);
+        $product->setBasePriceFactor(BasePriceFactorEnum::LITER);
+        $product->setMinimumStock(5);
+        $product->setSellingPrice(1.23);
+        $product->setBuyingPrice(2.34);
+        $product->setDealerPrice(3.45);
+        $product->setLevel(1000);
+        $product->setPosition(10000);
+        $product->setTitleReplace(true);
+        $product->setScaledDiscounts([
+            new ScaledDiscount(1, 1.23, 2.34),
+            new ScaledDiscount(2, 2.34, 3.45),
+            new ScaledDiscount(3, 3.45, 4.56),
+        ]);
+        $product->setTaxRate(16.5);
+        $product->setWeight(2.33);
+        $product->setStocklocation1('Lagerort 1');
+        $product->setStocklocation2('Lagerort 2');
+        $product->setStocklocation3('Lagerort 3');
+        $product->setStocklocation4('Lagerort 4');
+        $product->setCountryOfOrigin(CountryOfOriginEnum::GERMANY);
+        $product->setSearchAlias('TestSuchalias');
+        $product->setFroogle(true);
+        $product->setKelkoo(true);
+        $product->setShippingGroup('Packstationtest');
+        $product->setShopShippingGroup('ShopGruppe');
+        $product->setCrossCatalogId(141556);
+        $product->setFreeValue1('TestFreeValue1');
+        $product->setFreeValue2('TestFreeValue2');
+        $product->setFreeValue3('TestFreeValue3');
+        $product->setFreeValue4('TestFreeValue4');
+        $product->setFreeValue5('TestFreeValue5');
+        $product->setFreeValue6('TestFreeValue6');
+        $product->setFreeValue7('TestFreeValue7');
+        $product->setFreeValue8('TestFreeValue8');
+        $product->setFreeValue9('TestFreeValue9');
+        $product->setFreeValue10('TestFreeValue10');
+        $product->setDeliveryTime('3 Tage');
+        $product->setImageSmallUrl('MyURLSmall');
+        $product->setImageLargeUrl('MyURLBig');
+        $product->setImageNameBase64('alien.jpg');
+        $product->setImageSourceBase64('/9j/4AAQSkZJRgABAQAASABIAAD/Z');
+        $product->setManufacturerStandardProductIdType('type');
+        $product->setManufacturerStandardProductIdValue('value');
+        $product->setProductBrand('brand');
+        $product->setCustomsTariffNumber('12345');
+        $product->setGoogleProductCategory('test');
+        $product->setCondition(ConditionEnum::NEW);
+        $product->setPattern('productPattern');
+        $product->setMaterial('wood');
+        $product->setItemColor('brown');
+        $product->setItemSize('xxl');
+        $product->setSeoName('seoName');
+        $product->setCanonicalUrl('https://www.example.com');
+        $product->setEnergyClass(EnergyClassEnum::A_PLUS_PLUS_PLUS);
+        $product->setEnergyClassPictureUrl('https://www.example.com/energy-label');
+        $product->setDataSheetUrl('https://www.example.com/data-sheet');
+        $product->setGender(GenderEnum::UNISEX);
+        $product->setAgeGroup(AgeGroupEnum::KIDS);
+        $product->setEconomicoperators(new Economicoperators(
+            updateActionEconomicoperatorsEnum: UpdateActionEconomicoperatorsEnum::ADD,
+            economicoperatorId: [
+                10000,
+                10001,
+                10002,
+            ],
+        ));
+        $product->setTags([
+            'string',
+        ]);
+        $product->setSkus(new Skus(
+            updateActionSkusEnum: UpdateActionSkusEnum::ADD,
+            skus: [
+                'NewSKU1',
+                'NewSKU2',
+                'NewSKU3',
+                'NewSKU4',
+                'NewSKU5',
+                'NewSKU6',
+                'NewSKU7',
+                'NewSKU8',
+                'NewSKU9',
+                'NewSKU10',
+            ],
+        ));
+        $product->setAddCatalogs(new AddCatalogs(
+            updateActionAddCatalogsEnum: UpdateActionAddCatalogsEnum::UPDATE,
+            addCatalog: [
+                new AddCatalog(141556, 'MyNEW Katalog'),
+            ],
+        ));
+        $product->setAddAttributes(new AddAttributes(
+            updateActionAttributesEnum: UpdateActionAttributesEnum::ADD_OR_UPDATE,
+            addAttributes: [
+                new AddAttribut(
+                    attributName: 'Attribut 5',
+                    attributValue: '1;2;3;4',
+                    attributTypEnum: AttributTypEnum::DROPDOWN,
+                    attributPosition: 1000,
+                    attributRequired: true,
+                ),
+            ],
+        ));
+        $product->setAddBaseProducts(new AddBaseProducts(
+            updateActionAddBaseProductEnum: UpdateActionAddBaseProductEnum::UPDATE,
+            addBaseProducts: [
+                new AddBaseProduct(
+                    productId: 1234,
+                    productLabel: 'TestLabel',
+                    productPos: 1000,
+                    defaultProduct: true,
+                    productQuantity: 3,
+                ),
+            ],
+        ));
+        $product->setUseEbayVariations([
+            new Variation(
+                variationName: 'Grösse',
+                variationValues: [
+                    new VariationValue(
+                        validForProdId: 123456789,
+                        variationValue: 'XXL',
+                        variationPos: 1,
+                        variationPicUrl: 'https://www.afterbuy.de/homesites/images/home/logo.gif',
+                    ),
+                ],
+            ),
+            new Variation(
+                variationName: 'Farbe',
+                variationValues: [
+                    new VariationValue(
+                        validForProdId: 123456789,
+                        variationValue: 'Blau',
+                        variationPos: 1,
+                        variationPicUrl: 'https://www.afterbuy.de/homesites/images/home/logo.gif',
+                    ),
+                ],
+            ),
+        ]);
+        $product->setPartsFitment([
+            new PartsProperties(
+                [
+                    new PartsProperty(
+                        propertyNameEnum: PropertyNameEnum::KType,
+                        propertyValue: '3313',
+                    ),
+                    new PartsProperty(
+                        propertyNameEnum: PropertyNameEnum::KType,
+                        propertyValue: '3314',
+                    ),
+                    new PartsProperty(
+                        propertyNameEnum: PropertyNameEnum::HSN,
+                        propertyValue: '7107',
+                    ),
+                    new PartsProperty(
+                        propertyNameEnum: PropertyNameEnum::TSN,
+                        propertyValue: '449',
+                    ),
+                    new PartsProperty(
+                        propertyNameEnum: PropertyNameEnum::TSN,
+                        propertyValue: '450',
+                    ),
+                ],
+            ),
+            new PartsProperties(
+                [
+                    new PartsProperty(
+                        propertyNameEnum: PropertyNameEnum::KType,
+                        propertyValue: '3314',
+                    ),
+                    new PartsProperty(
+                        propertyNameEnum: PropertyNameEnum::HSN,
+                        propertyValue: '7107',
+                    ),
+                    new PartsProperty(
+                        propertyNameEnum: PropertyNameEnum::TSN,
+                        propertyValue: '203',
+                    ),
+                ],
+            ),
+            new PartsProperties(
+                [
+                    new PartsProperty(
+                        propertyNameEnum: PropertyNameEnum::KType,
+                        propertyValue: '3315',
+                    ),
+                ],
+            ),
+            new PartsProperties(
+                [
+                    new PartsProperty(
+                        propertyNameEnum: PropertyNameEnum::KType,
+                        propertyValue: '3316',
+                    ),
+                    new PartsProperty(
+                        propertyNameEnum: PropertyNameEnum::HSN,
+                        propertyValue: '',
+                    ),
+                ],
+            ),
+        ]);
+        $product->setAdditionalPriceUpdates([
+            new AdditionalPriceUpdate(
+                definitionId: 1,
+                productId: 123456,
+                price: 1.23,
+            ),
+            new AdditionalPriceUpdate(
+                definitionId: 2,
+                productId: 234567,
+                price: 2.34,
+            ),
+        ]);
+        $product->setAdditionalDescriptionFields([
+            new AdditionalDescriptionField(
+                fieldIdIdent: 10,
+                fieldNameIdent: 'FieldNameIdent - 10',
+                fieldName: 'Name - 10',
+                fieldLabel: 'Label - 10',
+                fieldContent: 'Content - 10',
+            ),
+            new AdditionalDescriptionField(
+                fieldIdIdent: 11,
+                fieldNameIdent: 'FieldNameIdent - 11',
+                fieldName: 'Name - 11',
+                fieldLabel: 'Label - 11',
+                fieldContent: 'Content - 11',
+            ),
+            new AdditionalDescriptionField(
+                fieldIdIdent: 12,
+                fieldNameIdent: 'FieldNameIdent - 12',
+                fieldName: 'Name - 12',
+                fieldLabel: 'Label - 12',
+                fieldContent: 'Content - 12',
+            ),
+        ]);
+        $product->setProductPictures([]);
+        $product->setFeatures([
+            new Feature(
+                id: 2000,
+                value: 'TestFeature 1',
+            ),
+            new Feature(
+                id: 2001,
+                value: 'TestFeature 2',
+            ),
+        ]);
+
+        $products = new Products([$product]);
+
+        $this->assertCount(1, $products->getProducts());
+        $product = $products->getProducts()[0];
+        $this->assertInstanceOf(Product::class, $product);
+        $this->assertSame('ABInterfaceNew TestItem', $product->getName());
+        $this->assertSame(123456, $product->getAnr());
+        $this->assertSame('123ABC', $product->getEan());
+        $this->assertSame(111, $product->getHeaderId());
+        $this->assertSame(333, $product->getFooterId());
+        $this->assertSame('C-B-A-Test', $product->getManufacturerPartNumber());
+        $this->assertSame('TestKurzbeschreibung', $product->getShortDescription());
+        $this->assertSame('TestMemo', $product->getMemo());
+        $this->assertSame('TestBeschreibung', $product->getDescription());
+        $this->assertSame('TestKeywords', $product->getKeywords());
+        $this->assertSame(10, $product->getQuantity());
+        $this->assertSame(100, $product->getAuctionQuantity());
+        $this->assertSame(20, $product->getAddQuantity());
+        $this->assertSame(30, $product->getAddAuctionQuantity());
+        $this->assertTrue($product->getStock());
+        $this->assertTrue($product->getDiscontinued());
+        $this->assertTrue($product->getMergeStock());
+        $this->assertSame(2.55, $product->getUnitOfQuantity());
+        $this->assertSame(BasePriceFactorEnum::LITER, $product->getBasePriceFactor());
+        $this->assertSame(5, $product->getMinimumStock());
+        $this->assertSame(1.23, $product->getSellingPrice());
+        $this->assertSame(2.34, $product->getBuyingPrice());
+        $this->assertSame(3.45, $product->getDealerPrice());
+        $this->assertSame(1000, $product->getLevel());
+        $this->assertSame(10000, $product->getPosition());
+        $this->assertTrue($product->getTitleReplace());
+        $this->assertCount(3, $product->getScaledDiscounts());
+        $this->assertSame(16.5, $product->getTaxRate());
+        $this->assertSame(2.33, $product->getWeight());
+        $this->assertSame('Lagerort 1', $product->getStocklocation1());
+        $this->assertSame('Lagerort 2', $product->getStocklocation2());
+        $this->assertSame('Lagerort 3', $product->getStocklocation3());
+        $this->assertSame('Lagerort 4', $product->getStocklocation4());
+        $this->assertSame(CountryOfOriginEnum::GERMANY, $product->getCountryOfOrigin());
+        $this->assertSame('TestSuchalias', $product->getSearchAlias());
+        $this->assertTrue($product->getFroogle());
+        $this->assertTrue($product->getKelkoo());
+        $this->assertSame('Packstationtest', $product->getShippingGroup());
+        $this->assertSame('ShopGruppe', $product->getShopShippingGroup());
+        $this->assertSame(141556, $product->getCrossCatalogId());
+        $this->assertSame('TestFreeValue1', $product->getFreeValue1());
+        $this->assertSame('TestFreeValue2', $product->getFreeValue2());
+        $this->assertSame('TestFreeValue3', $product->getFreeValue3());
+        $this->assertSame('TestFreeValue4', $product->getFreeValue4());
+        $this->assertSame('TestFreeValue5', $product->getFreeValue5());
+        $this->assertSame('TestFreeValue6', $product->getFreeValue6());
+        $this->assertSame('TestFreeValue7', $product->getFreeValue7());
+        $this->assertSame('TestFreeValue8', $product->getFreeValue8());
+        $this->assertSame('TestFreeValue9', $product->getFreeValue9());
+        $this->assertSame('TestFreeValue10', $product->getFreeValue10());
+        $this->assertSame('3 Tage', $product->getDeliveryTime());
+        $this->assertSame('MyURLSmall', $product->getImageSmallUrl());
+        $this->assertSame('MyURLBig', $product->getImageLargeUrl());
+        $this->assertSame('alien.jpg', $product->getImageNameBase64());
+        $this->assertSame('/9j/4AAQSkZJRgABAQAASABIAAD/Z', $product->getImageSourceBase64());
+        $this->assertSame('type', $product->getManufacturerStandardProductIdType());
+        $this->assertSame('value', $product->getManufacturerStandardProductIdValue());
+        $this->assertSame('brand', $product->getProductBrand());
+        $this->assertSame('12345', $product->getCustomsTariffNumber());
+        $this->assertSame('test', $product->getGoogleProductCategory());
+        $this->assertSame(ConditionEnum::NEW, $product->getCondition());
+        $this->assertSame('productPattern', $product->getPattern());
+        $this->assertSame('wood', $product->getMaterial());
+        $this->assertSame('brown', $product->getItemColor());
+        $this->assertSame('xxl', $product->getItemSize());
+        $this->assertSame('seoName', $product->getSeoName());
+        $this->assertSame('https://www.example.com', $product->getCanonicalUrl());
+        $this->assertSame(EnergyClassEnum::A_PLUS_PLUS_PLUS, $product->getEnergyClass());
+        $this->assertSame('https://www.example.com/energy-label', $product->getEnergyClassPictureUrl());
+        $this->assertSame('https://www.example.com/data-sheet', $product->getDataSheetUrl());
+        $this->assertSame(GenderEnum::UNISEX, $product->getGender());
+        $this->assertSame(AgeGroupEnum::KIDS, $product->getAgeGroup());
+        $this->assertInstanceOf(Economicoperators::class, $product->getEconomicoperators());
+        $this->assertInstanceOf(Skus::class, $product->getSkus());
+        $this->assertInstanceOf(AddCatalogs::class, $product->getAddCatalogs());
+        $this->assertInstanceOf(AddAttributes::class, $product->getAddAttributes());
+        $this->assertInstanceOf(AddBaseProducts::class, $product->getAddBaseProducts());
+        $this->assertCount(2, $product->getUseEbayVariations());
+        $this->assertCount(4, $product->getPartsFitment());
+        $this->assertCount(2, $product->getAdditionalPriceUpdates());
+        $this->assertCount(3, $product->getAdditionalDescriptionFields());
+        $this->assertCount(0, $product->getProductPictures());
+        $this->assertCount(2, $product->getFeatures());
+    }
 }

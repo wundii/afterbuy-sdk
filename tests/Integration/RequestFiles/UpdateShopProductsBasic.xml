@@ -250,6 +250,20 @@
                     <Price>2,34</Price>
                 </AdditionalPriceUpdate>
             </AdditionalPrice>
+            <ProductPictures>
+                <ProductPicture>
+                    <Nr>1</Nr>
+                    <URL>https://www.afterbuy.de/homesites/images/home/logo.gif</URL>
+                    <AltText>TestBild 1</AltText>
+                    <Childs>
+                        <ProductPicture>
+                            <Typ>1</Typ>
+                            <URL>https://www.afterbuy.de/homesites/images/home/logo.gif</URL>
+                            <AltText>TestBild 1 - Thumbnail</AltText>
+                        </ProductPicture>
+                    </Childs>
+                </ProductPicture>
+            </ProductPictures>
             <AdditionalDescriptionFields>
                 <AdditionalDescriptionField>
                     <FieldIDIdent>10</FieldIDIdent>

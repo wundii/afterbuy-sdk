@@ -21,6 +21,8 @@ use Wundii\AfterbuySdk\Dto\UpdateShopProducts\PartsProperties;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\PartsProperty;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Product;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\ProductIdent;
+use Wundii\AfterbuySdk\Dto\UpdateShopProducts\ProductPicture;
+use Wundii\AfterbuySdk\Dto\UpdateShopProducts\ProductPictureChild;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\ScaledDiscount;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Skus;
 use Wundii\AfterbuySdk\Dto\UpdateShopProducts\Variation;
@@ -33,6 +35,7 @@ use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
 use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
 use Wundii\AfterbuySdk\Enum\GenderEnum;
+use Wundii\AfterbuySdk\Enum\PictureTypEnum;
 use Wundii\AfterbuySdk\Enum\PropertyNameEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionAddBaseProductEnum;
 use Wundii\AfterbuySdk\Enum\UpdateActionAddCatalogsEnum;
@@ -418,7 +421,20 @@ class UpdateShopProductsTest extends TestCase
                             fieldContent: 'Content - 12',
                         ),
                     ],
-                    productPictures: [],
+                    productPictures: [
+                        new ProductPicture(
+                            nr: 1,
+                            url: 'https://www.afterbuy.de/homesites/images/home/logo.gif',
+                            altText: 'TestBild 1',
+                            childs: [
+                                new ProductPictureChild(
+                                    pictureTypEnum: PictureTypEnum::THUMB,
+                                    url: 'https://www.afterbuy.de/homesites/images/home/logo.gif',
+                                    altText: 'TestBild 1 - Thumbnail',
+                                ),
+                            ],
+                        ),
+                    ],
                     features: [
                         new Feature(
                             id: 2000,
