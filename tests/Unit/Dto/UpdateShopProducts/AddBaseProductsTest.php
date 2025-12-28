@@ -37,4 +37,13 @@ class AddBaseProductsTest extends TestCase
         $this->assertTrue($addBaseProduct->getDefaultProduct());
         $this->assertSame(3, $addBaseProduct->getProductQuantity());
     }
+
+    public function testException(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        new AddBaseProducts(
+            updateActionAddBaseProductEnum: UpdateActionAddBaseProductEnum::UPDATE,
+            addBaseProducts: [],
+        );
+    }
 }

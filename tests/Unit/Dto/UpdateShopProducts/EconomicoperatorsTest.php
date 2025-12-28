@@ -24,4 +24,13 @@ class EconomicoperatorsTest extends TestCase
         $this->assertSame(UpdateActionEconomicoperatorsEnum::ADD, $economicoperators->getUpdateAction());
         $this->assertSame([10000, 10001, 10002], $economicoperators->getEconomicoperatorId());
     }
+
+    public function testException(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        new Economicoperators(
+            updateActionEconomicoperatorsEnum: UpdateActionEconomicoperatorsEnum::ADD,
+            economicoperatorId: [],
+        );
+    }
 }

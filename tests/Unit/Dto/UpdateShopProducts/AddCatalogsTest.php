@@ -33,4 +33,13 @@ class AddCatalogsTest extends TestCase
         $this->assertSame('MyNEW Katalog', $addCatalog->getCatalogName());
         $this->assertSame(1000, $addCatalog->getCatalogLevel());
     }
+
+    public function testException(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        new AddCatalogs(
+            updateActionAddCatalogsEnum: UpdateActionAddCatalogsEnum::UPDATE,
+            addCatalog: [],
+        );
+    }
 }

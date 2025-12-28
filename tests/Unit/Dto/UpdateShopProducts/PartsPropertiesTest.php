@@ -45,4 +45,12 @@ class PartsPropertiesTest extends TestCase
         $this->assertSame(PropertyNameEnum::KType, $property->getPropertyName());
         $this->assertSame('3313', $property->getPropertyValue());
     }
+
+    public function testException(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        new PartsProperties(
+            [],
+        );
+    }
 }

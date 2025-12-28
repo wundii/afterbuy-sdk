@@ -38,4 +38,13 @@ class AddAttributesTest extends TestCase
         $this->assertSame(1000, $addAttribute->getAttributPosition());
         $this->assertTrue($addAttribute->getAttributRequired());
     }
+
+    public function testException(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        new AddAttributes(
+            updateActionAttributesEnum: UpdateActionAttributesEnum::ADD_OR_UPDATE,
+            addAttributes: [],
+        );
+    }
 }
