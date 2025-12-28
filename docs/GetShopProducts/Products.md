@@ -12,6 +12,7 @@ Holds a list of payment services.
 | Wundii\AfterbuySdk\Dto\GetShopProducts\Attribut | Attribut |
 | Wundii\AfterbuySdk\Dto\GetShopProducts\BaseProduct | BaseProduct |
 | Wundii\AfterbuySdk\Dto\GetShopProducts\BaseProductsRelationData | BaseProductsRelationData |
+| Wundii\AfterbuySdk\Dto\GetShopProducts\Discount | Discount |
 | Wundii\AfterbuySdk\Dto\GetShopProducts\EbayVariationData | EbayVariationData |
 | Wundii\AfterbuySdk\Dto\GetShopProducts\EconomicOperator | EconomicOperator |
 | Wundii\AfterbuySdk\Dto\GetShopProducts\Feature | Feature |
@@ -178,6 +179,19 @@ Holds a list of payment services.
 | additionalPrices.name                       | string                       | null                        |             |
 | additionalPrices.value                      | float                        | null                        |             |
 | additionalPrices.pretax                     | bool                         | null                        |             |
+| **products.discounts**                      | Discount[]                   | []                          |             |
+| discounts.shopId                            | int                          | required                    |             |
+| discounts.discountActive                    | bool                         | required                    |             |
+| discounts.controlId                         | int                          | required                    |             |
+| discounts.priceType                         | string                       | required                    |             |
+| discounts.newPriceType                      | string                       | required                    |             |
+| discounts.startDate                         | DateTimeInterface            | required                    |             |
+| discounts.expireDate                        | DateTimeInterface            | required                    |             |
+| discounts.type                              | int                          | required                    |             |
+| discounts.discountPercent                   | float                        | required                    |             |
+| discounts.savedAmount                       | float                        | required                    |             |
+| discounts.discountedPrice                   | float                        | required                    |             |
+| discounts.quantity                          | int                          | required                    |             |
 | **products.economicOperators**              | EconomicOperator[]           | []                          |             |
 | economicOperators.company                   | string                       | null                        |             |
 | economicOperators.street1                   | string                       | null                        |             |

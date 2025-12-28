@@ -35,7 +35,7 @@ Holds a list of sold items.
 | soldItem.ebayTransactionId             | int                         | null                              |             |
 | soldItem.eBayPlusTransaction           | bool                        | false                             |             |
 | soldItem.alternativeItemNumber1        | string                      | null                              |             |
-| soldItem.alternativeItemNumbe1         | string                      | null                              |             |
+| soldItem.alternativeItemNumber         | string                      | null                              |             |
 | soldItem.internalItemTypeEnum          | InternalItemTypeEnum        | null                              |             |
 | soldItem.userDefinedFlag               | int                         | null                              |             |
 | soldItem.itemTitle                     | string                      | null                              |             |

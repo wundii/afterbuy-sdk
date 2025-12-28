@@ -27,6 +27,7 @@ final class Product implements ResponseDtoInterface
      * @param PartsProperties[] $partsFitment
      * @param AdditionalDescriptionField[] $additionalDescriptionFields
      * @param AdditionalPrice[] $additionalPrices
+     * @param Discount[] $discounts
      * @param EconomicOperator[] $economicOperators
      */
     public function __construct(
@@ -131,6 +132,7 @@ final class Product implements ResponseDtoInterface
         private array $partsFitment = [],
         private array $additionalDescriptionFields = [],
         private array $additionalPrices = [],
+        private array $discounts = [],
         private array $economicOperators = [],
     ) {
     }
@@ -373,6 +375,22 @@ final class Product implements ResponseDtoInterface
     public function setEan(?string $ean): void
     {
         $this->ean = $ean;
+    }
+
+    /**
+     * @return Discount[]
+     */
+    public function getDiscounts(): array
+    {
+        return $this->discounts;
+    }
+
+    /**
+     * @param Discount[] $discounts
+     */
+    public function setDiscounts(array $discounts): void
+    {
+        $this->discounts = $discounts;
     }
 
     /**

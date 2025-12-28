@@ -12,6 +12,7 @@ use Wundii\AfterbuySdk\Dto\GetShopProducts\AdditionalPrice;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\Attribut;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\BaseProduct;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\BaseProductsRelationData;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\Discount;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\EbayVariationData;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\EconomicOperator;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\Feature;
@@ -348,16 +349,19 @@ class GetShopProductsTest extends TestCase
                                     nr: 1,
                                     typ: 1,
                                     url: 'http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_thumb.jpg',
+                                    altText: 'picture',
                                 ),
                                 new ProductPictureChild(
                                     nr: 1,
                                     typ: 2,
                                     url: 'http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_zoom.jpg',
+                                    altText: 'picture',
                                 ),
                                 new ProductPictureChild(
                                     nr: 1,
                                     typ: 3,
                                     url: 'http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_list.jpg',
+                                    altText: 'picture',
                                 ),
                             ],
                         ),
@@ -461,6 +465,22 @@ class GetShopProductsTest extends TestCase
                             name: 'Hood',
                             value: 1.2,
                             pretax: true,
+                        ),
+                    ],
+                    discounts: [
+                        new Discount(
+                            shopId: 1,
+                            discountActive: true,
+                            controlId: 10,
+                            priceType: 'PriceType',
+                            newPriceType: 'NewPriceType',
+                            startDate: new DateTime('2024-06-01T00:00:00'),
+                            expireDate: new DateTime('2024-06-30T23:59:59'),
+                            type: 1,
+                            discountPercent: 10.0,
+                            savedAmount: 5.0,
+                            discountedPrice: 45.0,
+                            quantity: 2,
                         ),
                     ],
                     economicOperators: [
@@ -613,9 +633,10 @@ class GetShopProductsTest extends TestCase
         $this->assertCount(3, $productPicture->getChilds());
         $productPictureChild = $productPicture->getChilds()[0];
         $this->assertInstanceOf(ProductPictureChild::class, $productPictureChild);
-        $this->assertEquals(1, $productPictureChild->getNr());
-        $this->assertEquals(1, $productPictureChild->getTyp());
-        $this->assertEquals('http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_thumb.jpg', $productPictureChild->getUrl());
+        $this->assertSame(1, $productPictureChild->getNr());
+        $this->assertSame(1, $productPictureChild->getTyp());
+        $this->assertSame('http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_thumb.jpg', $productPictureChild->getUrl());
+        $this->assertSame('picture', $productPictureChild->getAltText());
 
         $this->assertCount(3, $product->getScaledDiscounts());
         $scaledDiscount = $product->getScaledDiscounts()[0];
@@ -664,17 +685,33 @@ class GetShopProductsTest extends TestCase
         $this->assertEquals(1.2, $additionalPrice->getValue());
         $this->assertTrue($additionalPrice->getPretax());
 
+        $this->assertCount(1, $product->getDiscounts());
+        $discount = $product->getDiscounts()[0];
+        $this->assertInstanceOf(Discount::class, $discount);
+        $this->assertSame(1, $discount->getShopId());
+        $this->assertSame(true, $discount->isDiscountActive());
+        $this->assertSame(10, $discount->getControlId());
+        $this->assertSame('PriceType', $discount->getPriceType());
+        $this->assertSame('NewPriceType', $discount->getNewPriceType());
+        $this->assertEquals(new DateTime('2024-06-01T00:00:00'), $discount->getStartDate());
+        $this->assertEquals(new DateTime('2024-06-30T23:59:59'), $discount->getExpireDate());
+        $this->assertSame(1, $discount->getType());
+        $this->assertSame(10.0, $discount->getDiscountPercent());
+        $this->assertSame(5.0, $discount->getSavedAmount());
+        $this->assertSame(45.0, $discount->getDiscountedPrice());
+        $this->assertSame(2, $discount->getQuantity());
+
         $this->assertCount(1, $product->getEconomicOperators());
         $economicOperator = $product->getEconomicOperators()[0];
         $this->assertInstanceOf(EconomicOperator::class, $economicOperator);
-        $this->assertEquals('Muster GmbH', $economicOperator->getCompany());
-        $this->assertEquals('Musterstrasse 1', $economicOperator->getStreet1());
-        $this->assertEquals('Hinterhof', $economicOperator->getStreet2());
-        $this->assertEquals('01234', $economicOperator->getPostalCode());
-        $this->assertEquals('Musterstadt', $economicOperator->getCity());
-        $this->assertEquals(CountryIsoEnum::GERMANY, $economicOperator->getCountry());
-        $this->assertEquals('mail@example.com', $economicOperator->getEmail());
-        $this->assertEquals('+0123456789', $economicOperator->getPhone());
+        $this->assertSame('Muster GmbH', $economicOperator->getCompany());
+        $this->assertSame('Musterstrasse 1', $economicOperator->getStreet1());
+        $this->assertSame('Hinterhof', $economicOperator->getStreet2());
+        $this->assertSame('01234', $economicOperator->getPostalCode());
+        $this->assertSame('Musterstadt', $economicOperator->getCity());
+        $this->assertSame(CountryIsoEnum::GERMANY, $economicOperator->getCountry());
+        $this->assertSame('mail@example.com', $economicOperator->getEmail());
+        $this->assertSame('+0123456789', $economicOperator->getPhone());
 
         $this->assertCount(1, $product->getBaseProducts());
         $baseProduct = $product->getBaseProducts()[0];

@@ -158,19 +158,19 @@
                                 <Nr>1</Nr>
                                 <Typ>1</Typ>
                                 <Url><![CDATA[http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_thumb.jpg]]></Url>
-                                <AltText><![CDATA[]]></AltText>
+                                <AltText><![CDATA[picture]]></AltText>
                             </ProductPicture>
                             <ProductPicture>
                                 <Nr>1</Nr>
                                 <Typ>2</Typ>
                                 <Url><![CDATA[http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_zoom.jpg]]></Url>
-                                <AltText><![CDATA[]]></AltText>
+                                <AltText><![CDATA[picture]]></AltText>
                             </ProductPicture>
                             <ProductPicture>
                                 <Nr>1</Nr>
                                 <Typ>3</Typ>
                                 <Url><![CDATA[http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_list.jpg]]></Url>
-                                <AltText><![CDATA[]]></AltText>
+                                <AltText><![CDATA[picture]]></AltText>
                             </ProductPicture>
                         </Childs>
                     </ProductPicture>
@@ -270,6 +270,22 @@
                 <ItemSize><![CDATA[itemSize]]></ItemSize>
                 <CanonicalURL><![CDATA[https://example.com/canonical]]></CanonicalURL>
                 <DatasheetURL><![CDATA[https://example.com/datasheet]]></DatasheetURL>
+                <Discounts>
+                    <Discount>
+                        <ShopID>1</ShopID>
+                        <DiscountActive>1</DiscountActive>
+                        <ControlID>10</ControlID>
+                        <PriceType><![CDATA[PriceType]]></PriceType>
+                        <NewPriceType><![CDATA[NewPriceType]]></NewPriceType>
+                        <StartDate>01.06.2024 00:00:00</StartDate>
+                        <ExpireDate>30.06.2024 23:59:59</ExpireDate>
+                        <Type>1</Type>
+                        <DiscountPercent>10.0</DiscountPercent>
+                        <SavedAmount>5.0</SavedAmount>
+                        <DiscountedPrice>45.0</DiscountedPrice>
+                        <Quantity>2</Quantity>
+                    </Discount>
+                </Discounts>
                 <EconomicOperators>
                     <EconomicOperator>
                         <DatabaseId>1000</DatabaseId>

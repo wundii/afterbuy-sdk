@@ -8,6 +8,9 @@
         <Orders>
             <Order>
                 <InvoiceNumber>10075</InvoiceNumber>
+                <alternativeItemNumber1>5555222</alternativeItemNumber1>
+                <AmazonAccount>23456</AmazonAccount>
+                <InvoiceMemo>InvoiceMemo</InvoiceMemo>
                 <OrderID>43151135</OrderID>
                 <EbayAccount><![CDATA[afterbuy]]></EbayAccount>
                 <Anr>12345</Anr>

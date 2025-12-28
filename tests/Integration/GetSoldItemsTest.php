@@ -374,11 +374,14 @@ class GetSoldItemsTest extends TestCase
             ),
             feedbackDate: new DateTime('2023-09-11 12:22:14'),
             feedbackLink: 'https://www.example.com',
+            alternativeItemNumber1: 5555222,
             ebayAccount: 'afterbuy',
+            amazonAccount: '23456',
             userComment: 'User Comment',
             additionalInfo: '0123456789',
             trackingLink: 'https://www.example.com/track?code=1234567890',
             memo: 'Memo',
+            invoiceMemo: 'InvoiceMemo',
             isCheckoutConfirmedByCustomer: 0,
             orderIDAlt: null,
             containsEbayPlusTransaction: true,
@@ -403,13 +406,13 @@ class GetSoldItemsTest extends TestCase
         $this->assertInstanceOf(DateTime::class, $order->getFeedbackDate());
         $this->assertSame('https://www.example.com', $order->getFeedbackLink());
         $this->assertSame('afterbuy', $order->getEbayAccount());
-        $this->assertSame(null, $order->getAmazonAccount());
+        $this->assertSame('23456', $order->getAmazonAccount());
         $this->assertSame('User Comment', $order->getUserComment());
         $this->assertSame('0123456789', $order->getAdditionalInfo());
-        $this->assertSame(null, $order->getAlternativeItemNumber1());
+        $this->assertSame(5555222, $order->getAlternativeItemNumber1());
         $this->assertSame('https://www.example.com/track?code=1234567890', $order->getTrackingLink());
         $this->assertSame('Memo', $order->getMemo());
-        $this->assertSame(null, $order->getInvoiceMemo());
+        $this->assertSame('InvoiceMemo', $order->getInvoiceMemo());
         $this->assertSame(0, $order->getIsCheckoutConfirmedByCustomer());
         $this->assertSame(null, $order->getOrderIDAlt());
         $this->assertSame(true, $order->isContainsEbayPlusTransaction());
