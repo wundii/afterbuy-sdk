@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Wundii\AfterbuySdk\Tests\Validator;
+namespace Wundii\AfterbuySdk\Tests\Unit\Validator;
 
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;

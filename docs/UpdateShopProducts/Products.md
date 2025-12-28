@@ -145,11 +145,11 @@ Holds a list of payment services.
 | **products.addAttributes**                          | AddAttributes                     | null     |             |
 | addAttributes.updateActionAttributesEnum            | UpdateActionAttributesEnum        | required |             |
 | **addAttributes.addAttributes**                     | AddAttribut[]                     | required |             |
-| addAttributes.AttributName                          | string                            | null     |             |
-| addAttributes.AttributValue                         | string                            | null     |             |
+| addAttributes.attributName                          | string                            | null     |             |
+| addAttributes.attributValue                         | string                            | null     |             |
 | addAttributes.attributTypEnum                       | AttributTypEnum                   | null     |             |
-| addAttributes.attributePosition                     | int                               | null     |             |
-| addAttributes.AttributRequired                      | bool                              | null     |             |
+| addAttributes.attributPosition                      | int                               | null     |             |
+| addAttributes.attributRequired                      | bool                              | null     |             |
 | **products.addBaseProducts**                        | AddBaseProducts                   | null     |             |
 | addBaseProducts.updateActionAddBaseProductEnum      | UpdateActionAddBaseProductEnum    | required |             |
 | **addBaseProducts.addBaseProducts**                 | AddBaseProduct[]                  | required |             |

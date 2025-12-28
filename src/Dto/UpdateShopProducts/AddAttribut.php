@@ -11,37 +11,37 @@ use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 final readonly class AddAttribut implements RequestDtoXmlInterface
 {
     public function __construct(
-        private ?string $AttributName = null,
-        private ?string $AttributValue = null,
+        private ?string $attributName = null,
+        private ?string $attributValue = null,
         private ?AttributTypEnum $attributTypEnum = null,
-        private ?int $attributePosition = null,
-        private ?bool $AttributRequired = null,
+        private ?int $attributPosition = null,
+        private ?bool $attributRequired = null,
     ) {
     }
 
     public function appendXmlContent(SimpleXMLExtend $simpleXml): void
     {
         $addAttribut = $simpleXml->addChild('AddAttribut');
-        $addAttribut->addString('AttributName', $this->AttributName);
-        $addAttribut->addString('AttributValue', $this->AttributValue);
+        $addAttribut->addString('AttributName', $this->attributName);
+        $addAttribut->addString('AttributValue', $this->attributValue);
         $addAttribut->addNumber('AttributTyp', $this->attributTypEnum?->value);
-        $addAttribut->addNumber('AttributPosition', $this->attributePosition);
-        $addAttribut->addBool('AttributRequired', $this->AttributRequired);
+        $addAttribut->addNumber('AttributPosition', $this->attributPosition);
+        $addAttribut->addBool('AttributRequired', $this->attributRequired);
     }
 
     public function getAttributName(): ?string
     {
-        return $this->AttributName;
+        return $this->attributName;
     }
 
-    public function getAttributePosition(): ?int
+    public function getAttributPosition(): ?int
     {
-        return $this->attributePosition;
+        return $this->attributPosition;
     }
 
     public function getAttributRequired(): ?bool
     {
-        return $this->AttributRequired;
+        return $this->attributRequired;
     }
 
     public function getAttributTyp(): ?AttributTypEnum
@@ -51,6 +51,6 @@ final readonly class AddAttribut implements RequestDtoXmlInterface
 
     public function getAttributValue(): ?string
     {
-        return $this->AttributValue;
+        return $this->attributValue;
     }
 }
