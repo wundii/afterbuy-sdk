@@ -29,6 +29,15 @@
                     <AlreadyPaid>112,30</AlreadyPaid>
                     <FullAmount>112,30</FullAmount>
                     <InvoiceDate>11.09.2023</InvoiceDate>
+                    <paymentData>
+                        <bankCode>12345678</bankCode>
+                        <accountHolder>Max Mustermann</accountHolder>
+                        <bankName>Musterbank</bankName>
+                        <accountNumber>1234567890</accountNumber>
+                        <iban>DE12345678901234567890</iban>
+                        <bic>MUSTERBICXXX</bic>
+                        <referenceNumber>Rechnungsnummer 10075</referenceNumber>
+                    </paymentData>
                 </PaymentInfo>
                 <IsCheckoutConfirmedByCustomer>0</IsCheckoutConfirmedByCustomer>
                 <BuyerInfo>

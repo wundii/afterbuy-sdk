@@ -16,6 +16,7 @@ use Wundii\AfterbuySdk\Dto\GetSoldItems\Order;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\OrderOriginalCurrency;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\Orders;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\ParcelLabel;
+use Wundii\AfterbuySdk\Dto\GetSoldItems\PaymentData;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\PaymentInfo;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\ShippingAddress;
 use Wundii\AfterbuySdk\Dto\GetSoldItems\ShippingInfo;
@@ -211,6 +212,15 @@ class GetSoldItemsTest extends TestCase
                 alreadyPaid: 112.3,
                 fullAmount: 112.3,
                 invoiceDate: new DateTime('2023-09-11'),
+                paymentData: new PaymentData(
+                    bankCode: '12345678',
+                    accountHolder: 'Max Mustermann',
+                    bankName: 'Musterbank',
+                    accountNumber: '1234567890',
+                    iban: 'DE12345678901234567890',
+                    bic: 'MUSTERBICXXX',
+                    referenceNumber: 'Rechnungsnummer 10075',
+                ),
             ),
             buyerInfo: new BuyerInfo(
                 new BillingAddress(
@@ -353,6 +363,7 @@ class GetSoldItemsTest extends TestCase
             trackingLink: 'https://www.example.com/track?code=1234567890',
             memo: 'Memo',
             isCheckoutConfirmedByCustomer: 0,
+            orderIDAlt: null,
             containsEbayPlusTransaction: true,
         );
 
@@ -363,8 +374,186 @@ class GetSoldItemsTest extends TestCase
         $this->assertSame(4, $orders->getItemsCount());
         $this->assertSame(true, $orders->hasMoreItems());
         $this->assertCount(1, $orders->getOrders());
-        $this->assertInstanceOf(Order::class, $orders->getOrders()[0]);
-        $this->assertEquals($expected, $orders->getOrders()[0]);
+
+        $order = $orders->getOrders()[0];
+        $this->assertInstanceOf(Order::class, $order);
+        $this->assertEquals($expected, $order);
+
+        $this->assertSame(10075, $order->getInvoiceNumber());
+        $this->assertSame(43151135, $order->getOrderId());
+        $this->assertSame(12345, $order->getAnr());
+        $this->assertInstanceOf(DateTime::class, $order->getOrderDate());
+        $this->assertInstanceOf(DateTime::class, $order->getFeedbackDate());
+        $this->assertSame('https://www.example.com', $order->getFeedbackLink());
+        $this->assertSame('afterbuy', $order->getEbayAccount());
+        $this->assertSame(null, $order->getAmazonAccount());
+        $this->assertSame('User Comment', $order->getUserComment());
+        $this->assertSame('0123456789', $order->getAdditionalInfo());
+        $this->assertSame(null, $order->getAlternativeItemNumber1());
+        $this->assertSame('https://www.example.com/track?code=1234567890', $order->getTrackingLink());
+        $this->assertSame('Memo', $order->getMemo());
+        $this->assertSame(null, $order->getInvoiceMemo());
+        $this->assertSame(0, $order->getIsCheckoutConfirmedByCustomer());
+        $this->assertSame(null, $order->getOrderIDAlt());
+        $this->assertSame(true, $order->isContainsEbayPlusTransaction());
+
+        $paymentInfo = $order->getPaymentInfo();
+        $this->assertInstanceOf(PaymentInfo::class, $paymentInfo);
+        $this->assertSame(PaymentIdEnum::INVOICE, $paymentInfo->getPaymentId());
+        $this->assertSame(112.3, $paymentInfo->getAlreadyPaid());
+        $this->assertSame(112.3, $paymentInfo->getFullAmount());
+        $this->assertInstanceOf(DateTime::class, $paymentInfo->getInvoiceDate());
+        $this->assertSame('eBay Managed Payment', $paymentInfo->getPaymentMethod());
+        $this->assertSame(PaymentFunctionEnum::OTHERS, $paymentInfo->getPaymentFunction());
+        $this->assertSame('1234567890', $paymentInfo->getPaymentTransactionId());
+        $this->assertSame('Completed', $paymentInfo->getPaymentStatus());
+        $this->assertInstanceOf(DateTime::class, $paymentInfo->getPaymentDate());
+        $this->assertSame(null, $paymentInfo->getPaymentInstruction());
+        $this->assertSame([], $paymentInfo->getPayoutIds());
+        $paymentData = $paymentInfo->getPaymentData();
+        $this->assertInstanceOf(PaymentData::class, $paymentData);
+        $this->assertSame('12345678', $paymentData->getBankCode());
+        $this->assertSame('Max Mustermann', $paymentData->getAccountHolder());
+        $this->assertSame('Musterbank', $paymentData->getBankName());
+        $this->assertSame('1234567890', $paymentData->getAccountNumber());
+        $this->assertSame('DE12345678901234567890', $paymentData->getIban());
+        $this->assertSame('MUSTERBICXXX', $paymentData->getBic());
+        $this->assertSame('Rechnungsnummer 10075', $paymentData->getReferenceNumber());
+
+        $buyerInfo = $order->getBuyerInfo();
+        $this->assertInstanceOf(BuyerInfo::class, $buyerInfo);
+        $billingAddress = $buyerInfo->getBillingAddress();
+        $this->assertSame(123456, $billingAddress->getAfterbuyUserId());
+        $this->assertSame(12345, $billingAddress->getAfterbuyUserIdAlt());
+        $this->assertSame('afterbuy1_testaccount', $billingAddress->getUserIdPlattform());
+        $this->assertSame('Max', $billingAddress->getFirstName());
+        $this->assertSame('Mustermann', $billingAddress->getLastName());
+        $this->assertSame('Dr', $billingAddress->getTitle());
+        $this->assertSame('Test GmbH', $billingAddress->getCompany());
+        $this->assertSame('Musterstrasse 8', $billingAddress->getStreet());
+        $this->assertSame('Hinterhof', $billingAddress->getStreet2());
+        $this->assertSame('12345', $billingAddress->getPostalCode());
+        $this->assertSame('Musterhausen', $billingAddress->getCity());
+        $this->assertSame('D', $billingAddress->getCountry());
+        $this->assertSame(CountryIsoEnum::GERMANY, $billingAddress->getCountryIso());
+        $this->assertSame('+0123456789', $billingAddress->getPhone());
+        $this->assertSame('+0123456790', $billingAddress->getFax());
+        $this->assertSame('info@example.com', $billingAddress->getMail());
+        $this->assertSame(true, $billingAddress->isMerchant());
+        $this->assertSame('1234567890', $billingAddress->getTaxIdNumber());
+
+        $shippingAddress = $buyerInfo->getShippingAddress();
+        $this->assertSame('Max', $shippingAddress->getFirstName());
+        $this->assertSame('Mustermann', $shippingAddress->getLastName());
+        $this->assertSame('Test GmbH', $shippingAddress->getCompany());
+        $this->assertSame('Musterstrasse 8', $shippingAddress->getStreet());
+        $this->assertSame('Hinterhof', $shippingAddress->getStreet2());
+        $this->assertSame('12345', $shippingAddress->getPostalCode());
+        $this->assertSame('Musterhausen', $shippingAddress->getCity());
+        $this->assertSame('+0123456789', $shippingAddress->getPhone());
+        $this->assertSame('D', $shippingAddress->getCountry());
+        $this->assertSame(CountryIsoEnum::GERMANY, $shippingAddress->getCountryIso());
+        $this->assertSame('1234567890', $shippingAddress->getTaxIdNumber());
+
+        $soldItems = $order->getSoldItems();
+        $this->assertInstanceOf(SoldItems::class, $soldItems);
+        $this->assertCount(1, $soldItems->getSoldItem());
+        $this->assertSame(1, $soldItems->getItemsInOrder());
+        $item = $soldItems->getSoldItem()[0];
+        $this->assertInstanceOf(SoldItem::class, $item);
+        $this->assertSame(123456, $item->getItemId());
+        $this->assertSame(12345678, $item->getAnr());
+        $this->assertSame('01-2345-6789', $item->getPlatformSpecificOrderId());
+        $this->assertSame(1234567890, $item->getEbayTransactionId());
+        $this->assertSame(true, $item->isEBayPlusTransaction());
+        $this->assertSame(InternalItemTypeEnum::BUY_IT_NOW, $item->getInternalItemTypeEnum());
+        $this->assertSame('Blumenvase', $item->getItemTitle());
+        $this->assertSame(1, $item->getItemQuantity());
+        $this->assertSame(112.3, $item->getItemPrice());
+        $this->assertInstanceOf(DateTime::class, $item->getItemEndDate());
+        $this->assertSame(19.0, $item->getTaxRate());
+        $this->assertSame(TaxCollectedByEnum::DEFAULT, $item->getTaxCollectedBy());
+        $this->assertSame(9.88, $item->getItemWeight());
+        $this->assertInstanceOf(DateTime::class, $item->getItemXmlDate());
+        $this->assertInstanceOf(DateTime::class, $item->getItemModDate());
+        $this->assertSame(ItemPlatFormNameEnum::EBAY, $item->getItemPlatFormName());
+        $this->assertSame('https://www.example.com/item/123456', $item->getItemLink());
+        $this->assertSame(true, $item->getEbayFeedbackCompleted());
+        $this->assertSame(true, $item->getEbayFeedbackReceived());
+        $this->assertSame('Positive', $item->getEbayFeedbackCommentType());
+        $itemOriginalCurrency = $item->getItemOriginalCurrency();
+        $this->assertInstanceOf(ItemOriginalCurrency::class, $itemOriginalCurrency);
+        $this->assertSame(112.3, $itemOriginalCurrency->getItemPrice());
+        $this->assertSame(ItemPriceCodeEnum::EURO, $itemOriginalCurrency->getItemPriceCode());
+        $this->assertSame(0.0, $itemOriginalCurrency->getItemShipping());
+        $shopProductDetails = $item->getShopProductDetails();
+        $this->assertInstanceOf(ShopProductDetails::class, $shopProductDetails);
+        $this->assertSame(1234567890, $shopProductDetails->getProductId());
+        $this->assertSame(1234567890, $shopProductDetails->getAnr());
+        $this->assertSame('3210123456789', $shopProductDetails->getEan());
+        $this->assertSame('Stk', $shopProductDetails->getUnitOfQuantity());
+        $this->assertSame(1.0, $shopProductDetails->getBasepriceFactor());
+        $baseProductData = $shopProductDetails->getBaseProductData();
+        $this->assertInstanceOf(BaseProductData::class, $baseProductData);
+        $this->assertSame(BaseProductTypeEnum::PRODUCT_SET, $baseProductData->getBaseProductType());
+        $this->assertCount(2, $baseProductData->getChildProduct());
+        $childProduct1 = $baseProductData->getChildProduct()[0];
+        $this->assertInstanceOf(ChildProduct::class, $childProduct1);
+        $this->assertSame(1234567891, $childProduct1->getProductId());
+        $this->assertSame(1234567891, $childProduct1->getProductAnr());
+        $this->assertSame('3210123456790', $childProduct1->getProductEan());
+        $this->assertSame('Blumenvase', $childProduct1->getProductName());
+        $this->assertSame(1, $childProduct1->getProductQuantity());
+        $this->assertSame(19.0, $childProduct1->getProductVat());
+        $this->assertSame(4.94, $childProduct1->getProductWeight());
+        $this->assertSame(54.45, $childProduct1->getProductUnitPrice());
+        $this->assertSame('sl1', $childProduct1->getStockLocation1());
+        $this->assertSame('sl2', $childProduct1->getStockLocation2());
+        $this->assertSame('sl3', $childProduct1->getStockLocation3());
+        $childProduct2 = $baseProductData->getChildProduct()[1];
+        $this->assertInstanceOf(ChildProduct::class, $childProduct2);
+        $this->assertSame(1234567892, $childProduct2->getProductId());
+        $this->assertSame(1234567892, $childProduct2->getProductAnr());
+        $this->assertSame('3210123456791', $childProduct2->getProductEan());
+        $this->assertSame('Untersetzer', $childProduct2->getProductName());
+        $this->assertSame(1, $childProduct2->getProductQuantity());
+        $this->assertSame(19.0, $childProduct2->getProductVat());
+        $this->assertSame(0.54, $childProduct2->getProductWeight());
+        $this->assertSame(55.73, $childProduct2->getProductUnitPrice());
+        $this->assertSame('sl1', $childProduct2->getStockLocation1());
+        $this->assertSame('sl2', $childProduct2->getStockLocation2());
+        $this->assertSame('sl3', $childProduct2->getStockLocation3());
+        $this->assertSame('sl1', $shopProductDetails->getStockLocation1());
+        $this->assertSame('sl2', $shopProductDetails->getStockLocation2());
+        $this->assertSame('sl3', $shopProductDetails->getStockLocation3());
+
+        $shippingInfo = $order->getShippingInfo();
+        $this->assertInstanceOf(ShippingInfo::class, $shippingInfo);
+        $this->assertSame('Paketdienst', $shippingInfo->getShippingMethod());
+        $this->assertSame(null, $shippingInfo->getShippingReturnMethod());
+        $this->assertSame(0.0, $shippingInfo->getShippingCost());
+        $this->assertSame(0.0, $shippingInfo->getShippingAdditionalCost());
+        $this->assertSame(0.0, $shippingInfo->getShippingTotalCost());
+        $this->assertSame(19.00, $shippingInfo->getShippingTaxRate());
+        $this->assertInstanceOf(DateTime::class, $shippingInfo->getDeliveryDate());
+        $this->assertCount(1, $shippingInfo->getParcelLabels());
+        $parcelLabel = $shippingInfo->getParcelLabels()[0];
+        $this->assertInstanceOf(ParcelLabel::class, $parcelLabel);
+        $this->assertSame(43151135, $parcelLabel->getItemId());
+        $this->assertSame(1, $parcelLabel->getPackageNumber());
+        $this->assertSame('00340434464181524067', $parcelLabel->getParcelLabelNumber());
+        $this->assertSame('99353347120585', $parcelLabel->getReturnLabelNumber());
+
+        $orderOriginalCurrency = $order->getOrderOriginalCurrency();
+        $this->assertInstanceOf(OrderOriginalCurrency::class, $orderOriginalCurrency);
+        $this->assertSame(0.0, $orderOriginalCurrency->getEbayShippingAmount());
+        $this->assertSame(0.0, $orderOriginalCurrency->getShippingAmount());
+        $this->assertSame(0.0, $orderOriginalCurrency->getPaymentSurcharge());
+        $this->assertSame(0.0, $orderOriginalCurrency->getPaymentSurchargePerCent());
+        $this->assertSame(112.3, $orderOriginalCurrency->getInvoiceAmount());
+        $this->assertSame(0, $orderOriginalCurrency->getExchangeRate());
+        $this->assertSame(112.3, $orderOriginalCurrency->getPayedAmount());
+
     }
 
     public function testUpdateVersion460(): void
