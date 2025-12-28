@@ -116,7 +116,6 @@ final class Order implements RequestDtoXmlInterface
         $this->attributes = $attributes;
     }
 
-    #[Assert\Valid]
     public function getBuyerInfo(): ?BuyerInfo
     {
         return $this->buyerInfo;
@@ -227,7 +226,6 @@ final class Order implements RequestDtoXmlInterface
         $this->orderMemo = $orderMemo;
     }
 
-    #[Assert\Valid]
     public function getPaymentInfo(): ?PaymentInfo
     {
         return $this->paymentInfo;

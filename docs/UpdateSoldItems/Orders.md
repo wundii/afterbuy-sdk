@@ -58,7 +58,7 @@ Holds a list of payment services.
 | paymentInfo.paymentTransactionId   | string            | null     |             |
 | paymentInfo.alreadyPaid            | float             | null     |             |
 | paymentInfo.paymentAdditionalCost  | float             | null     |             |
-| paymentInfo.sendPaymentMail        | float             | null     |             |
+| paymentInfo.sendPaymentMail        | bool              | null     |             |
 | **orders.shippingInfo**            | ShippingInfo      | null     |             |
 | shippingInfo.shippingMethod        | string            | null     |             |
 | shippingInfo.shippingReturnMethod  | string            | null     |             |

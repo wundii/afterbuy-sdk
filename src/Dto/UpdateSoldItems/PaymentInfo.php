@@ -16,7 +16,7 @@ final readonly class PaymentInfo implements RequestDtoXmlInterface
         private ?string $paymentTransactionId = null,
         private ?float $alreadyPaid = null,
         private ?float $paymentAdditionalCost = null,
-        private ?float $sendPaymentMail = null,
+        private ?bool $sendPaymentMail = null,
     ) {
     }
 
@@ -28,7 +28,7 @@ final readonly class PaymentInfo implements RequestDtoXmlInterface
         $paymentInfo->addString('PaymentTransactionID', $this->paymentTransactionId);
         $paymentInfo->addNumber('AlreadyPaid', $this->alreadyPaid);
         $paymentInfo->addNumber('PaymentAdditionalCost', $this->paymentAdditionalCost);
-        $paymentInfo->addNumber('SendPaymentMail', $this->sendPaymentMail);
+        $paymentInfo->addBool('SendPaymentMail', $this->sendPaymentMail);
     }
 
     public function getAlreadyPaid(): ?float
@@ -56,7 +56,7 @@ final readonly class PaymentInfo implements RequestDtoXmlInterface
         return $this->paymentTransactionId;
     }
 
-    public function getSendPaymentMail(): ?float
+    public function getSendPaymentMail(): ?bool
     {
         return $this->sendPaymentMail;
     }
