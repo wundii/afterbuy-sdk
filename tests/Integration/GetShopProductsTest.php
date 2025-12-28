@@ -10,6 +10,9 @@ use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\AdditionalDescriptionField;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\AdditionalPrice;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\Attribut;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\BaseProduct;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\BaseProductsRelationData;
+use Wundii\AfterbuySdk\Dto\GetShopProducts\EbayVariationData;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\EconomicOperator;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\Feature;
 use Wundii\AfterbuySdk\Dto\GetShopProducts\PaginationResult;
@@ -199,7 +202,22 @@ class GetShopProductsTest extends TestCase
                     modDate: new DateTime('2025-05-19 16:12:23'),
                     variationName: 'Variation',
                     baseProductFlagEnum: BaseProductFlagEnum::PRODUCT,
-                    baseProducts: [],
+                    baseProducts: [
+                        new BaseProduct(
+                            baseProductID: 123,
+                            baseProductType: 456,
+                            baseProductsRelationData: new BaseProductsRelationData(
+                                quantity: 2,
+                                variationLabel: 'Size: M; Color: Red',
+                                defaultProduct: 'defaultProduct',
+                                position: 1,
+                                ebayVariationData: new EbayVariationData(
+                                    ebayVariationName: 'ebayVariationName',
+                                    ebayVariationValue: 'ebayVariationValue',
+                                ),
+                            ),
+                        ),
+                    ],
                     shortDescription: 'Kurzbeschreibung',
                     tags: [
                         'Tag1',
@@ -470,5 +488,208 @@ class GetShopProductsTest extends TestCase
 
         $this->assertInstanceOf(GetShopProductsResponse::class, $response);
         $this->assertEquals($expected, $products);
+
+        $this->assertTrue($products->hasMoreProducts());
+        $this->assertEquals(1010101, $products->getLastProductId());
+        $this->assertCount(1, $products->getProducts());
+        $this->assertEquals('https://www.afterbuy.de/', $products->getShippingServicesList());
+
+        $paginationResult = $products->getPaginationResult();
+        $this->assertInstanceOf(PaginationResult::class, $paginationResult);
+        $this->assertEquals(1, $paginationResult->getItemsPerPage());
+        $this->assertEquals(1, $paginationResult->getPageNumber());
+        $this->assertEquals(1, $paginationResult->getTotalNumberOfEntries());
+        $this->assertEquals(1, $paginationResult->getTotalNumberOfPages());
+
+        $product = $products->getProducts()[0];
+        $this->assertInstanceOf(Product::class, $product);
+        $this->assertSame(1010101, $product->getProductId());
+        $this->assertSame(101010110, $product->getAnr());
+        $this->assertSame('Afterbuy Testartikel', $product->getName());
+        $this->assertEquals(new DateTime('2025-05-19 16:12:23'), $product->getModDate());
+        $this->assertEquals(new DateTime('2006-05-12T12:00:00'), $product->getFullFilmentImport());
+        $this->assertEquals(new DateTime('2024-01-02T22:33:44'), $product->getLastSale());
+        $this->assertEquals(BaseProductFlagEnum::PRODUCT, $product->getBaseProductFlag());
+        $this->assertEquals(CountryOfOriginEnum::GERMANY, $product->getCountryOfOrigin());
+        $this->assertEquals(141556, $product->getCrossCatalogID());
+        $this->assertEquals(ConditionEnum::NEW, $product->getCondition());
+        $this->assertEquals(EnergyClassEnum::NO_CLASS, $product->getEnergyClass());
+        $this->assertEquals(AgeGroupEnum::NEWBORNS, $product->getAgeGroup());
+        $this->assertEquals(GenderEnum::LADIES, $product->getGender());
+        $this->assertEquals('https://example.com/canonical', $product->getCanonicalUrl());
+        $this->assertEquals('https://example.com/datasheet', $product->getDataSheetUrl());
+        $this->assertEquals('Afterbuy', $product->getProductBrand());
+        $this->assertEquals('CustomsTariffNumber', $product->getCustomsTariffNumber());
+        $this->assertEquals('99999999999999', $product->getManufacturerPartNumber());
+        $this->assertEquals('EAN', $product->getAmazonStandardProductIdType());
+        $this->assertEquals('99999999999999', $product->getAmazonStandardProductIdValue());
+        $this->assertEquals('EAN', $product->getManufacturerStandardProductIdType());
+        $this->assertEquals('99999999999999', $product->getManufacturerStandardProductIdValue());
+        $this->assertTrue($product->isFacebook());
+        $this->assertEquals('save', $product->getGoogleProductCategory());
+        $this->assertEquals('adwordsGrouping', $product->getAdwordsGrouping());
+        $this->assertEquals('pattern', $product->getPattern());
+        $this->assertEquals('Metall', $product->getMaterial());
+        $this->assertEquals('itemColor', $product->getItemColor());
+        $this->assertEquals('itemSize', $product->getItemSize());
+        $this->assertEquals('cl0', $product->getCustomLabel0());
+        $this->assertEquals('cl1', $product->getCustomLabel1());
+        $this->assertEquals('cl2', $product->getCustomLabel2());
+        $this->assertEquals('cl3', $product->getCustomLabel3());
+        $this->assertEquals('cl4', $product->getCustomLabel4());
+        $this->assertEquals('FV1', $product->getFreeValue1());
+        $this->assertEquals('FV2', $product->getFreeValue2());
+        $this->assertEquals('FV3', $product->getFreeValue3());
+        $this->assertEquals('FV4', $product->getFreeValue4());
+        $this->assertEquals('FV5', $product->getFreeValue5());
+        $this->assertEquals('FV6', $product->getFreeValue6());
+        $this->assertEquals('FV7', $product->getFreeValue7());
+        $this->assertEquals('FV8', $product->getFreeValue8());
+        $this->assertEquals('FV9', $product->getFreeValue9());
+        $this->assertEquals('FV10', $product->getFreeValue10());
+        $this->assertEquals('1-3 Tage', $product->getDeliveryTime());
+        $this->assertEquals('Lagerort 1', $product->getStocklocation_1());
+        $this->assertEquals('Lagerort 2', $product->getStocklocation_2());
+        $this->assertEquals('Lagerort 3', $product->getStocklocation_3());
+        $this->assertEquals('Lagerort 4', $product->getStocklocation_4());
+        $this->assertEquals('Packstationtest', $product->getShippingGroup());
+        $this->assertEquals('1', $product->getShopShippingGroup());
+        $this->assertEquals('searchEngineShipping', $product->getSearchEngineShipping());
+        $this->assertTrue($product->isFroogle());
+        $this->assertTrue($product->isKelkoo());
+        $this->assertTrue($product->isDiscontinued());
+        $this->assertTrue($product->isMergeStock());
+        $this->assertTrue($product->isStock());
+        $this->assertEquals(1, $product->getQuantity());
+        $this->assertEquals(0, $product->getAuctionQuantity());
+        $this->assertEquals(0, $product->getBasepriceFactor());
+        $this->assertEquals(1, $product->getMinimumStock());
+        $this->assertEquals(1, $product->getMinimumOrderQuantity());
+        $this->assertEquals(0, $product->getFullFilmentQuantity());
+        $this->assertEquals(0.0, $product->getSellingPrice());
+        $this->assertEquals(0.0, $product->getBuyingPrice());
+        $this->assertEquals(0.0, $product->getDealerPrice());
+        $this->assertEquals(1000, $product->getLevel());
+        $this->assertEquals(10000, $product->getPosition());
+        $this->assertFalse($product->isTitleReplace());
+        $this->assertEquals('Suchalias', $product->getSearchAlias());
+        $this->assertEquals(19.0, $product->getTaxRate());
+        $this->assertEquals(0.0, $product->getWeight());
+        $this->assertEquals('https://example.com/small.jpg', $product->getImageSmallURL());
+        $this->assertEquals('https://example.com/large.jpg', $product->getImageLargeURL());
+        $this->assertCount(2, $product->getTags());
+        $this->assertEquals('Tag1', $product->getTags()[0]);
+        $this->assertEquals('Tag2', $product->getTags()[1]);
+        $this->assertTrue($product->isAvailableShop());
+        $this->assertSame('Kurzbeschreibung', $product->getShortDescription());
+        $this->assertSame('Beschreibung', $product->getDescription());
+        $this->assertSame('Mein Memo', $product->getMemo());
+        $this->assertSame('1E2A3N', $product->getEan());
+        $this->assertSame('Variation', $product->getVariationName());
+        $this->assertSame('Afterbuy Testartikel', $product->getSeoName());
+        $this->assertSame('googleBaseLabels', $product->getGoogleBaseLabels());
+        $this->assertSame('headerDescriptionName', $product->getHeaderDescriptionName());
+        $this->assertSame('headerDescriptionValue', $product->getHeaderDescriptionValue());
+        $this->assertSame('footerDescriptionName', $product->getFooterDescriptionName());
+        $this->assertSame('footerDescriptionValue', $product->getFooterDescriptionValue());
+        $this->assertSame('Meine Keywords', $product->getKeywords());
+        $this->assertSame('DE:Afterbuy Express', $product->getGoogleBaseShipping());
+        $this->assertSame(null, $product->getShop20Id());
+        $this->assertSame('Stk', $product->getUnitOfQuantity());
+        $this->assertCount(3, $product->getSkus());
+        $this->assertEquals('NewSKU1', $product->getSkus()[0]);
+        $this->assertEquals('NewSKU2', $product->getSkus()[1]);
+        $this->assertEquals('NewSKU3', $product->getSkus()[2]);
+        $this->assertCount(1, $product->getCatalogs());
+        $this->assertEquals(141556, $product->getCatalogs()[0]);
+
+        $this->assertCount(1, $product->getProductPictures());
+        $productPicture = $product->getProductPictures()[0];
+        $this->assertInstanceOf(ProductPicture::class, $productPicture);
+        $this->assertEquals(1, $productPicture->getNr());
+        $this->assertEquals(0, $productPicture->getTyp());
+        $this->assertEquals('http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1.jpg', $productPicture->getUrl());
+        $this->assertNull($productPicture->getAltText());
+        $this->assertCount(3, $productPicture->getChilds());
+        $productPictureChild = $productPicture->getChilds()[0];
+        $this->assertInstanceOf(ProductPictureChild::class, $productPictureChild);
+        $this->assertEquals(1, $productPictureChild->getNr());
+        $this->assertEquals(1, $productPictureChild->getTyp());
+        $this->assertEquals('http://bilder.afterbuy.de/images/NPNTRE/ProductPicture_1018331920_1_thumb.jpg', $productPictureChild->getUrl());
+
+        $this->assertCount(3, $product->getScaledDiscounts());
+        $scaledDiscount = $product->getScaledDiscounts()[0];
+        $this->assertInstanceOf(ScaledDiscount::class, $scaledDiscount);
+        $this->assertEquals(2, $scaledDiscount->getScaledQuantity());
+        $this->assertEquals(1.2, $scaledDiscount->getScaledPrice());
+        $this->assertEquals(1.1, $scaledDiscount->getScaledDPrice());
+
+        $this->assertCount(2, $product->getFeatures());
+        $feature = $product->getFeatures()[0];
+        $this->assertInstanceOf(Feature::class, $feature);
+        $this->assertEquals(1, $feature->getId());
+        $this->assertEquals('Feature1', $feature->getName());
+        $this->assertEquals('Value1', $feature->getValue());
+
+        $this->assertCount(3, $product->getAttributes());
+        $attribute = $product->getAttributes()[0];
+        $this->assertInstanceOf(Attribut::class, $attribute);
+        $this->assertEquals('Attribut 1', $attribute->getAttributName());
+        $this->assertEquals('Dies ist ein Testattribut mit reinem Text', $attribute->getAttributWert());
+        $this->assertEquals(0, $attribute->getAttributTyp());
+        $this->assertFalse($attribute->isAttributRequired());
+
+        $this->assertCount(4, $product->getPartsFitment());
+        $partsProperties = $product->getPartsFitment()[0];
+        $this->assertInstanceOf(PartsProperties::class, $partsProperties);
+        $this->assertCount(5, $partsProperties->getPartsProperty());
+        $partsProperty = $partsProperties->getPartsProperty()[0];
+        $this->assertInstanceOf(PartsProperty::class, $partsProperty);
+        $this->assertEquals(PropertyNameEnum::KType, $partsProperty->getPropertyName());
+        $this->assertEquals('3313', $partsProperty->getPropertyValue());
+
+        $this->assertCount(1, $product->getAdditionalDescriptionFields());
+        $additionalDescriptionField = $product->getAdditionalDescriptionFields()[0];
+        $this->assertInstanceOf(AdditionalDescriptionField::class, $additionalDescriptionField);
+        $this->assertEquals(1, $additionalDescriptionField->getFieldId());
+        $this->assertEquals('fieldName1', $additionalDescriptionField->getFieldName());
+        $this->assertEquals('fieldLabel1', $additionalDescriptionField->getFieldLabel());
+        $this->assertEquals('fieldContent1', $additionalDescriptionField->getFieldContent());
+
+        $this->assertCount(1, $product->getAdditionalPrices());
+        $additionalPrice = $product->getAdditionalPrices()[0];
+        $this->assertInstanceOf(AdditionalPrice::class, $additionalPrice);
+        $this->assertEquals(100, $additionalPrice->getDefinitionId());
+        $this->assertEquals('Hood', $additionalPrice->getName());
+        $this->assertEquals(1.2, $additionalPrice->getValue());
+        $this->assertTrue($additionalPrice->getPretax());
+
+        $this->assertCount(1, $product->getEconomicOperators());
+        $economicOperator = $product->getEconomicOperators()[0];
+        $this->assertInstanceOf(EconomicOperator::class, $economicOperator);
+        $this->assertEquals('Muster GmbH', $economicOperator->getCompany());
+        $this->assertEquals('Musterstrasse 1', $economicOperator->getStreet1());
+        $this->assertEquals('Hinterhof', $economicOperator->getStreet2());
+        $this->assertEquals('01234', $economicOperator->getPostalCode());
+        $this->assertEquals('Musterstadt', $economicOperator->getCity());
+        $this->assertEquals(CountryIsoEnum::GERMANY, $economicOperator->getCountry());
+        $this->assertEquals('mail@example.com', $economicOperator->getEmail());
+        $this->assertEquals('+0123456789', $economicOperator->getPhone());
+
+        $this->assertCount(1, $product->getBaseProducts());
+        $baseProduct = $product->getBaseProducts()[0];
+        $this->assertInstanceOf(BaseProduct::class, $baseProduct);
+        $this->assertEquals(123, $baseProduct->getBaseProductID());
+        $this->assertEquals(456, $baseProduct->getBaseProductType());
+        $baseProductsRelationData = $baseProduct->getBaseProductsRelationData();
+        $this->assertInstanceOf(BaseProductsRelationData::class, $baseProductsRelationData);
+        $this->assertEquals(2, $baseProductsRelationData->getQuantity());
+        $this->assertEquals('Size: M; Color: Red', $baseProductsRelationData->getVariationLabel());
+        $this->assertEquals('defaultProduct', $baseProductsRelationData->getDefaultProduct());
+        $this->assertEquals(1, $baseProductsRelationData->getPosition());
+        $ebayVariationData = $baseProductsRelationData->getEbayVariationData();
+        $this->assertInstanceOf(EbayVariationData::class, $ebayVariationData);
+        $this->assertEquals('ebayVariationName', $ebayVariationData->getEbayVariationName());
+        $this->assertEquals('ebayVariationValue', $ebayVariationData->getEbayVariationValue());
     }
 }

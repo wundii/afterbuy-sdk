@@ -17,6 +17,22 @@
                 <ShortDescription><![CDATA[Kurzbeschreibung]]></ShortDescription>
                 <Memo><![CDATA[Mein Memo]]></Memo>
                 <BaseProductFlag>2</BaseProductFlag>
+                <BaseProducts>
+                    <BaseProduct>
+                        <baseProductID>123</baseProductID>
+                        <baseProductType>456</baseProductType>
+                        <baseProductsRelationData>
+                            <quantity>2</quantity>
+                            <variationLabel>Size: M; Color: Red</variationLabel>
+                            <defaultProduct>defaultProduct</defaultProduct>
+                            <position>1</position>
+                            <ebayVariationData>
+                                <ebayVariationName>ebayVariationName</ebayVariationName>
+                                <ebayVariationValue>ebayVariationValue</ebayVariationValue>
+                            </ebayVariationData>
+                        </baseProductsRelationData>
+                    </BaseProduct>
+                </BaseProducts>
                 <GoogleBaseLabels><![CDATA[googleBaseLabels]]></GoogleBaseLabels>
                 <headerDescriptionName><![CDATA[headerDescriptionName]]></headerDescriptionName>
                 <headerDescriptionValue><![CDATA[headerDescriptionValue]]></headerDescriptionValue>

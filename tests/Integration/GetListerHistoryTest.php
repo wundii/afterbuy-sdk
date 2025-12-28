@@ -224,6 +224,10 @@ class GetListerHistoryTest extends TestCase
 
         $this->assertInstanceOf(GetListerHistoryResponse::class, $response);
         $this->assertEquals($expected, $listedItems);
+        $this->assertSame(3, $listedItems->getResultCount());
+        $this->assertFalse($listedItems->hasMoreProducts());
+        $this->assertSame(38897689, $listedItems->getLastHistoryId());
+        $this->assertCount(3, $listedItems->getListedItems());
         $this->assertEquals($expectedListedItems, $listedItems->getListedItems());
 
         $listedItem = $listedItems->getListedItems()[0];
