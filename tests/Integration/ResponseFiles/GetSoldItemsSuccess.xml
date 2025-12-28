@@ -28,7 +28,9 @@
                     <PaymentDate>11.09.2023 12:22:14</PaymentDate>
                     <AlreadyPaid>112,30</AlreadyPaid>
                     <FullAmount>112,30</FullAmount>
+                    <PaymentInstruction>No</PaymentInstruction>
                     <InvoiceDate>11.09.2023</InvoiceDate>
+                    <EFTID>1234</EFTID>
                     <paymentData>
                         <bankCode>12345678</bankCode>
                         <accountHolder>Max Mustermann</accountHolder>
@@ -38,6 +40,12 @@
                         <bic>MUSTERBICXXX</bic>
                         <referenceNumber>Rechnungsnummer 10075</referenceNumber>
                     </paymentData>
+                    <PayoutIds>
+                        <PayoutId>
+                            <PlatformSpecificOrderId>2000</PlatformSpecificOrderId>
+                            <PayoutId>1000</PayoutId>
+                        </PayoutId>
+                    </PayoutIds>
                 </PaymentInfo>
                 <IsCheckoutConfirmedByCustomer>0</IsCheckoutConfirmedByCustomer>
                 <BuyerInfo>
@@ -83,8 +91,13 @@
                         <ItemDetailsDone>-1</ItemDetailsDone>
                         <ItemID>123456</ItemID>
                         <PlatformSpecificItemId><![CDATA[]]></PlatformSpecificItemId>
-                        <AlternativeItemNumber1><![CDATA[]]></AlternativeItemNumber1>
+                        <AlternativeItemNumber1><![CDATA[1234-5678]]></AlternativeItemNumber1>
                         <AlternativeItemNumber><![CDATA[234567]]></AlternativeItemNumber>
+                        <UserDefinedFlag><![CDATA[1]]></UserDefinedFlag>
+                        <PlatformTaxReference><![CDATA[Reference]]></PlatformTaxReference>
+                        <FulfillmentServiceLevel><![CDATA[1]]></FulfillmentServiceLevel>
+                        <IsAmazonPrime>0</IsAmazonPrime>
+                        <IsAmazonBusiness>0</IsAmazonBusiness>
                         <Anr>12345678</Anr>
                         <IsAmazonInvoiced>False</IsAmazonInvoiced>
                         <IsExternalInvoice>False</IsExternalInvoice>
@@ -156,11 +169,13 @@
                 </SoldItems>
                 <ShippingInfo>
                     <ShippingMethod><![CDATA[Paketdienst]]></ShippingMethod>
+                    <ShippingReturnMethod><![CDATA[Retourenlabel]]></ShippingReturnMethod>
                     <ShippingCost>0,00</ShippingCost>
                     <ShippingAdditionalCost>0,00</ShippingAdditionalCost>
                     <ShippingTotalCost>0,00</ShippingTotalCost>
                     <ShippingTaxRate>19,00</ShippingTaxRate>
                     <DeliveryDate>14.03.2024</DeliveryDate>
+                    <DeliveryService>DHL Paket</DeliveryService>
                     <ParcelLabels>
                         <ParcelLabel>
                             <ItemID>43151135</ItemID>

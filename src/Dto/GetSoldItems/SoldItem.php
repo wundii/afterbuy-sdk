@@ -26,7 +26,7 @@ final class SoldItem implements ResponseDtoInterface
         private ?int $ebayTransactionId = null,
         private bool $eBayPlusTransaction = false,
         private ?string $alternativeItemNumber1 = null,
-        private ?string $alternativeItemNumbe1 = null,
+        private ?string $alternativeItemNumber = null,
         private ?InternalItemTypeEnum $internalItemTypeEnum = null,
         private ?int $userDefinedFlag = null,
         private ?string $itemTitle = null,
@@ -49,14 +49,14 @@ final class SoldItem implements ResponseDtoInterface
     ) {
     }
 
-    public function getAlternativeItemNumbe1(): ?string
+    public function getAlternativeItemNumber(): ?string
     {
-        return $this->alternativeItemNumbe1;
+        return $this->alternativeItemNumber;
     }
 
-    public function setAlternativeItemNumbe1(?string $alternativeItemNumbe1): void
+    public function setAlternativeItemNumber(?string $alternativeItemNumber): void
     {
-        $this->alternativeItemNumbe1 = $alternativeItemNumbe1;
+        $this->alternativeItemNumber = $alternativeItemNumber;
     }
 
     public function getAlternativeItemNumber1(): ?string
@@ -297,16 +297,6 @@ final class SoldItem implements ResponseDtoInterface
     public function setEbayFeedbackCommentType(?string $ebayFeedbackCommentType): void
     {
         $this->ebayFeedbackCommentType = $ebayFeedbackCommentType;
-    }
-
-    public function getInternalItemTypeEnum(): ?InternalItemTypeEnum
-    {
-        return $this->internalItemTypeEnum;
-    }
-
-    public function setInternalItemTypeEnum(?InternalItemTypeEnum $internalItemTypeEnum): void
-    {
-        $this->internalItemTypeEnum = $internalItemTypeEnum;
     }
 
     public function getItemLink(): ?string
