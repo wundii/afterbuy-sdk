@@ -94,6 +94,7 @@ class GetStockInfoTest extends TestCase
                     0,
                     0,
                     true,
+                    true,
                     false,
                     9920,
                     true,
@@ -109,6 +110,7 @@ class GetStockInfoTest extends TestCase
                     99980,
                     0,
                     0,
+                    true,
                     true,
                     true,
                     99980,
@@ -134,6 +136,7 @@ class GetStockInfoTest extends TestCase
         $this->assertSame(0, $product->getFullFilmentQuantity());
         $this->assertSame(0, $product->getMinimumStock());
         $this->assertTrue($product->isDiscontinued());
+        $this->assertTrue($product->isStock());
         $this->assertFalse($product->isMergeStock());
         $this->assertSame(9920, $product->getAvailableShop());
         $this->assertTrue($product->isAvailable());

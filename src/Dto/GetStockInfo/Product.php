@@ -18,6 +18,7 @@ final class Product implements ResponseDtoInterface
         private ?int $fullFilmentQuantity = null,
         private ?int $minimumStock = null,
         private bool $discontinued = false,
+        private bool $stock = false,
         private bool $mergeStock = false,
         private ?int $availableShop = null,
         private bool $available = false,
@@ -74,6 +75,16 @@ final class Product implements ResponseDtoInterface
     public function setDiscontinued(bool $discontinued): void
     {
         $this->discontinued = $discontinued;
+    }
+
+    public function isStock(): bool
+    {
+        return $this->stock;
+    }
+
+    public function setStock(bool $stock): void
+    {
+        $this->stock = $stock;
     }
 
     public function getEan(): ?string

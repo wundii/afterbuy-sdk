@@ -22,6 +22,7 @@ Holds a list of payment services.
 | products.fullFilmentQuantity | int       | null     |             |
 | products.minimumStock        | int       | null     |             |
 | products.discontinued        | bool      | false    |             |
+| products.stock               | bool      | false    |             |
 | products.mergeStock          | bool      | false    |             |
 | products.availableShop       | int       | null     |             |
 | products.available           | bool      | false    |             |
