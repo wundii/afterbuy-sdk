@@ -14,6 +14,7 @@ use Wundii\AfterbuySdk\Enum\Core\CallStatusEnum;
 use Wundii\AfterbuySdk\Enum\Core\DetailLevelEnum;
 use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\ProductFilterEnum;
+use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\Filter\GetStockInfo\ProductFilter;
 use Wundii\AfterbuySdk\Request\GetStockInfoRequest;
 use Wundii\AfterbuySdk\Response\GetStockInfoResponse;
@@ -49,6 +50,36 @@ class GetStockInfoTest extends TestCase
 
         $this->expectExceptionMessage('ProductFilter is required');
         $request = new GetStockInfoRequest();
+        $request->payload($afterbuyGlobal);
+    }
+
+    public function testToManyFilterException(): void
+    {
+        $afterbuyGlobal = clone $this->afterbuyGlobal();
+        $time = new DateTime('2024-06-17 01:00:00');
+
+        $productFilter = array_map(
+            fn ($i) => new ProductFilter(ProductFilterEnum::ANR, $i),
+            range(0, 500)
+        );
+
+        $this->expectExceptionMessage('Maximum of 500 ProductFilter allowed');
+        $request = new GetStockInfoRequest($productFilter, DetailLevelEnum::FIRST, $time);
+        $request->payload($afterbuyGlobal);
+    }
+
+    public function testToManyFilterMainTimeException(): void
+    {
+        $afterbuyGlobal = clone $this->afterbuyGlobal();
+        $time = new DateTime('2024-06-17 10:00:00');
+
+        $productFilter = array_map(
+            fn ($i) => new ProductFilter(ProductFilterEnum::ANR, $i),
+            range(0, 200)
+        );
+
+        $this->expectExceptionMessage('From 10:00 to 15:00 (daily), the request limit is reduced to 200 products');
+        $request = new GetStockInfoRequest($productFilter, DetailLevelEnum::FIRST, $time);
         $request->payload($afterbuyGlobal);
     }
 

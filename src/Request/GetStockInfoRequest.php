@@ -27,6 +27,7 @@ final readonly class GetStockInfoRequest implements RequestInterface
     public function __construct(
         private array $productFilter = [],
         private DetailLevelEnum|array $detailLevelEnum = DetailLevelEnum::FIRST,
+        private DateTime $time = new DateTime('now'),
     ) {
     }
 
@@ -50,8 +51,7 @@ final readonly class GetStockInfoRequest implements RequestInterface
             throw new RuntimeException('Maximum of 500 ProductFilter allowed');
         }
 
-        $time = new DateTime('now');
-        if ($time->format('H') >= 10 && $time->format('H') < 15 && count($this->productFilter) > 200) {
+        if ($this->time->format('H') >= 10 && $this->time->format('H') < 15 && count($this->productFilter) > 200) {
             throw new RuntimeException('From 10:00 to 15:00 (daily), the request limit is reduced to 200 products');
         }
 
