@@ -25,7 +25,7 @@
     "wundii/data-mapper": "^1.4.11"
   },
   "require-dev": {
-    "phpbench/phpbench": "1.4.3",
+    "phpbench/phpbench": "1.5.1",
     "phpstan/phpstan": "2.1.40",
     "phpstan/phpstan-strict-rules": "2.0.10",
     "phpunit/phpunit": "11.5.50",
