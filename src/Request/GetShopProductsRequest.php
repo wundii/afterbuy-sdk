@@ -19,6 +19,8 @@ use Wundii\AfterbuySdk\Response\GetShopProductsResponse;
 
 final readonly class GetShopProductsRequest implements RequestInterface
 {
+    public const MAX_SHOP_ITEMS = 250;
+
     /**
      * @param GetShopProductsFilterInterface[] $filter
      * @param DetailLevelEnum[] $detailLevelEnum empty array === first detail level
@@ -46,10 +48,7 @@ final readonly class GetShopProductsRequest implements RequestInterface
 
     public function payload(AfterbuyGlobalInterface $afterbuyGlobal): string
     {
-        $maxShopItems = $this->maxShopItems;
-        if ($maxShopItems > 250) {
-            $maxShopItems = 250;
-        }
+        $maxShopItems = min($this->maxShopItems, self::MAX_SHOP_ITEMS);
 
         $detailLevelEnum = $this->detailLevelEnum;
         if ($detailLevelEnum instanceof DetailLevelEnum) {

@@ -30,7 +30,7 @@ final class GetListerHistoryResponse implements ResponseInterface
 
         $content = (string) preg_replace('/<LastHistoryID>(.*)<\/LastHistoryID>/i', '', $content);
 
-        $listedItems = $this->dataMapper->xml($content, ListedItems::class, ['Result'], true);
+        $listedItems = $this->dataMapper->xml($content, ListedItems::class, ['Result'], forceInstance: true);
         $listedItems->setLastHistoryId($lastHistoryId);
 
         return $listedItems;

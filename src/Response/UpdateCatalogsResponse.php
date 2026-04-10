@@ -26,6 +26,6 @@ final class UpdateCatalogsResponse implements ResponseInterface
             return $this->dataMapper->xml($this->content, CatalogNotDeleteds::class, ['Result']);
         }
 
-        return $this->dataMapper->xml($this->content, NewCatalogs::class, ['Result'], true);
+        return $this->dataMapper->xml($this->content, NewCatalogs::class, ['Result'], forceInstance: true);
     }
 }

@@ -21,6 +21,6 @@ final class GetMailTemplatesResponse implements ResponseInterface
      */
     public function getResult(): ResponseDtoInterface
     {
-        return $this->dataMapper->xml($this->content, MailTemplates::class, ['Result'], true);
+        return $this->dataMapper->xml($this->content, MailTemplates::class, ['Result'], forceInstance: true);
     }
 }

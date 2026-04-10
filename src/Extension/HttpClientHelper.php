@@ -19,7 +19,7 @@ class HttpClientHelper
     {
         $uriArray = self::parseUrl($url, $query);
         $uriArray = self::resolveUrl($uriArray, null);
-        return implode('', $uriArray);
+        return implode('', array_filter($uriArray, is_string(...)));
     }
 
     /**

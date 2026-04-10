@@ -21,6 +21,6 @@ final class GetShopProductsResponse implements ResponseInterface
      */
     public function getResult(): ResponseDtoInterface
     {
-        return $this->dataMapper->xml($this->content, Products::class, ['Result'], true);
+        return $this->dataMapper->xml($this->content, Products::class, ['Result'], forceInstance: true);
     }
 }

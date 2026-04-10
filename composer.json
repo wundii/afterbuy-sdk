@@ -1,7 +1,7 @@
 {
   "name": "wundii/afterbuy-sdk",
   "type": "library",
-  "description": "Modern PHP 8.2+ Afterbuy Programming Interface Software Development Kit",
+  "description": "Modern PHP 8.2+ Afterbuy SDK - Programming Interface Software Development Kit",
   "keywords": ["afterbuy","sdk"],
   "license": "MIT",
   "authors": [
@@ -26,12 +26,12 @@
   },
   "require-dev": {
     "phpbench/phpbench": "1.6.1",
-    "phpstan/phpstan": "2.1.40",
+    "phpstan/phpstan": "2.1.46",
     "phpstan/phpstan-strict-rules": "2.0.10",
     "phpunit/phpunit": "11.5.50",
     "rector/rector": "2.3.9",
-    "symfony/intl": "7.4.0 || 8.0.0",
-    "symfony/var-dumper": "7.4.0 || 8.0.0",
+    "symfony/intl": "7.4.8 || 8.0.8",
+    "symfony/var-dumper": "7.4.8 || 8.0.8",
     "symplify/easy-coding-standard": "13.0.4",
     "wundii/phplint": "0.3.4",
     "wundii/structron": "1.0.6"
@@ -47,34 +47,26 @@
     }
   },
   "scripts": {
-    "auto-scripts": {
-    },
-    "post-install-cmd": [
-      "@auto-scripts"
-    ],
-    "post-update-cmd": [
-      "@auto-scripts"
-    ],
-    "complete-check": [
-      "@cache-clear",
-      "@phplint",
-      "@rector-dry",
-      "@phpstan",
-      "@ecs-dry",
-      "@structron",
-      "@unittest"
+    "analyze": [
+      "vendor/bin/rector process --dry-run --ansi",
+      "vendor/bin/ecs check",
+      "@stan"
     ],
     "cache-clear": "rm -R ./cache/* -f",
-    "coverage": "php vendor/bin/phpunit --coverage-clover coverage.xml",
-    "ecs-apply": "php vendor/bin/ecs check --fix",
-    "ecs-dry": "php vendor/bin/ecs check",
-    "phpbench": "php vendor/bin/phpbench run --report=aggregate",
-    "phplint": "php vendor/bin/phplint",
-    "phpstan": "php vendor/bin/phpstan analyse",
-    "rector-apply": "php vendor/bin/rector process --ansi",
-    "rector-dry": "php vendor/bin/rector process --dry-run --ansi",
-    "structron": "php vendor/bin/structron",
-    "unittest": "php vendor/bin/phpunit --configuration phpunit.xml"
+    "format": [
+      "vendor/bin/rector process",
+      "vendor/bin/ecs check --fix"
+    ],
+    "coverage": "vendor/bin/phpunit --coverage-clover coverage.xml",
+    "phpbench": "vendor/bin/phpbench run --report=aggregate",
+    "phplint": "vendor/bin/phplint",
+    "stan": "vendor/bin/phpstan analyze",
+    "structron": "vendor/bin/structron",
+    "qa": [
+      "@analyze",
+      "@test"
+    ],
+    "test": "vendor/bin/phpunit"
   },
   "minimum-stability": "stable",
   "prefer-stable": true

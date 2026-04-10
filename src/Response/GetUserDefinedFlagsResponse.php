@@ -21,6 +21,6 @@ final class GetUserDefinedFlagsResponse implements ResponseInterface
      */
     public function getResult(): ResponseDtoInterface
     {
-        return $this->dataMapper->xml($this->content, UserDefinedFlags::class, ['Result'], true);
+        return $this->dataMapper->xml($this->content, UserDefinedFlags::class, ['Result'], forceInstance: true);
     }
 }

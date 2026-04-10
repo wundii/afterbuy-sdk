@@ -21,6 +21,6 @@ final class GetSoldItemsResponse implements ResponseInterface
      */
     public function getResult(): ResponseDtoInterface
     {
-        return $this->dataMapper->xml($this->content, Orders::class, ['Result'], true);
+        return $this->dataMapper->xml($this->content, Orders::class, ['Result'], forceInstance: true);
     }
 }

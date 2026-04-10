@@ -21,6 +21,6 @@ final class CreateShopOrderResponse implements ResponseInterface
      */
     public function getResult(): ResponseDtoInterface
     {
-        return $this->dataMapper->xml($this->content, ShopResponse::class, ['data'], true);
+        return $this->dataMapper->xml($this->content, ShopResponse::class, ['data'], forceInstance: true);
     }
 }
