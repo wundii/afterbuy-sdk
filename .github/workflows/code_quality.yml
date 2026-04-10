@@ -64,14 +64,8 @@ jobs:
         run: |
           composer install --prefer-dist --no-progress
 
-      - name: Run RectorPHP
-        run: composer rector-dry
-
-      - name: Run PHPStan
-        run: composer phpstan
-
-      - name: Run ECS
-        run: composer ecs-dry
+      - name: Run Analyze
+        run: composer analyze
 
   unittest:
     needs: [ generate-matrix, code-quality ]
@@ -103,7 +97,7 @@ jobs:
           composer install --prefer-dist --no-progress
 
       - name: Run PHPUnitTests
-        run: composer unittest
+        run: composer test
 
   code_coverage:
     needs: [ unittest ]
