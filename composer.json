@@ -29,7 +29,7 @@
     "phpstan/phpstan": "2.1.46",
     "phpstan/phpstan-strict-rules": "2.0.10",
     "phpunit/phpunit": "11.5.50",
-    "rector/rector": "2.3.9",
+    "rector/rector": "2.4.1",
     "symfony/intl": "7.4.8 || 8.0.8",
     "symfony/var-dumper": "7.4.8 || 8.0.8",
     "symplify/easy-coding-standard": "13.0.4",
