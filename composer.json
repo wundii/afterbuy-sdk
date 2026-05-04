@@ -26,7 +26,7 @@
   },
   "require-dev": {
     "phpbench/phpbench": "1.6.1",
-    "phpstan/phpstan": "2.1.50",
+    "phpstan/phpstan": "2.1.54",
     "phpstan/phpstan-strict-rules": "2.0.10",
     "phpunit/phpunit": "11.5.50",
     "rector/rector": "2.4.1",
