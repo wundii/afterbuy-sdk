@@ -150,17 +150,13 @@ $response->getWarningMessages();
 ### composer scripts
 
 ```shell
-composer cache-clear
-composer ecs-apply
-composer ecs-dry
-composer phpstan
-composer rector-apply
-composer rector-dry
-composer unittest
-```
-
-### complete checks before merge
-
-```shell
-composer complete-check
+composer format      # Rector apply + ECS fix
+composer stan        # PHPStan level 10
+composer analyze     # Rector dry + ECS dry + PHPStan (no changes)
+composer test        # PHPUnit
+composer coverage    # PHPUnit with coverage
+composer qa          # analyze + test
+composer cache-clear # Clear cache
+composer phplint     # PHP lint
+composer structron   # Generate DTO docs
 ```
