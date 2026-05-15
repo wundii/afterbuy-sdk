@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Request>
+    <AfterbuyGlobal>
+        <Sandbox>XML</Sandbox>
+        <AccountToken>account</AccountToken>
+        <PartnerToken>partner</PartnerToken>
+        <ErrorLanguage>DE</ErrorLanguage>
+        <CallName>CancelOrders</CallName>
+        <DetailLevel>0</DetailLevel>
+    </AfterbuyGlobal>
+    <OrderCancellations>
+        <OrderCancellation>
+            <OrderId>1234567</OrderId>
+        </OrderCancellation>
+        <OrderCancellation>
+            <OrderId>2345678</OrderId>
+            <StockBooking>1</StockBooking>
+            <HideOrder>1</HideOrder>
+            <MarkId>-1</MarkId>
+        </OrderCancellation>
+    </OrderCancellations>
+</Request>

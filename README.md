@@ -1,7 +1,7 @@
 # afterbuy-sdk
 
 [![AfterbuyShopApi](https://img.shields.io/badge/Afterbuy%20Shop--API-Version%201.77.248-yellow.svg?style=for-the-badge)](https://xmldoku.afterbuy.de/shopdoku)
-[![AfterbuyXmlApi](https://img.shields.io/badge/Afterbuy%20XML--API-Version%202.0.460-yellow.svg?style=for-the-badge)](https://xmldoku.afterbuy.de/dokued)
+[![AfterbuyXmlApi](https://img.shields.io/badge/Afterbuy%20XML--API-Version%202.0.465-yellow.svg?style=for-the-badge)](https://xmldoku.afterbuy.de/dokued)
 [![PHP-Tests](https://img.shields.io/github/actions/workflow/status/wundii/afterbuy-sdk/code_quality.yml?branch=main&style=for-the-badge)](https://github.com/wundii/afterbuy-sdk/actions/workflows/code_quality.yml)
 [![PHPStan](https://img.shields.io/badge/PHPStan-level%2010-brightgreen.svg?style=for-the-badge)](https://phpstan.org/)
 ![VERSION](https://img.shields.io/packagist/v/wundii/afterbuy-sdk?style=for-the-badge)
@@ -37,10 +37,11 @@ Require the bundle and its dependencies with composer:
 - [XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
 
 ### Current Afterbuy API Informations
-- last update 2.0.460 was recalled by Afterbuy, current version is 2.0.459
-  - the afterbuy sdk is compatible with the recalled version 2.0.460
+- version 2.0.460 was previously recalled by Afterbuy, but is now officially supported again with version 2.0.465
+- new endpoint CancelOrders added with version 2.0.465
 
 ### Supported Requests with Examples
+- [x] [CancelOrders](examples/CancelOrders.md)
 - [x] [CreateShopOrder](examples/CreateShopOrder.md)
 - [x] [GetAfterbuyTime](examples/GetAfterbuyTime.md)
 - [x] [GetListerHistory](examples/GetListerHistory.md)
