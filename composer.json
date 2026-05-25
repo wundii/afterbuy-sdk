@@ -22,7 +22,7 @@
     "symfony/http-client": "^6.4 || ^7.4 || ^8.0",
     "symfony/property-access": "^6.4 || ^7.4 || ^8.0",
     "symfony/validator": "^6.4 || ^7.4 || ^8.0",
-    "wundii/data-mapper": "^1.5.0"
+    "wundii/data-mapper": "^1.5.1"
   },
   "require-dev": {
     "phpbench/phpbench": "1.6.1",
