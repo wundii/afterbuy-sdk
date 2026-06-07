@@ -49,9 +49,6 @@ readonly class Afterbuy
      */
     public const DefaultSandboxVersion = 8;
 
-    /**
-     * @var DataMapper<T>
-     */
     public DataMapper $dataMapper;
 
     /**

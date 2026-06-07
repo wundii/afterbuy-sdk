@@ -16,9 +16,6 @@ use Wundii\DataMapper\DataMapper;
  */
 interface ResponseInterface
 {
-    /**
-     * @param DataMapper<T> $dataMapper
-     */
     public function __construct(DataMapper $dataMapper, HttpClientResponseInterface $httpClientResponse, EndpointEnum $endpointEnum);
 
     public function getCallStatus(): CallStatusEnum;
