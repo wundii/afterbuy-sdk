@@ -13,7 +13,7 @@ class NotNullDependentFromRootTest extends ConstraintValidatorTestCase
 {
     public function testNullValue(): void
     {
-        $this->validate(null, new NotNullDependentFromRoot('dependency', 'value'));
+        $this->validator->validate(null, new NotNullDependentFromRoot('dependency', 'value'));
 
         $this->assertNoViolation();
     }
@@ -32,7 +32,8 @@ class NotNullDependentFromRootTest extends ConstraintValidatorTestCase
 
         $this->setRoot($object);
         $this->setObject($object);
-        $this->validate($object->target, $constraint);
+        $this->validator->initialize($this->context);
+        $this->validator->validate($object->target, $constraint);
 
         $this->assertNoViolation();
     }
@@ -51,7 +52,8 @@ class NotNullDependentFromRootTest extends ConstraintValidatorTestCase
 
         $this->setRoot($object);
         $this->setObject($object);
-        $this->validate($object->target, $constraint);
+        $this->validator->initialize($this->context);
+        $this->validator->validate($object->target, $constraint);
 
         $this->assertNoViolation();
     }
@@ -70,7 +72,8 @@ class NotNullDependentFromRootTest extends ConstraintValidatorTestCase
 
         $this->setRoot($object);
         $this->setObject($object);
-        $this->validate($object->target, $constraint);
+        $this->validator->initialize($this->context);
+        $this->validator->validate($object->target, $constraint);
 
         $this->assertNoViolation();
     }
@@ -89,7 +92,8 @@ class NotNullDependentFromRootTest extends ConstraintValidatorTestCase
 
         $this->setRoot($object);
         $this->setObject($object);
-        $this->validate($object->target, $constraint);
+        $this->validator->initialize($this->context);
+        $this->validator->validate($object->target, $constraint);
 
         $this->buildViolation($constraint->message)
             ->atPath('dependency')
