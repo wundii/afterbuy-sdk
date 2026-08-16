@@ -27,7 +27,7 @@
   "require-dev": {
     "phpbench/phpbench": "1.7.0",
     "phpstan/phpstan": "2.2.2",
-    "phpstan/phpstan-strict-rules": "2.0.11",
+    "phpstan/phpstan-strict-rules": "2.0.12",
     "phpunit/phpunit": "11.5.50",
     "rector/rector": "2.5.1",
     "symfony/intl": "7.4.8 || 8.0.8",
