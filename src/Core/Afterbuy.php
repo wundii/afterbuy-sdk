@@ -82,7 +82,8 @@ readonly class Afterbuy
     public function runRequest(RequestInterface $afterbuyRequest, ?HttpClientResponseInterface $httpClientResponse = null): ResponseInterface
     {
         $endpointEnum = $this->afterbuyGlobal->getEndpointEnum();
-        $method = $afterbuyRequest->method()->value;
+        $method = $afterbuyRequest->method()
+            ->value;
         $payload = $afterbuyRequest->payload($this->afterbuyGlobal);
         $query = $afterbuyRequest->query();
         $requestDto = $afterbuyRequest->requestDto();
@@ -95,7 +96,8 @@ readonly class Afterbuy
 
         /** validate the request class */
         if ($requestDto instanceof RequestDtoInterface) {
-            $constraintViolationList = $this->getValidator()->validate($requestDto);
+            $constraintViolationList = $this->getValidator()
+                ->validate($requestDto);
             if ($constraintViolationList->count() > 0) {
                 $loggerMessages = [];
                 foreach ($constraintViolationList as $error) {
@@ -136,7 +138,8 @@ readonly class Afterbuy
                 [$info],
             );
 
-            $httpClientResponse = $this->getAfterbuyGlobal()->getSandboxResponse();
+            $httpClientResponse = $this->getAfterbuyGlobal()
+                ->getSandboxResponse();
         }
 
         /** $response is always null, this variable is only filled in for the unit test */

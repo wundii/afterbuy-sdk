@@ -129,7 +129,9 @@ class SimpleXMLExtendTest extends TestCase
         $xml = $this->newDocument();
 
         $mock = $this->createMock(AfterbuyGlobalInterface::class);
-        $mock->expects($this->once())->method('simpleXmlElement')->with($xml);
+        $mock->expects($this->once())
+            ->method('simpleXmlElement')
+            ->with($xml);
 
         $xml->addAfterbuyGlobal($mock);
     }
@@ -151,8 +153,10 @@ class SimpleXMLExtendTest extends TestCase
         };
 
         $filterMock = $this->createMock(FilterInterface::class);
-        $filterMock->method('getFilterName')->willReturn('TestFilter');
-        $filterMock->method('getFilterValues')->willReturn([$filterValueMock]);
+        $filterMock->method('getFilterName')
+            ->willReturn('TestFilter');
+        $filterMock->method('getFilterValues')
+            ->willReturn([$filterValueMock]);
 
         $xml->addFilter([$filterMock]);
 
@@ -167,8 +171,10 @@ class SimpleXMLExtendTest extends TestCase
         $xml = $this->newDocument();
 
         $filterMock = $this->createMock(ProductFilterInterface::class);
-        $filterMock->method('getName')->willReturn('ArtNr');
-        $filterMock->method('getValue')->willReturn('4711');
+        $filterMock->method('getName')
+            ->willReturn('ArtNr');
+        $filterMock->method('getValue')
+            ->willReturn('4711');
 
         $xml->addProductFilter([$filterMock]);
 
@@ -183,7 +189,9 @@ class SimpleXMLExtendTest extends TestCase
         $xml = $this->newDocument();
 
         $mock = $this->createMock(RequestDtoXmlInterface::class);
-        $mock->expects($this->once())->method('appendXmlContent')->with($xml);
+        $mock->expects($this->once())
+            ->method('appendXmlContent')
+            ->with($xml);
 
         $xml->appendContent($mock);
     }

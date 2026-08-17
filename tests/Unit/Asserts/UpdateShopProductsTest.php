@@ -57,7 +57,8 @@ class UpdateShopProductsTest extends TestCase
             canonicalUrl: str_repeat('a', 300),
         );
 
-        $validate = $this->validator()->validate($product);
+        $validate = $this->validator()
+            ->validate($product);
 
         $this->assertSame(0, $validate->count());
     }
@@ -92,7 +93,8 @@ class UpdateShopProductsTest extends TestCase
             canonicalUrl: str_repeat('a', 301),
         );
 
-        $validate = $this->validator()->validate($product);
+        $validate = $this->validator()
+            ->validate($product);
 
         $messages = array_map(
             fn (ConstraintViolation $violation) => sprintf('%s: %s', $violation->getPropertyPath(), $violation->getMessage()),

@@ -22,17 +22,17 @@
     "symfony/http-client": "^6.4 || ^7.4 || ^8.0",
     "symfony/property-access": "^6.4 || ^7.4 || ^8.0",
     "symfony/validator": "^6.4 || ^7.4 || ^8.0",
-    "wundii/data-mapper": "^1.5.2"
+    "wundii/data-mapper": "^1.5.3"
   },
   "require-dev": {
     "phpbench/phpbench": "1.7.0",
-    "phpstan/phpstan": "2.2.2",
+    "phpstan/phpstan": "2.2.8",
     "phpstan/phpstan-strict-rules": "2.0.12",
     "phpunit/phpunit": "11.5.50",
-    "rector/rector": "2.5.7",
+    "rector/rector": "2.6.2",
     "symfony/intl": "7.4.8 || 8.0.8",
     "symfony/var-dumper": "7.4.8 || 8.0.8",
-    "symplify/easy-coding-standard": "13.2.3",
+    "symplify/easy-coding-standard": "13.2.17",
     "wundii/phplint": "0.3.4",
     "wundii/structron": "1.0.6"
   },

@@ -40,7 +40,8 @@ class UpdateCatalogsTest extends TestCase
             ],
         );
 
-        $validate = $this->validator()->validate($catalogs);
+        $validate = $this->validator()
+            ->validate($catalogs);
 
         $this->assertSame(0, $validate->count());
     }
@@ -58,7 +59,8 @@ class UpdateCatalogsTest extends TestCase
             ],
         );
 
-        $validate = $this->validator()->validate($catalogs);
+        $validate = $this->validator()
+            ->validate($catalogs);
 
         $messages = array_map(
             fn (ConstraintViolation $violation) => sprintf('%s: %s', $violation->getPropertyPath(), $violation->getMessage()),
