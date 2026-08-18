@@ -44,11 +44,11 @@ trait ResponseTrait
         $content = $this->httpClientResponse->getContent(false);
         $this->content = $content;
 
-        preg_match('/<CallStatus>(.*)<\/CallStatus>/s', $content, $matches);
+        preg_match('/<CallStatus>(.*?)<\/CallStatus>/s', $content, $matches);
         $callStatus = $matches[1] ?? null;
 
         if ($callStatus === null) {
-            preg_match('/<success>(.*)<\/success>/s', $content, $matches);
+            preg_match('/<success>(.*?)<\/success>/s', $content, $matches);
             $success = $matches[1] ?? null;
             $callStatus = match ($success) {
                 '1' => 'Success',
@@ -59,7 +59,7 @@ trait ResponseTrait
             $content = $this->convertErrorXmlToAfterbuyFormat($content);
         }
 
-        preg_match('/<VersionID>(.*)<\/VersionID>/s', $content, $matches);
+        preg_match('/<VersionID>(.*?)<\/VersionID>/s', $content, $matches);
         $this->versionId = (int) ($matches[1] ?? 0);
 
         $this->callStatusEnum = match ($callStatus) {

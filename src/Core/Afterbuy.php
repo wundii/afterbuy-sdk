@@ -11,16 +11,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use ReflectionClass;
 use RuntimeException;
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\PropertyAccess\PropertyAccessor;
-use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
-use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
-use Symfony\Component\Validator\ConstraintValidatorFactoryInterface;
-use Symfony\Component\Validator\ContainerConstraintValidatorFactory;
-use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
@@ -51,6 +42,8 @@ readonly class Afterbuy
 
     public DataMapper $dataMapper;
 
+    private ValidatorFactory $validatorFactory;
+
     /**
      * @param array<class-string, class-string>|null $classMap
      */
@@ -74,6 +67,7 @@ readonly class Afterbuy
         );
 
         $this->dataMapper = new DataMapper($dataConfig);
+        $this->validatorFactory = new ValidatorFactory($this->validatorBuilder);
     }
 
     /**
@@ -211,42 +205,12 @@ readonly class Afterbuy
 
     public function getValidator(): ValidatorInterface
     {
-        $validationBuilder = $this->validatorBuilder ?? Validation::createValidatorBuilder();
-        $validationBuilder->enableAttributeMapping();
-        $validationBuilder->setConstraintValidatorFactory($this->getConstraintValidatorFactory());
-        return $validationBuilder->getValidator();
+        return $this->validatorFactory->create();
     }
 
     public function getAfterbuyGlobal(): AfterbuyGlobalInterface
     {
         return $this->afterbuyGlobal;
-    }
-
-    private function getConstraintValidatorFactory(): ConstraintValidatorFactoryInterface
-    {
-        $containerBuilder = new ContainerBuilder();
-
-        /**
-         * register all services are needed for the validator
-         */
-        $containerBuilder->register(PropertyAccessorInterface::class, PropertyAccessor::class)
-            ->addArgument(PropertyAccessor::MAGIC_GET | PropertyAccessor::MAGIC_SET)
-            ->addArgument(PropertyAccessor::THROW_ON_INVALID_PROPERTY_PATH)
-            ->addArgument(null)
-            ->addArgument(new ReflectionExtractor([], null, null, true));
-
-        /**
-         * autowire all validators
-         */
-        try {
-            $phpFileLoader = new PhpFileLoader($containerBuilder, new FileLocator(__DIR__));
-            $phpFileLoader->load(__DIR__ . '/../Config/Container.php');
-        } catch (Exception $exception) {
-            throw new RuntimeException('Error loading container file: ' . $exception->getMessage(), $exception->getCode(), $exception);
-        }
-
-        $containerBuilder->compile();
-        return new ContainerConstraintValidatorFactory($containerBuilder);
     }
 
     /**
