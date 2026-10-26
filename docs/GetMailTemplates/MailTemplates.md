@@ -2,7 +2,7 @@
 - [Back to Structron Documentation](./../_Structron.md)
 - [Go to MailTemplates.php](./../../src/Dto/GetMailTemplates/MailTemplates.php)
 
-Hold a list of mail templates.
+Holds a list of mail templates.
 
 ## Class glossary
 | FullObjectName | Object |

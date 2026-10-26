@@ -10,7 +10,7 @@ use Wundii\DataMapper\Enum\ApproachEnum;
 use Wundii\Structron\Attribute\Approach;
 use Wundii\Structron\Attribute\Structron;
 
-#[Structron('Holds a list of payment services.')]
+#[Structron('Holds a list of newly created products.')]
 #[Approach(ApproachEnum::CONSTRUCTOR)]
 final class NewProducts implements ResponseDtoInterface
 {

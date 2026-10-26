@@ -11,7 +11,7 @@ use Wundii\DataMapper\Enum\ApproachEnum;
 use Wundii\Structron\Attribute\Approach;
 use Wundii\Structron\Attribute\Structron;
 
-#[Structron('Holds a list of payment services.')]
+#[Structron('Holds a list of products to update or create.')]
 #[Approach(ApproachEnum::CONSTRUCTOR)]
 final class Products implements RequestDtoXmlInterface
 {

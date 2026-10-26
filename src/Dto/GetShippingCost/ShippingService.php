@@ -9,7 +9,7 @@ use Wundii\DataMapper\Enum\ApproachEnum;
 use Wundii\Structron\Attribute\Approach;
 use Wundii\Structron\Attribute\Structron;
 
-#[Structron('Holds a list of payment services.')]
+#[Structron('Holds a shipping service with its calculated shipping methods.')]
 #[Approach(ApproachEnum::CONSTRUCTOR)]
 final class ShippingService implements ResponseDtoInterface
 {

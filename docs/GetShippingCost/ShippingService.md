@@ -2,7 +2,7 @@
 - [Back to Structron Documentation](./../_Structron.md)
 - [Go to ShippingService.php](./../../src/Dto/GetShippingCost/ShippingService.php)
 
-Holds a list of payment services.
+Holds a shipping service with its calculated shipping methods.
 
 ## Class glossary
 | FullObjectName | Object |

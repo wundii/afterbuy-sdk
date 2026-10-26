@@ -2,7 +2,7 @@
 - [Back to Structron Documentation](./../_Structron.md)
 - [Go to ListedItems.php](./../../src/Dto/GetListerHistory/ListedItems.php)
 
-Hold a list of items that were listed in the Lister history.
+Holds a list of items that were listed in the Lister history.
 
 ## Class glossary
 | FullObjectName | Object |

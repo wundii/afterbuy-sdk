@@ -2,7 +2,7 @@
 - [Back to Structron Documentation](./../_Structron.md)
 - [Go to Versions.php](./../../src/Dto/GetVersion/Versions.php)
 
-Holds a list of payment services.
+Holds a list of XML interface versions.
 
 ## Class glossary
 | FullObjectName | Object |

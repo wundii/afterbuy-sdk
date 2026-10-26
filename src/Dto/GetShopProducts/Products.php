@@ -10,7 +10,7 @@ use Wundii\Structron\Attribute\Approach;
 use Wundii\Structron\Attribute\Description;
 use Wundii\Structron\Attribute\Structron;
 
-#[Structron('Holds a list of payment services.')]
+#[Structron('Holds a list of shop products.')]
 #[Approach(ApproachEnum::CONSTRUCTOR)]
 final class Products implements ResponseDtoInterface
 {

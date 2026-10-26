@@ -10,7 +10,7 @@ use Wundii\Structron\Attribute\Approach;
 use Wundii\Structron\Attribute\Description;
 use Wundii\Structron\Attribute\Structron;
 
-#[Structron('Hold a list of items that were listed in the Lister history.')]
+#[Structron('Holds a list of items that were listed in the Lister history.')]
 #[Approach(ApproachEnum::CONSTRUCTOR)]
 final class ListedItems implements ResponseDtoInterface
 {

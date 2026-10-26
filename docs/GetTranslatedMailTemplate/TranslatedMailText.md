@@ -2,7 +2,7 @@
 - [Back to Structron Documentation](./../_Structron.md)
 - [Go to TranslatedMailText.php](./../../src/Dto/GetTranslatedMailTemplate/TranslatedMailText.php)
 
-Holds a list of payment services.
+Holds the translated mail subject and text.
 
 ## Properties
 | TranslatedMailText    | Type   | Default  | Description |

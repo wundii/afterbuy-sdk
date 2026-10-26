@@ -2,7 +2,7 @@
 - [Back to Structron Documentation](./../_Structron.md)
 - [Go to Catalogs.php](./../../src/Dto/UpdateCatalogs/Catalogs.php)
 
-Holds a list of payment services.
+Holds a list of catalogs to create, refresh or delete.
 
 ## Class glossary
 | FullObjectName | Object |

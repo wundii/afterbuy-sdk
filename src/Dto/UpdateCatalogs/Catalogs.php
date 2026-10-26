@@ -12,7 +12,7 @@ use Wundii\DataMapper\Enum\ApproachEnum;
 use Wundii\Structron\Attribute\Approach;
 use Wundii\Structron\Attribute\Structron;
 
-#[Structron('Holds a list of payment services.')]
+#[Structron('Holds a list of catalogs to create, refresh or delete.')]
 #[Approach(ApproachEnum::CONSTRUCTOR)]
 final class Catalogs implements RequestDtoXmlInterface
 {

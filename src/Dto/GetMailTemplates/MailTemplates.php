@@ -9,7 +9,7 @@ use Wundii\DataMapper\Enum\ApproachEnum;
 use Wundii\Structron\Attribute\Approach;
 use Wundii\Structron\Attribute\Structron;
 
-#[Structron('Hold a list of mail templates.')]
+#[Structron('Holds a list of mail templates.')]
 #[Approach(ApproachEnum::CONSTRUCTOR)]
 final class MailTemplates implements ResponseDtoInterface
 {

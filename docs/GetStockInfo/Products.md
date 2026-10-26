@@ -2,7 +2,7 @@
 - [Back to Structron Documentation](./../_Structron.md)
 - [Go to Products.php](./../../src/Dto/GetStockInfo/Products.php)
 
-Holds a list of payment services.
+Holds a list of products with stock information.
 
 ## Class glossary
 | FullObjectName | Object |

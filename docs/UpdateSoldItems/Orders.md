@@ -2,7 +2,7 @@
 - [Back to Structron Documentation](./../_Structron.md)
 - [Go to Orders.php](./../../src/Dto/UpdateSoldItems/Orders.php)
 
-Holds a list of payment services.
+Holds a list of orders to update.
 
 ## Class glossary
 | FullObjectName | Object |

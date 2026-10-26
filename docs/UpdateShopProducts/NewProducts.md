@@ -2,7 +2,7 @@
 - [Back to Structron Documentation](./../_Structron.md)
 - [Go to NewProducts.php](./../../src/Dto/UpdateShopProducts/NewProducts.php)
 
-Holds a list of payment services.
+Holds a list of newly created products.
 
 ## Class glossary
 | FullObjectName | Object |

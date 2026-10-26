@@ -2,7 +2,7 @@
 - [Back to Structron Documentation](./../_Structron.md)
 - [Go to CatalogNotDeleteds.php](./../../src/Dto/UpdateCatalogs/CatalogNotDeleteds.php)
 
-Holds a list of payment services.
+Holds a list of catalogs that could not be deleted.
 
 ## Class glossary
 | FullObjectName | Object |
