@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Request>
+    <AfterbuyGlobal>
+        <Sandbox>XML</Sandbox>
+        <AccountToken>account</AccountToken>
+        <PartnerToken>partner</PartnerToken>
+        <ErrorLanguage>DE</ErrorLanguage>
+        <CallName>UpdateShopProducts</CallName>
+        <DetailLevel>0</DetailLevel>
+    </AfterbuyGlobal>
+    <Products>
+        <Product>
+            <ProductIdent>
+                <ProductInsert>1</ProductInsert>
+                <UserProductID>2560287ABC</UserProductID>
+                <ProductID>2560287</ProductID>
+                <Anr>238</Anr>
+            </ProductIdent>
+            <Name>XML Product 1</Name>
+            <ShowGaranLabel>1</ShowGaranLabel>
+            <GuaranteeDuration>36</GuaranteeDuration>
+        </Product>
+    </Products>
+</Request>

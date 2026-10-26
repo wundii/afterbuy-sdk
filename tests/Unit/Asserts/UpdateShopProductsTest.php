@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\Tests\Unit\Asserts;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -125,5 +126,50 @@ class UpdateShopProductsTest extends TestCase
         ];
 
         $this->assertEquals($expectedMessages, $messages);
+    }
+
+    /**
+     * @return array<string, array{?bool, ?int, bool}>
+     */
+    public static function garanLabelProvider(): array
+    {
+        return [
+            'not provided' => [null, null, true],
+            'only label' => [true, null, false],
+            'only duration' => [null, 36, false],
+            'label false with zero' => [false, 0, true],
+            'label false with duration' => [false, 36, false],
+            'label true with zero' => [true, 0, false],
+            'label true min' => [true, 30, true],
+            'label true max' => [true, 360, true],
+            'label true step of 6' => [true, 42, true],
+            'label true below min' => [true, 24, false],
+            'label true above max' => [true, 366, false],
+            'label true no step of 6' => [true, 40, false],
+        ];
+    }
+
+    #[DataProvider('garanLabelProvider')]
+    public function testProductGaranLabel(?bool $showGaranLabel, ?int $guaranteeDuration, bool $isValid): void
+    {
+        $product = new Product(
+            new ProductIdent(
+                userProductId: '12345',
+                productInsert: false,
+                productId: 23456
+            ),
+            name: 'name',
+            showGaranLabel: $showGaranLabel,
+            guaranteeDuration: $guaranteeDuration,
+        );
+
+        $validate = $this->validator()
+            ->validate($product);
+
+        $this->assertSame($isValid ? 0 : 1, $validate->count());
+
+        if (! $isValid) {
+            $this->assertSame('garanLabelValid', $validate->get(0)->getPropertyPath());
+        }
     }
 }

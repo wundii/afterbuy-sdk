@@ -100,6 +100,8 @@ final class Product implements RequestDtoXmlInterface
         private ?string $dataSheetUrl = null,
         private ?GenderEnum $genderEnum = null,
         private ?AgeGroupEnum $ageGroupEnum = null,
+        private ?bool $showGaranLabel = null,
+        private ?int $guaranteeDuration = null,
         private ?Economicoperators $economicoperators = null,
         private array $tags = [],
         private ?Skus $skus = null,
@@ -198,6 +200,8 @@ final class Product implements RequestDtoXmlInterface
         $product->addString('DataSheetURL', $this->dataSheetUrl);
         $product->addNumber('Gender', $this->genderEnum?->value);
         $product->addNumber('AgeGroup', $this->ageGroupEnum?->value);
+        $product->addBool('ShowGaranLabel', $this->showGaranLabel);
+        $product->addNumber('GuaranteeDuration', $this->guaranteeDuration);
         $this->economicoperators?->appendXmlContent($product);
 
         if ($this->tags !== []) {
@@ -706,6 +710,16 @@ final class Product implements RequestDtoXmlInterface
         $this->googleProductCategory = $googleProductCategory;
     }
 
+    public function getGuaranteeDuration(): ?int
+    {
+        return $this->guaranteeDuration;
+    }
+
+    public function setGuaranteeDuration(?int $guaranteeDuration): void
+    {
+        $this->guaranteeDuration = $guaranteeDuration;
+    }
+
     public function getHeaderId(): ?int
     {
         return $this->headerId;
@@ -1060,6 +1074,16 @@ final class Product implements RequestDtoXmlInterface
         $this->shortDescription = $shortDescription;
     }
 
+    public function getShowGaranLabel(): ?bool
+    {
+        return $this->showGaranLabel;
+    }
+
+    public function setShowGaranLabel(?bool $showGaranLabel): void
+    {
+        $this->showGaranLabel = $showGaranLabel;
+    }
+
     #[Assert\Valid]
     public function getSkus(): ?Skus
     {
@@ -1198,5 +1222,25 @@ final class Product implements RequestDtoXmlInterface
     public function setWeight(?float $weight): void
     {
         $this->weight = $weight;
+    }
+
+    #[Assert\IsTrue(message: 'ShowGaranLabel and GuaranteeDuration must be provided together. GuaranteeDuration must be 0 if ShowGaranLabel is false, otherwise between 30 and 360 months in steps of 6.')]
+    public function isGaranLabelValid(): bool
+    {
+        if ($this->showGaranLabel === null && $this->guaranteeDuration === null) {
+            return true;
+        }
+
+        if ($this->showGaranLabel === null || $this->guaranteeDuration === null) {
+            return false;
+        }
+
+        if (! $this->showGaranLabel) {
+            return $this->guaranteeDuration === 0;
+        }
+
+        return $this->guaranteeDuration >= 30
+            && $this->guaranteeDuration <= 360
+            && $this->guaranteeDuration % 6 === 0;
     }
 }

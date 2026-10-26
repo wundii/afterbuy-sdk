@@ -524,4 +524,62 @@ class UpdateShopProductsTest extends TestCase
         $this->assertCount(1, $response->getWarningMessages());
         $this->assertSame(3, $response->getWarningMessages()[0]->getWarningCode());
     }
+
+    public function testUpdateVersion467Request(): void
+    {
+        $file = __DIR__ . '/RequestFiles/UpdateShopProducts2.0.467.xml';
+        $afterbuyGlobal = clone $this->afterbuyGlobal();
+
+        $request = new UpdateShopProductsRequest(
+            [
+                new Product(
+                    new ProductIdent(
+                        userProductId: '2560287ABC',
+                        productInsert: true,
+                        productId: 2560287,
+                        anr: 238,
+                    ),
+                    name: 'XML Product 1',
+                    showGaranLabel: true,
+                    guaranteeDuration: 36,
+                ),
+            ]
+        );
+        $payload = $request->payload($afterbuyGlobal);
+        $expected = file_get_contents($file);
+
+        $this->assertEquals(DomFormatter::xml($expected), DomFormatter::xml($payload));
+    }
+
+    public function testUpdateVersion467ResponseWarning(): void
+    {
+        $file = __DIR__ . '/ResponseFiles/UpdateShopProductsWarning2.0.467.xml';
+
+        $request = new UpdateShopProductsRequest(
+            [
+                new Product(
+                    new ProductIdent(
+                        userProductId: '2560287ABC',
+                        productInsert: true,
+                        productId: 2560287,
+                        anr: 238,
+                    ),
+                    name: 'XML Product 1',
+                    showGaranLabel: true,
+                    guaranteeDuration: 36,
+                ),
+            ]
+        );
+        $afterbuy = new Afterbuy($this->afterbuyGlobal());
+        $mockResponse = new MockApiResponse(file_get_contents($file), 200);
+
+        $response = $afterbuy->runRequest($request, $mockResponse);
+        $result = $response->getResult();
+
+        $this->assertInstanceOf(UpdateShopProductsResponse::class, $response);
+        $this->assertCount(0, $result->getNewProducts());
+        $this->assertCount(1, $response->getWarningMessages());
+        $this->assertSame(100, $response->getWarningMessages()[0]->getWarningCode());
+        $this->assertSame('Ungültige GARAN-Label-Konfiguration', $response->getWarningMessages()[0]->getWarningDescription());
+    }
 }

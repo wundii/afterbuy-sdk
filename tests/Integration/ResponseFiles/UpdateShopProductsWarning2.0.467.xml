@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Afterbuy>
+    <CallStatus>Warning</CallStatus>
+    <CallName>UpdateShopProducts</CallName>
+    <VersionID>1</VersionID>
+    <Result>
+        <WarningList>
+            <Warning>
+                <WarningCode>100</WarningCode>
+                <WarningDescription><![CDATA[Ungültige GARAN-Label-Konfiguration]]></WarningDescription>
+                <WarningLongDescription><![CDATA[Die Angaben zum GARAN-Label sind ungültig. ShowGaranLabel und GuaranteeDuration müssen gemeinsam angegeben werden. Bei aktiviertem GARAN-Label muss die Garantiedauer zwischen 30 und 360 Monaten liegen und in 6-Monats-Schritten angegeben werden.]]></WarningLongDescription>
+            </Warning>
+        </WarningList>
+    </Result>
+</Afterbuy>

@@ -129,6 +129,8 @@ Holds a list of payment services.
 | products.dataSheetUrl                               | string                            | null     |             |
 | products.genderEnum                                 | GenderEnum                        | null     |             |
 | products.ageGroupEnum                               | AgeGroupEnum                      | null     |             |
+| products.showGaranLabel                             | bool                              | null     |             |
+| products.guaranteeDuration                          | int                               | null     |             |
 | **products.economicoperators**                      | Economicoperators                 | null     |             |
 | economicoperators.updateActionEconomicoperatorsEnum | UpdateActionEconomicoperatorsEnum | required |             |
 | economicoperators.economicoperatorId                | int[]                             | required |             |
