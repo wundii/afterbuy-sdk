@@ -12,6 +12,7 @@ use Wundii\AfterbuySdk\Enum\CountryOfOriginEnum;
 use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
 use Wundii\AfterbuySdk\Enum\GenderEnum;
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class Product implements ResponseDtoInterface
 {
@@ -53,8 +54,10 @@ final class Product implements ResponseDtoInterface
         private ?string $googleBaseShipping = null,
         private ?string $keywords = null,
         private ?int $quantity = null,
+        #[Description('Only returned if the DetailLevel includes 64 (availability)')]
         private bool $availableShop = false,
         private ?int $auctionQuantity = null,
+        #[Description('True if this is a stock-managed product, not whether it is in stock')]
         private bool $stock = false,
         private bool $discontinued = false,
         private bool $mergeStock = false,
@@ -127,6 +130,7 @@ final class Product implements ResponseDtoInterface
         private ?string $dataSheetUrl = null,
         private array $skus = [],
         private array $productPictures = [],
+        #[Description('Only returned if the DetailLevel includes 16 (catalog assignments)')]
         private array $catalogs = [],
         private array $attributes = [],
         private array $partsFitment = [],

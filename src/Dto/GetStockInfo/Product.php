@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetStockInfo;
 
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class Product implements ResponseDtoInterface
 {
@@ -18,10 +19,14 @@ final class Product implements ResponseDtoInterface
         private ?int $fullFilmentQuantity = null,
         private ?int $minimumStock = null,
         private bool $discontinued = false,
+        #[Description('True if this is a stock-managed product, not whether it is in stock')]
         private bool $stock = false,
         private bool $mergeStock = false,
+        #[Description('Only returned with DetailLevel 2')]
         private ?int $availableShop = null,
+        #[Description('Availability on marketplaces; only returned with DetailLevel 4')]
         private bool $available = false,
+        #[Description('Real (physical) stock; only returned with DetailLevel 8')]
         private ?int $realQuantity = null,
         private ?int $level = null,
     ) {

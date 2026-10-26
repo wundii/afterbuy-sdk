@@ -13,6 +13,7 @@ use Wundii\AfterbuySdk\Enum\EnergyClassEnum;
 use Wundii\AfterbuySdk\Enum\GenderEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class Product implements RequestDtoXmlInterface
 {
@@ -31,16 +32,22 @@ final class Product implements RequestDtoXmlInterface
         private string $name,
         private ?int $anr = null,
         private ?string $ean = null,
+        #[Description('ID of the header template; set to -1 to remove the assigned header')]
         private ?int $headerId = null,
+        #[Description('ID of the footer template; set to -1 to remove the assigned footer')]
         private ?int $footerId = null,
         private ?string $manufacturerPartNumber = null,
         private ?string $shortDescription = null,
         private ?string $memo = null,
         private ?string $description = null,
         private ?string $keywords = null,
+        #[Description('Absolute shop stock; ignored if addQuantity is set')]
         private ?int $quantity = null,
+        #[Description('Absolute auction stock; ignored if addAuctionQuantity is set')]
         private ?int $auctionQuantity = null,
+        #[Description('Relative change added to the current shop stock; takes precedence over quantity')]
         private ?int $addQuantity = null,
+        #[Description('Relative change added to the current auction stock; takes precedence over auctionQuantity')]
         private ?int $addAuctionQuantity = null,
         private ?bool $stock = null,
         private ?bool $discontinued = null,
@@ -79,9 +86,13 @@ final class Product implements RequestDtoXmlInterface
         private ?string $freeValue9 = null,
         private ?string $freeValue10 = null,
         private ?string $deliveryTime = null,
+        #[Description('URL of the small image; ignored if imageNameBase64 (ImageName) is set')]
         private ?string $imageSmallUrl = null,
+        #[Description('URL of the large image; ignored if imageNameBase64 (ImageName) is set')]
         private ?string $imageLargeUrl = null,
+        #[Description('Plain file name of the image (not Base64); if set, imageSmallUrl and imageLargeUrl are ignored')]
         private ?string $imageNameBase64 = null,
+        #[Description('Base64-encoded image content; requires imageNameBase64 (ImageName)')]
         private ?string $imageSourceBase64 = null,
         private ?string $manufacturerStandardProductIdType = null,
         private ?string $manufacturerStandardProductIdValue = null,
@@ -101,14 +112,17 @@ final class Product implements RequestDtoXmlInterface
         private ?GenderEnum $genderEnum = null,
         private ?AgeGroupEnum $ageGroupEnum = null,
         private ?bool $showGaranLabel = null,
+        #[Description('Guarantee duration in months (30-360 in steps of 6, 0 if showGaranLabel is false); always send it together with showGaranLabel')]
         private ?int $guaranteeDuration = null,
         private ?Economicoperators $economicoperators = null,
+        #[Description('Tags must already exist in Afterbuy; no new tags are created')]
         private array $tags = [],
         private ?Skus $skus = null,
         private ?AddCatalogs $addCatalogs = null,
         private ?AddAttributes $addAttributes = null,
         private ?AddBaseProducts $addBaseProducts = null,
         private array $useEbayVariations = [],
+        #[Description('All existing fitment data of the product is deleted and replaced with the data sent')]
         private array $partsFitment = [],
         private array $additionalPriceUpdates = [],
         private array $additionalDescriptionFields = [],

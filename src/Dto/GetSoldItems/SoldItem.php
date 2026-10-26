@@ -10,6 +10,7 @@ use Wundii\AfterbuySdk\Enum\InternalItemTypeEnum;
 use Wundii\AfterbuySdk\Enum\ItemPlatFormNameEnum;
 use Wundii\AfterbuySdk\Enum\TaxCollectedByEnum;
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class SoldItem implements ResponseDtoInterface
 {
@@ -23,6 +24,7 @@ final class SoldItem implements ResponseDtoInterface
         private bool $isExternalInvoice = false,
         private FulfillmentServiceLevelEnum $fulfillmentServiceLevelEnum = FulfillmentServiceLevelEnum::NONE,
         private ?string $platformSpecificOrderId = null,
+        #[Description('eBay TransactionID of a Buy It Now sale; empty for auctions')]
         private ?int $ebayTransactionId = null,
         private bool $eBayPlusTransaction = false,
         private ?string $alternativeItemNumber1 = null,

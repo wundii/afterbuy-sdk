@@ -17,7 +17,7 @@ final class ProductDetails implements ResponseDtoInterface
         private string $name,
         #[Description('Short description of the Stammartikel')]
         private ?string $shortDescription = null,
-        #[Description('Container with shop catalogs')]
+        #[Description('Shop catalog assignments of the product; only returned with DetailLevel 4 or 8')]
         private array $catalogs = [],
     ) {
     }

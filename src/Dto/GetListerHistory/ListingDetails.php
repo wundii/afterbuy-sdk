@@ -24,7 +24,7 @@ final class ListingDetails implements ResponseDtoInterface
         private ?string $listingPlattform = null,
         #[Description("Item title. If ListerArticle has already been deleted, the 'ListingTitle' will be displayed as empty")]
         private ?string $listingTitle = null,
-        #[Description('')]
+        #[Description('Subtitle of the listing')]
         private ?string $listerSubTitle = null,
         #[Description('Duration in days')]
         private ?int $listingDuration = null,
@@ -35,11 +35,11 @@ final class ListingDetails implements ResponseDtoInterface
             elimbo: 0 - Festpreis<br>
             Escout24: 0 - Keine Angabe')]
         private ?int $listingType = null,
-        #[Description("Description of the item. If the ListerArticle has already been deleted, the 'ListingDescription' will be displayed as empty")]
+        #[Description('Description of the item; only returned with DetailLevel 8 or 16. Empty if the ListerArticle has already been deleted')]
         private ?string $listingDescription = null,
         #[Description('Listing costs of the respective platform')]
         private ?float $listingFee = null,
-        #[Description('')]
+        #[Description('Country of the marketplace site the item was listed on')]
         private ?ListingCountryEnum $listingCountryEnum = null,
         #[Description('Selling status')]
         private ?SellStatusEnum $sellStatusEnum = null,
@@ -47,9 +47,9 @@ final class ListingDetails implements ResponseDtoInterface
         private ?DateTimeInterface $startTime = null,
         #[Description('End time of the article')]
         private ?DateTimeInterface $endTime = null,
-        #[Description('')]
+        #[Description('Numeric eBay currency ID of the listing; see ebayCurrencyEnum for the ISO code')]
         private ?int $ebayCurrencyId = null,
-        #[Description('')]
+        #[Description('Currency of the eBay listing prices')]
         private ?EbayCurrencyEnum $ebayCurrencyEnum = null,
         #[Description("eBay category. If ListerItem has already been deleted, the 'eBayCategoryID' will be displayed as empty")]
         private ?int $ebayCategoryId = null,
@@ -59,11 +59,11 @@ final class ListingDetails implements ResponseDtoInterface
         private ?int $ebaySubAccountId = null,
         #[Description("eBay starting price of the item. If ListerArticle has already been deleted, the 'eBayStartprice' will be displayed as empty")]
         private ?float $ebayStartprice = null,
-        #[Description("eBay SofortKaufpreis of the item. If ListerArticle has already been deleted, the 'eBayBuyItNowPrice' will be displayed as empty")]
+        #[Description('eBay Buy It Now price of the item. Empty if the ListerArticle has already been deleted')]
         private ?float $ebayBuyItNowPrice = null,
-        #[Description("eBay SofortKaufpreis of the item. If ListerArticle has already been deleted, the 'eBayPictureURL' will not be returned")]
+        #[Description('URL of the eBay item picture. Empty if the ListerArticle has already been deleted')]
         private ?string $ebayPictureUrl = null,
-        #[Description("eBay SofortKaufpreis of the item. If ListerArticle has already been deleted, the 'eBayGaleryURL' will not be returned")]
+        #[Description('URL of the eBay gallery picture. Empty if the ListerArticle has already been deleted')]
         private ?string $ebayGaleryUrl = null,
         #[Description('Indicates whether the item is an eBay relist')]
         private ?bool $ebayRelist = null,

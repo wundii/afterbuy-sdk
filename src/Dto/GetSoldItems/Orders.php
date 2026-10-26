@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class Orders implements ResponseDtoInterface
 {
@@ -15,6 +16,7 @@ final class Orders implements ResponseDtoInterface
         private bool $hasMoreItems = false,
         private array $orders = [],
         private int $ordersCount = 0,
+        #[Description('Highest OrderID (VorgangsID) in this response; use it as RangeID ValueFrom to fetch the next page')]
         private ?int $lastOrderId = null,
         private int $itemsCount = 0,
     ) {

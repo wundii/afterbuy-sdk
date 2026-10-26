@@ -5,11 +5,14 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetPaymentServices;
 
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class PaymentService implements ResponseDtoInterface
 {
     public function __construct(
+        #[Description('Account-specific ID of this payment method configuration, not the payment type (see paymentFunctionId)')]
         private int $paymentId,
+        #[Description('Payment type: 1 = Überweisung, 2 = Bar, 3 = Moxmo, 4 = Nachnahme, 5 = PayPal, 6 = Überweisung/Rechnung, 7 = Bankeinzug, 8 = A1M Bankeinzug, 11 = Expresskauf/Bonicheck, 99 = Sonstige')]
         private int $paymentFunctionId,
         private string $name,
         private ?string $standardText = null,

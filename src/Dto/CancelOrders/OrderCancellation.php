@@ -7,6 +7,7 @@ namespace Wundii\AfterbuySdk\Dto\CancelOrders;
 use Wundii\AfterbuySdk\Enum\StockBookingEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class OrderCancellation implements RequestDtoXmlInterface
 {
@@ -14,6 +15,7 @@ final class OrderCancellation implements RequestDtoXmlInterface
         private int $orderId,
         private ?StockBookingEnum $stockBookingEnum = null,
         private ?bool $hideOrder = null,
+        #[Description('-1 leaves the marking unchanged (default), 0 clears it, >0 sets this marking ID')]
         private ?int $markId = null,
     ) {
     }

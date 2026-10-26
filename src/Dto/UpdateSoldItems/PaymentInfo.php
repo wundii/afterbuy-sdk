@@ -7,6 +7,7 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 use DateTimeInterface;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\Structron\Attribute\Description;
 
 final readonly class PaymentInfo implements RequestDtoXmlInterface
 {
@@ -16,6 +17,7 @@ final readonly class PaymentInfo implements RequestDtoXmlInterface
         private ?string $paymentTransactionId = null,
         private ?float $alreadyPaid = null,
         private ?float $paymentAdditionalCost = null,
+        #[Description('If true, Afterbuy sends the payment confirmation email to the buyer')]
         private ?bool $sendPaymentMail = null,
     ) {
     }

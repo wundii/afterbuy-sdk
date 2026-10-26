@@ -6,13 +6,17 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\Structron\Attribute\Description;
 
 final readonly class ParcelLabel implements RequestDtoXmlInterface
 {
     public function __construct(
         private int $itemId,
+        #[Description('Package number 1-15; the numbers must form a consecutive sequence across all items of the order')]
         private int $packageNumber,
+        #[Description('Tracking number of the package; an existing number is deleted if this is empty or null')]
         private ?string $parcelLabelNumber = null,
+        #[Description('Return label number of the package; an existing number is deleted if this is empty or null')]
         private ?string $returnLabelNumber = null,
         private ?int $packageQuantity = null,
         private ?float $packageWeight = null,

@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 use Wundii\AfterbuySdk\Validator as AfterbuySdkAssert;
+use Wundii\Structron\Attribute\Description;
 
 final readonly class ShippingInfo implements RequestDtoXmlInterface
 {
@@ -23,7 +24,9 @@ final readonly class ShippingInfo implements RequestDtoXmlInterface
         private ?DateTimeInterface $deliveryDate = null,
         private ?string $deliveryService = null,
         private ?float $ebayShippingCost = null,
+        #[Description('If true, Afterbuy sends the dispatch email to the buyer')]
         private ?bool $sendShippingMail = null,
+        #[Description('Replaces all parcel labels of the order: always send the complete set (read it via GetSoldItems first), labels left out are deleted permanently')]
         private array $parcelLabels = [],
     ) {
     }

@@ -5,13 +5,16 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetMailTemplates;
 
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class MailTemplate implements ResponseDtoInterface
 {
     public function __construct(
         private int $templateId,
         private ?string $templateName = null,
+        #[Description('Only returned with DetailLevel 2')]
         private ?string $templateSubject = null,
+        #[Description('Raw mail content with unresolved Afterbuy variables; only returned with DetailLevel 2. Use GetTranslatedMailTemplate to resolve them for an order')]
         private ?string $templateText = null,
         private bool $templateHtml = false,
     ) {

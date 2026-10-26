@@ -10,6 +10,7 @@ use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
 use Wundii\DataMapper\Enum\ApproachEnum;
 use Wundii\Structron\Attribute\Approach;
+use Wundii\Structron\Attribute\Description;
 use Wundii\Structron\Attribute\Structron;
 
 #[Structron('Holds the shipping information for a product or products.')]
@@ -22,10 +23,13 @@ final readonly class ShippingInfo implements RequestDtoXmlInterface
     public function __construct(
         private int|array $productIds,
         private int $itemsCount,
+        #[Description('Total weight of all items, not per item')]
         private float $itemsWeight,
         private float $itemsPrice,
         private ?CountryIsoEnum $countryIsoEnum = null,
+        #[Description('Name (not ID) of the Afterbuy shipping group')]
         private ?string $shippingGroup = null,
+        #[Description('Delivery postcode; required to apply surcharges for German islands')]
         private ?string $PostalCode = null,
     ) {
     }

@@ -7,15 +7,20 @@ namespace Wundii\AfterbuySdk\Dto\UpdateShopProducts;
 use Wundii\AfterbuySdk\Enum\BaseProductTypeEnum;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\Structron\Attribute\Description;
 
 final readonly class ProductIdent implements RequestDtoXmlInterface
 {
     public function __construct(
         private string $userProductId,
         private ?BaseProductTypeEnum $baseProductTypeEnum = null,
+        #[Description('If true, the product is created when no existing product matches the identification (default: false)')]
         private ?bool $productInsert = null,
+        #[Description('Used only to identify the product, not as a new value')]
         private ?int $productId = null,
+        #[Description('Used only to identify the product, not as a new value')]
         private ?int $anr = null,
+        #[Description('Used only to identify the product, not as a new value')]
         private ?string $ean = null,
     ) {
     }

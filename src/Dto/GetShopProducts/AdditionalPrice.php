@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class AdditionalPrice implements ResponseDtoInterface
 {
@@ -12,6 +13,7 @@ final class AdditionalPrice implements ResponseDtoInterface
         private ?int $definitionId = null,
         private ?string $name = null,
         private ?float $value = null,
+        #[Description('True if value is a gross price (incl. VAT)')]
         private ?bool $pretax = null,
     ) {
     }

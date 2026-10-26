@@ -6,13 +6,17 @@ namespace Wundii\AfterbuySdk\Dto\GetProductDiscounts;
 
 use DateTimeInterface;
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class ProductDiscount implements ResponseDtoInterface
 {
     public function __construct(
         private int $productId,
+        #[Description('Type of promotion: 2 = LiveShopping, 3 = Discount')]
         private int $controlId,
+        #[Description('Discount as fixed amount; 0 if a percentage discount is used')]
         private ?float $amountDiscount = null,
+        #[Description('Discount in percent; 0 if a fixed amount discount is used')]
         private ?float $percentDiscount = null,
         private ?DateTimeInterface $startDate = null,
         private ?DateTimeInterface $endDate = null,

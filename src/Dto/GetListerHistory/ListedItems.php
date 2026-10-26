@@ -18,13 +18,13 @@ final class ListedItems implements ResponseDtoInterface
      * @param ListedItem[] $listedItems
      */
     public function __construct(
-        #[Description('The total number of results')]
+        #[Description('Number of history entries returned in this response, not the overall total')]
         private int $resultCount = 0,
         #[Description('Indicates whether there are any other results')]
         private bool $hasMoreProducts = false,
         #[Description('A list of items that were listed in the Lister history')]
         private array $listedItems = [],
-        #[Description('The ID of the last history entry, used for pagination')]
+        #[Description('Highest HistoryID in this response; use it as RangeID start value to fetch the next page')]
         private ?int $lastHistoryId = null,
     ) {
     }

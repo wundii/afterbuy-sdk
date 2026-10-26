@@ -6,12 +6,16 @@ namespace Wundii\AfterbuySdk\Dto\UpdateSoldItems;
 
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\Structron\Attribute\Description;
 
 final readonly class VorgangsInfo implements RequestDtoXmlInterface
 {
     public function __construct(
+        #[Description('Overwrites the existing value; an empty string removes it, null leaves it unchanged')]
         private ?string $VorgangsInfo1 = null,
+        #[Description('Overwrites the existing value; an empty string removes it, null leaves it unchanged')]
         private ?string $VorgangsInfo2 = null,
+        #[Description('Overwrites the existing value; an empty string removes it, null leaves it unchanged')]
         private ?string $VorgangsInfo3 = null,
     ) {
     }

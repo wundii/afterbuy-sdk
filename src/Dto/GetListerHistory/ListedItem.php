@@ -12,15 +12,15 @@ final class ListedItem implements ResponseDtoInterface
     public function __construct(
         #[Description('Internal Afterbuy ID of the history entry')]
         private int $historyId,
-        #[Description('Item number. This article number is assigned after creating a listing on the respective platform')]
+        #[Description('Internal Afterbuy ID of the Lister item (listing template) this history entry was created from')]
         private int $listingId,
-        #[Description('Item number. This article number is assigned after creating a listing on the respective platform')]
+        #[Description('Afterbuy ProductID of the linked product (Stammartikel)')]
         private int $productId,
         #[Description('')]
         private ?int $variationType = null,
         #[Description('Container with details concerning the listing')]
         private ?ListingDetails $listingDetails = null,
-        #[Description('Container with product details for the listing')]
+        #[Description('Container with product (Stammartikel) details; only returned with DetailLevel 2, 4 or 8')]
         private ?ProductDetails $productDetails = null,
     ) {
     }

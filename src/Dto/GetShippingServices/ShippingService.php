@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\Dto\GetShippingServices;
 
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class ShippingService implements ResponseDtoInterface
 {
@@ -15,6 +16,7 @@ final class ShippingService implements ResponseDtoInterface
         private string $name,
         private ?string $displayArea = null,
         private int $groupPrio = 0,
+        #[Description('Only fully returned with DetailLevel 0; DetailLevel 2 returns only IDs and names, DetailLevel 4 none')]
         private array $shippingMethods = [],
     ) {
     }

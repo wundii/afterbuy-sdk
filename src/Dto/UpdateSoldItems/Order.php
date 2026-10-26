@@ -9,6 +9,7 @@ use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 use Wundii\AfterbuySdk\Extension\SimpleXMLExtend;
 use Wundii\AfterbuySdk\Interface\RequestDtoXmlInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class Order implements RequestDtoXmlInterface
 {
@@ -20,7 +21,9 @@ final class Order implements RequestDtoXmlInterface
         private ?int $orderId = null,
         private ?int $itemId = null,
         private ?int $userDefindedFlag = null,
+        #[Description('Re-assigns the linked product; only works for single-item orders and is not recommended by Afterbuy')]
         private ?int $productId = null,
+        #[Description('Overwritten by parcel label data if present; do not use it for tracking numbers (use ShippingInfo parcelLabels)')]
         private ?string $additionalInfo = null,
         private ?DateTimeInterface $mailDate = null,
         private ?DateTimeInterface $reminderMailDate = null,
@@ -39,6 +42,7 @@ final class Order implements RequestDtoXmlInterface
         private ?PaymentInfo $paymentInfo = null,
         private ?ShippingInfo $shippingInfo = null,
         private ?VorgangsInfo $vorgangsInfo = null,
+        #[Description('Tags must already exist in Afterbuy; no new tags are created')]
         private array $tags = [],
         private array $attributes = [],
     ) {

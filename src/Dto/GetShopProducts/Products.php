@@ -7,6 +7,7 @@ namespace Wundii\AfterbuySdk\Dto\GetShopProducts;
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 use Wundii\DataMapper\Enum\ApproachEnum;
 use Wundii\Structron\Attribute\Approach;
+use Wundii\Structron\Attribute\Description;
 use Wundii\Structron\Attribute\Structron;
 
 #[Structron('Holds a list of payment services.')]
@@ -18,9 +19,11 @@ final class Products implements ResponseDtoInterface
      */
     public function __construct(
         private bool $hasMoreProducts = false,
+        #[Description('Numerically highest ProductID in this response (not the last row); use it as start value for the next request')]
         private ?int $lastProductId = null,
         private array $products = [],
         private ?string $shippingServicesList = null,
+        #[Description('Only returned if PaginationEnabled is set in the request')]
         private ?PaginationResult $paginationResult = null,
     ) {
     }

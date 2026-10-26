@@ -6,17 +6,23 @@ namespace Wundii\AfterbuySdk\Dto\GetSoldItems;
 
 use DateTimeInterface;
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
+use Wundii\Structron\Attribute\Description;
 
 final class Order implements ResponseDtoInterface
 {
     public function __construct(
         private int $invoiceNumber,
+        #[Description('VorgangsID; can be 0 if RequestAllItems is set')]
         private int $orderId,
         private int $anr,
         private DateTimeInterface $orderDate,
+        #[Description('Only returned if the DetailLevel includes 2 (payment information)')]
         private ?PaymentInfo $paymentInfo = null,
+        #[Description('Only returned if the DetailLevel includes 4 (buyer information)')]
         private ?BuyerInfo $buyerInfo = null,
+        #[Description('Only returned if the DetailLevel includes 8 (article information) or 32 (articles with selected attributes)')]
         private ?SoldItems $soldItems = null,
+        #[Description('Only returned if the DetailLevel includes 16 (shipping information)')]
         private ?ShippingInfo $shippingInfo = null,
         private ?OrderOriginalCurrency $orderOriginalCurrency = null,
         private ?DateTimeInterface $feedbackDate = null,

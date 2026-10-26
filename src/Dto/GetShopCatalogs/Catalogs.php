@@ -8,6 +8,7 @@ use Wundii\AfterbuySdk\Dto\UpdateCatalogs\Catalog as UpdateCatalog;
 use Wundii\AfterbuySdk\Interface\ResponseDtoInterface;
 use Wundii\DataMapper\Enum\ApproachEnum;
 use Wundii\Structron\Attribute\Approach;
+use Wundii\Structron\Attribute\Description;
 use Wundii\Structron\Attribute\Structron;
 
 #[Structron('Holds a list of catalogs.')]
@@ -18,8 +19,10 @@ final class Catalogs implements ResponseDtoInterface
      * @param Catalog[] $catalogs
      */
     public function __construct(
+        #[Description('True if more catalogs exist than were returned (max. 200 per request); continue paging with lastCatalogId')]
         private bool $hasMoreCatalogs = false,
         private array $catalogs = [],
+        #[Description('Highest CatalogID in this response; use it as start value for the next request')]
         private ?int $lastCatalogId = null,
     ) {
     }
