@@ -36,10 +36,18 @@ Require the bundle and its dependencies with composer:
 - [Shop API Documentation](https://xmldoku.afterbuy.de/shopdoku/)
 - [XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
 
-### Current Afterbuy API Informations
-- version 2.0.460 was previously recalled by Afterbuy, but is now officially supported again with version 2.0.465
-- new endpoint CancelOrders added with version 2.0.465
-- UpdateShopProducts: new fields ShowGaranLabel and GuaranteeDuration (GARAN label) added with version 2.0.467
+### Afterbuy XML API Versions
+
+#### 2.0.467 (2026-10-12)
+- UpdateShopProducts: new fields `ShowGaranLabel` and `GuaranteeDuration` (GARAN label)
+
+#### 2.0.465 (2026-05-05)
+- new endpoint CancelOrders
+- the recalled version 2.0.460 is officially supported again (Parcel Shipping re-enabled)
+
+#### 2.0.460 (2025-05)
+- Parcel Shipping: GetSoldItems ParcelLabel with `PackageQuantity` and `PackageWeight`, Order with `FeedbackLink`
+- recalled by Afterbuy shortly after release, the SDK remained compatible
 
 ### Supported Requests with Examples
 - [x] [CancelOrders](examples/CancelOrders.md)
