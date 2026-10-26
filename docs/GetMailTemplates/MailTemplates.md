@@ -10,11 +10,11 @@ Hold a list of mail templates.
 | Wundii\AfterbuySdk\Dto\GetMailTemplates\MailTemplate | MailTemplate |
 
 ## Properties
-| MailTemplates                 | Type           | Default  | Description |
-| ----------------------------- | -------------- | -------- | ----------- |
-| **mailTemplates**             | MailTemplate[] | required |             |
-| mailTemplates.templateId      | int            | required |             |
-| mailTemplates.templateName    | string         | null     |             |
-| mailTemplates.templateSubject | string         | null     |             |
-| mailTemplates.templateText    | string         | null     |             |
-| mailTemplates.templateHtml    | bool           | false    |             |
+| MailTemplates                 | Type           | Default  | Description                                                                                                                                       |
+| ----------------------------- | -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **mailTemplates**             | MailTemplate[] | required |                                                                                                                                                   |
+| mailTemplates.templateId      | int            | required |                                                                                                                                                   |
+| mailTemplates.templateName    | string         | null     |                                                                                                                                                   |
+| mailTemplates.templateSubject | string         | null     | Only returned with DetailLevel 2                                                                                                                  |
+| mailTemplates.templateText    | string         | null     | Raw mail content with unresolved Afterbuy variables; only returned with DetailLevel 2. Use GetTranslatedMailTemplate to resolve them for an order |
+| mailTemplates.templateHtml    | bool           | false    |                                                                                                                                                   |

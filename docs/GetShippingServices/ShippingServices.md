@@ -12,25 +12,25 @@ Holds a list of shipping services.
 | Wundii\AfterbuySdk\Dto\GetShippingServices\WeightDefinitions | WeightDefinitions |
 
 ## Properties
-| ShippingServices                      | Type              | Default  | Description |
-| ------------------------------------- | ----------------- | -------- | ----------- |
-| **shippingServices**                  | ShippingService[] | []       |             |
-| shippingServices.name                 | string            | required |             |
-| shippingServices.displayArea          | string            | null     |             |
-| shippingServices.groupPrio            | int               | 0        |             |
-| **shippingServices.shippingMethods**  | ShippingMethod[]  | []       |             |
-| shippingMethods.shippingMethodID      | int               | required |             |
-| shippingMethods.name                  | string            | required |             |
-| shippingMethods.countryGroup          | string            | null     |             |
-| shippingMethods.countryGroupCountries | string            | null     |             |
-| shippingMethods.level                 | int               | null     |             |
-| shippingMethods.taxRate               | float             | null     |             |
-| shippingMethods.priceFrom             | float             | null     |             |
-| shippingMethods.priceTo               | float             | null     |             |
-| shippingMethods.islandAdditionalCosts | float             | null     |             |
-| shippingMethods.freeShippingPriceFrom | float             | null     |             |
-| shippingMethods.additionalItemCosts   | float             | null     |             |
-| **shippingMethods.weightDefinitions** | WeightDefinitions | null     |             |
-| weightDefinitions.weightFrom          | float             | required |             |
-| weightDefinitions.weightTo            | float             | required |             |
-| weightDefinitions.price               | float             | required |             |
+| ShippingServices                      | Type              | Default  | Description                                                                                          |
+| ------------------------------------- | ----------------- | -------- | ---------------------------------------------------------------------------------------------------- |
+| **shippingServices**                  | ShippingService[] | []       |                                                                                                      |
+| shippingServices.name                 | string            | required |                                                                                                      |
+| shippingServices.displayArea          | string            | null     |                                                                                                      |
+| shippingServices.groupPrio            | int               | 0        |                                                                                                      |
+| **shippingServices.shippingMethods**  | ShippingMethod[]  | []       | Only fully returned with DetailLevel 0; DetailLevel 2 returns only IDs and names, DetailLevel 4 none |
+| shippingMethods.shippingMethodID      | int               | required |                                                                                                      |
+| shippingMethods.name                  | string            | required |                                                                                                      |
+| shippingMethods.countryGroup          | string            | null     |                                                                                                      |
+| shippingMethods.countryGroupCountries | string            | null     |                                                                                                      |
+| shippingMethods.level                 | int               | null     |                                                                                                      |
+| shippingMethods.taxRate               | float             | null     |                                                                                                      |
+| shippingMethods.priceFrom             | float             | null     |                                                                                                      |
+| shippingMethods.priceTo               | float             | null     |                                                                                                      |
+| shippingMethods.islandAdditionalCosts | float             | null     |                                                                                                      |
+| shippingMethods.freeShippingPriceFrom | float             | null     |                                                                                                      |
+| shippingMethods.additionalItemCosts   | float             | null     |                                                                                                      |
+| **shippingMethods.weightDefinitions** | WeightDefinitions | null     |                                                                                                      |
+| weightDefinitions.weightFrom          | float             | required |                                                                                                      |
+| weightDefinitions.weightTo            | float             | required |                                                                                                      |
+| weightDefinitions.price               | float             | required |                                                                                                      |

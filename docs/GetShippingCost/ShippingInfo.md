@@ -10,12 +10,12 @@ Holds the shipping information for a product or products.
 | Wundii\AfterbuySdk\Enum\CountryIsoEnum | CountryIsoEnum |
 
 ## Properties
-| ShippingInfo   | Type           | Default  | Description |
-| -------------- | -------------- | -------- | ----------- |
-| productIds     | int[]          | required |             |
-| itemsCount     | int            | required |             |
-| itemsWeight    | float          | required |             |
-| itemsPrice     | float          | required |             |
-| countryIsoEnum | CountryIsoEnum | null     |             |
-| shippingGroup  | string         | null     |             |
-| PostalCode     | string         | null     |             |
+| ShippingInfo   | Type           | Default  | Description                                                        |
+| -------------- | -------------- | -------- | ------------------------------------------------------------------ |
+| productIds     | int[]          | required |                                                                    |
+| itemsCount     | int            | required |                                                                    |
+| itemsWeight    | float          | required | Total weight of all items, not per item                            |
+| itemsPrice     | float          | required |                                                                    |
+| countryIsoEnum | CountryIsoEnum | null     |                                                                    |
+| shippingGroup  | string         | null     | Name (not ID) of the Afterbuy shipping group                       |
+| PostalCode     | string         | null     | Delivery postcode; required to apply surcharges for German islands |

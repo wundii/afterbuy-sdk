@@ -11,10 +11,10 @@ Holds a list of order cancellations.
 | Wundii\AfterbuySdk\Enum\StockBookingEnum | StockBookingEnum |
 
 ## Properties
-| OrderCancellations                  | Type                | Default  | Description |
-| ----------------------------------- | ------------------- | -------- | ----------- |
-| **orderCancellations**              | OrderCancellation[] | []       |             |
-| orderCancellations.orderId          | int                 | required |             |
-| orderCancellations.stockBookingEnum | StockBookingEnum    | null     |             |
-| orderCancellations.hideOrder        | bool                | null     |             |
-| orderCancellations.markId           | int                 | null     |             |
+| OrderCancellations                  | Type                | Default  | Description                                                                     |
+| ----------------------------------- | ------------------- | -------- | ------------------------------------------------------------------------------- |
+| **orderCancellations**              | OrderCancellation[] | []       |                                                                                 |
+| orderCancellations.orderId          | int                 | required |                                                                                 |
+| orderCancellations.stockBookingEnum | StockBookingEnum    | null     |                                                                                 |
+| orderCancellations.hideOrder        | bool                | null     |                                                                                 |
+| orderCancellations.markId           | int                 | null     | -1 leaves the marking unchanged (default), 0 clears it, >0 sets this marking ID |
