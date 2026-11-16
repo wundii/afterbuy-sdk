@@ -26,13 +26,13 @@
   },
   "require-dev": {
     "phpbench/phpbench": "1.7.0",
-    "phpstan/phpstan": "2.3.1",
+    "phpstan/phpstan": "2.3.6",
     "phpstan/phpstan-strict-rules": "2.1.1",
-    "phpunit/phpunit": "11.5.50",
-    "rector/rector": "2.7.0",
-    "symfony/intl": "7.4.8 || 8.0.8",
-    "symfony/var-dumper": "7.4.8 || 8.0.8",
-    "symplify/easy-coding-standard": "13.3.14",
+    "phpunit/phpunit": "11.5.58",
+    "rector/rector": "2.8.5",
+    "symfony/intl": "7.4.22 || 8.1.10",
+    "symfony/var-dumper": "7.4.22 || 8.1.10",
+    "symplify/easy-coding-standard": "13.3.17",
     "wundii/phplint": "0.3.4",
     "wundii/structron": "1.0.6"
   },
@@ -69,5 +69,11 @@
     "test": "vendor/bin/phpunit"
   },
   "minimum-stability": "stable",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "config": {
+    "platform": {
+      "php": "8.2.0"
+    },
+    "sort-packages": true
+  }
 }
